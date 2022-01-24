@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b90d1067-fe4c-400e-ba78-5413e30ab9ed": {
+      "ProjectGuid": "b90d1067-fe4c-400e-ba78-5413e30ab9ed",
+      "DisplayName": "SBC.Web",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

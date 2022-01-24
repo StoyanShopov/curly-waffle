@@ -22,6 +22,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+    using System.Linq;
 
     public class Startup
     {
@@ -31,7 +32,7 @@
         {
             this.configuration = configuration;
         }
-
+   
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -58,7 +59,12 @@
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-
+            services.AddSwaggerGen(c =>
+            {
+             //   c.SwaggerDoc("v1", new Info { Title = "API WSVAP (WebSmartView)", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+            });
+            // services.AddSwagenAuthorization();
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -102,6 +108,13 @@
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseCookiePolicy();
+            app
+              .UseSwagger()
+              .UseSwaggerUI(options =>
+              {
+                  options.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API");
+                  options.RoutePrefix = string.Empty;
+              });
 
             app.UseCors(options => options
                     .AllowAnyOrigin()
@@ -111,6 +124,8 @@
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+
 
             app.UseEndpoints(
                 endpoints =>

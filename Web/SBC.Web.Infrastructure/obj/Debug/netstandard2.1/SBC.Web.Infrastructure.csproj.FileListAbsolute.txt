@@ -7,4 +7,3 @@ C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infras
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.dll
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.pdb
-C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.csproj.AssemblyReference.cache
