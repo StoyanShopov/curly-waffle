@@ -1,0 +1,10 @@
+C:\GITHUB\SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.deps.json
+C:\GITHUB\SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.dll
+C:\GITHUB\SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.pdb
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.AssemblyReference.cache
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.AssemblyInfoInputs.cache
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.AssemblyInfo.cs
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.CoreCompileInputs.cache
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.dll
+C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.pdb

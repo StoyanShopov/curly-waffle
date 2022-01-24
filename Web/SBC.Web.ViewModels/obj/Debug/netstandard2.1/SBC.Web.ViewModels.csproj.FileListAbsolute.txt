@@ -1,0 +1,17 @@
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Web.ViewModels.deps.json
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Web.ViewModels.dll
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Web.ViewModels.pdb
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Data.Common.dll
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Services.Mapping.dll
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Services.Mapping.pdb
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\bin\Debug\netstandard2.1\SBC.Data.Common.pdb
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.csproj.AssemblyReference.cache
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.AssemblyInfoInputs.cache
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.AssemblyInfo.cs
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.csproj.CopyComplete
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.dll
+C:\GITHUB\SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.pdb

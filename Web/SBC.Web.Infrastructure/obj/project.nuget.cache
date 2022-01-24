@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GBtMUUI7IpCJ347rWmZj9IGYznll8lhB22zbK0PvIvgEDeQaQoRc44TBMsgDt1QqRdAleUR/UtHcSwsKI+u09g==",
+  "success": true,
+  "projectFilePath": "C:\\GITHUB\\SBC\\Web\\SBC.Web.Infrastructure\\SBC.Web.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,17 @@
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Services.Data.deps.json
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Services.Data.dll
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Services.Data.pdb
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Data.Common.dll
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Services.Mapping.dll
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Data.Common.pdb
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\GITHUB\SBC\Services\SBC.Services.Data\bin\Debug\netstandard2.1\SBC.Services.Mapping.pdb
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.csproj.AssemblyReference.cache
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.AssemblyInfoInputs.cache
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.AssemblyInfo.cs
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.csproj.CoreCompileInputs.cache
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.csproj.CopyComplete
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.dll
+C:\GITHUB\SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.pdb

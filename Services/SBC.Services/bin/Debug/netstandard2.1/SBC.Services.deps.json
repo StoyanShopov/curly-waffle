@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "SBC.Services/1.0.0": {
+        "dependencies": {
+          "StyleCop.Analyzers": "1.2.0-beta.312"
+        },
+        "runtime": {
+          "SBC.Services.dll": {}
+        }
+      },
+      "StyleCop.Analyzers/1.2.0-beta.312": {
+        "dependencies": {
+          "StyleCop.Analyzers.Unstable": "1.2.0.312"
+        }
+      },
+      "StyleCop.Analyzers.Unstable/1.2.0.312": {}
+    }
+  },
+  "libraries": {
+    "SBC.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StyleCop.Analyzers/1.2.0-beta.312": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SQCTxlYm6+d4rJ1/hNVLNryOZx6y23Z0JYp9WmUu6YtCApNMyUNJ//4yucqP7al2Jv0kwBuTRyK/4qWmGmIA/A==",
+      "path": "stylecop.analyzers/1.2.0-beta.312",
+      "hashPath": "stylecop.analyzers.1.2.0-beta.312.nupkg.sha512"
+    },
+    "StyleCop.Analyzers.Unstable/1.2.0.312": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MtkINha/h9vxhjRR9mYiwtwGGeJQzgshCuQkwlSGHjXdo3hJB769Jiu6Lh0/ouyTXck0gE0ZD0UCjmaY6hCwHQ==",
+      "path": "stylecop.analyzers.unstable/1.2.0.312",
+      "hashPath": "stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+    }
+  }
+}

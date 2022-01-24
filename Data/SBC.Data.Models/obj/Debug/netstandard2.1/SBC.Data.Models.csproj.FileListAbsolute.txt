@@ -1,0 +1,13 @@
+C:\GITHUB\SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.deps.json
+C:\GITHUB\SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\GITHUB\SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\GITHUB\SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Common.dll
+C:\GITHUB\SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Common.pdb
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.AssemblyReference.cache
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.AssemblyInfoInputs.cache
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.AssemblyInfo.cs
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CoreCompileInputs.cache
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CopyComplete
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.pdb
