@@ -8,3 +8,13 @@ C:\GITHUB\SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Servi
 C:\GITHUB\SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.csproj.CoreCompileInputs.cache
 C:\GITHUB\SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.dll
 C:\GITHUB\SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\bin\Debug\netstandard2.1\SBC.Services.Messaging.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\bin\Debug\netstandard2.1\SBC.Services.Messaging.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\bin\Debug\netstandard2.1\SBC.Services.Messaging.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Messaging\obj\Debug\netstandard2.1\SBC.Services.Messaging.pdb

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {}
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {}
   },
   "projects": {
-    "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj": {
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj",
+        "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj",
         "projectName": "SBC.Data.Common",
-        "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj",
-        "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\obj\\",
+        "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj",
+        "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -66,21 +70,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj",
+        "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj",
         "projectName": "SBC.Data.Models",
-        "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj",
-        "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\obj\\",
+        "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,8 +102,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj": {
-                "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj"
+              "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Common\\SBC.Data.Common.csproj"
               }
             }
           }
@@ -136,21 +144,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
+        "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
         "projectName": "SBC.Services.Mapping",
-        "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
-        "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\obj\\",
+        "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -202,21 +214,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj",
+        "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj",
         "projectName": "SBC.Web.ViewModels",
-        "projectPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj",
-        "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\obj\\",
+        "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -230,11 +246,11 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
-                "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj"
+              "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj"
               },
-              "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
-                "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj"
+              "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj"
               }
             }
           }
@@ -271,7 +287,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

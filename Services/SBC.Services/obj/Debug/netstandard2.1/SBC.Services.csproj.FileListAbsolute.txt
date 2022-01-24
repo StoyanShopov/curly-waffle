@@ -8,3 +8,13 @@ C:\GITHUB\SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.Assemb
 C:\GITHUB\SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.csproj.CoreCompileInputs.cache
 C:\GITHUB\SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.dll
 C:\GITHUB\SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\bin\Debug\netstandard2.1\SBC.Services.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\bin\Debug\netstandard2.1\SBC.Services.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\bin\Debug\netstandard2.1\SBC.Services.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.pdb

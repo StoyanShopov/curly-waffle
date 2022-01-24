@@ -9055,19 +9055,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\I am\\.nuget\\packages\\": {}
+    "C:\\Users\\master\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GITHUB\\SBC\\Tests\\SBC.Services.Data.Tests\\SBC.Services.Data.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Tests\\SBC.Services.Data.Tests\\SBC.Services.Data.Tests.csproj",
       "projectName": "SBC.Services.Data.Tests",
-      "projectPath": "C:\\GITHUB\\SBC\\Tests\\SBC.Services.Data.Tests\\SBC.Services.Data.Tests.csproj",
-      "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-      "outputPath": "C:\\GITHUB\\SBC\\Tests\\SBC.Services.Data.Tests\\obj\\",
+      "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Tests\\SBC.Services.Data.Tests\\SBC.Services.Data.Tests.csproj",
+      "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Tests\\SBC.Services.Data.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9081,11 +9086,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\GITHUB\\SBC\\Data\\SBC.Data\\SBC.Data.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data\\SBC.Data.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data\\SBC.Data.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data\\SBC.Data.csproj"
             },
-            "C:\\GITHUB\\SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj"
             }
           }
         }
@@ -9144,7 +9149,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

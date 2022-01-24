@@ -8,3 +8,13 @@ C:\GITHUB\SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Service
 C:\GITHUB\SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.csproj.CoreCompileInputs.cache
 C:\GITHUB\SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.dll
 C:\GITHUB\SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\bin\Debug\netstandard2.1\SBC.Services.Mapping.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\bin\Debug\netstandard2.1\SBC.Services.Mapping.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\bin\Debug\netstandard2.1\SBC.Services.Mapping.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.pdb

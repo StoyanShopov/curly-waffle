@@ -9846,19 +9846,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\I am\\.nuget\\packages\\": {}
+    "C:\\Users\\master\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GITHUB\\SBC\\Web\\SBC.Web\\SBC.Web.csproj",
+      "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web\\SBC.Web.csproj",
       "projectName": "SBC.Web",
-      "projectPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web\\SBC.Web.csproj",
-      "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-      "outputPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web\\obj\\",
+      "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web\\SBC.Web.csproj",
+      "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9872,32 +9877,32 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data.Models\\SBC.Data.Models.csproj"
             },
-            "C:\\GITHUB\\SBC\\Data\\SBC.Data\\SBC.Data.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Data\\SBC.Data\\SBC.Data.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data\\SBC.Data.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Data\\SBC.Data\\SBC.Data.csproj"
             },
-            "C:\\GITHUB\\SBC\\SBC.Common\\SBC.Common.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\SBC.Common\\SBC.Common.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\SBC.Common\\SBC.Common.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\SBC.Common\\SBC.Common.csproj"
             },
-            "C:\\GITHUB\\SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Data\\SBC.Services.Data.csproj"
             },
-            "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj"
             },
-            "C:\\GITHUB\\SBC\\Services\\SBC.Services.Messaging\\SBC.Services.Messaging.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Messaging\\SBC.Services.Messaging.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Messaging\\SBC.Services.Messaging.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Messaging\\SBC.Services.Messaging.csproj"
             },
-            "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj"
             },
-            "C:\\GITHUB\\SBC\\Web\\SBC.Web.Infrastructure\\SBC.Web.Infrastructure.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web.Infrastructure\\SBC.Web.Infrastructure.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.Infrastructure\\SBC.Web.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.Infrastructure\\SBC.Web.Infrastructure.csproj"
             },
-            "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {
-              "projectPath": "C:\\GITHUB\\SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj"
+            "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Web\\SBC.Web.ViewModels\\SBC.Web.ViewModels.csproj"
             }
           }
         }
@@ -9965,7 +9970,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

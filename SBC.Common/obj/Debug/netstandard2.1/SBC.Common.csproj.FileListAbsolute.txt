@@ -8,3 +8,13 @@ C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.AssemblyInfo.cs
 C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.CoreCompileInputs.cache
 C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.dll
 C:\GITHUB\SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\bin\Debug\netstandard2.1\SBC.Common.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.pdb

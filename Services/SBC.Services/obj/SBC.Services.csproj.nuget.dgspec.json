@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj": {}
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj": {}
   },
   "projects": {
-    "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj": {
+    "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj",
+        "projectUniqueName": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj",
         "projectName": "SBC.Services",
-        "projectPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services\\SBC.Services.csproj",
-        "packagesPath": "C:\\Users\\I am\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\SBC\\Services\\SBC.Services\\obj\\",
+        "projectPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\SBC.Services.csproj",
+        "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\I am\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\master\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

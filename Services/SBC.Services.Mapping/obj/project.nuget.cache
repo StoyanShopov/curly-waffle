@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "NIYngJ0Ka90PFVm6P5YuGRGeacPCfAcRs/k9Xjfdx0Zpledp+GgbiAOtahZvV4DcILTMsVS/EbDYR2tH8qjkgg==",
+  "dgSpecHash": "eVBseJRP/1FN/3z8lJJpeU/SfbH5U7HuCJVPSPS+TepizN+PRxzs7ITe6B9uXSlipNtWYAczLReIwTaifi0wGg==",
   "success": true,
-  "projectFilePath": "C:\\GITHUB\\SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
+  "projectFilePath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\Services\\SBC.Services.Mapping\\SBC.Services.Mapping.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\I am\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
-    "C:\\Users\\I am\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
-    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",
-    "C:\\Users\\I am\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+    "C:\\Users\\master\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

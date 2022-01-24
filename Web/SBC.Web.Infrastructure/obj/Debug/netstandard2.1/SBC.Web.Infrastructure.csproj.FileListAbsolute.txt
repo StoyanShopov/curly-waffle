@@ -8,3 +8,13 @@ C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infras
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.dll
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.pdb
 C:\GITHUB\SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\bin\Debug\netstandard2.1\SBC.Web.Infrastructure.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\bin\Debug\netstandard2.1\SBC.Web.Infrastructure.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\bin\Debug\netstandard2.1\SBC.Web.Infrastructure.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.Infrastructure\obj\Debug\netstandard2.1\SBC.Web.Infrastructure.pdb

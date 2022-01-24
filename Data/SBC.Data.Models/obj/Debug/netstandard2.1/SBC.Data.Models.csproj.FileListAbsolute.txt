@@ -11,3 +11,16 @@ C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.cspr
 C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CopyComplete
 C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.dll
 C:\GITHUB\SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.deps.json
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Common.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\bin\Debug\netstandard2.1\SBC.Data.Common.pdb
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.AssemblyReference.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.AssemblyInfoInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.AssemblyInfo.cs
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CopyComplete
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.pdb

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/EKtj1EdCQV+ZKQ/3sKPKRRGLhs4l2a6CBEA90ciRZT9JNPX8JlY6q9pBHLXM5BYb4sJNb+WAQXX7d5d8fyoXw==",
+  "dgSpecHash": "443DkxbPDsU/dPIjQAVZPoPgPqzz5IxypADyKObt8/gYNaqG/r+xurDhlwATKFc3ytE0xJGPzrlK10syjx0D/g==",
   "success": true,
-  "projectFilePath": "C:\\GITHUB\\SBC\\SBC.Common\\SBC.Common.csproj",
+  "projectFilePath": "C:\\Users\\master\\Desktop\\GitHub\\BootCamp.Project.SBC\\SBC.Common\\SBC.Common.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
-    "C:\\Users\\I am\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+    "C:\\Users\\master\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
   ],
   "logs": []
 }
