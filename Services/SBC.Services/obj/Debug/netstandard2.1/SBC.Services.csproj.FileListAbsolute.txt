@@ -18,3 +18,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\De
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.csproj.CoreCompileInputs.cache
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.pdb
+C:\GITHUB\SBC_branches\main\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.dll
+C:\GITHUB\SBC_branches\main\Services\SBC.Services\obj\Debug\netstandard2.1\SBC.Services.pdb

@@ -934,3 +934,6 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web\obj\Debug\net5.0
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web\obj\Debug\net5.0\ref\SBC.Web.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web\obj\Debug\net5.0\SBC.Web.pdb
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web\obj\Debug\net5.0\SBC.Web.genruntimeconfig.cache
+C:\GITHUB\SBC_branches\main\Web\SBC.Web\obj\Debug\net5.0\SBC.Web.dll
+C:\GITHUB\SBC_branches\main\Web\SBC.Web\obj\Debug\net5.0\ref\SBC.Web.dll
+C:\GITHUB\SBC_branches\main\Web\SBC.Web\obj\Debug\net5.0\SBC.Web.pdb

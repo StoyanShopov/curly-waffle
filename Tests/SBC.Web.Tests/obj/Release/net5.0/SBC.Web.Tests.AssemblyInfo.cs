@@ -11,6 +11,8 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("SBC.Web", "C:\\GITHUB\\SBC_branches\\main\\Web\\SBC.Web", "SBC.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("SBC.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

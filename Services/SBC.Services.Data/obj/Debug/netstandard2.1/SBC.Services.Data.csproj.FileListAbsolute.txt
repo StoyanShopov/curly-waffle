@@ -32,3 +32,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Data\o
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.csproj.CopyComplete
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.pdb
+C:\GITHUB\SBC_branches\main\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.dll
+C:\GITHUB\SBC_branches\main\Services\SBC.Services.Data\obj\Debug\netstandard2.1\SBC.Services.Data.pdb

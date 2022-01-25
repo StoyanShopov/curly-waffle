@@ -18,3 +18,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mappin
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.csproj.CoreCompileInputs.cache
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.pdb
+C:\GITHUB\SBC_branches\main\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.dll
+C:\GITHUB\SBC_branches\main\Services\SBC.Services.Mapping\obj\Debug\netstandard2.1\SBC.Services.Mapping.pdb

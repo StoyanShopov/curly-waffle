@@ -32,3 +32,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.ViewModels\obj\D
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.csproj.CopyComplete
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.pdb
+C:\GITHUB\SBC_branches\main\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.dll
+C:\GITHUB\SBC_branches\main\Web\SBC.Web.ViewModels\obj\Debug\netstandard2.1\SBC.Web.ViewModels.pdb

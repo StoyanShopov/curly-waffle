@@ -67,9 +67,7 @@
 		<!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install sanitize-html" />
-		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install reactjs-media" />
-		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install @tinymce/tinymce-react" />
-		<Exec WorkingDirectory="$(SpaRoot)" Command="node --max-old-space-size=4096 " />
+	
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
 		<!-- Include the newly-built files in the publish output -->

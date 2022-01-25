@@ -24,3 +24,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Deb
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.csproj.CopyComplete
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.pdb
+C:\GITHUB\SBC_branches\main\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.dll
+C:\GITHUB\SBC_branches\main\Data\SBC.Data.Models\obj\Debug\netstandard2.1\SBC.Data.Models.pdb

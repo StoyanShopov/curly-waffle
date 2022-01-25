@@ -18,3 +18,5 @@ C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstan
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.csproj.CoreCompileInputs.cache
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.dll
 C:\Users\master\Desktop\GitHub\BootCamp.Project.SBC\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.pdb
+C:\GITHUB\SBC_branches\main\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.dll
+C:\GITHUB\SBC_branches\main\SBC.Common\obj\Debug\netstandard2.1\SBC.Common.pdb
