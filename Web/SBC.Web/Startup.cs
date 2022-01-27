@@ -1,5 +1,8 @@
 ﻿namespace SBC.Web
 {
+    using System.Reflection;
+    using System.Text;
+
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -11,6 +14,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
+
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -18,11 +22,11 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Identity;
+    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
-    using System.Reflection;
-    using System.Text;
 
     public class Startup
     {
@@ -98,6 +102,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IIdentityService, IdentityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
