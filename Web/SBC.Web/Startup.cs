@@ -59,7 +59,7 @@
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddRazorPages();
+          //  services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
@@ -77,7 +77,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+           // AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
@@ -94,7 +94,7 @@
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+      //          app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -107,6 +107,7 @@
                     .AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod());
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -117,6 +118,7 @@
                     {
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                     });
+
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";

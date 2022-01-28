@@ -33,8 +33,8 @@
             if (this.demoData.Contains(person))
             {
             }
-                return new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, "Entity already exist");
-
+            return new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, "Entity already exist");
+        
         //    this.demoData.Add(person);
          //   return this.demoData.Contains(person);
         }
