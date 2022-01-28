@@ -9,8 +9,9 @@
     using SBC.Web.ViewModels.Settings;
 
     using Microsoft.AspNetCore.Mvc;
+    using SBC.Common;
 
-    public class SettingsController : BaseController
+    public class SettingsController : ApiController
     {
         private readonly ISettingsService settingsService;
 
@@ -22,12 +23,12 @@
             this.repository = repository;
         }
 
-        public IActionResult Index()
-        {
-            var settings = this.settingsService.GetAll<SettingViewModel>();
-            var model = new SettingsListViewModel { Settings = settings };
-            return this.View(model);
-        }
+        //public IActionResult Index()
+        //{
+        //    var settings = this.settingsService.GetAll<SettingViewModel>();
+        //    var model = new SettingsListViewModel { Settings = settings };
+        //    return this.View(model);
+        //}
 
         public async Task<IActionResult> InsertSetting()
         {
@@ -37,7 +38,7 @@
             await this.repository.AddAsync(setting);
             await this.repository.SaveChangesAsync();
 
-            return this.RedirectToAction(nameof(this.Index));
+            return await this.GenericResponse((Result)true);
         }
     }
 }
