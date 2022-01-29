@@ -1,10 +1,5 @@
 ﻿namespace SBC.Services.Data.User.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Text;
-
     public class RegisterServiceModel
     {
         public string CompanyName { get; set; }

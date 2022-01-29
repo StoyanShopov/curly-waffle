@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+
     using SBC.Data.Common.Models;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
@@ -15,6 +16,7 @@
         void HardDelete(TEntity entity);
 
         void Undelete(TEntity entity);
+
         Task FirstOrDefaultAsync(Func<object, bool> p);
     }
 }

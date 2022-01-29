@@ -9,6 +9,8 @@
     {
         Task<Result> Register(RegisterServiceModel model);
 
+        Task<Result> Login(LoginServiceModel model);
+
         Task<bool> UserExistsByEmail(string email);
     }
 }
