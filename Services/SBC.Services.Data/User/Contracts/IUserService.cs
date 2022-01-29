@@ -9,7 +9,7 @@
     {
         Task<Result> Register(RegisterServiceModel model);
 
-        Task<Result> Login(LoginServiceModel model);
+        Task<Result> Login(LoginServiceModel model, string secret);
 
         Task<bool> UserExistsByEmail(string email);
     }

@@ -6,6 +6,7 @@
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
@@ -16,28 +17,21 @@
     public class UserService : IUserService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IIdentityService identityService;
-        private readonly AppSettings appSettings;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public UserService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            UserManager<ApplicationUser> userManager,
             IIdentityService identityService,
-            AppSettings appSettings)
+            UserManager<ApplicationUser> userManager)
         {
             this.applicationUser = applicationUser;
             this.userManager = userManager;
             this.identityService = identityService;
-            this.appSettings = appSettings;
         }
 
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            // if (model.Password != model.ConfirmPassword)
-            // {
-            //    return this.BadRequest($"You gave two diffrent passwords.");
-            // }
             var emailExists = await this.UserExistsByEmail(model.Email);
 
             if (emailExists)
@@ -62,7 +56,7 @@
             return true;
         }
 
-        public async Task<Result> Login(LoginServiceModel model)
+        public async Task<Result> Login(LoginServiceModel model, string secret)
         {
             var user = await this.userManager.FindByEmailAsync(model.Email);
 
@@ -78,7 +72,7 @@
                 return new Tuple<HttpStatusCode, string>(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
             }
 
-            var jwt = this.identityService.GenerateJwt(this.appSettings.Secret, user.Id, user.UserName);
+            var jwt = this.identityService.GenerateJwt(secret, user.Id, user.UserName);
 
             return new ResultModel(new { JWT = jwt });
         }
