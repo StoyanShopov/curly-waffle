@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using SBC.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using SBC.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

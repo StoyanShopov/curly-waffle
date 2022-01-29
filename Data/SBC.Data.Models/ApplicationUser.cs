@@ -4,9 +4,8 @@ namespace SBC.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using SBC.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SBC.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

@@ -28,16 +28,7 @@
             return new ResultModel(this.demoData[id]);
         }
 
-        public Result Add(Person person)
-        {
-            if (this.demoData.Contains(person))
-            {
-            }
-            return new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, "Entity already exist");
-        
-        //    this.demoData.Add(person);
-         //   return this.demoData.Contains(person);
-        }
+        public Result Add(Person person) => new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, "Entity already exist");
 
         public class Person
         {
@@ -48,7 +39,6 @@
             public int Age { get; set; }
 
             public string Gender { get; set; }
-
         }
     }
 }
