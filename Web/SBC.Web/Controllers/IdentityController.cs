@@ -7,63 +7,83 @@
     using Microsoft.Extensions.Options;
 
     using SBC.Data.Models;
+    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity.Contracts;
     using SBC.Web.Models.Identity;
 
-    public abstract class IdentityController : ApiController
+    public class IdentityController : ApiController
     {
         private readonly IIdentityService identityService;
-        private readonly ApplicationSettings appSettings;
+        private readonly AppSettings appSettings;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IUserService userService;
 
-        protected IdentityController(
+        public IdentityController(
             IIdentityService identityService,
-            IOptions<ApplicationSettings> appSettings,
-            UserManager<ApplicationUser> userManager)
+            IOptions<AppSettings> appSettings,
+            UserManager<ApplicationUser> userManager,
+            IUserService userService)
         {
-            this.appSettings = appSettings.Value;
             this.identityService = identityService;
+            this.appSettings = appSettings.Value;
             this.userManager = userManager;
+            this.userService = userService;
         }
 
-        public async Task<ActionResult> Register(UserRegisterRequestModel model)
+        [HttpPost]
+        [Route(nameof(Register))]
+        public async Task<ActionResult> Register(RegisterRequestModel model)
         {
+            if (model.Password != model.ConfirmPassword)
+            {
+                return this.BadRequest($"You gave two diffrent passwords.");
+            }
+
+            var emailExists = await this.userService.UserExistsByEmail(model.Email);
+
+            if (emailExists)
+            {
+                return this.BadRequest($"Email '{model.Email}' is already taken.");
+            }
+
             var user = new ApplicationUser
             {
-                UserName = model.Fullname,
+                UserName = model.FullName,
                 Email = model.Email,
             };
 
             // Password is hashed automatically
             var result = await this.userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return this.Ok();
+                return this.BadRequest(result.Errors);
             }
 
-            return this.BadRequest(result.Errors);
+            return this.Ok();
         }
 
-        public async Task<ActionResult<string>> Login(UserLoginRequestModel model)
+        [HttpPost]
+        [Route(nameof(Login))]
+        public async Task<ActionResult<LoginResponseModel>> Login(LoginRequestModel model)
         {
-            var user = await this.userManager.FindByNameAsync(model.Email);
+            var user = await this.userManager.FindByEmailAsync(model.Email);
 
             if (user == null)
             {
                 return this.Unauthorized();
             }
 
-            var password = await this.userManager.CheckPasswordAsync(user, model.Password);
+            var isPasswordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
 
-            if (!password)
+            if (!isPasswordValid)
             {
                 return this.Unauthorized();
             }
 
-            var token = this.identityService.GenerateJwt(user, this.appSettings.Secret);
+            var jwt = this.identityService.GenerateJwt(this.appSettings.Secret, user.Id, user.UserName);
 
-            return token;
+            return new LoginResponseModel { JWT = jwt };
         }
     }
 }

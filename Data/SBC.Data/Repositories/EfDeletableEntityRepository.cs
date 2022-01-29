@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using SBC.Data.Common.Models;
     using SBC.Data.Common.Repositories;
@@ -38,6 +39,11 @@
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.UtcNow;
             this.Update(entity);
+        }
+
+        public Task FirstOrDefaultAsync(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,6 +8,12 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Identity\Models\**" />
+    <EmbeddedResource Remove="Identity\Models\**" />
+    <None Remove="Identity\Models\**" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -17,10 +23,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Identity\Models\" />
   </ItemGroup>
 
   <ItemGroup>

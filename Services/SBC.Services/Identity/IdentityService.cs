@@ -7,24 +7,30 @@
 
     using Microsoft.IdentityModel.Tokens;
 
-    using SBC.Data.Models;
     using SBC.Services.Identity.Contracts;
 
     public class IdentityService : IIdentityService
     {
         private const int DaysToExpire = 3;
 
-        public string GenerateJwt(ApplicationUser user, string secret)
+        public string GenerateJwt(string secret, string userId, string userName)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, userId),
+                    new Claim(ClaimTypes.Name, userName),
+                }),
                 Expires = DateTime.UtcNow.AddDays(DaysToExpire),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             };
+
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
             var serializationToken = tokenHandler.WriteToken(token);
 
             return serializationToken;

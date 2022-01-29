@@ -7,7 +7,6 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -22,6 +21,8 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.User;
+    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
@@ -53,11 +54,15 @@
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
-            services.AddControllersWithViews(
-                options =>
-                    {
-                        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+            //services.AddControllersWithViews(
+            //    options =>
+            //        {
+            //            options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            //        }).AddRazorRuntimeCompilation();
+
+            services.AddControllers();
+
+            services.AddMvc();
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -74,6 +79,7 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSectionConfiguration);
 
@@ -103,6 +109,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
