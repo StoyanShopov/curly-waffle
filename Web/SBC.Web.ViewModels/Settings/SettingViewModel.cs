@@ -1,9 +1,8 @@
 ﻿namespace SBC.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

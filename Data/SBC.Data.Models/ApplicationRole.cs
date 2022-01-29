@@ -3,9 +3,8 @@ namespace SBC.Data.Models
 {
     using System;
 
-    using SBC.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SBC.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {
