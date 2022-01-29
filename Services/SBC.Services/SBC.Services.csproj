@@ -29,4 +29,8 @@
     <ProjectReference Include="..\..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
+  </ItemGroup>
+
 </Project>
