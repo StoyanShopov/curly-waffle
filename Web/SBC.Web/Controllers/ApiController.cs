@@ -20,7 +20,7 @@
             {
                 System.Net.HttpStatusCode.Unauthorized => this.Unauthorized(result.Error.Item2),
                 System.Net.HttpStatusCode.Forbidden => this.Forbid(result.Error.Item2),
-                System.Net.HttpStatusCode.NotFound => this.Unauthorized(result.Error.Item2),
+                System.Net.HttpStatusCode.NotFound => this.NotFound(result.Error.Item2),
                 _ => this.BadRequest(result.Error),
             };
         }
