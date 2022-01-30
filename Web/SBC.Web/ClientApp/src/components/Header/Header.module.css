@@ -2,7 +2,7 @@
     width: 100%;
     height: 160px;
     align-items: inherit;
-    background-color: khaki;
+
 }
 
 .loginButton{
@@ -49,11 +49,12 @@
     float: right;
     list-style-type: none;
     padding-top: 60px;
+    padding-right: 15%;
 }
 
 .ulLogo{
     width: 500px;
-    height: 500px;
+    
     padding-top: 60px;
     float: left;
     list-style-type: none;
