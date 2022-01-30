@@ -56,7 +56,7 @@ export default function Main() {
                         </button>
                     </div>
                     <div>
-                        <img src="/Path 7.jpg"  />
+                        <img src="/Path 7.jpg"  className={css.path7}/>
                         <img src="/Group 53.svg" className={css.Group53}/>
                     </div>
                 </div>

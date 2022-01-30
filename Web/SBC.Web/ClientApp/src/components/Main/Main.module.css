@@ -138,11 +138,18 @@
     font-style: Montserrat;
     font-weight: bold;
 }
+/*.path7{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}*/
 .Group53{
     position:absolute;
       top:150%;
       left: 65%;     
 }
+
 
 
   
