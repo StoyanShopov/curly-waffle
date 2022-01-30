@@ -1,5 +1,6 @@
 ﻿namespace SBC.Web.Controllers
 {
+    using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,9 @@
 
             return result.Error.Item1 switch
             {
-                System.Net.HttpStatusCode.Unauthorized => this.Unauthorized(result.Error.Item2),
-                System.Net.HttpStatusCode.Forbidden => this.Forbid(result.Error.Item2),
-                System.Net.HttpStatusCode.NotFound => this.NotFound(result.Error.Item2),
+                HttpStatusCode.Unauthorized => this.Unauthorized(result.Error.Item2),
+                HttpStatusCode.Forbidden => this.Forbid(result.Error.Item2),
+                HttpStatusCode.NotFound => this.NotFound(result.Error.Item2),
                 _ => this.BadRequest(result.Error),
             };
         }
