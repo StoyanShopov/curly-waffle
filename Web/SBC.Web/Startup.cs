@@ -3,6 +3,16 @@
     using System.Reflection;
     using System.Text;
 
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.IdentityModel.Tokens;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -10,21 +20,13 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.User;
+    using SBC.Services.Data.User.Contracts;
+    using SBC.Services.Identity;
+    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.IdentityModel.Tokens;
 
     public class Startup
     {
@@ -51,18 +53,16 @@
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
-            services.AddControllersWithViews(
-                options =>
-                    {
-                        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+            services.AddControllers();
+            services.AddSwaggerGen();
+
+            services.AddMvc();
 
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
@@ -72,6 +72,7 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSectionConfiguration);
 
@@ -100,6 +101,8 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,12 +120,18 @@
 
             if (env.IsDevelopment())
             {
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    options.RoutePrefix = string.Empty;
+                });
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                // app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -135,6 +144,7 @@
                     .AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod());
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -145,6 +155,7 @@
                     {
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                     });
+
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";

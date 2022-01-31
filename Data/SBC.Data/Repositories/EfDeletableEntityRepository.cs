@@ -2,11 +2,11 @@
 {
     using System;
     using System.Linq;
-
-    using SBC.Data.Common.Models;
-    using SBC.Data.Common.Repositories;
+    using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
+    using SBC.Data.Common.Models;
+    using SBC.Data.Common.Repositories;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity
@@ -38,6 +38,11 @@
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.UtcNow;
             this.Update(entity);
+        }
+
+        public Task FirstOrDefaultAsync(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
         }
     }
 }
