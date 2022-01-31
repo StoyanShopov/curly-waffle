@@ -1,13 +1,15 @@
 ﻿namespace SBC.Web.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Mvc;
+
     using SBC.Common;
     using SBC.Services;
     using SBC.Services.Messaging;
+
     using static SBC.Services.DemoService;
 
     public class DemoController : ApiController
@@ -22,10 +24,8 @@
 
         [HttpGet]
         [Route("all")]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            await this.emailSender.SendEmailAsync("sbc.upskill@gmail.com", "upskill", "nikolov.iv@gmail.com", "test", "<h1>test</h1>");
-                
             return this.GenericResponse(this.service.GetAll());
         }
 
@@ -42,6 +42,22 @@
             result = new Tuple<HttpStatusCode, string>(
                 HttpStatusCode.NotFound, "Entity with this id does not exist");
             return this.GenericResponse(result);
+        }
+
+        // /send
+        [HttpGet]
+        [Route("send")]
+        public async Task<IActionResult> Send()
+        {
+            ////Send Email Test:
+            var from = "sbc.upskill@gmail.com";
+            var fromName = "UpSkill";
+            var to = "example@gmail.com";
+            var subject = "example subject";
+            var htmlContent = "<h1>Example</h1>";
+            await this.emailSender.SendEmailAsync(from, fromName, to, subject, htmlContent);
+
+            return this.Ok();
         }
 
         [HttpGet]
