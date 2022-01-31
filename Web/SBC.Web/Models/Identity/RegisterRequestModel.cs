@@ -5,6 +5,7 @@
     public class RegisterRequestModel
     {
         [Required]
+        [StringLength(2)]
         public string CompanyName { get; init; }
 
         [Required]

@@ -13,7 +13,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
-
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -55,6 +54,7 @@
                     });
 
             services.AddControllers();
+            services.AddSwaggerGen();
 
             services.AddMvc();
 
@@ -120,6 +120,12 @@
 
             if (env.IsDevelopment())
             {
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    options.RoutePrefix = string.Empty;
+                });
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
             }

@@ -1,5 +1,6 @@
 ﻿namespace SBC.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,13 @@
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<IActionResult> Register(RegisterRequestModel model)
+        public async Task<ActionResult> Register(RegisterRequestModel model)
         {
-            // Todo all fields rules and catch confirm password
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState.Values.SelectMany(x => x.Errors));
+            }
+
             var serviceModel = new RegisterServiceModel()
             {
                 FullName = model.FullName,
@@ -40,7 +45,7 @@
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<IActionResult> Login(LoginRequestModel model)
+        public async Task<ActionResult> Login(LoginRequestModel model)
         {
             var serviceModel = new LoginServiceModel
             {
