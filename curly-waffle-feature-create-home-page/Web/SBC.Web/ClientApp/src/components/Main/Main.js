@@ -55,8 +55,8 @@ export default function Main() {
                             <Link to="/find-coaches" className={css.findCoachesLink}>Find Coaches</Link>
                         </button>
                     </div>
-                    <div>
-                        <img src="/Path 7.jpg"  />
+                    <div className={css.picDiv}>
+                        <img src="/Path 7.jpg" className={css.path7} />
                         <img src="/Group 53.svg" className={css.Group53}/>
                     </div>
                 </div>

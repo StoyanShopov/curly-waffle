@@ -139,10 +139,17 @@
     font-style: Montserrat;
     font-weight: bold;
 }
-.Group53{
-    position:absolute;
-      top:200%;
-      left: 75%;     
+
+.picDiv{
+    position: absolute;
+}
+.path7{
+    position: absolute;
+}
+.Group53{ 
+      position: absolute;  
+      top: 150px;
+      left: 300px;
 }
 
 

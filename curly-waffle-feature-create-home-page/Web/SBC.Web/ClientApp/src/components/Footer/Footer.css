@@ -1,5 +1,4 @@
-
-  .LogoText {
+.LogoText {
     text-align: left;
     letter-spacing: 2.25px;
     position: absolute;
@@ -80,7 +79,9 @@ ul{
     position: absolute;
     top: 450px;
     left: 900px;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
    
     color: #FFFFFF;
     font:   Montserrat;
@@ -92,7 +93,9 @@ ul{
     position: absolute;
     top: 375px;
     left: 900px;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
    
     color: #FFFFFF;
     font:   Montserrat;
@@ -104,7 +107,9 @@ ul{
     position: absolute;
     top: 525px;
     left: 900px;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
    
     color: #FFFFFF;
     font:   Montserrat;
@@ -195,11 +200,19 @@ ul{
 }
 .TextOnBottom
 {
-    
-    color: white;
-   
-    top: 655px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 640px;
     left: 900px;
+ 
+  color: black;
+  line-height: 50px;
+  
+  padding: 0 20px;
+   
     
 }
 .FooterMain {
@@ -211,5 +224,9 @@ ul{
  
    
 }
-
+.solid
+{
+    padding: .5em 0;
+	border-bottom: 1px solid #CCC;
+}
 
