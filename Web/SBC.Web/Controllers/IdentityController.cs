@@ -1,11 +1,9 @@
 ﻿namespace SBC.Web.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Data.User.Models;
     using SBC.Web.Models.Identity;
@@ -25,11 +23,6 @@
         [Route(nameof(Register))]
         public async Task<ActionResult> Register(RegisterRequestModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState.Values.SelectMany(x => x.Errors));
-            }
-
             var serviceModel = new RegisterServiceModel()
             {
                 FullName = model.FullName,
@@ -53,7 +46,9 @@
                 Password = model.Password,
             };
 
-            return this.GenericResponse(await this.userService.Login(serviceModel, this.appSettings.Secret));
+            var result = await this.userService.Login(serviceModel, this.appSettings.Secret);
+
+            return this.GenericResponse(result);
         }
     }
 }
