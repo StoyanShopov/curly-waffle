@@ -6,6 +6,7 @@
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Options;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
@@ -24,12 +25,12 @@
             IDeletableEntityRepository<ApplicationUser> applicationUser,
             UserManager<ApplicationUser> userManager,
             IIdentityService identityService,
-            AppSettings appSettings)
+            IOptions<AppSettings> appSettings)
         {
             this.applicationUser = applicationUser;
             this.userManager = userManager;
             this.identityService = identityService;
-            this.appSettings = appSettings;
+            this.appSettings = appSettings.Value;
         }
 
         public async Task<Result> Register(RegisterServiceModel model)
@@ -42,7 +43,7 @@
 
             if (emailExists)
             {
-                return new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, $"Email '{model.Email}' is already taken.");
+                return new ErrorModel(HttpStatusCode.BadRequest, $"Email '{model.Email}' is already taken.");
             }
 
             var user = new ApplicationUser
@@ -56,7 +57,7 @@
 
             if (!result.Succeeded)
             {
-                return new Tuple<HttpStatusCode, string>(HttpStatusCode.BadRequest, string.Join("\n", result.Errors));
+                return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
             }
 
             return true;
@@ -68,14 +69,14 @@
 
             if (user == null)
             {
-                return new Tuple<HttpStatusCode, string>(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
+                return new ErrorModel(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
             }
 
             var isPasswordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
 
             if (!isPasswordValid)
             {
-                return new Tuple<HttpStatusCode, string>(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
+                return new ErrorModel(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
             }
 
             var jwt = this.identityService.GenerateJwt(this.appSettings.Secret, user.Id, user.UserName);

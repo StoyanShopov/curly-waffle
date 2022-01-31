@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SBC.Web.Models.Identity
+﻿namespace SBC.Web.Models.Identity
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class LoginResponseModel
     {
         [Required]

@@ -6,7 +6,6 @@
     using System.Text;
 
     using Microsoft.IdentityModel.Tokens;
-
     using SBC.Services.Identity.Contracts;
 
     public class IdentityService : IIdentityService
