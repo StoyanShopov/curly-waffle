@@ -4,21 +4,28 @@
     using System.Collections.Generic;
     using System.Net;
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services;
-
+    using SBC.Services.Messaging;
     using static SBC.Services.DemoService;
 
     public class DemoController : ApiController
     {
         private readonly DemoService service = new DemoService();
+        private readonly IEmailSender emailSender;
+
+        public DemoController(IEmailSender emailSender)
+        {
+            this.emailSender = emailSender;
+        }
 
         [HttpGet]
         [Route("all")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
+            await this.emailSender.SendEmailAsync("sbc.upskill@gmail.com", "upskill", "nikolov.iv@gmail.com", "test", "<h1>test</h1>");
+                
             return this.GenericResponse(this.service.GetAll());
         }
 
