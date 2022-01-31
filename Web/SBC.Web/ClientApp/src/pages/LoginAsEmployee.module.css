@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  max-width: 90%;
+  max-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.left {
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 960px;
+}
+.right {
+  flex-grow: 1;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+}
+.arrow {
+  width: 11.125rem;
+  opacity: 100%;
+}
+.formContainer {
+  margin-top: 10.72rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formContainer h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+.formContainer h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.input {
+  width: 34.375rem;
+  min-height: 4.375rem;
+  opacity: 1;
+  border: 2px solid #296cfb;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.backgnd {
+  width: 100rem;
+  max-width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  /* max-height: 100vh; */
+}
+.woman {
+  max-width: 100%;
+  /* max-height: 100vh; */
+  width: 33.75rem;
+  height: 37.25rem;
+  position: absolute;
+  top: 30%;
+  left: 30px;
+  /* height: auto; */
+}
+
+/* @media(max-width: 1200px){
+  .container{
+    flex-direction: column;
+  }
+} */
