@@ -7,7 +7,7 @@
 
 .loginButton{
   width: 100px;
-  height: 40px;
+  height: 50px;
   text-decoration: none;
   background-color:white;
   border-color: #296CFB;
@@ -15,7 +15,7 @@
 }
 
 .loginLink{
-    font-size: 14px;
+    font-size: 18px;
     color:#296CFB;
     text-decoration: none;
     font-style: Montserrat;
@@ -24,7 +24,7 @@
 }
 
 .requestDemo{
-    font-size: 14px;
+    font-size: 18px;
     color:floralwhite;
     text-decoration: none;
     font-style: Montserrat;
@@ -32,8 +32,8 @@
 
 }
 .requestDemoBtn{
-    width: 175px;
-    height: 40px;
+    width: 170px;
+    height: 50px;
     background-color: #296CFB;
     border-color: #296CFB;
 }
@@ -68,6 +68,7 @@
     padding-left: 20px;
     font-weight: bold;
     font-size: 30px;
+    text-decoration: none;
 }
 
 .liImg{

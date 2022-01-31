@@ -15,7 +15,7 @@ export default function Main() {
                     people to master their skills and become the best version of themselves.
                     Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>
                 <button className={css.getStartedBtn}>
-                    <Link to="/getStarted" className={css.getStartedLink}>Get Started</Link>
+                    <Link to="/get-started" className={css.getStartedLink}>Get Started</Link>
                 </button>
                 <div className={css.div1}>
                     <img src="/Group 9.jpg" alt="image" />
@@ -49,10 +49,10 @@ export default function Main() {
                     </div>
                     <div>
                         <button className={css.exploreCoursesBtn}>
-                            <Link to="/Demos" className={css.exploreCoursesLink}>Explore Courses</Link>
+                            <Link to="/explore-courses" className={css.exploreCoursesLink}>Explore Courses</Link>
                         </button>
                         <button className={css.findCoachesBtn}>
-                            <Link to="/Demos" className={css.findCoachesLink}>Find Coaches</Link>
+                            <Link to="/find-coaches" className={css.findCoachesLink}>Find Coaches</Link>
                         </button>
                     </div>
                     <div>

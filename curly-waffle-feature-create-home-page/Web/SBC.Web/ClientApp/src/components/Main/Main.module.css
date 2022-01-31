@@ -23,7 +23,7 @@
 }
 .getStartedBtn{
   width: 150px;
-  height: 40px;
+  height: 50px;
   margin-left: 10%;
   text-decoration: none;
   background-color:#296CFB;
@@ -31,7 +31,7 @@
 
 }
 .getStartedLink{
-    font-size: 14px;
+    font-size: 18px;
     color:white;
     text-decoration: none;
     font-style: Montserrat;
@@ -70,13 +70,13 @@
 }
 .SubmitBtn{
     width: 175px;
-    height: 40px;
+    height: 50px;
     background-color: #296CFB;
     border-color: #296CFB;
     margin-left: 580px;
     color: white;
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .requestDemo{
@@ -130,9 +130,10 @@
     height: 50px;
     background-color: white;
     border-color: #296CFB;
+
 }
 .findCoachesLink{
-    font-size: 22px;
+    font-size: 24px;
     color:#296CFB;
     text-decoration: none;
     font-style: Montserrat;
