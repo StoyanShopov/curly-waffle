@@ -5,8 +5,8 @@ import React from "react";
 
 export default function Main() {
     return (
-        <section className={css.about}>
-            <div className={css.aboutTitle}>
+        <section className={css.container}>
+            <div className={css.leftHalf}>
                 <h2 className={css.h1}>Do u want to level
                     up the knowedge
                     of your team ? </h2>
@@ -14,9 +14,9 @@ export default function Main() {
                     and develop into a specialist in every field. We inspire your
                     people to master their skills and become the best version of themselves.
                     Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>
-                <button className={css.getStartedBtn}>
-                    <Link to="/get-started" className={css.getStartedLink}>Get Started</Link>
-                </button>
+                
+                    <Link to="/get-started" ><button className={css.getStartedBtn}>Get Started</button></Link>
+               
                 <div className={css.div1}>
                     <img src="/Group 9.jpg" alt="image" />
                 </div>
@@ -30,11 +30,11 @@ export default function Main() {
                         <input className={css.input} placeholder='Email Address*'></input>
                         <input className={css.input1} placeholder='Phone number*'></input>
                     </div>
-                    <input type="submit" value="Submit" className={css.SubmitBtn} />
+                    <input type="submit" value="Submit" className={css.submitBtn} />
                 </form>
 
             </div>
-            <div className={css.aboutPages}>
+            <div className={css.rightHalf}>
                 <div >
                     <div>
                         <img src="/Group 7.jpg" alt="image" className={css.image7} />
@@ -47,13 +47,11 @@ export default function Main() {
                             If you need personal time with a specialist, don’t hesitate
                             to book your slot with one of our top coaches.</p>
                     </div>
-                    <div>
-                        <button className={css.exploreCoursesBtn}>
-                            <Link to="/explore-courses" className={css.exploreCoursesLink}>Explore Courses</Link>
-                        </button>
-                        <button className={css.findCoachesBtn}>
-                            <Link to="/find-coaches" className={css.findCoachesLink}>Find Coaches</Link>
-                        </button>
+                    <div>             
+                         <Link to="/explore-courses" ><button className={css.exploreCoursesBtn}>Explore Courses</button></Link>
+                        
+                        <Link to="/find-coaches" ><button className={css.findCoachesBtn}>Find Coaches</button></Link>
+                        
                     </div>
                     <div className={css.picDiv}>
                         <img src="/Path 7.jpg" className={css.path7} />
