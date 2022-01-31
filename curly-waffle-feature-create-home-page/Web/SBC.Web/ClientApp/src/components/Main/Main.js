@@ -7,16 +7,12 @@ export default function Main() {
     return (
         <section className={css.container}>
             <div className={css.leftHalf}>
-                <h2 className={css.h1}>Do u want to level
-                    up the knowedge
-                    of your team ? </h2>
+                <h2 className={css.h1}>Do u want to levelup the knowedgeof your team ? </h2>
                 <p className={css.p1}>Upskill gives everyone the opportunity to grow professionally
                     and develop into a specialist in every field. We inspire your
                     people to master their skills and become the best version of themselves.
-                    Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>
-                
-                    <Link to="/get-started" ><button className={css.getStartedBtn}>Get Started</button></Link>
-               
+                    Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>               
+                    <Link to="/get-started" ><button className={css.getStartedBtn}>Get Started</button></Link>             
                 <div className={css.div1}>
                     <img src="/Group 9.jpg" alt="image" />
                 </div>
@@ -32,7 +28,6 @@ export default function Main() {
                     </div>
                     <input type="submit" value="Submit" className={css.submitBtn} />
                 </form>
-
             </div>
             <div className={css.rightHalf}>
                 <div >
@@ -48,10 +43,8 @@ export default function Main() {
                             to book your slot with one of our top coaches.</p>
                     </div>
                     <div>             
-                         <Link to="/explore-courses" ><button className={css.exploreCoursesBtn}>Explore Courses</button></Link>
-                        
-                        <Link to="/find-coaches" ><button className={css.findCoachesBtn}>Find Coaches</button></Link>
-                        
+                         <Link to="/explore-courses" ><button className={css.exploreCoursesBtn}>Explore Courses</button></Link>                       
+                         <Link to="/find-coaches" ><button className={css.findCoachesBtn}>Find Coaches</button></Link>                      
                     </div>
                     <div className={css.picDiv}>
                         <img src="/Path 7.jpg" className={css.path7} />

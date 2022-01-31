@@ -4,18 +4,18 @@
     align-items: inherit;
 }
 .loginButton{
-  width: 100px;
-  height: 50px;
-  text-decoration: none;
-  border-color: #296CFB;
-  text-decoration: none;
-  font-style: Montserrat;
-  font-weight: bold;
-  color:#296CFB;
-  font-size: 18px;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+    border-color: #296CFB;
+    text-decoration: none;
+    font-style: Montserrat;
+    font-weight: bold;
+    color:#296CFB;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
 }
 .loginButton:hover{
     background-color:rgb(199, 221, 216);
@@ -60,7 +60,7 @@
 
 .pUpSkill{
     font-style: Montserrat;
-    color: #296CFB;
+    color:black;
     display: inline;
     padding-left: 20px;
     font-weight: bold;
