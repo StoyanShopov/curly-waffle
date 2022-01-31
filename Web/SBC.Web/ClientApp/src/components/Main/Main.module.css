@@ -31,11 +31,6 @@
     text-decoration: none;
     font-style: Montserrat;
     font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.getStartedBtn:hover{
-    background-color: cornflowerblue;
 }
 .div1{
     margin-top: 10%;
@@ -56,9 +51,6 @@
     text-align: center;
     font-size: 20px;    
 }
-.input:hover{
-    background-color: rgb(199, 221, 216);
-}
 .input1{
     width: 300px;
     height: 70px; 
@@ -67,9 +59,6 @@
     margin-bottom: 7%;
     text-align: center;
     font-size: 20px;
-}
-.input1:hover{
-    background-color: rgb(199, 221, 216);
 }
 .submitBtn{
     width: 175px;
@@ -80,11 +69,6 @@
     color: white;
     font-family: Montserrat;
     font-size: 24px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.submitBtn:hover{
-    background-color: cornflowerblue;
 }
 .requestDemo{
     font-size: 14px;
@@ -126,11 +110,6 @@
     text-decoration: none;
     font-style: Montserrat;
     font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.exploreCoursesBtn:hover{
-    background-color:cornflowerblue;
 }
 .findCoachesBtn{
     margin-top: 5%;
@@ -144,11 +123,6 @@
     text-decoration: none;
     font-style: Montserrat;
     font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.findCoachesBtn:hover{
-    background-color:rgb(199, 221, 216);
 }
 .picDiv{
     position: absolute;

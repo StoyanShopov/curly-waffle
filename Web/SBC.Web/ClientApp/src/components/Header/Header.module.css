@@ -13,12 +13,6 @@
     font-weight: bold;
     color:#296CFB;
     font-size: 18px;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 5px;
-}
-.loginButton:hover{
-    background-color:rgb(199, 221, 216);
 }
 .requestDemoBtn{
     width: 170px;
@@ -30,11 +24,6 @@
     font-style: Montserrat;
     font-weight: bold;
     font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.requestDemoBtn:hover{
-    background-color: cornflowerblue;
 }
 .li{
     text-decoration: none;
