@@ -1,7 +1,6 @@
 ﻿namespace SBC.Web.Controllers
 {
     using System.Net;
-    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;

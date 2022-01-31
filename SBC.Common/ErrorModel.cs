@@ -1,6 +1,5 @@
 ﻿namespace SBC.Common
 {
-    using System.Collections.Generic;
     using System.Net;
 
     public class ErrorModel

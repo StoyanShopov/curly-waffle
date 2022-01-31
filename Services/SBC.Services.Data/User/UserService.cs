@@ -1,12 +1,10 @@
 ﻿namespace SBC.Services.Data.User
 {
-    using System;
     using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
