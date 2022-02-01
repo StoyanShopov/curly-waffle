@@ -1,0 +1,60 @@
+.picDiv{
+    position: absolute;
+   
+}
+.signupFigure{
+    position: absolute;
+}
+.Man{ 
+    position: absolute;  
+    top: 200px;
+    left: 100px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;  
+    top: 400px;
+    left: 1500px;
+  }
+Button
+{
+    position: absolute;  
+    top: 200px;
+    padding: 14px 40px;
+    width: 580px;
+    height: 70px;
+    background-color: white;
+    color: #296CFB;
+    font-size: 24px;
+    text-align: center;
+    left: -150px;
+    border-color: #296CFB;
+    border-style: solid;
+}
+.have
+{
+    position: absolute;  
+    top: 300px;
+    text-align: left;
+    left: -50px;
+    color: #296CFB;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 24px;
+}
+.login
+{
+    position: absolute;  
+    top: 300px;
+    text-align: center;
+    left: 250px;
+    color: #296CFB;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+    font-size: 24px;
+}
