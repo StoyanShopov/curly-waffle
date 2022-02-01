@@ -1,11 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
-
+import Logo from "../assets/Group5.png"
 import SignupFigure from "../assets/Path9.png";
 import Man from "../assets/Group52.png";
+
 import css from "./Signup.css";
-import Logo from "../assets/Group5.png"
+
 function Signup() {
     return (
         <section> <div className="picDiv">
