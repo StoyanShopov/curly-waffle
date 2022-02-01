@@ -3,6 +3,7 @@ import styles from "./LoginAsEmployee.module.css";
 import arrow from "./../images/Group 5.svg";
 import backgnd from "./../images/Path 9.svg";
 import woman from "./../images/Group 17.svg";
+import eye from "./../images/Icon - Visibility - Filled.svg";
 
 export default function LoginAsEmployee(prop) {
   const link = "Забравена парола?";
@@ -20,28 +21,31 @@ export default function LoginAsEmployee(prop) {
           <h1>Welcome back!</h1>
           <h5>Please login to your account</h5>
           <form action="">
-            <div>
+            <div className={styles.inputcontainer}>
               <input
                 type="text"
-                className={styles.input}
+                className={`${styles.input} ${styles.inputuser}`}
                 name="name"
                 required="required"
                 id="name"
+                placeholder="Email Address*"
               />
             </div>
             <div>
               <input
                 type="text"
-                className={styles.input}
-                placeholder={"Password"}
+                className={`${styles.input} ${styles.inputpass}`}
+                placeholder={"Password*"}
               />
             </div>
-            <div >
-              <input type="checkbox" name=""  />
-              <label htmlFor="">Запомни ме</label>
+            <div className={styles.checkcontainer}>
+              <label htmlFor="">
+                <input type="checkbox" name="" />
+                Запомни ме
+              </label>
               <a href="/">{link}</a>
             </div>
-            <div>
+            <div className={styles.btncontainer}>
               <input type="button" value="Login" />
               <input type="button" value="SignUp" />
             </div>
