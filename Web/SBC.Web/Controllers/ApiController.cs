@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.Controllers
+namespace SBC.Web.Controllers
 {
     using System.Net;
 

@@ -1,5 +1,10 @@
-﻿namespace SBC.Common
+namespace SBC.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Text;
+
     public class Result
     {
         public bool Succeeded { get; private set; }
@@ -7,6 +12,7 @@
         public ResultModel Data { get; private set; }
 
         public ErrorModel Errors { get; private set; }
+
 
         public static implicit operator Result(bool succeeded)
             => new() { Succeeded = succeeded };

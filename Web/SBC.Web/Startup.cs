@@ -1,4 +1,4 @@
-﻿namespace SBC.Web
+namespace SBC.Web
 {
     using System.Reflection;
     using System.Text;
@@ -7,6 +7,12 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -14,6 +20,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -62,7 +69,7 @@
                     "v1",
                     new OpenApiInfo
                     {
-                        Title = "My ToyShop API",
+                        Title = "SBC API",
                         Version = "v1",
                     });
 

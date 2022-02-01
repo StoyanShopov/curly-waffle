@@ -1,5 +1,6 @@
-﻿namespace SBC.Web.Controllers
+namespace SBC.Web.Controllers
 {
+
     public class HomeController : ApiController
     {
     }

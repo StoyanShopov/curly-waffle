@@ -33,4 +33,8 @@
     <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
+  </ItemGroup>
+
 </Project>
