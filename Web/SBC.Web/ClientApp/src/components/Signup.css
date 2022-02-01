@@ -43,7 +43,7 @@ Button
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 24px;
+    font:  normal 22px/27px Montserrat;
 }
 .login
 {
@@ -56,5 +56,5 @@ Button
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: underline;
-    font-size: 24px;
+    font:  bold 22px/27px Montserrat;
 }
