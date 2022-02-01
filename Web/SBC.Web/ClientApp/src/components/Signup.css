@@ -29,7 +29,7 @@ Button
     color: #296CFB;
     font-size: 24px;
     text-align: center;
-    left: -150px;
+    left: -175px;
     border-color: #296CFB;
     border-style: solid;
 }
@@ -38,7 +38,7 @@ Button
     position: absolute;  
     top: 300px;
     text-align: left;
-    left: -50px;
+    left: -110px;
     color: #296CFB;
     white-space: nowrap;
     overflow: hidden;
@@ -50,7 +50,7 @@ Button
     position: absolute;  
     top: 300px;
     text-align: center;
-    left: 250px;
+    left: 175px;;
     color: #296CFB;
     white-space: nowrap;
     overflow: hidden;
