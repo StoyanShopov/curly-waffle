@@ -126,6 +126,7 @@
 }
 .picDiv{
     position: absolute;
+    left: 1000px;
 }
 .path7{
     position: absolute;
