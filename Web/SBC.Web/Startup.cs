@@ -54,6 +54,8 @@
                 });
 
             services.AddControllers();
+
+            // Authorization in Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(
@@ -155,7 +157,7 @@
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                    options.RoutePrefix = string.Empty;
+                    options.RoutePrefix = "docs";
                 });
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
@@ -183,9 +185,9 @@
 
             app.UseEndpoints(
                 endpoints =>
-                    {
-                        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                    });
+                {
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                });
 
             app.UseSpa(spa =>
             {

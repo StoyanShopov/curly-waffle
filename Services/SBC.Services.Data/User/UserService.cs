@@ -37,6 +37,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, $"Email '{model.Email}' is already taken.");
             }
 
+            // TODO Add CompanyName and FullName
             var user = new ApplicationUser
             {
                 UserName = model.FullName,

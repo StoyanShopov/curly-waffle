@@ -11,7 +11,7 @@
         [EmailAddress]
         public string Email { get; init; }
 
-        [Required(AllowEmptyStrings = true)]
+        [Required]
         public string FullName { get; init; }
 
         [Required]
