@@ -1,4 +1,4 @@
-namespace SBC.Common
+﻿namespace SBC.Common
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,6 @@ namespace SBC.Common
         public ResultModel Data { get; private set; }
 
         public ErrorModel Errors { get; private set; }
-
 
         public static implicit operator Result(bool succeeded)
             => new() { Succeeded = succeeded };
