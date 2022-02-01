@@ -1,6 +1,7 @@
 ﻿namespace SBC.Web.Controllers
 {
     using System.Net;
+    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
@@ -16,7 +17,7 @@
                 if (result.Data != null)
                 {
                     return this.Ok(result.Data.Value);
-                }
+            }
 
                 return this.Ok();
             }
