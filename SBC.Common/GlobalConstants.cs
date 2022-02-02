@@ -11,6 +11,13 @@
             public const string CompanyEmployeeRoleName = "Employee";
         }
 
+        public class PasswordConstants
+        {
+            public const string AdminPassword = "111111";
+            public const string CompanyOwnerPassword = "222222";
+            public const string EmployeePassword = "333333";
+        }
+
         public class CategoriesNamesConstants
         {
             public const string Marketing = "Marketing";
