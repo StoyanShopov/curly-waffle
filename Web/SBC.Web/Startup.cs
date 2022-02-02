@@ -2,7 +2,7 @@
 {
     using System.Reflection;
     using System.Text;
-
+    using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -140,6 +140,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
+            services.AddSingleton<IBlobService, BlobService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
