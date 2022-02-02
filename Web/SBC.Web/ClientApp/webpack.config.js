@@ -1,5 +1,3 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
     mode: 'development',
     devServer: {

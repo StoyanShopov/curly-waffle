@@ -74,12 +74,12 @@
   left: 30px;
 }
 .inputpass {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  background-image: url("./../images/Icon\ -\ Visibility\ -\ Filled.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-position: 525px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    /*background-image: url("assets/images/Icon\ -\ Visibility\ -\ Filled.svg");*/
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position: 525px;
 }
 
 .inputuser {
