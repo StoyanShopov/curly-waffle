@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -21,6 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
@@ -31,6 +32,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.11" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -55,7 +57,7 @@
 
 
 	<ItemGroup>
-	  <Folder Include="Areas\Identity\" />
+	  <Folder Include="ClientApp\src\components\" />
 	</ItemGroup>
 
 
