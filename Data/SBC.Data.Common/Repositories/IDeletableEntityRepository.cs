@@ -16,7 +16,5 @@
         void HardDelete(TEntity entity);
 
         void Undelete(TEntity entity);
-
-        Task FirstOrDefaultAsync(Func<object, bool> p);
     }
 }
