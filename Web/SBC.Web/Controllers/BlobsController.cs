@@ -7,6 +7,8 @@
 
     using SBC.Services.Blob;
 
+    using static SBC.Common.ControllerRoutesConstants;
+
     public class BlobsController : ApiController
     {
         private readonly IBlobService blobService;
@@ -16,6 +18,7 @@
             this.blobService = blobService;
         }
 
+        [HttpGet(GetAllRoute)]
         public async Task<IActionResult> GetAllBlobsAsync(string containerName)
         {
             var blobs = await this.blobService.ListBlobsAsync(containerName);
@@ -23,6 +26,7 @@
             return this.Ok(blobs);
         }
 
+        [HttpPost(UploadBlobRoute)]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file, string containerName)
         {
             var result = await this.blobService.UploadFileBlobAsync(file, containerName);
@@ -35,6 +39,7 @@
             return this.Ok();
         }
 
+        [HttpGet(DownloadBlobByNameRoute)]
         public async Task<IActionResult> DownloadBlobByNameAsync(string blobName, string containerName)
         {
             var blob = this.blobService.DownloadBlobByName(blobName, containerName);
@@ -47,6 +52,19 @@
             var result = await blob.DownloadAsync();
 
             return this.File(result.Value.Content, result.Value.ContentType);
+        }
+
+        [HttpDelete(DeleteRoute)]
+        public async Task<IActionResult> DeleteBlobByNameAsync(string blobName, string containerName)
+        {
+            var result = await this.blobService.DeleteBlobByNameAsync(blobName, containerName);
+
+            if (!result)
+            {
+                return this.BadRequest("Couldn't find job with this name!");
+            }
+
+            return this.Ok("Blob deleted successfully!");
         }
     }
 }
