@@ -33,6 +33,15 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Resource
+                {
+                    Name = DigitalMarketAudioResourceName,
+                    FileUrl = DigitalMarketAudioFileUrl,
+                    Size = 120,
+                    FileType = FileType.Audio,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Resource resource in resourcesList)

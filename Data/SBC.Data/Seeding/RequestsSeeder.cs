@@ -7,6 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
+    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
     using static SBC.Common.GlobalConstants.RequestsConstants;
 
     internal class RequestsSeeder : ISeeder
@@ -31,6 +32,16 @@
                     CompanyName = SoftUniCompanyName,
                     Email = MariaEmail,
                     PhoneNumber = PhoneNumber2,
+                    Date = DateTime.Now,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+                new Request
+                {
+                    Name = NameEmil,
+                    CompanyName = SmartITCompanyName,
+                    Email = EmilEmail,
+                    PhoneNumber = PhoneNumber3,
                     Date = DateTime.Now,
                     DeletedOn = null,
                     IsDeleted = false,

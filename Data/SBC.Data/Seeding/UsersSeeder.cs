@@ -37,7 +37,6 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
-
                 new ApplicationUser
                 {
                     FirstName = "Nikolay",
@@ -47,6 +46,42 @@
                     PhoneNumber = "+359 888000555",
                     PhotoUrl = "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg",
                     ProfileSummary = "Nikolay Stefanov Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+                new ApplicationUser
+                {
+                    FirstName = "Emil",
+                    LastName = "Emilov",
+                    Email = "emil@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000666",
+                    PhotoUrl = "https://ichef.bbci.co.uk/images/ic/624x351/p049tgdb.jpg",
+                    ProfileSummary = "Emil Emilov Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+                new ApplicationUser
+                {
+                    FirstName = "Maria",
+                    LastName = "Toncheva",
+                    Email = "maria@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000888",
+                    PhotoUrl = "https://themysteryboy.files.wordpress.com/2012/05/cute_cat_1_by_ashish11.jpg",
+                    ProfileSummary = "Maria Toncheva Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+                new ApplicationUser
+                {
+                    FirstName = "Ivan",
+                    LastName = "Ivanov",
+                    Email = "ivan@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000333",
+                    PhotoUrl = "https://i.natgeofe.com/n/f4d64d53-07ce-4933-a76e-1d405eec3473/giraffe_thumb_3x4.JPG",
+                    ProfileSummary = "Ivan Ivanov Description Summary",
                     DeletedOn = null,
                     IsDeleted = false,
                 },

@@ -37,6 +37,17 @@
                    DeletedOn = null,
                    IsDeleted = false,
                 },
+                new Coach
+                {
+                   FirstName = CoachFirstNameEmil,
+                   LastName = CoachLastNameEmilov,
+                   Description = EmilDescription,
+                   VideoUrl = EmilVideoUrl,
+                   PricePerSession = 130.30m,
+                   CalendlyUrl = EmilCalendlyUrl,
+                   DeletedOn = null,
+                   IsDeleted = false,
+                },
             };
 
             foreach (Coach coach in coachesList)

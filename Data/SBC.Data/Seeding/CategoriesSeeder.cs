@@ -27,6 +27,12 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Category
+                {
+                    Name = Art,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Category category in categoriesList)

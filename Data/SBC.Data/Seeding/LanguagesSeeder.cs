@@ -27,6 +27,12 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Language
+                {
+                    Name = Spanish,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Language language in languageList)

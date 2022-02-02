@@ -29,6 +29,13 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Lecture
+                {
+                    Name = BusinessModelLectureName,
+                    Description = BusinessModelLectureDescription,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Lecture lecture in lecturesList)

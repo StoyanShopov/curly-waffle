@@ -33,6 +33,14 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Company
+                {
+                    Name = SmartITCompanyName,
+                    Email = SmartITEmail,
+                    LogoUrl = SmartITUrl,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Company company in companiesList)

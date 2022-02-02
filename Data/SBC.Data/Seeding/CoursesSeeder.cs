@@ -39,6 +39,18 @@
                     DeletedOn = null,
                     IsDeleted = false,
                 },
+                new Course
+                {
+                    Title = DesignTitle,
+                    Description = DesignDescription,
+                    PricePerPerson = 90.5m,
+                    VideoUrl = DesignVideoUrl,
+                    CategoryId = 3,
+                    LanguageId = 3,
+                    CoachId = 3,
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
             };
 
             foreach (Course course in coursesList)
