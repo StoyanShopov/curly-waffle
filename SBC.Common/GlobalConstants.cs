@@ -7,7 +7,7 @@
         public const string AdministratorRoleName = "Administrator";
     }
 
-    public static class ControllerRoutesConstants 
+    public static class ControllerRoutesConstants
     {
         public const string DeleteRoute = "delete";
 

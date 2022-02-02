@@ -2,13 +2,13 @@
 {
     using System.Reflection;
     using System.Text;
+
     using Azure.Storage.Blobs;
+
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -23,6 +23,7 @@
     using SBC.Data.Models;
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
+    using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
