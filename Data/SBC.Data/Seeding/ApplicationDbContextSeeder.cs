@@ -27,6 +27,15 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new UsersSeeder(),
+                              new CategoriesSeeder(),
+                              new LanguagesSeeder(),
+                              new CompaniesSeeder(),
+                              new ResourcesSeeder(),
+                              new LecturesSeeder(),
+                              new CoachesSeeder(),
+                              new CoursesSeeder(),
+                              new RequestsSeeder(),
                           };
 
             foreach (var seeder in seeders)

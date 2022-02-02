@@ -1,0 +1,66 @@
+﻿namespace SBC.Data.Seeding
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Microsoft.EntityFrameworkCore;
+    using SBC.Data.Models;
+
+    internal class UsersSeeder : ISeeder
+    {
+        public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        {
+            var applicationUsersList = new List<ApplicationUser>()
+            {
+                new ApplicationUser
+                {
+                    FirstName = "Vasil",
+                    LastName = "Vasilev",
+                    Email = "vasil@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000333",
+                    PhotoUrl = "https://berrysphere.co.ke/wp-content/uploads/2021/08/85120553-696x466.jpg",
+                    ProfileSummary = "Vasil Vasilev Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+                new ApplicationUser
+                {
+                    FirstName = "Gergana",
+                    LastName = "Popova",
+                    Email = "gergana@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000444",
+                    PhotoUrl = "https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg",
+                    ProfileSummary = "Gergana Popova Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+
+                new ApplicationUser
+                {
+                    FirstName = "Nikolay",
+                    LastName = "Stefanov",
+                    Email = "nikolay@test.test",
+                    PasswordHash = "12345678",
+                    PhoneNumber = "+359 888000555",
+                    PhotoUrl = "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg",
+                    ProfileSummary = "Nikolay Stefanov Description Summary",
+                    DeletedOn = null,
+                    IsDeleted = false,
+                },
+            };
+
+            foreach (ApplicationUser applicationUser in applicationUsersList)
+            {
+                var dbApplicationUser = await dbContext.Users.FirstOrDefaultAsync(x => x.Email == applicationUser.Email);
+
+                if (dbApplicationUser == null)
+                {
+                    await dbContext.Users.AddAsync(applicationUser);
+                }
+            }
+        }
+    }
+}
