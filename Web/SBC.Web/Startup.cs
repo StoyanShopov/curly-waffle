@@ -24,6 +24,12 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.Course;
+    using SBC.Services.Data.Course.Contracts;
+    using SBC.Services.Data.Lecture;
+    using SBC.Services.Data.Lecture.Contracts;
+    using SBC.Services.Data.Resource;
+    using SBC.Services.Data.Resource.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -140,6 +146,9 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<ILectureService, LectureService>();
+            services.AddTransient<IResourceService, ResourceService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
