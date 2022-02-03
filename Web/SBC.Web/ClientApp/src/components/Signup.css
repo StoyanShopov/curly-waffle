@@ -32,6 +32,11 @@ Button
     left: -175px;
     border-color: #296CFB;
     border-style: solid;
+    font-style: Montserrat;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 23px;
+    border: 3px solid #296CFB;
 }
 .have
 {
@@ -43,18 +48,26 @@ Button
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font:  normal 22px/27px Montserrat;
+    font-style: Montserrat;
+    font-weight: normal;
+    color:#296CFB;
+    font-size: 27px;
 }
 .login
 {
     position: absolute;  
     top: 300px;
     text-align: center;
-    left: 175px;;
+    left: 185px;;
     color: #296CFB;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: underline;
-    font:  bold 22px/27px Montserrat;
+    font-style: Montserrat;
+    font-weight: bold;
+    color:#296CFB;
+    font-size: 27px;
+    letter-spacing: 1px;
+    opacity: 1;
 }
