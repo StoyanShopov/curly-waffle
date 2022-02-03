@@ -48,7 +48,7 @@ Button
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-style: Montserrat;
+    font: bold 27px Arial, Helvetica, sans-serif;
     font-weight: normal;
     color:#296CFB;
     font-size: 27px;
@@ -57,19 +57,17 @@ Button
 {
     font-weight: bold;
     color:#296CFB;
-    font-size: 27px;
-    font-family: 'Montserrat';
+    font: bold 27px Arial, Helvetica, sans-serif;;
+   
     letter-spacing: 1px;
     opacity: 1;
     position: absolute;  
     top: 300px;
     text-align: center;
-    left: 185px;;
+    left: 220px;
     color: #296CFB;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: underline;
-    
-  
 }
