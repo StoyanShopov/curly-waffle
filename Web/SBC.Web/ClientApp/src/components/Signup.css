@@ -55,6 +55,12 @@ Button
 }
 .login
 {
+    font-weight: bold;
+    color:#296CFB;
+    font-size: 27px;
+    font-family: 'Montserrat';
+    letter-spacing: 1px;
+    opacity: 1;
     position: absolute;  
     top: 300px;
     text-align: center;
@@ -64,10 +70,6 @@ Button
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: underline;
-    font-style: Montserrat;
-    font-weight: bold;
-    color:#296CFB;
-    font-size: 27px;
-    letter-spacing: 1px;
-    opacity: 1;
+    
+  
 }
