@@ -25,6 +25,32 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<CategoryCoach> CategoryCoaches { get; set; }
+
+        public DbSet<Coach> Coaches { get; set; }
+
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<CourseLecture> CourseLectures { get; set; }
+
+        public DbSet<Language> Languages { get; set; }
+
+        public DbSet<LanguageCoach> LanguageCoaches { get; set; }
+
+        public DbSet<Lecture> Lectures { get; set; }
+
+        public DbSet<Request> Requests { get; set; }
+
+        public DbSet<Resource> Resources { get; set; }
+
+        public DbSet<UserCoachSession> UserCoachSessions { get; set; }
+
+        public DbSet<UserCourse> UserCourses { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -71,6 +97,26 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder
+                .Entity<CategoryCoach>()
+                .HasKey(c => new { c.CategoryId, c.CoachId });
+
+            builder
+                .Entity<CourseLecture>()
+                .HasKey(c => new { c.CourseId, c.LectureId });
+
+            builder
+                .Entity<LanguageCoach>()
+                .HasKey(l => new { l.LanguageId, l.CoachId });
+
+            builder
+                .Entity<UserCoachSession>()
+                .HasKey(u => new { u.UserId, u.CoachId });
+
+            builder
+                .Entity<UserCourse>()
+                .HasKey(u => new { u.UserId, u.CourseId });
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

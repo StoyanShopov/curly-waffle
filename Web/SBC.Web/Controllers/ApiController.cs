@@ -1,7 +1,6 @@
 ﻿namespace SBC.Web.Controllers
 {
     using System.Net;
-    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
@@ -10,19 +9,24 @@
     [Route("api/[controller]")]
     public abstract class ApiController : ControllerBase
     {
-        protected IActionResult GenericResponse(Result result)
+        protected ActionResult GenericResponse(Result result)
         {
             if (result.Succeeded)
             {
-                return this.Ok(result.Data);
+                if (result.Data != null)
+                {
+                    return this.Ok(result.Data.Value);
+                }
+
+                return this.Ok();
             }
 
-            return result.Error.Item1 switch
+            return result.Errors.Status switch
             {
-                HttpStatusCode.Unauthorized => this.Unauthorized(result.Error.Item2),
-                HttpStatusCode.Forbidden => this.Forbid(result.Error.Item2),
-                HttpStatusCode.NotFound => this.NotFound(result.Error.Item2),
-                _ => this.BadRequest(result.Error),
+                HttpStatusCode.Unauthorized => this.Unauthorized(result.Errors),
+                HttpStatusCode.Forbidden => this.Forbid(),
+                HttpStatusCode.NotFound => this.NotFound(result.Errors),
+                _ => this.BadRequest(result.Errors),
             };
         }
     }

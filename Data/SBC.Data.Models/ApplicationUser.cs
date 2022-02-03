@@ -15,7 +15,26 @@ namespace SBC.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Users = new HashSet<ApplicationUser>();
+            this.Courses = new HashSet<UserCourse>();
+            this.Sessions = new HashSet<UserCoachSession>();
         }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string PhotoUrl { get; set; }
+
+        public string ProfileSummary { get; set; }
+
+        public string ManagerId { get; set; }
+
+        public ApplicationUser Manager { get; set; }
+
+        public int? CompanyId { get; set; }
+
+        public Company Company { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -32,5 +51,11 @@ namespace SBC.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<UserCourse> Courses { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; }
+
+        public virtual ICollection<UserCoachSession> Sessions { get; set; }
     }
 }
