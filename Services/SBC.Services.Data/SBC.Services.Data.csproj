@@ -27,4 +27,8 @@
     <ProjectReference Include="..\SBC.Services\SBC.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Client\Models\" />
+  </ItemGroup>
+
 </Project>

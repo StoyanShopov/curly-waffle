@@ -7,6 +7,8 @@
 
     public interface IUserService
     {
+        Task<Result> GetPortionAsync(int skip, int take = 3);
+
         Task<Result> Register(RegisterServiceModel model);
 
         Task<Result> Login(LoginServiceModel model, string secret);

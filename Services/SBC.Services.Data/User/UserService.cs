@@ -1,5 +1,7 @@
 ﻿namespace SBC.Services.Data.User
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
 
@@ -14,6 +16,8 @@
 
     public class UserService : IUserService
     {
+        private const int TakeDefaultValue = 3;
+
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
         private readonly IIdentityService identityService;
         private readonly UserManager<ApplicationUser> userManager;
@@ -26,6 +30,25 @@
             this.applicationUser = applicationUser;
             this.userManager = userManager;
             this.identityService = identityService;
+        }
+
+        public async Task<Result> GetPortionAsync(int skip = 0, int take = TakeDefaultValue)
+        {
+            var portions = await this.applicationUser
+                 .AllAsNoTracking()
+                 .OrderByDescending(au => au.CreatedOn) // Coaches ?
+                 .Skip(skip)
+                 .Take(take)
+                 .Include(au => au.Company)
+                 .Select(au => new GetPortionServiceModel
+                 {
+                     Email = au.Email,
+                     NormalizedEmail = au.NormalizedEmail,
+                     CompanyName = au.Company.Name,
+                 })
+                 .ToListAsync();
+
+            return new ResultModel(new GetPortionsServiceModel { Portions = portions });
         }
 
         public async Task<Result> Register(RegisterServiceModel model)
