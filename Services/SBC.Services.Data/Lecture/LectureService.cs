@@ -2,13 +2,16 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Lecture.Models;
+    using SBC.Services.Mapping;
 
     public class LectureService : ILectureService
     {
@@ -19,29 +22,76 @@
             this.lectures = repo;
         }
 
-        public Task<Result> CreateAsync(CreateLectureServiceModel courseModel)
+        public async Task<Result> CreateAsync(CreateLectureServiceModel lectureModel)
         {
-            throw new System.NotImplementedException();
+            var lecture = await this.lectures
+                .All()
+                .FirstOrDefaultAsync(x => x.Name == lectureModel.Name);
+
+            if (lecture != null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+            }
+
+            var newLecture = new Lecture()
+            {
+                Name = lectureModel.Name,
+                Description = lectureModel.Description,
+            };
+
+            await this.lectures.AddAsync(newLecture);
+            await this.lectures.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Result> DeleteByIdAsync(int id)
+        public async Task<Result> DeleteByIdAsync(string id)
         {
-            throw new System.NotImplementedException();
+            var lecture = await this.lectures
+                .All()
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (lecture != null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+            }
+
+            this.lectures.Delete(lecture);
+            await this.lectures.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Result> EditAsync(EditLectureServiceModel courseModel)
+        public async Task<Result> EditAsync(EditLectureServiceModel lectureModel)
         {
-            throw new System.NotImplementedException();
+            var lecture = await this.lectures
+                .All()
+                .FirstOrDefaultAsync(x => x.Name == lectureModel.Name);
+
+            if (lecture != null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+            }
+
+            lecture.Name = lectureModel.Name;
+            lecture.Description = lectureModel.Description;
+
+            await this.lectures.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+        => await this.lectures
+            .AllAsNoTracking()
+            .To<TModel>()
+            .ToListAsync();
 
-        public Task<TModel> GetByIdAsync<TModel>(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<TModel> GetByIdAsync<TModel>(string id)
+        => await this.lectures
+            .AllAsNoTracking()
+            .Where(x => x.Id == id)
+            .To<TModel>()
+            .FirstOrDefaultAsync();
     }
 }
