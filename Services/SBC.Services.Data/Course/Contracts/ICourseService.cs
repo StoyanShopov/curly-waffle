@@ -9,9 +9,9 @@
 
     public interface ICourseService
     {
-        Task<Result> GetAllAsync();
+        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
 
-        Task<Result> GetByIdAsync(int id);
+        Task<TModel> GetByIdAsync<TModel>(int id);
 
         Task<Result> CreateAsync(CreateCourseServiceModel courseModel);
 

@@ -3,8 +3,10 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using SBC.Common;
     using SBC.Services.Data.Course.Contracts;
     using SBC.Services.Data.Course.Models;
+    using SBC.Web.ViewModels.Course;
 
     public class CourseController : ApiController
     {
@@ -18,17 +20,17 @@
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var result = await this.courseService.GetAllAsync();
+            var result = await this.courseService.GetAllAsync<CourseViewModel>();
 
-            return this.GenericResponse(result);
+            return this.GenericResponse(new ResultModel(result));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
         {
-            var result = await this.courseService.GetByIdAsync(id);
+            var result = await this.courseService.GetByIdAsync<CourseViewModel>(id);
 
-            return this.GenericResponse(result);
+            return this.GenericResponse(new ResultModel(result));
         }
 
         [HttpPost]

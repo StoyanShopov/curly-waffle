@@ -91,28 +91,17 @@
             return true;
         }
 
-        public async Task<Result> GetAllAsync()
-        {
-            var courses = await this.courses
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+            => await this.courses
                 .AllAsNoTracking()
+                .To<TModel>()
                 .ToListAsync();
 
-            return new ResultModel(courses);
-        }
-
-        public async Task<Result> GetByIdAsync(int id)
-        {
-            var course = await this.courses
+        public async Task<TModel> GetByIdAsync<TModel>(int id)
+            => await this.courses
                 .AllAsNoTracking()
                 .Where(c => c.Id == id)
+                .To<TModel>()
                 .FirstOrDefaultAsync();
-
-            if (course == null)
-            {
-                return new ErrorModel(HttpStatusCode.NotFound, "Course not found!");
-            }
-
-            return new ResultModel(course);
-        }
     }
 }
