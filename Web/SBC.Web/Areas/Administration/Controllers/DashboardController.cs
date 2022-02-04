@@ -17,7 +17,7 @@
         }
 
         [HttpGet]
-        [Route("dashboard")]
+        [Route("index")]
         public async Task<ActionResult> GetDasboard() => this.GenericResponse(await this.profileService.GetDashboard());
     }
 }
