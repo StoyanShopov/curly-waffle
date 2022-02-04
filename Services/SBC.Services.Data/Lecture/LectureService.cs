@@ -53,7 +53,7 @@
 
             if (lecture != null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+                return new ErrorModel(HttpStatusCode.NoContent, "Lecture not found!");
             }
 
             this.lectures.Delete(lecture);
@@ -66,11 +66,11 @@
         {
             var lecture = await this.lectures
                 .All()
-                .FirstOrDefaultAsync(x => x.Name == lectureModel.Name);
+                .FirstOrDefaultAsync(x => x.Id == lectureModel.Id);
 
-            if (lecture != null)
+            if (lecture == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture doesn't exist!");
             }
 
             lecture.Name = lectureModel.Name;

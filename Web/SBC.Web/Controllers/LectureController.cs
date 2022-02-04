@@ -6,7 +6,7 @@
     using SBC.Common;
     using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Lecture.Models;
-    using SBC.Web.ViewModels.Lecture;
+    using SBC.Web.ViewModels;
 
     public class LectureController : ApiController
     {
