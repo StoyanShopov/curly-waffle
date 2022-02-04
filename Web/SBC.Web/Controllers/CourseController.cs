@@ -15,10 +15,42 @@
             this.courseService = courseService;
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var result = await this.courseService.GetAllAsync();
+
+            return this.GenericResponse(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(int id)
+        {
+            var result = await this.courseService.GetByIdAsync(id);
+
+            return this.GenericResponse(result);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post(CreateCourseServiceModel courseModel)
         {
             var result = await this.courseService.CreateAsync(courseModel);
+
+            return this.GenericResponse(result);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(EditCourseServiceModel courseModel)
+        {
+            var result = await this.courseService.EditAsync(courseModel);
+
+            return this.GenericResponse(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var result = await this.courseService.DeleteByIdAsync(id);
 
             return this.GenericResponse(result);
         }

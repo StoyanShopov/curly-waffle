@@ -1,6 +1,7 @@
 ﻿namespace SBC.Services.Data.Courses
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
 
@@ -49,24 +50,69 @@
             return true;
         }
 
-        public Task<Result> DeleteByIdAsync(int id)
+        public async Task<Result> DeleteByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var course = await this.courses
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (course == null)
+            {
+                return new ErrorModel(HttpStatusCode.NotFound, "Course not found!");
+            }
+
+            this.courses.Delete(course);
+            await this.courses.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Result> EditAsync(EditCourseServiceModel courseModel)
+        public async Task<Result> EditAsync(EditCourseServiceModel courseModel)
         {
-            throw new System.NotImplementedException();
+            var course = await this.courses
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == courseModel.Id);
+
+            if (course == null)
+            {
+                return new ErrorModel(HttpStatusCode.NotFound, "Course doesn't exist!");
+            }
+
+            course.Title = courseModel.Title;
+            course.Description = courseModel.Description;
+            course.PricePerPerson = courseModel.PricePerPerson;
+            course.VideoUrl = courseModel.VideoUrl;
+            course.CoachId = courseModel.CoachId;
+            course.CategoryId = courseModel.CategoryId;
+            course.LanguageId = courseModel.LanguageId;
+
+            await this.courses.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Result> GetAllAsync()
+        public async Task<Result> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            var courses = await this.courses
+                .AllAsNoTracking()
+                .ToListAsync();
+
+            return new ResultModel(courses);
         }
 
-        public Task<Result> GetByIdAsync(int id)
+        public async Task<Result> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var course = await this.courses
+                .AllAsNoTracking()
+                .Where(c => c.Id == id)
+                .FirstOrDefaultAsync();
+
+            if (course == null)
+            {
+                return new ErrorModel(HttpStatusCode.NotFound, "Course not found!");
+            }
+
+            return new ResultModel(course);
         }
     }
 }
