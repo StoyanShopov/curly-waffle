@@ -7,11 +7,11 @@
     using SBC.Services.Data.Admin.Contracts;
     using SBC.Web.ViewModels.Administration.Dashboard;
 
-    public class ProfileController : AdministrationController
+    public class DashboardController : AdministrationController
     {
-        private readonly IProfileService profileService;
+        private readonly IDasboardService profileService;
 
-        public ProfileController(IProfileService profileService)
+        public DashboardController(IDasboardService profileService)
         {
             this.profileService = profileService;
         }
@@ -19,9 +19,5 @@
         [HttpGet]
         [Route("dashboard")]
         public async Task<ActionResult> GetDasboard() => this.GenericResponse(await this.profileService.GetDashboard());
-
-        [HttpGet]
-        [Route("clients/{page}")]
-        public async Task<ActionResult> GetClients(int page) => this.GenericResponse(await this.profileService.GetCompanies(page));
     }
 }

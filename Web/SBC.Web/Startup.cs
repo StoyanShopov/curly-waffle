@@ -21,6 +21,14 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Admin.Contracts;
+    using SBC.Services.Data.Coach;
+    using SBC.Services.Data.Coach.Contracts;
+    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Course;
+    using SBC.Services.Data.Course.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -134,9 +142,12 @@
 
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IDasboardService, DashboardService>();
+            services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ICoachService, CoachService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
