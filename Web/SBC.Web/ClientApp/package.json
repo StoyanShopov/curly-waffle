@@ -15,7 +15,8 @@
     "redux": "4.1.2",
     "redux-logger": "4.0.0",
     "redux-thunk": "2.4.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "jwt-decode": "3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

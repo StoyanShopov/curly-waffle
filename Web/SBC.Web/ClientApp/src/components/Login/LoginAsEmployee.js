@@ -1,21 +1,41 @@
-﻿import React, { useEffect, useState } from "react";
+﻿import React, { useRef, useState } from "react";
 import { Link } from 'react-router-dom';
-import styles from "./LoginAsEmployee.module.css";
+import { useDispatch } from 'react-redux';
+
 import { userActions } from '../../actions/index';
 
-export default function LoginAsEmployee() {
+import styles from "./LoginAsEmployee.module.css";
 
-  //reset login status
-  //this.props.dispatch(userActions.logout())
 
-  //handle login
-    const onLogin = () => {
-      e.preventDefault();
+const LoginAsEmployee = (props) => {
+  const form = useRef();
 
-      let formData =new FormData(e.currentTarget);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-      console.log(formData);
-    }
+  const dispatch = useDispatch();
+
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+
+    await dispatch(userActions.login(email, password))
+      .then(async () => {
+        props.history.push("/")
+      })
+      .catch(() => {
+          console.log('Error')
+      });
+  };
 
   const link = "Забравена парола?";
   return (
@@ -31,22 +51,30 @@ export default function LoginAsEmployee() {
           </div>
           <h1>Welcome back!</h1>
           <h5>Please login to your account</h5>
-          <form action="" onSubmit={onLogin} method="POST">
+          <form onSubmit={onLogin} ref={form}>
             <div className={styles.inputcontainer}>
+              <label htmlFor="email"></label>
               <input
                 type="text"
                 className={`${styles.input} ${styles.inputuser}`}
-                name="name"
+                name="email"
                 required="required"
                 id="name"
-                placeholder="Email Address*"
+                placeholder="Email Address"
+                value={email}
+                onChange={onChangeEmail}
               /> 
             </div>
             <div>
+              <label htmlFor="password"></label>
               <input
-                type="text"
+                type="password"
+                name="password"
                 className={`${styles.input} ${styles.inputpass}`}
-                placeholder={"Password*"}
+                placeholder="Password"
+                required="required"
+                value={password}
+                onChange={onChangePassword}
               />
             </div>
             <div className={styles.checkcontainer}>
@@ -66,3 +94,5 @@ export default function LoginAsEmployee() {
     </div>
   );
 }
+
+export default LoginAsEmployee;
