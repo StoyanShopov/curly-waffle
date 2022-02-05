@@ -1,14 +1,17 @@
-﻿import React from 'react';
+﻿import React, { Component } from 'react';
+import NavBar from './NavBar';
 
-const Layout = () => {
+export class Layout extends Component {
 
-    return (
+    render(){
+     return (
         <>
+            <NavBar />
             <main>
                 {this.props.children}
-            </main>
-        </>
-    );
-}
+             </main>
 
-export default Layout;
+        </>
+       );
+    }
+}

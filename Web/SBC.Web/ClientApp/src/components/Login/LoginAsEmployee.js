@@ -1,7 +1,22 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import styles from "./LoginAsEmployee.module.css";
+import { userActions } from '../../actions/index';
 
-export default function LoginAsEmployee(prop) {
+export default function LoginAsEmployee() {
+
+  //reset login status
+  //this.props.dispatch(userActions.logout())
+
+  //handle login
+    const onLogin = () => {
+      e.preventDefault();
+
+      let formData =new FormData(e.currentTarget);
+
+      console.log(formData);
+    }
+
   const link = "Забравена парола?";
   return (
     <div className={styles.container}>
@@ -16,7 +31,7 @@ export default function LoginAsEmployee(prop) {
           </div>
           <h1>Welcome back!</h1>
           <h5>Please login to your account</h5>
-          <form action="">
+          <form action="" onSubmit={onLogin} method="POST">
             <div className={styles.inputcontainer}>
               <input
                 type="text"
@@ -25,7 +40,7 @@ export default function LoginAsEmployee(prop) {
                 required="required"
                 id="name"
                 placeholder="Email Address*"
-              />
+              /> 
             </div>
             <div>
               <input
@@ -42,8 +57,8 @@ export default function LoginAsEmployee(prop) {
               <a href="/">{link}</a>
             </div>
             <div className={styles.btncontainer}>
-              <input type="button" value="Login" />
-              <input type="button" value="SignUp" />
+                          <input type="submit" value="Login" />
+                          <Link to="/register">SignUp</Link>
             </div>
           </form>
         </div>

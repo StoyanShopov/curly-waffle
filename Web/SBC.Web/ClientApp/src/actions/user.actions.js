@@ -3,13 +3,13 @@ import { userService } from '../services';
 import { alertActions } from './';
 import { history } from '../helpers';
 
-export const userActions = {
-    login,
-    logout,
-    getAll
-};
+//export const userActions = {
+//    login,
+//    logout,
+//    getAll
+//};
 
-function login(username, password) {
+export function login(username, password) {
     return dispatch => {
         dispatch(request({ username }));
 
@@ -31,12 +31,12 @@ function login(username, password) {
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
-function logout() {
+export function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };
 }
 
-function getAll() {
+export function getAll() {
     return dispatch => {
         dispatch(request());
 

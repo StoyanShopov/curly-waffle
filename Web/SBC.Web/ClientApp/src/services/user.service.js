@@ -1,5 +1,4 @@
-﻿import config from 'config';
-import { authHeader } from '../_helpers';
+﻿import { authHeader } from '../helpers';
 
 export const userService = {
     login,
@@ -14,7 +13,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -35,7 +34,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+    return fetch(`/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
