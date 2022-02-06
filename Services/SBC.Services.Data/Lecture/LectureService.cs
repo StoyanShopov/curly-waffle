@@ -51,7 +51,7 @@
                 .All()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (lecture != null)
+            if (lecture == null)
             {
                 return new ErrorModel(HttpStatusCode.NoContent, "Lecture not found!");
             }
