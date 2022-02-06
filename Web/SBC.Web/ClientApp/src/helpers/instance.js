@@ -32,7 +32,7 @@ instance.interceptors.response.use(
     async (error) => {
         const baseConfig = error.config;
 
-        if(baseConfig.url !== "/api/Identity/login" && error.response){
+        if(baseConfig.url !== "api/Identity/login" && error.response){
             // Expired Token
             if(error.response.status === 401 && !baseConfig._retry) {
                 baseConfig._retry = true;

@@ -7,7 +7,7 @@ const apiUrl = baseUrl + 'api/Identity/';
 
 const login = async(email, password) => {
     return instance
-      .post(apiUrl + "/login", {
+      .post(apiUrl + "login", {
           email,
           password,
       })
