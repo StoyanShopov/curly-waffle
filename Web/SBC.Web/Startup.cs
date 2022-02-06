@@ -22,8 +22,8 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
-    using SBC.Services.Data.Course;
     using SBC.Services.Data.Course.Contracts;
+    using SBC.Services.Data.Courses;
     using SBC.Services.Data.Lecture;
     using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Resource;
