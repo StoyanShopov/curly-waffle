@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="Course\Models\" />
     <Folder Include="Lecture\Models\" />
-    <Folder Include="Resource\Models\" />
   </ItemGroup>
 
 </Project>
