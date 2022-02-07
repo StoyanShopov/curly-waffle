@@ -26,7 +26,6 @@
 
         [HttpPut]
         [Route(nameof(Edit))]
-
         public async Task<ActionResult> Edit(EditProfileServiceModel model)
         {
             var userId = this.User.Id();

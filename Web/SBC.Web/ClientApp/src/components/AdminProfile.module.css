@@ -1,0 +1,16 @@
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+}
+
+.mainContent:nth-child(1) {
+  
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+.mainContent:nth-child(2) {
+    margin-right: 0px;
+    margin-top: 0px;
+}

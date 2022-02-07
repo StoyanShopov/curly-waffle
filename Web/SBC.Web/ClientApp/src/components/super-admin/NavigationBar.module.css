@@ -1,0 +1,109 @@
+.vertical {
+    background-color: #EAF0FF;
+    position: relative;
+    margin-left: 0;
+    width: 24%;
+    padding-left: 130px;
+    padding-top: 50px;
+    height: 600px;
+    float: left;
+    margin-bottom: 20px;
+}
+.circleFloatChild
+{
+    background-color: #16D696;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.circleContainer {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+/* .circle img {
+    width: 100%;
+    height: auto;
+} */
+
+.nameVisualizer {
+    font-family: system-ui;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+}
+
+.Navigation {
+    padding: 5px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Navigation * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Navigation a {
+    font-family: system-ui;
+    display: block;
+    font-weight: medium;
+    font-size: 22px;
+}
+
+.Navigation svg {
+    margin: 18px;
+    height: 3px;
+    width: 80%;
+    margin-left: 0;
+    background: 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.lableColored {
+    color: #296CFB;
+    font-weight: bold;
+    font-family: Montserrat;
+    font-size: 22px;
+}
+
+.lable {
+    font-family: Montserrat;
+    font-weight: medium;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.logOut {
+    color: #E84855;
+}
+
+.floatChild {
+    display: flex;
+    flex-direction: column;
+}
+
+.floatChild2 {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.iconPen {
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+   position: absolute;
+    right: 22px;
+    top: 20px;
+}
