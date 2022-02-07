@@ -38,6 +38,7 @@
                 Title = courseModel.Title,
                 Description = courseModel.Description,
                 PricePerPerson = courseModel.PricePerPerson,
+                PictureUrl = courseModel.PictureUrl,
                 VideoUrl = courseModel.VideoUrl,
                 CategoryId = courseModel.CategoryId,
                 LanguageId = courseModel.LanguageId,
@@ -81,6 +82,7 @@
             course.Title = courseModel.Title;
             course.Description = courseModel.Description;
             course.PricePerPerson = courseModel.PricePerPerson;
+            course.PictureUrl = courseModel.PictureUrl;
             course.VideoUrl = courseModel.VideoUrl;
             course.CoachId = courseModel.CoachId;
             course.CategoryId = courseModel.CategoryId;
