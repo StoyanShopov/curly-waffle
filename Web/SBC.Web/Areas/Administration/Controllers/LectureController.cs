@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.Controllers
+﻿namespace SBC.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -8,7 +8,7 @@
     using SBC.Services.Data.Lecture.Models;
     using SBC.Web.ViewModels;
 
-    public class LectureController : ApiController
+    public class LectureController : AdministrationController
     {
         private readonly ILectureService lectureService;
 

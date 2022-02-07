@@ -1,13 +1,14 @@
-﻿namespace SBC.Web.Controllers
+﻿namespace SBC.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Resource.Contracts;
     using SBC.Services.Data.Resource.Models;
     using SBC.Web.ViewModels.Resource;
-    using System.Threading.Tasks;
 
-    public class ResourceController : ApiController
+    public class ResourceController : AdministrationController
     {
         private readonly IResourceService resourceService;
 
