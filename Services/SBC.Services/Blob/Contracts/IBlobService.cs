@@ -7,15 +7,16 @@
     using Azure.Storage.Blobs.Models;
 
     using Microsoft.AspNetCore.Http;
+    using SBC.Web.ViewModels.Blob;
 
     public interface IBlobService
     {
-        Task<IEnumerable<string>> ListBlobsAsync(string containerName);
+        Task<ICollection<BlobResponseModel>> GetAllBlobsAsync();
 
-        Task<bool> UploadFileBlobAsync(IFormFile file, string containerName);
+        Task<string> UploadFileBlobAsync(IFormFile file);
 
-        Task<bool> DeleteBlobByNameAsync(string blobName, string containerName);
+        Task<bool> DeleteBlobByNameAsync(string blobName);
 
-        BlobClient DownloadBlobByName(string blobName, string containerName);
+        BlobClient DownloadBlobByName(string blobName);
     }
 }

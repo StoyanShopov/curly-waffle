@@ -5,6 +5,8 @@
         public const string SystemName = "SBC";
 
         public const string AdministratorRoleName = "Administrator";
+
+        public const string BlobContainer = "upskillcontainertest";
     }
 
     public static class ControllerRoutesConstants

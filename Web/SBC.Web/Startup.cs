@@ -16,7 +16,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-
+    using Microsoft.WindowsAzure.Storage;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -141,7 +141,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
+            services.AddSingleton(x => new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=upskillstoragetest;AccountKey=tmdmP3Cte6jVIcGMPdZK1VnE9t+FNLdLRyUmu6iC3TK0XfpFeuPHavWlGP/0axDW2bgzeIjhcrnSPegiqwRTog==;EndpointSuffix=core.windows.net"));
             services.AddSingleton<IBlobService, BlobService>();
         }
 

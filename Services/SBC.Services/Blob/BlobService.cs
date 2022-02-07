@@ -7,6 +7,9 @@
     using Azure.Storage.Blobs;
     using Azure.Storage.Blobs.Models;
     using Microsoft.AspNetCore.Http;
+    using SBC.Web.ViewModels.Blob;
+
+    using static SBC.Common.GlobalConstants;
 
     public class BlobService : IBlobService
     {
@@ -17,23 +20,32 @@
             this.blobService = blobServiceClient;
         }
 
-        public async Task<IEnumerable<string>> ListBlobsAsync(string containerName)
+        public async Task<ICollection<BlobResponseModel>> GetAllBlobsAsync()
         {
-            var containerClient = this.blobService.GetBlobContainerClient(containerName);
-            var blobs = new List<string>();
+            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+            var blobs = new List<BlobResponseModel>();
 
             await foreach (var blob in containerClient.GetBlobsAsync())
             {
-                blobs.Add(blob.Name);
+                var name = blob.Name;
+                var uri = containerClient.Uri.AbsoluteUri;
+                var fullUri = uri + "/" + name;
+
+                blobs.Add(new BlobResponseModel
+                {
+                    Name = name,
+                    ContentType = blob.Properties.ContentType,
+                    Uri = fullUri,
+                });
             }
 
             return blobs;
         }
 
-        public async Task<bool> UploadFileBlobAsync(IFormFile file, string containerName)
+        public async Task<string> UploadFileBlobAsync(IFormFile file)
         {
-            var containerClient = this.blobService.GetBlobContainerClient(containerName);
-            var blobClient = containerClient.GetBlobClient(file.Name + Guid.NewGuid().ToString());
+            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+            var blobClient = containerClient.GetBlobClient(Guid.NewGuid().ToString());
             var httpHeaders = new BlobHttpHeaders()
             {
                 ContentType = file.ContentType,
@@ -41,19 +53,19 @@
 
             var result = await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders);
 
-            return result != null;
+            return blobClient.Uri.ToString();
         }
 
-        public BlobClient DownloadBlobByName(string blobName, string containerName)
+        public BlobClient DownloadBlobByName(string blobName)
         {
-            var container = this.blobService.GetBlobContainerClient(containerName);
+            var container = this.blobService.GetBlobContainerClient(BlobContainer);
 
             return container.GetBlobClient(blobName);
         }
 
-        public async Task<bool> DeleteBlobByNameAsync(string blobName, string containerName)
+        public async Task<bool> DeleteBlobByNameAsync(string blobName)
         {
-            var containerClient = this.blobService.GetBlobContainerClient(containerName);
+            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
             var blobClient = containerClient.GetBlobClient(blobName);
             return await blobClient.DeleteIfExistsAsync();
         }

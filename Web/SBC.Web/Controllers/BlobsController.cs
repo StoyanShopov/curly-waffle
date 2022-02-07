@@ -19,30 +19,30 @@
         }
 
         [HttpGet(GetAllRoute)]
-        public async Task<IActionResult> GetAllBlobsAsync(string containerName)
+        public async Task<IActionResult> GetAllBlobsAsync()
         {
-            var blobs = await this.blobService.ListBlobsAsync(containerName);
+            var blobs = await this.blobService.GetAllBlobsAsync();
 
             return this.Ok(blobs);
         }
 
         [HttpPost(UploadBlobRoute)]
-        public async Task<IActionResult> UploadBlobAsync(IFormFile file, string containerName)
+        public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
-            var result = await this.blobService.UploadFileBlobAsync(file, containerName);
+            var result = await this.blobService.UploadFileBlobAsync(file);
 
-            if (!result)
+            if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            return this.Ok();
+            return this.StatusCode(201);
         }
 
         [HttpGet(DownloadBlobByNameRoute)]
-        public async Task<IActionResult> DownloadBlobByNameAsync(string blobName, string containerName)
+        public async Task<IActionResult> DownloadBlobByNameAsync(string blobName)
         {
-            var blob = this.blobService.DownloadBlobByName(blobName, containerName);
+            var blob = this.blobService.DownloadBlobByName(blobName);
 
             if (!await blob.ExistsAsync())
             {
@@ -55,9 +55,9 @@
         }
 
         [HttpDelete(DeleteRoute)]
-        public async Task<IActionResult> DeleteBlobByNameAsync(string blobName, string containerName)
+        public async Task<IActionResult> DeleteBlobByNameAsync(string blobName)
         {
-            var result = await this.blobService.DeleteBlobByNameAsync(blobName, containerName);
+            var result = await this.blobService.DeleteBlobByNameAsync(blobName);
 
             if (!result)
             {

@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
+    <ProjectReference Include="..\..\Web\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
