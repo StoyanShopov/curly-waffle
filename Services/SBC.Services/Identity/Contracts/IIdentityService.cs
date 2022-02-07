@@ -2,6 +2,6 @@
 {
     public interface IIdentityService
     {
-        string GenerateJwt(string secret, string userId, string userName);
+        string GenerateJwt(string secret, string userId, string userName, string role);
     }
 }

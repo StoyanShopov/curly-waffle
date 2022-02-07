@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.User
 {
+    using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
 
@@ -12,20 +13,25 @@
     using SBC.Services.Data.User.Models;
     using SBC.Services.Identity.Contracts;
 
+    using static SBC.Common.GlobalConstants.RolesNamesConstants;
+
     public class UserService : IUserService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
         private readonly IIdentityService identityService;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public UserService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
             IIdentityService identityService,
+            RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)
         {
             this.applicationUser = applicationUser;
-            this.userManager = userManager;
             this.identityService = identityService;
+            this.roleManager = roleManager;
+            this.userManager = userManager;
         }
 
         public async Task<Result> Register(RegisterServiceModel model)
@@ -52,12 +58,14 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
             }
 
+            await this.userManager.AddToRoleAsync(user, CompanyEmployeeRoleName);
+
             return true;
         }
 
         public async Task<Result> Login(LoginServiceModel model, string secret)
         {
-            var user = await this.userManager.FindByEmailAsync(model.Email);
+            var user = await this.AllInternalGetByEmailAsync(model.Email);
 
             if (user == null)
             {
@@ -71,7 +79,10 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, "Password/Email is invalid!");
             }
 
-            var jwt = this.identityService.GenerateJwt(secret, user.Id, user.UserName);
+            var roleId = user.Roles.FirstOrDefault().RoleId;
+            var applicationRole = await this.roleManager.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+
+            var jwt = this.identityService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
 
             return new ResultModel(new { JWT = jwt });
         }
@@ -84,5 +95,11 @@
 
             return user is not null;
         }
+
+        private async Task<ApplicationUser> AllInternalGetByEmailAsync(string email)
+            => await this.applicationUser
+                .All()
+                .Include(au => au.Roles)
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
     }
 }
