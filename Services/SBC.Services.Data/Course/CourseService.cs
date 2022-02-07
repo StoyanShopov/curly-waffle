@@ -48,7 +48,7 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(newCourse.Id);
         }
 
         public async Task<Result> DeleteByIdAsync(int id)
