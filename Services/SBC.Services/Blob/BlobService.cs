@@ -28,7 +28,9 @@
             await foreach (var blob in containerClient.GetBlobsAsync())
             {
                 var name = blob.Name;
+
                 var uri = containerClient.Uri.AbsoluteUri;
+
                 var fullUri = uri + "/" + name;
 
                 blobs.Add(new BlobResponseModel
@@ -45,13 +47,15 @@
         public async Task<string> UploadFileBlobAsync(IFormFile file)
         {
             var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+
             var blobClient = containerClient.GetBlobClient(Guid.NewGuid().ToString());
+
             var httpHeaders = new BlobHttpHeaders()
             {
                 ContentType = file.ContentType,
             };
 
-            var result = await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders);
+            await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders);
 
             return blobClient.Uri.ToString();
         }
@@ -66,7 +70,9 @@
         public async Task<bool> DeleteBlobByNameAsync(string blobName)
         {
             var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+
             var blobClient = containerClient.GetBlobClient(blobName);
+
             return await blobClient.DeleteIfExistsAsync();
         }
     }

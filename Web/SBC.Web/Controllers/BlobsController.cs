@@ -29,7 +29,7 @@
         [HttpPost(UploadBlobRoute)]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
-            var result = await this.blobService.UploadFileBlobAsync(file);
+            await this.blobService.UploadFileBlobAsync(file);
 
             if (!this.ModelState.IsValid)
             {
