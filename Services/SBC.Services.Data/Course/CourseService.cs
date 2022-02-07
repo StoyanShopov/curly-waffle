@@ -103,5 +103,10 @@
                 .Where(c => c.Id == id)
                 .To<TModel>()
                 .FirstOrDefaultAsync();
+
+        public async Task<int> GetCount()
+            => await this.courses
+                .AllAsNoTracking()
+                .CountAsync();
     }
 }

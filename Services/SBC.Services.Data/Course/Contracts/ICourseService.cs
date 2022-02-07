@@ -18,5 +18,7 @@
         Task<Result> EditAsync(EditCourseServiceModel courseModel);
 
         Task<Result> DeleteByIdAsync(int id);
+
+        Task<int> GetCount();
     }
 }
