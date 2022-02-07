@@ -5,7 +5,7 @@
     public class AddRequestModel
     {
         [Required]
-        public string CompanyName { get; init; }
+        public string FullName { get; init; }
 
         [Required]
         [EmailAddress]

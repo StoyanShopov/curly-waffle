@@ -1,7 +1,5 @@
 ﻿namespace SBC.Services.Data.User
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
 
@@ -16,8 +14,6 @@
 
     public class UserService : IUserService
     {
-        private const int TakeDefaultValue = 3;
-
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
         private readonly IIdentityService identityService;
         private readonly UserManager<ApplicationUser> userManager;
@@ -32,28 +28,9 @@
             this.identityService = identityService;
         }
 
-        public async Task<Result> GetPortionAsync(int skip = 0, int take = TakeDefaultValue)
-        {
-            var portions = await this.applicationUser
-                 .AllAsNoTracking()
-                 .OrderByDescending(au => au.CreatedOn) // Coaches ?
-                 .Skip(skip)
-                 .Take(take)
-                 .Include(au => au.Company)
-                 .Select(au => new GetPortionServiceModel
-                 {
-                     Email = au.Email,
-                     NormalizedEmail = au.NormalizedEmail,
-                     CompanyName = au.Company.Name,
-                 })
-                 .ToListAsync();
-
-            return new ResultModel(new GetPortionsServiceModel { Portions = portions });
-        }
-
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            var emailExists = await this.UserExistsByEmail(model.Email);
+            var emailExists = await this.InternalUserExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
@@ -99,13 +76,19 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<bool> UserExistsByEmail(string email)
-        {
-            var user = await this.applicationUser
+        public async Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email)
+            => await this.applicationUser
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-            return user is not null;
-        }
+        public async Task<ApplicationUser> AllInternalGetByEmailAsync(string email)
+            => await this.applicationUser
+                .All()
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public async Task<bool> InternalUserExistsByEmailAsync(string email)
+            => await this.applicationUser
+                .AllAsNoTracking()
+                .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
     }
 }

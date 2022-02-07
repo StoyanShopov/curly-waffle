@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.User.Models
+﻿namespace SBC.Services.Data.Client.Models
 {
     using System.Collections.Generic;
     using System.Linq;
