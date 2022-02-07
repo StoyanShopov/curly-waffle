@@ -45,7 +45,6 @@
     flex-basis: 50%;
     display: flex;
     justify-content: center;
-    /* max-width: 960px; */
     width: 60rem;
     height: 68rem;
 }
@@ -70,8 +69,8 @@
     height: 4.4rem;
     margin-bottom: 3rem;
     opacity: 1;
-    border: 2px solid #296cfb;    
-}  
+    border: 2px solid #296cfb;
+}
 
 .inputuser {
     height: 27px;
@@ -100,7 +99,7 @@
     }
 
     .inputuser::placeholder::after {
-        content: '002A';        
+        content: '002A';
         color: #E84855;
         vertical-align: text-top
     }
@@ -108,10 +107,17 @@
 .inputpass {
     margin-top: 30px;
     margin-bottom: 20px;
-    /*background-image: url("assets/images/Icon\ -\ Visibility\ -\ Filled.svg");*/
     background-repeat: no-repeat;
     background-position: right;
     background-position: 525px;
+}
+
+.eye {
+    position: relative;
+    bottom: 40%;
+    margin-right: 2.8rem;
+    cursor: pointer;
+    float: right;
 }
 
 .btncontainer {
@@ -142,7 +148,7 @@
     font-family: "Montserrat", sans-serif;
     font-size: 22px;
     color: #296CFB;
-    letter-spacing: 1px;
+    letter-spacing: 1px; 
 }
 
 .checkcontainer {
@@ -167,7 +173,7 @@
         color: #296cfb;
         font-family: "Montserrat", sans-serif;
         font-size: 22px;
-    }   
+    }
 
         .checkcontainer a:hover, .checkcontainer a:visited, .checkcontainer a:link, .checkcontainer a:active {
             text-decoration: none;
@@ -189,3 +195,44 @@
     text-align: right;
     text-decoration: underline;
 }
+
+.starfullname {
+    color: #E84855;
+    position: relative;
+    bottom: 38%;
+    left: 30.6%;
+    width: 10%;
+}
+
+.starcompanyname {
+    color: #E84855;
+    position: relative;
+    bottom: 38%;
+    left: 43.1%;
+    width: 10%;
+}
+
+.staremail {
+    color: #E84855;
+    position: relative;
+    bottom: 38%;
+    left: 39.4%;
+    width: 10%;
+}
+
+.starpassword {
+    color: #E84855;
+    position: relative;
+    bottom: 38%;
+    left: 29.2%;
+    width: 10%;
+}
+
+.starconfirmpassword {
+    color: #E84855;
+    position: relative;
+    bottom: 38%;
+    left: 48%;
+    width: 10%;
+}
+

@@ -20,8 +20,9 @@ export default function RegisterAsOwner(prop) {
                                 className={styles.inputuser}
                                 name="fullName"
                                 required="required"
-                                placeholder="Full Name*"
+                                placeholder="Full Name"
                             />
+                            <span className={styles.starfullname}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -29,8 +30,9 @@ export default function RegisterAsOwner(prop) {
                                 className={styles.inputuser}
                                 name="companyName"
                                 required="required"
-                                placeholder="Company Name*"
+                                placeholder="Company Name"
                             />
+                            <span className={styles.starcompanyname}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -38,8 +40,9 @@ export default function RegisterAsOwner(prop) {
                                 className={styles.inputuser}
                                 name="email"
                                 required="required"
-                                placeholder="Email Address*"
+                                placeholder="Email Address"
                             />
+                            <span className={styles.staremail}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -47,8 +50,10 @@ export default function RegisterAsOwner(prop) {
                                 className={styles.inputuser}
                                 name="password"
                                 required="required"
-                                placeholder={"Password*"}
+                                placeholder={"Password"}
                             />
+                            <span className={styles.starpassword}>*</span>
+                            <img src="assets/images/Eye.svg" className={styles.eye}></img>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -56,8 +61,10 @@ export default function RegisterAsOwner(prop) {
                                 className={styles.inputuser}
                                 name="confirmPassword"
                                 required="required"
-                                placeholder={"Confirm Password*"}
+                                placeholder={"Confirm Password"}
                             />
+                            <span className={styles.starconfirmpassword}>*</span>
+                            <img src="assets/images/Eye.svg" className={styles.eye}></img>
                         </div>
                         <div>
                             <div className={styles.btncontainer}>
