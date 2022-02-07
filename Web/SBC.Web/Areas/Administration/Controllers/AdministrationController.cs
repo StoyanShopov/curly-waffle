@@ -7,7 +7,7 @@
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    [Authorize(Roles = AdministratorRoleName)]
+    //[Authorize(Roles = AdministratorRoleName)]
     [Area("Administration")]
     [Route("Administration/[controller]")]
     public abstract class AdministrationController : ApiController

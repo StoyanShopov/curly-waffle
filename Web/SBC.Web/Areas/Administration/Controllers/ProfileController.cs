@@ -2,26 +2,48 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data;
-    using SBC.Services.Data.Admin.Contracts;
-    using SBC.Web.ViewModels.Administration.Dashboard;
+    using SBC.Common;
+    using SBC.Data.Common.Repositories;
+    using SBC.Data.Models;
+    using SBC.Services.Data.Admin.Models;
+    using SBC.Services.Data.Infrastructures;
 
     public class ProfileController : AdministrationController
     {
-        private readonly IProfileService profileService;
+        private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public ProfileController(IProfileService profileService)
+        public ProfileController(
+            IDeletableEntityRepository<ApplicationUser> applicationUser,
+            UserManager<ApplicationUser> userManager)
         {
-            this.profileService = profileService;
+            this.applicationUser = applicationUser;
+            this.userManager = userManager;
         }
 
-        [HttpGet]
-        [Route("dashboard")]
-        public async Task<ActionResult> GetDasboard() => this.GenericResponse(await this.profileService.GetDashboard());
+        [HttpPut]
+        [Route(nameof(Edit))]
 
-        [HttpGet]
-        [Route("clients/{page}")]
-        public async Task<ActionResult> GetClients(int page) => this.GenericResponse(await this.profileService.GetCompanies(page));
+        public async Task<ActionResult> Edit(EditProfileServiceModel model)
+        {
+            var userId = this.User.Id();
+
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            user.Email = model.Email;
+            user.FirstName = model.Fullname;
+            user.ProfileSummary = model.ProfileSummary;
+            // user.PhotoUrl = model.PhotoUrl;
+
+            var result = await this.userManager.UpdateAsync(user);
+
+            return this.GenericResponse(new ResultModel(
+            new
+            {
+                Result = result,
+            }));
+        }
     }
 }
