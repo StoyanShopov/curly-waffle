@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
+    using SBC.Data.Models;
     using SBC.Services.Data.User.Models;
 
     public interface IUserService
@@ -11,6 +12,10 @@
 
         Task<Result> Login(LoginServiceModel model, string secret);
 
-        Task<bool> UserExistsByEmail(string email);
+        Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email);
+
+        Task<ApplicationUser> AllInternalGetByEmailAsync(string email);
+
+        Task<bool> InternalUserExistsByEmailAsync(string email);
     }
 }

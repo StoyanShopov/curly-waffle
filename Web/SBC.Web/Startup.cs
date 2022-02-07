@@ -21,6 +21,8 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.Client;
+    using SBC.Services.Data.Client.Contracts;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.Admin.Contracts;
     using SBC.Services.Data.Coach;
@@ -144,6 +146,7 @@
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IClientService, ClientService>();
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICourseService, CourseService>();
             services.AddTransient<ICompanyService, CompanyService>();

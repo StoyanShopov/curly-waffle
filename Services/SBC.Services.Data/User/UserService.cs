@@ -30,7 +30,7 @@
 
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            var emailExists = await this.UserExistsByEmail(model.Email);
+            var emailExists = await this.InternalUserExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
@@ -76,13 +76,19 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<bool> UserExistsByEmail(string email)
-        {
-            var user = await this.applicationUser
+        public async Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email)
+            => await this.applicationUser
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-            return user is not null;
-        }
+        public async Task<ApplicationUser> AllInternalGetByEmailAsync(string email)
+            => await this.applicationUser
+                .All()
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public async Task<bool> InternalUserExistsByEmailAsync(string email)
+            => await this.applicationUser
+                .AllAsNoTracking()
+                .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
     }
 }
