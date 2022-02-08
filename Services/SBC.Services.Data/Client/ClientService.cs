@@ -39,14 +39,16 @@
         // TODO: fullName not implemented in logic
         public async Task<Result> AddAsync(string fullName, string email)
         {
-            var emailExists = await this.userService.InternalUserExistsByEmailAsync(email);
+            //var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
+            var emailExists = await this.userService.NoTrackUserExistsByEmailAsync(email);
 
             if (!emailExists)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{email}'.");
+                //return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{fullName}' and '{email}'.");
             }
 
-            var user = await this.userService.AllInternalGetByEmailAsync(email);
+            var user = await this.userService.AllGetByEmailAndRolesAsync(email);
 
             if (user.Roles.Any())
             {
