@@ -30,7 +30,7 @@
 
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            var emailExists = await this.InternalUserExistsByEmailAsync(model.Email);
+            var emailExists = await this.NoTrackUserExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
@@ -81,14 +81,25 @@
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-        public async Task<ApplicationUser> AllInternalGetByEmailAsync(string email)
+        public async Task<ApplicationUser> AllGetByEmailAndRolesAsync(string email)
+            => await this.applicationUser
+                .All()
+                .Include(au => au.Roles)
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public async Task<ApplicationUser> AllGetByEmailAsync(string email)
             => await this.applicationUser
                 .All()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-        public async Task<bool> InternalUserExistsByEmailAsync(string email)
+        public async Task<bool> NoTrackUserExistsByEmailAsync(string email)
             => await this.applicationUser
                 .AllAsNoTracking()
                 .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        // public async Task<bool> NoTrackUserExistsByEmailByFullNameAsync(string email, string fullName)
+        //    => await this.applicationUser
+        //        .AllAsNoTracking()
+        //        .AnyAsync(u => u.NormalizedEmail == email.ToUpper() && u.FullName == fullName.ToLower());
     }
 }
