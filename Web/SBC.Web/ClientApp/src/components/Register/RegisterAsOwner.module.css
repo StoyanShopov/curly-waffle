@@ -91,19 +91,20 @@
     .inputuser:focus {
         outline: none;
     }
-
-    .inputuser::after {
-        content: '002A';
-        color: #E84855;
-        vertical-align: text-top
-    }
-
+   
     .inputuser::placeholder::after {
         content: '002A';
         color: #E84855;
         vertical-align: text-top
     }
 
+::placeholder {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    color: #296CFB;
+    letter-spacing: 1px;
+}
+  
 .inputpass {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -143,13 +144,6 @@
         background: #296cfb;
         color: white;
     }
-
-::placeholder {
-    font-family: "Montserrat", sans-serif;
-    font-size: 22px;
-    color: #296CFB;
-    letter-spacing: 1px; 
-}
 
 .checkcontainer {
     display: flex;
@@ -203,7 +197,7 @@
     left: 30.6%;
     width: 10%;
 }
-
+  
 .starcompanyname {
     color: #E84855;
     position: relative;
@@ -236,3 +230,10 @@
     width: 10%;
 }
 
+input[required]:invalid + span {
+    display: inline-block;
+}
+
+input[required]:valid + span {
+    display: none;
+}
