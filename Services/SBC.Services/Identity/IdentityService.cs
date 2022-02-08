@@ -12,7 +12,7 @@
     {
         private const int DaysToExpire = 3;
 
-        public string GenerateJwt(string secret, string userId, string role)
+        public string GenerateJwt(string secret, string userId, string userName, string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
@@ -22,7 +22,7 @@
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, userId),
-                    //new Claim(ClaimTypes.Name, userName),
+                    new Claim(ClaimTypes.Name, userName),
                     new Claim(ClaimTypes.Role, role),
                 }),
                 Expires = DateTime.UtcNow.AddDays(DaysToExpire),

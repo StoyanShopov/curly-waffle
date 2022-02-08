@@ -1,6 +1,5 @@
 ﻿namespace SBC.Services.Data.User
 {
-    using System;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -63,7 +62,7 @@
             {
                 FirstName = firstName,
                 LastName = lastName,
-                UserName = Guid.NewGuid().ToString(),
+                UserName = model.Email,
                 Email = model.Email,
                 Company = company,
             };
@@ -99,7 +98,7 @@
             var roleId = user.Roles.FirstOrDefault().RoleId;
             var applicationRole = await this.roleManager.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
 
-            var jwt = this.identityService.GenerateJwt(secret, user.Id, applicationRole.Name);
+            var jwt = this.identityService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
 
             return new ResultModel(new { JWT = jwt });
         }

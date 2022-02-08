@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static SBC.Common.GlobalConstants.ApplicationUserConstants;
+
     public class RegisterRequestModel
     {
         [Required]
@@ -12,7 +14,7 @@
         public string Email { get; init; }
 
         [Required(AllowEmptyStrings = true)]
-        [RegularExpression(@" *([A-za-z]{2,}) +([A-za-z]{2,}) *", ErrorMessage = $"Full Name is invalid. Must contain at least two separate names with only letters.")]
+        [RegularExpression(FullNameRegex, ErrorMessage = FullNameError)]
         public string FullName { get; init; }
 
         [Required]
