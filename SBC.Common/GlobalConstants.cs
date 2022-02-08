@@ -1,8 +1,21 @@
-﻿namespace SBC.Common
+namespace SBC.Common
 {
     public static class GlobalConstants
     {
         public const string SystemName = "SBC";
+
+        public const string BlobContainer = "upskillcontainertest";
+
+        public class ControllerRouteConstants
+        {
+            public const string DeleteRoute = "delete";
+
+            public const string GetAllRoute = "getAll";
+
+            public const string DownloadBlobByNameRoute = "download";
+
+            public const string UploadBlobRoute = "upload";
+        }
 
         public class RolesNamesConstants
         {
