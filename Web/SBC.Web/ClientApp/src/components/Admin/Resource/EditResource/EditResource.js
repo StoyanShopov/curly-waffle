@@ -1,25 +1,26 @@
+import css from "./EditResource.module.css"
 function EditResource(){
     return(
-        <section className="section">
+        <section className={css.section}>
             <form>
                 <div>
-                    <p className="p">Edit Resource</p>
+                    <p className={css.p}>Edit Resource</p>
                 </div>
                 <div>
-                <input className="imput" placeholder="Id*"></input>
-                    <input className="imput" placeholder="Name*"></input>
-                    <input className="imput" placeholder="FileUrl*"></input>
-                    <input className="imput" placeholder="Size*"></input>
-                    <select className="imput" >
+                <input className={css.imput} placeholder="Id*"></input>
+                    <input className={css.imput} placeholder="Name*"></input>
+                    <input className={css.imput} placeholder="FileUrl*"></input>
+                    <input className={css.imput} placeholder="Size*"></input>
+                    <select className={css.imput} >
                     <option value="One">One</option>
                     <option value="Two">Two</option>
                     <option value="Three">Three</option>
                     </select>
-                    <input className="imput" placeholder="LectureId*"></input>
-                    <input type="submit" value="Edit" className="btn" />
+                    <input className={css.imput} placeholder="LectureId*"></input>
+                    <input type="submit" value="Edit" className={css.btn} />
                 </div>
             </form>
         </section>
     )
 }
-export default EditResource();
+export default EditResource;
