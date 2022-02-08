@@ -26,22 +26,22 @@ export default function NavigationBar() {
             </div>
             <div className={css.Navigation}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
-                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
                 <a href="/super-admin/">Dashboard</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
-                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
                 <a href="/super-admin/clients">Clients</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
-                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
                 <a href="/super-admin/revenue">Revenue</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
-                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
                 <a href="#" onClick={onLogout} className={css.logOut}>Log Out</a>

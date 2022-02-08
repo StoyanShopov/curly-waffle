@@ -10,7 +10,7 @@ export default function Dashboard() {
     let [items, setItems] = useState({});
 
     useEffect(async () => {
-        const data = await DashboardIndex().then(r => {
+        const data = await  DashboardIndex().then(r => {
             setItems(r)
           
         })

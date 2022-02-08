@@ -1,0 +1,10 @@
+.revenue{
+    margin-left: 35%;
+    margin-top: 0px;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: Montserrat,sans-serif;    
+    font-weight: bold;
+}
