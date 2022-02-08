@@ -1,8 +1,8 @@
 .dashboard{
+    margin-left: 35%;
     margin-top: 0px;
-    margin-left: 0px;
     flex-direction: column;
-    padding-top: 7%;
+    padding-top: 5%;
     padding-left: 5%;
     padding-right: 5%;
     font-family: Montserrat,sans-serif;    

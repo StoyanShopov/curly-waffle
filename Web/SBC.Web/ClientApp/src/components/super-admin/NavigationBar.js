@@ -2,6 +2,11 @@ import css from './NavigationBar.module.css';
 
 export default function NavigationBar() {
 
+
+    const onLogout = () => {
+        //clear jwt token and redirect to main page 
+        console.log("Logout")
+    }
     return (
         <div className={css.vertical}>
             <div className={css.iconPen}>
@@ -20,14 +25,26 @@ export default function NavigationBar() {
                 <br />
             </div>
             <div className={css.Navigation}>
-                <svg></svg>
-                <a>Dashboard</a>
-                <svg></svg>
-                <a>Clients</a>
-                <svg></svg>
-                <a>Revenue</a>
-                <svg></svg>
-                <a className={css.logOut}>Log Out</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                </svg>
+
+                <a href="/super-admin/">Dashboard</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                </svg>
+
+                <a href="/super-admin/clients">Clients</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                </svg>
+
+                <a href="/super-admin/revenue">Revenue</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
+                    <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1" />
+                </svg>
+
+                <a href="#" onClick={onLogout} className={css.logOut}>Log Out</a>
             </div>
         </div>
     )

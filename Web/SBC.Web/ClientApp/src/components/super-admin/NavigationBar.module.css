@@ -1,13 +1,20 @@
 .vertical {
     background-color: #EAF0FF;
     position: relative;
+
+    margin-top: 0px;
+
     margin-left: 0;
-    width: 24%;
-    padding-left: 130px;
-    padding-top: 50px;
+    /* 24 */
+    width: 26%;
+    /* padding-left: 130px;
+    padding-top: 50px; */
     height: 600px;
     float: left;
     margin-bottom: 20px;
+
+    padding-top: 5%;
+    padding-left: 7.5%;
 }
 .circleFloatChild
 {
@@ -45,6 +52,7 @@
 
 .Navigation {
     padding: 5px;
+    text-align: left;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -59,6 +67,7 @@
     display: block;
     font-weight: medium;
     font-size: 22px;
+    text-decoration: none;
 }
 
 .Navigation svg {

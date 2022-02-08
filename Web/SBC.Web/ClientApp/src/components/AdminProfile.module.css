@@ -1,16 +1,21 @@
 .mainContent {
-  display: flex;
+  /* display: block; */
   flex-direction: row;
   margin: 0px;
+  padding: 0px;
 }
 
+/* 
 .mainContent:nth-child(1) {
-  
+background-color: orange;
+  width: 600px;
   margin-left: 0px;
   margin-top: 0px;
 }
 
 .mainContent:nth-child(2) {
+  width: 1320px;
     margin-right: 0px;
-    margin-top: 0px;
-}
+    margin-top: 0px; 
+} 
+*/
