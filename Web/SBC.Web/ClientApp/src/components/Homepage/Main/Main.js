@@ -17,6 +17,7 @@ export default function Main() {
                     <img src="assets/images/Group 9.jpg" alt="image" />
                 </div>
                 <p className={css.pDemo}>Request a Demo</p>
+                <p className={css.pRequestDemo}>Don’t find what you are looking for? We would be more than happy to help you and assist you in everything you need! Let us know about your personal requirements by filling our request form:</p>
                 <form>
                     <div>
                         <input className={css.inputBase} placeholder='Name*'></input>
