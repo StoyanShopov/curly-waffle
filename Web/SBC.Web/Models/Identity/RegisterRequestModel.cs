@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static SBC.Common.GlobalConstants.ApplicationUserConstants;
+
     public class RegisterRequestModel
     {
         [Required]
@@ -11,7 +13,8 @@
         [EmailAddress]
         public string Email { get; init; }
 
-        [Required]
+        [Required(AllowEmptyStrings = true)]
+        [RegularExpression(FullNameRegex, ErrorMessage = FullNameError)]
         public string FullName { get; init; }
 
         [Required]
