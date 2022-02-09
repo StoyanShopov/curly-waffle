@@ -1,24 +1,78 @@
 .create-page {
     position: absolute;
     background-color: #fefefe;
-    padding: 4.4rem;
+    padding: 2.4rem;
     border: 1px solid #888;
     width: 34.4rem;
-    top: 3.4rem;
-    left: 22.5rem;
+    top: 2.4rem;
+    left: 28rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .input-container {
-    width: 24.4rem;
-    height: 2.4rem;
-    margin-bottom: 5px;
-    margin-top: 3px;
+    width: 500px;
+    height: 2.5rem;
+    margin: 7px;
     opacity: 1;
-    border: 2px solid #296cfb;
+    border: 2px solid #296CFB;
+    font-size: 20px;
 }
 
-body {
-    background: url('../../../../../public/Rectangle\ 1232@2x.png') #FFFFFF 50% 0% no-repeat padding-box;
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.btn-cancel {
+    margin: 5px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    border-color: #296CFB;
+}
+
+.btn-submit {
+    margin: 5px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
+}
+
+.button-container {
+    margin: 10px;
+    padding-top: 15px;
+}
+
+::placeholder {
+    padding-left: 30px;
+    text-align: left;
+    color: #296CFB;
+}
+
+.select-container {
+    width: 500px;
+    height: 2.7rem;
+    margin: 7px;
     opacity: 1;
+    border: 2px solid #296cfb;
+    font-size: 20px;
+    color: #296CFB;
+    padding-left: 30px;
+}
+
+.heading-course {
+    color: #296CFB;
+    margin: 10px;
 }
