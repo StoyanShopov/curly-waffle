@@ -81,7 +81,7 @@
 
         public async Task<Result> Login(LoginServiceModel model, string secret)
         {
-            var user = await this.AllGetByEmailAsync(model.Email);
+            var user = await this.NoTrackGetByEmailAsync(model.Email);
 
             if (user == null)
             {
@@ -128,9 +128,9 @@
             return fullNameArr;
         }
 
-        private async Task<ApplicationUser> AllGetByEmailAsync(string email)
+        private async Task<ApplicationUser> NoTrackGetByEmailAsync(string email)
             => await this.applicationUser
-                .All()
+                .AllAsNoTracking()
                 .Include(au => au.Roles)
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
     }
