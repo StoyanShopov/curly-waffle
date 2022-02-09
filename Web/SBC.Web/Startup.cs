@@ -3,6 +3,8 @@
     using System.Reflection;
     using System.Text;
 
+    using Azure.Storage.Blobs;
+
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -14,12 +16,14 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Microsoft.WindowsAzure.Storage;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
+    using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Client;
     using SBC.Services.Data.Client.Contracts;
@@ -146,6 +150,8 @@
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
+            services.AddSingleton<IBlobService, BlobService>();
             services.AddTransient<IClientService, ClientService>();
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICourseService, CourseService>();
