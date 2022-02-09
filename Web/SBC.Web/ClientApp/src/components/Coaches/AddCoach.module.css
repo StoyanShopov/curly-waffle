@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
+
+.modal{
+    top: 251px;
+    left: 443px;
+    width: 1035px;
+    height: 950px;
+    background: #f5f1f1 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    text-align: center;
+}
+.modalHead{
+    top: 251px;
+    left: 443px;
+    width: 1035px;
+    height: 220px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+.formField{
+    margin-top: 50px;
+    top: 513px;
+    left: 681px;
+    width: 550px;
+    height: 70px;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    align-content: center;
+}
+.modalTitle{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; 
+    color: #FFFFFF;
+    font-size-adjust: inherit;
+    align-items: center;
+    padding-top: 180px;
+}
+.modalBtnSave{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; 
+    top: 830px;
+    left: 969px;
+    width: 150px;
+    height: 50px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: #296CFB;
+    margin-left: 25px;
+    margin-top: 30px;
+    color: #f5f1f1;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    opacity: 1;
+}   
+.modalBtnCancel{
+    top: 830px;
+    left: 794px;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    color: #296CFB; 
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+}
+
+::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: #296CFB;
+    font-weight: 600;
+    opacity: 1;
+  }
