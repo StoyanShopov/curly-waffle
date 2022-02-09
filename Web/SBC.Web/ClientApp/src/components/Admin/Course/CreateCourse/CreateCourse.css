@@ -1,0 +1,24 @@
+.create-page {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 4.4rem;
+    border: 1px solid #888;
+    width: 34.4rem;
+    top: 3.4rem;
+    left: 22.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input-container {
+    width: 24.4rem;
+    height: 2.4rem;
+    margin-bottom: 5px;
+    margin-top: 3px;
+    opacity: 1;
+    border: 2px solid #296cfb;
+}
+
+body {
+    background: url('../../../../../public/Rectangle\ 1232@2x.png') #FFFFFF 50% 0% no-repeat padding-box;
+    opacity: 1;
+}
