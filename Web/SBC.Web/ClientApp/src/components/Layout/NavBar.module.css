@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+header {
+    display: initial;  
+    position: sticky;
+}
+
+.headerContainer {
+    position: sticky;
+    top: 0px;
+    left: 0px;    
+    width: auto;
+    height: 10rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    z-index: 10;
+}
+
+/*.arrow {
+    position: relative;
+    left: 155.93px;
+    top: 71.78px;
+    width: 52.95px;
+    height: 21.88px;
+    opacity: 100%;
+}*/
+
+/*.logoContainer {
+    float: left;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-left: 156px
+}*/
+
+.arrow {
+    width: 52.95px;
+    height: 21.88px;
+    opacity: 100%;
+   /* float: left;*/
+
+    position: relative;
+    left: 155.93px;
+    top: 71.78px;
+}
+
+.arrow {
+    position: absolute;
+    left: 155.93px;
+    /*left: 9%;*/
+    top: 71.78px;
+    width: 52.95px;
+    height: 21.88px;
+    opacity: 100%;
+}
+
+.upskillContainer {
+    text-align: left;
+    width: 113px;
+    height: 37px;
+    font: normal normal bold 30px/37px Montserrat;
+    letter-spacing: 1.5px;
+    color: #000000;
+    text-transform: lowercase;
+    opacity: 1;
+    position: absolute;
+    left: 228px;
+   /* left: 12.6%;*/
+    top: 61.5px;
+}
+
+    .upskillContainer input {
+        cursor: pointer;
+    }
+
+    .upskillContainer a:hover, .upskillContainer a:visited, .upskillContainer a:link, .upskillContainer a:active {
+        text-decoration: none;
+    }
+
+.testedLinks {
+    display: inline
+}
+
+    .testedLinks li {
+        display: inline;
+    }
+
+ul {
+    position: relative;
+    margin: 0;
+    top: 62px;
+    left: 500px;
+}
+
+    ul li {
+        margin-left: 30px;
+        font-size: 24px;
+    }
