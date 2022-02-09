@@ -7,11 +7,13 @@
     width: 50%;
     height: 100%;
     float: left;
+    margin-bottom: 12%;
 }
 .rightHalf{
     width: 50%;
     height: 100%;
     margin-top: 10%;
+    
 }
 
 .hOne{
@@ -51,6 +53,12 @@
     font-size: 50px;
     font-weight: bold;
     padding-left: 10%;
+}
+.pRequestDemo{
+    font-size: 22px;
+    padding-left: 10%;
+    width: 570px;
+    display: block; 
 }
 .inputBase{
     width: 300px;
