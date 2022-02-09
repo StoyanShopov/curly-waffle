@@ -55,9 +55,7 @@ ul{
     font-weight:bold;
     font: Montserrat;
     border-color:transparent;
-}
-.ButtonGetStarted:hover{
-    background-color: rgb(199, 221, 216);
+    cursor: pointer;
 }
 .Company
 {
@@ -196,7 +194,7 @@ ul{
 }
 .FooterMain {
     position: absolute;
-    top: 2038px;
+    top: 2312px;
     left: 0px;
     width: 200px;
     height: 100px;   
