@@ -194,10 +194,7 @@ ul{
 }
 .FooterMain {
     position: absolute;
-    top: 2312px;
-    left: 0px;
-    width: 200px;
-    height: 100px;   
+    margin-top: 19%;
 }
 .solid
 {
