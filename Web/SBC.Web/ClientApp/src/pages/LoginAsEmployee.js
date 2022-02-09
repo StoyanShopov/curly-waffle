@@ -28,19 +28,27 @@ export default function LoginAsEmployee(prop) {
                 name="name"
                 required="required"
                 id="name"
-                placeholder="Email Address*"
+                placeholder="Email Address"
               />
+              <span className={styles.testUser}>*</span>
             </div>
             <div>
               <input
                 type="text"
                 className={`${styles.input} ${styles.inputpass}`}
-                placeholder={"Password*"}
+                placeholder={"Password"}
+                required="required"
               />
+              <span className={styles.testPass}>*</span>
             </div>
             <div className={styles.checkcontainer}>
-              <label htmlFor="">
-                <input type="checkbox" name="" />
+              <label htmlFor="check">
+                <input
+                  type="checkbox"
+                  name="check"
+                  className={styles.regularcheckbox}
+                />
+                <span className="checkmark"></span>
                 Запомни ме
               </label>
               <a href="/">{link}</a>
