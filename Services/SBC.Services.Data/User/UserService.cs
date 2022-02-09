@@ -40,7 +40,7 @@
 
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            var emailExists = await this.UserExistsByEmail(model.Email);
+            var emailExists = await this.NoTrackUserExistsByEmail(model.Email);
 
             if (emailExists)
             {
@@ -56,7 +56,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, $"Company '{model.CompanyName}' is not registered.");
             }
 
-            var company = await this.companyService.AllGetCompanyAsync(model.CompanyName);
+            var companyId = await this.companyService.NoTrackGetCompanyByNameAsync(model.CompanyName);
 
             var user = new ApplicationUser
             {
@@ -64,7 +64,7 @@
                 LastName = lastName,
                 UserName = model.Email,
                 Email = model.Email,
-                Company = company,
+                CompanyId = companyId,
             };
 
             var result = await this.userManager.CreateAsync(user, model.Password);
@@ -103,7 +103,7 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<bool> UserExistsByEmail(string email)
+        public async Task<bool> NoTrackUserExistsByEmail(string email)
             => await this.applicationUser
                 .AllAsNoTracking()
                 .AnyAsync(u => u.NormalizedEmail == email.ToUpper());

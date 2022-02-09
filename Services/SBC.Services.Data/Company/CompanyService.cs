@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Company
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -21,9 +22,11 @@
                 .AllAsNoTracking()
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
-        public async Task<Company> AllGetCompanyAsync(string name)
+        public async Task<int> NoTrackGetCompanyByNameAsync(string name)
             => await this.company
-                .All()
-                .FirstOrDefaultAsync(c => c.Name.ToLower() == name.ToLower());
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == name.ToLower())
+                .Select(c => c.Id)
+                .FirstOrDefaultAsync();
     }
 }
