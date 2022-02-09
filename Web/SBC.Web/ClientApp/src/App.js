@@ -6,6 +6,9 @@ import { store } from "./helpers";
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import { Layout } from "./components/Layout/Layout";
 import Home from "./components/Home";
+import Homepage from "./components/Homepage/Homepage";
+import Header from "./components/Homepage/Header/Header";
+import Main from "./components/Homepage/Main/Main"
 
 import "./App.css";
 
@@ -14,7 +17,7 @@ function App() {
     <Provider store={store}>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
         </Routes>
       </Layout>

@@ -1,20 +1,14 @@
 import React from "react"
-
-import FooterFigure from "../../assets/Path 8.png";
-import FooterLOGO from "../../assets/Group 5.png";
-import FacebookImg from "../../assets/Group 12.png";
-import InstagramImg from "../../assets/Group 13.png";
-import LinkedInImg from "../../assets/Group 14.png"
 import { Link } from "react-router-dom";
 import './Footer.css';
 
 function FooterMenu() {
     return (
         <footer className="FooterMain">
-            <img src={FooterFigure} />
+            <img src="assets/images/Path 8.png" />
             <ul>
-                <li><h1 className="LogoHeader">upskill</h1></li>
-                <li>  <img src={FooterLOGO} className="Logo" /></li>
+                <li><h1 className="LogoHeader">upSkill</h1></li>
+                <li>  <img src="assets/images/Group 5.svg" className="Logo" /></li>
                 <li><p className="LogoText">Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field.</p></li>
                 <li><Link to="/get-started"><button className="ButtonGetStarted">Get Started</button></Link></li>
             </ul>
@@ -31,9 +25,9 @@ function FooterMenu() {
                 <li><Link to="/requests"><h3 className="Requests">Requests</h3></Link></li>
             </ul>
             <ul>
-                <li>  <Link to="/"><img src={FacebookImg} className="FacebookLogo" /></Link></li>
-                <li>  <Link to="/"><img src={InstagramImg} className="InstagramLogo" /></Link> </li>
-                <li>  <Link to="/"><img src={LinkedInImg} className="LinkedInLogo" /></Link></li>
+                <li>  <Link to="/"><img src="assets/images/Group 12.png" className="FacebookLogo" /></Link></li>
+                <li>  <Link to="/"><img src="assets/images/Group 13.png" className="InstagramLogo" /></Link> </li>
+                <li>  <Link to="/"><img src="assets/images/Group 14.png" className="LinkedInLogo" /></Link></li>
             </ul>
             <div className='bottomDiv'>
                 <p className="TextOnBottom">&copy; UpSkill {(new Date().getFullYear())}</p>
