@@ -11,7 +11,7 @@ export const login = (email, password) => (dispatch) => {
     return userService.login(email, password).then(
         (data) => {
             dispatch(success(data));
-            //history.push('/');
+            history.push('/');
             return Promise.resolve();
         },
         (error) => {

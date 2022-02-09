@@ -28,13 +28,7 @@ const LoginAsEmployee = (props) => {
   const onLogin = async (e) => {
     e.preventDefault();
 
-    await dispatch(userActions.login(email, password))
-      .then(async () => {
-        props.history.push("/")
-      })
-      .catch(() => {
-          console.log('Error')
-      });
+      await dispatch(userActions.login(email, password));
   };
 
   const link = "Забравена парола?";

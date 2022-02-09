@@ -12,7 +12,8 @@ const login = async(email, password) => {
           password,
       })
       .then((response) => {
-          if(response.data.token) {
+          if (response.data.token) {
+              console.log('Success')
               TokenManagement.setUser(response.data);
               localStorage.setItem('token', response.data.token);
               localStorage.setItem('user', JSON.stringify(jwt(response.data.token)));
