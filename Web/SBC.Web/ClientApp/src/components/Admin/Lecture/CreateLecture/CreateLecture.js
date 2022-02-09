@@ -7,8 +7,8 @@ export default function CreateLecture(){
                     <p className={css.p}>Add Lecture</p>
                 </div>
                 <div>
-                    <input className={css.imput} placeholder="Name*"></input>
-                    <input className={css.imput} placeholder="Description*"></input>
+                    <input className={css.imput} name = "Name" placeholder="Name*"></input>
+                    <input className={css.imput} name = "Description" placeholder="Description*"></input>
                     <input type="submit" value="Add" className={css.btn} />
                 </div>
             </form>
