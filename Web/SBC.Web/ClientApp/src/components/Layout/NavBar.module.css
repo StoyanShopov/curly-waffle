@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 header {
-    display: initial;  
+    display: initial;
     position: sticky;
 }
 
 .headerContainer {
     position: sticky;
     top: 0px;
-    left: 0px;    
+    left: 0px;
     width: auto;
     height: 10rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -17,31 +17,10 @@ header {
     z-index: 10;
 }
 
-/*.arrow {
-    position: relative;
-    left: 155.93px;
-    top: 71.78px;
-    width: 52.95px;
-    height: 21.88px;
-    opacity: 100%;
-}*/
-
-/*.logoContainer {
-    float: left;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin-left: 156px
-}*/
-
 .arrow {
     width: 52.95px;
     height: 21.88px;
     opacity: 100%;
-   /* float: left;*/
-
     position: relative;
     left: 155.93px;
     top: 71.78px;
@@ -50,7 +29,6 @@ header {
 .arrow {
     position: absolute;
     left: 155.93px;
-    /*left: 9%;*/
     top: 71.78px;
     width: 52.95px;
     height: 21.88px;
@@ -68,7 +46,6 @@ header {
     opacity: 1;
     position: absolute;
     left: 228px;
-   /* left: 12.6%;*/
     top: 61.5px;
 }
 
@@ -88,14 +65,84 @@ header {
         display: inline;
     }
 
-ul {
-    position: relative;
-    margin: 0;
-    top: 62px;
-    left: 500px;
+    .testedLinks ul {
+        position: relative;
+        margin: 0;
+        top: 62px;
+        left: 500px;
+    }
+
+        .testedLinks ul li {
+            margin-left: 30px;
+            font-size: 24px;
+        }
+
+.greenCircle {
+    top: 55px;
+    left: 1720px;
+    width: 50px;
+    height: 50px;   
+    position: absolute;
+    background: #16D696 0% 0% no-repeat padding-box;
+    border-radius: 95px;
 }
 
-    ul li {
-        margin-left: 30px;
-        font-size: 24px;
+    .greenCircle p {
+        background: #16D696 0% 0% no-repeat padding-box;
+        text-align: center;
+        font: normal normal bold 22px/27px Montserrat;
+        letter-spacing: 1.1px;
+        color: #FFFFFF;
+        opacity: 1;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        top: 9px;
+        border-radius: 120px;
     }
+
+
+
+/*.homePageButtons{
+
+}
+
+    .homePageButtons li {
+        text-decoration: none;
+        display: inline;
+        padding-right: 10px;
+    }
+
+    .homePageButtons ul {
+        float: right;
+        list-style-type: none;
+        padding-top: 60px;
+        padding-right: 17%;
+        text-decoration: none;
+    }*/
+
+/*.loginButton {
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    border-color: #296CFB;
+    text-decoration: none;
+    font-style: Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.requestDemoBtn {
+    width: 250px;
+    height: 50px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font-style: Montserrat;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}*/

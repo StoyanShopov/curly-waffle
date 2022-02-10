@@ -9,7 +9,7 @@ const NavBar = () => {
         <header>
             <div className={styles.headerContainer}>
                 < div className={styles.logoContainer}>
-                    
+
                     <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
 
                     < div className={styles.upskillContainer}>
@@ -18,7 +18,6 @@ const NavBar = () => {
                         </a>
                     </div>
                 </div>
-
                 < div className={styles.testedLinks}>
                     <ul>
                         <li>
@@ -32,7 +31,21 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-
+                < div className={styles.homePageButtons}>
+                    {/*<li>*/}
+                    {/*    <ul>*/}
+                    {/*        <li>*/}
+                    {/*            <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>*/}
+                    {/*        </li>*/}
+                    {/*        <li>*/}
+                    {/*            <Link to="request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+                    {/*</li>*/}
+                </div>
+                < div className={styles.greenCircle}>
+                    <p>A</p>
+                </div>
             </div>
         </header>
     )

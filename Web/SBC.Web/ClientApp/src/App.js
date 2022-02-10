@@ -3,8 +3,8 @@ import { Provider } from "react-redux";
 
 import { store } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
-import Home from "./components/Home";
 
+import Home from "./components/Home";
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
