@@ -1,0 +1,72 @@
+a.close {
+    top: 40px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+}
+
+.delete-window {
+    position: absolute;
+    top: 12rem;
+    left: 28rem;
+    width: 700px;
+    height: 400px;
+}
+
+.top-div {
+    background: #296CFB;
+    opacity: 1;
+    width: 700px;
+    height: 200px;
+}
+
+p.text-question {
+    text-align: center;
+    font: normal normal bold 28px/36px Montserrat;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+    opacity: 1;
+    left: 173px;
+    width: 408px;
+    height: 70px;
+    padding-top: 100px;
+    padding-left: 150px;
+}
+
+.bottom-div {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    width: 700px;
+    height: 200px;
+}
+
+.button-div{
+    padding: 40px;
+}
+
+.btn-cancel {
+    width: 120px;
+    height: 2.5rem;
+    margin: 5px;
+    text-align: center;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    background-color: #FFFFFF;
+    border-color: #296CFB;
+}
+
+.btn-delete {
+    width: 120px;
+    height: 2.5rem;
+    margin: 5px;
+    text-align: center;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
+}
