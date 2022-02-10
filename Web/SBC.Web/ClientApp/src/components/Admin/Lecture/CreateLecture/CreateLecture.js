@@ -1,4 +1,5 @@
 import css from "./CreateLecture.module.css"
+
 export default function CreateLecture(){
     return(
         <section className={css.section}>

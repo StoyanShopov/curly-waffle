@@ -1,0 +1,101 @@
+.container{
+    display: flex;
+    width: 100%;
+}
+.leftPart{
+    width: 66%;
+}
+.rightPart{
+    width: 34%;
+}
+.marketingHeading{
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+    font-style: Montserrat;
+}
+.controllsDiv{
+    width: 1035px;
+    height: 70px;
+    margin-top: 10px;
+    background-color: #296CFB;
+}
+.play{
+    padding-top: 20px;
+    padding-left: 60px;
+}
+.audio{
+    padding-left: 30px;
+}
+.time{
+    padding-left: 90px;
+}
+.options{
+    padding-left: 450px;
+}
+.fullScreen{
+    padding-left: 30px;
+}
+.descriptionHeading{
+    font-size: 22px;
+    font-style: Montserrat;
+}
+.instructorHeading{
+    font-size: 22px;
+    font-style: Montserrat;
+}
+.pDescription{
+    font-size: 22px;
+    font-style: Montserrat;
+    width: 800px;
+}
+.lectorPic{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+}
+.pCreatedBy{
+    margin-left: 20px;
+    margin-top: 0px;
+    font-size: 22px;
+    font-style: Montserrat;
+    font-weight:500;
+}
+.lectorSection{
+    display: flex;
+    width: 250px;
+}
+.google{
+    margin-left: 20px;
+}
+.pInstructor{
+    font-size: 22px;
+    font-style: Montserrat;
+    width: 820px;  
+}
+.lecturesHeading{
+    font-size: 22px;
+    font-style: Montserrat;
+    margin-top: 9%;
+    padding-left: 8%;
+}
+.ulLectures{
+    list-style-type: none;
+}
+.liName{
+    font-size: 22px;
+    font-style: Montserrat;
+    font-weight: 450;
+    margin: 2%;
+}
+.btnViewMore{
+    width: 250px;
+    height: 70px;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: Montserrat;
+    color: #296CFB;
+    border-color: #296CFB;
+    margin-top: 9%;
+    margin-left: 8%;
+}
