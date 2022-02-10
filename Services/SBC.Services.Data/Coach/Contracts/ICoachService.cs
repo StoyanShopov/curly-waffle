@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Coach.Contracts
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
@@ -9,6 +10,10 @@
     {
         Task<Result> NewRegistrationCoach(RegisterCoach coach);
 
-        Task<Result> Get(LoginCoach coach);
+        Task<List<ListingCoachModel>> GetAll();
+
+        Task<Result> UpdateCoach(UpdateCoachModel coach);
+
+        Task<Result> DeleteCoach(int coachId);
     }
 }

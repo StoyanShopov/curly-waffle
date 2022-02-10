@@ -24,10 +24,14 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Data;
+    using SBC.Services.Data.Category;
+    using SBC.Services.Data.Category.Contracts;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Language;
+    using SBC.Services.Data.Language.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -146,6 +150,8 @@
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICoachService, CoachService>();
             services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
