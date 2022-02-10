@@ -83,6 +83,7 @@
             return true;
         }
 
+        // TODO: use mapping
         public async Task<Result> GetPortionAsync(int skip = 0, int take = TakeDefaultValue)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
@@ -96,6 +97,7 @@
                  .Include(au => au.Company)
                  .Select(au => new GetPortionServiceModel
                  {
+                     Id = role.Id,
                      Email = au.Email,
                      NormalizedEmail = au.NormalizedEmail,
                      CompanyName = au.Company.Name,
