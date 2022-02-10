@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    width: 100%;
+}
+.leftPart{
+    width: 66%;
+}
+.rightPart{
+    width: 34%;
+}
+.marketingHeader{
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+    font-family: Montserrat;
+}
+.controllsDiv{
+    width: 1035px;
+    height: 70px;
+    margin-top: 10px;
+    background-color: #296CFB;
+}
