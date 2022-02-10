@@ -13,8 +13,8 @@ const CreateCourse = () => {
     return (
         <section className="create-page">
             <h2 className="heading-course">Create course</h2>
-            <a className="close" href="/">&times;</a>
-
+            <a className="close-create" href="/">&times;</a>
+            
             <form id="create-form" onSubmit={onCourseCreate} method="POST">
                 <div>
                     <input type="text" className="input-container" name="title" placeholder="Title" />

@@ -18,11 +18,10 @@
     font-size: 20px;
 }
 
-.close {
+a.close-create {
     position: absolute;
     top: 20px;
     right: 30px;
-    transition: all 200ms;
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
