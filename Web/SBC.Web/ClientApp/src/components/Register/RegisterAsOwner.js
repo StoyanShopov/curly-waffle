@@ -68,7 +68,7 @@ export default function RegisterAsOwner(prop) {
                         </div>
                         <div>
                             <div className={styles.btncontainer}>
-                                <input type="button" value="SignUp" />
+                                <input type="submit" value="SignUp" />
                             </div>
                             <br />
                             <div className={styles.checkcontainer}>

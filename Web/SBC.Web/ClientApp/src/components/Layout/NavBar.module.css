@@ -69,11 +69,11 @@ header {
         position: relative;
         margin: 0;
         top: 62px;
-        left: 500px;
+        left: 400px;
     }
 
         .testedLinks ul li {
-            margin-left: 30px;
+            margin-left: 16px;
             font-size: 24px;
         }
 
@@ -103,35 +103,37 @@ header {
 
 
 
-/*.homePageButtons{
+.homePageButtons{
 
 }
 
     .homePageButtons li {
         text-decoration: none;
         display: inline;
-        padding-right: 10px;
+        padding-right: 25px;
     }
 
     .homePageButtons ul {
-        float: right;
-        list-style-type: none;
-        padding-top: 60px;
-        padding-right: 17%;
         text-decoration: none;
-    }*/
+        margin-top: 0;
+        margin-bottom: 0;
+        top: 55px;
+        left: 920px;
+        position: absolute;
+    }
 
-/*.loginButton {
+.loginButton {
     width: 150px;
     height: 50px;
     text-decoration: none;
     border-color: #296CFB;
-    text-decoration: none;
-    font-style: Montserrat;
+    text-decoration: none;    
+    font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
     color: #296CFB;
-    font-size: 18px;
-    cursor: pointer;
+    font-size: 20px;
+    cursor: pointer;    
+    background-color: white;
 }
 
 .requestDemoBtn {
@@ -140,9 +142,37 @@ header {
     background-color: #296CFB;
     border-color: #296CFB;
     color: floralwhite;
-    text-decoration: none;
-    font-style: Montserrat;
+    text-decoration: none;    
+    font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
-}*/
+}
+
+
+.coursesCoaches {
+    display: inline;
+    cursor: pointer;
+}
+
+.coursesCoaches li {
+    display: inline;
+}
+
+    .coursesCoaches ul {
+        position: absolute;
+        margin: 0;
+        top: 68px;
+        left: 1400px;
+    }
+
+        .coursesCoaches ul li {
+            margin-left: 30px;
+            font-size: 22px;
+            letter-spacing: 1.1px;
+        }
+
+
+    .coursesCoaches a:hover, .coursesCoaches a:visited, .coursesCoaches a:link, .coursesCoaches a:active {
+        text-decoration: none;
+    }

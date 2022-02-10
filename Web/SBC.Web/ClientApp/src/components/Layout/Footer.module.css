@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.logoText {
+    text-align: left;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 325px;
+    left: 200px;
+    width: 200px;
+    height: 100px;
+    color: #FFFFFF;
+    font: bold Montserrat;
+    opacity: 1;
+}
+
+.logoHeader {
+    text-align: left;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    width: 200px;
+    height: 100px;
+    color: #FFFFFF;
+    font: bold Montserrat;
+    opacity: 1;
+}
+
+.logo {
+    text-align: left;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 215px;
+    left: 175px;
+    width: 100px;
+    color: #FFFFFF;
+    font: normal normal bold 45px/55px Montserrat;
+    opacity: 1;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.buttonGetStarted {
+    text-align: left;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 550px;
+    left: 200px;
+    color: #0B2969;
+    width: 250px;
+    padding: 19px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    font: Montserrat;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.company {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 295px;
+    left: 900px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.contactUs {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 450px;
+    left: 900px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.aboutUs {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 375px;
+    left: 900px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.privacyPolicy {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 525px;
+    left: 900px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.services {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 295px;
+    left: 1400px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.courses {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 375px;
+    left: 1400px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.coaches {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 450px;
+    left: 1400px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.requests {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 525px;
+    left: 1400px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.facebookLogo {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 375px;
+    left: 1800px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.instagramLogo {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 450px;
+    left: 1800px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.linkedInLogo {
+    text-align: center;
+    letter-spacing: 2.25px;
+    position: absolute;
+    top: 525px;
+    left: 1800px;
+    color: #FFFFFF;
+    font: Montserrat;
+}
+
+.textOnBottom {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    top: 640px;
+    left: 0px;
+    width: 940%;
+    border-top: 5px solid white;
+    color: white;
+    line-height: 50px;
+    padding: 0 20px;
+}
+
+.footerMain {
+    position: absolute;
+    margin-top: 0%;
+}
+
+.solid {
+    padding: .5em 0;
+    border-bottom: 1px solid #CCC;
+}
