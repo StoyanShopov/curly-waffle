@@ -5,7 +5,6 @@ import { store } from "./helpers";
 
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import { Layout } from "./components/Layout/Layout";
-import Home from "./components/Home";
 import Homepage from "./components/Homepage/Homepage"
 
 import "./App.css";
