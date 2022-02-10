@@ -9,17 +9,18 @@
     using SBC.Services.Data.Admin.Models;
     using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Profile;
+    using SBC.Services.Data.Profile.Contracts;
 
     public class ProfileController : AdministrationController
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly ProfileService profileService;
+        private readonly IProfileService profileService;
 
         public ProfileController(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
             UserManager<ApplicationUser> userManager,
-            ProfileService profileService)
+            IProfileService profileService)
         {
             this.applicationUser = applicationUser;
             this.userManager = userManager;

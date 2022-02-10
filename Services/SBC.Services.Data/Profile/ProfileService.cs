@@ -38,5 +38,25 @@
                     Result = result,
                 });
         }
+
+        public async Task<Result> Edit(EditProfileServiceModel model, string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            user.Email = model.Email;
+            user.FirstName = model.Fullname;
+            user.ProfileSummary = model.ProfileSummary;
+            user.PhotoUrl = model.PhotoUrl;
+
+            var result = await this.userManager.UpdateAsync(user);
+
+         //   await this.blobService.UploadFileBlobAsync(file);
+
+            return new ResultModel(
+                new
+                {
+                    Result = result,
+                });
+        }
     }
 }

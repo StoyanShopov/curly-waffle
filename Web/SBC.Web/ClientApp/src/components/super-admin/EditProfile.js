@@ -1,9 +1,18 @@
 import css from './EditProfile.module.css';
+import { EditAdmin } from '../../services/super-admin-service';
 
 export default function EditProfile(props) {
+
     function OnEditAdmin(e) {
         e.preventDefault();
-        console.log(e.target);
+        const fd = new FormData(e.target);
+        const data= [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, {
+            [k]: v
+        }), {});
+      const _data=  EditAdmin(data).then(data=>{
+            console.log(data)
+        })
+        console.log(_data);
     }
 
     return (
@@ -26,9 +35,9 @@ export default function EditProfile(props) {
                         <button className={css.button}>Edit Photo</button>
                     </div>
                     <div className={css.bodyContainer3}>
-                        <input className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>
-                        <input className={css.nameCntr} type="text" placeholder="Hello@Motion-Software.com"></input>
-                        <textarea className={css.resizableContent} type="text" placeholder="Profile Summary"></textarea>
+                        <input name="fullName" className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>
+                        <input name="email" className={css.nameCntr} type="text" placeholder="Hello@Motion-Software.com"></input>
+                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary"></textarea>
                     </div>
                 </div>
                 <div className={css.footer}>

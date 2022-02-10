@@ -9,10 +9,10 @@ import Modal from 'react-modal';
 import React from 'react';
 
 export default function AdminProfile() {
-  
+
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  
+
 
   function openModal() {
     setIsOpen(true);
@@ -31,22 +31,32 @@ export default function AdminProfile() {
 
   return (
     <div className={css.mainContent}>
-      <NavigationBar showModal={openModal}/>
+      <NavigationBar showModal={openModal} />
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="clients" element={<Clients />} />
         <Route path="revenue" element={<Revenue />} />
       </Routes>
-      <EditProfile visible={false} />
+
 
       <Modal
+        style={{ content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          width: '45%',
+          bottom: 'auto',
+          marginTop: '-10%',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)'
+        }}}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <EditProfile closeModal={closeModal}/>
+        <EditProfile closeModal={closeModal} />
       </Modal>
     </div>
   )

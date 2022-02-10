@@ -42,6 +42,8 @@
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
+    using SBC.Services.Data.Profile;
+    using SBC.Services.Data.Profile.Contracts;
 
     public class Startup
     {
@@ -157,6 +159,7 @@
             services.AddTransient<ICourseService, CourseService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ICoachService, CoachService>();
+            services.AddTransient<IProfileService, ProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
