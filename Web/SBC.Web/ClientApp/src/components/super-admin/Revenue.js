@@ -1,4 +1,4 @@
-import css from "./Revenue.module.css"
+import css from "./Revenue.module.css";
 
 export default function Revenue() {
     return (
