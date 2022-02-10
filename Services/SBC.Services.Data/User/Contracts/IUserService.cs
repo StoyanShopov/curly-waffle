@@ -11,6 +11,6 @@
 
         Task<Result> Login(LoginServiceModel model, string secret);
 
-        Task<bool> UserExistsByEmail(string email);
+        Task<bool> NoTrackUserExistsByEmail(string email);
     }
 }

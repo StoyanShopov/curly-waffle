@@ -31,6 +31,8 @@
     using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Resource;
     using SBC.Services.Data.Resource.Contracts;
+    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -143,9 +145,10 @@
                 });
 
             // Application services
+            services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICourseService, CourseService>();
             services.AddTransient<ILectureService, LectureService>();
