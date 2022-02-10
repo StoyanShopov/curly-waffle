@@ -10,21 +10,22 @@
     using SBC.Data.Models;
     using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Coach.Models;
+    using SBC.Services.Data.Language.Contracts;
 
     public class CoachService : ICoachService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
-        private readonly IDeletableEntityRepository<LanguageCoach> languageCoachRepository;
-        private readonly IDeletableEntityRepository<CategoryCoach> categoryCoachRepository;
+        private readonly ILanguageCoachService languageService;
+        private readonly ICategoryCoachService categoryService;
 
         public CoachService(
             IDeletableEntityRepository<Coach> data,
-            IDeletableEntityRepository<LanguageCoach> languageCoachRepository,
-            IDeletableEntityRepository<CategoryCoach> categoryCoachRepository)
+            ILanguageCoachService languageService,
+            ICategoryCoachService categoryService)
         {
             this.coachRepository = data;
-            this.languageCoachRepository = languageCoachRepository;
-            this.categoryCoachRepository = categoryCoachRepository;
+            this.languageService = languageService;
+            this.categoryService = categoryService;
         }
 
         public async Task<Result> NewRegistrationCoach(RegisterCoach coach)
@@ -76,7 +77,7 @@
 
         public async Task<Result> UpdateCoach(UpdateCoachModel coach)
         {
-            var coachModel = this.coachRepository.AllAsNoTracking().Where(x => x.Id == coach.CoachId).FirstOrDefault();
+            var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.CoachId);
             if (coachModel == null)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
@@ -85,10 +86,7 @@
             coachModel.Description = coach.Description;
             coachModel.PricePerSession = coach.PricePerSession;
             coachModel.VideoUrl= coach.VideoUrl;
-            coachModel.CalendlyUrl= coach.CalendlyUrl;
-
-            this.coachRepository.Update(coachModel);
-            await this.coachRepository.SaveChangesAsync();
+            coachModel.CalendlyUrl = coach.CalendlyUrl;
 
             foreach (var languigeId in coach.Languiges)
             {
@@ -118,21 +116,11 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
             }
 
-            var languagesCoach = this.languageCoachRepository.AllAsNoTracking().Where(x => x.CoachId == coachId).ToList();
+            var languagesCoach = this.languageService.GetAllLanguagesCoach(coachId);
+            this.languageService.DeleteAllLanguagesCoach(languagesCoach);
 
-            foreach (var languige in languagesCoach)
-            {
-                this.languageCoachRepository.Delete(languige);
-                await this.languageCoachRepository.SaveChangesAsync();
-            }
-
-            var categoryCoach = this.categoryCoachRepository.AllAsNoTracking().Where(x => x.CoachId == coachId).ToList();
-
-            foreach (var category in categoryCoach)
-            {
-                    this.categoryCoachRepository.Delete(category);
-                    await this.categoryCoachRepository.SaveChangesAsync();
-            }
+            var categoriesCoach = this.categoryService.GetAllCategoriesCoach(coachId);
+            this.categoryService.DeleteAllCategoriesCoach(categoriesCoach);
 
             this.coachRepository.Delete(coachModel);
             await this.coachRepository.SaveChangesAsync();
@@ -141,12 +129,12 @@
         }
 
         private bool ExistingCoach(string firstName, string lastName)
-     => this.coachRepository.AllAsNoTracking().Any(x => x.FirstName == firstName && x.LastName == lastName && x.IsDeleted == false);
+        => this.coachRepository.AllAsNoTracking().Any(x => x.FirstName == firstName && x.LastName == lastName && x.IsDeleted == false);
 
         private bool ExistCategory(Coach coachModel, int categoryId)
-       => coachModel.Categories.Any(x => x.CategoryId == categoryId && x.CoachId == coachModel.Id && x.IsDeleted == false);
+        => coachModel.Categories.Any(x => x.CategoryId == categoryId && x.CoachId == coachModel.Id && x.IsDeleted == false);
 
         private bool ExistLanguage(Coach coachModel, int languigeId)
-      => coachModel.Languages.Any(x => x.LanguageId == languigeId && x.CoachId == coachModel.Id && x.IsDeleted == false);
+        => coachModel.Languages.Any(x => x.LanguageId == languigeId && x.CoachId == coachModel.Id && x.IsDeleted == false);
     }
 }
