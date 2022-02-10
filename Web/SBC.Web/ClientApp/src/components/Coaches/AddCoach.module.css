@@ -1,46 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
 
+.body{
+    font-family: "Montserrat", sans-serif;
+    background: transparent url('../../../public/assets/images/Rectangle1291.svg') 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    
+}
 .modal{
-    top: 251px;
-    left: 443px;
     width: 1035px;
-    height: 950px;
-    background: #f5f1f1 0% 0% no-repeat padding-box;
+    height: 1035px;
+    background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     opacity: 1;
     text-align: center;
+    position: relative;
 }
 .modalHead{
-    top: 251px;
-    left: 443px;
+
     width: 1035px;
-    height: 220px;
+    height: 200px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 .formField{
     margin-top: 50px;
-    top: 513px;
-    left: 681px;
     width: 550px;
-    height: 70px;
+    height: 55px;
     border: 2px solid #296CFB;
     opacity: 1;
     align-content: center;
+    position: relative;
 }
 .modalTitle{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif; 
-    color: #FFFFFF;
+    color: #ffffff;
     font-size-adjust: inherit;
     align-items: center;
-    padding-top: 180px;
+    padding-top: 165px;
 }
 .modalBtnSave{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif; 
-    top: 830px;
-    left: 969px;
     width: 150px;
     height: 50px;
     background: #296CFB 0% 0% no-repeat padding-box;
@@ -48,14 +53,13 @@
     border: #296CFB;
     margin-left: 25px;
     margin-top: 30px;
-    color: #f5f1f1;
+    color: #ffffff;
     font: normal normal bold 22px/27px Montserrat;
     letter-spacing: 1.1px;
     opacity: 1;
+    cursor: pointer;
 }   
 .modalBtnCancel{
-    top: 830px;
-    left: 794px;
     width: 150px;
     height: 50px;
     border: 2px solid #296CFB;
@@ -63,11 +67,29 @@
     color: #296CFB; 
     font: normal normal bold 22px/27px Montserrat;
     letter-spacing: 1.1px;
+    cursor: pointer;
+}
+.addAnotherCoachBtn{
+    color: #296CFB;
+    text-align: left;
+    position: relative;
+    font: normal normal bold 22px/27px Montserrat;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    left: -150px;
+    font-weight: 500;
+    background:none;
 }
 
 ::placeholder {
     font-family: "Montserrat", sans-serif;
     color: #296CFB;
-    font-weight: 600;
+    font-weight: 500;
     opacity: 1;
+    content: "*";
   }
+
+input[type="file"]{
+    color: #296CFB;
+}
