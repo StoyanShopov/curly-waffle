@@ -1,0 +1,130 @@
+.editContainer {
+  margin-top: 196px;
+  width: 900px;
+  flex-direction: column;
+}
+
+.headerContainer {
+  height: 85px;
+  background-color: #296cfb;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 48px;
+}
+
+.bodyContainer {
+  height: 440px;
+  display: flex;
+  justify-content: space-around;
+}
+.bodyContainer2 {
+  margin-top: 50px;
+  width: 200px;
+  height: 380px;
+}
+.bodyContainer3 {
+  margin-top: 50px;
+  width: 550px;
+  height: 380px;
+}
+.profileImage {
+  background-color: #296CFB1A;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  padding-top:35px;
+}
+.button {
+  border: 0;
+  background-color: #296cfb;
+  margin: 10px;
+  margin-left: 38px;
+  color: white;
+  font-weight: bold;
+}
+button
+{
+  width: 120px;
+  height: 35px;
+  font-size: 18px;
+}
+
+.nameCntr {
+  width: 530px;
+  height: 40px;
+  border: 2px solid;
+  border-color: #296cfb;
+}
+.nameCntr:nth-child(2) {
+  margin-top: 25px;
+}
+.resizableContent {
+  min-height: 180px;
+  min-width: 530px;
+  resize: both;
+  overflow: auto;
+  max-height: fit-content;
+  max-width: fit-content;
+  margin-top: 25px;
+  border: 2px solid #296cfb;
+}
+.cancelBtn {
+  background-color: white;
+  border-color: #296cfb;
+  color: #296cfb;
+  font-weight: bold;
+  box-shadow: none;
+}
+.cancelBtn:nth-child(2)
+{
+  background-color: #296CFB;
+  color: white;
+  
+}
+.text {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  padding-left: 80px;
+  background-color: #296cfb;
+  margin: 0;
+}
+
+.close {
+  margin-right: 0;
+  height: 40px;
+  margin: 20px;
+  margin-top: 0;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 0;
+}
+div.bodyContainer3 * {
+  padding-left: 15px;
+  font-size: 20px;
+  font-weight: medium;
+}
+
+::placeholder {
+  color: #296cfb;
+}
+input:nth-child(2)::placeholder {
+  color: #a0bbf5;
+}
+textarea {
+  padding-top: 8px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.footer *
+{
+  margin: 15px;
+}

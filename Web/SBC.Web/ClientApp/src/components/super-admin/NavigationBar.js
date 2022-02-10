@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import css from './NavigationBar.module.css';
+import { useState } from 'react';
 
-export default function NavigationBar() {
-
-
+export default function NavigationBar(props) {
     const onLogout = () => {
         //clear jwt token and redirect to main page 
         console.log("Logout")
@@ -11,9 +10,11 @@ export default function NavigationBar() {
     return (
         <div className={css.vertical}>
             <div className={css.iconPen}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
-                    <path id="iconmonstr-pencil-2" d="M19.075,2.946l2.981,2.98L6.4,21.585l-3.732.752L3.417,18.6,19.075,2.946Zm0-2.946L1.5,17.576,0,25l7.424-1.5L25,5.926,19.075,0Z" />
-                </svg>
+                <button onClick={() => props.showModal()}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
+                        <path id="iconmonstr-pencil-2" d="M19.075,2.946l2.981,2.98L6.4,21.585l-3.732.752L3.417,18.6,19.075,2.946Zm0-2.946L1.5,17.576,0,25l7.424-1.5L25,5.926,19.075,0Z" />
+                    </svg>
+                </button>
             </div>
             <div className={css.circleContainer}>
                 <div className={css.circleFloatChild}>
