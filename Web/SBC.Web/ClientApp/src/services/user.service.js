@@ -11,14 +11,13 @@ const login = async(email, password) => {
           email,
           password,
       })
-      .then((response) => {
-          if (response.data.token) {
-              console.log('Success')
+        .then((response) => {
+          if (response.data.jwt) {
               TokenManagement.setUser(response.data);
-              localStorage.setItem('token', response.data.token);
-              localStorage.setItem('user', JSON.stringify(jwt(response.data.token)));
+              localStorage.setItem('token', response.data.jwt);
+              localStorage.setItem('user', JSON.stringify(jwt(response.data.jwt)));
           }
-          return response.data;
+          return response.data.jwt;
       });
 };
 

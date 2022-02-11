@@ -4,14 +4,7 @@ export const getLocalRefreshToken = () => {
 };
 
 export const getLocalAccessToken = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user?.token;
-};
-
-export const updateLocalAccessToken = (token) => {
-    let user = JSON.parse(localStorage.getItem('user'));
-    user.token = token;
-    localStorage.setItem('user', JSON.stringify(user));
+    return JSON.parse(localStorage.getItem('token'));
 };
 
 export const getUser = () => {
@@ -19,8 +12,7 @@ export const getUser = () => {
 };
 
 export const setUser = (user) => {
-    console.log(JSON.stringify(user));
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user.jwt));
 };
 
 export const removeUser = () => {
