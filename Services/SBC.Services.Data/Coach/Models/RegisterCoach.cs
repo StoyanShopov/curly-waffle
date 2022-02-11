@@ -1,13 +1,18 @@
 ﻿namespace SBC.Services.Data.Coach.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using static SBC.Common.GlobalConstants.ApplicationUserConstants;
 
     public class RegisterCoach
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [RegularExpression(NameRegex)]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [RegularExpression(NameRegex)]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string LastName { get; set; }
 
         [Required]
@@ -15,7 +20,6 @@
 
         [Required]
         public string VideoUrl { get; set; }
-
 
         public decimal PricePerSession { get; set; }
 

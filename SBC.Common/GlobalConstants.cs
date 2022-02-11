@@ -143,6 +143,9 @@
 
         public class ApplicationUserConstants
         {
+            public const string NameRegex = @"^\w$";
+            public const byte MinLengthName = 2;
+            public const byte MaxLengthName = 25;
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
 
