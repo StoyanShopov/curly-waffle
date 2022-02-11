@@ -22,27 +22,21 @@
     color: #e20707;
 }
 
-/* .popup .content {
-    max-height: 30%;
-    overflow: auto;
-} */
-
 .overlay:target {
     visibility: visible;
     opacity: 1;
 }
 
-/* .button:hover {
-    background: #06D85F;
+.header-courses {
+    text-align: left;
+    font: normal normal bold 48px/50px Montserrat;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    width: 293px;
+    height: 70px;
+    margin-block: unset;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 100px;
 }
-
-.button {
-    font-size: 1em;
-    padding: 10px;
-    color: #fff;
-    border: 2px solid #06D85F;
-    border-radius: 20px/50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-} */
