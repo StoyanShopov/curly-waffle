@@ -37,7 +37,6 @@ const NavBar = () => {
                         <p className={styles.textOnBottom}>&copy; UpSkill {(new Date().getFullYear())}</p>
                     </div>
                 </div>
-
             </div>
         </footer>
     )

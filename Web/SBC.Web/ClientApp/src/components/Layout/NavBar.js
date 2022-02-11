@@ -11,9 +11,7 @@ const NavBar = () => {
                 < div className={styles.logoContainer}>
                     <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     < div className={styles.upskillContainer}>
-                        <a href="/">
-                            <b>upskill</b>
-                        </a>
+                        <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
                     </div>
                 </div>
                 < div className={styles.testedLinks}>
@@ -25,7 +23,7 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
                         </li>
                         <li>
-                            <NavLink tag={Link} to="/docs">Docs</NavLink>
+                            <a href="/docs">Docs</a>
                         </li>
                     </ul>
                 </div>
@@ -39,18 +37,26 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-
                 < div className={styles.coursesCoaches}>
                     <ul>
                         <li>
-                            <a href="/courses">Courses</a>
+                            <NavLink
+                                to="/courses"
+                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+                            >
+                                Courses
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/coaches">Coaches</a>
-                        </li>                        
+                            <NavLink
+                                to="/coaches"
+                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+                            >
+                                Coaches
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
-
                 < div className={styles.greenCircle}>
                     <p>A</p>
                 </div>

@@ -125,7 +125,7 @@
     display: flex;
     margin: auto;
     justify-content: center;
-    margin-bottom: 1.1rem;
+    margin-bottom: 5%;
 }
 
     .btncontainer input {
@@ -148,8 +148,8 @@
 .checkcontainer {
     display: flex;
     justify-content: space-between;
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 11%;
+    padding-right: 13%;
     height: 27px;
 }
 
@@ -157,37 +157,22 @@
         cursor: pointer;
     }
 
-    .checkcontainer label {
-        font-family: "Montserrat", sans-serif;
-        font-size: 22px;
-        color: #296cfb;
-    }
-
-    .checkcontainer a {
-        color: #296cfb;
-        font-family: "Montserrat", sans-serif;
-        font-size: 22px;
-    }
-
-        .checkcontainer a:hover, .checkcontainer a:visited, .checkcontainer a:link, .checkcontainer a:active {
-            text-decoration: none;
-        }
-
-    .checkcontainer p {
-        width: 100%;
-        margin-top: 3px;
-    }
-
-    .checkcontainer b {
-        text-align: right;
-    }
+.alreadyHave {
+    font-family: "Montserrat", sans-serif;   
+    font-size: 22px;
+    color: #296cfb;
+    letter-spacing: 0px;
+    opacity: 1;
+    margin: 0;
+}
 
 .loginhere {
-    position: relative;
-    top: 10%;
-    width: 30%;
-    text-align: right;
+    color: inherit;   
     text-decoration: underline;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 0px;
+    color: #296CFB;
+    opacity: 1;
 }
 
 .starfullname {

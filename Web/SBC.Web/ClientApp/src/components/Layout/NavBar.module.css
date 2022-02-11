@@ -39,9 +39,6 @@ header {
     text-align: left;
     width: 113px;
     height: 37px;
-    font: normal normal bold 30px/37px Montserrat;
-    letter-spacing: 1.5px;
-    color: #000000;
     text-transform: lowercase;
     opacity: 1;
     position: absolute;
@@ -53,9 +50,13 @@ header {
         cursor: pointer;
     }
 
-    .upskillContainer a:hover, .upskillContainer a:visited, .upskillContainer a:link, .upskillContainer a:active {
-        text-decoration: none;
-    }
+.upskillLink {
+    color: inherit;
+    text-decoration: inherit;
+    font: normal normal bold 30px/37px Montserrat;
+    letter-spacing: 1.5px;
+    color: #000000;
+}
 
 .testedLinks {
     display: inline
@@ -81,10 +82,10 @@ header {
     top: 55px;
     left: 1720px;
     width: 50px;
-    height: 50px;   
+    height: 50px;
     position: absolute;
     background: #16D696 0% 0% no-repeat padding-box;
-    border-radius: 95px;
+    border-radius: 100px;
 }
 
     .greenCircle p {
@@ -98,13 +99,10 @@ header {
         margin: 0;
         position: relative;
         top: 9px;
-        border-radius: 120px;
+        border-radius: 70px;
     }
 
-
-
-.homePageButtons{
-
+.homePageButtons {
 }
 
     .homePageButtons li {
@@ -118,7 +116,7 @@ header {
         margin-top: 0;
         margin-bottom: 0;
         top: 55px;
-        left: 920px;
+        left: 950px;
         position: absolute;
     }
 
@@ -127,12 +125,12 @@ header {
     height: 50px;
     text-decoration: none;
     border-color: #296CFB;
-    text-decoration: none;    
+    text-decoration: none;
     font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
     color: #296CFB;
     font-size: 20px;
-    cursor: pointer;    
+    cursor: pointer;
     background-color: white;
 }
 
@@ -142,37 +140,54 @@ header {
     background-color: #296CFB;
     border-color: #296CFB;
     color: floralwhite;
-    text-decoration: none;    
+    text-decoration: none;
     font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
 }
 
-
 .coursesCoaches {
-    display: inline;
     cursor: pointer;
+    
 }
 
-.coursesCoaches li {
-    display: inline;
-}
+    .coursesCoaches li {
+        display: inline;
+        
+    }
 
     .coursesCoaches ul {
         position: absolute;
         margin: 0;
         top: 68px;
         left: 1400px;
+       
     }
 
         .coursesCoaches ul li {
-            margin-left: 30px;
-            font-size: 22px;
-            letter-spacing: 1.1px;
+            margin-left: 20px;                     
         }
-
 
     .coursesCoaches a:hover, .coursesCoaches a:visited, .coursesCoaches a:link, .coursesCoaches a:active {
         text-decoration: none;
+        
     }
+
+.coursesNotActive {
+    font: normal normal normal 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #000000;
+    font-weight: normal;
+    opacity: 1;
+    font-size: 22px;
+}
+
+.coursesActive {
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    font-weight: bold;
+    opacity: 1;
+    font-size: 22px;
+}

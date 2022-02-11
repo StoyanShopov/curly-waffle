@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import styles from "./RegisterAsOwner.module.css";
 
 export default function RegisterAsOwner(prop) {
@@ -73,15 +74,14 @@ export default function RegisterAsOwner(prop) {
                             <br />
                             <div className={styles.checkcontainer}>
                                 < div>
-                                    <a href="/Login">
-                                        <p>Already have an account?
-                                        </p>
-                                    </a>
+                                    <p className={styles.alreadyHave}>
+                                        Already have an account?                                        
+                                    </p>
                                 </div>
-                                < div className={styles.loginhere}>
-                                    <a href="/Login">
-                                        <b>Login here</b>
-                                    </a>
+                                < div>
+                                    <NavLink to="/login" className={styles.loginhere}>
+                                        Login here
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
