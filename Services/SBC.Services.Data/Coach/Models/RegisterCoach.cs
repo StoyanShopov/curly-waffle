@@ -1,18 +1,15 @@
 ﻿namespace SBC.Services.Data.Coach.Models
 {
     using System.ComponentModel.DataAnnotations;
+
     using static SBC.Common.GlobalConstants.ApplicationUserConstants;
 
     public class RegisterCoach
     {
-        [Required(AllowEmptyStrings = false)]
         [RegularExpression(NameRegex)]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string FirstName { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
         [RegularExpression(NameRegex)]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string LastName { get; set; }
 
         [Required]
