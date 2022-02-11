@@ -1,5 +1,5 @@
-﻿import React, { useRef, useState } from "react";
-import { Link } from 'react-router-dom';
+﻿import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { userActions } from '../../actions/index';
@@ -8,7 +8,8 @@ import styles from "./LoginAsEmployee.module.css";
 
 
 const LoginAsEmployee = (props) => {
-  const form = useRef();
+    const form = useRef();
+    const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,7 @@ const LoginAsEmployee = (props) => {
     e.preventDefault();
 
       await dispatch(userActions.login(email, password));
+      navigate('/');
   };
 
   const link = "Забравена парола?";

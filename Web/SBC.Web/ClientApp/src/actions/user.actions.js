@@ -1,17 +1,16 @@
 ﻿import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
-import { history } from '../helpers';
 import jwt from 'jwt-decode';
 
 
 export const login = (email, password) => (dispatch) => {
-    dispatch(request({email}));
+    dispatch(request({ email }));
     
     return userService.login(email, password).then(
         (data) => {
             dispatch(success(data));
-            history.push('/');
+
             return Promise.resolve();
         },
         (error) => {
@@ -29,7 +28,7 @@ export const login = (email, password) => (dispatch) => {
     );
 
     function request(email) { return { type: userConstants.LOGIN_REQUEST, email } }
-    function success(data) { return { type: userConstants.LOGIN_SUCCESS,  payload: { user: jwt(data.token) } } }
+    function success(data) { return { type: userConstants.LOGIN_SUCCESS,  payload: { user: jwt(data) } } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 };
 
