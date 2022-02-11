@@ -7,7 +7,7 @@ export default function Header() {
             <ul >
                 <li className={css.li}>
                     <ul className={css.ulLogo}>
-                        <li className={css.li}><img src="/Group 5.jpg" alt="image" /></li>
+                        <li className={css.li}><img src="/Group 5.jpg" alt="" /></li>
                         <li className={css.li}>
                             <Link to='/' className={css.pUpSkill}>upskill</Link>
                         </li >
