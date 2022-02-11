@@ -2,39 +2,40 @@
 
 .logoText {
     text-align: left;
-    letter-spacing: 2.25px;
+    letter-spacing: 0.6px;
     position: absolute;
-    top: 325px;
-    left: 200px;
-    width: 200px;
-    height: 100px;
+    top: 260px;
+    left: 150px;
+    width: 425px;
+    height: 159px;
     color: #FFFFFF;
-    font: bold Montserrat;
+    font: Montserrat;
     opacity: 1;
+    line-height: 42px;
+    font-size: 22px;
 }
 
 .logoHeader {
     text-align: left;
-    letter-spacing: 2.25px;
+    letter-spacing: 1.25px;
     position: absolute;
-    top: 200px;
-    left: 300px;
-    width: 200px;
-    height: 100px;
+    top: 151px;
+    left: 265px;
+    width: 170px;
+    height: 55px;
     color: #FFFFFF;
-    font: bold Montserrat;
+    font: Montserrat;
     opacity: 1;
+    font-size: 42px;
+    line-height: 55px;   
 }
 
 .logo {
-    text-align: left;
-    letter-spacing: 2.25px;
     position: absolute;
-    top: 215px;
-    left: 175px;
-    width: 100px;
-    color: #FFFFFF;
-    font: normal normal bold 45px/55px Montserrat;
+    top: 188px;
+    left: 147px;
+    width: 92.4px;    
+    color: #FFFFFF;    
     opacity: 1;
 }
 
@@ -43,22 +44,23 @@ ul {
 }
 
 .buttonGetStarted {
-    text-align: left;
-    letter-spacing: 2.25px;
+    letter-spacing: 1.1px;
     position: absolute;
-    top: 550px;
-    left: 200px;
+    top: 494px;
+    left: 150px;
     color: #0B2969;
     width: 250px;
+    height: 70px;
     padding: 19px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     font: Montserrat;
     border-color: transparent;
     cursor: pointer;
+    line-height: 27px;
 }
 
 .company {
@@ -155,7 +157,7 @@ ul {
     letter-spacing: 2.25px;
     position: absolute;
     top: 375px;
-    left: 1800px;
+    left: 1760px;
     color: #FFFFFF;
     font: Montserrat;
 }
@@ -165,7 +167,7 @@ ul {
     letter-spacing: 2.25px;
     position: absolute;
     top: 450px;
-    left: 1800px;
+    left: 1760px;
     color: #FFFFFF;
     font: Montserrat;
 }
@@ -175,7 +177,7 @@ ul {
     letter-spacing: 2.25px;
     position: absolute;
     top: 525px;
-    left: 1800px;
+    left: 1760px;
     color: #FFFFFF;
     font: Montserrat;
 }
@@ -186,13 +188,12 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
     position: absolute;
-    top: 640px;
-    left: 0px;
-    width: 940%;
-    border-top: 5px solid white;
+    top: 620px;
+    width: 1920px;
+    border-top: 2px solid white;
     color: white;
-    line-height: 50px;
-    padding: 0 20px;
+    line-height: 58px;
+    font-size: 20px;
 }
 
 .footerMain {

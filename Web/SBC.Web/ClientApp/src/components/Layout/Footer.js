@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className={styles.footerMain}>
                     <img src="assets/images/Path 8.svg" />
                     <ul>
-                        <li><h1 className={styles.logoHeader}>upSkill</h1></li>
+                        <li><h1 className={styles.logoHeader}>upskill</h1></li>
                         <li>  <img src="assets/images/Group 5.svg" className={styles.logo} /></li>
                         <li><p className={styles.logoText}>Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field.</p></li>
                         <li><Link to="/get-started"><button className={styles.buttonGetStarted}>Get Started</button></Link></li>
