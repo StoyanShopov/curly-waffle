@@ -1,141 +1,127 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './AddCoach.module.css';
 
 
 const AddCoach = () => {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('')
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState('');
-    const [callendlyUrl, setCalendlyUrl] = useState('');
-    const [file, setFile] = useState('');
+    // const [firstName, setFirstName] = useState('');
+    // const [lastName, setLastName] = useState('')
+    // const [price, setPrice] = useState(0);
+    // const [description, setDescription] = useState('');
+    // const [callendlyUrl, setCalendlyUrl] = useState('');
+    // const [file, setFile] = useState('');
 
-    const onChangeLastName = (e) =>{
-        setLastName(e.target.value);
-    }
+    // const onChangeLastName = (e) =>{
+    //     setLastName(e.target.value);
+    // }
 
-    const onChangeFirstName = (e) =>{
-        setFirstName(e.target.value);
-    }
+    // const onChangeFirstName = (e) =>{
+    //     setFirstName(e.target.value);
+    // }
 
-    const onChangeCallendlyUrl = (e) =>{
-        setCalendlyUrl(e.target.value);
-    }
+    // const onChangeCallendlyUrl = (e) =>{
+    //     setCalendlyUrl(e.target.value);
+    // }
 
-    const onChangeFile = (e) =>{
-        setFile(e.target.file[0]);
-    }
+    // const onChangeFile = (e) =>{
+    //     setFile(e.target.file[0]);
+    // }
 
-    const onChangeDescription = (e) =>{
-        setDescription(e.target.value);
-    }
+    // const onChangeDescription = (e) =>{
+    //     setDescription(e.target.value);
+    // }
 
-    const onChangePrice = (e) =>{
-        setPrice(e.target.value)
-    }
+    // const onChangePrice = (e) =>{
+    //     setPrice(e.target.value)
+    // }
 
-    const onSubmitAddCoach=(e) =>{
-        e.preventDefault()
-    }
+    // const onSubmitAddCoach=(e) =>{
+    //     e.preventDefault()
+    // }
 
     return (
         <body className={styles.body}>
-            <section>
-                <div className={styles.modal}>
-                    <div className={styles.modalHead}>
-                        <span className={styles.modalBtnClose}>
-                            <i className={styles.fa}></i>
-                        </span>
-                        <h2 className={styles.modalTitle}>Add Coaches</h2>
-                    </div>
-                    <div className={styles.modalContented}>
-                        <form 
-                        className={styles.formMain}
-                        // onSubmit={(e) =>{onSubmitAddCoach}}
-                        >
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="text" 
-                                className={styles.formField} 
-                                placeholder="First Name*" 
-                                id="firstName"
-                                value={firstName}
-                                onChange={onChangeFirstName}
-                                    required />
-                                <label htmlFor="firstname" className={styles.formLabel}></label>
-                            </div>
+            <div className={styles.bodyContainer}>
+                <div className={styles.addContainer}>
+                    <form>
 
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="text" 
-                                className={styles.formField} 
-                                placeholder="Last Name*" 
-                                id="lastname"
-                                value={lastName}
-                                onChange={onChangeLastName}
+                        <div className={styles.headerContainer}>
+                            <div className={styles.titleContainer}>Add Coach</div>
+                            <div className={styles.fileUpload}>
+                                <input type="file" className={styles.upload} />
+                                <span>Upload image</span>
+                            </div>
+                            <button className={styles.closeBtn}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21.92" height="21.92" viewBox="0 0 21.92 21.92">
+                                    <g id="Group_46" data-name="Group 46" transform="translate(-1484.379 -241.379)">
+                                        <line id="Line_59" data-name="Line 59" y2="25" transform="translate(1504.178 243.5) rotate(45)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3" />
+                                        <line id="Line_60" data-name="Line 60" y2="25" transform="translate(1504.178 261.178) rotate(135)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <div>
+                                <input className={styles.inputField}
+                                    name="firstName"
+                                    placeholder='First Name*'
+                                    type="text"
                                     required />
                             </div>
 
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="text" 
-                                className={styles.formField} 
-                                placeholder="Price*" 
-                                id="price" 
-                                onChange={onChangePrice}
+                            <div>
+                                <input className={styles.inputField}
+                                    name="lastName"
+                                    placeholder='Last Name*'
+                                    type="text"
+                                    required />
+                            </div>
+                            <div>
+                                <input className={styles.inputField}
+                                    name="price"
+                                    placeholder='Price*'
+                                    type="text"
+                                    required />
+                            </div>
+                            <div>
+                                <input className={styles.inputField}
+                                    name="company"
+                                    placeholder='Company(optional)'
+                                    type="text" />
+                            </div>
+                            <div>
+                                <input className={styles.inputField}
+                                    name="callendlyUrl"
+                                    placeholder='CallendlyUrl*'
+                                    type="text"
                                     required />
                             </div>
 
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="text" 
-                                className={styles.formField} 
-                                placeholder="Description*" 
-                                id="description" 
-                                value={description}
-                                onChange={onChangeDescription}
+                            <div>
+                                <textarea className={styles.inputField}
+                                    name="description"
+                                    placeholder='Description*'
+                                    type="textarea"
                                     required />
                             </div>
-
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="text" 
-                                className={styles.formField} 
-                                placeholder="Callendly-URL*" 
-                                id="calendly"
-                                value={callendlyUrl}
-                                onChange={onChangeCallendlyUrl}
-                                    required />
-                            </div>
-
-                            <div className={styles.formGroup, styles.field}>
-                                <input 
-                                type="file" 
-                                className={styles.formField} 
-                                placeholder="file*" 
-                                id="file"
-                                value={file}
-                                onChange={onChangeFile}
-                                     required />
-                            </div>
-
                             <button className={styles.addAnotherCoachBtn}>
                                 + Create another coach
                             </button>
-
-                            <div className={styles.modalFooter}>
-                                <div className={styles.submitBox}>
-                                    <button className={styles.modalBtnCancel} type="submit">Cancel</button>
-                                    <button className={styles.modalBtnSave} type="submit">Save</button>
-                                </div>
+                            <div className={styles.footerContainer}>
+                                <button className={styles.btnCancel} type="button">Cancel</button>
+                                <button className={styles.btnSave} type="submit">Save</button>
                             </div>
-                        </form>
-                    </div>
+
+                        </div>
+                    </form>
                 </div>
-            </section>
+
+            </div>
+
+
         </body>
+
     )
 }
 
