@@ -1,25 +1,26 @@
+import { Link } from 'react-router-dom';
 import css from './EditProfile.module.css';
-import { EditAdmin } from '../../services/super-admin-service';
+import { EditAdmin } from './../../services/super-admin-service';
 
 export default function EditProfile(props) {
-
     function OnEditAdmin(e) {
         e.preventDefault();
+        console.log(e.target);
+
         const fd = new FormData(e.target);
-        const data= [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, {
-            [k]: v
-        }), {});
-      const _data=  EditAdmin(data).then(data=>{
-            console.log(data)
-        })
+        console.log(fd);
+        const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
+        console.log(data);
+        const _data = EditAdmin(data).then(data => { console.log(data) })
         console.log(_data);
+        
     }
 
     return (
         <div className={css.editContainer}>
             <div className={css.headerContainer}>
                 <span className={css.text}>Personal Information</span>
-                <button onClick={() => props.closeModal()} className={css.close}>X</button>
+                <Link to="" onClick={() => props.closeModal()} className={css.close}>X</Link>
             </div>
             <form onSubmit={e => OnEditAdmin(e)}>
                 <div className={css.bodyContainer}>
@@ -32,16 +33,16 @@ export default function EditProfile(props) {
                                     fill="#fff" />
                             </svg>
                         </div>
-                        <button className={css.button}>Edit Photo</button>
+                        <button className={css.button} >Edit Photo</button>
                     </div>
                     <div className={css.bodyContainer3}>
-                        <input name="fullName" className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>
+                        <input name="fullname" className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>
                         <input name="email" className={css.nameCntr} type="text" placeholder="Hello@Motion-Software.com"></input>
                         <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary"></textarea>
                     </div>
                 </div>
                 <div className={css.footer}>
-                    <button onClick={() => props.closeModal()} className={css.cancelBtn}>Cancel</button>
+                    <button onClick={() => props.closeModal()} className={css.buttonPrs}>Cancel</button>
                     <button className={css.button} type="Submit">Save</button>
                 </div>
             </form>

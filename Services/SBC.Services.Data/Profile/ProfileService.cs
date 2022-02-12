@@ -50,7 +50,7 @@
 
             var result = await this.userManager.UpdateAsync(user);
 
-         //   await this.blobService.UploadFileBlobAsync(file);
+            //await this.blobService.UploadFileBlobAsync(file);
 
             return new ResultModel(
                 new

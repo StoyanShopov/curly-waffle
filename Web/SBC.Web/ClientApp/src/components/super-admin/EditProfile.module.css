@@ -42,12 +42,22 @@
   margin-left: 38px;
   color: white;
   font-weight: bold;
-}
-button
-{
   width: 120px;
   height: 35px;
   font-size: 18px;
+}
+.buttonPrs
+{
+  border: 0;
+  background-color: white;
+  margin: 10px;
+  margin-left: 38px;
+  color: #296cfb;
+  font-weight: bold;
+  width: 120px;
+  height: 35px;
+  font-size: 18px;
+  border: 1px solid #296cfb;
 }
 
 .nameCntr {
@@ -102,7 +112,10 @@ button
   color: white;
   font-size: 20px;
   padding: 0;
+  text-decoration: none;
+  font-weight: bold;
 }
+
 div.bodyContainer3 * {
   padding-left: 15px;
   font-size: 20px;
