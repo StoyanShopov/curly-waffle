@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
+    using SBC.Common;
     using SBC.Services.Blob;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
@@ -29,14 +29,14 @@
         [HttpPost(UploadBlobRoute)]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
-            await this.blobService.UploadFileBlobAsync(file);
+            var result = await this.blobService.UploadFileBlobAsync(file);
 
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            return this.StatusCode(201);
+            return this.GenericResponse(new ResultModel(result));
         }
 
         [HttpGet(DownloadBlobByNameRoute)]

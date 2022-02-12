@@ -1,4 +1,4 @@
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny05MWE0LTRjNDMtYTg5ZS1jOTk2M2EzYmFkYTIiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDY3MDMzMywiZXhwIjoxNjQ0OTI5NTMyLCJpYXQiOjE2NDQ2NzAzMzN9.V6slczoXX9L1hLqvhP-LlwSIHx1Vspyc66Zg5Q7e_zQ';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny05MWE0LTRjNDMtYTg5ZS1jOTk2M2EzYmFkYTIiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDY4MzAxNywiZXhwIjoxNjQ0OTQyMjE3LCJpYXQiOjE2NDQ2ODMwMTd9.3r8LwDXQ6ByGRARJ5AQdnI5927rSxI8Nx-NTyHjZlSQ';
 
 const options = (data) => {
     return {
@@ -23,7 +23,6 @@ export const DashboardIndex = async () => {
 
 export const EditAdmin = async (data) => {
     console.log(data)
-    //console.log(options(data))
     let response = await fetch("https://localhost:5001/Administration/Profile/Edit", {
         method: 'PUT',
         headers: {
@@ -31,6 +30,22 @@ export const EditAdmin = async (data) => {
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(data)
+    })
+    console.log(response)
+    const _data = await response.json();
+    console.log(_data)
+    return _data;
+}
+
+export const uploadImage = async (file) => {
+    console.log(file)
+    let response = await fetch("https://localhost:5001/api/Blobs/upload", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            //Authorization: `Bearer ${token}`
+        },
+        body: file
     })
     console.log(response)
     const _data = await response.json();

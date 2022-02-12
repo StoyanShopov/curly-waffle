@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import css from './EditProfile.module.css';
-import { EditAdmin } from './../../services/super-admin-service';
+import { EditAdmin,uploadImage } from './../../services/super-admin-service';
 
 export default function EditProfile(props) {
     function OnEditAdmin(e) {
@@ -11,8 +11,10 @@ export default function EditProfile(props) {
         console.log(fd);
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
         console.log(data);
-        const _data = EditAdmin(data).then(data => { console.log(data) })
-        console.log(_data);
+        uploadImage(data.photoUrl).then(data=> console.log(data));
+
+        // const _data = EditAdmin(data).then(data => { console.log(data) })
+        // console.log(_data);
         
     }
 
@@ -33,7 +35,10 @@ export default function EditProfile(props) {
                                     fill="#fff" />
                             </svg>
                         </div>
-                        <button className={css.button} >Edit Photo</button>
+                        <div className={css.fileUpload}>
+                                <input name="photoUrl" type="file" className={css.upload} />
+                                <span>Edit Photo</span>
+                        </div>
                     </div>
                     <div className={css.bodyContainer3}>
                         <input name="fullname" className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>

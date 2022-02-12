@@ -28,12 +28,12 @@
   height: 380px;
 }
 .profileImage {
-  background-color: #296CFB1A;
+  background-color: #296cfb1a;
   height: 200px;
   width: 200px;
   display: flex;
   justify-content: center;
-  padding-top:35px;
+  padding-top: 35px;
 }
 .button {
   border: 0;
@@ -46,8 +46,7 @@
   height: 35px;
   font-size: 18px;
 }
-.buttonPrs
-{
+.buttonPrs {
   border: 0;
   background-color: white;
   margin: 10px;
@@ -86,11 +85,9 @@
   font-weight: bold;
   box-shadow: none;
 }
-.cancelBtn:nth-child(2)
-{
-  background-color: #296CFB;
+.cancelBtn:nth-child(2) {
+  background-color: #296cfb;
   color: white;
-  
 }
 .text {
   font-family: Montserrat, sans-serif;
@@ -137,7 +134,58 @@ textarea {
   justify-content: center;
   margin-bottom: 30px;
 }
-.footer *
-{
-  margin: 15px;
+.fileUpload {
+  border: 0;
+  background-color: #296cfb;
+  margin: 10px;
+  margin-left: 38px;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+  height: 35px;
+  font-size: 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+.fileUpload span {
+  padding-top: 4px;
+  display: block;
+  text-align: center;
+}
+
+.fileUpload:hover,
+.fileUpload:active,
+.fileUpload:focus {
+  background: white;
+  color: grey;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 148px;
+  height: 46px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  position: fixed;
+  right: 100%;
+  bottom: 100%;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }
