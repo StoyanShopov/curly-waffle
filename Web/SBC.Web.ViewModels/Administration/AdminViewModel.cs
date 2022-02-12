@@ -1,8 +1,6 @@
-﻿namespace SBC.Services.Data.Admin.Models
+﻿namespace SBC.Web.ViewModels.Administration
 {
-    using Microsoft.AspNetCore.Http;
-
-    public class EditProfileServiceModel
+    public class AdminViewModel
     {
         public string Fullname { get; set; }
 

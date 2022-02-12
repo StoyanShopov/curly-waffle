@@ -26,6 +26,9 @@
             this.userManager = userManager;
             this.profileService = profileService;
         }
+        [HttpGet]
+        [Route(nameof(GetUser))]
+        public async Task<ActionResult> GetUser() => this.GenericResponse(await this.profileService.GetAdminData(this.User.Id()));
 
         [HttpPut]
         [Route(nameof(Edit))]

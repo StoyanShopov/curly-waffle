@@ -1,22 +1,46 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import css from './EditProfile.module.css';
-import { EditAdmin,uploadImage } from './../../services/super-admin-service';
+import { EditAdmin, uploadImage, GetAdminData } from './../../services/super-admin-service';
+import { _adapters } from 'chart.js';
 
 export default function EditProfile(props) {
-    function OnEditAdmin(e) {
+    let [admin, setAdmin] = useState({});
+
+    useEffect(async () => {
+        await GetAdminData().then(r => {
+            setAdmin(r)
+        })
+    }, [])
+
+    function onInputchange(element) {
+        console.log(element)
+        setAdmin({ [element.name]: element.value.trim() })
+    }
+
+    const OnEditAdmin = async (e) => {
         e.preventDefault();
         console.log(e.target);
 
         const fd = new FormData(e.target);
-        console.log(fd);
+
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
         console.log(data);
-        uploadImage(data.photoUrl).then(data=> console.log(data));
 
-        // const _data = EditAdmin(data).then(data => { console.log(data) })
-        // console.log(_data);
-        
+        data.photoUrl = data.photoUrl == null || data.photoUrl.size == 0
+            ? admin.photoUrl
+            : await uploadImage(data.photoUrl);//does not return imgUrl
+        console.log(data.photoUrl);
+
+        EditAdmin(data)
+            .then((data) => {
+                console.log(data['status'])
+                if (data['status']) { props.closeModal() }
+            }, (err) => {
+                console.error(err)
+            })
     }
+
 
     return (
         <div className={css.editContainer}>
@@ -36,14 +60,14 @@ export default function EditProfile(props) {
                             </svg>
                         </div>
                         <div className={css.fileUpload}>
-                                <input name="photoUrl" type="file" className={css.upload} />
-                                <span>Edit Photo</span>
+                            <input name="photoUrl" type="file" className={css.upload} />
+                            <span>Edit Photo</span>
                         </div>
                     </div>
                     <div className={css.bodyContainer3}>
-                        <input name="fullname" className={css.nameCntr} type="text" placeholder="Aya Krasteva"></input>
-                        <input name="email" className={css.nameCntr} type="text" placeholder="Hello@Motion-Software.com"></input>
-                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary"></textarea>
+                        <input name="fullname" className={css.nameCntr} type="text" value={admin['fullname']} onChange={(e) => onInputchange(e.target)} placeholder="Aya Krasteva"></input>
+                        <input name="email" className={css.nameCntr} type="text" value={admin['email']} onChange={(e) => onInputchange(e.target)} placeholder="Hello@Motion-Software.com"></input>
+                        <textarea name="profileSummary" className={css.resizableContent} type="text" onChange={(e) => onInputchange(e.target)} placeholder="Profile Summary" value={admin['profileSummary']}></textarea>
                     </div>
                 </div>
                 <div className={css.footer}>

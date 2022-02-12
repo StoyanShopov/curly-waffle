@@ -7,6 +7,7 @@
     using Azure.Storage.Blobs;
     using Azure.Storage.Blobs.Models;
     using Microsoft.AspNetCore.Http;
+    using SBC.Common;
     using SBC.Web.ViewModels.Blob;
 
     using static SBC.Common.GlobalConstants;
@@ -44,7 +45,7 @@
             return blobs;
         }
 
-        public async Task<string> UploadFileBlobAsync(IFormFile file)
+        public async Task<Result> UploadFileBlobAsync(IFormFile file)
         {
             var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
 
@@ -57,7 +58,7 @@
 
             await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders);
 
-            return blobClient.Uri.ToString();
+            return new ResultModel(blobClient.Uri.ToString());
         }
 
         public BlobClient DownloadBlobByName(string blobName)

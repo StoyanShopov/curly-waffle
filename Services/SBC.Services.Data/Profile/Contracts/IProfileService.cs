@@ -7,6 +7,8 @@
 
     public interface IProfileService
     {
-       Task<Result> Edit(EditProfileServiceModel model, string userId);
+        Task<Result> Edit(EditProfileServiceModel model, string userId);
+
+        Task<Result> GetAdminData(string userId);
     }
 }
