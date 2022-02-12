@@ -5,43 +5,96 @@ import styles from './AddCoach.module.css';
 
 const AddCoach = () => {
 
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('')
-    // const [price, setPrice] = useState(0);
-    // const [description, setDescription] = useState('');
-    // const [callendlyUrl, setCalendlyUrl] = useState('');
-    // const [file, setFile] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('')
+    const [price, setPrice] = useState(0);
+    const [company, setCompany]  = useState('');
+    const [description, setDescription] = useState('');
+    const [calendlyUrl, setCalendlyUrl] = useState('');
+    const [file, setFile] = useState('');
+    const [errors, setErrors] = useState([]);
 
-    // const onChangeLastName = (e) =>{
-    //     setLastName(e.target.value);
-    // }
+    const onChangeLastName = (e) =>{
+        setLastName(e.target.value);
+    }
 
-    // const onChangeFirstName = (e) =>{
-    //     setFirstName(e.target.value);
-    // }
+    const onChangeFirstName = (e) =>{
+        setFirstName(e.target.value);
+    }
 
-    // const onChangeCallendlyUrl = (e) =>{
-    //     setCalendlyUrl(e.target.value);
-    // }
+    const onChangeCompany = (e) => {
+        setCompany(e.target.value);
+    }
 
-    // const onChangeFile = (e) =>{
-    //     setFile(e.target.file[0]);
-    // }
+    const onChangecalendlyUrl = (e) =>{
+        setCalendlyUrl(e.target.value);
+    }
 
-    // const onChangeDescription = (e) =>{
-    //     setDescription(e.target.value);
-    // }
+    const onChangeFile = (e) =>{
+        console.log(e.target.files[0]);
+        setFile(e.target.files[0]);
+    }
 
-    // const onChangePrice = (e) =>{
-    //     setPrice(e.target.value)
-    // }
+    const onChangeDescription = (e) =>{
+        setDescription(e.target.value);
+    }
 
-    // const onSubmitAddCoach=(e) =>{
-    //     e.preventDefault()
-    // }
+    const onChangePrice = (e) =>{
+        setPrice(e.target.value)
+    }
+
+    const onSubmitAddCoach=(e) =>{
+        e.preventDefault()
+    }
+
+    let handleValidation = () => {
+        let input = {
+          firstName,
+          lastName,
+          price,
+          calendlyUrl,
+          file,
+          description,
+        };
+
+        let errors = {};
+        let isValid = true;
+    
+        if (input['firstName']) {
+          isValid = false;
+          errors['firstName'] = 'Cannot be empty';
+        }
+    
+        if (input['lastName']) {
+          isValid = false;
+          errors['lastName'] = 'Cannot be empty';
+        }
+    
+        if (input['description']) {
+          isValid = false;
+          errors['description'] = 'Calendly URL should be a correct one!';
+        }
+    
+        if (input['price'] < 0) {
+          isValid = false;
+          errors['price'] = 'Price should be bigger than 0!';
+        }
+    
+        if (input['calendlyUrl']) {
+          isValid = false;
+          errors['calendlyUrl'] = 'Please fill in a correct Calendly URL.';
+        }
+
+        if (input['file']) {
+            isValid = false;
+            errors['file'] = 'Please upload an image file.';
+        }
+        
+        setErrors(errors);
+        return isValid;
+      };
 
     return (
-        <body className={styles.body}>
             <div className={styles.bodyContainer}>
                 <div className={styles.addContainer}>
                     <form>
@@ -49,14 +102,18 @@ const AddCoach = () => {
                         <div className={styles.headerContainer}>
                             <div className={styles.titleContainer}>Add Coach</div>
                             <div className={styles.fileUpload}>
-                                <input type="file" className={styles.upload} />
+                                <input 
+                                    type="file" 
+                                    className={styles.upload}  
+                                    onChange={onChangeFile}
+                                    required />
                                 <span>Upload image</span>
                             </div>
                             <button className={styles.closeBtn}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21.92" height="21.92" viewBox="0 0 21.92 21.92">
                                     <g id="Group_46" data-name="Group 46" transform="translate(-1484.379 -241.379)">
-                                        <line id="Line_59" data-name="Line 59" y2="25" transform="translate(1504.178 243.5) rotate(45)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3" />
-                                        <line id="Line_60" data-name="Line 60" y2="25" transform="translate(1504.178 261.178) rotate(135)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3" />
+                                        <line id="Line_59" data-name="Line 59" y2="25" transform="translate(1504.178 243.5) rotate(45)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
+                                        <line id="Line_60" data-name="Line 60" y2="25" transform="translate(1504.178 261.178) rotate(135)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
                                     </g>
                                 </svg>
                             </button>
@@ -67,6 +124,8 @@ const AddCoach = () => {
                                     name="firstName"
                                     placeholder='First Name*'
                                     type="text"
+                                    value={firstName}
+                                    onChange={onChangeFirstName}
                                     required />
                             </div>
 
@@ -75,6 +134,8 @@ const AddCoach = () => {
                                     name="lastName"
                                     placeholder='Last Name*'
                                     type="text"
+                                    value={lastName}
+                                    onChange={onChangeLastName}
                                     required />
                             </div>
                             <div>
@@ -82,19 +143,24 @@ const AddCoach = () => {
                                     name="price"
                                     placeholder='Price*'
                                     type="text"
+                                    onChange={onChangePrice}
                                     required />
                             </div>
                             <div>
                                 <input className={styles.inputField}
                                     name="company"
                                     placeholder='Company(optional)'
-                                    type="text" />
+                                    type="text"
+                                    value={company}
+                                    onChange={onChangeCompany} />
                             </div>
                             <div>
                                 <input className={styles.inputField}
-                                    name="callendlyUrl"
-                                    placeholder='CallendlyUrl*'
+                                    name="calendlyUrl"
+                                    placeholder='calendlyUrl*'
                                     type="text"
+                                    value={calendlyUrl}
+                                    onChange={onChangecalendlyUrl}
                                     required />
                             </div>
 
@@ -103,25 +169,21 @@ const AddCoach = () => {
                                     name="description"
                                     placeholder='Description*'
                                     type="textarea"
+                                    value={description}
+                                    onChange={onChangeDescription}
                                     required />
                             </div>
                             <button className={styles.addAnotherCoachBtn}>
-                                + Create another coach
+                                + Add another coach
                             </button>
                             <div className={styles.footerContainer}>
                                 <button className={styles.btnCancel} type="button">Cancel</button>
-                                <button className={styles.btnSave} type="submit">Save</button>
+                                <button className={styles.btnSave} type="submit" onSubmit={onSubmitAddCoach}>Save</button>
                             </div>
-
                         </div>
                     </form>
                 </div>
-
             </div>
-
-
-        </body>
-
     )
 }
 

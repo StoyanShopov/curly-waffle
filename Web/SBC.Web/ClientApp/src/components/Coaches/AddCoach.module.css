@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
 
-.body{
-    background-color: antiquewhite;
-}
-
 .addContainer {
     position: absolute;
     float: left;
@@ -82,6 +78,7 @@ div.inputContainer{
     cursor: pointer;
 }
 .btnCancel{
+    background-color: white;
     width: 100px;
     height: 40px;
     border: 1px solid #296CFB;
@@ -127,8 +124,8 @@ div.inputContainer{
 
 }
 .fileUpload span{
-    padding-top: 4px;
     display: block;
+    font: normal normal bold 14px/27px Montserrat;
 }
 
 .fileUpload:hover, .fileUpload:active, .fileUpload:focus {
