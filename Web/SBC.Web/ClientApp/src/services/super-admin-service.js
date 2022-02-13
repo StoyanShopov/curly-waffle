@@ -1,5 +1,5 @@
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5ZWZjNDg2OS04OTU0LTQwZTctOGVmMS02YTgxNTVlOTQzMjciLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDcwMDI1NywiZXhwIjoxNjQ0OTU5NDU3LCJpYXQiOjE2NDQ3MDAyNTd9.7U9ROzumEAoYlpfjxwlQGIu5NgEEsl0zCtnrE9bkXsU";
-const BaseUrl = "https://localhost:44319/";
+let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny05MWE0LTRjNDMtYTg5ZS1jOTk2M2EzYmFkYTIiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDc1Mjc2NSwiZXhwIjoxNjQ1MDExOTY1LCJpYXQiOjE2NDQ3NTI3NjV9.XeAMOnsMRUTPCWCjuX0slnmFoBIr6jHnsBn7ho-zFFg";
+const BaseUrl = "https://localhost:5001/";
 
 export const DashboardIndex = async () => {
     let response = await fetch(BaseUrl + "Administration/Dashboard",
@@ -18,7 +18,7 @@ export const GetAdminData = async () => {
 }
 
 export const EditAdmin = async (data) => {
-    console.log("form:"+data)
+    console.log(data);
    return await fetch(BaseUrl + "Administration/Profile/Edit", {
         method: 'PUT',
         headers: {
@@ -30,12 +30,14 @@ export const EditAdmin = async (data) => {
 }
 
 export const uploadImage = async (file) => {
-    console.log("file:"+file)
+    console.log(file);
     const formData = new FormData();
     formData.append('file', file);
 
-    return await fetch(BaseUrl + "api/Blobs/upload", {
+    let response = await fetch(BaseUrl + "api/Blobs/upload", {
         method: 'POST',
         body: formData
     })
+
+    return response;
 }

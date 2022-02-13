@@ -58,7 +58,7 @@
 
             await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders);
 
-            return new ResultModel(blobClient.Uri.ToString());
+            return new ResultModel(new { photoUrl = blobClient.Uri.ToString() });
         }
 
         public BlobClient DownloadBlobByName(string blobName)

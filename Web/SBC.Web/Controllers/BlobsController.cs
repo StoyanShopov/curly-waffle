@@ -30,7 +30,6 @@
         [HttpPost(UploadBlobRoute)]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
-
             if (file == null)
             {
                 return this.GenericResponse(new ErrorModel(HttpStatusCode.NotFound, "file is empty"));
@@ -40,7 +39,6 @@
             {
                 return this.BadRequest();
             }
-
 
             return this.GenericResponse(await this.blobService.UploadFileBlobAsync(file));
         }
