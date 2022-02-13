@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import AddCoach from "./components/Coaches/AddCoach";
 
 import "./App.css";
+import { StrictMode } from "react";
 
 function App() {
   return (

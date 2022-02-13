@@ -161,3 +161,40 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+.starFirstName{
+    position: relative;
+    color: #e84855;
+    left:-47%;
+    
+}
+.starLastName{
+    position: relative;
+    color: #e84855;
+    left: -47.5%;
+}
+.starPrice{
+    position: relative;
+    color: #e84855;
+    left: -55%;
+}
+.starCalendlyUrl{
+    position: relative;
+    color: #e84855;
+    left: -44.4%;
+}
+.starDescription{
+    position: relative;
+    color: #e84855;
+    top: -31px;
+    left: -46.5%;
+}
+.company{
+    color: white;
+}
+input[required]:invalid + span {
+    display: inline-block;
+}
+
+input[required]:valid + span {
+    display: none;
+  }
