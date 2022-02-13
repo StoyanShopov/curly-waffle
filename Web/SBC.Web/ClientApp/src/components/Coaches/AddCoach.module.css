@@ -155,6 +155,7 @@ input[type="file"] {
     right: 100%;
     bottom: 100%;
 }
+
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
@@ -167,34 +168,48 @@ input[type="file"] {
     left:-47%;
     
 }
+
 .starLastName{
     position: relative;
     color: #e84855;
     left: -47.5%;
 }
+
 .starPrice{
     position: relative;
     color: #e84855;
     left: -55%;
 }
+
 .starCalendlyUrl{
     position: relative;
     color: #e84855;
     left: -44.4%;
 }
+
 .starDescription{
     position: relative;
     color: #e84855;
     top: -31px;
     left: -46.5%;
 }
+
 .company{
     color: white;
 }
+
 input[required]:invalid + span {
     display: inline-block;
 }
 
 input[required]:valid + span {
     display: none;
-  }
+}
+
+textarea[required]:valid + span{
+    display: none;
+}
+
+textarea[required]:invalid + span{
+    display: inline-block;
+}
