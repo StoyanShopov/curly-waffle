@@ -36,7 +36,7 @@
 
 div.inputContainer{
     text-align: center;
-    height: 600px;
+    height: 550px;
 }
 
 .inputField{
@@ -58,7 +58,7 @@ div.inputContainer{
 
 .footerContainer{
     text-align: center;
-    padding-top: -15px;
+    margin-top: -10px;
 }
 
 .btnSave{
