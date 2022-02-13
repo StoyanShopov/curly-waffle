@@ -170,7 +170,6 @@ const AddCoach = () => {
                                 type="text"
                                 value={company}
                                 onChange={onChangeCompany} />
-                                <span className={styles.company}>*</span>
                         </div>
                         <div>
                             <input className={styles.inputField}

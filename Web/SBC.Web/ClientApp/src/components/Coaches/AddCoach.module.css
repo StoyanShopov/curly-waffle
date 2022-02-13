@@ -163,35 +163,38 @@ input[type="file"] {
     cursor: pointer;
 }
 .starFirstName{
-    position: relative;
+    position: absolute;
     color: #e84855;
-    left:-47%;
-    
+    left: 36.6%;
+    top: 132px;
 }
 
 .starLastName{
-    position: relative;
+    position: absolute;
     color: #e84855;
-    left: -47.5%;
+    left: 36.3%;
+    top: 204px;
 }
 
 .starPrice{
-    position: relative;
+    position: absolute;
     color: #e84855;
-    left: -55%;
+    left: 29%;
+    top: 277px;
 }
 
 .starCalendlyUrl{
-    position: relative;
+    position: absolute;
     color: #e84855;
-    left: -44.4%;
+    left: 39.7%;
+    top: 416px;
 }
 
 .starDescription{
-    position: relative;
+    position: absolute;
     color: #e84855;
-    top: -31px;
-    left: -46.5%;
+    left: 37.7%;
+    top: 481px;
 }
 
 .company{
