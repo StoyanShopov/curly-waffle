@@ -40,9 +40,14 @@
             };
 
             await this.lectures.AddAsync(newLecture);
+
+            var newLectureId = newLecture.Id;
+
+            newLecture.Courses.Add(new CourseLecture { LectureId = newLectureId, CourseId = lectureModel.CourseId });
+
             await this.lectures.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(newLecture.Id);
         }
 
         public async Task<Result> DeleteByIdAsync(string id)
