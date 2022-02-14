@@ -75,7 +75,7 @@ export default function RegisterAsOwner(prop) {
                             <div className={styles.checkcontainer}>
                                 < div>
                                     <p className={styles.alreadyHave}>
-                                        Already have an account?                                        
+                                        Already have an account?
                                     </p>
                                 </div>
                                 < div>

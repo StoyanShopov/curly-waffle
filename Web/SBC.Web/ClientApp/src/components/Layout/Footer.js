@@ -33,7 +33,7 @@ const Footer = () => {
                         <li>  <Link to="/"><img src="assets/images/Group 13.svg" className={styles.instagramLogo} /></Link> </li>
                         <li>  <Link to="/"><img src="assets/images/Group 14.svg" className={styles.linkedInLogo} /></Link></li>
                     </ul>
-                    <div className={styles.bottomDiv}>
+                    <div>
                         <p className={styles.textOnBottom}>&copy; UpSkill {(new Date().getFullYear())}</p>
                     </div>
                 </div>
