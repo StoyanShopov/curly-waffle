@@ -7,6 +7,7 @@ import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import { Layout } from "./components/Layout/Layout";
 import Home from "./components/Home";
 import AddCoach from "./components/Coaches/AddCoach";
+import EditCoach from "./components/Coaches/EditCoach";
 
 import "./App.css";
 import { StrictMode } from "react";
@@ -18,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
-          <Route path="/coaches/addCoach" element={<AddCoach />}/>
+          <Route path="/coaches/editCoach" element={<EditCoach />}/>
         </Routes>
       </Layout>
     </Provider>
