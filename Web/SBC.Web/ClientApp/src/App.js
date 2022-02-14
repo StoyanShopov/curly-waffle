@@ -8,10 +8,12 @@ import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
+import AddCoach from "./components/Coaches/CreateCoach";
 
 
 
 import "./App.css";
+import CreateCoach from "./components/Coaches/CreateCoach";
 
 function App() {
     return (
@@ -22,6 +24,7 @@ function App() {
                     <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
+                    <Route path="/coaches/create" element={<CreateCoach />}/>
                 </Routes>
             </Layout>
         </Provider>
