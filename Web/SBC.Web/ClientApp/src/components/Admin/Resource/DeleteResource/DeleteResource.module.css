@@ -25,34 +25,48 @@
     background-color:aqua;
 }
 .btnCancel{
-    width: 150px;
-    height: 50px;
-    margin-top: 15%;
-    margin-left: 27%;
-    color: #296CFB;
-    background-color: white;
-    font-size: 22px;
-    font-family: Montserrat;
-    font-weight: bold;
+     width: 130px;
+    height: 45px;
     border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    color: white;;
+    font-size: larger;
     cursor: pointer;
+    margin-top: 15%;
+    margin-left: 20%;
 }
 .btnRemove{
-    width: 150px;
-    height: 50px;
-    margin-left: 5%;
-    color: white;
-    background-color: #296CFB;
-    font-size: 22px;
-    font-family: Montserrat;
-    font-weight: bold;
+    width: 130px;
+    height: 45px;
     border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    color: white;;
+    font-size: larger;
     cursor: pointer;
+    margin-top: 15%;
+    margin-left: 25%;
 }
 .close{
-    padding: 12px 16px;
     float: right;
-    font-size: 35px;
-    color: white;
+    margin-top: 20px;
+    margin-right: 20px;
     cursor: pointer;
+    font-size: 20px;
+    background-color: white;
+    color: #296CFB;
+    border: none;
+}
+.btnSubmit{
+    width: 130px;
+    height: 45px;
+    border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    color: white;;
+    font-size: larger;
+    cursor: pointer;
+    margin-top: 15%;
+    margin-left: 25%;
 }

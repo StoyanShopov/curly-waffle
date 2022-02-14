@@ -1,26 +1,31 @@
 import css from "./CreateResource.module.css"
 
-function CreateResource(){
+
+function CreateResource({closeModal}){
     return(
         <section className={css.section}>
+        <div className={css.container}>
             <form>
                 <div>
+                    <button className={css.btnClose} onClick = {() => {closeModal(false)}}>X</button>
                     <p className={css.p}>Add Resource</p>
                 </div>
                 <div>
-                    <input className={css.imput} placeholder="Name*"></input>
-                    <input className={css.imput} placeholder="FileUrl*"></input>
-                    <input className={css.imput} placeholder="Size*"></input>
-                    <select className={css.imput} >
+                <input className={css.imput} required = "required" name="Name" placeholder="Name*"></input>
+                    <input className={css.imput} required = "required" name="Fileurl" placeholder="FileUrl*"></input>
+                    <input className={css.imput} required = "required" name="Size" placeholder="Size*"></input>
+                    <select className={css.imput} name="Select" >
                     <option value="One">One</option>
                     <option value="Two">Two</option>
                     <option value="Three">Three</option>
                     </select>
-                    <input className={css.imput} placeholder="LectureId*"></input>
-                    <input type="submit" value="Add" className={css.btn} />
+                    <input className={css.imput} required = "required"  name="LectureId" placeholder="LectureId*"></input>
+                    <button className={css.btnCancel} onClick = {() => {closeModal(false)}}>Cancel</button>
+                    <input type="submit" value="Add" className={css.btnSubmit} />
                 </div>
             </form>
-        </section>
-    )
+        </div>
+    </section>
+)
 }
 export default CreateResource;
