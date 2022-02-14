@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.ResourcesConstants;
+    using static SBC.Common.SBC.Common.GlobalConstants.ResourcesConstants;
 
     internal class ResourcesSeeder : ISeeder
     {

@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.LanguagesNamesConstants;
+    using static SBC.Common.SBC.Common.GlobalConstants.LanguagesNamesConstants;
 
     internal class LanguagesSeeder : ISeeder
     {

@@ -7,8 +7,8 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
-    using static SBC.Common.GlobalConstants.RequestsConstants;
+    using static SBC.Common.SBC.Common.GlobalConstants.CompaniesNamesConstants;
+    using static SBC.Common.SBC.Common.GlobalConstants.RequestsConstants;
 
     internal class RequestsSeeder : ISeeder
     {
