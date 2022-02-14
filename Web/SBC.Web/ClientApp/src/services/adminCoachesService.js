@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { TokenManagement, authHeader, instance } from '../helpers';
-import jwt from 'jwt-decode';
 import { baseUrl } from '../constants';
+import { getLocalAccessToken } from '../helpers/token';
 
-export const createCoach = async( 
+export const createCoach = async(
     firstName,
     lastName,
     price,
@@ -12,9 +11,9 @@ export const createCoach = async(
     company,
     file
 ) =>{
-    let token = localStorage.getItem("token");
+    let token = getLocalAccessToken();
     let formData = new FormData();
-    
+                                          
     formData.append("File" , file)
     formData.append("FirstName" , firstName)
     formData.append("LastName" , lastName)
@@ -29,4 +28,7 @@ export const createCoach = async(
         });
         return resp;
       } catch (err) {}
+}
+export const coachGetById = async(id)=>{
+
 }
