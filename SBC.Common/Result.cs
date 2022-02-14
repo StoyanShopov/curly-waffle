@@ -1,5 +1,10 @@
 ﻿namespace SBC.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Text;
+
     public class Result
     {
         public bool Succeeded { get; private set; }
