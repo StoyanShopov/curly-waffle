@@ -7,9 +7,9 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.SBC.Common.GlobalConstants.CompaniesNamesConstants;
-    using static SBC.Common.SBC.Common.GlobalConstants.EmailsConstants;
-    using static SBC.Common.SBC.Common.GlobalConstants.LogoUrlConstants;
+    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
+    using static SBC.Common.GlobalConstants.EmailsConstants;
+    using static SBC.Common.GlobalConstants.LogoUrlConstants;
 
     internal class CompaniesSeeder : ISeeder
     {

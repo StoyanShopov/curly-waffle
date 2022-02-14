@@ -8,7 +8,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using SBC.Data.Models;
 
-    using static SBC.Common.SBC.Common.GlobalConstants.RolesNamesConstants;
+    using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     internal class RolesSeeder : ISeeder
     {

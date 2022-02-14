@@ -7,7 +7,7 @@
 
     using SBC.Services.Blob;
 
-    using static SBC.Common.SBC.Common.GlobalConstants.ControllerRouteConstants;
+    using static SBC.Common.GlobalConstants.ControllerRouteConstants;
 
     public class BlobsController : ApiController
     {

@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.SBC.Common.GlobalConstants.LecturesConstants;
+    using static SBC.Common.GlobalConstants.LecturesConstants;
 
     internal class LecturesSeeder : ISeeder
     {

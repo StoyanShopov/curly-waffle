@@ -3,7 +3,7 @@
     using System.Net;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common.SBC.Common;
+    using SBC.Common;
 
     [ApiController]
     [Route("api/[controller]")]

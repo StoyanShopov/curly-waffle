@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Common.SBC.Common.GlobalConstants.ApplicationUserConstants;
+    using static SBC.Common.GlobalConstants.ApplicationUserConstants;
 
     public class RegisterRequestModel
     {
