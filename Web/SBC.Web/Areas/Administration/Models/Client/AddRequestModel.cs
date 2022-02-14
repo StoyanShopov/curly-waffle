@@ -4,7 +4,7 @@
 
     public class AddRequestModel
     {
-        [Required]
+        [Required(AllowEmptyStrings = true)]
         public string FullName { get; init; }
 
         [Required]

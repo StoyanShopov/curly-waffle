@@ -8,6 +8,12 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Administration\Models\**" />
+    <EmbeddedResource Remove="Administration\Models\**" />
+    <None Remove="Administration\Models\**" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -25,10 +31,6 @@
     <ProjectReference Include="..\..\Web\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
     <ProjectReference Include="..\SBC.Services\SBC.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Administration\Models\" />
   </ItemGroup>
 
 </Project>
