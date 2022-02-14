@@ -4,28 +4,29 @@
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
-
+    using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Coach.Models;
     using SBC.Services.Data.Language.Contracts;
+    using SBC.Services.Mapping;
 
     public class CoachService : ICoachService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
-        private readonly ILanguageCoachService languageService;
-        private readonly ICategoryCoachService categoryService;
+        private readonly IDeletableEntityRepository<CategoryCoach> categoryCoachRepo;
+        private readonly IDeletableEntityRepository<LanguageCoach> languageCoachRepo;
 
         public CoachService(
             IDeletableEntityRepository<Coach> data,
-            ILanguageCoachService languageService,
-            ICategoryCoachService categoryService)
+            IDeletableEntityRepository<CategoryCoach> categoryCoachRepo,
+            IDeletableEntityRepository<LanguageCoach> languageCoachRepo)
         {
             this.coachRepository = data;
-            this.languageService = languageService;
-            this.categoryService = categoryService;
+            this.languageCoachRepo = languageCoachRepo;
+            this.categoryCoachRepo = categoryCoachRepo;
         }
 
         public async Task<Result> NewRegistrationCoach(RegisterCoach coach)
@@ -62,18 +63,11 @@
             return true;
         }
 
-        public Task<List<ListingCoachModel>> GetAll()
-        {
-            return Task.FromResult(this.coachRepository.AllAsNoTracking().Select(x => new ListingCoachModel
-            {
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                PricePerSession = x.PricePerSession,
-                Description = x.Description,
-                CalendlyUrl = x.CalendlyUrl,
-                VideoUrl = x.VideoUrl,
-            }).ToList());
-        }
+        public async Task<IEnumerable<TModel>> GetAll<TModel>()
+             => await this.coachRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync();
 
         public async Task<Result> UpdateCoach(UpdateCoachModel coach)
         {
@@ -116,11 +110,11 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
             }
 
-            var languagesCoach = this.languageService.GetAllLanguagesCoach(coachId);
-            this.languageService.DeleteAllLanguagesCoach(languagesCoach);
+            var languagesCoach = this.GetAllLanguagesCoach(coachId);
+            this.DeleteAllLanguagesCoach(languagesCoach);
 
-            var categoriesCoach = this.categoryService.GetAllCategoriesCoach(coachId);
-            this.categoryService.DeleteAllCategoriesCoach(categoriesCoach);
+            var categoriesCoach = this.GetAllCategoriesCoach(coachId);
+            this.DeleteAllCategoriesCoach(categoriesCoach);
 
             this.coachRepository.Delete(coachModel);
             await this.coachRepository.SaveChangesAsync();
@@ -136,5 +130,27 @@
 
         private bool ExistLanguage(Coach coachModel, int languigeId)
         => coachModel.Languages.Any(x => x.LanguageId == languigeId && x.CoachId == coachModel.Id && x.IsDeleted == false);
+
+        private void DeleteAllCategoriesCoach(List<CategoryCoach> categoryCoach)
+        {
+            foreach (var category in categoryCoach)
+            {
+                this.categoryCoachRepo.Delete(category);
+            }
+        }
+
+        private List<CategoryCoach> GetAllCategoriesCoach(int coachId)
+        => this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
+
+        private void DeleteAllLanguagesCoach(List<LanguageCoach> languagesCoach)
+        {
+            foreach (var languige in languagesCoach)
+            {
+                this.languageCoachRepo.Delete(languige);
+            }
+        }
+
+        private List<LanguageCoach> GetAllLanguagesCoach(int coachId)
+        => this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
     }
 }

@@ -4,13 +4,12 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using SBC.Common;
     using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Coach.Models;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
-
-    [ApiController]
-    [Route("[controller]")]
+   
     public class CoachesController : AdministrationController
     {
         private readonly ICoachService coachService;
@@ -28,9 +27,11 @@
         }
 
         [HttpGet(GetAllRoute)]
-        public async Task<ActionResult<List<ListingCoachModel>>> GetAllCoachesAsync()
+        public async Task<ActionResult> GetAllCoachesAsync()
         {
-            return await this.coachService.GetAll();
+            var result = await this.coachService.GetAll<ListingCoachModel>();
+
+            return this.GenericResponse(new ResultModel(result));
         }
 
         [Route("update")]

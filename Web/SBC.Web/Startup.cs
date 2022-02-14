@@ -152,8 +152,6 @@
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddTransient<ICategoryService, CategoryService>();
-            services.AddTransient<ICategoryCoachService, CategoryCoachService>();
-            services.AddTransient<ILanguageCoachService, LanguageCoachService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
