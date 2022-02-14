@@ -1,13 +1,29 @@
-.section{
-margin-left: 37%;
-margin-top: 10%;
+.container{
+    width: 600px;
+    height: 500px;
+    border-top: 10px;
+    background-color: white;
+    margin-left: 33%;
+    margin-top: 7%;
+    background-color: aqua;
 }
 .p{
     color: #296CFB;
     font-family: Montserrat;
     font-size: 28px;
     font-weight:lighter;
-    margin-left: 17%;
+    margin-left: 37%;
+    padding-top: 20px;
+}
+.btnClose{
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: white;
+    color: #296CFB;
+    border: none;
 }
 .imput{
     display: block;
@@ -18,9 +34,9 @@ margin-top: 10%;
     border-width: 2px;
     font-size: larger;
     margin-top: 50px;
+    margin-left: 45px;
 }
-.btn{
-    display: block;
+.btnSubmit{
     width: 130px;
     height: 45px;
     border-color: #296CFB;
@@ -28,10 +44,22 @@ margin-top: 10%;
     font-family: Montserrat;
     color: white;;
     font-size: larger;
-    margin-top: 50px;
-    margin-left: 17%;
+    margin-left: 5%;
     cursor: pointer;
 }
+.btnCancel{
+    width: 130px;
+    height: 45px;
+    border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    color: white;;
+    font-size: larger;
+    cursor: pointer;
+    margin-top: 15%;
+    margin-left: 25%;
+}
+
 ::placeholder{
     text-align: center;
     font-family: Montserrat;
