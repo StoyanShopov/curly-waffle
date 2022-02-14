@@ -1,5 +1,5 @@
-.create-page {
-    position: absolute;
+.createPage {
+    position: fixed;
     background-color: #fefefe;
     padding: 2.4rem;
     border: 1px solid #888;
@@ -9,7 +9,24 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.input-container {
+.headingCourse {
+    color: #296CFB;
+    margin: 10px;
+}
+
+.closeCreate {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.inputContainer {
     width: 500px;
     height: 2.5rem;
     margin: 7px;
@@ -18,49 +35,7 @@
     font-size: 20px;
 }
 
-a.close-create {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-
-.btn-cancel {
-    margin: 5px;
-    width: 120px;
-    height: 2.5rem;
-    font: normal normal bold 22px/27px Montserrat;
-    letter-spacing: 1.1px;
-    color: #296CFB;
-    border-color: #296CFB;
-}
-
-.btn-submit {
-    margin: 5px;
-    width: 120px;
-    height: 2.5rem;
-    font: normal normal bold 22px/27px Montserrat;
-    letter-spacing: 1.1px;
-    color: #FFFFFF;
-    background-color: #296CFB;
-    border-color: #296CFB;
-}
-
-.button-container {
-    margin: 10px;
-    padding-top: 15px;
-}
-
-::placeholder {
-    padding-left: 30px;
-    text-align: left;
-    color: #296CFB;
-}
-
-.select-container {
+.selectContainer {
     width: 500px;
     height: 2.7rem;
     margin: 7px;
@@ -71,7 +46,34 @@ a.close-create {
     padding-left: 30px;
 }
 
-.heading-course {
-    color: #296CFB;
+.buttonContainer {
     margin: 10px;
+    padding-top: 15px;
+}
+
+.btnCancel {
+    margin: 5px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    border-color: #296CFB;
+}
+
+.btnSubmit {
+    margin: 5px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
+}
+
+::placeholder {
+    padding-left: 30px;
+    text-align: left;
+    color: #296CFB;
 }

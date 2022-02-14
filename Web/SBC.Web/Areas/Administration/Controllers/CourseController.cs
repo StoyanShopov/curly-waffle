@@ -17,7 +17,7 @@
             this.courseService = courseService;
         }
 
-        [HttpGet]
+        [HttpGet("Courses")]
         public async Task<ActionResult> Get()
         {
             var result = await this.courseService.GetAllAsync<CourseViewModel>();

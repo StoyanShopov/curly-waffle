@@ -1,8 +1,8 @@
 .card {
     width: 350px;
     height: 350px;
-    display: inline-block;
     margin: 2%;
+    float: left;
 }
 
 .image-course {
@@ -19,9 +19,13 @@
 
 .pencil {
     position: absolute;
-    left: 85%;
-    top: 2%;
+    left: 82%;
+    top: 4%;
     margin: 5px;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .pencil img {
@@ -31,12 +35,14 @@
 h2.course-name {
     position: absolute;
     margin-block: unset;
-    top: 5%;
-    bottom: 4%;
-    left: 5%;
-    right: 5%;
+    width: 230px;
+    height: 70px;
+    top: 15%;
+    bottom: 5%;
+    left: 15%;
+    right: 15%;
     text-align: right;
-    font: normal normal 800 40px/152px Montserrat;
+    font: normal normal 700 30px/125px Montserrat;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
@@ -117,6 +123,7 @@ h2.course-name {
     color: #FFFFFF;
     background-color: #296CFB;
     border-color: #296CFB;
+    cursor: pointer;
 }
 
 .card-button-div {
