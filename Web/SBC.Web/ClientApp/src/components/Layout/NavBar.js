@@ -8,13 +8,13 @@ const NavBar = () => {
     return (
         <header>
             <div className={styles.headerContainer}>
-                < div className={styles.logoContainer}>
+                < div>
                     <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     < div className={styles.upskillContainer}>
                         <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
                     </div>
                 </div>
-                < div className={styles.testedLinks}>
+                <div className={styles.testedLinks}>
                     <ul>
                         <li>
                             <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
@@ -23,11 +23,14 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
                         </li>
                         <li>
+                            <NavLink tag={Link} to="/profileOwner">Owner</NavLink>
+                        </li>
+                        <li>
                             <a href="/docs">Docs</a>
                         </li>
                     </ul>
                 </div>
-                < div className={styles.homePageButtons}>
+                <div className={styles.homePageButtons}>
                     <ul>
                         <li>
                             <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
@@ -37,7 +40,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                < div className={styles.coursesCoaches}>
+                <div className={styles.coursesCoaches}>
                     <ul>
                         <li>
                             <NavLink
@@ -57,8 +60,8 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                < div className={styles.greenCircle}>
-                    <p>A</p>
+                <div className={styles.greenCircle}>
+                    A
                 </div>
             </div>
         </header>

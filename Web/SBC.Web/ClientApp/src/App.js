@@ -9,8 +9,6 @@ import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
 
-
-
 import "./App.css";
 
 function App() {

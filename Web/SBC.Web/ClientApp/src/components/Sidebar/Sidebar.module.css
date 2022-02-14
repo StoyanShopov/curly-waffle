@@ -1,1 +1,108 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container {
+    position: fixed;
+    height: 1080px;
+    justify-content: left;
+    top: 160px;
+    left: 0px;
+    width: 600px;
+    background-color: #296cfb1a;
+    padding: 0;
+    margin: 0;
+}
+
+.contentContainer {
+    position: relative;
+    width: 100%;
+    height: 95px;
+}
+
+.pencil {
+    float: right;
+    position: relative;
+    top: 36%;
+    left: -7%;
+}
+
+.greenCircle {
+    width: 100px;
+    height: 100px;
+    color: #FFFFFF;
+    background-color: #16D696;
+    position: relative;
+    left: 140px;
+    top: 0%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 95px;
+    border-radius: 75px;
+}
+
+.fullName {
+    position: relative;
+    width: auto;
+    height: 27px;
+    top: -82px;
+    left: 264px;
+    text-align: left;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 27px;
+    color: #000000;
+}
+
+.companyName {
+    position: relative;
+    width: auto;
+    height: 27px;
+    top: -67px;
+    left: 263px;
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 27px;
+    color: #296CFB;
+}
+
+.navigation {
+    position: relative;
+    top: 0%;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+    .navigation a:hover, .navigation a:visited, .navigation a:link, .navigation a:active {
+        text-decoration: none;
+    }
+
+    .navigation ul {
+        margin: 0;
+    }
+
+        .navigation ul li {
+            width: 358px;
+            height: 100px;
+            margin-left: 100px;
+            border-top: 1px solid #000000;
+            line-height: 100px;
+            font-size: 22px;
+        }
+
+.active {
+    color: #296CFB;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.notActive {
+    color: #000000;
+    font-weight: normal;
+    opacity: 1;
+}
+
+.logout {
+    color: #E84855;
+    font-weight: normal;
+}
