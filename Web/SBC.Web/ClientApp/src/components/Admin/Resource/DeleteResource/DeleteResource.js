@@ -2,17 +2,20 @@ import css from "./DeleteResource.module.css"
 
 function DeleteResource({closeModal}) {
     return (
-        <section className={css.section}>
-            <div className={css.topDiv}>
-          
-            <button className={css.close} onClick = {() => {closeModal(false)}}>X</button>
-                <p className={css.p}>Are you sure you want to remove this resource?</p>
+        <div className={css.modalBackground}>
+            <div className={css.deleteWindow}>
+                <div className={css.topDiv}>
+                    <button className={css.closeDelete} onClick={() => { closeModal(false); }}>&times;</button>
+                    <p className={css.textQuestion}>Are you sure you want to delete this resource?</p>
+                </div>
+                <div className={css.bottomDiv}>
+                    <div className={css.buttonDiv}>
+                        <button className={css.btnCancel} type="button" onClick={() => { closeModal(false); }} id="cancelBtn">Cancel</button>
+                        <button className={css.btnDelete} type="submit">Delete</button>
+                    </div>
+                </div>
             </div>
-            <div className={css.bottomDiv}>
-            <button className={css.btnCancel} onClick = {() => {closeModal(false)}}>Cancel</button>
-            <input type="submit" value="Remove" className={css.btnSubmit} />
-            </div>
-        </section>
+        </div>
     )
-}
+    }
 export default DeleteResource;
