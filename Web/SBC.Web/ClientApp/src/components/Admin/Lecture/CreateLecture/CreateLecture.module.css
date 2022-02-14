@@ -5,7 +5,7 @@
     background-color: white;
     margin-left: 33%;
     margin-top: 7%;
-    background-color: aqua;
+    background-color: white;
 }
 .p{
     color: #296CFB;
@@ -42,6 +42,7 @@
     border-color: #296CFB;
     background-color: #296CFB;
     font-family: Montserrat;
+    font-weight: bold;
     color: white;;
     font-size: larger;
     margin-left: 5%;
@@ -51,9 +52,10 @@
     width: 130px;
     height: 45px;
     border-color: #296CFB;
-    background-color: #296CFB;
+    background-color: white;
     font-family: Montserrat;
-    color: white;;
+    font-weight: bold;
+    color: #296CFB;;
     font-size: larger;
     cursor: pointer;
     margin-top: 15%;
