@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.Controllers
+﻿namespace SBC.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -8,7 +8,7 @@
     using SBC.Services.Data.Course.Models;
     using SBC.Web.ViewModels.Course;
 
-    public class CourseController : ApiController
+    public class CourseController : AdministrationController
     {
         private readonly ICourseService courseService;
 
@@ -17,7 +17,7 @@
             this.courseService = courseService;
         }
 
-        [HttpGet]
+        [HttpGet("Courses")]
         public async Task<ActionResult> Get()
         {
             var result = await this.courseService.GetAllAsync<CourseViewModel>();

@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Data.Models;
     using SBC.Services.Data.Course.Models;
 
     public interface ICourseService
@@ -18,5 +17,7 @@
         Task<Result> EditAsync(EditCourseServiceModel courseModel);
 
         Task<Result> DeleteByIdAsync(int id);
+
+        Task<int> GetCount();
     }
 }

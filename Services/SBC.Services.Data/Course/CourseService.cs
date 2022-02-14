@@ -38,6 +38,7 @@
                 Title = courseModel.Title,
                 Description = courseModel.Description,
                 PricePerPerson = courseModel.PricePerPerson,
+                PictureUrl = courseModel.PictureUrl,
                 VideoUrl = courseModel.VideoUrl,
                 CategoryId = courseModel.CategoryId,
                 LanguageId = courseModel.LanguageId,
@@ -47,7 +48,7 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(newCourse.Id);
         }
 
         public async Task<Result> DeleteByIdAsync(int id)
@@ -81,6 +82,7 @@
             course.Title = courseModel.Title;
             course.Description = courseModel.Description;
             course.PricePerPerson = courseModel.PricePerPerson;
+            course.PictureUrl = courseModel.PictureUrl;
             course.VideoUrl = courseModel.VideoUrl;
             course.CoachId = courseModel.CoachId;
             course.CategoryId = courseModel.CategoryId;
@@ -103,5 +105,10 @@
                 .Where(c => c.Id == id)
                 .To<TModel>()
                 .FirstOrDefaultAsync();
+
+        public async Task<int> GetCount()
+            => await this.courses
+                .AllAsNoTracking()
+                .CountAsync();
     }
 }

@@ -3,12 +3,12 @@
     using System.Reflection;
     using System.Text;
 
+    using Azure.Storage.Blobs;
+
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -16,13 +16,14 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-
+    using Microsoft.WindowsAzure.Storage;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
+    using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Course.Contracts;
     using SBC.Services.Data.Courses;
@@ -30,6 +31,8 @@
     using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Resource;
     using SBC.Services.Data.Resource.Contracts;
+    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -142,13 +145,16 @@
                 });
 
             // Application services
+            services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICourseService, CourseService>();
             services.AddTransient<ILectureService, LectureService>();
             services.AddTransient<IResourceService, ResourceService>();
+            services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
+            services.AddSingleton<IBlobService, BlobService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

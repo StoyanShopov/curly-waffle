@@ -1,0 +1,39 @@
+.section{
+margin-left: 37%;
+margin-top: 10%;
+}
+.p{
+    color: #296CFB;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight:lighter;
+    margin-left: 17%;
+}
+.imput{
+    display: block;
+    width: 500px;
+    height: 70px;
+    border-color: #296CFB;
+    font-family: Montserrat;
+    border-width: 2px;
+    font-size: larger;
+    margin-top: 50px;
+}
+.btn{
+    display: block;
+    width: 130px;
+    height: 45px;
+    border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    color: white;;
+    font-size: larger;
+    margin-top: 50px;
+    margin-left: 17%;
+    cursor: pointer;
+}
+::placeholder{
+    text-align: center;
+    font-family: Montserrat;
+    color: #296CFB;
+}
