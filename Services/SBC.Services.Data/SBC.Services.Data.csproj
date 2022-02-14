@@ -22,6 +22,7 @@
     <ProjectReference Include="..\..\Data\SBC.Data.Common\SBC.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
     <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
+    <ProjectReference Include="..\..\Web\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
     <ProjectReference Include="..\SBC.Services\SBC.Services.csproj" />
   </ItemGroup>
