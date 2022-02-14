@@ -1,11 +1,9 @@
-import { useState} from 'react';
-import { createCoach } from '../../services/adminCoachesService';
+import { useState, useEffect } from 'react';
+import { getCoach } from '../../services/adminCoachesService';
 
-import styles from './CreateCoach.module.css';
+import styles from './EditCoach.module.css';
 
-
-const CreateCoach = () => {
-
+const EditCoach = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('')
     const [price, setPrice] = useState(0);
@@ -14,12 +12,14 @@ const CreateCoach = () => {
     const [calendlyUrl, setCalendlyUrl] = useState('');
     const [file, setFile] = useState('');
 
-    const onChangeLastName = (e) => {
-        setLastName(e.target.value);
-    }
+
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value);
+    }
+
+    const onChangeLastName = (e) => {
+        setLastName(e.target.value);
     }
 
     const onChangeCompany = (e) => {
@@ -43,78 +43,12 @@ const CreateCoach = () => {
         setPrice(e.target.value)
     }
 
-    let handleValidation = () => {
-        let input = {
-            firstName,
-            lastName,
-            price,
-            calendlyUrl,
-            file,
-            description,
-        };
-
-        let isValid = true;
-
-        if (input['firstName']) {
-            isValid = false;
-        }
-
-        if (input['lastName']) {
-            isValid = false;
-        }
-
-        if (input['description']) {
-            isValid = false;
-        }
-
-        if (input['price'] < 0) {
-            isValid = false;
-        }
-
-        if (input['calendlyUrl']) {
-            isValid = false;
-        }
-
-        if (input['file']) {
-            isValid = false;
-        }
-
-        return isValid;
-    };
-
-    const onSubmitAddCoach = (e) => {
-        e.preventDefault()
-
-        if (handleValidation()) {
-            createCoach(
-                firstName,
-                lastName,
-                price,
-                description,
-                calendlyUrl,
-                company,
-                file
-            )
-                .then((response) => {
-                    if (response === 'Successfully created.') {
-                        setFirstName('');
-                        setLastName('');
-                        setCompany('');
-                        setDescription('');
-                        setPrice('');
-                        setCalendlyUrl('')
-                        setFile('')
-                    }
-                })
-        }
-     }
-
     return (
         <div className={styles.bodyContainer}>
             <div className={styles.addContainer}>
-                <form onSubmit={onSubmitAddCoach}>
+                <form>
                     <div className={styles.headerContainer}>
-                        <div className={styles.titleContainer}>Add Coach</div>
+                        <div className={styles.titleContainer}>Edit Coach</div>
                         <div className={styles.fileUpload}>
                             <input
                                 type="file"
@@ -140,8 +74,8 @@ const CreateCoach = () => {
                                 type="text"
                                 value={firstName}
                                 onChange={onChangeFirstName}
-                                required ></input>
-                                <span className={styles.starFirstName}>*</span>
+                                required />
+                            <span className={styles.starFirstName}>*</span>
                         </div>
 
                         <div>
@@ -152,7 +86,7 @@ const CreateCoach = () => {
                                 value={lastName}
                                 onChange={onChangeLastName}
                                 required />
-                                <span className={styles.starLastName}>*</span>
+                            <span className={styles.starLastName}>*</span>
                         </div>
                         <div>
                             <input className={styles.inputField}
@@ -161,7 +95,7 @@ const CreateCoach = () => {
                                 type="text"
                                 onChange={onChangePrice}
                                 required />
-                                <span className={styles.starPrice}>*</span>
+                            <span className={styles.starPrice}>*</span>
                         </div>
                         <div>
                             <input className={styles.inputField}
@@ -179,7 +113,7 @@ const CreateCoach = () => {
                                 value={calendlyUrl}
                                 onChange={onChangecalendlyUrl}
                                 required />
-                                <span className={styles.starCalendlyUrl}>*</span>
+                            <span className={styles.starCalendlyUrl}>*</span>
                         </div>
 
                         <div>
@@ -190,7 +124,7 @@ const CreateCoach = () => {
                                 value={description}
                                 onChange={onChangeDescription}
                                 required />
-                                <span className={styles.starDescription}>*</span>
+                            <span className={styles.starDescription}>*</span>
                         </div>
                         <button className={styles.addAnotherCoachBtn}>
                             + Add another coach
@@ -205,5 +139,4 @@ const CreateCoach = () => {
         </div>
     )
 }
-
-export default CreateCoach;
+export default EditCoach;

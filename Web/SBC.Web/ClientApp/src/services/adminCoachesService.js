@@ -27,8 +27,19 @@ export const createCoach = async(
           headers: { Authorization: `Bearer ${token}` },
         });
         return resp;
-      } catch (err) {}
+      } catch (error) {}
 }
-export const coachGetById = async(id)=>{
+export const getCoach = async()=>{
+    let coach = {
+        id:2,
+        firstName: "Ivan",
+        lastName: "Ivanski",
+        description: "ivaneca",
+        price: 110,
+        calendlyUrl: "https://calendly.com/1",
+        file: "fakepath/url",
+        company: "companyTest"
+    }
 
+    return coach;
 }
