@@ -10,19 +10,22 @@
 
 .rightSide {
     width: 50%;
-    position: relative;
+    position: absolute;
+    right: 2%;
+    top: 0%;
 }
 
 .book {
     position: absolute;
-    width: inherit;
-    top: 22%;
-    left: 20%;
+    height: 150px;
+    /* width: inherit; */
+    padding-top: 5%;
+    left: 25%;
 }
 
 .backgroundClr {
     position: absolute;
-    height: 230px;
+    height: 270px;
     width: 750px;
     left: -5%;
 }

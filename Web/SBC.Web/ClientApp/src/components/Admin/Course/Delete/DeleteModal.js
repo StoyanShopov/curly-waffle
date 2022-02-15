@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./DeleteModal.module.css";
 
-export default function DeleteModal({ setDeleteModal }) {
+const DeleteModal = ({ setDeleteModal }) => {
     return (
         <div className={style.modalBackground}>
             <div className={style.deleteWindow}>
@@ -19,3 +19,5 @@ export default function DeleteModal({ setDeleteModal }) {
         </div>
     )
 }
+
+export default DeleteModal;

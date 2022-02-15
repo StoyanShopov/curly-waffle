@@ -24,7 +24,6 @@ const AllCourses = () => {
                 <CardCourse />
                 <CardCourse />
                 <CardCourse />
-                <CardCourse />
                 <div className={style.buttonDiv}>
                     <button className={style.addBtn} onClick={() => { setCreateModal(true); }}><img src="./Group 78.svg" alt="" /></button>
                     {createModal && <CreateModal setCreateModal={setCreateModal} />}

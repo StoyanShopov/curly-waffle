@@ -7,6 +7,7 @@ const CreateCourse = ({ setCreateModal }) => {
 
         let formData = new FormData(e.currentTarget);
 
+
         console.log('submit');
     }
 
@@ -24,9 +25,9 @@ const CreateCourse = ({ setCreateModal }) => {
                     <input type="text" className={style.inputContainer} required = "required" name="videoUrl" placeholder="VideoUrl" />
 
                     <select className={style.selectContainer} value="Pesho" name="coach">
-                        <option value="fullname">Niki Kostov</option>
-                        <option value="fullname">Stoyan Shopov</option>
-                        <option value="fullname">Ivan Ivanov</option>
+                        <option value="fullname">Niki</option>
+                        <option value="fullname">Pesho</option>
+                        <option value="fullname">Ivan</option>
                     </select>
 
                     <select className={style.selectContainer} name="category" value={"ssdasd"}>

@@ -1,8 +1,8 @@
 import style from './EditModal.module.css';
 
-const CreateCourse = ({ setEditModal }) => {
+const EditCourse = ({ setEditModal }) => {
 
-    const onCourseCreate = (e) => {
+    const onCourseEdit = (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
@@ -11,11 +11,11 @@ const CreateCourse = ({ setEditModal }) => {
     }
 
     return (
-        <section className={style.createPage}>
-            <h2 className={style.headingCourse}>Create course</h2>
+        <section className={style.editPage}>
+            <h2 className={style.headingCourse}>Edit course</h2>
             <button className={style.closeCreate} onClick={() => { setEditModal(false); }}>&times;</button>
 
-            <form id="create-form" onSubmit={onCourseCreate} method="POST">
+            <form id="create-form" onSubmit={onCourseEdit} method="POST">
                 <div>
                     <input type="text" className={style.inputContainer} required = "required" name="title" placeholder="Title" />
                     <textarea type="text" className={style.inputContainer} required = "required" name="description" placeholder="Description" ></textarea>
@@ -51,4 +51,4 @@ const CreateCourse = ({ setEditModal }) => {
     )
 }
 
-export default CreateCourse;
+export default EditCourse;
