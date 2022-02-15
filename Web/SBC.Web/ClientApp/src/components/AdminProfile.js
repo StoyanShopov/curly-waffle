@@ -15,11 +15,13 @@ export default function AdminProfile() {
       top: '50%',
       left: '50%',
       right: 'auto',
-      width: '45%',
+      width: '44%',
+      height:'500px',
       bottom: 'auto',
-      marginTop: '-10%',
+      marginTop: '-5%',
       marginRight: '-50%',
-      transform: 'translate(-50%, -50%)'
+      transform: 'translate(-50%, -40%)',
+      padding:'0px',
     },
     color:'#f00'
   };
@@ -59,5 +61,4 @@ return (
       <EditProfile closeModal={closeModal} />
     </Modal>
   </div>
-)
-}
+)}
