@@ -81,13 +81,14 @@
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-        public async Task<ApplicationUser> AllGetByEmailAndRolesAsync(string email)
+        public async Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email)
             => await this.applicationUser
                 .All()
                 .Include(au => au.Roles)
+                .Include(au => au.Company)
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
-        public async Task<ApplicationUser> AllGetByEmailAsync(string email)
+        public async Task<ApplicationUser> GetByEmailAsync(string email)
             => await this.applicationUser
                 .All()
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());

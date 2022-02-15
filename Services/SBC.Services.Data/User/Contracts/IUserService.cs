@@ -14,9 +14,9 @@
 
         Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email);
 
-        Task<ApplicationUser> AllGetByEmailAndRolesAsync(string email);
+        Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email);
 
-        Task<ApplicationUser> AllGetByEmailAsync(string email);
+        Task<ApplicationUser> GetByEmailAsync(string email);
 
         Task<bool> NoTrackUserExistsByEmailAsync(string email);
 

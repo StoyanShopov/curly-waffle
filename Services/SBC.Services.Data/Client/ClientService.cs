@@ -39,16 +39,15 @@
         // TODO: fullName not implemented in logic
         public async Task<Result> AddAsync(string fullName, string email)
         {
-            //var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
+            // var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
             var emailExists = await this.userService.NoTrackUserExistsByEmailAsync(email);
 
             if (!emailExists)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{email}'.");
-                //return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{fullName}' and '{email}'.");
+                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{email}'."); // and full name
             }
 
-            var user = await this.userService.AllGetByEmailAndRolesAsync(email);
+            var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(email);
 
             if (user.Roles.Any())
             {
@@ -80,9 +79,19 @@
 
             await this.userManager.AddToRoleAsync(user, CompanyOwnerRoleName);
 
-            return true;
+            return new ResultModel(new AddServiceModel
+            {
+                Client = new GetPortionServiceModel
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    NormalizedEmail = user.NormalizedEmail,
+                    CompanyName = user.Company?.Name,
+                },
+            });
         }
 
+        // TODO: use mapping
         public async Task<Result> GetPortionAsync(int skip = 0, int take = TakeDefaultValue)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
@@ -96,13 +105,28 @@
                  .Include(au => au.Company)
                  .Select(au => new GetPortionServiceModel
                  {
+                     Id = au.Id,
                      Email = au.Email,
                      NormalizedEmail = au.NormalizedEmail,
                      CompanyName = au.Company.Name,
                  })
                  .ToListAsync();
 
-            return new ResultModel(new GetPortionsServiceModel { Portions = portions });
+            return new ResultModel(new GetPortionsServiceModel
+            {
+                Portions = portions,
+                ViewMoreAvaliable = await this.IsViewMoreAvaliable(skip, take, role.Id),
+            });
+        }
+
+        private async Task<bool> IsViewMoreAvaliable(int skip, int take, string roleId)
+        {
+            var clientsCount = await this.applicationUser
+                .AllAsNoTracking()
+                .Where(au => au.Roles.Any(r => r.RoleId == roleId))
+                .CountAsync();
+
+            return (clientsCount - skip - take) > 0;
         }
     }
 }

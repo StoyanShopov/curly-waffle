@@ -7,6 +7,6 @@
     {
         public IEnumerable<GetPortionServiceModel> Portions { get; set; }
 
-        public bool ViewMoreAvaliable => this.Portions.Count() < 3 ? false : true;
+        public bool ViewMoreAvaliable { get; set; }
     }
 }

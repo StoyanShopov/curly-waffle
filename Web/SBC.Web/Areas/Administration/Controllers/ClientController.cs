@@ -16,12 +16,11 @@
         }
 
         [HttpGet]
-        [Route(nameof(GetPortion))]
-        public async Task<ActionResult> GetPortion(int skip)
+        [Route(nameof(Portion))]
+        public async Task<ActionResult> Portion(int skip)
             => this.GenericResponse(await this.clientService.GetPortionAsync(skip));
 
         [HttpPost]
-        [Route(nameof(Add))]
         public async Task<ActionResult> Add(AddRequestModel model)
             => this.GenericResponse(await this.clientService.AddAsync(model.FullName, model.Email));
     }
