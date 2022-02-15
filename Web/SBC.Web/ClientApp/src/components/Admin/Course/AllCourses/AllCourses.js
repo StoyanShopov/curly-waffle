@@ -7,7 +7,7 @@ const AllCourses = () => {
     const [createModal, setCreateModal] = useState(false);
 
     return (
-        <div>
+        <div className={style.container}>
             <section className={style.topSection}>
                 <div className={style.leftSide}>
                     <h2 className={style.headerCourses}>Courses</h2>
