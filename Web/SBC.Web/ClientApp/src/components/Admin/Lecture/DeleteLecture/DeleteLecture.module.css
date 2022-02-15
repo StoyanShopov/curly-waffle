@@ -1,12 +1,13 @@
 .section{
-    position: absolute;
-    top: 298px;
-    left: 586px;
+    position: fixed;
+    margin-left: 30%;
+    margin-top: 7%;
 }
 .topDiv{
     width: 750px;
     height: 200px;
     background-color: #296CFB;
+    z-index: 1;
 }
 .p{
     width: 350px;
@@ -23,6 +24,7 @@
     width: 750px;
     height: 200px;
     background-color:aqua;
+    z-index: 1;
 }
 .btnCancel{
     width: 150px;
@@ -49,10 +51,12 @@
     border-color: #296CFB;
     cursor: pointer;
 }
-.close{
+.btnClose{
     padding: 12px 16px;
     float: right;
     font-size: 35px;
+    background-color: #296CFB;
     color: white;
+    border: none;
     cursor: pointer;
 }
