@@ -39,7 +39,7 @@
         // TODO: fullName not implemented in logic
         public async Task<Result> AddAsync(string fullName, string email)
         {
-            //var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
+            // var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
             var emailExists = await this.userService.NoTrackUserExistsByEmailAsync(email);
 
             if (!emailExists)

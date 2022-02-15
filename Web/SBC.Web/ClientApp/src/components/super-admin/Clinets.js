@@ -11,11 +11,16 @@ export default function Clients() {
   const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const url = 'https://localhost:44319/Administration/Client/GetPortion';
+  const controller = new AbortController();
+  const url = 'https://localhost:44319/Administration/Client/Portion';
 
   useEffect(() => {
     handleViewMore(0);
     setSkip(0);
+
+    return () => {
+      controller.abort();
+    }
   }, [])
 
   const handleClose = useCallback(() => {
@@ -35,7 +40,7 @@ export default function Clients() {
   }
 
   const handleViewMore = async () => {
-    const json = await GetPartions(skip);
+    const json = await GetPartions(skip, controller);
 
     setClients(prevPortions => {
       return [...prevPortions, ...json.portions];
@@ -100,9 +105,7 @@ export default function Clients() {
     </>
   );
 
-  async function GetPartions(skip) {
-    const controller = new AbortController();
-
+  async function GetPartions(skip, controller) {
     const response = await fetch(url + '?skip=' + skip, {
       method: 'Get',
       headers: {

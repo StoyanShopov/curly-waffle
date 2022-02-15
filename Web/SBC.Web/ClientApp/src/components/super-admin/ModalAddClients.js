@@ -14,14 +14,11 @@ export default function ModalAddClients(props) {
       email: enteredEmail,
     }
 
-    const controller = new AbortController(); // TODO: cancel
-
-    const response = await fetch("https://localhost:44319/Administration/Client/Add", {
+    const response = await fetch("https://localhost:44319/Administration/Client", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      signal: controller.signal,
       body: JSON.stringify(clientData),
     });
 
