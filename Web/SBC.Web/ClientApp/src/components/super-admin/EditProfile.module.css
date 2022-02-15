@@ -1,43 +1,37 @@
 .editContainer {
-  margin-top: 196px;
-  width: 900px;
   flex-direction: column;
+  display:block;
 }
 
 .headerContainer {
-  height: 85px;
   background-color: #296cfb;
   display: flex;
   justify-content: space-between;
-  padding-top: 48px;
+  height: 90px;
+  align-items: center;
 }
 
 .bodyContainer {
-  height: 440px;
   display: flex;
   justify-content: space-around;
 }
 .bodyContainer2 {
   margin-top: 50px;
-  width: 200px;
-  height: 380px;
+  width: 22%;
 }
 .bodyContainer3 {
   margin-top: 50px;
-  width: 550px;
-  height: 380px;
+  width: 55%;
 }
 .profileImage {
   background-color: #296cfb1a;
-  height: 210px;
-  width: 200px;
+  height: 150px;
   display: flex;
   justify-content: center;
 }
 .button {
   border: 0;
   background-color: #296cfb;
-  margin: 10px;
   margin-left: 38px;
   color: white;
   font-weight: bold;
@@ -48,7 +42,6 @@
 .buttonPrs {
   border: 0;
   background-color: white;
-  margin: 10px;
   margin-left: 38px;
   color: #296cfb;
   font-weight: bold;
@@ -59,17 +52,17 @@
 }
 
 .nameCntr {
-  width: 530px;
-  height: 40px;
+  height: 30px;
+  width:340px;
   border: 2px solid;
   border-color: #296cfb;
 }
 .nameCntr:nth-child(2) {
   margin-top: 25px;
 }
-.resizableContent {
-  min-height: 180px;
-  min-width: 530px;
+.resizableContent {   
+  min-height: 110px;
+  min-width: 340px;
   resize: both;
   overflow: auto;
   max-height: fit-content;
@@ -101,8 +94,7 @@
 .close {
   margin-right: 0;
   height: 40px;
-  margin: 20px;
-  margin-top: 0;
+  margin-right: 20px;
   background-color: transparent;
   border: none;
   color: white;
@@ -120,6 +112,7 @@ div.bodyContainer3 * {
 
 ::placeholder {
   color: #296cfb;
+  font-size: 14px;
 }
 input:nth-child(2)::placeholder {
   color: #a0bbf5;
@@ -130,8 +123,11 @@ textarea {
 
 .footer {
   display: flex;
+  height: 70px;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  align-items: center;
 }
 .fileUpload {
   border: 0;

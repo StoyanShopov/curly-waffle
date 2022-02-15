@@ -1,6 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
 import css from './NavigationBar.module.css';
-import { useState } from 'react';
 
 export default function NavigationBar(props) {
     const onLogout = () => {
