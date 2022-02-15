@@ -1,3 +1,13 @@
+.container {
+    position: relative;
+    justify-content: center;
+    top: 160px;
+    
+    width: 1320px;
+    height: 1096px;
+ 
+    opacity: 1;
+}
 .picDiv{
     position: absolute;
    
@@ -10,7 +20,7 @@
     top: 200px;
     left: 100px;
 }
-ul {
+.ulForSignup {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -18,7 +28,7 @@ ul {
     top: 400px;
     left: 1500px;
   }
-Button
+.ButtonForSignUp
 {
     position: absolute;  
     top: 200px;
