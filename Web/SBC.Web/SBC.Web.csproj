@@ -59,7 +59,8 @@
 
 
 	<ItemGroup>
-	  <Folder Include="ClientApp\src\components\" />
+	  <Folder Include="ClientApp\src\components\ProfileOwner\" />
+	  <Folder Include="ClientApp\src\components\Register\" />
 	</ItemGroup>
 
 
