@@ -1,0 +1,134 @@
+.card {
+    width: 350px;
+    height: 350px;
+    margin: 2%;
+    float: left;
+}
+
+.image-course {
+    position: relative;
+    width: 350px;
+    height: 200px;
+}
+
+.card-image {
+    width: 350px;
+    height: 200px;
+    opacity: 0.8;
+}
+
+.pencil {
+    position: absolute;
+    left: 82%;
+    top: 4%;
+    margin: 5px;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.pencil img {
+    width: 35px;
+}
+
+h2.course-name {
+    position: absolute;
+    margin-block: unset;
+    width: 230px;
+    height: 70px;
+    top: 15%;
+    bottom: 5%;
+    left: 15%;
+    right: 15%;
+    text-align: right;
+    font: normal normal 700 30px/125px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.info-course {
+    width: 350px;
+    height: 150px;
+}
+
+.card-name {
+    display: inline-block;
+    text-align: left;
+    font: normal normal bold 14px/12px Montserrat;
+    letter-spacing: 0.9px;
+    color: #000000;
+    opacity: 1;
+    width: 104px;
+    height: 22px;
+    padding: 0px;
+    margin-left: 0px;
+    margin-block: 0px;
+    margin-inline: 0px;
+    margin-top: 20px;
+}
+
+.card-coach {
+    display: inline-block;
+    text-align: right;
+    font: normal normal bold 14px/12px Montserrat;
+    letter-spacing: 0.9px;
+    color: #000000;
+    opacity: 1;
+    width: 106px;
+    height: 22px;
+    padding: 0px;
+    margin-left: 0px;
+    margin-block: 0px;
+    margin-inline: 0px;
+    margin-top: 20px;
+}
+
+.card-price {
+    display: inline-block;
+    text-align: left;
+    font: normal normal bold 14px/12px Montserrat;
+    letter-spacing: 0.9px;
+    color: #296CFB;
+    opacity: 1;
+    width: 152px;
+    height: 22px;
+    padding: 0px;
+    margin-left: 0px;
+    margin-block: 0px;
+    margin-inline: 0px;
+}
+
+.card-company {
+    display: inline-block;
+    background: transparent url('../../../../../public/Image\ 2.png') 0% 0% no-repeat padding-box;
+    opacity: 1;
+    width: 51px;
+    height: 29px;
+    margin: 0px;
+}
+
+.card-delete-btn {
+    display: block;
+    width: 110px;
+    height: 35px;
+    margin: 5px;
+    text-align: center;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    cursor: pointer;
+}
+
+.card-button-div {
+    padding-left: 33%;
+    padding-right: 33%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}

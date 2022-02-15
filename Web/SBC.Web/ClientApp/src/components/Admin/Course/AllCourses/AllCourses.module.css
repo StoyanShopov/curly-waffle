@@ -1,0 +1,79 @@
+.topSection {
+    display: flex;
+    width: 100%;
+}
+
+.leftSide {
+    width: 50%;
+    float: left;
+}
+
+.rightSide {
+    width: 50%;
+    position: relative;
+}
+
+.book {
+    position: absolute;
+    width: inherit;
+    top: 22%;
+    left: 20%;
+}
+
+.backgroundClr {
+    position: absolute;
+    height: 230px;
+    width: 750px;
+    left: -5%;
+}
+
+.headerCourses {
+    margin-left: 6%;
+    text-align: left;
+    font: normal normal bold 70px/85px Montserrat;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.textPage {
+    margin-left: 6%;
+    width: 450px;
+    text-align: left;
+    font: normal normal medium 22px/42px Montserrat;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.cardsSection {
+    position: relative;
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+.buttonDiv {
+    width: 350px;
+    height: 350px;
+    margin: 2%;
+    float: left;
+}
+
+.addBtn {
+    position: relative;
+    top: 40%;
+    bottom: 40%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 40px;
+    border: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+}
