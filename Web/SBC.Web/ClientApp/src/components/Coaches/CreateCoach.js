@@ -13,6 +13,7 @@ const CreateCoach = () => {
     const [description, setDescription] = useState('');
     const [calendlyUrl, setCalendlyUrl] = useState('');
     const [file, setFile] = useState('');
+    const [videoUrl, setVideoUrl] = useState('')
 
     const onChangeLastName = (e) => {
         setLastName(e.target.value);
@@ -26,7 +27,7 @@ const CreateCoach = () => {
         setCompany(e.target.value);
     }
 
-    const onChangecalendlyUrl = (e) => {
+    const onChangeCalendlyUrl = (e) => {
         setCalendlyUrl(e.target.value);
     }
 
@@ -43,6 +44,10 @@ const CreateCoach = () => {
         setPrice(e.target.value)
     }
 
+    const onChangeVideoUrl = (e) => {
+        setVideoUrl(e.target.value)
+    }
+
     let handleValidation = () => {
         let input = {
             firstName,
@@ -51,11 +56,16 @@ const CreateCoach = () => {
             calendlyUrl,
             file,
             description,
+            videoUrl
         };
 
         let isValid = true;
 
         if (input['firstName']) {
+            isValid = false;
+        }
+        
+        if (input['videoUrl']) {
             isValid = false;
         }
 
@@ -154,6 +164,18 @@ const CreateCoach = () => {
                                 required />
                                 <span className={styles.starLastName}>*</span>
                         </div>
+
+                        <div>
+                        <input className={styles.inputField}
+                                name="videoUrl"
+                                placeholder='Video URL'
+                                type="text"
+                                value={videoUrl}
+                                onChange={onChangeVideoUrl}
+                                required />
+                                <span className={styles.starVideoUrl}>*</span>
+                        </div>
+
                         <div>
                             <input className={styles.inputField}
                                 name="price"
@@ -177,7 +199,7 @@ const CreateCoach = () => {
                                 placeholder='Calendly URL'
                                 type="text"
                                 value={calendlyUrl}
-                                onChange={onChangecalendlyUrl}
+                                onChange={onChangeCalendlyUrl}
                                 required />
                                 <span className={styles.starCalendlyUrl}>*</span>
                         </div>

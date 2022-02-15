@@ -11,8 +11,7 @@ const EditCoach = () => {
     const [description, setDescription] = useState('');
     const [calendlyUrl, setCalendlyUrl] = useState('');
     const [file, setFile] = useState('');
-
-
+    const [videoUrl, setVideoUrl] = useState('');
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value);
@@ -41,6 +40,10 @@ const EditCoach = () => {
 
     const onChangePrice = (e) => {
         setPrice(e.target.value)
+    }
+
+    const onChangeVideoUrl = (e) => {
+        setVideoUrl(e.target.value)
     }
 
     return (
@@ -88,6 +91,18 @@ const EditCoach = () => {
                                 required />
                             <span className={styles.starLastName}>*</span>
                         </div>
+
+                        <div>
+                        <input className={styles.inputField}
+                                name="videoUrl"
+                                placeholder='Video URL'
+                                type="text"
+                                value={videoUrl}
+                                onChange={onChangeVideoUrl}
+                                required />
+                                <span className={styles.starVideoUrl}>*</span>
+                        </div>
+                        
                         <div>
                             <input className={styles.inputField}
                                 name="price"

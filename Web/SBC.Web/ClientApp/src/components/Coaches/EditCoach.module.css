@@ -180,21 +180,28 @@ input[type="file"] {
     position: absolute;
     color: #e84855;
     left: 29%;
-    top: 277px;
+    top: 346px;
 }
 
 .starCalendlyUrl{
     position: absolute;
     color: #e84855;
     left: 39.7%;
-    top: 416px;
+    top: 487px;
 }
 
 .starDescription{
     position: absolute;
     color: #e84855;
     left: 37.7%;
-    top: 481px;
+    top: 552px;
+}
+
+.starVideoUrl{
+    position: absolute;
+    color: #e84855;
+    left: 35.7%;
+    top: 275px;
 }
 
 .company{
