@@ -1,5 +1,5 @@
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny05MWE0LTRjNDMtYTg5ZS1jOTk2M2EzYmFkYTIiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDc1Mjc2NSwiZXhwIjoxNjQ1MDExOTY1LCJpYXQiOjE2NDQ3NTI3NjV9.XeAMOnsMRUTPCWCjuX0slnmFoBIr6jHnsBn7ho-zFFg";
-const BaseUrl = "https://localhost:5001/";
+let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzOTg1MTIzNC1mYjcyLTQ0NTItOGQ5Zi01ZWU5ZjllOTdjOTgiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDk0OTM4NSwiZXhwIjoxNjQ1MjA4NTg1LCJpYXQiOjE2NDQ5NDkzODV9.Lirq6bX7ooEyqWGsAf56Hr_FehGvgZh4GUtGgYgozus";
+const BaseUrl = "https://localhost:44319/";
 
 export const DashboardIndex = async () => {
     let response = await fetch(BaseUrl + "Administration/Dashboard",

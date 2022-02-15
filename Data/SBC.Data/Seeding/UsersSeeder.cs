@@ -19,7 +19,6 @@
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
-
             const string adminEmail = "admin@test.test";
 
             var adminUser = new ApplicationUser
