@@ -3,21 +3,17 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import css from './Dashboard.module.css';
 import Diagram from './fragments/Diagram';
-import CanvasJSReact from './fragments/Canvas/assets/canvasjs.react';
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default function Dashboard() {
     let [items, setItems] = useState({});
 
     useEffect(async () => {
-        const data = await  DashboardIndex().then(r => {
+        await DashboardIndex().then(r => {
             setItems(r)
-          
         })
     }, [])
-
+    
     console.log(items)
-
 
     return (
         <div className={css.dashboard}>
@@ -36,19 +32,19 @@ export default function Dashboard() {
                 </svg>
                 <article><span>Coaches</span><span style={{ color: "#16D696" }}>{items.coaches}</span></article>
             </section>
-             <Diagram color="#296CFB" title="Number of Clients" curve={numberOfClients} />
-            <Diagram color="#16D696" title="Total Revenue" curve={totalRevenue} /> 
-           
+            <Diagram color="#296CFB" title="Number of Clients" curve={numberOfClients} />
+            <Diagram color="#16D696" title="Total Revenue" curve={totalRevenue} />
+
         </div>)
 }
-const numberOfClients=[ { x: new Date("January 01"), y: 45 },
+const numberOfClients = [{ x: new Date("January 01"), y: 45 },
 { x: new Date("February 01"), y: 15 },
 { x: new Date("March 01"), y: 25 },
 { x: new Date("April 01"), y: 60 },
 { x: new Date("May 01"), y: 30 },
 { x: new Date("June 01"), y: 45 }];
 
-const totalRevenue=[ { x: new Date("January 01"), y: 1000 },
+const totalRevenue = [{ x: new Date("January 01"), y: 1000 },
 { x: new Date("February 01"), y: 800 },
 { x: new Date("March 01"), y: 1000 },
 { x: new Date("April 01"), y: 900 },
