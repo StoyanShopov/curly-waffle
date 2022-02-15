@@ -25,16 +25,19 @@ export default function EditProfile(props) {
         const fd = new FormData(e.target);
 
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
-        //console.log(data);
 
-        if (data.photoUrl == null || data.photoUrl.size == 0)
-        { data.photoUrl = admin.photoUrl }
-
+        console.log(data);
+      
+        if (data.photoUrl == null || data.photoUrl.size == 0) 
+        {
+             data.photoUrl = admin.photoUrl 
+        }
         else {
-            let result = 'https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/282ac78b-7b34-487b-82ee-e9e35084b2ed' 
-            //let result = await uploadImage(data.photoUrl); //does not return imgUrl
-            console.log(result);
-            data.photoUrl = result;
+            let result = await uploadImage(data.photoUrl);//does not return imgUrl
+            let json = await result.json();
+            let url = json.photoUrl;
+
+            data.photoUrl = url;
         }
 
         EditAdmin(data)

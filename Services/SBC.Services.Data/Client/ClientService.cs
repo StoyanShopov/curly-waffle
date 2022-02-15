@@ -92,7 +92,7 @@
         }
 
         // TODO: use mapping
-        public async Task<Result> GetPortionAsync(int skip = 0, int take = TakeDefaultValue)
+        public async Task<Result> GetPortionAsync(int skip = default, int take = TakeDefaultValue)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
 
