@@ -6,6 +6,9 @@
 
     public interface ICompanyService
     {
+        Task<bool> ExistsByNameAsync(string name);
+
+        Task<int> NoTrackGetCompanyByNameAsync(string name);
         public Task<Result> GetCount();
     }
 }

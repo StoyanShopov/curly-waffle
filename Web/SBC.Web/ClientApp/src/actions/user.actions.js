@@ -1,53 +1,39 @@
 ﻿import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
-import { history } from '../helpers';
+import jwt from 'jwt-decode';
 
-export const userActions = {
-    login,
-    logout,
-    getAll
+
+export const login = (email, password) => (dispatch) => {
+    dispatch(request({ email }));
+    
+    return userService.login(email, password).then(
+        (data) => {
+            dispatch(success(data));
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const errorMessage = 
+            (error.response &&
+                error.response.data &&
+                error.response.data.message) || error.message || error.toString();
+
+            dispatch(failure(errorMessage));
+            dispatch(alertActions.error(errorMessage));
+            
+
+            return Promise.reject();
+        }
+    );
+
+    function request(email) { return { type: userConstants.LOGIN_REQUEST, email } }
+    function success(data) { return { type: userConstants.LOGIN_SUCCESS,  payload: { user: jwt(data) } } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 };
 
-function login(username, password) {
-    return dispatch => {
-        dispatch(request({ username }));
-
-        userService.login(username, password)
-            .then(
-                user => {
-                    dispatch(success(user));
-                    history.push('/');
-                },
-                error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
-                }
-            );
-    };
-
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
-}
-
-function logout() {
-    userService.logout();
+export const logout = async () => {
+    await userService.logout();
     return { type: userConstants.LOGOUT };
 }
 
-function getAll() {
-    return dispatch => {
-        dispatch(request());
-
-        userService.getAll()
-            .then(
-                users => dispatch(success(users)),
-                error => dispatch(failure(error))
-            );
-    };
-
-    function request() { return { type: userConstants.GETALL_REQUEST } }
-    function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
-    function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
-}
