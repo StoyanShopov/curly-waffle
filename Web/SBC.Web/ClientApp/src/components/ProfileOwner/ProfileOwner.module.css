@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container {
+    position: relative;
+    justify-content: center;
+    top: 160px;
+    left: 600px;
+    width: 1320px;
+    height: 1096px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.contentContainer {
+    width: 1035px;
+    height: 600px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 10px #00000029;
+    opacity: 1;
+    font-size: 30px;
+    margin-left: 10%;
+}
+
+.testContainer {
+    width: 1035px;
+    height: 300px;
+    background-color: burlywood;
+    font-size: 40px;
+    margin-left: 10%;
+}
