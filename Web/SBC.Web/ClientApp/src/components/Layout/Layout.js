@@ -2,7 +2,6 @@
 import NavBar from './NavBar';
 import Footer from './Footer';
 
-
 export class Layout extends Component {
 
     render() {

@@ -1,15 +1,28 @@
 import React from "react";
 import styles from "./ProfileOwner.module.css";
+import Sidebar from "../Sidebar/Sidebar";
 
-export default function RegisterAsOwner(prop) {
+export default function OwnerDashboard(prop) {
     return (
-        <div className={styles.container}>
-            <div className={styles.navContainer}>
-            </div>
-            <div className={styles.contentContainer}>
-            </div>
-            <div className={styles.footerContainer}>
-            </div>
-        </div >
+        <>
+            <Sidebar />
+
+            <div className={styles.container}>
+                <div className={styles.contentContainer}>
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                    Owner Dashboard Test
+                </div>
+                <div className={styles.testContainer}>
+                    Test
+                </div>
+            </div >
+        </>
     );
 }
