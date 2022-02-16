@@ -2,7 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ListingCoachModel
+    using SBC.Data.Models;
+    using SBC.Services.Mapping;
+
+    public class ListingCoachModel : IMapFrom<Coach>
     {
         [Required]
         public string FirstName { get; set; }
@@ -10,16 +13,17 @@
         [Required]
         public string LastName { get; set; }
 
-        [Required]
+        
         public string Description { get; set; }
 
-        [Required]
+       
         public string VideoUrl { get; set; }
-
 
         public decimal PricePerSession { get; set; }
 
-        [Required]
+       
         public string CalendlyUrl { get; set; }
+
+        public int? CompanyId { get; set; }
     }
 }

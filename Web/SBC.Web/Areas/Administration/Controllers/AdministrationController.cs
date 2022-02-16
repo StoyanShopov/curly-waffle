@@ -8,8 +8,8 @@
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    // [Authorize(Roles = AdministratorRoleName)]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+     [Authorize(Roles = AdministratorRoleName)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = CompanyEmployeeRoleName)]
     [Area("Administration")]
     public class AdministrationController : ApiController
     {
