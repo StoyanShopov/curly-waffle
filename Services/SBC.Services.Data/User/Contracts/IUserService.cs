@@ -21,5 +21,6 @@
         Task<bool> NoTrackUserExistsByEmailAsync(string email);
 
         //Task<bool> NoTrackUserExistsByEmailByFullNameAsync(string email, string fullName);
+        Task<bool> NoTrackUserExistsByEmail(string email);
     }
 }

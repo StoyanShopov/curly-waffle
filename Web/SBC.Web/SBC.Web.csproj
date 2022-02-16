@@ -58,6 +58,12 @@
 	</ItemGroup>
 
 
+	<ItemGroup>
+	  <Folder Include="ClientApp\src\components\ProfileOwner\" />
+	  <Folder Include="ClientApp\src\components\Register\" />
+	</ItemGroup>
+
+
 	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
 		<!-- Ensure Node.js is installed -->
 		<Exec Command="node --version" ContinueOnError="true">

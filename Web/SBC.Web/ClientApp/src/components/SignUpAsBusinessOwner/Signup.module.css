@@ -1,0 +1,83 @@
+.container {
+    position: relative;
+    justify-content: center;
+    top: 160px;
+    
+    width: 1320px;
+    height: 1096px;
+ 
+    opacity: 1;
+}
+.picDiv{
+    position: absolute;
+   
+}
+.signupFigure{
+    position: absolute;
+}
+.Man{ 
+    position: absolute;  
+    top: 200px;
+    left: 100px;
+}
+.ulForSignup {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;  
+    top: 400px;
+    left: 1500px;
+  }
+.ButtonForSignUp
+{
+    position: absolute;  
+    top: 200px;
+    padding: 14px 40px;
+    width: 580px;
+    height: 70px;
+    background-color: white;
+    color: #296CFB;
+    font-size: 24px;
+    text-align: center;
+    left: -175px;
+    border-color: #296CFB;
+    border-style: solid;
+    font-style: Montserrat;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 23px;
+    border: 3px solid #296CFB;
+}
+.have
+{
+    position: absolute;  
+    top: 300px;
+    text-align: left;
+    left: -110px;
+    color: #296CFB;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: bold 27px Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color:#296CFB;
+    font-size: 27px;
+}
+.login
+{
+    font-weight: bold;
+    color:#296CFB;
+    font: bold 27px Arial, Helvetica, sans-serif;;
+   
+    letter-spacing: 1px;
+    opacity: 1;
+    position: absolute;  
+    top: 300px;
+    text-align: center;
+    left: 220px;
+    color: #296CFB;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+}

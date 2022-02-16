@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Company
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -18,5 +19,16 @@
         }
 
         public async Task<Result> GetCount() => new ResultModel(await this.companyRepository.AllAsNoTracking().CountAsync());
+        public async Task<bool> ExistsByNameAsync(string name)
+            => await this.companyRepository
+                .AllAsNoTracking()
+                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+
+        public async Task<int> NoTrackGetCompanyByNameAsync(string name)
+            => await this.companyRepository
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == name.ToLower())
+                .Select(c => c.Id)
+                .FirstOrDefaultAsync();
     }
 }
