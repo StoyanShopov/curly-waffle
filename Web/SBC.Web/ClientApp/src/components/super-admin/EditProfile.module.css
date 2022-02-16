@@ -132,8 +132,7 @@ textarea {
 .fileUpload {
   border: 0;
   background-color: #296cfb;
-  margin: 10px;
-  margin-left: 38px;
+  margin: 14px;
   color: white;
   font-weight: bold;
   width: 120px;
@@ -141,11 +140,6 @@ textarea {
   font-size: 18px;
   overflow: hidden;
   position: relative;
-  text-align: center;
-}
-.fileUpload span {
-  padding-top: 4px;
-  display: block;
   text-align: center;
 }
 
