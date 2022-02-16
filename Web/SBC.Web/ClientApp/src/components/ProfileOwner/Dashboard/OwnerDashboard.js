@@ -7,7 +7,7 @@ export default function OwnerDashboard(prop) {
         <>
             <Sidebar />
 
-            <div className={styles.container}>
+            <div className={styles.containerTest}>
                 <div className={styles.contentContainer}>
                     Owner Dashboard Test
                     Owner Dashboard Test
@@ -45,6 +45,8 @@ export default function OwnerDashboard(prop) {
                 </div>
 
             </div >
+
+
 
         </>
     );
