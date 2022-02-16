@@ -26,6 +26,9 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/profileOwner">Owner</NavLink>
                         </li>
                         <li>
+                            <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
+                        </li>
+                        <li>
                             <a href="/docs">Docs</a>
                         </li>
                     </ul>
