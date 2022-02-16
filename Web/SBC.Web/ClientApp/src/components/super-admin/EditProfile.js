@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import css from './EditProfile.module.css';
 import { EditAdmin, uploadImage, GetAdminData } from './../../services/super-admin-service';
-import { _adapters } from 'chart.js';
 
 export default function EditProfile(props) {
     let [admin, setAdmin] = useState({});

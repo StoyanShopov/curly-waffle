@@ -16,6 +16,9 @@ const NavBar = () => {
                 </div>
                 <div className={styles.testedLinks}>
                     <ul>
+                    <li>
+                            <NavLink tag={Link} to="/super-admin">Super Admin</NavLink>
+                        </li>
                         <li>
                             <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
                         </li>

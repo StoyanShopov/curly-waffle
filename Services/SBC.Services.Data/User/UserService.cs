@@ -155,6 +155,16 @@
             throw new System.NotImplementedException();
         }
 
+        public Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<ApplicationUser> GetByEmailAsync(string email)
+        {
+            throw new System.NotImplementedException();
+        }
+
         // public async Task<bool> NoTrackUserExistsByEmailByFullNameAsync(string email, string fullName)
         //    => await this.applicationUser
         //        .AllAsNoTracking()
