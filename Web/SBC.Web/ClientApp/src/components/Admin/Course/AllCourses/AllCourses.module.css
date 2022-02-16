@@ -16,13 +16,11 @@
     width: 50%;
     position: absolute;
     right: 2%;
-    top: 0%;
 }
 
 .book {
     position: absolute;
     height: 150px;
-    /* width: inherit; */
     padding-top: 5%;
     left: 25%;
 }

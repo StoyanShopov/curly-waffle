@@ -68,17 +68,23 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(EditCourseServiceModel courseModel)
+        public async Task<Result> EditAsync(int? id, EditCourseServiceModel courseModel)
         {
+            if (id == null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "Id is null!");
+            }
+
             var course = await this.courses
                 .All()
-                .FirstOrDefaultAsync(c => c.Id == courseModel.Id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (course == null)
             {
                 return new ErrorModel(HttpStatusCode.NotFound, "Course doesn't exist!");
             }
 
+            courseModel.Id = id;
             course.Title = courseModel.Title;
             course.Description = courseModel.Description;
             course.PricePerPerson = courseModel.PricePerPerson;
@@ -90,7 +96,7 @@
 
             await this.courses.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(courseModel);
         }
 
         public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()

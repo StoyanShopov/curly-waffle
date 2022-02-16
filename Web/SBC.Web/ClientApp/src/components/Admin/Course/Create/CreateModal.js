@@ -1,6 +1,6 @@
 import style from './CreateModal.module.css';
 
-const CreateCourse = ({ setCreateModal }) => {
+const CreateCourse = (props) => {
 
     const onCourseCreate = (e) => {
         e.preventDefault();
@@ -14,7 +14,7 @@ const CreateCourse = ({ setCreateModal }) => {
     return (
         <section className={style.createPage}>
             <h2 className={style.headingCourse}>Create course</h2>
-            <button className={style.closeCreate} onClick={() => { setCreateModal(false); }}>&times;</button>
+            <button className={style.closeCreate} onClick={() => { props.closeModal() }}>&times;</button>
 
             <form id="create-form" onSubmit={onCourseCreate} method="POST">
                 <div>
@@ -43,7 +43,7 @@ const CreateCourse = ({ setCreateModal }) => {
                     </select>
 
                     <div className={style.buttonContainer}>
-                        <input type="button" className={style.btnCancel} value="Cancel" onClick={() => { setCreateModal(false); }} />
+                        <input type="button" className={style.btnCancel} value="Cancel" onClick={() => { props.closeModal() }} />
                         <input type="submit" className={style.btnSubmit} value="Submit" />
                     </div>
                 </div>

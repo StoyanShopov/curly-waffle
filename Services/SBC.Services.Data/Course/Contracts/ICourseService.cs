@@ -14,7 +14,7 @@
 
         Task<Result> CreateAsync(CreateCourseServiceModel courseModel);
 
-        Task<Result> EditAsync(EditCourseServiceModel courseModel);
+        Task<Result> EditAsync(int? id, EditCourseServiceModel courseModel);
 
         Task<Result> DeleteByIdAsync(int id);
 

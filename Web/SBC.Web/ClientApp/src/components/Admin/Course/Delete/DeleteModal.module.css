@@ -1,4 +1,4 @@
-.modalBackground {
+/* .modalBackground {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -6,9 +6,9 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-}
+} */
 
-.deleteWindow {
+/* .deleteWindow {
     position: fixed;
     display: grid;
     top: 12rem;
@@ -16,7 +16,7 @@
     width: 700px;
     height: 400px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+} */
 
 .closeDelete {
     position: absolute;

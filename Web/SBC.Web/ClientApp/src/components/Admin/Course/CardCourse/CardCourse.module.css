@@ -105,7 +105,7 @@ h2.courseName {
 
 .cardCompany {
     display: inline-block;
-    background: transparent url('../../../../../public/Image\ 2.png') 0% 0% no-repeat padding-box;
+    /* background: transparent url('../../../../../public/Image\ 2.png') 0% 0% no-repeat padding-box; */
     opacity: 1;
     width: 51px;
     height: 29px;
