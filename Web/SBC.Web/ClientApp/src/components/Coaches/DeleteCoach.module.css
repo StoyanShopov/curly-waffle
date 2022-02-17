@@ -1,0 +1,64 @@
+.container{
+    display: flow-root;
+    padding-top: 10%;
+}
+
+.modalContainer{
+    position: relative;
+    float: left;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+
+.header{
+    width: 395px;
+    height: 90px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.title{
+    text-align: center;
+    color: white;
+    font: normal normal bold 21px/36px Montserrat;
+    padding-top: 16px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+}
+
+.btnSave{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; 
+    width: 100px;
+    height: 40px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: #296CFB;
+    margin-left: 25px;
+    margin-top: 30px;
+    color: #ffffff;
+    font: normal normal bold 14px/27px Montserrat;
+    letter-spacing: 1.1px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btnCancel{
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #296CFB;
+    opacity: 1;
+    color: #296CFB; 
+    font: normal normal bold 14px/27px Montserrat;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+}
