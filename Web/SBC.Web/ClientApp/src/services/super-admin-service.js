@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TokenManagement } from '../helpers';
 
 //hard code token
-const token = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5ZWZjNDg2OS04OTU0LTQwZTctOGVmMS02YTgxNTVlOTQzMjciLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDc1NTU5LCJleHAiOjE2NDUzMzQ3NTksImlhdCI6MTY0NTA3NTU1OX0.fbtOKbI1pE-6BVVrtULtnijqg2Z1qlkKor1FtVuz7HQ");
+const token = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny05MWE0LTRjNDMtYTg5ZS1jOTk2M2EzYmFkYTIiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDk0ODkxLCJleHAiOjE2NDUzNTQwOTEsImlhdCI6MTY0NTA5NDg5MX0.Ii-hGc-PGhbh5n3Jl4hsMxu8yqj6L0yrs5eBJaoIJ2U");
 
 export const DashboardIndex = async () => {
     let response = await axios({
@@ -41,26 +41,4 @@ export const EditAdmin = async (_data) => {
             Authorization: `Bearer ${token}`
         },
     });
-}
-
-export const uploadImage = async (file) => {
-    console.log(file);
-    const formData = new FormData();
-    formData.append('file', file);
-
-    let response = await axios({
-        method: 'POST',
-        url: baseUrl + "api/Blobs",
-        data: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        }
-    });
-
-    // fetch(baseUrl + "api/Blobs", {
-    //     method: 'POST',
-    //     body: formData
-    // })
-
-    return response.data;
 }

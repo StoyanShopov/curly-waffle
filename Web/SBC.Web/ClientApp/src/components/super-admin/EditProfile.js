@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 import css from './EditProfile.module.css';
-import { EditAdmin, uploadImage, GetAdminData } from './../../services/super-admin-service';
+
+import { EditAdmin, GetAdminData } from './../../services/super-admin-service';
+import { uploadImage } from '../../services/blob-service';
 
 export default function EditProfile(props) {
     let [admin, setAdmin] = useState({});
 
     useEffect(async () => {
-        await GetAdminData().then(r => {
-            setAdmin(r)
-        })
+      setAdmin(await GetAdminData())
     }, [])
 
     const OnEditAdmin = async (e) => {
@@ -35,7 +36,7 @@ export default function EditProfile(props) {
         EditAdmin(data)
             .then((data) => {
                 console.log(data['status'])
-                if (data['status']) { props.closeModal() }
+                if (data['status']) { props.closeModal(); }
             }, (err) => {
                 console.error(err)
             })

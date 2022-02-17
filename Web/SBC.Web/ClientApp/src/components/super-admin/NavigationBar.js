@@ -1,11 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+
 import css from './NavigationBar.module.css';
+
+import { GetAdminData } from './../../services/super-admin-service';
 
 export default function NavigationBar(props) {
     const onLogout = () => {
         //clear jwt token and redirect to main page 
         console.log("Logout")
     }
+
+    let [txt, settxt] = useState();
+
+    let [admin, setAdmin] = useState({});
+
+    useEffect(async () => {
+        await GetAdminData().then(a => {
+            setAdmin(a)
+            settxt(a.fullname.substring(0,1))
+        })
+    }, [])
+
     return (
         <div className={css.vertical}>
             <div className={css.iconPen}>
@@ -17,11 +33,11 @@ export default function NavigationBar(props) {
             </div>
             <div className={css.circleContainer}>
                 <div className={css.circleFloatChild}>
-                    <span className={css.nameVisualizer}> I </span>
+                    <span className={css.nameVisualizer}> {txt} </span>
                 </div>
                 <div className={css.floatChild2}>
-                    <label className={css.lable}>Ivan Dimitrov</label>
-                    <label className={css.lableColored}>Motion Software</label>
+                    <label className={css.lable}>{admin.fullname}</label>
+                    <label className={css.lableColored}>{!admin.company ? "--- No Company ---" : admin.company}</label>
                 </div>
                 <br />
             </div>
