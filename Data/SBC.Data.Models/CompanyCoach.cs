@@ -1,10 +1,9 @@
-﻿using SBC.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SBC.Data.Models
+﻿namespace SBC.Data.Models
 {
+    using System;
+
+    using SBC.Data.Common.Models;
+
     public class CompanyCoach : IDeletableEntity
     {
         public int CompanyId { get; set; }
