@@ -1,45 +1,43 @@
 import axios from 'axios';
 import { baseUrl } from '../constants';
-import { getLocalAccessToken } from '../helpers/token';
+import { getLocalAccessToken, getLocalRefreshToken, setUser } from '../helpers/token';
 
-export const createCoach = async(
-    firstName,
-    lastName,
-    price,
-    description,
-    calendlyUrl,
-    company,
-    file
-) =>{
-    let token = getLocalAccessToken();
-    let formData = new FormData();
-                                          
-    formData.append("File" , file)
-    formData.append("FirstName" , firstName)
-    formData.append("LastName" , lastName)
-    formData.append("Price" , price)
-    formData.append("Company", company)
-    formData.append("CalendlyURL" , calendlyUrl)
-    formData.append("Description" , description)
-
+export const createCoach = async (data) => {
     try {
-        const resp = await axios.post(baseUrl + "Admin/Coaches", formData, {
-          headers: { Authorization: `Bearer ${token}` },
+        const resp = await axios.post(baseUrl + "api/Coaches", data, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((coach) => {
+            console.log(coach)
         });
         return resp;
-      } catch (error) {}
+    } catch (error) { }
 }
-export const getCoach = async()=>{
-    let coach = {
-        id:2,
-        firstName: "Ivan",
-        lastName: "Ivanski",
-        description: "ivaneca",
-        price: 110,
-        calendlyUrl: "https://calendly.com/1",
-        file: "fakepath/url",
-        company: "companyTest"
+
+export const uploadImage = async (file) => 
+{ 
+    const formData = new FormData(); 
+    formData.append('file', file); 
+    let response = await axios({ 
+        method: 'POST', 
+        url: baseUrl + "api/Blobs/upload", 
+        data: formData, 
+        headers: { 'Content-Type': 'multipart/form-data', } }); 
+        return response.data.photoUrl; 
     }
 
-    return coach;
-}
+// export const getCoach = async () => {
+//     let coach = {
+//         id: 2,
+//         firstName: "Ivan",
+//         lastName: "Ivanski",
+//         description: "ivaneca",
+//         price: 110,
+//         calendlyUrl: "https://calendly.com/1",
+//         file: "fakepath/url",
+//         company: "companyTest"
+//     }
+
+//     return coach;
+// }
