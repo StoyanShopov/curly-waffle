@@ -9,7 +9,7 @@
     {
         public Coach()
         {
-            this.Categories = new List<CategoryCoach>();
+            this.Categories = new HashSet<CategoryCoach>();
             this.Languages = new HashSet<LanguageCoach>();
             this.Courses = new HashSet<Course>();
             this.Users = new HashSet<UserCoachSession>();
