@@ -2,7 +2,6 @@
 {
     using System.Reflection;
     using System.Text;
-
     using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
