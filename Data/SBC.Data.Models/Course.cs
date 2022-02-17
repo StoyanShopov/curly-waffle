@@ -37,5 +37,7 @@
         public ICollection<UserCourse> Users { get; set; }
 
         public ICollection<CourseLecture> Lectures { get; set; }
+
+        public ICollection<CompanyCourse> Companies { get; set; }
     }
 }
