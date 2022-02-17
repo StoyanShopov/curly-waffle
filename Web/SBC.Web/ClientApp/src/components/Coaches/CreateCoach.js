@@ -1,123 +1,25 @@
-import { useState} from 'react';
-import { createCoach } from '../../services/adminCoachesService';
+import { useState } from 'react';
+import { createCoach, uploadImage } from '../../services/adminCoachesService';
 
 import styles from './CreateCoach.module.css';
 
 
 const CreateCoach = () => {
-
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('')
-    const [price, setPrice] = useState(0);
-    const [company, setCompany] = useState('');
-    const [description, setDescription] = useState('');
-    const [calendlyUrl, setCalendlyUrl] = useState('');
-    const [file, setFile] = useState('');
-    const [videoUrl, setVideoUrl] = useState('')
-
-    const onChangeLastName = (e) => {
-        setLastName(e.target.value);
-    }
-
-    const onChangeFirstName = (e) => {
-        setFirstName(e.target.value);
-    }
-
-    const onChangeCompany = (e) => {
-        setCompany(e.target.value);
-    }
-
-    const onChangeCalendlyUrl = (e) => {
-        setCalendlyUrl(e.target.value);
-    }
-
-    const onChangeFile = (e) => {
-        console.log(e.target.files[0]);
-        setFile(e.target.files[0]);
-    }
-
-    const onChangeDescription = (e) => {
-        setDescription(e.target.value);
-    }
-
-    const onChangePrice = (e) => {
-        setPrice(e.target.value)
-    }
-
-    const onChangeVideoUrl = (e) => {
-        setVideoUrl(e.target.value)
-    }
-
-    let handleValidation = () => {
-        let input = {
-            firstName,
-            lastName,
-            price,
-            calendlyUrl,
-            file,
-            description,
-            videoUrl
-        };
-
-        let isValid = true;
-
-        if (input['firstName']) {
-            isValid = false;
-        }
-        
-        if (input['videoUrl']) {
-            isValid = false;
-        }
-
-        if (input['lastName']) {
-            isValid = false;
-        }
-
-        if (input['description']) {
-            isValid = false;
-        }
-
-        if (input['price'] < 0) {
-            isValid = false;
-        }
-
-        if (input['calendlyUrl']) {
-            isValid = false;
-        }
-
-        if (input['file']) {
-            isValid = false;
-        }
-
-        return isValid;
-    };
-
-    const onSubmitAddCoach = (e) => {
+    const onSubmitAddCoach = async(e) => {
         e.preventDefault()
 
-        if (handleValidation()) {
-            createCoach(
-                firstName,
-                lastName,
-                price,
-                description,
-                calendlyUrl,
-                company,
-                file
-            )
-                .then((response) => {
-                    if (response === 'Successfully created.') {
-                        setFirstName('');
-                        setLastName('');
-                        setCompany('');
-                        setDescription('');
-                        setPrice('');
-                        setCalendlyUrl('')
-                        setFile('')
-                    }
-                })
-        }
-     }
+        const fd = new FormData(e.target);
+        const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
+
+        console.log(data);
+        const file = await uploadImage(data.file)
+        data.file = file
+
+        createCoach(data)
+            .then((response) => {
+                console.log(response)
+            })
+    }
 
     return (
         <div className={styles.bodyContainer}>
@@ -128,8 +30,8 @@ const CreateCoach = () => {
                         <div className={styles.fileUpload}>
                             <input
                                 type="file"
+                                name="file"
                                 className={styles.upload}
-                                onChange={onChangeFile}
                                 required />
                             <span>Upload image</span>
                         </div>
@@ -148,10 +50,8 @@ const CreateCoach = () => {
                                 name="firstName"
                                 placeholder='First Name'
                                 type="text"
-                                value={firstName}
-                                onChange={onChangeFirstName}
                                 required ></input>
-                                <span className={styles.starFirstName}>*</span>
+                            <span className={styles.starFirstName}>*</span>
                         </div>
 
                         <div>
@@ -159,21 +59,17 @@ const CreateCoach = () => {
                                 name="lastName"
                                 placeholder='Last Name'
                                 type="text"
-                                value={lastName}
-                                onChange={onChangeLastName}
                                 required />
-                                <span className={styles.starLastName}>*</span>
+                            <span className={styles.starLastName}>*</span>
                         </div>
 
                         <div>
-                        <input className={styles.inputField}
+                            <input className={styles.inputField}
                                 name="videoUrl"
                                 placeholder='Video URL'
                                 type="text"
-                                value={videoUrl}
-                                onChange={onChangeVideoUrl}
                                 required />
-                                <span className={styles.starVideoUrl}>*</span>
+                            <span className={styles.starVideoUrl}>*</span>
                         </div>
 
                         <div>
@@ -181,27 +77,23 @@ const CreateCoach = () => {
                                 name="price"
                                 placeholder='Price'
                                 type="text"
-                                onChange={onChangePrice}
                                 required />
-                                <span className={styles.starPrice}>*</span>
+                            <span className={styles.starPrice}>*</span>
                         </div>
                         <div>
                             <input className={styles.inputField}
                                 name="company"
                                 placeholder='Company(optional)'
                                 type="text"
-                                value={company}
-                                onChange={onChangeCompany} />
+                                 />
                         </div>
                         <div>
                             <input className={styles.inputField}
                                 name="calendlyUrl"
                                 placeholder='Calendly URL'
                                 type="text"
-                                value={calendlyUrl}
-                                onChange={onChangeCalendlyUrl}
                                 required />
-                                <span className={styles.starCalendlyUrl}>*</span>
+                            <span className={styles.starCalendlyUrl}>*</span>
                         </div>
 
                         <div>
@@ -209,10 +101,8 @@ const CreateCoach = () => {
                                 name="description"
                                 placeholder='Description'
                                 type="textarea"
-                                value={description}
-                                onChange={onChangeDescription}
                                 required />
-                                <span className={styles.starDescription}>*</span>
+                            <span className={styles.starDescription}>*</span>
                         </div>
                         <button className={styles.addAnotherCoachBtn}>
                             + Add another coach
@@ -227,5 +117,6 @@ const CreateCoach = () => {
         </div>
     )
 }
+
 
 export default CreateCoach;
