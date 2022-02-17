@@ -33,7 +33,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                {location.pathname === "/" &&
+               {/* {location.pathname === "/" &&*/}
                     <div className={styles.homePageButtons}>
                         <ul>
                             <li>
@@ -44,9 +44,9 @@ const NavBar = () => {
                             </li>
                         </ul>
                     </div>
-                }
+               {/* }*/}
 
-                {location.pathname !== "/" &&
+                {/*{location.pathname !== "/" &&*/}
                     <div className={styles.coursesCoaches}>
                         <ul>
                             <li>
@@ -67,7 +67,7 @@ const NavBar = () => {
                             </li>
                         </ul>
                     </div>
-                }
+               {/* }*/}
 
                 <div className={styles.greenCircle}>
                     A

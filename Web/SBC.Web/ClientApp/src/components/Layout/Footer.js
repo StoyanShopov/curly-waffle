@@ -11,7 +11,6 @@ const Footer = () => {
                 <div className={styles.footerMain}>
                     {/* <img src="assets/images/Path 8.svg" />*/}
                     <div className={styles.trapezoid}>
-
                         <ul>
                             <li><h1 className={styles.logoHeader}>upskill</h1></li>
                             <li>  <img src="assets/images/Group 5.svg" className={styles.logo} /></li>

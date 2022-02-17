@@ -4,7 +4,6 @@
     padding-top: 14%;
 }
 
-
 .footerMain {
     position: relative;    
 }
@@ -206,10 +205,11 @@ ul {
     position:relative;
 }
 
-
 .trapezoid {
     clip-path: polygon(0 10%, 100% 60%, 100% 100%, 0% 100%);
     width: 100%;
+    /*width: auto;*/
+    /*width: 98vw;*/
     height: 700px;
     background-color: #0B2969;
 }

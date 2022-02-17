@@ -7,7 +7,7 @@ export default function OwnerDashboard(prop) {
     return (
         <>
             <Sidebar />
-                       
+
             <div className={styles.containerH}>
                 <div className={styles.dashboard}>
                     <section className={styles.dashboardHeader} >
@@ -21,18 +21,26 @@ export default function OwnerDashboard(prop) {
                         </svg>
                         <article><span>Coaches</span><span style={{ color: "#16D696" }}>56</span></article>
                     </section>
-                </div>                
+                </div>
             </div >
 
             <div className={styles.containerT}>
                 <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th className={styles.theadTh}>September</th>                            
-                        </tr>                        
+                            <th className={styles.theadTh}>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
+                                </svg>
+                                September
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
+                                </svg>
+                            </th>
+                        </tr>
                         <svg width="926" height="4" viewBox="0 0 926 4">
                             <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" />
-                        </svg>                       
+                        </svg>
                         <tr className={styles.tableTr}>
                             <th className={styles.firstTh}>Course Name</th>
                             <th className={styles.secondTh}>Enrolled</th>
@@ -64,7 +72,15 @@ export default function OwnerDashboard(prop) {
                 <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th className={styles.theadTh}>September</th>
+                            <th className={styles.theadTh}>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
+                                </svg>
+                                September
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
+                                </svg>
+                            </th>
                         </tr>
                         <svg width="926" height="4" viewBox="0 0 926 4">
                             <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" />
@@ -94,7 +110,7 @@ export default function OwnerDashboard(prop) {
                         </tr>
                     </tbody>
                 </table>
-            </div>     
+            </div>
         </>
     );
 }
