@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
 import DeleteModal from "../Delete/DeleteModal.js";
@@ -27,7 +27,7 @@ const CardCourse = (props) => {
                 <p className={style.cardPrice}>{course.pricePerPerson.toFixed(2)}&#8364; per person</p>
                 <p className={style.cardCompany}>{course.coachCompanyName}</p>
                 <div className={style.cardButtonDiv}>
-                    <button className={style.cardDeleteBtn} type="submit" onClick={() => { props.openModal(<DeleteModal closeModal={props.closeModal} />) }}>Delete</button>
+                    <button className={style.cardDeleteBtn} type="submit" onClick={() => { props.openModal(<DeleteModal closeModal={props.closeModal} courseId={course.id} setCourses={props.setCourses} courses={props.courses}/>) }}>Delete</button>
                 </div>
             </div>
         </div>

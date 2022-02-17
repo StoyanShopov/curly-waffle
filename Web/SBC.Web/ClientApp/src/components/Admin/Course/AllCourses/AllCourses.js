@@ -9,6 +9,7 @@ import style from './AllCourses.module.css';
 
 const AllCourses = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [childModal, setChildModal] = useState(null);
 
     let subtitle = {
         content: {
@@ -26,8 +27,6 @@ const AllCourses = () => {
         color: '#f00'
     };
 
-    const [childModal, setChildModal] = useState(null);
-
     function openModal(childElement) {
         setChildModal(childElement);
         setIsOpen(true);
@@ -42,18 +41,13 @@ const AllCourses = () => {
     }
 
     const [courses, setCourses] = useState([]);
-    let [count, setCount] = useState(courses.length);
 
     useEffect(() => {
         courseService.getAll()
             .then(courseResult => {
                 setCourses(courseResult.data);
             });
-    }, [count]);
-
-    const setCountDemo = (param) => {
-        setCount(param);
-    }
+    }, []);
 
     return (
         <div className={style.container}>
@@ -68,10 +62,10 @@ const AllCourses = () => {
                 </div>
             </section>
             <section className={style.cardsSection}>
-                {courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} />)}
+                {courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} setCourses={setCourses} courses={courses}/>)}
 
                 <div className={style.buttonDiv}>
-                    <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} courses={courses} setCount={setCountDemo} />) }}>
+                    <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} courses={courses} setCourses={setCourses} />) }}>
                         <img src="./Group 78.svg" alt="" />
                     </button>
                     <Modal

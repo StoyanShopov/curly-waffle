@@ -1,11 +1,8 @@
 import { courseService } from "../../../../services/course.service.js";
-import { useEffect, useState } from "react";
 
 import style from './CreateModal.module.css';
 
 const CreateCourse = (props) => {
-    // const [courses, setCourses] = useState([]);
-
 
     const onCourseCreate = (e) => {
         e.preventDefault();
@@ -17,11 +14,9 @@ const CreateCourse = (props) => {
             .then((response) => {
                 if (response.status === 200) {
                     props.closeModal();
-                    props.setCount(props.courses + 1);
+                    props.setCourses([...props.courses, response.data]);
                 }
             })
-
-        console.log('submit');
     }
 
     return (
