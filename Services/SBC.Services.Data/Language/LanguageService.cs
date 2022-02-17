@@ -4,12 +4,13 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Language.Contracts;
 
-    using SBC.Services.Data.Language.Models;
+    using SBC.Services.Mapping;
 
     public class LanguageService : ILanguageService
     {
@@ -20,7 +21,10 @@
             this.languageRepository = data;
         }
 
-        public Task<List<ListingLanguageModel>> GetAll()
-            => Task.FromResult(this.languageRepository.AllAsNoTracking().Select(x => new ListingLanguageModel { Name = x.Name }).ToList());
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+             => await this.languageRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync();
     }
 }

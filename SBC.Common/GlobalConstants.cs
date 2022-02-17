@@ -105,6 +105,7 @@
 
         public class CoachConstants
         {
+            public const string NameRegex = @"^\w{2,25}$";
             public const string CoachFirstNameIvan = "Ivan";
             public const string CoachFirstNameMaria = "Maria";
             public const string CoachFirstNameEmil = "Emil";
@@ -143,7 +144,6 @@
 
         public class ApplicationUserConstants
         {
-            public const string NameRegex = @"^\w{2,25}$";
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
         }

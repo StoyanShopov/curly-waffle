@@ -5,10 +5,9 @@
 
     using SBC.Common;
     using SBC.Data.Models;
-    using SBC.Services.Data.Language.Models;
 
     public interface ILanguageService
     {
-        Task<List<ListingLanguageModel>> GetAll();
+        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
     }
 }

@@ -10,12 +10,12 @@
 
     public interface ICoachService
     {
-        Task<Result> NewRegistrationCoach(RegisterCoach coach);
+        Task<Result> CreateAsync(RegisterCoach coach);
 
-        Task<IEnumerable<TModel>> GetAll<TModel>();
+        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
 
-        Task<Result> UpdateCoach(UpdateCoachModel coach);
+        Task<Result> UpdateAsync(UpdateCoachModel coach);
 
-        Task<Result> DeleteCoach(int coachId);
+        Task<Result> DeleteAsync(int coachId);
     }
 }

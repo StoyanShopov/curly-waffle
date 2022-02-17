@@ -3,12 +3,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Category.Contracts;
-    using SBC.Services.Data.Category.Models;
+    using SBC.Services.Mapping;
 
     public class CategoryService : ICategoryService
     {
@@ -19,7 +19,10 @@
             this.categoryRepository = data;
         }
 
-        public Task<List<ListingCategoryModel>> GetAll()
-            => Task.FromResult(this.categoryRepository.AllAsNoTracking().Select(x => new ListingCategoryModel { Name = x.Name }).ToList());
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+             => await this.categoryRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync();
     }
 }

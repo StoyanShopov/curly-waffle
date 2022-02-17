@@ -18,7 +18,7 @@
         [Required]
         public string CalendlyUrl { get; set; }
 
-        public int[] Languiges { get; set; }
+        public int[] Languages { get; set; }
 
         public int[] Categories { get; set; }
     }

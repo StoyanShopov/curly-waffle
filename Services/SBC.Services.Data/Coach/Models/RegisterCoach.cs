@@ -2,7 +2,9 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Common.GlobalConstants.ApplicationUserConstants;
+    using SBC.Data.Models;
+
+    using static SBC.Common.GlobalConstants.CoachConstants;
 
     public class RegisterCoach
     {
@@ -23,7 +25,7 @@
         [Required]
         public string CalendlyUrl { get; set; }
 
-        public int[] Languiges { get; set; }
+        public int[] Languages { get; set; }
 
         public int[] Categories { get; set; }
     }

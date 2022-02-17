@@ -3,10 +3,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using SBC.Services.Data.Category.Models;
-
     public interface ICategoryService
     {
-        Task<List<ListingCategoryModel>> GetAll();
+        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
     }
 }

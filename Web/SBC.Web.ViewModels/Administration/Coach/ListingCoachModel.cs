@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Coach.Models
+﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -13,15 +13,12 @@
         [Required]
         public string LastName { get; set; }
 
-        
         public string Description { get; set; }
 
-       
         public string VideoUrl { get; set; }
 
         public decimal PricePerSession { get; set; }
 
-       
         public string CalendlyUrl { get; set; }
 
         public int? CompanyId { get; set; }

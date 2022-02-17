@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
@@ -29,9 +30,9 @@
             this.categoryCoachRepo = categoryCoachRepo;
         }
 
-        public async Task<Result> NewRegistrationCoach(RegisterCoach coach)
+        public async Task<Result> CreateAsync(RegisterCoach coach)
         {
-            if (this.ExistingCoach(coach.FirstName, coach.LastName))
+            if (this.ExistingCoach(coach.CalendlyUrl))
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach already exist!");
             }
@@ -49,27 +50,22 @@
             await this.coachRepository.AddAsync(coachModel);
             await this.coachRepository.SaveChangesAsync();
 
-            foreach (var languigeId in coach.Languiges)
-            {
-                    coachModel.Languages.Add(new LanguageCoach { CoachId = coachModel.Id, LanguageId = languigeId });
-            }
+            this.AddLanguages(coach.Languages, coachModel.Id);
+            await this.languageCoachRepo.SaveChangesAsync();
 
-            foreach (var categoryId in coach.Categories)
-            {
-                    coachModel.Categories.Add(new CategoryCoach { CoachId = coachModel.Id, CategoryId = categoryId });
-            }
+            this.AddCategories(coach.Categories, coachModel.Id);
+            await this.categoryCoachRepo.SaveChangesAsync();
 
-            await this.coachRepository.SaveChangesAsync();
             return true;
         }
 
-        public async Task<IEnumerable<TModel>> GetAll<TModel>()
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
              => await this.coachRepository
                 .AllAsNoTracking()
                 .To<TModel>()
                 .ToListAsync();
 
-        public async Task<Result> UpdateCoach(UpdateCoachModel coach)
+        public async Task<Result> UpdateAsync(UpdateCoachModel coach)
         {
             var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.CoachId);
             if (coachModel == null)
@@ -82,27 +78,18 @@
             coachModel.VideoUrl= coach.VideoUrl;
             coachModel.CalendlyUrl = coach.CalendlyUrl;
 
-            foreach (var languigeId in coach.Languiges)
-            {
-                if (!this.ExistLanguage(coachModel, languigeId))
-                {
-                    coachModel.Languages.Add(new LanguageCoach { CoachId = coachModel.Id, LanguageId = languigeId });
-                }
-            }
-
-            foreach (var categoryId in coach.Categories)
-            {
-                if (!this.ExistCategory(coachModel, categoryId))
-                {
-                    coachModel.Categories.Add(new CategoryCoach { CoachId = coachModel.Id, CategoryId = categoryId });
-                }
-            }
-
             await this.coachRepository.SaveChangesAsync();
+
+            this.AddLanguages(coach.Languages, coachModel.Id);
+            await this.languageCoachRepo.SaveChangesAsync();
+
+            this.AddCategories(coach.Categories, coachModel.Id);
+            await this.categoryCoachRepo.SaveChangesAsync();
+
             return true;
         }
 
-        public async Task<Result> DeleteCoach(int coachId)
+        public async Task<Result> DeleteAsync(int coachId)
         {
             var coachModel = this.coachRepository.AllAsNoTracking().Where(x => x.Id == coachId).FirstOrDefault();
             if (coachModel == null)
@@ -122,14 +109,36 @@
             return true;
         }
 
-        private bool ExistingCoach(string firstName, string lastName)
-        => this.coachRepository.AllAsNoTracking().Any(x => x.FirstName == firstName && x.LastName == lastName && x.IsDeleted == false);
+        private async void AddCategories(int[] categories, int coachId)
+        {
+            foreach (var categoryId in categories)
+            {
+                if (!this.ExistCategory(coachId, categoryId))
+                {
+                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = categoryId });
+                }
+            }
+        }
 
-        private bool ExistCategory(Coach coachModel, int categoryId)
-        => coachModel.Categories.Any(x => x.CategoryId == categoryId && x.CoachId == coachModel.Id && x.IsDeleted == false);
+        private async void AddLanguages(int[] languages, int coachId)
+        {
+            foreach (var languageId in languages)
+            {
+                if (!this.ExistLanguage(coachId, languageId))
+                {
+                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = languageId });
+                }
+            }
+        }
 
-        private bool ExistLanguage(Coach coachModel, int languigeId)
-        => coachModel.Languages.Any(x => x.LanguageId == languigeId && x.CoachId == coachModel.Id && x.IsDeleted == false);
+        private bool ExistingCoach(string calendlyUrl)
+        => this.coachRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == calendlyUrl && x.IsDeleted == false);
+
+        private bool ExistCategory(int coachId, int categoryId)
+        => this.categoryCoachRepo.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);
+
+        private bool ExistLanguage(int coachId, int languigeId)
+        => this.languageCoachRepo.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
 
         private void DeleteAllCategoriesCoach(List<CategoryCoach> categoryCoach)
         {
@@ -144,9 +153,9 @@
 
         private void DeleteAllLanguagesCoach(List<LanguageCoach> languagesCoach)
         {
-            foreach (var languige in languagesCoach)
+            foreach (var language in languagesCoach)
             {
-                this.languageCoachRepo.Delete(languige);
+                this.languageCoachRepo.Delete(language);
             }
         }
 
