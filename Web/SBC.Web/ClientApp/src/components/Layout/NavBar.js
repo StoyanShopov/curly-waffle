@@ -20,6 +20,9 @@ const NavBar = () => {
                 <div className={styles.testedLinks}>
                     <ul>
                         <li>
+                            <NavLink tag={Link} to="/signUp">SignUp</NavLink>
+                        </li>
+                        <li>
                             <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
                         </li>
                         <li>
