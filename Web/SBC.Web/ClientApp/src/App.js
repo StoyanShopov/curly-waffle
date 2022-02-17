@@ -7,7 +7,7 @@ import { Layout } from "./components/Layout/Layout";
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
-import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
+import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
 
 import "./App.css";
