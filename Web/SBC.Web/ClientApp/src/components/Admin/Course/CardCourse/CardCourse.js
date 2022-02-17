@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import DeleteModal from "../Delete/DeleteModal.js";
-import EditModal from "../Edit/EditModal.js";
-import './CardCourse.css';
+import { Link } from 'react-router-dom';
 
-const CardCourse = () => {
-    const [deleteModal, setDeleteModal] = useState(false);
-    const [editModal, setEditModal] = useState(false);
+import DeleteModal from "../Delete/DeleteModal.js";
+import EditCourse from "../Edit/EditModal.js";
+import style from './CardCourse.module.css';
+
+const CardCourse = (props) => {
+    const [course, setCourse] = useState(props.course);
+
+    const setCourseDemo = (param) => {
+        setCourse(param);
+    }
 
     return (
-            <div className="card">
-                <div className="image-course">
-                    <img className="card-image" src="./Rectangle 1221.png" alt="" />
-                    <h2 className="course-name">Course name</h2>
-                    <button className="pencil" onClick={() => { setEditModal(true); }}><img src="./Group 81.svg" alt="" /></button>
-                    {editModal && <EditModal setEditModal={setEditModal} />}
-                </div>
-                <div className="info-course">
-                    <p className="card-name">Course name</p>
-                    <p className="card-coach">Coach name</p>
-                    <p className="card-price">Price per session</p>
-                    <span className="card-company">Google</span>
-                    <div className="card-button-div">
-                        <button className="card-delete-btn" type="submit" onClick={() => { setDeleteModal(true); }}>Delete</button>
-                        {deleteModal && <DeleteModal setDeleteModal={setDeleteModal} />}
-                    </div>
+        <div className={style.card}>
+            <div className={style.imageCourse}>
+                <img className={style.cardImage} src="./Rectangle 1221.png" alt="" />
+                <Link to={`/details/${course.id}`}><h2 className={style.courseName}>Course name</h2></Link>
+                <button className={style.pencil} onClick={() => { props.openModal(<EditCourse closeModal={props.closeModal} courseId={course.id} setCourse={setCourseDemo} />) }}>
+                    <img src="./Group 81.svg" alt="" />
+                </button>
+            </div>
+            <div className={style.infoCourse}>
+                <p className={style.cardName}>{course.title}</p>
+                <p className={style.cardCoach}>{course.coachFirstName} {course.coachLastName}</p>
+                <p className={style.cardPrice}>{course.pricePerPerson.toFixed(2)}&#8364; per person</p>
+                <p className={style.cardCompany}>{course.coachCompanyName}</p>
+                <div className={style.cardButtonDiv}>
+                    <button className={style.cardDeleteBtn} type="submit" onClick={() => { props.openModal(<DeleteModal closeModal={props.closeModal} courseId={course.id} setCourses={props.setCourses} courses={props.courses}/>) }}>Delete</button>
                 </div>
             </div>
+        </div>
 
     )
 }

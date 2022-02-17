@@ -17,7 +17,7 @@
             this.courseService = courseService;
         }
 
-        [HttpGet("Courses")]
+        [HttpGet]
         public async Task<ActionResult> Get()
         {
             var result = await this.courseService.GetAllAsync<CourseViewModel>();
@@ -41,10 +41,10 @@
             return this.GenericResponse(result);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Put(EditCourseServiceModel courseModel)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int? id, EditCourseServiceModel courseModel)
         {
-            var result = await this.courseService.EditAsync(courseModel);
+            var result = await this.courseService.EditAsync(id, courseModel);
 
             return this.GenericResponse(result);
         }

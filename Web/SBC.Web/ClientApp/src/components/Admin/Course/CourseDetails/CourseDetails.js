@@ -1,10 +1,25 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { courseService } from "../../../../services/course.service.js";
+
 import css from "./CourseDetails.module.css";
 
 export default function CourseDetails() {
+    const { id } = useParams();
+    const [course, setCourse] = useState({});
+
+    useEffect(() => {
+        courseService.getById(id)
+            .then(course => {
+                setCourse(course.data);
+            })
+    }, [id]);
+
+    console.log(course);
     return (
         <section className={css.container}>
             <div className={css.leftPart}>
-                <h1 className={css.marketingHeading}>MARKETING</h1>
+                <h1 className={css.marketingHeading}>{course.title}</h1>
                 <div>
                     <img src="/Rectangle 1396.svg" alt="" />
                 </div>
@@ -16,7 +31,7 @@ export default function CourseDetails() {
                     <img src="iconmonstr-fullscreen-2.svg" className={css.fullScreen} alt="" />
                 </div>
                 <h2 className={css.descriptionHeading}>Lecture Description</h2>
-                <p className={css.pDescription}>This course emphasizes the fundamental language skills of reading, writing, speaking, listening, thinking, viewing and presenting.</p>
+                <p className={css.pDescription}>Loremmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
                 <h2 className={css.instructorHeading}>Instructor</h2>
                 <section className={css.lectorSection}>
                     <div>

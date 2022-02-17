@@ -48,7 +48,7 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            return new ResultModel(newCourse.Id);
+            return new ResultModel(courseModel);
         }
 
         public async Task<Result> DeleteByIdAsync(int id)
@@ -68,11 +68,16 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(EditCourseServiceModel courseModel)
+        public async Task<Result> EditAsync(int? id, EditCourseServiceModel courseModel)
         {
+            if (id == null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "Id is null!");
+            }
+
             var course = await this.courses
                 .All()
-                .FirstOrDefaultAsync(c => c.Id == courseModel.Id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (course == null)
             {
@@ -90,7 +95,7 @@
 
             await this.courses.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(courseModel);
         }
 
         public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()

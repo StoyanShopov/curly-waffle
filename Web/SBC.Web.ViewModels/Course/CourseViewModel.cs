@@ -15,12 +15,10 @@
 
         public string PictureUrl { get; set; }
 
-        public string VideoUrl { get; set; }
+        public string CoachFirstName { get; set; }
 
-        public int CategoryId { get; set; }
+        public string CoachLastName { get; set; }
 
-        public int LanguageId { get; set; }
-
-        public int CoachId { get; set; }
+        public string CoachCompanyName { get; set; }
     }
 }
