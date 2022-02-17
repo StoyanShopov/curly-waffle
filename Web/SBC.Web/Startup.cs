@@ -3,6 +3,7 @@
     using System.Reflection;
     using System.Text;
 
+    using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -16,6 +17,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Microsoft.WindowsAzure.Storage;
 
     using SBC.Data;
     using SBC.Data.Common;
@@ -23,6 +25,7 @@
     using SBC.Data.Models;
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
+    using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Category;
     using SBC.Services.Data.Category.Contracts;
@@ -148,6 +151,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
+            services.AddSingleton<IBlobService, BlobService>();
             services.AddTransient<ICoachService, CoachService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ILanguageService, LanguageService>();
@@ -162,7 +167,7 @@
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                //dbContext.Database.Migrate();
+                dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
