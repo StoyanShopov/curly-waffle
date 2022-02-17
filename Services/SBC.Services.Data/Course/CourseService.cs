@@ -48,7 +48,7 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            return new ResultModel(newCourse.Id);
+            return new ResultModel(courseModel);
         }
 
         public async Task<Result> DeleteByIdAsync(int id)
@@ -84,7 +84,6 @@
                 return new ErrorModel(HttpStatusCode.NotFound, "Course doesn't exist!");
             }
 
-            courseModel.Id = id;
             course.Title = courseModel.Title;
             course.Description = courseModel.Description;
             course.PricePerPerson = courseModel.PricePerPerson;

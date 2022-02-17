@@ -42,13 +42,18 @@ const AllCourses = () => {
     }
 
     const [courses, setCourses] = useState([]);
+    let [count, setCount] = useState(courses.length);
 
     useEffect(() => {
         courseService.getAll()
             .then(courseResult => {
                 setCourses(courseResult.data);
             });
-    }, []);
+    }, [count]);
+
+    const setCountDemo = (param) => {
+        setCount(param);
+    }
 
     return (
         <div className={style.container}>
@@ -66,7 +71,7 @@ const AllCourses = () => {
                 {courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} />)}
 
                 <div className={style.buttonDiv}>
-                    <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} />) }}>
+                    <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} courses={courses} setCount={setCountDemo} />) }}>
                         <img src="./Group 78.svg" alt="" />
                     </button>
                     <Modal
