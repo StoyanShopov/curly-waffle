@@ -13,8 +13,6 @@ export default function Dashboard() {
         })
     }, [])
     
-    console.log(items)
-
     return (
         <div className={css.dashboard}>
             <section className={css.header} >

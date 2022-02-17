@@ -1,32 +1,46 @@
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzOTg1MTIzNC1mYjcyLTQ0NTItOGQ5Zi01ZWU5ZjllOTdjOTgiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsIm5iZiI6MTY0NDk0OTM4NSwiZXhwIjoxNjQ1MjA4NTg1LCJpYXQiOjE2NDQ5NDkzODV9.Lirq6bX7ooEyqWGsAf56Hr_FehGvgZh4GUtGgYgozus";
-const BaseUrl = "https://localhost:44319/";
+import { baseUrl } from '../constants/GlobalConstants';
+import axios from 'axios';
+import { TokenManagement } from '../helpers';
+
+//hard code token
+const token = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5ZWZjNDg2OS04OTU0LTQwZTctOGVmMS02YTgxNTVlOTQzMjciLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDc1NTU5LCJleHAiOjE2NDUzMzQ3NTksImlhdCI6MTY0NTA3NTU1OX0.fbtOKbI1pE-6BVVrtULtnijqg2Z1qlkKor1FtVuz7HQ");
 
 export const DashboardIndex = async () => {
-    let response = await fetch(BaseUrl + "Administration/Dashboard",
-        { headers: { Authorization: `Bearer ${token}` }, })
-    const data = await response.json();
-
-    return data;
+    let response = await axios({
+        method: 'get',
+        url: baseUrl + "Administration/Dashboards",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
 }
+
 export const GetAdminData = async () => {
-    let response = await fetch(BaseUrl + "Administration/Profile/GetUser",
-        { headers: { Authorization: `Bearer ${token}` }, })
-    const data = await response.json();
-    console.log("admin: ")
-    console.log(data)
-    return data;
+    let response = await axios({
+        method: 'get',
+        url: baseUrl + "Administration/Profiles",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    return response.data;
 }
 
-export const EditAdmin = async (data) => {
-    console.log(data);
-   return await fetch(BaseUrl + "Administration/Profile/Edit", {
+export const EditAdmin = async (_data) => {
+    console.log(_data);
+    return await axios({
         method: 'PUT',
+        url: baseUrl + "Administration/Profiles",
+        data: _data,
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(data)
-    })
+    });
 }
 
 export const uploadImage = async (file) => {
@@ -34,10 +48,19 @@ export const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
 
-    let response = await fetch(BaseUrl + "api/Blobs/upload", {
+    let response = await axios({
         method: 'POST',
-        body: formData
-    })
+        url: baseUrl + "api/Blobs",
+        data: formData,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    });
 
-    return response;
+    // fetch(baseUrl + "api/Blobs", {
+    //     method: 'POST',
+    //     body: formData
+    // })
+
+    return response.data;
 }

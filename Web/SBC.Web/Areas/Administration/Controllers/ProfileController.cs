@@ -28,11 +28,10 @@
         }
 
         [HttpGet]
-        [Route(nameof(GetUser))]
-        public async Task<ActionResult> GetUser() => this.GenericResponse(await this.profileService.GetAdminData(this.User.Id()));
+        public async Task<ActionResult> Get() 
+            => this.GenericResponse(await this.profileService.GetAdminData(this.User.Id()));
 
         [HttpPut]
-        [Route(nameof(Edit))]
         public async Task<ActionResult> Edit(EditProfileServiceModel model)
             => this.GenericResponse(await this.profileService.Edit(model, this.User.Id()));
     }
