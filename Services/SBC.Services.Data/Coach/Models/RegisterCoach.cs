@@ -27,10 +27,11 @@
         [Required]
         public string CalendlyUrl { get; set; }
 
-        [MinLength(MinCountLanguages)]
-        [MaxLength(MinCountLanguages)]
+        [MinLength(MinCountAdd)]
+        [MaxLength(MaxCountLanguages)]
         public int[] Languages { get; set; }
 
+        [MinLength(MinCountAdd)]
         public int[] Categories { get; set; }
     }
 }

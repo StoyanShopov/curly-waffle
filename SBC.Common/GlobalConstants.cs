@@ -128,7 +128,8 @@
             public const string MariaCalendlyUrl = "https://calendly.com/2";
             public const string EmilCalendlyUrl = "https://calendly.com/3";
 
-            public const byte MinCountLanguages = 1;
+            public const byte MinCountAdd = 1;
+            public const byte MinCountUpdate = 0;
             public const byte MaxCountLanguages = 6;
         }
 

@@ -25,7 +25,7 @@
                     new Claim(ClaimTypes.Name, userName),
                     new Claim(ClaimTypes.Role, role),
                 }),
-                Expires = DateTime.UtcNow.AddDays(60),
+                Expires = DateTime.UtcNow.AddDays(DaysToExpire),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             };
 

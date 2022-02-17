@@ -79,12 +79,17 @@
             coachModel.CalendlyUrl = coach.CalendlyUrl;
 
             await this.coachRepository.SaveChangesAsync();
+            if (coach.Languages.Length != 0)
+            {
+                this.AddLanguages(coach.Languages, coachModel.Id);
+                await this.languageCoachRepo.SaveChangesAsync();
+            }
 
-            this.AddLanguages(coach.Languages, coachModel.Id);
-            await this.languageCoachRepo.SaveChangesAsync();
-
-            this.AddCategories(coach.Categories, coachModel.Id);
-            await this.categoryCoachRepo.SaveChangesAsync();
+            if (coach.Categories.Length != 0)
+            {
+                this.AddCategories(coach.Categories, coachModel.Id);
+                await this.categoryCoachRepo.SaveChangesAsync();
+            }
 
             return true;
         }
@@ -152,6 +157,14 @@
         => this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
 
         private void DeleteAllLanguagesCoach(List<LanguageCoach> languagesCoach)
+        {
+            foreach (var language in languagesCoach)
+            {
+                this.languageCoachRepo.Delete(language);
+            }
+        }
+
+        private void DeleteAllLanguagesCoach2(List<LanguageCoach> languagesCoach)
         {
             foreach (var language in languagesCoach)
             {
