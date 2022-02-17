@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
+
 .container{
     display: flow-root;
     padding-top: 10%;
@@ -10,22 +12,24 @@
     top: 60%;
     transform: translate(-50%, -50%);
     background-color: white;
+    height: 276px;
 }
 
 .header{
-    width: 395px;
-    height: 90px;
+    width: 514px;
+    height: 138px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .title{
     text-align: center;
     color: white;
-    font: normal normal bold 21px/36px Montserrat;
-    padding-top: 16px;
+    font: normal normal bold 18px/36px Montserrat;
+    padding-top: 57px;
+    margin-left: 10%;
 }
 
 .footer{
@@ -37,8 +41,8 @@
 .btnSave{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif; 
-    width: 100px;
-    height: 40px;
+    width: 110px;
+    height: 35px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
     border: #296CFB;
@@ -53,8 +57,8 @@
 
 .btnCancel{
     background-color: white;
-    width: 100px;
-    height: 40px;
+    width: 110px;
+    height: 35px;
     border: 1px solid #296CFB;
     opacity: 1;
     color: #296CFB; 
@@ -62,3 +66,13 @@
     letter-spacing: 1.1px;
     cursor: pointer;
 }
+
+.closeBtn{
+    background: transparent;
+    border: none;
+    position: fixed;
+    cursor: pointer;
+    color: white;
+    margin-left: 480px;
+    padding-top: 7px;
+}   
