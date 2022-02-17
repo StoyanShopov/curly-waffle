@@ -114,6 +114,8 @@
             public const string CoachLastNamePetrova = "Petrova";
             public const string CoachLastNameEmilov = "Emilov";
 
+            public const byte MinLengthDescription = 10;
+            public const byte MaxLengthDescription = 140;
             public const string IvanDescription = "Ivan Ivanov Description Text";
             public const string MariaDescription = "Maria Petrova Description Text";
             public const string EmilDescription = "Emil Emilov Description Text";
@@ -125,6 +127,9 @@
             public const string IvanCalendlyUrl = "https://calendly.com/1";
             public const string MariaCalendlyUrl = "https://calendly.com/2";
             public const string EmilCalendlyUrl = "https://calendly.com/3";
+
+            public const byte MinCountLanguages = 1;
+            public const byte MaxCountLanguages = 6;
         }
 
         public class RequestsConstants

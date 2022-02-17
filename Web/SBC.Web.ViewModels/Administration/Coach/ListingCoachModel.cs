@@ -1,16 +1,12 @@
 ﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
-    using System.ComponentModel.DataAnnotations;
-
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
     public class ListingCoachModel : IMapFrom<Coach>
     {
-        [Required]
         public string FirstName { get; set; }
 
-        [Required]
         public string LastName { get; set; }
 
         public string Description { get; set; }
