@@ -1,14 +1,16 @@
-import { Route, Routes } from "react-router-dom";
-import Dashboard from './super-admin/Dashboard';
-import Revenue from './super-admin/Revenue';
-import Clients from './super-admin/Clinets';
-import NavigationBar from './super-admin/NavigationBar';
-import EditProfile from './super-admin/EditProfile';
-import css from './AdminProfile.module.css'
 import Modal from 'react-modal';
-import React from 'react';
+import { useState} from "react";
+import { Route, Routes} from "react-router-dom";
+
+import css from './AdminProfile.module.css'
+import Clients from './super-admin/Clinets';
+import Dashboard from './super-admin/Dashboard';
+import EditProfile from './super-admin/EditProfile';
+import NavigationBar from './super-admin/NavigationBar';
+import Revenue from './super-admin/Revenue';
 
 export default function AdminProfile() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   let subtitle = {
     content: {
@@ -25,11 +27,9 @@ export default function AdminProfile() {
     },
     color:'#f00'
   };
-const [modalIsOpen, setIsOpen] = React.useState(false);
-
 
 function openModal() {
-  setIsOpen(true);
+  setModalIsOpen(true);
 }
 
 function afterOpenModal() {
@@ -37,7 +37,7 @@ function afterOpenModal() {
 }
 
 function closeModal() {
-  setIsOpen(false);
+  setModalIsOpen(false);
 }
 
 return (
@@ -49,7 +49,6 @@ return (
       <Route path="clients" element={<Clients />} />
       <Route path="revenue" element={<Revenue />} />
     </Routes>
-
 
     <Modal
       style={subtitle }

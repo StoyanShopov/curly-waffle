@@ -1,6 +1,7 @@
 ﻿namespace SBC.Services.Data.Company
 {
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,32 @@
         {
             this.companyRepository = companyRepository;
             this.roleManager = roleManager;
+        }
+
+        public async Task<Result> Add(string name, string email, string logoUrl)
+        {
+            var nameExists = await this.companyRepository
+                .AllAsNoTracking()
+                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+
+            if (nameExists)
+            {
+                var error = $"The company's name '{name}' exists ";
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
+            }
+
+            var company = new Company
+            {
+                Name = name,
+                Email = email,
+                LogoUrl = logoUrl,
+            };
+
+            await this.companyRepository.AddAsync(company);
+            await this.companyRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<Result> GetCountAsync()

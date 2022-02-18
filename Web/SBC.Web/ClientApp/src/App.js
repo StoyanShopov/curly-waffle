@@ -8,8 +8,10 @@ import AdminProfile from './components/AdminProfile';
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
-import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
+
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
+import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
+import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
 
 import "./App.css";
 
@@ -23,7 +25,8 @@ function App() {
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path='/super-admin/*' element={<AdminProfile />} />
-                    <Route path="/SignUp" element={<Signup />} />
+                    <Route path="/signUp" element={<Signup />} />
+                    <Route path="/ownerEmployees" element={<OwnerEmployees />} />
                 </Routes>
             </Layout>
         </Provider>

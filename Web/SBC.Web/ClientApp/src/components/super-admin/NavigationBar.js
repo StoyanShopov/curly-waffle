@@ -2,24 +2,26 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import css from './NavigationBar.module.css';
-
 import { GetAdminData } from './../../services/super-admin-service';
 
 export default function NavigationBar(props) {
-    const onLogout = () => {
-        //clear jwt token and redirect to main page 
-        console.log("Logout")
-    }
+  const [txt, settxt] = useState();
+  const [admin, setAdmin] = useState({});
+  
+  const onLogout = () => {
+      //clear jwt token and redirect to main page 
+    console.log("Logout")
+  }
 
-    let [txt, settxt] = useState();
-
-    let [admin, setAdmin] = useState({});
-
-    useEffect(async () => {
+    useEffect(() => {
+      async function GetAdmin() {
         await GetAdminData().then(a => {
-            setAdmin(a)
-            settxt(a.fullname.substring(0,1))
+          setAdmin(a)
+          settxt(a.fullname.substring(0,1))
         })
+      }
+
+      GetAdmin();
     }, [])
 
     return (
@@ -37,7 +39,7 @@ export default function NavigationBar(props) {
                 </div>
                 <div className={css.floatChild2}>
                     <label className={css.lable}>{admin.fullname}</label>
-                    <label className={css.lableColored}>{!admin.company ? "--- No Company ---" : admin.company}</label>
+                    <label className={css.lableColored}>{!admin.company ? null : admin.company}</label>
                 </div>
                 <br />
             </div>
@@ -62,7 +64,7 @@ export default function NavigationBar(props) {
                     <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
-                <a href="#" onClick={onLogout} className={css.logOut}>Log Out</a>
+                <NavLink to="" onClick={onLogout} className={css.logOut}>Log Out</NavLink>
             </div>
         </div>
     )
