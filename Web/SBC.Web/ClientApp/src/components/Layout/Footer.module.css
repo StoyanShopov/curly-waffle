@@ -8,6 +8,22 @@
     position: relative;    
 }
 
+.trapezoid {
+    clip-path: polygon(0 10%, 100% 60%, 100% 100%, 0% 100%);
+    width: 100%;
+    /*width: auto;*/
+    /*width: 98vw;*/
+    height: 700px;
+    background-color: #0B2969;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
 .logoHeader {
     text-align: left;
     letter-spacing: 1.25px;
@@ -69,16 +85,18 @@
 
 ul {
     list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .company {
     text-align: center;
     letter-spacing: 2.25px;
-    position: absolute;
-    top: 295px;
-    left: 900px;
-    color: #FFFFFF;
-    font: Montserrat;
+    /*position: absolute;*/
+    top: 47%;
+    left: 615%;
+    color: #16d696;  
+    position: relative;
 }
 
 .contactUs {
@@ -190,26 +208,21 @@ ul {
     font: Montserrat;
 }
 
+.bottom {
+    width: 100%;
+}
+
 .textOnBottom {
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    position: absolute;
-    top: 620px;
-   /* width: 1920px;*/
+    text-overflow: ellipsis;   
+    top: 620px;   
     border-top: 2px solid white;
     color: white;
     line-height: 58px;
     font-size: 20px;
-    position:relative;
+    position: relative;
 }
 
-.trapezoid {
-    clip-path: polygon(0 10%, 100% 60%, 100% 100%, 0% 100%);
-    width: 100%;
-    /*width: auto;*/
-    /*width: 98vw;*/
-    height: 700px;
-    background-color: #0B2969;
-}
+
