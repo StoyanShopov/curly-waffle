@@ -1,11 +1,28 @@
 import css from "./CreateLecture.module.css"
+import lectureService from "../../../../services/lecture.service.js";
 
 export default function CreateLecture({closeModal}) {
+
+    
+    const onLectureCreate = (e) => {
+        e.preventDefault();
+
+        let courseData = Object.fromEntries(new FormData(e.currentTarget));
+
+        lectureService
+            .create(courseData)
+            .then((response) => {
+                if (response.status === 200) {
+                    props.closeModal();
+                    props.setCourses([...props.courses, response.data]);
+                }
+            })
+    }
 
     return (
         <section className={css.section}>
             <div className={css.container}>
-                <form>
+                <form onSubmit={onLectureCreate} method="POST">
                     <div>
                         <button className={css.btnClose} onClick = {() => {closeModal(false)}}>X</button>
                         <p className={css.p}>Add Lecture</p>

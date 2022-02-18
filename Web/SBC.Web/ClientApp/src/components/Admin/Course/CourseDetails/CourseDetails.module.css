@@ -1,6 +1,7 @@
 .container{
     display: flex;
     width: 100%;
+    padding-top: 10%;
 }
 .leftPart{
     width: 66%;
@@ -72,6 +73,17 @@
     font-size: 22px;
     font-style: Montserrat;
     width: 820px;  
+}
+.btnAddLecture{
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: Montserrat;
+    color: #296CFB;
+    border-color: #296CFB;
+    margin-left: 8%;
+    cursor: pointer;
 }
 .lecturesHeading{
     font-size: 22px;

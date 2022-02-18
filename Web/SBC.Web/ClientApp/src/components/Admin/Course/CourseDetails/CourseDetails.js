@@ -1,12 +1,54 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { courseService } from "../../../../services/course.service.js";
-
+import { lectureService } from "../../../../services/lecture.service.js";
+import Modal from "react-modal/lib/components/Modal";
 import css from "./CourseDetails.module.css";
+import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
 
 export default function CourseDetails() {
     const { id } = useParams();
     const [course, setCourse] = useState({});
+    const [lectures, setLectures] = useState([]);
+
+    useEffect(() => {
+        lectureService.getAll()
+            .then(lectureResult => {
+                setLectures(lectureResult.data);
+            });
+    }, []);
+
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [childModal, setChildModal] = useState(null);
+
+    let subtitle = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            width: '44%',
+            height: '500px',
+            bottom: 'auto',
+            marginTop: '-5%',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -20%)',
+            padding: '0px',
+        },
+        color: '#f00'
+    };
+
+    function openModal(childElement) {
+        setChildModal(childElement);
+        setIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        subtitle.color = '#f00';
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
     useEffect(() => {
         courseService.getById(id)
@@ -45,24 +87,22 @@ export default function CourseDetails() {
                 <p className={css.pInstructor}>Charles Du led the design of NASA’s first iPhone app (10+ million downloads, 2+ million hits per day, NASA’s Software of the Year Award) and co-founded the Airbnb for cars. He is an award-winning product manager, UX designer, lecturer, and international keynote speaker.</p>
             </div>
             <div className={css.rightPart}>
+                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture closeModal={closeModal}/>)}}>Add Lecture</button>
                 <h1 className={css.lecturesHeading}>Lectures</h1>
                 <ul className={css.ulLectures}>
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
-                    <img src="Line 396.png" className={css.google} alt="" />
-                    <li className={css.liName}>1. Introduction</li>
+                    {lectures.map( (x ,i) => <li className={css.liName}>{i +1}. {x.name}</li>)}
                     <img src="Line 396.png" className={css.google} alt="" />
                 </ul>
                 <button className={css.btnViewMore}>View More</button>
+                <Modal
+                    style={subtitle}
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    ariaHideApp={false}
+                >
+                    {childModal}
+                </Modal>
             </div>
         </section>
     )
