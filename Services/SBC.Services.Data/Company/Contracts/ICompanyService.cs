@@ -6,6 +6,8 @@
 
     public interface ICompanyService
     {
+        Task<Result> Add(string name, string email, string logoUrl);
+
         Task<Result> GetCountAsync();
 
         Task<bool> ExistsOwnerAsync(string name);
