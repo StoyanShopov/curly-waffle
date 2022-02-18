@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+    using System.Reflection;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -68,15 +69,11 @@
         public async Task<Result> UpdateAsync(UpdateCoachModel coach)
         {
             var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.CoachId);
+
             if (coachModel == null)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
             }
-
-            coachModel.Description = coach.Description;
-            coachModel.PricePerSession = coach.PricePerSession;
-            coachModel.VideoUrl= coach.VideoUrl;
-            coachModel.CalendlyUrl = coach.CalendlyUrl;
 
             await this.coachRepository.SaveChangesAsync();
             if (coach.Languages.Length != 0)

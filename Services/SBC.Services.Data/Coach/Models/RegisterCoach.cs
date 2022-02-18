@@ -8,9 +8,11 @@
 
     public class RegisterCoach
     {
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         [RegularExpression(NameRegex)]
         public string FirstName { get; set; }
 
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         [RegularExpression(NameRegex)]
         public string LastName { get; set; }
 
@@ -19,12 +21,14 @@
         public string Description { get; set; }
 
         [Required]
+        [Url]
         public string VideoUrl { get; set; }
 
         [Range(0, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
         [Required]
+        [Url]
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountAdd)]
