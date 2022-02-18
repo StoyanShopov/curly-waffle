@@ -51,7 +51,7 @@
 
         public DbSet<UserCourse> UserCourses { get; set; }
 
-        public DbSet<CompanyCourse> CompaniesCourses { get; set; }
+        public DbSet<CompanyCourse> CompanyCourses { get; set; }
 
         public DbSet<CompanyCoach> CompanyCoaches { get; set; }
 
