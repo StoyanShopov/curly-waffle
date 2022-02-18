@@ -7,14 +7,14 @@ import { EditAdmin, GetAdminData } from './../../services/super-admin-service';
 import { uploadImage } from '../../services/blob-service';
 
 export default function EditProfile(props) {
-    let [admin, setAdmin] = useState({});
+    let [admin, setAdmin] = useState({ fullname: '', email: '', profileSummary: '' });
 
     useEffect(() => {
-      async function setAdminFunc() {
-        setAdmin(await GetAdminData())
-      }
+        async function setAdminFunc() {
+            setAdmin(await GetAdminData())
+        }
 
-      setAdminFunc();
+        setAdminFunc();
     }, [])
 
     const OnEditAdmin = async (e) => {
@@ -33,7 +33,10 @@ export default function EditProfile(props) {
         }
         EditAdmin(data)
             .then((data) => {
-                if (data['status']) { props.closeModal(); }
+                if (data['status']) {
+                    props.closeModal();
+                    props.getAdminData();
+                }
             }, (err) => {
                 console.error(err)
             })
@@ -66,9 +69,21 @@ export default function EditProfile(props) {
                         </button>
                     </div>
                     <div className={css.bodyContainer3}>
-                        <input name="fullname" className={css.nameCntr} type="text" defaultValue={admin['fullname']} placeholder="Aya Krasteva"></input>
-                        <input disabled name="email" className={css.nameCntr} type="text" defaultValue={admin['email']} placeholder="Hello@Motion-Software.com"></input>
-                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={admin['profileSummary']}></textarea>
+                        <input
+                            name="fullname"
+                            className={css.nameCntr}
+                            type="text"
+                            defaultValue={admin.fullname}
+                            placeholder="Aya Krasteva" />
+                        <input
+                            editable='false'
+                            name="email"
+                            className={css.nameCntr}
+                            type="text"
+                            value={admin.email}
+                            onChange={()=>{}}
+                            placeholder="Hello@Motion-Software.com" />
+                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={admin.profileSummary}></textarea>
                     </div>
                 </div>
                 <div className={css.footer}>

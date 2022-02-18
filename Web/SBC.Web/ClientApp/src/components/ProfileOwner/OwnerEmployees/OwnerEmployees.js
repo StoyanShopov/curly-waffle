@@ -4,6 +4,8 @@ import Sidebar from "../../Sidebar/Sidebar"
 import { Link } from "react-router-dom";
 
 export default function OwnerEmployees(prop) {
+    // add prop before setShowModal and handleViewMore 
+    // project was fault  setShowModal and handleViewMore not defined
     return (
         <>
             <Sidebar />
@@ -15,7 +17,7 @@ export default function OwnerEmployees(prop) {
                             <th className={css.secondTh}>Email</th>
                             <th >
                                 <div className={css.plusSignContainer} >
-                                    <Link to="" onClick={() => setShowModal(true)}>
+                                    <Link to="" onClick={() => prop.setShowModal(true)}>
                                         <img src="assets/images/Plus.svg" alt="add-icon"></img>
                                     </Link>
                                 </div>
@@ -37,7 +39,7 @@ export default function OwnerEmployees(prop) {
                         </tr>
                         <tr id={css.flex}>
                             <td>
-                                <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
+                                <Link to="" className={css.link} onClick={() => { prop.handleViewMore() }}>View More</Link>
                             </td>
                         </tr>
                     </tbody>

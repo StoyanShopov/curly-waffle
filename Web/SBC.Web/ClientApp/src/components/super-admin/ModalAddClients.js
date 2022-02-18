@@ -1,8 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import styles from './ModalAddClients.module.css'
-import { baseUrl } from '../../constants';
+// import { baseUrl } from '../../constants';
+import { AddClient } from '../../services/client-service';
 
 export default function ModalAddClients(props) {
   const submitHandler = async (e) => {
@@ -16,23 +17,42 @@ export default function ModalAddClients(props) {
       email: enteredEmail,
     }
 
-    const response = await axios.post(baseUrl + 'Administration/Client', clientData)
+    //const response =
+     AddClient(clientData).then((data) => {
+      if (data.status === 200) {
+        props.handleSkip(1);
 
-    if (response.status === 200) {
-      props.handleSkip(1);
+        props.handleClient(data.client);
 
-      props.handleClient(response.data.client);
+        const btnId = e.nativeEvent.submitter.id;
 
-      const btnId = e.nativeEvent.submitter.id;
-
-      if (btnId === "continue") {
-        e.target.reset();
+        if (btnId === "continue") {
+          e.target.reset();
+        }
+        else {
+          props.handleClose();
+        }
       }
-      else {
-        props.handleClose();
-      }
-    }
+
+    }, (err) => console.log(err))
   }
+
+
+    // if (response.status === 200) {
+    //   props.handleSkip(1);
+
+    //   props.handleClient(response.data.client);
+
+    //   const btnId = e.nativeEvent.submitter.id;
+
+    //   if (btnId === "continue") {
+    //     e.target.reset();
+    //   }
+    //   else {
+    //     props.handleClose();
+    //   }
+    // }else{
+
 
   return (
     <div className={styles.body}>

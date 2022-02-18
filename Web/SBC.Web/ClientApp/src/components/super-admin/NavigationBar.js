@@ -2,26 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import css from './NavigationBar.module.css';
-import { GetAdminData } from './../../services/super-admin-service';
+import { userService } from '../../services/user.service';
 
 export default function NavigationBar(props) {
-  const [txt, settxt] = useState();
-  const [admin, setAdmin] = useState({});
+    
   
-  const onLogout = () => {
-      //clear jwt token and redirect to main page 
-    console.log("Logout")
-  }
+
+    const onLogout = () => {
+        userService.logout();
+    }
 
     useEffect(() => {
-      async function GetAdmin() {
-        await GetAdminData().then(a => {
-          setAdmin(a)
-          settxt(a.fullname.substring(0,1))
-        })
-      }
-
-      GetAdmin();
     }, [])
 
     return (
@@ -35,11 +26,11 @@ export default function NavigationBar(props) {
             </div>
             <div className={css.circleContainer}>
                 <div className={css.circleFloatChild}>
-                    <span className={css.nameVisualizer}> {txt} </span>
+                    <span className={css.nameVisualizer}> {props.icon} </span>
                 </div>
                 <div className={css.floatChild2}>
-                    <label className={css.lable}>{admin.fullname}</label>
-                    <label className={css.lableColored}>{!admin.company ? null : admin.company}</label>
+                    <label className={css.lable}>{props.adminData.fullname}</label>
+                    <label className={css.lableColored}>{!props.adminData.company ? null : props.adminData.company}</label>
                 </div>
                 <br />
             </div>

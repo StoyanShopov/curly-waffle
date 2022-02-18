@@ -3,9 +3,10 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import css from './Clients.module.css';
-import { baseUrl } from '../../constants/GlobalConstants'
+// import { baseUrl } from '../../constants/GlobalConstants'
 import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
+import { LoadClientData } from '../../services/client-service';
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
@@ -15,7 +16,7 @@ export default function Clients() {
   const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
 
   const cancelTokenSource = axios.CancelToken.source();
-  const url = baseUrl + 'Administration/Client/Portion';
+  // const url = baseUrl + 'Administration/Client/Portion';
 
   useEffect(() => {
     handleViewMore(0);
@@ -59,15 +60,15 @@ export default function Clients() {
   }
 
   const GetPartions = async (skip, cancelTokenSource) => {
-    const response = await axios.get(url + '?skip=' + skip, {
-      cancelToken: cancelTokenSource.token
-    });
+    // const response = await axios.get(url + '?skip=' + skip, {
+    //   cancelToken: cancelTokenSource.token
+    // });
 
-    if (response.status !== 200) {
-      throw new Error(response.Error)
-    }
-
-    return response.data;
+    // if (response.status !== 200) {
+    //   throw new Error(response.Error)
+    // }
+return LoadClientData(skip, cancelTokenSource)
+ //   return response.data;
   }
 
   return (
@@ -92,12 +93,12 @@ export default function Clients() {
                 <td>{client?.email?.toLowerCase()}</td>
               </tr>
             ))}
-            <tr id={css.pending}>
+            <tr key={"unique_loading"} id={css.pending}>
                 {isPending &&
-                  <h2>Loading...</h2>
+               <td>Loading...</td>
                 }
             </tr>
-            <tr id={css.flex}>
+            <tr key={"unique_view_more"} id={css.flex}>
               <td>
                 {viewMoreAvaliable &&
                   <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
