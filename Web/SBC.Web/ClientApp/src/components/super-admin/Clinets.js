@@ -1,9 +1,10 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
-import ModalAddClients from './ModalAddClients';
+
 import css from './Clients.module.css';
 
+import Modal from 'react-modal';
+import ModalAddClients from './ModalAddClients';
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
@@ -12,7 +13,7 @@ export default function Clients() {
   const [showModal, setShowModal] = useState(false);
 
   const controller = new AbortController();
-  const url = 'https://localhost:44319/Administration/Client/Portion';
+  const url = 'https://localhost:44319/Administration/Clients/Portion';
 
   useEffect(() => {
     handleViewMore(0);

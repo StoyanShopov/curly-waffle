@@ -33,7 +33,7 @@
 
         public async Task<Result> GetDashboard()
         {
-            var clients = await this.companyService.GetCount();
+            var clients = await this.companyService.GetCountAsync();
             var courses = await this.courseService.GetCount();
             var coaches = await this.coachService.GetCount();
 

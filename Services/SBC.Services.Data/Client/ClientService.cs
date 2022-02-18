@@ -11,6 +11,7 @@
     using SBC.Data.Models;
     using SBC.Services.Data.Client.Contracts;
     using SBC.Services.Data.Client.Models;
+    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.User.Contracts;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
@@ -20,34 +21,44 @@
         private const int TakeDefaultValue = 3;
 
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
+        private readonly ICompanyService companyService;
         private readonly IUserService userService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public ClientService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
+            ICompanyService companyService,
             IUserService userService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)
         {
             this.applicationUser = applicationUser;
-            this.roleManager = roleManager;
+            this.companyService = companyService;
             this.userService = userService;
+            this.roleManager = roleManager;
             this.userManager = userManager;
         }
 
-        // TODO: fullName not implemented in logic
         public async Task<Result> AddAsync(string fullName, string email)
         {
-            // var emailExists = await this.userService.NoTrackUserExistsByEmailByFullNameAsync(email);
-            var emailExists = await this.userService.NoTrackUserExistsByEmailAsync(email);
+            var emailExists = await this.userService.ExistsByFullNameByEmailAsync(fullName, email);
 
             if (!emailExists)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{email}'."); // and full name
+                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{fullName}' and '{email}'."); // and full name
             }
 
             var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(email);
+
+            var ownerExists = await this.companyService.ExistsOwner(user.Company.Name);
+
+            if (ownerExists)
+            {
+                var error = $"The user's company '{user.Company.Name}' has already a owner.";
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
+            }
 
             if (user.Roles.Any())
             {

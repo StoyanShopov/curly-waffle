@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
@@ -12,23 +13,45 @@
     public class CompanyService : ICompanyService
     {
         private readonly IDeletableEntityRepository<Company> companyRepository;
+        private readonly RoleManager<ApplicationRole> roleManager;
 
-        public CompanyService(IDeletableEntityRepository<Company> companyRepository)
+        public CompanyService(
+            IDeletableEntityRepository<Company> companyRepository,
+            RoleManager<ApplicationRole> roleManager)
         {
             this.companyRepository = companyRepository;
+            this.roleManager = roleManager;
         }
 
-        public async Task<Result> GetCount() => new ResultModel(await this.companyRepository.AllAsNoTracking().CountAsync());
+        public async Task<Result> GetCountAsync()
+            => new ResultModel(await this.companyRepository.AllAsNoTracking().CountAsync());
+
+        public async Task<bool> ExistsOwner(string name)
+        {
+            var role = await this.roleManager.FindByNameAsync(name);
+
+            //var a = await this.NoTrackGetQueryByName(name)
+            //    .Include(c => c.Employees)
+            //    .ThenInclude(e => e.Roles)
+            //.AnyAsync(c => c.Employees.Any(e => e.Roles.Any(r => r.RoleId.Contains(role.Id))));
+            //.AnyAsync(c =>
+            //    c.Employees.Any(e =>
+            //        e.Roles.Any(r => r.RoleId == role.Id)));
+            return false;
+        }
+
         public async Task<bool> ExistsByNameAsync(string name)
-            => await this.companyRepository
-                .AllAsNoTracking()
+            => await this.NoTrackGetQueryByName(name)
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
-        public async Task<int> NoTrackGetCompanyByNameAsync(string name)
-            => await this.companyRepository
-                .AllAsNoTracking()
-                .Where(c => c.Name.ToLower() == name.ToLower())
+        public async Task<int> GetIdByNameAsync(string name)
+            => await this.NoTrackGetQueryByName(name)
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync();
+
+        private IQueryable<Company> NoTrackGetQueryByName(string name)
+            => this.companyRepository
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == name.ToLower());
     }
 }
