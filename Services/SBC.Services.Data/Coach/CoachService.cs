@@ -161,14 +161,6 @@
             }
         }
 
-        private void DeleteAllLanguagesCoach2(List<LanguageCoach> languagesCoach)
-        {
-            foreach (var language in languagesCoach)
-            {
-                this.languageCoachRepo.Delete(language);
-            }
-        }
-
         private List<LanguageCoach> GetAllLanguagesCoach(int coachId)
         => this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
     }
