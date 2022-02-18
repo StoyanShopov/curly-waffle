@@ -4,9 +4,9 @@ import { baseUrl } from '../constants';
 
 const apiUrl = baseUrl + 'api/lecture';
 
-const getAll = async () => {
+const getAll = async (courseId) => {
     return await axios
-        .get(apiUrl);
+        .get(`${apiUrl}/All/${courseId}`);
 }
 
 const getById = async (lectureId) => {

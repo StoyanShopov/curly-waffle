@@ -5,6 +5,7 @@ import { lectureService } from "../../../../services/lecture.service.js";
 import Modal from "react-modal/lib/components/Modal";
 import css from "./CourseDetails.module.css";
 import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
+import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
 
 export default function CourseDetails() {
     const { id } = useParams();
@@ -12,11 +13,12 @@ export default function CourseDetails() {
     const [lectures, setLectures] = useState([]);
 
     useEffect(() => {
-        lectureService.getAll()
+        lectureService.getAll(id)
             .then(lectureResult => {
                 setLectures(lectureResult.data);
             });
     }, []);
+    console.log(lectures)
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [childModal, setChildModal] = useState(null);
@@ -57,7 +59,6 @@ export default function CourseDetails() {
             })
     }, [id]);
 
-    console.log(course);
     return (
         <section className={css.container}>
             <div className={css.leftPart}>
@@ -87,10 +88,10 @@ export default function CourseDetails() {
                 <p className={css.pInstructor}>Charles Du led the design of NASA’s first iPhone app (10+ million downloads, 2+ million hits per day, NASA’s Software of the Year Award) and co-founded the Airbnb for cars. He is an award-winning product manager, UX designer, lecturer, and international keynote speaker.</p>
             </div>
             <div className={css.rightPart}>
-                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture closeModal={closeModal}/>)}}>Add Lecture</button>
+                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture closeModal={closeModal}/>)}}>Add Lecture</button>                
                 <h1 className={css.lecturesHeading}>Lectures</h1>
                 <ul className={css.ulLectures}>
-                    {lectures.map( (x ,i) => <li className={css.liName}>{i +1}. {x.name}</li>)}
+                    { lectures.length > 0 &&  lectures.map( (x ,i) => <LectureCard key = {x._id} lecture = {x} index = {i}/>)}
                     <img src="Line 396.png" className={css.google} alt="" />
                 </ul>
                 <button className={css.btnViewMore}>View More</button>

@@ -86,9 +86,10 @@
             return true;
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+        public async Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int id)
         => await this.lectures
             .AllAsNoTracking()
+            .Where(x => x.Courses.Any(x => x.CourseId == id))
             .To<TModel>()
             .ToListAsync();
 
