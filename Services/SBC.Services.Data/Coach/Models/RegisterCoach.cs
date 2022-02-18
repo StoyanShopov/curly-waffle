@@ -8,12 +8,14 @@
 
     public class RegisterCoach
     {
+        [Required]
         [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex)]
+        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string FirstName { get; set; }
 
+        [Required]
         [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex)]
+        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string LastName { get; set; }
 
         [Required]

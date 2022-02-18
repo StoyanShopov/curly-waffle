@@ -1,4 +1,6 @@
-﻿namespace SBC.Common
+﻿using System;
+
+namespace SBC.Common
 {
     public static class GlobalConstants
     {
@@ -105,9 +107,11 @@
 
         public class CoachConstants
         {
-            public const string NameRegex = @"^\w{2,25}$";
             public const byte MinLengthName = 2;
             public const byte MaxLengthName = 25;
+            public const string NameRegex = @"^[A-Z][a-z]+$";
+            public const string NameRegexMessage = "The field Description must be a text of letters.";
+
             public const string CoachFirstNameIvan = "Ivan";
             public const string CoachFirstNameMaria = "Maria";
             public const string CoachFirstNameEmil = "Emil";

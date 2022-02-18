@@ -9,10 +9,13 @@
         public int CoachId { get; set; }
 
         [Required]
-        [StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
+        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string Description { get; set; }
 
         [Required]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
+        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string VideoUrl { get; set; }
 
         [Range(0, double.MaxValue)]
