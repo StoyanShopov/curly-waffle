@@ -88,10 +88,10 @@ export default function CourseDetails() {
                 <p className={css.pInstructor}>Charles Du led the design of NASA’s first iPhone app (10+ million downloads, 2+ million hits per day, NASA’s Software of the Year Award) and co-founded the Airbnb for cars. He is an award-winning product manager, UX designer, lecturer, and international keynote speaker.</p>
             </div>
             <div className={css.rightPart}>
-                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture closeModal={closeModal}/>)}}>Add Lecture</button>                
+                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures}/>) }}>Add Lecture</button>
                 <h1 className={css.lecturesHeading}>Lectures</h1>
                 <ul className={css.ulLectures}>
-                    { lectures.length > 0 &&  lectures.map( (x ,i) => <LectureCard key = {x._id} lecture = {x} index = {i}/>)}
+                    {lectures.length > 0 && lectures.map((x, i) => <LectureCard setLectures={setLectures} lectures={lectures} key={x._id} lecture={x} index={i} />)}
                     <img src="Line 396.png" className={css.google} alt="" />
                 </ul>
                 <button className={css.btnViewMore}>View More</button>

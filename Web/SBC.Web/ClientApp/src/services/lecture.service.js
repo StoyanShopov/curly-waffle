@@ -14,7 +14,7 @@ const getById = async (lectureId) => {
         .get(`${apiUrl}/${lectureId}`);
 }
 
-const create = async (lectureData) => {
+const create = async (lectureData, ) => {
     return await axios
         .post(`${apiUrl}`, lectureData, {
             headers: {

@@ -18,8 +18,8 @@
         }
 
         [HttpGet]
-        [Route("/All/{id}")]
-        public async Task<ActionResult> Get([FromQuery] int id)
+        [Route("All/{id}")]
+        public async Task<ActionResult> Get(int id)
         {
             var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(id);
 
@@ -38,7 +38,7 @@
         public async Task<ActionResult> Post(CreateLectureServiceModel lectureModel)
         {
             var result = await this.lectureService.CreateAsync(lectureModel);
-
+            ;
             return this.GenericResponse(result);
         }
 

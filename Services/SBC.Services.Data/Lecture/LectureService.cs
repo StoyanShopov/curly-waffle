@@ -47,7 +47,9 @@
 
             await this.lectures.SaveChangesAsync();
 
-            return new ResultModel(newLecture.Id);
+            lectureModel.Id = newLecture.Id;
+
+            return new ResultModel(lectureModel);
         }
 
         public async Task<Result> DeleteByIdAsync(string id)
