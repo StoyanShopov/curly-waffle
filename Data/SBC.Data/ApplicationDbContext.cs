@@ -51,6 +51,10 @@
 
         public DbSet<UserCourse> UserCourses { get; set; }
 
+        public DbSet<CompanyCourse> CompanyCourses { get; set; }
+
+        public DbSet<CompanyCoach> CompanyCoaches { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -105,6 +109,14 @@
             builder
                 .Entity<CourseLecture>()
                 .HasKey(c => new { c.CourseId, c.LectureId });
+
+            builder
+                .Entity<CompanyCourse>()
+                .HasKey(c => new { c.CompanyId, c.CourseId });
+
+            builder
+                .Entity<CompanyCoach>()
+                .HasKey(c => new { c.CompanyId, c.CoachId });
 
             builder
                 .Entity<LanguageCoach>()
