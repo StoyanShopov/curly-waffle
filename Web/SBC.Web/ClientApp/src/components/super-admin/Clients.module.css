@@ -14,7 +14,7 @@ table.table {
   font-size: 16px;
   margin: 0px auto 25px auto;
   text-align: start;
-} 
+}
 
 .table thead,
 .table tbody {
@@ -52,8 +52,10 @@ table.table td {
 }
 
 a.link {
+  color: #296CFB;
   font-weight: normal;
   font-family: "Helvetica", sans-serif;
+  font-size: large;
   text-decoration: none;
 }
 
@@ -62,9 +64,17 @@ a.link:hover {
   font-weight: bold;
 }
 
-td + td {
+.table tbody td+td {
   color: #000000;
-  font-weight: normal;
+}
+
+#pending {
+  color: #296CFB;
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 0px 0px;
+  margin: 0px;
 }
 
 #flex {
@@ -87,7 +97,7 @@ td + td {
   font-size: 25px;
   font-weight: initial;
   position: relative;
-  float:right;
+  float: right;
 }
 
 .addClient img {
