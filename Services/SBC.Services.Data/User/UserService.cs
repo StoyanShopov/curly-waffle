@@ -40,7 +40,7 @@
 
         public async Task<Result> Register(RegisterServiceModel model)
         {
-            var emailExists = await this.NoTrackUserExistsByEmailAsync(model.Email);
+            var emailExists = await this.ExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
@@ -56,7 +56,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, $"Company '{model.CompanyName}' is not registered.");
             }
 
-            var companyId = await this.companyService.NoTrackGetCompanyByNameAsync(model.CompanyName);
+            var companyId = await this.companyService.GetIdByNameAsync(model.CompanyName);
 
             var user = new ApplicationUser
             {
@@ -81,7 +81,7 @@
 
         public async Task<Result> Login(LoginServiceModel model, string secret)
         {
-            var user = await this.NoTrackGetByEmailAsync(model.Email);
+            var user = await this.NoTrackGetByEmailIncludeRoleAsync(model.Email);
 
             if (user == null)
             {
@@ -103,7 +103,25 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<bool> NoTrackUserExistsByEmail(string email)
+        public async Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email)
+            => await this.applicationUser
+                .All()
+                .Include(au => au.Roles)
+                .Include(au => au.Company)
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public async Task<ApplicationUser> GetByEmailAsync(string email)
+            => await this.applicationUser
+                .All()
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public async Task<bool> ExistsByFullNameByEmailAsync(string fullName, string email)
+            => await this.applicationUser
+                .AllAsNoTracking()
+                .AnyAsync(u => u.NormalizedEmail == email.ToUpper() &&
+                    (u.FirstName + ' ' + u.LastName) == fullName.ToLower());
+
+        public async Task<bool> ExistsByEmailAsync(string email)
             => await this.applicationUser
                 .AllAsNoTracking()
                 .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
@@ -128,46 +146,10 @@
             return fullNameArr;
         }
 
-        private async Task<ApplicationUser> NoTrackGetByEmailAsync(string email)
+        private async Task<ApplicationUser> NoTrackGetByEmailIncludeRoleAsync(string email)
             => await this.applicationUser
                 .AllAsNoTracking()
                 .Include(au => au.Roles)
                 .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
-
-        public async Task<ApplicationUser> AllGetByEmailAndRolesAsync(string email)
-            => await this.applicationUser
-                .All()
-                .Include(au => au.Roles)
-                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
-
-        public async Task<ApplicationUser> AllGetByEmailAsync(string email)
-            => await this.applicationUser
-                .All()
-                .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
-
-        public async Task<bool> NoTrackUserExistsByEmailAsync(string email)
-            => await this.applicationUser
-                .AllAsNoTracking()
-                .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
-
-        public Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<ApplicationUser> GetByEmailAsync(string email)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        // public async Task<bool> NoTrackUserExistsByEmailByFullNameAsync(string email, string fullName)
-        //    => await this.applicationUser
-        //        .AllAsNoTracking()
-        //        .AnyAsync(u => u.NormalizedEmail == email.ToUpper() && u.FullName == fullName.ToLower());
     }
 }

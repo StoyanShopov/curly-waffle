@@ -12,15 +12,12 @@
 
         Task<Result> Login(LoginServiceModel model, string secret);
 
-        Task<ApplicationUser> NoTrackInternalGetByEmailAsync(string email);
-
         Task<ApplicationUser> GetByEmailIncludedRolesAndCompanyAsync(string email);
 
         Task<ApplicationUser> GetByEmailAsync(string email);
 
-        Task<bool> NoTrackUserExistsByEmailAsync(string email);
+        Task<bool> ExistsByFullNameByEmailAsync(string fullName, string email);
 
-        //Task<bool> NoTrackUserExistsByEmailByFullNameAsync(string email, string fullName);
-        Task<bool> NoTrackUserExistsByEmail(string email);
+        Task<bool> ExistsByEmailAsync(string email);
     }
 }

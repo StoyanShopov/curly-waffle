@@ -1,8 +1,10 @@
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 import styles from './ModalAddClients.module.css'
+import { baseUrl } from '../../constants';
 
 export default function ModalAddClients(props) {
-
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -14,20 +16,12 @@ export default function ModalAddClients(props) {
       email: enteredEmail,
     }
 
-    const response = await fetch("https://localhost:44319/Administration/Client", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(clientData),
-    });
+    const response = await axios.post(baseUrl + 'Administration/Client', clientData)
 
-    if (response.ok) {
+    if (response.status === 200) {
       props.handleSkip(1);
 
-      const json = await response.json();
-
-      props.handleClient(json.client);
+      props.handleClient(response.data.client);
 
       const btnId = e.nativeEvent.submitter.id;
 

@@ -8,7 +8,7 @@
 
     // [Authorize(Roles = AdministratorRoleName)]
     [Area("Administration")]
-    [Route("Administration/[controller]s")]
+    [Route("Administration/[controller]")]
     public abstract class AdministrationController : ApiController
     {
     }

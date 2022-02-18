@@ -1,25 +1,28 @@
+import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+
+import css from './Clients.module.css';
+import { baseUrl } from '../../constants/GlobalConstants'
 import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
-import css from './Clients.module.css';
-
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
+  const [isPending, setIsPending] = useState(false);
   const [skip, setSkip] = useState(0);
-  const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
 
-  const controller = new AbortController();
-  const url = 'https://localhost:44319/Administration/Client/Portion';
+  const cancelTokenSource = axios.CancelToken.source();
+  const url = baseUrl + 'Administration/Client/Portion';
 
   useEffect(() => {
     handleViewMore(0);
     setSkip(0);
 
     return () => {
-      controller.abort();
+      cancelTokenSource.cancel();
     }
   }, [])
 
@@ -40,7 +43,11 @@ export default function Clients() {
   }
 
   const handleViewMore = async () => {
-    const json = await GetPartions(skip, controller);
+    setIsPending(true);
+
+    const json = await GetPartions(skip, cancelTokenSource);
+
+    setIsPending(false);
 
     setClients(prevPortions => {
       return [...prevPortions, ...json.portions];
@@ -49,6 +56,18 @@ export default function Clients() {
     handleSkip(3);
 
     setViewMoreAvaliable(json.viewMoreAvaliable);
+  }
+
+  const GetPartions = async (skip, cancelTokenSource) => {
+    const response = await axios.get(url + '?skip=' + skip, {
+      cancelToken: cancelTokenSource.token
+    });
+
+    if (response.status !== 200) {
+      throw new Error(response.Error)
+    }
+
+    return response.data;
   }
 
   return (
@@ -73,6 +92,11 @@ export default function Clients() {
                 <td>{client?.email?.toLowerCase()}</td>
               </tr>
             ))}
+            <tr id={css.pending}>
+                {isPending &&
+                  <h2>Loading...</h2>
+                }
+            </tr>
             <tr id={css.flex}>
               <td>
                 {viewMoreAvaliable &&
@@ -104,22 +128,4 @@ export default function Clients() {
       </Modal>
     </>
   );
-
-  async function GetPartions(skip, controller) {
-    const response = await fetch(url + '?skip=' + skip, {
-      method: 'Get',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      signal: controller.signal
-    });
-
-    if (response.status !== 200) {
-      throw new Error(response.statusText)
-    }
-
-    const json = await response.json();
-
-    return json;
-  }
 }

@@ -8,7 +8,7 @@ const token = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiY2ZhZDc5Ny0
 export const DashboardIndex = async () => {
     let response = await axios({
         method: 'get',
-        url: baseUrl + "Administration/Dashboards",
+        url: baseUrl + "Administration/Dashboard",
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
@@ -20,7 +20,7 @@ export const DashboardIndex = async () => {
 export const GetAdminData = async () => {
     let response = await axios({
         method: 'get',
-        url: baseUrl + "Administration/Profiles",
+        url: baseUrl + "Administration/Profile",
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
@@ -34,7 +34,7 @@ export const EditAdmin = async (_data) => {
     console.log(_data);
     return await axios({
         method: 'PUT',
-        url: baseUrl + "Administration/Profiles",
+        url: baseUrl + "Administration/Profile",
         data: _data,
         headers: {
             'Content-Type': 'application/json',
