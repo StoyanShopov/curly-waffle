@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import styles from './ModalAddClients.module.css'
-
 import { baseUrl } from '../../constants';
 
 export default function ModalAddClients(props) {
@@ -17,20 +16,10 @@ export default function ModalAddClients(props) {
       email: enteredEmail,
     }
 
-    const response = await axios.post(baseUrl + 'Administration/Clients', clientData)
-
-    // const response = await fetch(baseUrl + 'Administration/Clients', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(clientData),
-    // });
+    const response = await axios.post(baseUrl + 'Administration/Client', clientData)
 
     if (response.status === 200) {
       props.handleSkip(1);
-
-      // const json = await response.json();
 
       props.handleClient(response.data.client);
 

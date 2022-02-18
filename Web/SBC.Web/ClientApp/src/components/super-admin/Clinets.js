@@ -1,21 +1,21 @@
+import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import css from './Clients.module.css';
+import { baseUrl } from '../../constants/GlobalConstants'
 import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
-import { baseUrl } from '../../constants/GlobalConstants'
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
-  const [skip, setSkip] = useState(0);
   const [isPending, setIsPending] = useState(false);
-  const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
+  const [skip, setSkip] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
 
   const cancelTokenSource = axios.CancelToken.source();
-  const url = baseUrl + 'Administration/Clients/Portion';
+  const url = baseUrl + 'Administration/Client/Portion';
 
   useEffect(() => {
     handleViewMore(0);

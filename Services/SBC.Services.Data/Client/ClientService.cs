@@ -51,7 +51,7 @@
 
             var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(email);
 
-            var ownerExists = await this.companyService.ExistsOwner(user.Company.Name);
+            var ownerExists = await this.companyService.ExistsOwnerAsync(user.Company.Name);
 
             if (ownerExists)
             {

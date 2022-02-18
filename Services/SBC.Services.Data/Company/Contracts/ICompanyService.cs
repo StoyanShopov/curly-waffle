@@ -8,7 +8,7 @@
     {
         Task<Result> GetCountAsync();
 
-        Task<bool> ExistsOwner(string name);
+        Task<bool> ExistsOwnerAsync(string name);
 
         Task<bool> ExistsByNameAsync(string name);
 

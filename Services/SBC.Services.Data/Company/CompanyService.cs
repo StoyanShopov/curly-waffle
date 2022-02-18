@@ -28,14 +28,12 @@
         public async Task<Result> GetCountAsync()
             => new ResultModel(await this.companyRepository.AllAsNoTracking().CountAsync());
 
-        // TODO:
-        public async Task<bool> ExistsOwner(string name)
+        // TODO: Improve
+        public async Task<bool> ExistsOwnerAsync(string name)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
 
-            return await this.companyRepository
-                .AllAsNoTracking()
-                .Where(c => c.Name.ToLower() == name.ToLower())
+            return await this.NoTrackGetQueryByName(name)
                 .Include(c => c.Employees)
                     .ThenInclude(e => e.Roles)
                 .AnyAsync(c =>
