@@ -9,33 +9,30 @@ import { uploadImage } from '../../services/blob-service';
 export default function EditProfile(props) {
     let [admin, setAdmin] = useState({});
 
-    useEffect(async () => {
-      setAdmin(await GetAdminData())
+    useEffect(() => {
+      async function setAdminFunc() {
+        setAdmin(await GetAdminData())
+      }
+
+      setAdminFunc();
     }, [])
 
     const OnEditAdmin = async (e) => {
         e.preventDefault();
-        //console.log(e.target);
 
         const fd = new FormData(e.target);
 
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
-
-        // console.log(data);
 
         if (data.photoUrl == null || data.photoUrl.size == 0) {
             data.photoUrl = admin.photoUrl
         }
         else {
             let result = await uploadImage(data.photoUrl);
-            //   let json = await result.json();
-            // let url = json.photoUrl;
-            console.log(result)
             data.photoUrl = result.photoUrl;
         }
         EditAdmin(data)
             .then((data) => {
-                console.log(data['status'])
                 if (data['status']) { props.closeModal(); }
             }, (err) => {
                 console.error(err)
@@ -70,7 +67,7 @@ export default function EditProfile(props) {
                     </div>
                     <div className={css.bodyContainer3}>
                         <input name="fullname" className={css.nameCntr} type="text" defaultValue={admin['fullname']} placeholder="Aya Krasteva"></input>
-                        <input name="email" className={css.nameCntr} type="text" defaultValue={admin['email']} placeholder="Hello@Motion-Software.com"></input>
+                        <input disabled name="email" className={css.nameCntr} type="text" defaultValue={admin['email']} placeholder="Hello@Motion-Software.com"></input>
                         <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={admin['profileSummary']}></textarea>
                     </div>
                 </div>

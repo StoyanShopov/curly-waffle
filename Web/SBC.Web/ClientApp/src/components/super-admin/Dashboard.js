@@ -1,16 +1,29 @@
-﻿import { DashboardIndex } from '../../services/super-admin-service';
-import React from 'react';
+﻿import axios from 'axios';
 import { useState, useEffect } from 'react';
+
 import css from './Dashboard.module.css';
 import Diagram from './fragments/Diagram';
+import { DashboardIndex } from '../../services/super-admin-service';
 
 export default function Dashboard() {
-    let [items, setItems] = useState({});
+    const [items, setItems] = useState({});
 
-    useEffect(async () => {
-        await DashboardIndex().then(r => {
-            setItems(r)
+    const cancelTokenSource = axios.CancelToken.source();
+
+    useEffect(() => {
+      async function GetDashboard() {
+         await axios("https://localhost:44319/Administration/Dashboard", {
+          cancelToken: cancelTokenSource.token,
+        }).then(r => {
+          setItems(r)
         })
+      }
+
+      GetDashboard();
+
+      return () => {
+        cancelTokenSource.cancel();
+      }
     }, [])
     
     return (

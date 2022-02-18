@@ -61,6 +61,7 @@
 	<ItemGroup>
 	  <Folder Include="ClientApp\src\components\ProfileOwner\" />
 	  <Folder Include="ClientApp\src\components\Register\" />
+	  <Folder Include="Models\NewFolder\" />
 	</ItemGroup>
 
 

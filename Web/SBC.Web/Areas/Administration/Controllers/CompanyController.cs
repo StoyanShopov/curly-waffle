@@ -15,7 +15,7 @@
             this.companyService = clientService;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> Add(AddRequestModel model)
             => this.GenericResponse(await this.companyService.Add(model.Name, model.Email, model.LogoUrl));
     }
