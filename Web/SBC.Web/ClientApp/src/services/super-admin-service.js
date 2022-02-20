@@ -6,7 +6,7 @@ import { baseUrl } from '../constants/GlobalConstants';
 
 export const DashboardIndex = async (cancelToken) => {
 
-    let response = await axios( baseUrl + "Administration/Dashboard",{ 
+    let response = await axios(baseUrl + "Administration/Dashboard", {
         cancelToken: cancelToken,
         headers: {
             'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export const GetAdminData = async () => {
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
         }
     });
-    console.log(response)
+    TokenManagement.setUserData(JSON.stringify(response.data));
     return response.data;
 }
 

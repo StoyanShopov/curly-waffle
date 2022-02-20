@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {  useEffect } from 'react';
+import { Link, NavLink} from 'react-router-dom';
 
 import css from './NavigationBar.module.css';
 import { userService } from '../../services/user.service';
+import { TokenManagement } from '../../helpers';
 
 export default function NavigationBar(props) {
     
   
-
+    let userData= TokenManagement.getUserData();
     const onLogout = () => {
         userService.logout();
+      
     }
 
     useEffect(() => {
+        userData= TokenManagement.getUserData();
     }, [])
 
     return (
@@ -26,10 +29,10 @@ export default function NavigationBar(props) {
             </div>
             <div className={css.circleContainer}>
                 <div className={css.circleFloatChild}>
-                    <span className={css.nameVisualizer}> {props.icon} </span>
+                    <span className={css.nameVisualizer}> {userData?userData.fullname[0]:"N/A"} </span>
                 </div>
                 <div className={css.floatChild2}>
-                    <label className={css.lable}>{props.adminData.fullname}</label>
+                    <label className={css.lable}>{userData?userData.fullname:"Enter Names"}</label>
                     <label className={css.lableColored}>{!props.adminData.company ? null : props.adminData.company}</label>
                 </div>
                 <br />

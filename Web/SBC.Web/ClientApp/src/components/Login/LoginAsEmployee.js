@@ -1,10 +1,11 @@
-﻿import React, { useEffect, useRef, useState } from "react";
+﻿import React, {  useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { userActions } from '../../actions/index';
 
 import styles from "./LoginAsEmployee.module.css";
+import { GetAdminData } from "../../services/super-admin-service";
 
 
 const LoginAsEmployee = (props) => {
@@ -30,6 +31,10 @@ const LoginAsEmployee = (props) => {
         e.preventDefault();
 
         await dispatch(userActions.login(email, password));
+        await GetAdminData().then(data => {
+//            console.log(data)
+        });
+
         navigate('/');
     };
 

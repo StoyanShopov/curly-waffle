@@ -9,6 +9,7 @@ import EditProfile from './super-admin/EditProfile';
 import NavigationBar from './super-admin/NavigationBar';
 import Revenue from './super-admin/Revenue';
 import { GetAdminData } from '../services/super-admin-service';
+import { TokenManagement } from '../helpers';
 
 export  async function GetAdmin(_setAdminData,_setIcon) {
   await GetAdminData().then(a => {
@@ -21,8 +22,9 @@ export default function AdminProfile() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [adminData, setAdminData] = useState({ fullName: '',email:'', company: ''});
   const [icon, setIcon] = useState();
-  
+  let userData= TokenManagement.getUserData();
 useEffect(() => {
+  userData= TokenManagement.getUserData();
     GetAdmin(setAdminData,setIcon);
 }, [])
 
