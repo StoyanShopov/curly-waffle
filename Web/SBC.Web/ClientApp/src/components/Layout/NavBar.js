@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
-import { useLocation } from 'react-router-dom';
+import { TokenManagement } from '../../helpers';
+import { Links } from './Links';
 
 const NavBar = () => {
-    let location = useLocation();
-    console.log(location)
+    let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
+    let status = TokenManagement.getUser() ;
+    useEffect(() => {
+        user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
+        status = TokenManagement.getUser();
+    }, [])
+
 
     return (
         <header>
@@ -17,71 +23,43 @@ const NavBar = () => {
                         <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
                     </div>
                 </div>
-                <div className={styles.testedLinks}>
-                    <ul>
-                    <li>
-                            <NavLink tag={Link} to="/super-admin">Super Admin</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/signUp">SignUp</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/profileOwner">Owner</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
-                        </li>
-                        <li>
-                            <a href="/docs">Docs</a>
-                        </li>
-                    </ul>
-                </div>
-               {/* {location.pathname === "/" &&*/}
-                    <div className={styles.homePageButtons}>
+                <div className={styles.coursesCoaches}>
+                    <ul> <li>
+                        <a href="/docs">Swagger</a>
+                    </li></ul>
+                    {TokenManagement.getUser() != null
+                        ?
                         <ul>
-                            <li>
-                                <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
-                            </li>
-                            <li>
-                                <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-                            </li>
+                            <li><Links role={status.role} /></li>
+                            <li> <NavLink
+                                to="/courses"
+                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+                            >
+                                Courses
+                            </NavLink> </li>
+                            <li><NavLink
+                                to="/coaches"
+                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+                            >
+                                Coaches
+                            </NavLink> </li>
                         </ul>
-                    </div>
-               {/* }*/}
-
-                {/*{location.pathname !== "/" &&*/}
-                    <div className={styles.coursesCoaches}>
-                        <ul>
-                            <li>
-                                <NavLink
-                                    to="/courses"
-                                    className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-                                >
-                                    Courses
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/coaches"
-                                    className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-                                >
-                                    Coaches
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </div>
-               {/* }*/}
-
-                <div className={styles.greenCircle}>
-                    A
+                        : <ul>
+                            <li><NavLink tag={Link} to="/registerAsOwner">Register</NavLink></li> </ul>
+                    }
                 </div>
 
+                {TokenManagement.getUser() == null
+                    ? <div className={styles.homePageButtons}>
+                        <ul>
+                            <li><Link to="/loginasemployee" ><button className={styles.loginButton}>Login</button></Link></li>
+                            <li><Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link></li>
+                        </ul>
+                    </div>
+                    : <div className={styles.greenCircle}>
+                        {user==null?'A':user['fullname'][0]}
+                    </div>
+                }
             </div>
         </header>
     )

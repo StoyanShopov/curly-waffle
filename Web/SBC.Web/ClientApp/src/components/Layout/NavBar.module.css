@@ -1,237 +1,235 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 header {
-    display: initial;
-    position: sticky;
+  display: initial;
+  position: sticky;
 }
 
 .headerContainer {
-    position: sticky;
-    top: 0px;
-    left: 0px;
-    width: auto;
-    height: 10rem;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    opacity: 1;
-    z-index: 10;
-    display: flex;
-    justify-content: space-around;    
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  width: auto;
+  height: 10rem;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  z-index: 10;
+  display: flex;
+  justify-content: right;
 }
 
 .logoContainer {
-    position: absolute;    
-    left: 2px;
+  position: absolute;
+  left: 2px;
 }
 
 .arrow {
-    position: absolute;
-    left: 100px;
-    top: 66px;
-    width: 76px;
-    height: 26px;
-    opacity: 100%;
-    margin-left: 10%;
-    display: flex;
-    flex-wrap: wrap;
+  position: absolute;
+  left: 100px;
+  top: 66px;
+  width: 76px;
+  height: 26px;
+  opacity: 100%;
+  margin-left: 10%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .upskillContainer {
-    text-align: left;
-    width: 113px;
-    height: 37px;
-    text-transform: lowercase;
-    opacity: 1;
-    position: absolute;
-    left: 180px;
-    top: 61.5px;
-    display: flex;
-    flex-wrap: wrap;
+  text-align: left;
+  width: 113px;
+  height: 37px;
+  text-transform: lowercase;
+  opacity: 1;
+  position: absolute;
+  left: 180px;
+  top: 61.5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-    .upskillContainer input {
-        cursor: pointer;
-    }
+.upskillContainer input {
+  cursor: pointer;
+}
 
 .upskillLink {
-    color: inherit;
-    text-decoration: inherit;
-    font: normal normal bold 30px/37px Montserrat;
-    letter-spacing: 1.5px;
-    color: #000000;
+  color: inherit;
+  text-decoration: inherit;
+  font: normal normal bold 30px/37px Montserrat;
+  letter-spacing: 1.5px;
+  color: #000000;
 }
 
 .testedLinks {
-    display: inline
+  display: inline;
 }
 
-    .testedLinks li {
-        display: inline;
-    }
-
-    .testedLinks ul {
-        position: relative;
-        margin: 0;
-        top: 62px;
-        left: 400px;
-    }
-
-        .testedLinks ul li {
-            margin-left: 16px;
-            font-size: 24px;
-        }
-
-.greenCircle {
-    top: 55px;
-    left: 1720px;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background: #16D696 0% 0% no-repeat padding-box;
-    border-radius: 100px;
+.testedLinks li {
+  display: inline;
 }
 
-    .greenCircle p {
-        background: #16D696 0% 0% no-repeat padding-box;
-        text-align: center;
-        font: normal normal bold 22px/27px Montserrat;
-        letter-spacing: 1.1px;
-        color: #FFFFFF;
-        opacity: 1;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        top: 9px;
-        border-radius: 70px;
-    }
+.testedLinks ul {
+  position: relative;
+  margin: 0;
+}
+
+.testedLinks ul li {
+  margin-left: 16px;
+  font-size: 24px;
+}
+
+/* .greenCircle {
+   top: 55px; 
+  left: 1720px;
+  width: 50px;
+  height: 50px;
+  position: inherit;
+  background: #16d696 0% 0% no-repeat padding-box;
+  border-radius: 100px;
+} */
+
+.greenCircle p {
+  background: #16d696 0% 0% no-repeat padding-box;
+  text-align: center;
+  font: normal normal bold 22px/27px Montserrat;
+  letter-spacing: 1.1px;
+  color: #ffffff;
+  opacity: 1;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 9px;
+  border-radius: 70px;
+}
 
 .homePageButtons {
-    flex-wrap: wrap;
-    display: flex;
+  flex-wrap: wrap;
+  display: flex;
 }
 
-    .homePageButtons li {
-        text-decoration: none;
-        padding-right: 25px;
-        margin-bottom: 7px;
-    }
+.homePageButtons li {
+  text-decoration: none;
+  padding-right: 25px;
+  margin-bottom: 7px;
+}
 
-    .homePageButtons ul {
-        text-decoration: none;
-        padding-top: 7%;
-        display: flex;
-        flex-wrap: wrap;
-    }
+.homePageButtons ul {
+  text-decoration: none;
+  padding-top: 7%;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .loginButton {
-    width: 150px;
-    height: 50px;
-    text-decoration: none;
-    border-color: #296CFB;
-    text-decoration: none;
-    font: normal normal bold 22px/27px Montserrat;
-    font-weight: bold;
-    color: #296CFB;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: white;
+  width: 150px;
+  height: 50px;
+  text-decoration: none;
+  border-color: #296cfb;
+  text-decoration: none;
+  font: normal normal bold 22px/27px Montserrat;
+  font-weight: bold;
+  color: #296cfb;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: white;
 }
 
 .requestDemoBtn {
-    width: 250px;
-    height: 50px;
-    background-color: #296CFB;
-    border-color: #296CFB;
-    color: floralwhite;
-    text-decoration: none;
-    font: normal normal bold 22px/27px Montserrat;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
+  width: 250px;
+  height: 50px;
+  background-color: #296cfb;
+  border-color: #296cfb;
+  color: floralwhite;
+  text-decoration: none;
+  font: normal normal bold 22px/27px Montserrat;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .coursesCoaches {
-    display: flex;
-    flex-wrap: wrap;
-    cursor: pointer;
-
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
 }
 
-    .coursesCoaches li {
+.coursesCoaches li {
+  display: inline-flex;
+}
 
-        display: inline-flex;
-    }
+.coursesCoaches ul {
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding-top: 10%;
+  flex-flow: row wrap;
+  padding-left: 3px;
+}
 
-    .coursesCoaches ul {
-        display: flex;
-        position: relative;
-        margin: 0;        
-        padding-top: 25%;
-        flex-flow: row wrap;
-        padding-left: 3px;
-    }
+.coursesCoaches ul li {
+  margin-left: 20px;
+  font-size: 15px;
+}
 
-        .coursesCoaches ul li {
-            margin-left: 20px;
-            font-size: 15px;
-        }
-
-    .coursesCoaches a:hover, .coursesCoaches a:visited, .coursesCoaches a:link, .coursesCoaches a:active {
-        text-decoration: none;
-
-    }
+.coursesCoaches a:hover,
+.coursesCoaches a:visited,
+.coursesCoaches a:link,
+.coursesCoaches a:active {
+  text-decoration: none;
+}
 
 .coursesNotActive {
-    font: normal normal normal 22px/27px Montserrat;
-    letter-spacing: 1.1px;
-    color: #000000;
-    font-weight: normal;
-    opacity: 1;
-    font-size: 22px;
+  font: normal normal normal 22px/27px Montserrat;
+  letter-spacing: 1.1px;
+  color: #000000;
+  font-weight: normal;
+  opacity: 1;
+  font-size: 22px;
 }
 
 .coursesActive {
-    font: normal normal bold 22px/27px Montserrat;
-    letter-spacing: 1.1px;
-    color: #296CFB;
-    font-weight: bold;
-    opacity: 1;
-    font-size: 22px;
+  font: normal normal bold 22px/27px Montserrat;
+  letter-spacing: 1.1px;
+  color: #296cfb;
+  font-weight: bold;
+  opacity: 1;
+  font-size: 22px;
 }
 
 .greenCircle {
-    width: 50px;
-    height: 50px;
-    color: #FFFFFF;
-    background-color: #16D696;
-    position: relative;
-    top: 30%;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 50px;
-    border-radius: 75px;
-    margin-right: 2%;
-    margin-left: 1%;
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  background-color: #16d696;
+  position: relative;
+  top: 30%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 50px;
+  border-radius: 75px;
+  margin-right: 2%;
+  margin-left: 1%;
 }
 
 .testedLinks {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-    .testedLinks li {
-        display: inline-flex;
-    }
+.testedLinks li {
+  display: inline-flex;
+}
 
-    .testedLinks ul {
-        position: relative;
-        margin: 0;
-        margin-left: 350px;
-        padding-top: 8%;
-    }
+.testedLinks ul {
+  position: relative;
+  margin: 0;
+  margin-left: 350px;
+  padding-top: 8%;
+}
 
-        .testedLinks ul li {
-            margin-left: 10px;
-            font-size: 15px;
-        }
+.testedLinks ul li {
+  margin-left: 10px;
+  font-size: 15px;
+}
