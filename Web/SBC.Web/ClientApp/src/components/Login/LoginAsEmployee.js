@@ -1,18 +1,17 @@
 ﻿import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import { userActions } from '../../actions/index';
+import { userActions } from "../../actions/index";
 
 import styles from "./LoginAsEmployee.module.css";
 
-
 const LoginAsEmployee = (props) => {
-    const form = useRef();
-    const navigate = useNavigate();
+  const form = useRef();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -29,8 +28,8 @@ const LoginAsEmployee = (props) => {
   const onLogin = async (e) => {
     e.preventDefault();
 
-      await dispatch(userActions.login(email, password));
-      navigate('/');
+    await dispatch(userActions.login(email, password));
+    navigate("/");
   };
 
   const link = "Забравена парола?";
@@ -43,7 +42,11 @@ const LoginAsEmployee = (props) => {
       <div className={styles.right}>
         <div className={styles.formContainer}>
           <div className={styles.arrowContainer}>
-              <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+            <img
+              src="assets/images/Group 5.svg"
+              className={styles.arrow}
+              alt=""
+            />
           </div>
           <h1>Welcome back!</h1>
           <h5>Please login to your account</h5>
@@ -59,7 +62,7 @@ const LoginAsEmployee = (props) => {
                 placeholder="Email Address"
                 value={email}
                 onChange={onChangeEmail}
-              /> 
+              />
             </div>
             <div>
               <label htmlFor="password"></label>
@@ -81,14 +84,14 @@ const LoginAsEmployee = (props) => {
               <a href="/">{link}</a>
             </div>
             <div className={styles.btncontainer}>
-                          <input type="submit" value="Login" />
-                          <Link to="/register">SignUp</Link>
+              <input type="submit" value="Login" />
+              <Link to="/register">SignUp</Link>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default LoginAsEmployee;

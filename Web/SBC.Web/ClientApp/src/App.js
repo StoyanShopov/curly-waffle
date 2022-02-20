@@ -10,6 +10,7 @@ import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
 import CreateCoach from "./components/Coaches/CreateCoach";
 import EditCoach from "./components/Coaches/EditCoach";
+import Coaches from "./components/Coaches/Coaches";
 
 
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path="/coaches/create" element={<CreateCoach />}/>
                     <Route path="/coaches/edit" element={<EditCoach />}/>
+                    <Route path="/coaches" element={<Coaches />}/>
                 </Routes>
             </Layout>
         </Provider>
