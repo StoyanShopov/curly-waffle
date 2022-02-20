@@ -1,8 +1,6 @@
-// import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import styles from './ModalAddClients.module.css'
-// import { baseUrl } from '../../constants';
 import { AddClient } from '../../services/client-service';
 
 export default function ModalAddClients(props) {
@@ -17,42 +15,25 @@ export default function ModalAddClients(props) {
       email: enteredEmail,
     }
 
-    //const response =
-     AddClient(clientData).then((data) => {
-      if (data.status === 200) {
-        props.handleSkip(1);
+    try {
+      const response = await AddClient(clientData);
 
-        props.handleClient(data.client);
+      props.handleSkip(1);
 
-        const btnId = e.nativeEvent.submitter.id;
+      props.handleClient(response.data.client);
 
-        if (btnId === "continue") {
-          e.target.reset();
-        }
-        else {
-          props.handleClose();
-        }
+      const btnId = e.nativeEvent.submitter.id;
+
+      if (btnId === "continue") {
+        e.target.reset();
       }
-
-    }, (err) => console.log(err))
+      else {
+        props.handleClose();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
-
-
-    // if (response.status === 200) {
-    //   props.handleSkip(1);
-
-    //   props.handleClient(response.data.client);
-
-    //   const btnId = e.nativeEvent.submitter.id;
-
-    //   if (btnId === "continue") {
-    //     e.target.reset();
-    //   }
-    //   else {
-    //     props.handleClose();
-    //   }
-    // }else{
-
 
   return (
     <div className={styles.body}>
