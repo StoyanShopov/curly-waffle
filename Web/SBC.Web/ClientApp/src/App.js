@@ -9,6 +9,7 @@ import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
+import Invoice from "./components/ProfileOwner/Invoice/Invoice";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path="/ownerEmployees" element={<OwnerEmployees />} />
+                    <Route path="/ownerInvoice" element={<Invoice />} />
                 </Routes>
             </Layout>
         </Provider>
