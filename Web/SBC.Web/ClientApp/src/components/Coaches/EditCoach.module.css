@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
 
+.bodyContainer{
+    display: flow-root;
+    padding-top: 20%;
+}
 .addContainer {
-    position: absolute;
+    position: relative;
     float: left;
     left: 50%;
     top: 60%;

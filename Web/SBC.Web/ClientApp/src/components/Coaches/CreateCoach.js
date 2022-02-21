@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { createCoach, uploadImage } from '../../services/adminCoachesService';
 
 import styles from './CreateCoach.module.css';
 
 
 const CreateCoach = () => {
-    const onSubmitAddCoach = async(e) => {
+    const onSubmitAddCoach = async (e) => {
         e.preventDefault()
 
         const fd = new FormData(e.target);
@@ -80,13 +79,15 @@ const CreateCoach = () => {
                                 required />
                             <span className={styles.starPrice}>*</span>
                         </div>
+
                         <div>
                             <input className={styles.inputField}
                                 name="company"
                                 placeholder='Company(optional)'
                                 type="text"
-                                 />
+                            />
                         </div>
+
                         <div>
                             <input className={styles.inputField}
                                 name="calendlyUrl"
@@ -104,13 +105,16 @@ const CreateCoach = () => {
                                 required />
                             <span className={styles.starDescription}>*</span>
                         </div>
+
                         <button className={styles.addAnotherCoachBtn}>
                             + Add another coach
                         </button>
+
                         <div className={styles.footerContainer}>
                             <button className={styles.btnCancel} type="button">Cancel</button>
                             <button className={styles.btnSave} type="submit">Save</button>
                         </div>
+
                     </div>
                 </form>
             </div>

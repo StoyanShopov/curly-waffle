@@ -2,40 +2,34 @@
 
 .container{
     display: flow-root;
-    padding-top: 10%;
 }
 
 .modalContainer{
     position: relative;
-    float: left;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
     background-color: white;
-    height: 276px;
 }
 
 .header{
-    width: 514px;
-    height: 138px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
     display: flex;
     justify-content: space-between;
+    height: 120px;
+    flex-direction: column;
 }
 
 .title{
-    text-align: center;
     color: white;
-    font: normal normal bold 18px/36px Montserrat;
-    padding-top: 57px;
-    margin-left: 10%;
+    font: normal normal bold 18px/24px Montserrat;
+    width: 300px;
+    text-align: center;
+    margin: auto;
 }
 
 .footer{
     display: flex;
     justify-content: center;
-    padding-top: 16px;
+    padding-top: 6px;
 }
 
 .btnSave{
@@ -70,9 +64,8 @@
 .closeBtn{
     background: transparent;
     border: none;
-    position: fixed;
     cursor: pointer;
     color: white;
-    margin-left: 480px;
-    padding-top: 7px;
+    margin-top: 15px;
+    margin-left: 490px;
 }   

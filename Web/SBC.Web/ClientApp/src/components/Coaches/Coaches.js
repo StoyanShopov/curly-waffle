@@ -1,7 +1,41 @@
 import React from "react";
 import styles from "../Coaches/Coaches.module.css";
+import Modal from 'react-modal';
+import DeleteCoach from "./DeleteCoach";
+import { useState } from "react";
 
 const Coaches = () => {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  let subtitle = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      width: '36%',
+      height: '260px',
+      bottom: 'auto',
+      marginTop: '-5%',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -25%)',
+      padding: '0px',
+    },
+    color: '#f00'
+  };
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    subtitle.color = '#f00';
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.headcontainer}>
@@ -44,7 +78,7 @@ const Coaches = () => {
               <span>Google</span>
             </div>
             <div className={styles.button}>
-              <button>Delete</button>
+              <button onClick={() => openModal()}>Delete</button>
             </div>
           </div>
         </div>
@@ -141,6 +175,15 @@ const Coaches = () => {
           </div>
         </div>
       </div>
+      <Modal
+        style={subtitle}
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+      >
+        <DeleteCoach closeModal={closeModal}/>
+      </Modal>
     </div>
   );
 };
