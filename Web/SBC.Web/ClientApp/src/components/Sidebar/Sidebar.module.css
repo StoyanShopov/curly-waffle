@@ -46,7 +46,7 @@
     font-size: 24px;
     font-weight: bold;
     line-height: 65px;
-    border-radius: 75px;
+    border-radius: 50%;
 }
 
 .names {
@@ -107,8 +107,7 @@
             border-top: 1px solid #000000;
             font-size: 16px;
             margin-left: 11%;
-            margin-right: 20%;
-            padding: 5%;
+            margin-right: 20%;           
             padding-top: 5%;
             padding-bottom: 5%;
         }

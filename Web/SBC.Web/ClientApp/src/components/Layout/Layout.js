@@ -9,7 +9,7 @@ export function Layout(props) /*extends Component*/ {
         return (
             <>
                 <NavBar />
-                <main style={{ top: "160px", position: "relative" }}>
+                <main style={{ top: "6rem", position: "relative" }}>
                     {props.children}
                 </main>
                 <Footer />

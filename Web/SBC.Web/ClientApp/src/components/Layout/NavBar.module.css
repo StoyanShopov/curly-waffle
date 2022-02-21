@@ -7,47 +7,36 @@ header {
 }
 
 .headerContainer {
-    top: 0px;
-    left: 0px;
-    /*min-width: 1920px;*/
-    height: 10rem;
-    /*height: 10em;*/
+    height: 6rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     opacity: 1;
     z-index: 10;
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
 }
 
 .logoContainer {
-    position: absolute;    
-    left: 2px;
+    position: absolute;
+    flex-grow: 0.4;
+    flex-shrink: 1;
+    left: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    flex-basis: 0;
 }
 
 .arrow {
-    position: absolute;
-    left: 100px;
-    top: 66px;
     width: 76px;
-    height: 26px;
     opacity: 100%;
-    margin-left: 10%;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .upskillContainer {
     text-align: left;
-    width: 113px;
-    height: 37px;
-    text-transform: lowercase;
-    opacity: 1;
-    position: absolute;
-    left: 180px;
-    top: 61.5px;
-    display: flex;
-    flex-wrap: wrap;
 }
 
     .upskillContainer input {
@@ -65,45 +54,53 @@ header {
 .homePageButtons {
     flex-wrap: wrap;
     display: flex;
+    left: 14%;
+    align-items: center;
+    position: relative;
+    flex-grow: 1.1;
+    flex-shrink: 3;
+    flex-basis: 0;
 }
 
     .homePageButtons li {
         text-decoration: none;
-        padding-right: 25px;
-        margin-bottom: 7px;
     }
 
     .homePageButtons ul {
         text-decoration: none;
-        padding-top: 7%;
         display: flex;
         flex-wrap: wrap;
+        padding: 3px;
+        margin: 3px;
+        align-items: center;
+        justify-content: space-around;
+        gap: 4px 18px;
     }
 
 .loginButton {
-    width: 150px;
-    height: 50px;
+    width: 130px;
+    height: 40px;
     text-decoration: none;
     border-color: #296CFB;
     text-decoration: none;
     font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
     color: #296CFB;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     background-color: white;
 }
 
 .requestDemoBtn {
-    width: 250px;
-    height: 50px;
+    width: 200px;
+    height: 40px;
     background-color: #296CFB;
     border-color: #296CFB;
     color: floralwhite;
     text-decoration: none;
     font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -111,24 +108,29 @@ header {
     display: flex;
     flex-wrap: wrap;
     cursor: pointer;
+    padding-right: 2%;
+    position: relative;
+    left: -2%;
+    flex-grow: 0.5;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
 
     .coursesCoaches li {
-        display: inline-flex;
+        /* display: inline-flex;*/
+        /* justify-content: space-around;*/
     }
 
     .coursesCoaches ul {
-        display: flex;
-        position: relative;
-        margin: 0;        
-        padding-top: 25%;
-        flex-flow: row wrap;
-        padding-left: 3px;
+        align-items: center;
+        gap: 8px 18px;
+        justify-content: space-evenly;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
         .coursesCoaches ul li {
-            margin-left: 20px;
-            font-size: 15px;
+            margin-left: 5px;
         }
 
     .coursesCoaches a:hover, .coursesCoaches a:visited, .coursesCoaches a:link, .coursesCoaches a:active {
@@ -141,7 +143,7 @@ header {
     color: #296CFB;
     font-weight: bold;
     opacity: 1;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .coursesNotActive {
@@ -150,28 +152,37 @@ header {
     color: #000000;
     font-weight: normal;
     opacity: 1;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .greenCircle {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     color: #FFFFFF;
     background-color: #16D696;
-    position: relative;
-    top: 30%;
     text-align: center;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: bold;
-    line-height: 50px;
-    border-radius: 75px;
-    margin-right: 2%;
-    margin-left: 1%;
+    line-height: 43px;
+    border-radius: 50%;
+    margin-right: 3%;
+    position: absolute;
+    left: 93%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
 
 .testedLinks {
     display: flex;
     flex-wrap: wrap;
+    width: 5%;
+    position: relative;
+    left: 18%;
+    max-width: 39%;
+    flex-grow: 1;
+    flex-shrink: 2;
+    flex-basis: 0;
 }
 
     .testedLinks li {
@@ -179,13 +190,14 @@ header {
     }
 
     .testedLinks ul {
-        position: relative;
-        margin: 0;
-        margin-left: 350px;
-        padding-top: 8%;
+        flex-grow: 1;
+        align-items: center;
+        align-content: space-around;
+        /* gap: 1%; */
+        flex-basis: 8%;
     }
 
         .testedLinks ul li {
-            margin-left: 10px;
-            font-size: 15px;
+            margin-left: 8px;
+            font-size: 13px;
         }
