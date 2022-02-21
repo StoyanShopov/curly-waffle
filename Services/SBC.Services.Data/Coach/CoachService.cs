@@ -99,12 +99,12 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
             }
 
-            foreach (var language in this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToList())
+            foreach (var language in this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToArray())
             {
                 this.languageCoachRepo.Delete(language);
             }
 
-            foreach (var category in this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToList())
+            foreach (var category in this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToArray())
             {
                 this.categoryCoachRepo.Delete(category);
             }
