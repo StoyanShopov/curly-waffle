@@ -16,12 +16,14 @@
         [Required]
         [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
+        [Url]
         public string VideoUrl { get; set; }
 
         [Range(0, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
         [Required]
+        [Url]
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountUpdate)]
