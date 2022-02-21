@@ -115,24 +115,24 @@
             return true;
         }
 
-        private async void AddCategories(int[] categories, int coachId)
+        private async void AddCategories(CategoryImportId[] categories, int coachId)
         {
-            foreach (var categoryId in categories)
+            foreach (var category in categories)
             {
-                if (!this.ExistCategory(coachId, categoryId))
+                if (!this.ExistCategory(coachId, category.CategoryId))
                 {
-                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = categoryId });
+                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = category.CategoryId });
                 }
             }
         }
 
-        private async void AddLanguages(int[] languages, int coachId)
+        private async void AddLanguages(LanguageImportId[] languages, int coachId)
         {
-            foreach (var languageId in languages)
+            foreach (var language in languages)
             {
-                if (!this.ExistLanguage(coachId, languageId))
+                if (!this.ExistLanguage(coachId, language.LanguageId))
                 {
-                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = languageId });
+                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = language.LanguageId });
                 }
             }
         }

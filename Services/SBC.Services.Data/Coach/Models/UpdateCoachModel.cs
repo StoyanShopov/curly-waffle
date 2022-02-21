@@ -26,9 +26,9 @@
 
         [MinLength(MinCountUpdate)]
         [MaxLength(MaxCountLanguages)]
-        public int[] Languages { get; set; }
+        public LanguageImportId[] Languages { get; set; }
 
         [MinLength(MinCountUpdate)]
-        public int[] Categories { get; set; }
+        public CategoryImportId[] Categories { get; set; }
     }
 }
