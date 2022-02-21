@@ -10,6 +10,8 @@
     height: 68rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    position: relative;
+    /*top: 160px;*/
 }
 
 .left {
