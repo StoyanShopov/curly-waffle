@@ -18,7 +18,7 @@ p {
   display: flex;
   height: 322px;
   justify-content: space-between;
-  margin-bottom: 80px;
+  margin-bottom: 10rem;
 }
 .textcontainer {
   width: 960px;
@@ -48,13 +48,15 @@ p {
   width: 450px;
   height: 450px;
   margin-left: 170px;
-  box-shadow: 0px 3px 10px #00000029;  
+  box-shadow: 0px 3px 10px #00000029;
+  margin-bottom: 10rem;
 }
 
 .upper {
   background-color: #1cc18a;
   width: 450px;
   height: 248px;
+  position: relative;
 }
 .name {
   margin: 0 auto;
@@ -91,12 +93,14 @@ button {
 
 .cardpic {
   position: absolute;
-  top: 526px;
   width: 409px;
   height: auto;
-  left: 195px;
+  bottom: 0;
 }
 
 .cardscontainer {
-    display: flex;    
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  row-gap:1rem;
 }

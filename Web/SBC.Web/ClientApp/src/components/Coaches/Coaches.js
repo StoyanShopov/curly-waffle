@@ -50,49 +50,96 @@ const Coaches = () => {
         </div>
 
         <div className={styles.card}>
-        <div className={styles.upper}>
-          <img
-            className={styles.cardpic}
-            src="assets/images/Mask Group 3.png"
-            alt=""
-          />
-        </div>
-        <div className={styles.down}>
-          <div className={styles.name}>
-            <span>Management</span>
-            <span>Timmy Ramsey</span>
+          <div className={styles.upper}>
+            <img
+              className={styles.cardpic}
+              src="assets/images/Mask Group 3.png"
+              alt=""
+            />
           </div>
-          <div className={styles.price}>
-            <span>80e per person</span>
-            <span>Google</span>
-          </div>
-          <div className={styles.button}>
-            <button>Delete</button>
-          </div>
-        </div>
-      </div>
-      <div className={styles.card}>
-        <div className={styles.upper}>
-          <img
-            className={styles.cardpic}
-            src="assets/images/Mask Group 9.png"
-            alt=""
-          />
-        </div>
-        <div className={styles.down}>
-          <div className={styles.name}>
-            <span>Management</span>
-            <span>Timmy Ramsey</span>
-          </div>
-          <div className={styles.price}>
-            <span>80e per person</span>
-            <span>Google</span>
-          </div>
-          <div className={styles.button}>
-            <button>Delete</button>
+          <div className={styles.down}>
+            <div className={styles.name}>
+              <span>Management</span>
+              <span>Timmy Ramsey</span>
+            </div>
+            <div className={styles.price}>
+              <span>80e per person</span>
+              <span>Google</span>
+            </div>
+            <div className={styles.button}>
+              <button>Delete</button>
+            </div>
           </div>
         </div>
-      </div>
+        <div className={styles.card}>
+          <div className={styles.upper}>
+            <img
+              className={styles.cardpic}
+              src="assets/images/Mask Group 9.png"
+              alt=""
+            />
+            
+          </div>
+          <div className={styles.down}>
+            <div className={styles.name}>
+              <span>Management</span>
+              <span>Timmy Ramsey</span>
+            </div>
+            <div className={styles.price}>
+              <span>80e per person</span>
+              <span>Google</span>
+            </div>
+            <div className={styles.button}>
+              <button>Delete</button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.card}>
+          <div className={styles.upper}>
+            <img
+              className={styles.cardpic}
+              src="assets/images/Mask Group 9.png"
+              alt=""
+            />
+            
+          </div>
+          <div className={styles.down}>
+            <div className={styles.name}>
+              <span>Management</span>
+              <span>Timmy Ramsey</span>
+            </div>
+            <div className={styles.price}>
+              <span>80e per person</span>
+              <span>Google</span>
+            </div>
+            <div className={styles.button}>
+              <button>Delete</button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.card}>
+          <div className={styles.upper}>
+            <img
+              className={styles.cardpic}
+              src="assets/images/Mask Group 9.png"
+              alt=""
+            />
+            
+          </div>
+          <div className={styles.down}>
+            <div className={styles.name}>
+              <span>Management</span>
+              <span>Timmy Ramsey</span>
+            </div>
+            <div className={styles.price}>
+              <span>80e per person</span>
+              <span>Google</span>
+            </div>
+            <div className={styles.button}>
+              <button>Delete</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
