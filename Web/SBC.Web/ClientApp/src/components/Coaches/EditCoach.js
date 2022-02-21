@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getCoach } from '../../services/adminCoachesService';
 
 import styles from './EditCoach.module.css';
 

@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import { createCoach, uploadImage } from '../../services/adminCoachesService';
 
 import styles from './CreateCoach.module.css';
 
 
 const CreateCoach = () => {
+    const [languages, setLanguages] = useState([])
+
+    const onChangeAddLanguage = (e) => {
+        setLanguages(oldArray => [...oldArray, e.target.value])
+        console.log(languages)
+    }
+
     const onSubmitAddCoach = async (e) => {
         e.preventDefault()
 
@@ -104,6 +112,28 @@ const CreateCoach = () => {
                                 type="textarea"
                                 required />
                             <span className={styles.starDescription}>*</span>
+                        </div>
+
+                        <div>
+                            <select className={styles.inputField}
+                                onChange={onChangeAddLanguage}
+                                name="languages"
+                                data-placeholder="Choose languages">
+                                <option value="" disabled selected hidden>Choose Languages</option>
+                                <option value="English">English</option>
+                                <option value="German">German</option>
+                                <option value="Spanish">Spanish</option>
+                            </select>
+                            <span className={styles.starDescription}>*</span>
+                            <div>
+
+                                <span className={styles.languages}>
+                                    Selected languages : 
+                                    <span>
+                                        {languages.map(x => x + ' ')}`
+                                    </span>
+                                </span>
+                            </div>
                         </div>
 
                         <button className={styles.addAnotherCoachBtn}>

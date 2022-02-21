@@ -228,3 +228,6 @@ textarea[required]:valid + span{
 textarea[required]:invalid + span{
     display: inline-block;
 }
+.languages{
+    font: normal normal bold 14px/27px Montserrat;
+}

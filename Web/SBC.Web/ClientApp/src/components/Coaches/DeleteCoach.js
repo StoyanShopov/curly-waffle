@@ -1,7 +1,7 @@
 import styles from './DeleteCoach.module.css';
 
 
-const DeleteCoach = (props) => {
+const DeleteCoach = (props) => {    
     return (
         <div className={styles.container}>
             <div className={styles.modalContainer}>
