@@ -42,10 +42,10 @@
             return this.GenericResponse(result);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Put(EditLectureServiceModel lectureModel)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(string id, EditLectureServiceModel lectureModel)
         {
-            var result = await this.lectureService.EditAsync(lectureModel);
+            var result = await this.lectureService.EditAsync(id, lectureModel);
 
             return this.GenericResponse(result);
         }

@@ -18,7 +18,6 @@ export default function CourseDetails() {
                 setLectures(lectureResult.data);
             });
     }, []);
-    console.log(lectures)
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [childModal, setChildModal] = useState(null);
@@ -74,7 +73,7 @@ export default function CourseDetails() {
                     <img src="iconmonstr-fullscreen-2.svg" className={css.fullScreen} alt="" />
                 </div>
                 <h2 className={css.descriptionHeading}>Lecture Description</h2>
-                <p className={css.pDescription}>Loremmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+                <p className={css.pDescription}>This course emphasizes the fundamental language skills of reading, writing, speaking, listening, thinking, viewing and presenting.</p>
                 <h2 className={css.instructorHeading}>Instructor</h2>
                 <section className={css.lectorSection}>
                     <div>
@@ -88,13 +87,15 @@ export default function CourseDetails() {
                 <p className={css.pInstructor}>Charles Du led the design of NASA’s first iPhone app (10+ million downloads, 2+ million hits per day, NASA’s Software of the Year Award) and co-founded the Airbnb for cars. He is an award-winning product manager, UX designer, lecturer, and international keynote speaker.</p>
             </div>
             <div className={css.rightPart}>
-                <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures}/>) }}>Add Lecture</button>
-                <h1 className={css.lecturesHeading}>Lectures</h1>
-                <ul className={css.ulLectures}>
-                    {lectures.length > 0 && lectures.map((x, i) => <LectureCard setLectures={setLectures} lectures={lectures} key={x._id} lecture={x} index={i} />)}
-                    <img src="Line 396.png" className={css.google} alt="" />
-                </ul>
-                <button className={css.btnViewMore}>View More</button>
+                <div className={css.lectureList} >
+                    <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} />) }}>Add Lecture</button>
+                    <h1 className={css.lecturesHeading}>Lectures</h1>
+                    <ul className={css.ulLectures}>
+                        {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
+                        <img src="Line 396.png" className={css.google} alt="" />
+                    </ul>
+                    <button className={css.btnViewMore}>View More</button>
+                </div>
                 <Modal
                     style={subtitle}
                     isOpen={modalIsOpen}

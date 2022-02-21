@@ -7,7 +7,10 @@
     width: 66%;
 }
 .rightPart{
-    width: 34%;
+    width: 34%; 
+}
+.lectureList{
+    background-color: rgba(0,0,255,0.1);
 }
 .marketingHeading{
     font-size: 40px;
@@ -48,7 +51,7 @@
 .pDescription{
     font-size: 22px;
     font-style: Montserrat;
-    width: 800px;
+    width: 820px; 
 }
 .lectorPic{
     width: 100px;
@@ -93,6 +96,7 @@
 }
 .ulLectures{
     list-style-type: none;
+    padding-left: 8%;
 }
 .liName{
     font-size: 22px;
@@ -102,7 +106,7 @@
 }
 .btnViewMore{
     width: 250px;
-    height: 70px;
+    height: 50px;
     font-size: 22px;
     font-weight: bold;
     font-style: Montserrat;
