@@ -119,7 +119,7 @@ const CreateCoach = () => {
                                 onChange={onChangeAddLanguage}
                                 name="languages"
                                 data-placeholder="Choose languages">
-                                <option value="" disabled selected hidden>Choose Languages</option>
+                                <option disabled selected hidden>Choose Languages</option>
                                 <option value="English">English</option>
                                 <option value="German">German</option>
                                 <option value="Spanish">Spanish</option>
@@ -127,10 +127,12 @@ const CreateCoach = () => {
                             <span className={styles.starDescription}>*</span>
                             <div>
 
-                                <span className={styles.languages}>
-                                    Selected languages : 
+                                <span >
+                                    <div className={styles.languages}>
+                                        Selected languages : 
+                                    </div>
                                     <span>
-                                        {languages.map(x => x + ' ')}`
+                                        {languages.map(x => <span className={styles.selectedLanguages}> {x}</span>)}
                                     </span>
                                 </span>
                             </div>

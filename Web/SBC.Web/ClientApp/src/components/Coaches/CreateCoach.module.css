@@ -229,5 +229,16 @@ textarea[required]:invalid + span{
     display: inline-block;
 }
 .languages{
-    font: normal normal bold 14px/27px Montserrat;
+    font: normal normal bold 14px/27px Montserrat ;
+}
+
+.selectedLanguages{
+    font: normal normal bold 16px/27px Montserrat;
+    background-color: #296CFB;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 1px;
+    margin-bottom: 20px;
 }
