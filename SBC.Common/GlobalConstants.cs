@@ -1,3 +1,5 @@
+﻿using System;
+
 namespace SBC.Common
 {
     public static class GlobalConstants
@@ -105,6 +107,11 @@ namespace SBC.Common
 
         public class CoachConstants
         {
+            public const byte MinLengthName = 2;
+            public const byte MaxLengthName = 25;
+            public const string NameRegex = @"^[A-Z][a-z]+$";
+            public const string NameRegexMessage = "The field Description must be a text of letters.";
+
             public const string CoachFirstNameIvan = "Ivan";
             public const string CoachFirstNameMaria = "Maria";
             public const string CoachFirstNameEmil = "Emil";
@@ -113,6 +120,8 @@ namespace SBC.Common
             public const string CoachLastNamePetrova = "Petrova";
             public const string CoachLastNameEmilov = "Emilov";
 
+            public const byte MinLengthDescription = 10;
+            public const byte MaxLengthDescription = 140;
             public const string IvanDescription = "Ivan Ivanov Description Text";
             public const string MariaDescription = "Maria Petrova Description Text";
             public const string EmilDescription = "Emil Emilov Description Text";
@@ -124,6 +133,10 @@ namespace SBC.Common
             public const string IvanCalendlyUrl = "https://calendly.com/1";
             public const string MariaCalendlyUrl = "https://calendly.com/2";
             public const string EmilCalendlyUrl = "https://calendly.com/3";
+
+            public const byte MinCountAdd = 1;
+            public const byte MinCountUpdate = 0;
+            public const byte MaxCountLanguages = 6;
         }
 
         public class RequestsConstants

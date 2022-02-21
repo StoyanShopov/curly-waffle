@@ -2,9 +2,7 @@
 {
     using System.Reflection;
     using System.Text;
-
     using Azure.Storage.Blobs;
-
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -19,6 +17,7 @@
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
     using Microsoft.WindowsAzure.Storage;
+
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -27,8 +26,14 @@
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
     using SBC.Services.Data;
+    using SBC.Services.Data.Category;
+    using SBC.Services.Data.Category.Contracts;
+    using SBC.Services.Data.Coach;
+    using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Language;
+    using SBC.Services.Data.Language.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -141,13 +146,16 @@
                 });
 
             // Application services
-            services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
+            services.AddTransient<ICoachService, CoachService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
