@@ -5,7 +5,7 @@
 }
 
 .footerMain {
-    position: relative;    
+    position: relative;
 }
 
 .trapezoid {
@@ -15,8 +15,6 @@
     /*width: 98vw;*/
     height: 700px;
     background-color: #0B2969;
-    display: flex;
-    justify-content: space-around;
 }
 
 .flex {
@@ -95,7 +93,7 @@ ul {
     /*position: absolute;*/
     top: 47%;
     left: 615%;
-    color: #16d696;  
+    color: #16d696;
     position: relative;
 }
 
@@ -216,13 +214,11 @@ ul {
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;   
-    top: 620px;   
+    text-overflow: ellipsis;
+    top: 620px;
     border-top: 2px solid white;
     color: white;
     line-height: 58px;
     font-size: 20px;
     position: relative;
 }
-
-

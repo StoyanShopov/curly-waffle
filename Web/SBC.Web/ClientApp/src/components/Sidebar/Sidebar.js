@@ -6,19 +6,22 @@ import styles from "./Sidebar.module.css";
 export default function Sidebar(prop) {
     return (
         <div className={styles.container}>
-            <div className={styles.contentContainer}>
-                <NavLink to="/profileOwner" className={styles.pencilLink}>
-                    <img src="assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
-                </NavLink>
-            </div>
-            <div className={styles.greenCircle}>
-                A
-            </div>
-            <div className={styles.fullName}>
-                Aya Krusteva
-            </div>
-            <div className={styles.companyName}>
-                Motion Software
+
+            <NavLink to="/profileOwner" className={styles.pencilLink}>
+                <img src="assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
+            </NavLink>
+            <div className={styles.namesContainer}>
+                <div className={styles.greenCircle}>
+                    A
+                </div>
+                <div className={styles.names}>
+                    <div className={styles.fullName}>
+                        Aya Krusteva
+                    </div>
+                    <div className={styles.companyName}>
+                        Motion Software
+                    </div>
+                </div>
             </div>
             <div className={styles.navigation}>
                 <ul>
