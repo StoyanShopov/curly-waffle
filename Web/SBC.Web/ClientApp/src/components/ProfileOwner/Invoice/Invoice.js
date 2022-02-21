@@ -117,6 +117,6 @@ export default function Invoice(prop) {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> 
         </>);
 }
