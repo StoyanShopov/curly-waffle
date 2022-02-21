@@ -3,12 +3,13 @@ import styles from "../Coaches/Coaches.module.css";
 import Modal from 'react-modal';
 import DeleteCoach from "./DeleteCoach";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import EditCoach from "./EditCoach";
+import CoachCard from "./CoachCard";
 
 const Coaches = () => {
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  let subtitle = {
+  const deleteModalStyle = {
     content: {
       top: '50%',
       left: '50%',
@@ -22,9 +23,31 @@ const Coaches = () => {
       padding: '0px',
     },
     color: '#f00'
-  };
+  }
 
-  function openModal() {
+  const editModalStyle = {
+    content:{
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      width: '36%',
+      height: '260px',
+      bottom: 'auto',
+      marginTop: '-5%',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -25%)',
+      padding: '0px',
+    },
+    color: '#f00'
+  }
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [child, setChild] = useState();
+  const [subtitle, setSubtitle] = useState();
+
+  function openModal(style, child) {
+    setSubtitle(style);
+    setChild(child)
     setModalIsOpen(true);
   }
 
@@ -60,8 +83,17 @@ const Coaches = () => {
         </div>
       </div>
       <div className={styles.cardscontainer}>
+
+        <CoachCard openModal={openModal} closeModal={closeModal} deleteModalStyle={deleteModalStyle} />
         <div className={styles.card}>
           <div className={styles.upper}>
+            <div className={styles.pencil}>
+              <Link to="" onClick={() => openModal((deleteModalStyle), <EditCoach closeModal={closeModal} />)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
+                  <path id="iconmonstr-pencil-2" d="M19.075,2.946l2.981,2.98L6.4,21.585l-3.732.752L3.417,18.6,19.075,2.946Zm0-2.946L1.5,17.576,0,25l7.424-1.5L25,5.926,19.075,0Z" />
+                </svg>
+              </Link>
+            </div>
             <img
               className={styles.cardpic}
               src="assets/images/Mask Group 2.png"
@@ -78,7 +110,7 @@ const Coaches = () => {
               <span>Google</span>
             </div>
             <div className={styles.button}>
-              <button onClick={() => openModal()}>Delete</button>
+              <button onClick={() => openModal((deleteModalStyle), <DeleteCoach closeModal={closeModal} />)}>Delete</button>
             </div>
           </div>
         </div>
@@ -112,7 +144,7 @@ const Coaches = () => {
               src="assets/images/Mask Group 9.png"
               alt=""
             />
-            
+
           </div>
           <div className={styles.down}>
             <div className={styles.name}>
@@ -135,7 +167,7 @@ const Coaches = () => {
               src="assets/images/Mask Group 9.png"
               alt=""
             />
-            
+
           </div>
           <div className={styles.down}>
             <div className={styles.name}>
@@ -158,7 +190,7 @@ const Coaches = () => {
               src="assets/images/Mask Group 9.png"
               alt=""
             />
-            
+
           </div>
           <div className={styles.down}>
             <div className={styles.name}>
@@ -182,10 +214,12 @@ const Coaches = () => {
         onRequestClose={closeModal}
         ariaHideApp={false}
       >
-        <DeleteCoach closeModal={closeModal}/>
+        {child}
       </Modal>
     </div>
   );
 };
 
 export default Coaches;
+
+
