@@ -1,12 +1,16 @@
 .container{
     display: flex;
     width: 100%;
+    padding-top: 10%;
 }
 .leftPart{
     width: 66%;
 }
 .rightPart{
-    width: 34%;
+    width: 34%; 
+}
+.lectureList{
+    background-color: rgba(0,0,255,0.1);
 }
 .marketingHeading{
     font-size: 40px;
@@ -47,7 +51,7 @@
 .pDescription{
     font-size: 22px;
     font-style: Montserrat;
-    width: 800px;
+    width: 820px; 
 }
 .lectorPic{
     width: 100px;
@@ -73,6 +77,17 @@
     font-style: Montserrat;
     width: 820px;  
 }
+.btnAddLecture{
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: Montserrat;
+    color: #296CFB;
+    border-color: #296CFB;
+    margin-left: 8%;
+    cursor: pointer;
+}
 .lecturesHeading{
     font-size: 22px;
     font-style: Montserrat;
@@ -81,6 +96,7 @@
 }
 .ulLectures{
     list-style-type: none;
+    padding-left: 8%;
 }
 .liName{
     font-size: 22px;
@@ -90,7 +106,7 @@
 }
 .btnViewMore{
     width: 250px;
-    height: 70px;
+    height: 50px;
     font-size: 22px;
     font-weight: bold;
     font-style: Montserrat;

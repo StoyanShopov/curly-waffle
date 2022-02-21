@@ -18,9 +18,10 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        [Route("All/{id}")]
+        public async Task<ActionResult> Get(int id)
         {
-            var result = await this.lectureService.GetAllAsync<LectureViewModel>();
+            var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(id);
 
             return this.GenericResponse(new ResultModel(result));
         }
@@ -37,14 +38,14 @@
         public async Task<ActionResult> Post(CreateLectureServiceModel lectureModel)
         {
             var result = await this.lectureService.CreateAsync(lectureModel);
-
+            ;
             return this.GenericResponse(result);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Put(EditLectureServiceModel lectureModel)
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(string id, EditLectureServiceModel lectureModel)
         {
-            var result = await this.lectureService.EditAsync(lectureModel);
+            var result = await this.lectureService.EditAsync(id, lectureModel);
 
             return this.GenericResponse(result);
         }

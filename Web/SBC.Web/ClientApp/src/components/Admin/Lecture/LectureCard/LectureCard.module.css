@@ -1,0 +1,26 @@
+.btnsDiv{
+width: 600px;
+height: 50px;
+}
+.lectureTitle{
+    display: inline-block;
+}
+.btnDelete{
+    float: right;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.pencil {
+    margin-top: 15px;
+    float: right;
+    margin-top: 15px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+}
+
+.pencil img {
+    width: 50px;
+    height: 50px;
+}

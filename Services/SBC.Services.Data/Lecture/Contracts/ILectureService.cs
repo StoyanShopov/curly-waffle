@@ -8,13 +8,13 @@
 
     public interface ILectureService
     {
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
+        Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int id);
 
         Task<TModel> GetByIdAsync<TModel>(string id);
 
         Task<Result> CreateAsync(CreateLectureServiceModel lectureMmodel);
 
-        Task<Result> EditAsync(EditLectureServiceModel lectureModel);
+        Task<Result> EditAsync(string id, EditLectureServiceModel lectureModel);
 
         Task<Result> DeleteByIdAsync(string id);
     }

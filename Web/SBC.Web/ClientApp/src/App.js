@@ -8,7 +8,7 @@ import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
-import AllCourses from "./components/Admin/Course/AllCourses/AllCourses";
+import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
 import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
 
 import "./App.css";

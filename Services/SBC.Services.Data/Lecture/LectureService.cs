@@ -16,10 +16,12 @@
     public class LectureService : ILectureService
     {
         private readonly IDeletableEntityRepository<Lecture> lectures;
+        private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
 
-        public LectureService(IDeletableEntityRepository<Lecture> repo)
+        public LectureService(IDeletableEntityRepository<Lecture> repo, IDeletableEntityRepository<CourseLecture> courseLectures)
         {
             this.lectures = repo;
+            this.courseLectures = courseLectures;
         }
 
         public async Task<Result> CreateAsync(CreateLectureServiceModel lectureModel)
@@ -47,7 +49,9 @@
 
             await this.lectures.SaveChangesAsync();
 
-            return new ResultModel(newLecture.Id);
+            lectureModel.Id = newLecture.Id;
+
+            return new ResultModel(lectureModel);
         }
 
         public async Task<Result> DeleteByIdAsync(string id)
@@ -56,22 +60,29 @@
                 .All()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
+            var courseLecture = await this.courseLectures
+                .All()
+                .FirstOrDefaultAsync(x => x.LectureId == id);
+
             if (lecture == null)
             {
                 return new ErrorModel(HttpStatusCode.NoContent, "Lecture not found!");
             }
 
             this.lectures.Delete(lecture);
+            this.courseLectures.Delete(courseLecture);
+
+            await this.courseLectures.SaveChangesAsync();
             await this.lectures.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<Result> EditAsync(EditLectureServiceModel lectureModel)
+        public async Task<Result> EditAsync(string id, EditLectureServiceModel lectureModel)
         {
             var lecture = await this.lectures
                 .All()
-                .FirstOrDefaultAsync(x => x.Id == lectureModel.Id);
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lecture == null)
             {
@@ -82,13 +93,14 @@
             lecture.Description = lectureModel.Description;
 
             await this.lectures.SaveChangesAsync();
-
-            return true;
+            lectureModel.Id = lecture.Id;
+            return new ResultModel(lectureModel);
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+        public async Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int id)
         => await this.lectures
             .AllAsNoTracking()
+            .Where(x => x.Courses.Any(x => x.CourseId == id))
             .To<TModel>()
             .ToListAsync();
 
