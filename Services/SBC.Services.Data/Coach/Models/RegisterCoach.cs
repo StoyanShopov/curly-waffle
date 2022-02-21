@@ -33,6 +33,10 @@
         [Url]
         public string CalendlyUrl { get; set; }
 
+        [Required]
+        [Url]
+        public string ImageUrl { get; set; }
+
         [MinLength(MinCountAdd)]
         [MaxLength(MaxCountLanguages)]
         public LanguageImportId[] Languages { get; set; }
