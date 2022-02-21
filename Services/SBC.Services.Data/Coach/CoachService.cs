@@ -99,11 +99,15 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
             }
 
-            var languagesCoach = this.GetAllLanguagesCoach(coachId);
-            this.DeleteAllLanguagesCoach(languagesCoach);
+            foreach (var language in this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToList())
+            {
+                this.languageCoachRepo.Delete(language);
+            }
 
-            var categoriesCoach = this.GetAllCategoriesCoach(coachId);
-            this.DeleteAllCategoriesCoach(categoriesCoach);
+            foreach (var category in this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToList())
+            {
+                this.categoryCoachRepo.Delete(category);
+            }
 
             this.coachRepository.Delete(coachModel);
             await this.coachRepository.SaveChangesAsync();
@@ -141,27 +145,5 @@
 
         private bool ExistLanguage(int coachId, int languigeId)
         => this.languageCoachRepo.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
-
-        private void DeleteAllCategoriesCoach(List<CategoryCoach> categoryCoach)
-        {
-            foreach (var category in categoryCoach)
-            {
-                this.categoryCoachRepo.Delete(category);
-            }
-        }
-
-        private List<CategoryCoach> GetAllCategoriesCoach(int coachId)
-        => this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
-
-        private void DeleteAllLanguagesCoach(List<LanguageCoach> languagesCoach)
-        {
-            foreach (var language in languagesCoach)
-            {
-                this.languageCoachRepo.Delete(language);
-            }
-        }
-
-        private List<LanguageCoach> GetAllLanguagesCoach(int coachId)
-        => this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToList();
     }
 }
