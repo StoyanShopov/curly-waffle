@@ -1,0 +1,105 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
+
+.body {
+    font-family: "Montserrat", sans-serif;
+    align-items: center;
+    margin: 0;
+    min-height: 50vh;
+    letter-spacing: 1.4px;
+}
+
+.modal {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    opacity: 1;
+    text-align: center;
+    position: relative;
+}
+
+.modalHead {
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-left: 38%;
+}
+
+.formField {
+    margin-top: 50px;
+    width: 550px;
+    height: 55px;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    align-content: center;
+    position: relative;
+}
+
+.modalTitle {
+    color: #ffffff;
+    /* font-size-adjust: inherit; */
+    /* padding: 100px 130px 40px 130px; */
+    opacity: 1;
+    margin: 0;
+}
+
+.modalBtnSave {
+    width: 150px;
+    height: 50px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: #296CFB;
+    margin-left: 25px;
+    margin-top: 30px;
+    color: #ffffff;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.modalBtnCancel {
+    width: 150px;
+    height: 50px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    color: #296CFB;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+}
+
+.addAnotherCoachBtn {
+    color: #296CFB;
+    text-align: left;
+    position: relative;
+    font: normal normal bold 22px/27px Montserrat;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    left: -146px;
+    font-weight: 500;
+    background: none;
+}
+
+.closeBtn {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.modalFooter {
+    padding-bottom: 6%;
+}
+
+::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: #296CFB;
+    font-weight: 500;
+    opacity: 1;
+    content: "*";
+}

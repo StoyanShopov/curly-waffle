@@ -1,9 +1,32 @@
-import React from "react";
-import css from "./OwnerEmployees.module.css";
-import Sidebar from "../../Sidebar/Sidebar"
+import axios from 'axios';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
+import css from "./OwnerEmployees.module.css";
+import Modal from 'react-modal';
+import ModalAddEmployee from "./ModalAddEmployee";
+
+import Sidebar from "../../Sidebar/Sidebar"
+
 export default function OwnerEmployees(prop) {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = useCallback(() => {
+        setShowModal(false)
+    }, []);
+
+    const handleSkip = (skip) => {
+        setSkip(prevSkip => {
+            return prevSkip + skip;
+        });
+    }
+
+    const handleClient = (client) => {
+        setClients(prevPortions => {
+            return [client, ...prevPortions];
+        });
+    }   
+
     return (
         <>
             <Sidebar />
@@ -43,5 +66,25 @@ export default function OwnerEmployees(prop) {
                     </tbody>
                 </table>
             </div>
+
+
+            <Modal
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        width: '45%',
+                        bottom: 'auto',
+                        transform: 'translate(-50%, -50%)',
+                        padding: '0px',
+                    }
+                }}
+                isOpen={showModal}
+                onRequestClose={handleClose}
+                contentLabel="Example Modal"
+            >
+                <ModalAddEmployee handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+            </Modal>
         </>);
 }

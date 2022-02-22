@@ -12,6 +12,7 @@ import Signup from "./components/SignUpAsBusinessOwner/Signup";
 import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
 import ActiveCoaches from "./components/ProfileOwner/ActiveCoaches/ActiveCoaches";
+import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses";
 
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/ownerEmployees" element={<OwnerEmployees />} />
                     <Route path="/activeCoaches" element={<ActiveCoaches />} />
+                    <Route path="/activeCourses" element={<ActiveCourses />} />
                 </Routes>
             </Layout>
         </Provider>

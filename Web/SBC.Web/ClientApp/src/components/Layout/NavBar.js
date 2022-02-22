@@ -38,6 +38,9 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
                         </li>
                         <li>
+                            <NavLink tag={Link} to="/activeCourses">Active Coaches</NavLink>
+                        </li>
+                        <li>
                             <a href="/docs">Swagger</a>
                         </li>
                     </ul>
