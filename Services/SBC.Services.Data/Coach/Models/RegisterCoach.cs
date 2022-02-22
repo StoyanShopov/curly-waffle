@@ -25,6 +25,10 @@
 
         [Required]
         [Url]
+        public string ImageUrl { get; set; }
+
+        [Required]
+        [Url]
         public string VideoUrl { get; set; }
 
         [Range(0, double.MaxValue)]
@@ -35,7 +39,6 @@
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountAdd)]
-        [MaxLength(MaxCountLanguages)]
         public List<int> Languages { get; set; }
 
         [MinLength(MinCountAdd)]

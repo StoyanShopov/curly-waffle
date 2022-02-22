@@ -22,10 +22,13 @@
 
         [Required]
         [Url]
+        public string ImageUrl { get; set; }
+
+        [Required]
+        [Url]
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountUpdate)]
-        //[MaxLength(MaxCountLanguages)]
         public List<int>  Languages { get; set; }
 
         [MinLength(MinCountUpdate)]
