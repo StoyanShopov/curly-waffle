@@ -1,28 +1,23 @@
-.btnsDiv{
-width: 600px;
-height: 50px;
-}
-.lectureTitle{
+.resourceTitle{
     display: inline-block;
+    font-size: 18px;
+}
+.btnEdit{
+    width: 60px;
+    height: 25px;
+    margin-left: 10%;
+    margin-top: 15px;
+    margin-top: 15px;
+    background-color: transparent;
+    color: #296CFB;
+    border-color: #296CFB;
+    cursor: pointer;
 }
 .btnDelete{
     width: 60px;
     height: 25px;
-    float: right;
     margin-top: 15px;
     margin-left: 10px;
-    margin-right: 5%;
-    color: #296CFB;
-    border-color: #296CFB;
-}
-
-.btnEdit {
-    width: 60px;
-    height: 25px;
-    margin-top: 15px;
-    float: right;
-    margin-top: 15px;
-    background-color: transparent;
     color: #296CFB;
     border-color: #296CFB;
     cursor: pointer;

@@ -4,6 +4,7 @@ import css from "./LectureCard.module.css"
 
 import DeleteLecture from "../DeleteLecture/DeleteLecture"
 import EditLecture from "../EditLecture/EditLecture"
+import ResourceCard from "../../Resource/ResourceCard/ResourceCard"
 
 export default function LectureCard(props) {
     const [lecture, setLecture] = useState(props.lecture)
@@ -18,9 +19,11 @@ export default function LectureCard(props) {
                 <button className={css.btnDelete} onClick = {() => 
                     {props.openModal(<DeleteLecture closeModal = {props.closeModal} lecture = {props.lecture} lectures = {props.lectures} setLectures ={props.setLectures}/>)}
                     }>Delete</button>
-                <button className={css.pencil} onClick = {() => {props.openModal(<EditLecture closeModal = {props.closeModal} lectureId = {lecture.id} setLectureCard = {setLectureDemo} />)}} >Edit</button>
+                <button className={css.btnEdit} onClick = {() => {props.openModal(<EditLecture closeModal = {props.closeModal} lectureId = {lecture.id} setLectureCard = {setLectureDemo} />)}} >Edit</button>
             </div>
             <div>
+                {<ResourceCard />}
+                {<ResourceCard />}
             </div>
         </div>
     )
