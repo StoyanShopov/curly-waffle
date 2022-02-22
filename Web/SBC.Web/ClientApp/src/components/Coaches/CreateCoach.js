@@ -1,171 +1,215 @@
-import { useState } from 'react';
-import { createCoach, uploadImage } from '../../services/adminCoachesService';
+import { useState } from "react";
+import { createCoach, uploadImage } from "../../services/adminCoachesService";
 
-import styles from './CreateCoach.module.css';
-
+import styles from "./CreateCoach.module.css";
 
 const CreateCoach = () => {
-    const [languages, setLanguages] = useState([])
+  const [languages, setLanguages] = useState([]);
 
-    const onDeleteLanguage = (e) =>{
-        console.log(e.target.innerText);
-        const languageToRemove = e.target.innerText
-        
-        const array = languages
-        const index = array.indexOf(languageToRemove);
-        array.splice(index,1)
-        setLanguages({array})
-        console.log(languages);
-    }
+  const onDeleteLanguage = (e) => {
+    const array = [...languages];
+    const index = array.indexOf(e.target.value);
+    array.splice(index, 1);
+    setLanguages(array);
+  };
 
-    const onChangeAddLanguage = (e) => {
-        const arr = languages;
-        arr.push(e.target.value);
-        setLanguages({arr})
-        console.log(languages)
-    }
+  const onChangeAddLanguage = (e) => {
+    const arr = [...languages];
+    arr.push(e.target.value);
+    setLanguages(arr);
+  };
 
-    const onSubmitAddCoach = async (e) => {
-        e.preventDefault()
+  const onSubmitAddCoach = async (e) => {
+    e.preventDefault();
 
-        const fd = new FormData(e.target);
-        const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
+    const fd = new FormData(e.target);
+    const data = [...fd.entries()].reduce(
+      (p, [k, v]) => Object.assign(p, { [k]: v }),
+      {}
+    );
 
-        console.log(data);
-        const file = await uploadImage(data.file)
-        data.file = file
+    console.log(data);
+    const file = await uploadImage(data.file);
+    data.file = file;
 
-        createCoach(data)
-            .then((response) => {
-                console.log(response)
-            })
-    }
+    createCoach(data).then((response) => {
+      console.log(response);
+    });
+  };
 
-    return (
-        <div className={styles.bodyContainer}>
-            <div className={styles.addContainer}>
-                <form onSubmit={onSubmitAddCoach}>
-                    <div className={styles.headerContainer}>
-                        <div className={styles.titleContainer}>Add Coach</div>
-                        <div className={styles.fileUpload}>
-                            <input
-                                type="file"
-                                name="file"
-                                className={styles.upload}
-                                required />
-                            <span>Upload image</span>
-                        </div>
-                        <button className={styles.closeBtn}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21.92" height="21.92" viewBox="0 0 21.92 21.92">
-                                <g id="Group_46" data-name="Group 46" transform="translate(-1484.379 -241.379)">
-                                    <line id="Line_59" data-name="Line 59" y2="25" transform="translate(1504.178 243.5) rotate(45)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
-                                    <line id="Line_60" data-name="Line 60" y2="25" transform="translate(1504.178 261.178) rotate(135)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
-                                </g>
-                            </svg>
-                        </button>
-                    </div>
-                    <div className={styles.inputContainer}>
-                        <div>
-                            <input className={styles.inputField}
-                                name="firstName"
-                                placeholder='First Name'
-                                type="text"
-                                required ></input>
-                            <span className={styles.starFirstName}>*</span>
-                        </div>
-
-                        <div>
-                            <input className={styles.inputField}
-                                name="lastName"
-                                placeholder='Last Name'
-                                type="text"
-                                required />
-                            <span className={styles.starLastName}>*</span>
-                        </div>
-
-                        <div>
-                            <input className={styles.inputField}
-                                name="videoUrl"
-                                placeholder='Video URL'
-                                type="text"
-                                required />
-                            <span className={styles.starVideoUrl}>*</span>
-                        </div>
-
-                        <div>
-                            <input className={styles.inputField}
-                                name="price"
-                                placeholder='Price'
-                                type="text"
-                                required />
-                            <span className={styles.starPrice}>*</span>
-                        </div>
-
-                        <div>
-                            <input className={styles.inputField}
-                                name="company"
-                                placeholder='Company(optional)'
-                                type="text"
-                            />
-                        </div>
-
-                        <div>
-                            <input className={styles.inputField}
-                                name="calendlyUrl"
-                                placeholder='Calendly URL'
-                                type="text"
-                                required />
-                            <span className={styles.starCalendlyUrl}>*</span>
-                        </div>
-
-                        <div>
-                            <textarea className={styles.inputField}
-                                name="description"
-                                placeholder='Description'
-                                type="textarea"
-                                required />
-                            <span className={styles.starDescription}>*</span>
-                        </div>
-
-                        <div>
-                            <select className={styles.inputField}
-                                onChange={onChangeAddLanguage}
-                                name="languages"
-                                data-placeholder="Choose languages">
-                                <option disabled selected hidden>Choose Languages</option>
-                                <option value="English">English</option>
-                                <option value="German">German</option>
-                                <option value="Spanish">Spanish</option>
-                            </select>
-                            <span className={styles.starDescription}>*</span>
-                            <div>
-
-                                <span >
-                                    <div className={styles.languages}>
-                                        Selected languages : 
-                                    </div>
-                                    <span>
-                                        {languages.length > 0 ? languages.map((x,i) => <span key={i} onClick={onDeleteLanguage} className={styles.selectedLanguages}> {x}</span>) : "Nothing selected"}
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <button className={styles.addAnotherCoachBtn}>
-                            + Add another coach
-                        </button>
-
-                        <div className={styles.footerContainer}>
-                            <button className={styles.btnCancel} type="button">Cancel</button>
-                            <button className={styles.btnSave} type="submit">Save</button>
-                        </div>
-
-                    </div>
-                </form>
+  return (
+    <div className={styles.bodyContainer}>
+      <div className={styles.addContainer}>
+        <form onSubmit={onSubmitAddCoach}>
+          <div className={styles.headerContainer}>
+            <div className={styles.titleContainer}>Add Coach</div>
+            <div className={styles.fileUpload}>
+              <input
+                type="file"
+                name="file"
+                className={styles.upload}
+                required
+              />
+              <span>Upload image</span>
             </div>
-        </div>
-    )
-}
+            <button className={styles.closeBtn}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21.92"
+                height="21.92"
+                viewBox="0 0 21.92 21.92"
+              >
+                <g
+                  id="Group_46"
+                  data-name="Group 46"
+                  transform="translate(-1484.379 -241.379)"
+                >
+                  <line
+                    id="Line_59"
+                    data-name="Line 59"
+                    y2="25"
+                    transform="translate(1504.178 243.5) rotate(45)"
+                    fill="none"
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeWidth="3"
+                  />
+                  <line
+                    id="Line_60"
+                    data-name="Line 60"
+                    y2="25"
+                    transform="translate(1504.178 261.178) rotate(135)"
+                    fill="none"
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeWidth="3"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+          <div className={styles.inputContainer}>
+            <div>
+              <input
+                className={styles.inputField}
+                name="firstName"
+                placeholder="First Name"
+                type="text"
+                required
+              ></input>
+              <span className={styles.starFirstName}>*</span>
+            </div>
 
+            <div>
+              <input
+                className={styles.inputField}
+                name="lastName"
+                placeholder="Last Name"
+                type="text"
+                required
+              />
+              <span className={styles.starLastName}>*</span>
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                name="videoUrl"
+                placeholder="Video URL"
+                type="text"
+                required
+              />
+              <span className={styles.starVideoUrl}>*</span>
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                name="price"
+                placeholder="Price"
+                type="text"
+                required
+              />
+              <span className={styles.starPrice}>*</span>
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                name="company"
+                placeholder="Company(optional)"
+                type="text"
+              />
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                name="calendlyUrl"
+                placeholder="Calendly URL"
+                type="text"
+                required
+              />
+              <span className={styles.starCalendlyUrl}>*</span>
+            </div>
+
+            <div>
+              <textarea
+                className={styles.inputField}
+                name="description"
+                placeholder="Description"
+                type="textarea"
+                required
+              />
+              <span className={styles.starDescription}>*</span>
+            </div>
+
+            <div>
+              <select
+                className={styles.inputField}
+                onChange={onChangeAddLanguage}
+                name="languages"
+                data-placeholder="Choose languages"
+              >
+                <option disabled selected hidden>
+                  Choose Languages
+                </option>
+                <option value="English">English</option>
+                <option value="German">German</option>
+                <option value="Spanish">Spanish</option>
+              </select>
+              <span className={styles.starDescription}>*</span>
+              <div>
+                <span>
+                  <div className={styles.languages}>Selected languages :</div>
+                  <span>
+                    {languages.map((item, index) => (
+                      <span key={index} onClick={onDeleteLanguage}>
+                        {item}
+                      </span>
+                    ))}
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <button className={styles.addAnotherCoachBtn}>
+              + Add another coach
+            </button>
+
+            <div className={styles.footerContainer}>
+              <button className={styles.btnCancel} type="button">
+                Cancel
+              </button>
+              <button className={styles.btnSave} type="submit">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default CreateCoach;
