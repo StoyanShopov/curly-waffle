@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Coach.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using SBC.Data.Models;
@@ -35,9 +36,9 @@
 
         [MinLength(MinCountAdd)]
         [MaxLength(MaxCountLanguages)]
-        public LanguageImportId[] Languages { get; set; }
+        public List<int> Languages { get; set; }
 
         [MinLength(MinCountAdd)]
-        public CategoryImportId[] Categories { get; set; }
+        public List<int> Categories { get; set; }
     }
 }

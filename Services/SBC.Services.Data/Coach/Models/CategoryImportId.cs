@@ -4,7 +4,7 @@
 
     public class CategoryImportId
     {
-        [Range(1,int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int CategoryId { get; set; }
     }
 }

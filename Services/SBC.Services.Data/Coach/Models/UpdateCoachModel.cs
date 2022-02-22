@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Coach.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static SBC.Common.GlobalConstants.CoachConstants;
@@ -9,13 +10,10 @@
         public int CoachId { get; set; }
 
         [Required]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
+        [StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
         public string Description { get; set; }
 
         [Required]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         [Url]
         public string VideoUrl { get; set; }
 
@@ -27,10 +25,10 @@
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountUpdate)]
-        [MaxLength(MaxCountLanguages)]
-        public LanguageImportId[] Languages { get; set; }
+        //[MaxLength(MaxCountLanguages)]
+        public List<int>  Languages { get; set; }
 
         [MinLength(MinCountUpdate)]
-        public CategoryImportId[] Categories { get; set; }
+        public List<int> Categories { get; set; }
     }
 }

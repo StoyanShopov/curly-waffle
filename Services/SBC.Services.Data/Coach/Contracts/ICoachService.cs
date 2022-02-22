@@ -12,7 +12,7 @@
     {
         Task<Result> CreateAsync(RegisterCoach coach);
 
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
+        Task<Result> GetAllAsync<TModel>();
 
         Task<Result> UpdateAsync(UpdateCoachModel coach);
 
