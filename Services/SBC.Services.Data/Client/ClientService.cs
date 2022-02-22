@@ -13,6 +13,8 @@
     using SBC.Services.Data.Client.Models;
     using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.User.Contracts;
+    using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Client;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
@@ -40,16 +42,16 @@
             this.userManager = userManager;
         }
 
-        public async Task<Result> AddAsync(string fullName, string email)
+        public async Task<Result> AddAsync(AddRequestModel model)
         {
-            var emailExists = await this.userService.ExistsByFullNameByEmailAsync(fullName, email);
+            var emailExists = await this.userService.ExistsByFullNameByEmailAsync(model.FullName, model.Email);
 
             if (!emailExists)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{fullName}' and '{email}'."); // and full name
+                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{model.FullName}' and '{model.Email}'.");
             }
 
-            var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(email);
+            var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(model.Email);
 
             var ownerExists = await this.companyService.ExistsOwnerAsync(user.Company.Name);
 
@@ -102,7 +104,6 @@
             });
         }
 
-        // TODO: use mapping
         public async Task<Result> GetPortionAsync(int skip = default, int take = TakeDefaultValue)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
@@ -114,13 +115,7 @@
                  .Skip(skip)
                  .Take(take)
                  .Include(au => au.Company)
-                 .Select(au => new GetPortionServiceModel
-                 {
-                     Id = au.Id,
-                     Email = au.Email,
-                     NormalizedEmail = au.NormalizedEmail,
-                     CompanyName = au.Company.Name,
-                 })
+                 .To<GetPortionResponseModel>()
                  .ToListAsync();
 
             return new ResultModel(new GetPortionsServiceModel

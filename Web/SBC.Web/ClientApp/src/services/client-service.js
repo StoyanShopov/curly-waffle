@@ -26,7 +26,7 @@ export const AddClient = async (client) => {
       },
     });
 
-    if (response.status !== 200 || response.status !== 201) {
+    if (response.status !== 200) {
       throw new Error(response.Error);
     }
 

@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Client.Contracts;
-    using SBC.Web.Areas.Administration.Models.Client;
+    using SBC.Web.ViewModels.Administration.Client;
 
     public class ClientController : AdministrationController
     {
@@ -22,6 +22,6 @@
 
         [HttpPost]
         public async Task<ActionResult> Add(AddRequestModel model)
-            => this.GenericResponse(await this.clientService.AddAsync(model.FullName, model.Email));
+            => this.GenericResponse(await this.clientService.AddAsync(model));
     }
 }

@@ -10,6 +10,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Company.Contracts;
+    using SBC.Web.ViewModels.Administration.Company;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
@@ -26,24 +27,31 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<Result> Add(string name, string email, string logoUrl)
+        public async Task<Result> AddAsync(AddRequestModel model)
         {
-            var nameExists = await this.companyRepository
-                .AllAsNoTracking()
-                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+            var existsByName = await this.ExistsByNameAsync(model.Name);
 
-            if (nameExists)
+            if (existsByName)
             {
-                var error = $"The company's name '{name}' exists ";
+                var error = $"The company's name '{model.Name}' already exists.";
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
+            }
+
+            var existsByEmail = await this.ExistsByEmailAsync(model.Email);
+
+            if (existsByEmail)
+            {
+                var error = $"The company's email '{model.Name}' already exists.";
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
 
             var company = new Company
             {
-                Name = name,
-                Email = email,
-                LogoUrl = logoUrl,
+                Name = model.Name,
+                Email = model.Email,
+                LogoUrl = model.LogoUrl,
             };
 
             await this.companyRepository.AddAsync(company);
@@ -54,6 +62,10 @@
 
         public async Task<Result> GetCountAsync()
             => new ResultModel(await this.companyRepository.AllAsNoTracking().CountAsync());
+
+        public async Task<bool> ExistsByEmailAsync(string email)
+            => await this.NoTrackGetQuery()
+                .AnyAsync(c => c.Email.ToLower() == email.ToLower());
 
         // TODO: Improve
         public async Task<bool> ExistsOwnerAsync(string name)
@@ -78,8 +90,11 @@
                 .FirstOrDefaultAsync();
 
         private IQueryable<Company> NoTrackGetQueryByName(string name)
-            => this.companyRepository
-                .AllAsNoTracking()
+            => this.NoTrackGetQuery()
                 .Where(c => c.Name.ToLower() == name.ToLower());
+
+        private IQueryable<Company> NoTrackGetQuery()
+            => this.companyRepository
+                .AllAsNoTracking();
     }
 }

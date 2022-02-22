@@ -1,14 +1,14 @@
-﻿namespace SBC.Web.Areas.Administration.Models.Client
+﻿namespace SBC.Web.ViewModels.Administration.Client
 {
     using System.ComponentModel.DataAnnotations;
 
     public class AddRequestModel
     {
         [Required(AllowEmptyStrings = true)]
-        public string FullName { get; init; }
+        public string FullName { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email { get; init; }
+        public string Email { get; set; }
     }
 }

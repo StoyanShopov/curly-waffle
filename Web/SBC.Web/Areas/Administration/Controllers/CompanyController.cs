@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Company.Contracts;
-    using SBC.Web.Areas.Administration.Models.Company;
+    using SBC.Web.ViewModels.Administration.Company;
 
     public class CompanyController : AdministrationController
     {
@@ -17,6 +17,6 @@
 
         [HttpPost]
         public async Task<ActionResult> Add(AddRequestModel model)
-            => this.GenericResponse(await this.companyService.Add(model.Name, model.Email, model.LogoUrl));
+            => this.GenericResponse(await this.companyService.AddAsync(model));
     }
 }

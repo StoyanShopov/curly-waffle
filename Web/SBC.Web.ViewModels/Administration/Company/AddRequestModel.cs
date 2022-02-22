@@ -1,17 +1,17 @@
-﻿namespace SBC.Web.Areas.Administration.Models.Company
+﻿namespace SBC.Web.ViewModels.Administration.Company
 {
     using System.ComponentModel.DataAnnotations;
 
     public class AddRequestModel
     {
         [Required(AllowEmptyStrings = true)]
-        public string Name { get; init; }
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email { get; init; }
+        public string Email { get; set; }
 
         [Required]
-        public string LogoUrl { get; init; }
+        public string LogoUrl { get; set; }
     }
 }
