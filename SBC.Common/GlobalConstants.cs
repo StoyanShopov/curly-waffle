@@ -141,6 +141,10 @@ namespace SBC.Common
 
         public class RequestsConstants
         {
+            public const string CoachBadRequest = "Coach  not'exist!";
+            public const string CategoryBadRequest = "Category  not'exist!";
+            public const string LanguageBadRequest = "Language  not'exist!";
+
             public const string NameIvan = "Ivan";
             public const string NameMaria = "Maria";
             public const string NameEmil = "Emil";
