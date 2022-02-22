@@ -7,8 +7,21 @@ import styles from './CreateCoach.module.css';
 const CreateCoach = () => {
     const [languages, setLanguages] = useState([])
 
+    const onDeleteLanguage = (e) =>{
+        console.log(e.target.innerText);
+        const languageToRemove = e.target.innerText
+        
+        const array = languages
+        const index = array.indexOf(languageToRemove);
+        array.splice(index,1)
+        setLanguages({array})
+        console.log(languages);
+    }
+
     const onChangeAddLanguage = (e) => {
-        setLanguages(oldArray => [...oldArray, e.target.value])
+        const arr = languages;
+        arr.push(e.target.value);
+        setLanguages({arr})
         console.log(languages)
     }
 
@@ -132,7 +145,7 @@ const CreateCoach = () => {
                                         Selected languages : 
                                     </div>
                                     <span>
-                                        {languages.map(x => <span className={styles.selectedLanguages}> {x}</span>)}
+                                        {languages.length > 0 ? languages.map((x,i) => <span key={i} onClick={onDeleteLanguage} className={styles.selectedLanguages}> {x}</span>) : "Nothing selected"}
                                     </span>
                                 </span>
                             </div>

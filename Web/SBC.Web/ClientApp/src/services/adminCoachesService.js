@@ -23,7 +23,6 @@ export const getAllCoaches = async () =>{
 }
 
 export const deleteCoachById = async (coachId) =>{
-    console.log(coachId);
     const resp = await axios.delete(baseUrl + `api/Coach/${coachId}` , {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

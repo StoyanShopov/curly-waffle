@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import styles from './EditCoach.module.css';
 
-const EditCoach = () => {
+const EditCoach = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('')
     const [price, setPrice] = useState(0);
@@ -12,38 +12,8 @@ const EditCoach = () => {
     const [file, setFile] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
 
-    const onChangeFirstName = (e) => {
-        setFirstName(e.target.value);
-    }
+    const coach = props.coach;
 
-    const onChangeLastName = (e) => {
-        setLastName(e.target.value);
-    }
-
-    const onChangeCompany = (e) => {
-        setCompany(e.target.value);
-    }
-
-    const onChangecalendlyUrl = (e) => {
-        setCalendlyUrl(e.target.value);
-    }
-
-    const onChangeFile = (e) => {
-        console.log(e.target.files[0]);
-        setFile(e.target.files[0]);
-    }
-
-    const onChangeDescription = (e) => {
-        setDescription(e.target.value);
-    }
-
-    const onChangePrice = (e) => {
-        setPrice(e.target.value)
-    }
-
-    const onChangeVideoUrl = (e) => {
-        setVideoUrl(e.target.value)
-    }
 
     return (
         <div className={styles.bodyContainer}>
@@ -55,11 +25,10 @@ const EditCoach = () => {
                             <input
                                 type="file"
                                 className={styles.upload}
-                                onChange={onChangeFile}
                                 required />
                             <span>Upload image</span>
                         </div>
-                        <button className={styles.closeBtn}>
+                        <button onClick={props.closeModal} className={styles.closeBtn}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="21.92" height="21.92" viewBox="0 0 21.92 21.92">
                                 <g id="Group_46" data-name="Group 46" transform="translate(-1484.379 -241.379)">
                                     <line id="Line_59" data-name="Line 59" y2="25" transform="translate(1504.178 243.5) rotate(45)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
@@ -73,9 +42,9 @@ const EditCoach = () => {
                             <input className={styles.inputField}
                                 name="firstName"
                                 placeholder='First Name'
+                                defaultValue={coach.firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
                                 type="text"
-                                value={firstName}
-                                onChange={onChangeFirstName}
                                 required />
                             <span className={styles.starFirstName}>*</span>
                         </div>
@@ -85,8 +54,6 @@ const EditCoach = () => {
                                 name="lastName"
                                 placeholder='Last Name'
                                 type="text"
-                                value={lastName}
-                                onChange={onChangeLastName}
                                 required />
                             <span className={styles.starLastName}>*</span>
                         </div>
@@ -96,8 +63,6 @@ const EditCoach = () => {
                                 name="videoUrl"
                                 placeholder='Video URL'
                                 type="text"
-                                value={videoUrl}
-                                onChange={onChangeVideoUrl}
                                 required />
                                 <span className={styles.starVideoUrl}>*</span>
                         </div>
@@ -107,7 +72,6 @@ const EditCoach = () => {
                                 name="price"
                                 placeholder='Price'
                                 type="text"
-                                onChange={onChangePrice}
                                 required />
                             <span className={styles.starPrice}>*</span>
                         </div>
@@ -116,16 +80,13 @@ const EditCoach = () => {
                                 name="company"
                                 placeholder='Company(optional)'
                                 type="text"
-                                value={company}
-                                onChange={onChangeCompany} />
+                                />
                         </div>
                         <div>
                             <input className={styles.inputField}
                                 name="calendlyUrl"
                                 placeholder='Calendly URL'
                                 type="text"
-                                value={calendlyUrl}
-                                onChange={onChangecalendlyUrl}
                                 required />
                             <span className={styles.starCalendlyUrl}>*</span>
                         </div>
@@ -135,8 +96,6 @@ const EditCoach = () => {
                                 name="description"
                                 placeholder='Description'
                                 type="textarea"
-                                value={description}
-                                onChange={onChangeDescription}
                                 required />
                             <span className={styles.starDescription}>*</span>
                         </div>
@@ -144,7 +103,7 @@ const EditCoach = () => {
                             + Add another coach
                         </button>
                         <div className={styles.footerContainer}>
-                            <button className={styles.btnCancel} type="button">Cancel</button>
+                            <button className={styles.btnCancel} onClick={props.closeModal} type="button">Cancel</button>
                             <button className={styles.btnSave} type="submit">Save</button>
                         </div>
                     </div>
