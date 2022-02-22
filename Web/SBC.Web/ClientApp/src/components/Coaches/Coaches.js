@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../Coaches/Coaches.module.css";
 import Modal from 'react-modal';
 import DeleteCoach from "./DeleteCoach";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import EditCoach from "./EditCoach";
 import CoachCard from "./CoachCard";
+import { getAllCoaches } from "../../services/adminCoachesService"
 
 const Coaches = () => {
 
@@ -26,16 +27,16 @@ const Coaches = () => {
   }
 
   const editModalStyle = {
-    content:{
-      top: '50%',
+    content: {
+      top: '70%',
       left: '50%',
       right: 'auto',
-      width: '36%',
-      height: '260px',
+      width: '38%',
+      height: '520px',
       bottom: 'auto',
       marginTop: '-5%',
       marginRight: '-50%',
-      transform: 'translate(-50%, -25%)',
+      transform: 'translate(-60%, -50%)',
       padding: '0px',
     },
     color: '#f00'
@@ -44,6 +45,7 @@ const Coaches = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [child, setChild] = useState();
   const [subtitle, setSubtitle] = useState();
+  const [coaches, setCoaches] = useState([])
 
   function openModal(style, child) {
     setSubtitle(style);
@@ -58,6 +60,12 @@ const Coaches = () => {
   function closeModal() {
     setModalIsOpen(false);
   }
+
+  useEffect(() => {
+    getAllCoaches().then(res => {
+      setCoaches(res.data)
+    })
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -84,128 +92,15 @@ const Coaches = () => {
       </div>
       <div className={styles.cardscontainer}>
 
-        <CoachCard openModal={openModal} closeModal={closeModal} deleteModalStyle={deleteModalStyle} />
-        <div className={styles.card}>
-          <div className={styles.upper}>
-            <div className={styles.pencil}>
-              <Link to="" onClick={() => openModal((deleteModalStyle), <EditCoach closeModal={closeModal} />)}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
-                  <path id="iconmonstr-pencil-2" d="M19.075,2.946l2.981,2.98L6.4,21.585l-3.732.752L3.417,18.6,19.075,2.946Zm0-2.946L1.5,17.576,0,25l7.424-1.5L25,5.926,19.075,0Z" />
-                </svg>
-              </Link>
-            </div>
-            <img
-              className={styles.cardpic}
-              src="assets/images/Mask Group 2.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.down}>
-            <div className={styles.name}>
-              <span>Management</span>
-              <span>Timmy Ramsey</span>
-            </div>
-            <div className={styles.price}>
-              <span>80e per person</span>
-              <span>Google</span>
-            </div>
-            <div className={styles.button}>
-              <button onClick={() => openModal((deleteModalStyle), <DeleteCoach closeModal={closeModal} />)}>Delete</button>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <div className={styles.upper}>
-            <img
-              className={styles.cardpic}
-              src="assets/images/Mask Group 3.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.down}>
-            <div className={styles.name}>
-              <span>Management</span>
-              <span>Timmy Ramsey</span>
-            </div>
-            <div className={styles.price}>
-              <span>80e per person</span>
-              <span>Google</span>
-            </div>
-            <div className={styles.button}>
-              <button>Delete</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.upper}>
-            <img
-              className={styles.cardpic}
-              src="assets/images/Mask Group 9.png"
-              alt=""
-            />
-
-          </div>
-          <div className={styles.down}>
-            <div className={styles.name}>
-              <span>Management</span>
-              <span>Timmy Ramsey</span>
-            </div>
-            <div className={styles.price}>
-              <span>80e per person</span>
-              <span>Google</span>
-            </div>
-            <div className={styles.button}>
-              <button>Delete</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.upper}>
-            <img
-              className={styles.cardpic}
-              src="assets/images/Mask Group 9.png"
-              alt=""
-            />
-
-          </div>
-          <div className={styles.down}>
-            <div className={styles.name}>
-              <span>Management</span>
-              <span>Timmy Ramsey</span>
-            </div>
-            <div className={styles.price}>
-              <span>80e per person</span>
-              <span>Google</span>
-            </div>
-            <div className={styles.button}>
-              <button>Delete</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.upper}>
-            <img
-              className={styles.cardpic}
-              src="assets/images/Mask Group 9.png"
-              alt=""
-            />
-
-          </div>
-          <div className={styles.down}>
-            <div className={styles.name}>
-              <span>Management</span>
-              <span>Timmy Ramsey</span>
-            </div>
-            <div className={styles.price}>
-              <span>80e per person</span>
-              <span>Google</span>
-            </div>
-            <div className={styles.button}>
-              <button>Delete</button>
-            </div>
-          </div>
-        </div>
+        {coaches.map(x => <CoachCard
+          key={x.id}
+          coach={x}
+          openModal={openModal}
+          closeModal={closeModal}
+          deleteModalStyle={deleteModalStyle}
+          editModalStyle={editModalStyle}
+          coaches={coaches}
+          setCoaches={setCoaches} />)}
       </div>
       <Modal
         style={subtitle}

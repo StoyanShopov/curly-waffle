@@ -2,19 +2,13 @@
 
 .bodyContainer{
     display: flow-root;
-    padding-top: 20%;
 }
+
 .addContainer {
     position: relative;
-    float: left;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    background-color: white;
 }
 
 .headerContainer{
-    width: 600px;
     height: 100px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -23,11 +17,12 @@
 }
 
 .titleContainer{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     color: white;
+    margin-left: 15px;
     font: normal normal bold 28px/36px Montserrat;
-    padding-top: 30px;
-    margin-left: 96px;
 }
 
 .closeBtn{
@@ -40,7 +35,6 @@
 
 div.inputContainer{
     text-align: center;
-    height: 550px;
 }
 
 .inputField{
