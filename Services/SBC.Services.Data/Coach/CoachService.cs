@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Reflection;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -105,12 +104,12 @@
             coachModel.VideoUrl = coach.VideoUrl;
             coachModel.CalendlyUrl = coach.CalendlyUrl;
 
-            if (coach.Languages.Count != 0)
+            if (coach.Languages.Length != 0)
             {
                 this.AddLanguages(coach.Languages, coachModel);
             }
 
-            if (coach.Categories.Count != 0)
+            if (coach.Categories.Length != 0)
             {
                 this.AddCategories(coach.Categories, coachModel);
             }
@@ -133,6 +132,7 @@
                 .ForEach(x => this.categoryCoachRepo.Delete(x));
 
             this.languageCoachRepo.All()
+
                 .Where(x => x.CoachId == coachId).ToList()
                 .ForEach(x => this.languageCoachRepo.Delete(x));
 
@@ -142,7 +142,7 @@
             return true;
         }
 
-        private void AddCategories(List<int> categories, Coach coach)
+        private void AddCategories(int[] categories, Coach coach)
         {
             coach.Categories = categories
                 .Where(x => !this.ExistCategory(coach.Id, x))
@@ -150,7 +150,7 @@
                 .ToHashSet();
         }
 
-        private void AddLanguages(List<int> languages, Coach coach)
+        private void AddLanguages(int[] languages, Coach coach)
         {
             coach.Languages = languages
                             .Where(x => !this.ExistLanguage(coach.Id, x))
@@ -167,10 +167,10 @@
         private bool ExistLanguage(int coachId, int languigeId)
         => this.languageCoachRepo.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
 
-        private bool ExistLanguageId(List<int> languages)
+        private bool ExistLanguageId(int[] languages)
         => languages.Any(x => !this.languageRepo.AllAsNoTracking().Any(y => y.Id == x));
 
-        private bool ExistCategoryId(List<int> categories)
+        private bool ExistCategoryId(int[] categories)
         => categories.Any(x => !this.categoryRepo.AllAsNoTracking().Any(y => y.Id == x));
     }
 }
