@@ -1,9 +1,32 @@
-import React from "react";
+import axios from 'axios';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
+
 import styles from "./ActiveCourses.module.css";
+import Modal from 'react-modal';
+import ModalRemoveCourse from "./ModalRemoveCourse";
+
 import Sidebar from "../../Sidebar/Sidebar";
 
 export default function ActiveCourses(prop) {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = useCallback(() => {
+        setShowModal(false)
+    }, []);
+
+    const handleSkip = (skip) => {
+        setSkip(prevSkip => {
+            return prevSkip + skip;
+        });
+    }
+
+    const handleClient = (client) => {
+        setClients(prevPortions => {
+            return [client, ...prevPortions];
+        });
+    }
+
     return (
         <>
             <Sidebar />
@@ -30,7 +53,7 @@ export default function ActiveCourses(prop) {
                                 <span><img src="assets/images/Image 2.png" /></span>
                             </div>
                             <div className={styles.button}>
-                                <Link to="/remove" ><button className={styles.removeButton}>Remove</button></Link>
+                                <Link to="" onClick={() => setShowModal(true)} > <button className={styles.removeButton}>Remove</button></Link>
                             </div>
                         </div>
                     </div>
@@ -53,7 +76,7 @@ export default function ActiveCourses(prop) {
                                 <span><img src="assets/images/Image 2.png" /></span>
                             </div>
                             <div className={styles.button}>
-                                <Link to="/remove" ><button className={styles.removeButton}>Remove</button></Link>
+                                <Link to="" onClick={() => setShowModal(true)} > <button className={styles.removeButton}>Remove</button></Link>
                             </div>
                         </div>
                     </div>
@@ -75,7 +98,7 @@ export default function ActiveCourses(prop) {
                                 <span><img src="assets/images/Image 2.png" /></span>
                             </div>
                             <div className={styles.button}>
-                                <Link to="/remove" ><button className={styles.removeButton}>Remove</button></Link>
+                                <Link to="" onClick={() => setShowModal(true)} > <button className={styles.removeButton}>Remove</button></Link>
                             </div>
                         </div>
                     </div>
@@ -97,12 +120,34 @@ export default function ActiveCourses(prop) {
                                 <span><img src="assets/images/Image 2.png" /></span>
                             </div>
                             <div className={styles.button}>
-                                <Link to="/remove" ><button className={styles.removeButton}>Remove</button></Link>
+                                <Link to="" onClick={() => setShowModal(true)}>
+                                    <button className={styles.removeButton}>Remove</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Modal
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        width: '30%',
+                        height: '35%',
+                        bottom: 'auto',
+                        transform: 'translate(-50%, -50%)',
+                        padding: '0px',
+                    }
+                }}
+                isOpen={showModal}
+                onRequestClose={handleClose}
+                contentLabel="Example Modal"
+            >
+                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+            </Modal>
         </>
     );
 }
