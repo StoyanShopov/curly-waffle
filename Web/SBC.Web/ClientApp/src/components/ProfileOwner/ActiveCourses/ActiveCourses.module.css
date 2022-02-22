@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.container {
+    margin: 0 auto;
+    width: 75%;
+    left: 16%;
+    position: relative;
+}
+
+.buttonContainer {
+    margin-left: 62%;
+    padding-top: 3%;
+    position: absolute;
+}
+
+.manageButton {
+    width: 130px;
+    height: 40px;
+    text-decoration: none;
+    border-color: #296CFB;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.cardscontainer {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    align-items: center;
+    gap: 120px 150px;
+    padding-top: 10%;
+    padding-left: 6%;
+}
+
+.card {
+    width: 29%;
+    height: auto;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+.cardpic {
+    position: relative;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+}
+
+.name {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 20px;
+}
+
+    .name span:first-child {
+        color: #000000;
+        font-weight: bold;
+    }
+
+.price {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    color: #296CFB;
+}
+
+.button {
+    text-align: center;
+    padding-bottom: 6%;
+}
+
+.removeButton {
+    width: 120px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
