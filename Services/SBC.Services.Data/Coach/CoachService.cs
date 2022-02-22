@@ -147,7 +147,7 @@
             coach.Categories = categories
                 .Where(x => !this.ExistCategory(coach.Id, x))
                 .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x })
-                .ToHashSet();
+                .ToArray();
         }
 
         private void AddLanguages(int[] languages, Coach coach)
@@ -155,7 +155,7 @@
             coach.Languages = languages
                             .Where(x => !this.ExistLanguage(coach.Id, x))
                             .Select(x => new LanguageCoach { CoachId = coach.Id, LanguageId = x })
-                            .ToHashSet();
+                            .ToArray();
         }
 
         private bool ExistingCoach(string calendlyUrl)
