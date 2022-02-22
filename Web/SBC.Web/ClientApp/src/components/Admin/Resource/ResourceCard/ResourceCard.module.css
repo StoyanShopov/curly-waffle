@@ -1,35 +1,28 @@
-.resourseDiv{
-    display: none;
-}
-.btnsDiv{
-width: 600px;
-height: 50px;
-}
-.lectureTitle{
+.resourceTitle{
     display: inline-block;
+    font-size: 18px;
+    color: #296CFB;
+    font-family: Montserrat;
+    cursor: pointer;
+}
+
+.btnEdit{
+    width: 60px;
+    height: 25px;
+    margin-left: 10%;
+    margin-top: 15px;
+    margin-top: 15px;
+    background-color: transparent;
+    color: #296CFB;
+    border-color: #296CFB;
     font-family: Montserrat;
     cursor: pointer;
 }
 .btnDelete{
     width: 60px;
     height: 25px;
-    float: right;
     margin-top: 15px;
     margin-left: 10px;
-    margin-right: 15%;
-    color: #296CFB;
-    border-color: #296CFB;
-    font-family: Montserrat;
-    cursor: pointer;
-}
-
-.btnEdit {
-    width: 60px;
-    height: 25px;
-    margin-top: 15px;
-    float: right;
-    margin-top: 15px;
-    background-color: transparent;
     color: #296CFB;
     border-color: #296CFB;
     font-family: Montserrat;

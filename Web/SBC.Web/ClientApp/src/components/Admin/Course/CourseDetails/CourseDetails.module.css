@@ -1,3 +1,6 @@
+.background{
+    display: flow-root;
+}
 .container{
     display: flex;
     width: 100%;
@@ -5,6 +8,7 @@
 }
 .leftPart{
     width: 66%;
+    margin-left: 7%;
 }
 .rightPart{
     width: 34%; 

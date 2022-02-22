@@ -1,19 +1,18 @@
 .section{
-    margin-left: 37%;
-    margin-top: 10%;
+
 }
 .container{
     position: fixed;
     width: 600px;
     height: 500px;
-    background-color: aquamarine;
+    background-color:white;
     z-index: 1;
 }
 .p{
     color: #296CFB;
     font-family: Montserrat;
     font-size: 28px;
-    font-weight: lighter;
+    font-weight: bold;
     margin-left: 37%;
     padding-top: 20px;
 }

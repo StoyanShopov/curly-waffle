@@ -4,16 +4,13 @@
     height: 500px;
     border-top: 10px;
     background-color: white;
-    margin-left: 33%;
-    margin-top: 7%;
-    background-color: white;
     z-index: 1;
 }
 .p{
     color: #296CFB;
     font-family: Montserrat;
     font-size: 28px;
-    font-weight:lighter;
+    font-weight:bold;
     margin-left: 37%;
     padding-top: 20px;
 }
