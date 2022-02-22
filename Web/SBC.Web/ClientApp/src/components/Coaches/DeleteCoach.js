@@ -1,7 +1,27 @@
 import styles from './DeleteCoach.module.css';
+import { deleteCoachById } from '../../services/adminCoachesService';
 
 
 const DeleteCoach = (props) => {    
+
+    const coaches = props.coaches.filter(x=>x.id !== props.id)
+
+    const onDeleteCoachHandler = (e) =>
+    {
+        e.preventDefault(); 	
+
+        console.log(props.id);
+
+
+
+        deleteCoachById(props.id).then(res =>{
+            props.closeModal();
+        })
+        .finally(() =>{
+            props.setCoaches(coaches)
+        })
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.modalContainer}>
@@ -21,7 +41,7 @@ const DeleteCoach = (props) => {
                 <div className={styles.footer}>
                     <div className={styles.buttons}>
                         <button className={styles.btnCancel} onClick={() => props.closeModal()} type="button">Cancel</button>
-                        <button className={styles.btnSave} type="submit">Delete</button>
+                        <button className={styles.btnSave} type="submit" onClick={onDeleteCoachHandler}>Delete</button>
                     </div>
                 </div>
             </div>

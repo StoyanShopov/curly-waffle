@@ -34,7 +34,7 @@ const CoachCard = (props) => {
                     <span>{coach.company}</span>
                 </div>
                 <div className={styles.button}>
-                    <button onClick={() => {props.openModal(props.deleteModalStyle, <DeleteCoach closeModal={props.closeModal} id={coach.id}/>) }}>Delete</button>
+                    <button onClick={() => {props.openModal(props.deleteModalStyle, <DeleteCoach closeModal={props.closeModal} id={coach.id} coaches={props.coaches} setCoaches={props.setCoaches}/>) }}>Delete</button>
                 </div>
             </div>
             <Modal

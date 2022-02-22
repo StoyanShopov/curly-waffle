@@ -42,9 +42,9 @@
 
         [Route("{id}")]
         [HttpDelete]
-        public async Task<ActionResult> Delete(int coachId)
+        public async Task<ActionResult> Delete(int id)
         {
-            return this.GenericResponse(await this.coachService.DeleteAsync(coachId));
+            return this.GenericResponse(await this.coachService.DeleteAsync(id));
         }
     }
 }
