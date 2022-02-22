@@ -4,6 +4,8 @@ height: 50px;
 }
 .lectureTitle{
     display: inline-block;
+    font-family: Montserrat;
+    cursor: pointer;
 }
 .btnDelete{
     width: 60px;
@@ -11,9 +13,11 @@ height: 50px;
     float: right;
     margin-top: 15px;
     margin-left: 10px;
-    margin-right: 5%;
+    margin-right: 15%;
     color: #296CFB;
     border-color: #296CFB;
+    font-family: Montserrat;
+    cursor: pointer;
 }
 
 .btnEdit {
@@ -25,5 +29,6 @@ height: 50px;
     background-color: transparent;
     color: #296CFB;
     border-color: #296CFB;
+    font-family: Montserrat;
     cursor: pointer;
 }
