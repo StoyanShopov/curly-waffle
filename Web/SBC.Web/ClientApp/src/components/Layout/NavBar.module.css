@@ -19,6 +19,12 @@ header {
     align-items: center;
 }
 
+    .headerContainer ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 .logoContainer {
     position: absolute;
     flex-grow: 0.4;
@@ -51,10 +57,37 @@ header {
     color: #000000;
 }
 
+.testedLinks {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 18%;
+    flex-grow: 0.6;
+    flex-shrink: 2;
+    flex-basis: 0;
+}
+
+    .testedLinks li {
+        display: inline-flex;
+    }
+
+    .testedLinks ul {
+        flex-grow: 1;
+        align-items: center;
+        align-content: space-around;
+        /* gap: 1%; */
+        flex-basis: 8%;
+    }
+
+        .testedLinks ul li {
+            margin-left: 8px;
+            font-size: 13px;
+        }
+
 .homePageButtons {
     flex-wrap: wrap;
     display: flex;
-    left: 14%;
+    left: 17%;
     align-items: center;
     position: relative;
     flex-grow: 1.1;
@@ -110,8 +143,8 @@ header {
     cursor: pointer;
     padding-right: 2%;
     position: relative;
-    left: -2%;
-    flex-grow: 0.5;
+    left: -3%;
+    flex-grow: 0.4;
     flex-shrink: 1;
     flex-basis: 0;
 }
@@ -172,32 +205,3 @@ header {
     flex-shrink: 1;
     flex-basis: 0;
 }
-
-.testedLinks {
-    display: flex;
-    flex-wrap: wrap;
-    width: 5%;
-    position: relative;
-    left: 18%;
-    max-width: 39%;
-    flex-grow: 1;
-    flex-shrink: 2;
-    flex-basis: 0;
-}
-
-    .testedLinks li {
-        display: inline-flex;
-    }
-
-    .testedLinks ul {
-        flex-grow: 1;
-        align-items: center;
-        align-content: space-around;
-        /* gap: 1%; */
-        flex-basis: 8%;
-    }
-
-        .testedLinks ul li {
-            margin-left: 8px;
-            font-size: 13px;
-        }

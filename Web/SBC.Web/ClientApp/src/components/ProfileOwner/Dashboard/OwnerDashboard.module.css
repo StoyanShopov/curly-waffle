@@ -22,7 +22,8 @@
 .containerH {
     position: relative;
     justify-content: center;
-    left: 735px;
+    width: 24%;
+    left: 26%;
     top: 75px;
     height: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -73,11 +74,11 @@
             line-height: 90px;
         }
 
-div.containerT {
+.containerT {
     position: relative;
     justify-content: center;
     top: 75px;
-    left: 735px;
+    left: 26%;
     width: 1035px;
 }
 
@@ -184,7 +185,7 @@ td + td {
 .containerC {
     position: relative;
     justify-content: center;
-    left: 735px;
+    left: 26%;
     top: 75px;
     width: 1035px;
 }

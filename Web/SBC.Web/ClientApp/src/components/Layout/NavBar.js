@@ -38,7 +38,7 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
                         </li>
                         <li>
-                            <a href="/docs">Docs</a>
+                            <a href="/docs">Swagger</a>
                         </li>
                     </ul>
                 </div>
@@ -77,11 +77,9 @@ const NavBar = () => {
                     </ul>
                 </div>
                 {/* }*/}
-
                 <div className={styles.greenCircle}>
                     A
                 </div>
-
             </div>
         </header>
     )

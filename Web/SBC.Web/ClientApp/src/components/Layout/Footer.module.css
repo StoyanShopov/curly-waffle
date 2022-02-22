@@ -4,210 +4,134 @@
     padding-top: 14%;
 }
 
-.footerMain {
+.trapezoid {
+    clip-path: polygon(0 6%, 100% 56%, 100% 100%, 0% 100%);
+    width: 100%;
+    height: 24em;
+    background-color: #0B2969;
     position: relative;
 }
 
-.trapezoid {
-    clip-path: polygon(0 10%, 100% 60%, 100% 100%, 0% 100%);
-    width: 100%;
-    /*width: auto;*/
-    /*width: 98vw;*/
-    height: 700px;
-    background-color: #0B2969;
+.flex {
+    display: flex;   
+    padding-top: 3%;  
+    height: 79%;
 }
 
-.flex {
+    .flex ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .flex a:hover, .flex a:visited, .flex a:link, .flex a:active {
+        text-decoration: none;
+    }
+
+.firstColumn {
+    flex-grow: 1;
+    gap: 17px;
+    margin: 0;
+    padding-bottom: 1.3%;
+    padding-left: 5%;
+}
+
+.logoHeaderRow {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+}
+
+.logo {
+    width: 74px;
+    height: auto;
+    color: #FFFFFF;
+    opacity: 1;
 }
 
 .logoHeader {
     text-align: left;
     letter-spacing: 1.25px;
-    position: absolute;
-    top: 151px;
-    left: 265px;
-    width: 170px;
-    height: 55px;
-    color: #FFFFFF;
-    font: Montserrat;
-    opacity: 1;
-    font-size: 42px;
-    line-height: 55px;
-}
-
-.logo {
-    position: absolute;
-    top: 188px;
-    left: 147px;
-    width: 92.4px;
     color: #FFFFFF;
     opacity: 1;
+    font-size: 30px;
+    margin: 0px;
+    padding-left: 3%;
 }
 
 .logoText {
     text-align: left;
     letter-spacing: 0.6px;
-    position: absolute;
-    top: 260px;
-    left: 150px;
-    width: 425px;
-    height: 159px;
+    width: 20em;
     color: #FFFFFF;
-    font: Montserrat;
     opacity: 1;
-    line-height: 42px;
-    font-size: 22px;
+    line-height: 27px;
+    font-size: 15px;
+    margin: 0;  
 }
 
 .buttonGetStarted {
-    letter-spacing: 1.1px;
-    position: absolute;
-    top: 494px;
-    left: 150px;
+    letter-spacing: 0.3px;
     color: #0B2969;
-    width: 250px;
-    height: 70px;
-    padding: 19px 20px;
+    padding: 7px 28px;
+    margin-bottom: 6%;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: bold;
-    font: Montserrat;
     border-color: transparent;
     cursor: pointer;
-    line-height: 27px;
 }
 
-ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
+.secondColumn {
+    flex-grow: 1;
+    gap: 17px;
+    margin: 0;
+    padding-bottom: 1.8%;
 }
 
-.company {
-    text-align: center;
-    letter-spacing: 2.25px;
-    /*position: absolute;*/
-    top: 47%;
-    left: 615%;
-    color: #16d696;
-    position: relative;
-}
-
-.contactUs {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 450px;
-    left: 900px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.secondColumn p {
+    font-size: 15px;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: 1.6px;
     color: #FFFFFF;
-    font: Montserrat;
+    margin: 0px;
 }
 
-.aboutUs {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 375px;
-    left: 900px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #FFFFFF;
-    font: Montserrat;
+.thirdColumn {
+    flex-grow: 1;
+    gap: 17px;
+    margin: 0;
+    padding-bottom: 1.8%;
 }
 
-.privacyPolicy {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 525px;
-    left: 900px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.thirdColumn p {
+    font-size: 15px;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: 1.6px;
     color: #FFFFFF;
-    font: Montserrat;
+    margin: 0px;
 }
 
-.services {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 295px;
-    left: 1400px;
-    color: #FFFFFF;
-    font: Montserrat;
+.fourthColumn {
+    flex-grow: 1;
+    gap: 4px;
+    margin: 0;
+    padding-bottom: 1%;
 }
 
-.courses {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 375px;
-    left: 1400px;
+.fourthColumn img {
     color: #FFFFFF;
-    font: Montserrat;
-}
-
-.coaches {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 450px;
-    left: 1400px;
-    color: #FFFFFF;
-    font: Montserrat;
-}
-
-.requests {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 525px;
-    left: 1400px;
-    color: #FFFFFF;
-    font: Montserrat;
-}
-
-.facebookLogo {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 375px;
-    left: 1760px;
-    color: #FFFFFF;
-    font: Montserrat;
-}
-
-.instagramLogo {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 450px;
-    left: 1760px;
-    color: #FFFFFF;
-    font: Montserrat;
-}
-
-.linkedInLogo {
-    text-align: center;
-    letter-spacing: 2.25px;
-    position: absolute;
-    top: 525px;
-    left: 1760px;
-    color: #FFFFFF;
-    font: Montserrat;
+    width: 34px;
+    height: auto;
 }
 
 .bottom {
     width: 100%;
+    height: auto;
 }
 
 .textOnBottom {
@@ -215,10 +139,9 @@ ul {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    top: 620px;
-    border-top: 2px solid white;
+    border-top: 1.8px solid white;
     color: white;
-    line-height: 58px;
-    font-size: 20px;
-    position: relative;
+    line-height: 31px;
+    font-size: 14px;
+    margin: 0;
 }
