@@ -46,6 +46,14 @@ export default function CourseDetails() {
         color: '#f00'
     };
 
+    function SkipPlusOne(){
+        setSkip(prevSkip => prevSkip + 1)
+    }
+
+    function showLectures(args){
+        setLectures(prevSkip => [args, ...prevSkip] )
+    }
+
     function onGetNextLectures(){
         lectureService.getAll(id, skip)
         .then(lectureResult => {
@@ -71,7 +79,7 @@ export default function CourseDetails() {
     useEffect(() => {
         courseService.getById(id)
             .then(course => {
-                setCourse(course.data);
+                showLectures(course.data);
             })
     }, [id]);
 
@@ -106,10 +114,10 @@ export default function CourseDetails() {
                 </div>
                 <div className={css.rightPart}>
                     <div className={css.lectureList} >
-                        <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} skip = {skip} setSkip ={setSkip}/>)}}>Add Lecture</button>
+                        <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={showLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
                         <h1 className={css.lecturesHeading}>Lectures</h1>
                         <ul className={css.ulLectures}>
-                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
+                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={showLectures} lectures={lectures} lecture={x} index={i} />)}
                             <img src="Line 396.png" className={css.google} alt="" />
                         </ul>
                         <button className={css.btnViewMore} onClick={onGetNextLectures}>View More</button>

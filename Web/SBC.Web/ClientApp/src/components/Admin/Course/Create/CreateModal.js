@@ -17,10 +17,7 @@ const CreateCourse = (props) => {
                     props.setCourses([...props.courses, response.data]);
                 }
             }
-            ).finally(() =>{
-                props.setSkip(prevSkip => prevSkip + 1)
-                console.log(props.skip)
-            })
+            )
     }
 
     return (

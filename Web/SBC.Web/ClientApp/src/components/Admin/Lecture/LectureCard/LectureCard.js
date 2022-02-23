@@ -30,7 +30,6 @@ export default function LectureCard(props) {
             </div>
             <div className={style.resourseDiv}>
                 {<ResourceCard />}
-                {<ResourceCard />}
             </div>
         </div>
     )

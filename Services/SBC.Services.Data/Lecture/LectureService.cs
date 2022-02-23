@@ -101,6 +101,7 @@
         => await this.lectures
             .AllAsNoTracking()
             .Where(x => x.Courses.Any(x => x.CourseId == id))
+            .OrderByDescending(x => x.CreatedOn)
             .To<TModel>()
             .Skip(skip)
             .Take(take)
