@@ -6,7 +6,7 @@ import style from './EditModal.module.css';
 const EditCourse = (props) => {
     const courseId = props.courseId;
     const [course, setCourse] = useState({});
-
+ 
     useEffect(() => {
         courseService.getById(courseId)
             .then(course => {

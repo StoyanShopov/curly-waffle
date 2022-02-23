@@ -1,7 +1,9 @@
-﻿namespace SBC.Services.Data.Course.Models
+﻿namespace SBC.Web.ViewModels.Course
 {
-    public class CreateCourseServiceModel
+    public class CreateCourseInputModel
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
