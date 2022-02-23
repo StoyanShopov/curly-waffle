@@ -32,7 +32,7 @@
 
             if (existsByName)
             {
-                var error = $"The company's name '{model.Name}' already exists.";
+                var error = string.Format(ErrorMessageConstants.ExistsByName, model.Name);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -41,7 +41,7 @@
 
             if (existsByEmail)
             {
-                var error = $"The company's email '{model.Name}' already exists.";
+                var error = string.Format(ErrorMessageConstants.ExistsByEmail, model.Email);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
