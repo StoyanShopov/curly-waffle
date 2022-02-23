@@ -1,11 +1,11 @@
-﻿namespace SBC.Services.Data.Coach.Models
+﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Common.GlobalConstants.CoachConstants;
+    using static SBC.Web.ViewModels.Constants.DataModelsConstants.CoachDtoConstants;
 
-    public class UpdateCoachModel
+    public class UpdateCoachInputModel
     {
         public int CoachId { get; set; }
 

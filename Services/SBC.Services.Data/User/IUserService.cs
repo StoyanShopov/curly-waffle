@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Services.Data.User.Models;
+    using SBC.Web.ViewModels.User;
 
     public interface IUserService
     {

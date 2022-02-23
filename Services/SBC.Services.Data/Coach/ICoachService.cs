@@ -5,16 +5,16 @@
 
     using SBC.Common;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Coach;
 
     public interface ICoachService
     {
-        Task<Result> CreateAsync(RegisterCoach coach);
+        Task<Result> CreateAsync(CreateCoachInputModel coach);
 
         Task<Result> GetAllAsync<TModel>();
 
-        Task<Result> UpdateAsync(UpdateCoachModel coach);
+        Task<Result> UpdateAsync(UpdateCoachInputModel coach);
 
         Task<Result> DeleteAsync(int coachId);
     }

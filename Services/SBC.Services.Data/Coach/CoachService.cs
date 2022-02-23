@@ -9,8 +9,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Coach;
 
     using static SBC.Common.GlobalConstants.RequestsConstants;
 
@@ -36,7 +36,7 @@
             this.categoryRepo = categoryRepo;
         }
 
-        public async Task<Result> CreateAsync(RegisterCoach coach)
+        public async Task<Result> CreateAsync(CreateCoachInputModel coach)
         {
             if (this.ExistLanguageId(coach.Languages))
             {
@@ -78,7 +78,7 @@
                 .To<TModel>()
                 .ToListAsync());
 
-        public async Task<Result> UpdateAsync(UpdateCoachModel coach)
+        public async Task<Result> UpdateAsync(UpdateCoachInputModel coach)
         {
             if (this.ExistLanguageId(coach.Languages))
             {

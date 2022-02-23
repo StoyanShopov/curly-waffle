@@ -6,7 +6,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Coach.Models;
     using SBC.Web.ViewModels.Administration.Coach;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
@@ -21,7 +20,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterCoach coach)
+        public async Task<ActionResult> Register(CreateCoachInputModel coach)
         {
             var result = await this.coachService.CreateAsync(coach);
             return this.GenericResponse(result);
@@ -30,12 +29,12 @@
         [HttpGet(nameof(GetAllCoachesAsync))]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
-            var result = await this.coachService.GetAllAsync<ListingCoachModel>();
+            var result = await this.coachService.GetAllAsync<ListingCoachViewModel>();
             return this.GenericResponse(result);
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update(UpdateCoachModel coach)
+        public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             var result = await this.coachService.UpdateAsync(coach);
             return this.GenericResponse(result);

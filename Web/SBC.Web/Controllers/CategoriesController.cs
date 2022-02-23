@@ -22,7 +22,7 @@
         [HttpGet(nameof(GetAllCategoriesAsync))]
         public async Task<ActionResult> GetAllCategoriesAsync()
         {
-            var result = await this.categoryService.GetAllAsync<ListingCategoryModel>();
+            var result = await this.categoryService.GetAllAsync<ListingCategoryViewModel>();
 
             return this.GenericResponse(new ResultModel(result));
         }

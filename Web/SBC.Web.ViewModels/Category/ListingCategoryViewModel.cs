@@ -3,7 +3,7 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class ListingCategoryModel : IMapFrom<Category>
+    public class ListingCategoryViewModel : IMapFrom<Category>
     {
         public int Id { get; set; }
 

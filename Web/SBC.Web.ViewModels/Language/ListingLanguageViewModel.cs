@@ -3,7 +3,7 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class ListingLanguageModel : IMapFrom<Language>
+    public class ListingLanguageViewModel : IMapFrom<Language>
     {
         public int Id { get; set; }
 

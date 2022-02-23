@@ -10,8 +10,8 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.User.Models;
     using SBC.Services.Identity;
+    using SBC.Web.ViewModels.User;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 

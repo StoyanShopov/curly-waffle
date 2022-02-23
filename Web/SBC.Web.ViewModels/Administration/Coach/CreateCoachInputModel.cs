@@ -1,13 +1,13 @@
-﻿namespace SBC.Services.Data.Coach.Models
+﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CoachConstants;
+    using static SBC.Web.ViewModels.Constants.DataModelsConstants.CoachDtoConstants;
 
-    public class RegisterCoach
+    public class CreateCoachInputModel
     {
         [Required]
         [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
