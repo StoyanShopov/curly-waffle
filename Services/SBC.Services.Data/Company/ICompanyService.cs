@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Company.Contracts
+﻿namespace SBC.Services.Data.Company
 {
     using System.Threading.Tasks;
 
@@ -7,7 +7,7 @@
 
     public interface ICompanyService
     {
-        Task<Result> AddAsync(AddRequestModel model);
+        Task<Result> AddAsync(CreateCompanyInputModel model);
 
         Task<Result> GetCountAsync();
 

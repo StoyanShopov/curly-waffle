@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Web.ViewModels.Administration.Company;
 
     public class CompanyController : AdministrationController
@@ -16,7 +16,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Add(AddRequestModel model)
+        public async Task<ActionResult> Add(CreateCompanyInputModel model)
             => this.GenericResponse(await this.companyService.AddAsync(model));
     }
 }

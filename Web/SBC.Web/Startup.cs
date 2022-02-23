@@ -1,16 +1,14 @@
 ﻿namespace SBC.Web
 {
+    using System.Linq;
     using System.Reflection;
     using System.Text;
 
     using Azure.Storage.Blobs;
-
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -18,25 +16,22 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-    using Microsoft.WindowsAzure.Storage;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Data.Repositories;
-    using SBC.Data.Seeding;
     using SBC.Services.Blob;
-    using SBC.Services.Data;
-    using SBC.Services.Data.Client;
-    using SBC.Services.Data.Client.Contracts;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.Admin.Contracts;
+    using SBC.Services.Data.Client;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.Course;
     using SBC.Services.Data.Course.Contracts;
+    using SBC.Services.Data.Profile;
+    using SBC.Services.Data.Profile.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
@@ -44,9 +39,6 @@
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
-    using SBC.Services.Data.Profile;
-    using SBC.Services.Data.Profile.Contracts;
-    using System.Linq;
 
     public class Startup
     {

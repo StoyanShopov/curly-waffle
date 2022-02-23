@@ -13,7 +13,7 @@
     using SBC.Data.Models;
     using SBC.Services.Data.Admin.Contracts;
     using SBC.Services.Data.Coach.Contracts;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Services.Data.Course.Contracts;
     using SBC.Web.ViewModels;
     using SBC.Web.ViewModels.Administration.Dashboard;

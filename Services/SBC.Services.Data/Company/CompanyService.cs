@@ -9,7 +9,6 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
     using SBC.Web.ViewModels.Administration.Company;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
@@ -27,7 +26,7 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<Result> AddAsync(AddRequestModel model)
+        public async Task<Result> AddAsync(CreateCompanyInputModel model)
         {
             var existsByName = await this.ExistsByNameAsync(model.Name);
 
@@ -67,7 +66,6 @@
             => await this.NoTrackGetQuery()
                 .AnyAsync(c => c.Email.ToLower() == email.ToLower());
 
-        // TODO: Improve
         public async Task<bool> ExistsOwnerAsync(string name)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);

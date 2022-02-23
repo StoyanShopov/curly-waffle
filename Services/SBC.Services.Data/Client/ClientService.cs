@@ -9,9 +9,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Client.Contracts;
-    using SBC.Services.Data.Client.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
@@ -42,7 +40,7 @@
             this.userManager = userManager;
         }
 
-        public async Task<Result> AddAsync(AddRequestModel model)
+        public async Task<Result> AddAsync(CreateClientInputModel model)
         {
             var emailExists = await this.userService.ExistsByFullNameByEmailAsync(model.FullName, model.Email);
 
@@ -92,16 +90,15 @@
 
             await this.userManager.AddToRoleAsync(user, CompanyOwnerRoleName);
 
-            return new ResultModel(new AddServiceModel
+            var client = new ClientDetailsViewModel
             {
-                Client = new GetPortionServiceModel
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    NormalizedEmail = user.NormalizedEmail,
-                    CompanyName = user.Company?.Name,
-                },
-            });
+                Id = user.Id,
+                Email = user.Email,
+                NormalizedEmail = user.NormalizedEmail,
+                CompanyName = user.Company?.Name,
+            };
+
+            return new ResultModel(client);
         }
 
         public async Task<Result> GetPortionAsync(int skip = default, int take = TakeDefaultValue)
@@ -110,15 +107,15 @@
 
             var portions = await this.applicationUser
                  .AllAsNoTracking()
+                 .Include(au => au.Company)
                  .OrderByDescending(au => au.CreatedOn)
                  .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
                  .Skip(skip)
                  .Take(take)
-                 .Include(au => au.Company)
-                 .To<GetPortionResponseModel>()
+                 .To<ClientDetailsViewModel>()
                  .ToListAsync();
 
-            return new ResultModel(new GetPortionsServiceModel
+            return new ResultModel(new ClientsDetailsViewModel
             {
                 Portions = portions,
                 ViewMoreAvaliable = await this.IsViewMoreAvaliable(skip, take, role.Id),

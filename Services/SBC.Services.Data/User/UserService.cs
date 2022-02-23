@@ -9,7 +9,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Data.User.Models;
     using SBC.Services.Identity.Contracts;

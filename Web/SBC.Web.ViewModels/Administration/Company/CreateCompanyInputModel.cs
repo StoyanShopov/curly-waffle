@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class AddRequestModel
+    public class CreateCompanyInputModel
     {
         [Required(AllowEmptyStrings = true)]
         public string Name { get; set; }
