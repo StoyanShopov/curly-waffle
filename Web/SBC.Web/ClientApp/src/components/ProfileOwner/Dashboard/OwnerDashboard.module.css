@@ -1,24 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-/**{
-    box-sizing: border-box;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.columnMenu{
-    width: 24%; 
-}
-
-.columnContent{
-    width: 74%;
-}
-*/
-
 .containerH {
     position: relative;
     justify-content: center;
@@ -82,7 +63,7 @@
     width: 1035px;
 }
 
-table.table {
+.tableContainer table{
     width: 1035px;
     border-collapse: collapse;
     font-size: 22px;
@@ -90,11 +71,11 @@ table.table {
     text-align: start;
 }
 
-thead > svg {
+.tableContainer thead > svg {
     margin-left: 7%;
 }
 
-.table tbody {
+.tableContainer tbody {
     display: block;
     padding-left: 55px;
     padding-right: 55px;
@@ -102,19 +83,19 @@ thead > svg {
     box-shadow: 0px 3px 10px #00000029;
 }
 
-.table thead {
+.tableContainer thead {
     background-color: #296CFB;
     border: #296CFB;
     color: white;
     box-shadow: 0px 3px 10px #00000029;
 }
 
-table.table td {
+.tableContainer td {
     padding-top: 37px;
     padding-bottom: 37px;
 }
 
-.table thead th {
+.tableContainer thead th {
     padding-top: 30px;
     padding-bottom: 16px;
 }
@@ -125,13 +106,13 @@ table.table td {
     padding-bottom: 20px;
 }
 
-.table tbody tr {
+.tableContainer tbody tr {
     border-bottom: 1px solid #000000;
     display: flex;
     justify-content: space-between;
 }
 
-tbody {
+.tableContainer tbody {
     width: 980px;
 }
 
@@ -156,7 +137,7 @@ tbody {
     padding-right: 50px;
 }
 
-a.link {
+.link {
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -165,15 +146,15 @@ a.link {
     color: #16D696;
 }
 
-    a.link:hover {
+    .link:hover {
         cursor: pointer;
         font-weight: bold;
     }
 
-td + td {
+/*.tableContainer td {
     color: #000000;
     font-weight: normal;
-}
+}*/
 
 #flex {
     display: flex;

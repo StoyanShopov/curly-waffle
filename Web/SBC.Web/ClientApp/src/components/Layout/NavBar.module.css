@@ -62,7 +62,7 @@ header {
     flex-wrap: wrap;
     position: relative;
     left: 18%;
-    flex-grow: 0.6;
+    flex-grow: 0.59;
     flex-shrink: 2;
     flex-basis: 0;
 }
