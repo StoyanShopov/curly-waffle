@@ -1,5 +1,4 @@
-﻿
-namespace SBC.Services.Data.Resource.Models
+﻿namespace SBC.Services.Data.Resource.Models
 {
     using SBC.Data.Models;
 

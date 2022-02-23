@@ -9,9 +9,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Lecture.Contracts;
-    using SBC.Services.Data.Lecture.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Lecture;
 
     public class LectureService : ILectureService
     {
@@ -24,7 +23,7 @@
             this.courseLectures = courseLectures;
         }
 
-        public async Task<Result> CreateAsync(CreateLectureServiceModel lectureModel)
+        public async Task<Result> CreateAsync(CreateLectureInputModel lectureModel)
         {
             var lecture = await this.lectures
                 .All()
@@ -78,7 +77,7 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(string id, EditLectureServiceModel lectureModel)
+        public async Task<Result> EditAsync(string id, EditLectureInputModel lectureModel)
         {
             var lecture = await this.lectures
                 .All()

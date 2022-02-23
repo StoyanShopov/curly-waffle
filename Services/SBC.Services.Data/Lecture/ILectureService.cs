@@ -1,10 +1,10 @@
-﻿namespace SBC.Services.Data.Lecture.Contracts
+﻿namespace SBC.Services.Data.Lecture
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Services.Data.Lecture.Models;
+    using SBC.Web.ViewModels.Administration.Lecture;
 
     public interface ILectureService
     {
@@ -12,9 +12,9 @@
 
         Task<TModel> GetByIdAsync<TModel>(string id);
 
-        Task<Result> CreateAsync(CreateLectureServiceModel lectureMmodel);
+        Task<Result> CreateAsync(CreateLectureInputModel lectureMmodel);
 
-        Task<Result> EditAsync(string id, EditLectureServiceModel lectureModel);
+        Task<Result> EditAsync(string id, EditLectureInputModel lectureModel);
 
         Task<Result> DeleteByIdAsync(string id);
     }

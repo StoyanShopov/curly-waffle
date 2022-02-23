@@ -1,5 +1,4 @@
-﻿
-namespace SBC.Services.Data.Resource.Models
+﻿namespace SBC.Services.Data.Resource.Models
 {
     using SBC.Data.Models;
 
@@ -14,7 +13,5 @@ namespace SBC.Services.Data.Resource.Models
         public FileType FileType { get; set; }
 
         public string LectureId { get; set; }
-
-      
     }
 }

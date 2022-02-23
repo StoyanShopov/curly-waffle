@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { courseService } from "../../../../services/course.service.js";
-import CardCourse from '../CardCourse/CardCourse.js';
-import CreateModal from '../Create/CreateModal.js';
-import Modal from "react-modal/lib/components/Modal";
 
 import style from './AllCourses.module.css';
 
+import { courseService } from "../../../../services/course.service.js";
+
+import CardCourse from '../CardCourse/CardCourse.js';
+
+import CreateModal from '../Create/CreateModal.js';
+import Modal from "react-modal/lib/components/Modal";
 
 const AllCourses = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -82,5 +84,4 @@ const AllCourses = () => {
         </div >
     )
 }
-
 export default AllCourses;

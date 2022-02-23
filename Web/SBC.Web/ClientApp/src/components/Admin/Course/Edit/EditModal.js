@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { courseService } from "../../../../services/course.service.js";
 
 import style from './EditModal.module.css';
+
+import { courseService } from "../../../../services/course.service.js";
 
 const EditCourse = (props) => {
     const courseId = props.courseId;
@@ -69,5 +70,4 @@ const EditCourse = (props) => {
         </section >
     )
 }
-
 export default EditCourse;

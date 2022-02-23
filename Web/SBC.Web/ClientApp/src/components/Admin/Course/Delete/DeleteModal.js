@@ -1,6 +1,8 @@
 import React from 'react';
-import { courseService } from '../../../../services/course.service';
+
 import style from "./DeleteModal.module.css";
+
+import { courseService } from '../../../../services/course.service';
 
 const DeleteModal = (props) => {
     const courseId = props.courseId;
@@ -38,5 +40,4 @@ const DeleteModal = (props) => {
         </div>
     )
 }
-
 export default DeleteModal;
