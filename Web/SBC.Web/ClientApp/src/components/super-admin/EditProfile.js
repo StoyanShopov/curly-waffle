@@ -47,7 +47,7 @@ export default function EditProfile(props) {
         <div className={css.editContainer}>
             <div className={css.headerContainer}>
                 <span className={css.text}>Personal Information</span>
-                <Link to="" onClick={() => props.closeModal()} className={css.close}>X</Link>
+                <button onClick={() => props.closeModal()} className={css.close}>X</button>
             </div>
             <form onSubmit={e => OnEditAdmin(e)}>
                 <div className={css.bodyContainer}>

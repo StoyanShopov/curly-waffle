@@ -13,22 +13,15 @@
 
     public class ProfileController : AdministrationController
     {
-        private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IProfileService profileService;
 
-        public ProfileController(
-            IDeletableEntityRepository<ApplicationUser> applicationUser,
-            UserManager<ApplicationUser> userManager,
-            IProfileService profileService)
+        public ProfileController(IProfileService profileService)
         {
-            this.applicationUser = applicationUser;
-            this.userManager = userManager;
             this.profileService = profileService;
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get() 
+        public async Task<ActionResult> Get()
             => this.GenericResponse(await this.profileService.GetAdminData(this.User.Id()));
 
         [HttpPut]
