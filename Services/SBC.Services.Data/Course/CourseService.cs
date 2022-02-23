@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Courses
+﻿namespace SBC.Services.Data.Course
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,9 +9,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Course.Contracts;
-    using SBC.Services.Data.Course.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Course;
 
     public class CourseService : ICourseService
     {
@@ -22,7 +21,7 @@
             this.courses = courses;
         }
 
-        public async Task<Result> CreateAsync(CreateCourseServiceModel courseModel)
+        public async Task<Result> CreateAsync(CreateCourseInputModel courseModel)
         {
             var course = await this.courses
                 .All()
@@ -48,6 +47,8 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
+            courseModel.Id = newCourse.Id;
+
             return new ResultModel(courseModel);
         }
 
@@ -68,7 +69,7 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(int? id, EditCourseServiceModel courseModel)
+        public async Task<Result> EditAsync(int? id, EditCourseInputModel courseModel)
         {
             if (id == null)
             {
@@ -94,6 +95,8 @@
             course.LanguageId = courseModel.LanguageId;
 
             await this.courses.SaveChangesAsync();
+
+            courseModel.Id = course.Id;
 
             return new ResultModel(courseModel);
         }

@@ -1,6 +1,6 @@
-﻿namespace SBC.Services.Data.Course.Models
+﻿namespace SBC.Web.ViewModels.Course
 {
-    public class EditCourseServiceModel
+    public class EditCourseInputModel
     {
         public int? Id { get; set; }
 

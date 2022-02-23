@@ -7,7 +7,7 @@ const apiUrl = baseUrl + 'api/course';
 
 const getAll = async () => {
     return await axios
-        .get(apiUrl);
+        .get(`${apiUrl}s`);
 }
 
 const getById = async (courseId) => {

@@ -4,8 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Course.Contracts;
-    using SBC.Services.Data.Course.Models;
+    using SBC.Services.Data.Course;
     using SBC.Web.ViewModels.Course;
 
     public class CourseController : AdministrationController
@@ -18,9 +17,10 @@
         }
 
         [HttpGet]
+        [Route("/api/Courses")]
         public async Task<ActionResult> Get()
         {
-            var result = await this.courseService.GetAllAsync<CourseViewModel>();
+            var result = await this.courseService.GetAllAsync<CourseListingViewModel>();
 
             return this.GenericResponse(new ResultModel(result));
         }
@@ -28,13 +28,13 @@
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
         {
-            var result = await this.courseService.GetByIdAsync<CourseViewModel>(id);
+            var result = await this.courseService.GetByIdAsync<CourseDetailsViewModel>(id);
 
             return this.GenericResponse(new ResultModel(result));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(CreateCourseServiceModel courseModel)
+        public async Task<ActionResult> Post(CreateCourseInputModel courseModel)
         {
             var result = await this.courseService.CreateAsync(courseModel);
 
@@ -42,7 +42,7 @@
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int? id, EditCourseServiceModel courseModel)
+        public async Task<ActionResult> Put(int? id, EditCourseInputModel courseModel)
         {
             var result = await this.courseService.EditAsync(id, courseModel);
 
