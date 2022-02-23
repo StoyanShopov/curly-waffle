@@ -5,22 +5,22 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Language.Contracts;
+    using SBC.Services.Data.Language;
     using SBC.Web.ViewModels.Language;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
 
-    public class LanguageController : ApiController
+    public class LanguagesController : ApiController
     {
         private readonly ILanguageService languageService;
 
-        public LanguageController(ILanguageService languageService)
+        public LanguagesController(ILanguageService languageService)
         {
             this.languageService = languageService;
         }
 
-        [HttpGet("Languages")]
-        public async Task<ActionResult> GetAllCategoriesAsync()
+        [HttpGet(nameof(GetAllLanguagesAsync))]
+        public async Task<ActionResult> GetAllLanguagesAsync()
         {
             var result = await this.languageService.GetAllAsync<ListingLanguageModel>();
 

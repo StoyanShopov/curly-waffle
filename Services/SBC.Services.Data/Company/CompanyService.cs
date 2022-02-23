@@ -6,7 +6,6 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
 
     public class CompanyService : ICompanyService
     {

@@ -5,20 +5,21 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Category.Contracts;
+    using SBC.Services.Data.Category;
     using SBC.Web.ViewModels.Category;
+
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
 
-    public class CategoryController : ApiController
+    public class CategoriesController : ApiController
     {
         private readonly ICategoryService categoryService;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
             this.categoryService = categoryService;
         }
 
-        [HttpGet("Categories")]
+        [HttpGet(nameof(GetAllCategoriesAsync))]
         public async Task<ActionResult> GetAllCategoriesAsync()
         {
             var result = await this.categoryService.GetAllAsync<ListingCategoryModel>();

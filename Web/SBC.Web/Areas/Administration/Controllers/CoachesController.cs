@@ -5,17 +5,17 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Coach.Contracts;
+    using SBC.Services.Data.Coach;
     using SBC.Services.Data.Coach.Models;
     using SBC.Web.ViewModels.Administration.Coach;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
 
-    public class CoachController : AdministrationController
+    public class CoachesController : AdministrationController
     {
         private readonly ICoachService coachService;
 
-        public CoachController(ICoachService coachService)
+        public CoachesController(ICoachService coachService)
         {
             this.coachService = coachService;
         }
@@ -23,26 +23,30 @@
         [HttpPost]
         public async Task<ActionResult> Register(RegisterCoach coach)
         {
-            return this.GenericResponse(await this.coachService.CreateAsync(coach));
+            var result = await this.coachService.CreateAsync(coach);
+            return this.GenericResponse(result);
         }
 
-        [HttpGet("Coaches")]
+        [HttpGet(nameof(GetAllCoachesAsync))]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
-            return this.GenericResponse(await this.coachService.GetAllAsync<ListingCoachModel>());
+            var result = await this.coachService.GetAllAsync<ListingCoachModel>();
+            return this.GenericResponse(result);
         }
 
         [HttpPut]
         public async Task<ActionResult> Update(UpdateCoachModel coach)
         {
-            return this.GenericResponse(await this.coachService.UpdateAsync(coach));
+            var result = await this.coachService.UpdateAsync(coach);
+            return this.GenericResponse(result);
         }
 
         [Route("{id}")]
         [HttpDelete]
         public async Task<ActionResult> Delete(int coachId)
         {
-            return this.GenericResponse(await this.coachService.DeleteAsync(coachId));
+            var result = await this.coachService.DeleteAsync(coachId);
+            return this.GenericResponse(result);
         }
     }
 }

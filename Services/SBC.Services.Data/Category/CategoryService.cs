@@ -7,7 +7,6 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Category.Contracts;
     using SBC.Services.Mapping;
 
     public class CategoryService : ICategoryService

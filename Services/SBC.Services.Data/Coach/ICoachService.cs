@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Coach.Contracts
+﻿namespace SBC.Services.Data.Coach
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

@@ -9,9 +9,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Coach.Models;
-    using SBC.Services.Data.Language.Contracts;
     using SBC.Services.Mapping;
 
     using static SBC.Common.GlobalConstants.RequestsConstants;
@@ -50,7 +48,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, CategoryBadRequest);
             }
 
-            if (this.ExistingCoach(coach.CalendlyUrl))
+            if (this.coachRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == coach.CalendlyUrl && x.IsDeleted == false))
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
@@ -145,9 +143,9 @@
         private void AddCategories(int[] categories, Coach coach)
         {
             coach.Categories = categories
-                .Where(x => !this.ExistCategory(coach.Id, x))
-                .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x })
-                .ToArray();
+                             .Where(x => !this.ExistCategory(coach.Id, x))
+                             .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x })
+                             .ToArray();
         }
 
         private void AddLanguages(int[] languages, Coach coach)
@@ -157,9 +155,6 @@
                             .Select(x => new LanguageCoach { CoachId = coach.Id, LanguageId = x })
                             .ToArray();
         }
-
-        private bool ExistingCoach(string calendlyUrl)
-        => this.coachRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == calendlyUrl && x.IsDeleted == false);
 
         private bool ExistCategory(int coachId, int categoryId)
         => this.categoryCoachRepo.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);

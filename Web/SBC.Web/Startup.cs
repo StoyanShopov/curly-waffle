@@ -2,6 +2,7 @@
 {
     using System.Reflection;
     using System.Text;
+
     using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -16,7 +17,6 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-    using Microsoft.WindowsAzure.Storage;
 
     using SBC.Data;
     using SBC.Data.Common;
@@ -27,17 +27,11 @@
     using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Category;
-    using SBC.Services.Data.Category.Contracts;
     using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Coach.Contracts;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.Language;
-    using SBC.Services.Data.Language.Contracts;
     using SBC.Services.Data.User;
-    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
-    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;

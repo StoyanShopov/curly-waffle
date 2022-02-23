@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Category.Contracts
+﻿namespace SBC.Services.Data.Category
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
