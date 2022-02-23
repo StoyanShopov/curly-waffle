@@ -21,7 +21,7 @@
 .bottomDiv{
     width: 750px;
     height: 200px;
-    background-color:aqua;
+    background-color:white;
     z-index: 1;
 }
 .btnCancel{
