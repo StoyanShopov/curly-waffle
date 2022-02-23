@@ -8,7 +8,7 @@
 
     public interface ILectureService
     {
-        Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int id);
+        Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int skip, int id, int take = 6);
 
         Task<TModel> GetByIdAsync<TModel>(string id);
 

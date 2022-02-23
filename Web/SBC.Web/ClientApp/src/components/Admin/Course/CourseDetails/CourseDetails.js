@@ -16,12 +16,15 @@ export default function CourseDetails() {
     const [course, setCourse] = useState({});
     const [lectures, setLectures] = useState([]);
     const [description, setDescription] = useState("");
+    const [skip, setSkip] = useState(0)
 
     useEffect(() => {
-        lectureService.getAll(id)
+        lectureService.getAll(id, skip)
             .then(lectureResult => {
                 setLectures(lectureResult.data);
             });
+
+            setSkip(prevSkip => prevSkip + 6)
     }, []);
 
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -43,6 +46,15 @@ export default function CourseDetails() {
         color: '#f00'
     };
 
+    function onGetNextLectures(){
+        lectureService.getAll(id, skip)
+        .then(lectureResult => {
+            setLectures(prevLectures => [...prevLectures, ...lectureResult.data] );
+        });
+
+        setSkip(prevSkip => prevSkip + 6)
+    }
+
     function openModal(childElement) {
         setChildModal(childElement);
         setIsOpen(true);
@@ -62,8 +74,6 @@ export default function CourseDetails() {
                 setCourse(course.data);
             })
     }, [id]);
-
-    console.log(course)
 
     return (
         <div className={css.background}>
@@ -96,13 +106,13 @@ export default function CourseDetails() {
                 </div>
                 <div className={css.rightPart}>
                     <div className={css.lectureList} >
-                        <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} />) }}>Add Lecture</button>
+                        <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} skip = {skip} setSkip ={setSkip}/>)}}>Add Lecture</button>
                         <h1 className={css.lecturesHeading}>Lectures</h1>
                         <ul className={css.ulLectures}>
                             {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
                             <img src="Line 396.png" className={css.google} alt="" />
                         </ul>
-                        <button className={css.btnViewMore}>View More</button>
+                        <button className={css.btnViewMore} onClick={onGetNextLectures}>View More</button>
                     </div>
                     <Modal
                         style={subtitle}

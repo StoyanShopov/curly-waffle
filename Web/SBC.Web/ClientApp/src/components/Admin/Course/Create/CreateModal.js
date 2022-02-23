@@ -16,6 +16,10 @@ const CreateCourse = (props) => {
                     props.closeModal();
                     props.setCourses([...props.courses, response.data]);
                 }
+            }
+            ).finally(() =>{
+                props.setSkip(prevSkip => prevSkip + 1)
+                console.log(props.skip)
             })
     }
 
