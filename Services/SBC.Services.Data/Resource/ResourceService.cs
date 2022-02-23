@@ -23,7 +23,7 @@
         this.resources = resources;
     }
 
-    public async Task<Result> CreateAsync(CreateResourceServiceModel resourceModel)
+    public async Task<Result> CreateAsync(CreateResourceInputModel resourceModel)
     {
         var resource = await this.resources
             .All()
@@ -68,7 +68,7 @@
         return true;
     }
 
-    public async Task<Result> EditAsync(EditResourceServiceModel resourceModel)
+    public async Task<Result> EditAsync(EditResourceInputModel resourceModel)
     {
         var resource = await this.resources
             .All()
@@ -90,17 +90,18 @@
         return true;
     }
 
-    public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-        => await this.resources
-            .AllAsNoTracking()
-            .To<TModel>()
-            .ToListAsync();
+    public async Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id)
+              => await this.resources
+                  .AllAsNoTracking()
+                   .Where(c => c.LectureId == id)
+                  .To<TModel>()
+                  .ToListAsync();
 
     public async Task<TModel> GetByIdAsync<TModel>(string id)
-        => await this.resources
-            .AllAsNoTracking()
-            .Where(c => c.Id == id)
-            .To<TModel>()
-            .FirstOrDefaultAsync();
-}
+            => await this.resources
+                .AllAsNoTracking()
+                .Where(c => c.Id == id)
+                .To<TModel>()
+                .FirstOrDefaultAsync();
+    }
 }
