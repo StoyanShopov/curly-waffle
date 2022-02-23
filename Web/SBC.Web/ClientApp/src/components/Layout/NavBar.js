@@ -35,6 +35,9 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
                         </li>
                         <li>
+                            <NavLink tag={Link} to="/invoice">Invoice</NavLink>
+                        </li>
+                        <li>
                             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
                         </li>
                         <li>
