@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { courseService } from "../../../../services/course.service.js";
-import CardCourse from '../CardCourse/CardCourse.js';
-import CreateModal from '../Create/CreateModal.js';
-import Modal from "react-modal/lib/components/Modal";
 
 import style from './AllCourses.module.css';
 
+import { courseService } from "../../../../services/course.service.js";
+
+import CardCourse from '../CardCourse/CardCourse.js';
+
+import CreateModal from '../Create/CreateModal.js';
+import Modal from "react-modal/lib/components/Modal";
 
 const AllCourses = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -62,7 +64,7 @@ const AllCourses = () => {
                 </div>
             </section>
             <section className={style.cardsSection}>
-                {courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} setCourses={setCourses} courses={courses}/>)}
+                {courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} setCourses={setCourses} courses={courses} />)}
 
                 <div className={style.buttonDiv}>
                     <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} courses={courses} setCourses={setCourses} />) }}>
@@ -82,5 +84,4 @@ const AllCourses = () => {
         </div >
     )
 }
-
 export default AllCourses;

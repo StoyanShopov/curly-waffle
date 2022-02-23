@@ -1,6 +1,6 @@
-import { courseService } from "../../../../services/course.service.js";
-
 import style from './CreateModal.module.css';
+
+import { courseService } from "../../../../services/course.service.js";
 
 const CreateCourse = (props) => {
 

@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+
+import css from "./CourseDetails.module.css";
+
 import { courseService } from "../../../../services/course.service.js";
 import { lectureService } from "../../../../services/lecture.service.js";
-import Modal from "react-modal/lib/components/Modal";
-import css from "./CourseDetails.module.css";
+
 import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
 import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
+
+import Modal from "react-modal/lib/components/Modal";
 
 export default function CourseDetails() {
     const { id } = useParams();
@@ -95,7 +99,7 @@ export default function CourseDetails() {
                         <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} />) }}>Add Lecture</button>
                         <h1 className={css.lecturesHeading}>Lectures</h1>
                         <ul className={css.ulLectures}>
-                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} description = {description} setDescription = {setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
+                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
                             <img src="Line 396.png" className={css.google} alt="" />
                         </ul>
                         <button className={css.btnViewMore}>View More</button>

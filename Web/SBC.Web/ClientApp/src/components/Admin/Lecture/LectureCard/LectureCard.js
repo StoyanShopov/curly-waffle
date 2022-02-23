@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import css from "./LectureCard.module.css"
+import style from "./LectureCard.module.css"
 
 import DeleteLecture from "../DeleteLecture/DeleteLecture"
 import EditLecture from "../EditLecture/EditLecture"
@@ -14,7 +14,7 @@ export default function LectureCard(props) {
 
     const onLectureHandler = (e) => {
         if (e.target.tagName === 'H3') {
-            let isVisible = e.currentTarget.children[1].style.display === 'block';           
+            let isVisible = e.currentTarget.children[1].style.display === 'block';
             e.currentTarget.children[1].style.display = isVisible ? 'none' : 'block';
             props.setDescription(lecture.description)
         }
@@ -22,13 +22,13 @@ export default function LectureCard(props) {
 
     return (
         <div onClick={onLectureHandler}>
-            <div className={css.btnsDiv}>
-                <h3 className={css.lectureTitle} >{props.index + 1}. {lecture.name}</h3>
-                <button className={css.btnDelete} onClick={() => { props.openModal(<DeleteLecture closeModal={props.closeModal} lecture={props.lecture} lectures={props.lectures} setLectures={props.setLectures} />) }
+            <div className={style.btnsDiv}>
+                <h3 className={style.lectureTitle} >{props.index + 1}. {lecture.name}</h3>
+                <button className={style.btnDelete} onClick={() => { props.openModal(<DeleteLecture closeModal={props.closeModal} lecture={props.lecture} lectures={props.lectures} setLectures={props.setLectures} />) }
                 }>Delete</button>
-                <button className={css.btnEdit} onClick={() => { props.openModal(<EditLecture closeModal={props.closeModal} lectureId={lecture.id} setLectureCard={setLectureDemo} />) }} >Edit</button>
+                <button className={style.btnEdit} onClick={() => { props.openModal(<EditLecture closeModal={props.closeModal} lectureId={lecture.id} setLectureCard={setLectureDemo} />) }} >Edit</button>
             </div>
-            <div className={css.resourseDiv}>
+            <div className={style.resourseDiv}>
                 {<ResourceCard />}
                 {<ResourceCard />}
             </div>
