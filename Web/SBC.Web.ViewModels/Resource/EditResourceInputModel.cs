@@ -3,7 +3,7 @@ namespace SBC.Services.Data.Resource.Models
 {
     using SBC.Data.Models;
 
-    public class EditResourceServiceModel
+    public class EditResourceInputModel
     {
         public string Id { get; set; }
 
