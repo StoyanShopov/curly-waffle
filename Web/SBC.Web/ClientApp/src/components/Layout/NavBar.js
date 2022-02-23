@@ -38,7 +38,7 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
                         </li>
                         <li>
-                            <NavLink tag={Link} to="/activeCourses">Active Coaches</NavLink>
+                            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
                         </li>
                         <li>
                             <a href="/docs">Swagger</a>

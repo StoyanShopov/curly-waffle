@@ -31,7 +31,7 @@ export default function OwnerEmployees(prop) {
         <>
             <Sidebar />
             <div className={css.container}>
-                <table className={css.table}>
+                <table className={css.tableContainer}>
                     <thead>
                         <tr>
                             <th className={css.firstTh}>Employees (64)</th>

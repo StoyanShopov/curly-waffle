@@ -3,7 +3,6 @@
     height: 100%;
     display: flex;
     position: relative;
-   
 }
 
 .leftHalf {
@@ -46,8 +45,7 @@
     border-color: #296CFB;
     font-size: 22px;
     color: white;
-    text-decoration: none;
-    font-style: Montserrat;
+    text-decoration: none;  
     font-weight: bold;
     cursor: pointer;
 }
@@ -97,7 +95,7 @@
     height: 70px;
     background-color: #296CFB;
     border-color: #296CFB;
-    margin-left: 535px;
+    margin-left: 35%;
     color: white;
     font-family: Montserrat;
     font-size: 22px;
@@ -110,9 +108,7 @@
 }
 
 .hTwo {
-    /*padding-left: 20%;*/
     font-size: 60px;
-    font-style: Montserrat;
     font-weight: bold;
 }
 
@@ -123,8 +119,6 @@
 
 .pTwo {
     font-size: 22px;
-    /* padding-left: 20%;*/
-    font-style: Montserrat;
     width: 617px;
     line-height: 42px;
     text-align: right;
@@ -141,7 +135,6 @@
     font-size: 22px;
     color: white;
     text-decoration: none;
-    font-style: Montserrat;
     font-weight: bold;
     cursor: pointer;
 }
@@ -156,15 +149,13 @@
     font-size: 22px;
     color: #296CFB;
     text-decoration: none;
-    font-style: Montserrat;
     font-weight: bold;
     cursor: pointer;
 }
 
 .picDiv {
     position: absolute;
-    left: 985px;
-    height: 100%;
+    left: 54%;
 }
 
 .path7 {

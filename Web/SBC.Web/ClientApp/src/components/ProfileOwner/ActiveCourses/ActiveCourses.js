@@ -136,7 +136,7 @@ export default function ActiveCourses(prop) {
                         left: '50%',
                         right: 'auto',
                         width: '30%',
-                        height: '35%',
+                        height: '40%',
                         bottom: 'auto',
                         transform: 'translate(-50%, -50%)',
                         padding: '0px',
