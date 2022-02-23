@@ -5,8 +5,8 @@ import styles from "./Sidebar.module.css";
 
 export default function Sidebar(prop) {
     return (
-        <div className={styles.container}>
 
+        <div className={styles.container}>
             <NavLink to="/profileOwner" className={styles.pencilLink}>
                 <img src="assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
             </NavLink>

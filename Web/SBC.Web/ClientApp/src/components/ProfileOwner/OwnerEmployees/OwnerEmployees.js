@@ -25,7 +25,7 @@ export default function OwnerEmployees(prop) {
         setClients(prevPortions => {
             return [client, ...prevPortions];
         });
-    }   
+    }
 
     return (
         <>
@@ -66,8 +66,6 @@ export default function OwnerEmployees(prop) {
                     </tbody>
                 </table>
             </div>
-
-
             <Modal
                 style={{
                     content: {

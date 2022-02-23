@@ -22,7 +22,6 @@ export default function Invoice(prop) {
                     </section>
                 </div>
             </div >
-
             <div className={css.containerT}>
                 <table className={css.tableContainer}>
                     <thead>

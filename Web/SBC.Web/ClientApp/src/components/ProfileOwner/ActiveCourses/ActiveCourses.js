@@ -128,7 +128,6 @@ export default function ActiveCourses(prop) {
                     </div>
                 </div>
             </div>
-
             <Modal
                 style={{
                     content: {

@@ -1,9 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .container {
     margin: 0 auto;
     width: 100%;
-   
+    position: relative;
+}
+
+.headContainer {
+    background-color: #EAF0FF;
+    font-size: 16px;
+    height: 240px;
+}
+
+.bookImage {
+    width: 5%;
+}
+
+.book {
+    left: 900px;
+    top: 28px;
     position: relative;
 }
 
@@ -14,7 +27,7 @@
     row-gap: 1rem;
     align-items: center;
     gap: 88px 116px;
-    padding-top: 10%;
+    padding-top: 2.6%;
     padding-left: 11%;
 }
 

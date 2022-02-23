@@ -42,10 +42,7 @@ export default function ModalAddEmployee(props) {
                         <Link to="" className={styles.closeBtn} onClick={props.handleClose} >X</Link>
                     </div>
                     <div className={styles.modalContented}>
-                        <form
-                            className={styles.formMain}
-                            onSubmit={submitHandler}
-                        >
+                        <form className={styles.formMain} onSubmit={submitHandler}>
                             <div className={styles.formGroup, styles.field}>
                                 <input
                                     type="text"

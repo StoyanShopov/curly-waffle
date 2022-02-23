@@ -9,7 +9,7 @@ const NavBar = () => {
     console.log(location)
 
     return (
-        <header>
+        <header className={styles.headerC}>
             <div className={styles.headerContainer}>
                 < div className={styles.logoContainer}>
                     <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />

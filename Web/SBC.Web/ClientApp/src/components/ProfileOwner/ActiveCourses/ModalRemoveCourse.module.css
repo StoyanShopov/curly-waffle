@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
-
-.body {
+﻿.body {
     font-family: "Montserrat", sans-serif;
     align-items: center;
     margin: 0;
@@ -23,7 +21,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-   /* padding-left: 38%;*/
 }
 
 .modalTitle {

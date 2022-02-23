@@ -1,25 +1,26 @@
 .container {
     position: relative;
     justify-content: center;
-    /*top: 160px;*/
-    
     width: 1320px;
-    height: 1096px;
- 
+    height: 1096px; 
     opacity: 1;
 }
+
 .picDiv{
     position: absolute;
    
 }
+
 .signupFigure{
     position: absolute;
 }
+
 .Man{ 
     position: absolute;  
     top: 200px;
     left: 100px;
 }
+
 .ulForSignup {
     list-style-type: none;
     margin: 0;
@@ -28,6 +29,7 @@
     top: 400px;
     left: 1500px;
   }
+
 .ButtonForSignUp
 {
     position: absolute;  
@@ -48,6 +50,7 @@
     font-size: 23px;
     border: 3px solid #296CFB;
 }
+
 .have
 {
     position: absolute;  
@@ -63,12 +66,12 @@
     color:#296CFB;
     font-size: 27px;
 }
+
 .login
 {
     font-weight: bold;
     color:#296CFB;
-    font: bold 27px Arial, Helvetica, sans-serif;;
-   
+    font: bold 27px Arial, Helvetica, sans-serif;   
     letter-spacing: 1px;
     opacity: 1;
     position: absolute;  

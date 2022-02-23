@@ -29,7 +29,15 @@ export default function ActiveCourses(prop) {
     return (
         <>
             <div className={styles.container}>
-
+                <div className={styles.headContainer}>
+                    <div className={styles.bookImage}>
+                        <img
+                            className={styles.book}
+                            src="assets/images/Group 23.svg"
+                            alt=""
+                        />
+                    </div>
+                </div>
                 <div className={styles.cardscontainer}>
                     <div className={styles.card}>
                         <div>
@@ -53,7 +61,6 @@ export default function ActiveCourses(prop) {
                             </div>
                         </div>
                     </div>
-
                     <div className={styles.card}>
                         <div>
                             <img
@@ -247,7 +254,6 @@ export default function ActiveCourses(prop) {
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
                 </div>
             </div>
-
             <Modal
                 style={{
                     content: {

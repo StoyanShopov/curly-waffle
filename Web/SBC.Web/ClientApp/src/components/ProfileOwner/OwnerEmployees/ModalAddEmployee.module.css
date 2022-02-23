@@ -1,6 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
-
-.body {
+﻿.body {
     font-family: "Montserrat", sans-serif;
     align-items: center;
     margin: 0;
@@ -96,7 +94,7 @@
     padding-bottom: 6%;
 }
 
-::placeholder {
+.formMain ::placeholder {
     font-family: "Montserrat", sans-serif;
     color: #296CFB;
     font-weight: 500;

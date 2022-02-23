@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .containerH {
     position: relative;
     justify-content: center;
     width: 24%;
     left: 26%;
-    top: 75px;
+    top: 72px;
     height: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -17,7 +15,7 @@
     flex-direction: column;
     width: 1080px;
     font-weight: bold;
-    margin-bottom: 75px;
+    margin-bottom: 64px;
 }
 
 .dashboardHeader {
@@ -51,7 +49,7 @@
         }
 
         .dashboardHeader span:nth-child(2) {
-            font-size: 55px;
+            font-size: 50px;
             line-height: 90px;
         }
 
@@ -63,7 +61,7 @@
     width: 1035px;
 }
 
-.tableContainer table{
+.tableContainer table {
     width: 1035px;
     border-collapse: collapse;
     font-size: 22px;
@@ -151,12 +149,7 @@
         font-weight: bold;
     }
 
-/*.tableContainer td {
-    color: #000000;
-    font-weight: normal;
-}*/
-
-#flex {
+#flexViewMore {
     display: flex;
     justify-content: center;
     border: none;
@@ -167,8 +160,9 @@
     position: relative;
     justify-content: center;
     left: 26%;
-    top: 75px;
+    top: 138px;
     width: 1035px;
+    margin-bottom: 30px;
 }
 
     .containerC thead {

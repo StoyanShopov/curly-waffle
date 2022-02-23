@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer>
             <div className={styles.footerContainer}>
-                <div>                   
+                <div>
                     <div className={styles.trapezoid}>
                         <div className={styles.flex}>
                             <ul className={styles.firstColumn}>

@@ -14,7 +14,7 @@ export default function Main() {
                 </div>
                 <p className={css.pDemo}>Request a Demo</p>
                 <p className={css.pRequestDemo}>Don’t find what you are looking for? We would be more than happy to help you and assist you in everything you need! Let us know about your personal requirements by filling our request form:</p>
-                <form>
+                <form className={css.inputForm}>
                     <div>
                         <input className={css.inputBase} placeholder='Name*'></input>
                         <input className={css.inputOne} placeholder='Company Name*'></input>
