@@ -27,8 +27,7 @@
     using SBC.Services.Data;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Company.Contracts;
-    using SBC.Services.Data.Course.Contracts;
-    using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Course;
     using SBC.Services.Data.Lecture;
     using SBC.Services.Data.Resource;
     using SBC.Services.Data.Resource.Contracts;

@@ -18,7 +18,7 @@ const CardCourse = (props) => {
         <div className={style.card}>
             <div className={style.imageCourse}>
                 <img className={style.cardImage} src="./Rectangle 1221.png" alt="" />
-                <Link to={`/details/${course.id}`}><h2 className={style.courseName}>Course name</h2></Link>
+                <Link to={`/details/${course.id}`}><h2 className={style.courseName}>{course.title}</h2></Link>
                 <button className={style.pencil} onClick={() => { props.openModal(<EditCourse closeModal={props.closeModal} courseId={course.id} setCourse={setCourseDemo} />) }}>
                     <img src="./Group 81.svg" alt="" />
                 </button>

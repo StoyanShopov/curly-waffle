@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Course\Models\" />
+    <Folder Include="Lecture\Models\" />
   </ItemGroup>
 
 </Project>
