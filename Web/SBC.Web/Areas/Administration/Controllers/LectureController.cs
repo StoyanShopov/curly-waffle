@@ -4,9 +4,8 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Lecture.Contracts;
-    using SBC.Services.Data.Lecture.Models;
-    using SBC.Web.ViewModels;
+    using SBC.Services.Data.Lecture;
+    using SBC.Web.ViewModels.Administration.Lecture;
 
     public class LectureController : AdministrationController
     {
@@ -35,15 +34,15 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(CreateLectureServiceModel lectureModel)
+        public async Task<ActionResult> Post(CreateLectureInputModel lectureModel)
         {
             var result = await this.lectureService.CreateAsync(lectureModel);
-            ;
+
             return this.GenericResponse(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, EditLectureServiceModel lectureModel)
+        public async Task<ActionResult> Put(string id, EditLectureInputModel lectureModel)
         {
             var result = await this.lectureService.EditAsync(id, lectureModel);
 

@@ -4,13 +4,11 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
-
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -27,14 +25,13 @@
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
     using SBC.Services.Data;
+    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.Course.Contracts;
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Lecture;
-    using SBC.Services.Data.Lecture.Contracts;
     using SBC.Services.Data.Resource;
     using SBC.Services.Data.Resource.Contracts;
-    using SBC.Services.Data.Company;
-    using SBC.Services.Data.Company.Contracts;
     using SBC.Services.Data.User;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
