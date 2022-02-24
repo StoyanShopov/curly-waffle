@@ -14,7 +14,7 @@
 
         Task<Result> CreateAsync(CreateResourceInputModel resourceModel);
 
-        Task<Result> EditAsync(EditResourceInputModel resourceModel);
+        Task<Result> EditAsync(string id, EditResourceInputModel resourceModel);
 
         Task<Result> DeleteByIdAsync(string id);
     }

@@ -42,10 +42,10 @@
         return this.GenericResponse(result);
     }
 
-    [HttpPut]
-    public async Task<ActionResult> Put(EditResourceInputModel resourceModel)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> Put(string id, EditResourceInputModel resourceModel)
     {
-        var result = await this.resourceService.EditAsync(resourceModel);
+        var result = await this.resourceService.EditAsync(id, resourceModel);
 
         return this.GenericResponse(result);
     }

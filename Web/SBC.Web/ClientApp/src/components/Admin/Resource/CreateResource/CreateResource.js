@@ -1,26 +1,37 @@
-import style from "./CreateResource.module.css"
+import css from "./CreateResource.module.css"
+import { resourceService } from "../../../../services/resource.service";
 
-function CreateResource({ closeModal }) {
+
+function CreateResource(props) {
+    const onResourceCreate = (e) => {
+        e.preventDefault();
+
+        let resourceData = Object.fromEntries(new FormData(e.currentTarget));
+        resourceData.lectureId = props.lectureId;
+
+        resourceService
+            .create(resourceData)
+            .then((response) => {
+                if (response.status === 200) {
+                    props.closeModal();
+                    props.setResources([...props.resources, response.data]);
+                }
+            })
+    }
     return (
-        <section className={style.section}>
-            <div className={style.container}>
-                <form>
+        <section className={css.section}>
+            <div className={css.container}>
+                <form onSubmit={onResourceCreate} method="POST">
                     <div>
-                        <button className={style.btnClose} onClick={() => { closeModal(false) }}>X</button>
-                        <p className={style.p}>Add Resource</p>
+                        <button className={css.btnClose} onClick={() => { props.closeModal() }}>X</button>
+                        <p className={css.p}>Add Resource</p>
                     </div>
                     <div>
-                        <input className={style.imput} required="required" name="Name" placeholder="Name*"></input>
-                        <input className={style.imput} required="required" name="Fileurl" placeholder="FileUrl*"></input>
-                        <input className={style.imput} required="required" name="Size" placeholder="Size*"></input>
-                        <select className={style.imput} name="Select" >
-                            <option value="One">One</option>
-                            <option value="Two">Two</option>
-                            <option value="Three">Three</option>
-                        </select>
-                        <input className={style.imput} required="required" name="LectureId" placeholder="LectureId*"></input>
-                        <button className={style.btnCancel} onClick={() => { closeModal(false) }}>Cancel</button>
-                        <input type="submit" value="Add" className={style.btnSubmit} />
+                        <input type="text" className={css.input} required="required" name="Name" placeholder="Name*"></input>
+                        <input type="text" className={css.input} required="required" name="Fileurl" placeholder="FileUrl*"></input>
+                        <input type="number" className={css.input} required="required" name="Size" placeholder="Size*"></input>
+                        <button className={css.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
+                        <input type="submit" value="Add" className={css.btnSubmit} />
                     </div>
                 </form>
             </div>
