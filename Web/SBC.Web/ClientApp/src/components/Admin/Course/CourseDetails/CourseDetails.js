@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-import css from "./CourseDetails.module.css";
+import style from "./CourseDetails.module.css";
 
 import { courseService } from "../../../../services/course.service.js";
 import { lectureService } from "../../../../services/lecture.service.js";
@@ -84,43 +84,43 @@ export default function CourseDetails() {
     }, [id]);
 
     return (
-        <div className={css.background}>
-            <section className={css.container}>
-                <div className={css.leftPart}>
-                    <h1 className={css.marketingHeading}>{course.title}</h1>
+        <div className={style.background}>
+            <section className={style.container}>
+                <div className={style.leftPart}>
+                    <h1 className={style.marketingHeading}>{course.title}</h1>
                     <div>
                         <img src="/Rectangle 1396.svg" alt="" />
                     </div>
-                    <div className={css.controllsDiv}>
-                        <img src="Polygon 5.svg" className={css.play} alt="" />
-                        <img src="iconmonstr-audio-21.svg" className={css.audio} alt="" />
-                        <img src="023016 - 024623.svg" className={css.time} alt="" />
-                        <img src="iconmonstr-gear-1.svg" className={css.options} alt="" />
-                        <img src="iconmonstr-fullscreen-2.svg" className={css.fullScreen} alt="" />
+                    <div className={style.controllsDiv}>
+                        <img src="Polygon 5.svg" className={style.play} alt="" />
+                        <img src="iconmonstr-audio-21.svg" className={style.audio} alt="" />
+                        <img src="023016 - 024623.svg" className={style.time} alt="" />
+                        <img src="iconmonstr-gear-1.svg" className={style.options} alt="" />
+                        <img src="iconmonstr-fullscreen-2.svg" className={style.fullScreen} alt="" />
                     </div>
-                    <h2 className={css.descriptionHeading}>Lecture Description</h2>
-                    <p className={css.pDescription}>{description === "" ? "" : description}</p>
-                    <h2 className={css.instructorHeading}>Instructor</h2>
-                    <section className={css.lectorSection}>
+                    <h2 className={style.descriptionHeading}>Lecture Description</h2>
+                    <p className={style.pDescription}>{description === "" ? "" : description}</p>
+                    <h2 className={style.instructorHeading}>Instructor</h2>
+                    <section className={style.lectorSection}>
                         <div>
-                            <div className={css.lectorPic}></div>
+                            <div className={style.lectorPic}></div>
                         </div>
                         <div>
-                            <p className={css.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
-                            <img src="image 30.png" className={css.google} alt="" />
+                            <p className={style.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
+                            <img src="image 30.png" className={style.google} alt="" />
                         </div>
                     </section>
-                    <p className={css.pInstructor}>{course.coachDescription}</p>
+                    <p className={style.pInstructor}>{course.coachDescription}</p>
                 </div>
-                <div className={css.rightPart}>
-                    <div className={css.lectureList} >
-                        <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={showLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
-                        <h1 className={css.lecturesHeading}>Lectures</h1>
-                        <ul className={css.ulLectures}>
+                <div className={style.rightPart}>
+                    <div className={style.lectureList} >
+                        <button className={style.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={showLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
+                        <h1 className={style.lecturesHeading}>Lectures</h1>
+                        <ul className={style.ulLectures}>
                             {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={showLectures} lectures={lectures} lecture={x} index={i} />)}
-                            <img src="Line 396.png" className={css.google} alt="" />
+                            <img src="Line 396.png" className={style.google} alt="" />
                         </ul>
-                        <button className={css.btnViewMore} onClick={onGetNextLectures}>View More</button>
+                        <button className={style.btnViewMore} onClick={onGetNextLectures}>View More</button>
                     </div>
                     <Modal
                         style={subtitle}

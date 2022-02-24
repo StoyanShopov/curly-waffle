@@ -11,7 +11,7 @@ const EditCourse = (props) => {
     useEffect(() => {
         courseService.getById(courseId)
             .then(course => {
-                setCourse(course.data);
+                setCourse(course.data); 
                 console.log(this.course)
             })
             
