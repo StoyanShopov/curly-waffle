@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import styles from "./CourseCatalog.module.css";
 import Modal from 'react-modal';
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
-
+import { CategoriesList } from "./CategoriesList";
+import { LanguagesList } from "./LanguagesList";
 
 export default function CourseCatalog(prop) {
     const [showModal, setShowModal] = useState(false);
@@ -26,18 +27,79 @@ export default function CourseCatalog(prop) {
         });
     }
 
+
+
     return (
         <>
             <div className={styles.container}>
+
+
                 <div className={styles.headContainer}>
-                    <div className={styles.bookImage}>
-                        <img className={styles.book} src="assets/images/Group 23.svg" alt=""/>
+
+                    <div className={styles.categoryContainer}>
+                        <h3 className={styles.categoryHeader}>Category</h3>
+                        <ul className={styles.categoryList}>
+                            {CategoriesList.map(({ name }, index) => {
+                                return (
+                                    <li key={index}>
+                                        <div className="toppings-list-item">
+                                            <div className="left-section">
+                                                <input
+                                                    type="checkbox"
+                                                    id={`custom-checkbox-${index}`}
+                                                    name={name}
+                                                    value={name}
+                                                />
+                                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                );
+                            })}
+
+                        </ul>
                     </div>
+                    <div className={styles.lineContainer}>
+                    </div>
+
+                    <div className={styles.categoryContainer}>
+                        <h3 className={styles.categoryHeader}>Languages</h3>
+                        <ul className={styles.categoryList}>
+                            {LanguagesList.map(({ name }, index) => {
+                                return (
+                                    <li key={index}>
+                                        <div className="toppings-list-item">
+                                            <div className="left-section">
+                                                <input
+                                                    type="checkbox"
+                                                    id={`custom-checkbox-${index}`}
+                                                    name={name}
+                                                    value={name}
+                                                />
+                                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                );
+                            })}
+
+                        </ul>
+                    </div>
+
+                    <div className={styles.imageC}>
+                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />
+                    </div>
+
+
                 </div>
+
+
+
+
                 <div className={styles.cardscontainer}>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -55,7 +117,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -73,7 +135,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -91,7 +153,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -109,7 +171,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -127,7 +189,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1240.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1240.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -145,7 +207,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1269.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1269.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -163,7 +225,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1270.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1270.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -181,7 +243,7 @@ export default function CourseCatalog(prop) {
                     </div>
                     <div className={styles.card}>
                         <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1281.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1281.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
