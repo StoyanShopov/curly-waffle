@@ -117,7 +117,7 @@ export default function CourseDetails() {
                         <button className={style.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={showLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
                         <h1 className={style.lecturesHeading}>Lectures</h1>
                         <ul className={style.ulLectures}>
-                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={showLectures} lectures={lectures} lecture={x} index={i} />)}
+                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
                             <img src="Line 396.png" className={style.google} alt="" />
                         </ul>
                         <button className={style.btnViewMore} onClick={onGetNextLectures}>View More</button>
