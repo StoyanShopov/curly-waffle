@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Profile.Contracts
+﻿namespace SBC.Services.Data.Profile
 {
     using System.Threading.Tasks;
 

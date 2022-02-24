@@ -9,7 +9,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Data.User.Models;
     using SBC.Services.Identity.Contracts;
@@ -19,14 +19,14 @@
     public class UserService : IUserService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companyService;
         private readonly IIdentityService identityService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public UserService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            ICompanyService companyService,
+            ICompaniesService companyService,
             IIdentityService identityService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)

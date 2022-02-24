@@ -9,7 +9,6 @@
     using SBC.Services.Data.Admin.Models;
     using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Profile;
-    using SBC.Services.Data.Profile.Contracts;
 
     public class ProfileController : AdministrationController
     {
@@ -22,10 +21,18 @@
 
         [HttpGet]
         public async Task<ActionResult> Get()
-            => this.GenericResponse(await this.profileService.GetAdminData(this.User.Id()));
+        {
+            var result = await this.profileService.GetAdminData(this.User.Id());
+
+            return this.GenericResponse(result);
+        }
 
         [HttpPut]
         public async Task<ActionResult> Edit(EditProfileServiceModel model)
-            => this.GenericResponse(await this.profileService.Edit(model, this.User.Id()));
+        {
+            var result = await this.profileService.Edit(model, this.User.Id());
+
+            return this.GenericResponse(result);
+        }
     }
 }

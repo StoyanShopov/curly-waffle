@@ -12,19 +12,19 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Admin.Contracts;
-    using SBC.Services.Data.Coach.Contracts;
-    using SBC.Services.Data.Company.Contracts;
-    using SBC.Services.Data.Course.Contracts;
+    using SBC.Services.Data.Coach;
+    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Course;
     using SBC.Web.ViewModels;
     using SBC.Web.ViewModels.Administration.Dashboard;
 
     public class DashboardService : IDasboardService
     {
-        private readonly ICompanyService companyService;
-        private readonly ICourseService courseService;
-        private readonly ICoachService coachService;
+        private readonly ICompaniesService companyService;
+        private readonly ICoursesService courseService;
+        private readonly ICoachesService coachService;
 
-        public DashboardService(ICompanyService companyService, ICourseService courseService, ICoachService coachService)
+        public DashboardService(ICompaniesService companyService, ICoursesService courseService, ICoachesService coachService)
         {
             this.coachService = coachService;
             this.courseService = courseService;

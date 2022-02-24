@@ -1,11 +1,10 @@
-﻿namespace SBC.Services.Data.Coach.Contracts
+﻿namespace SBC.Services.Data.Course
 {
-    using System;
     using System.Threading.Tasks;
 
     using SBC.Common;
 
-    public interface ICoachService
+    public interface ICoursesService
     {
         Task<Result> GetCount();
     }

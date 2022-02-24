@@ -2,12 +2,12 @@
 {
     using System.Net;
     using System.Threading.Tasks;
-
+    using AutoMapper;
     using Microsoft.AspNetCore.Identity;
     using SBC.Common;
     using SBC.Data.Models;
     using SBC.Services.Data.Admin.Models;
-    using SBC.Services.Data.Profile.Contracts;
+    using SBC.Services.Data.Profile;
     using SBC.Web.ViewModels.Administration;
 
     public class ProfileService : IProfileService
@@ -53,17 +53,30 @@
 
             if (user == null)
             {
+                //TODO => error constant
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
             else
             {
-                return new ResultModel(new AdminViewModel
+                var configuration = new MapperConfiguration(cfg =>
                 {
-                    Fullname = user.FirstName + " " + user.LastName,
-                    ProfileSummary = user.ProfileSummary,
-                    PhotoUrl = user.PhotoUrl,
-                    Email = user.Email,
-                });
+                    cfg.CreateMap<ApplicationUser, AdminViewModel>()
+                    .ForMember(c => c.Fullname, cfg => cfg.MapFrom(c => c.FirstName +' ' + c.LastName));
+                }
+                );
+                var mapper = configuration.CreateMapper();
+                var result = new ResultModel(
+                   mapper.Map<AdminViewModel>(user)
+                // new AdminViewModel
+                //{
+                //    Fullname = user.FirstName + " " + user.LastName,
+                //    ProfileSummary = user.ProfileSummary,
+                //    PhotoUrl = user.PhotoUrl,
+                //    Email = user.Email,
+                //}
+                 ) ;
+
+                return result;
             }
         }
     }

@@ -15,6 +15,11 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Dasboard() => this.GenericResponse(await this.profileService.GetDashboard());
+        public async Task<ActionResult> Dasboard()
+        {
+            var result = await this.profileService.GetDashboard();
+
+            return this.GenericResponse(result);
+        }
     }
 }

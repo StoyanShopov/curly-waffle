@@ -11,7 +11,7 @@
     using SBC.Data.Models;
     using SBC.Services.Data.Client.Contracts;
     using SBC.Services.Data.Client.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
@@ -23,14 +23,14 @@
         private const int TakeDefaultValue = 3;
 
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companyService;
         private readonly IUserService userService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public ClientService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            ICompanyService companyService,
+            ICompaniesService companyService,
             IUserService userService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)

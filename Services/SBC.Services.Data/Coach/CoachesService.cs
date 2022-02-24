@@ -9,13 +9,13 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach.Contracts;
+    using SBC.Services.Data.Coach;
 
-    public class CoachService : ICoachService
+    public class CoachesService : ICoachesService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
 
-        public CoachService(IDeletableEntityRepository<Coach> coachRepository) => this.coachRepository = coachRepository;
+        public CoachesService(IDeletableEntityRepository<Coach> coachRepository) => this.coachRepository = coachRepository;
 
         public async Task<Result> GetCount() => new ResultModel(await this.coachRepository.AllAsNoTracking().CountAsync());
     }

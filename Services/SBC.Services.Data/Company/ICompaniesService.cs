@@ -1,11 +1,11 @@
-﻿namespace SBC.Services.Data.Company.Contracts
+﻿namespace SBC.Services.Data.Company
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Company;
 
-    public interface ICompanyService
+    public interface ICompaniesService
     {
         Task<Result> AddAsync(AddRequestModel model);
 

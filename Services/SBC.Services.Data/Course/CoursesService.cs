@@ -9,13 +9,14 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Course.Contracts;
+    using SBC.Services.Data.Course;
 
-    public class CourseService : ICourseService
+    public class CoursesService : ICoursesService
     {
         private readonly IDeletableEntityRepository<Course> courseRepository;
 
-        public CourseService(IDeletableEntityRepository<Course> courseRepository)
+
+        public CoursesService(IDeletableEntityRepository<Course> courseRepository)
         {
             this.courseRepository = courseRepository;
         }

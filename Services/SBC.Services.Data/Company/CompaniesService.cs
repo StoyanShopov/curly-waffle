@@ -9,17 +9,17 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Company;
     using SBC.Web.ViewModels.Administration.Company;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    public class CompanyService : ICompanyService
+    public class CompaniesService : ICompaniesService
     {
         private readonly IDeletableEntityRepository<Company> companyRepository;
         private readonly RoleManager<ApplicationRole> roleManager;
 
-        public CompanyService(
+        public CompaniesService(
             IDeletableEntityRepository<Company> companyRepository,
             RoleManager<ApplicationRole> roleManager)
         {

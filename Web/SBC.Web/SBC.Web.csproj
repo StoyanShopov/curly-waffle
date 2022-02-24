@@ -52,14 +52,17 @@
 
 	<ItemGroup>
 		<!-- Don't publish the SPA source files, but do show them in the project files list -->
+		<Compile Remove="Areas\Administration\Models\**" />
 		<Content Remove="$(SpaRoot)**" />
+		<Content Remove="Areas\Administration\Models\**" />
+		<EmbeddedResource Remove="Areas\Administration\Models\**" />
 		<None Remove="$(SpaRoot)**" />
+		<None Remove="Areas\Administration\Models\**" />
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 	</ItemGroup>
 
 
 	<ItemGroup>
-	  <Folder Include="Areas\Administration\Models\" />
 	  <Folder Include="ClientApp\src\components\Register\" />
 	  <Folder Include="Models\NewFolder\" />
 	</ItemGroup>
