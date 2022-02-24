@@ -20,6 +20,5 @@
         Task<Result> EditAsync(EditResourceInputModel resourceModel);
 
         Task<Result> DeleteByIdAsync(string id);
- 
     }
 }

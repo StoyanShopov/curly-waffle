@@ -12,8 +12,10 @@ const EditCourse = (props) => {
         courseService.getById(courseId)
             .then(course => {
                 setCourse(course.data);
+                console.log(this.course)
             })
-    }, [courseId]);
+            
+    }, []);
 
     const onCourseEdit = (e) => {
         e.preventDefault();
@@ -26,7 +28,7 @@ const EditCourse = (props) => {
                 if (response.status === 200) {
                     props.closeModal();
                     props.setCourse(response.data);
-                }
+                }           
             });
     }
 
