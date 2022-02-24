@@ -18,6 +18,7 @@ function CreateResource(props) {
                 }
             })
     }
+    
     return (
         <section className={css.section}>
             <div className={css.container}>
@@ -27,11 +28,12 @@ function CreateResource(props) {
                         <p className={css.p}>Add Resource</p>
                     </div>
                     <div>
-                        <input type="text" className={css.input} required="required" name="Name" placeholder="Name*"></input>
-                        <input type="text" className={css.input} required="required" name="Fileurl" placeholder="FileUrl*"></input>
-                        <input type="number" className={css.input} required="required" name="Size" placeholder="Size*"></input>
+                        <input type="text" className={css.input} required="required" name="name" placeholder="Name*"></input>
+                        <input type="text" className={css.input} required="required" name="fileurl" placeholder="FileUrl*"></input>
+                        <input type="number" className={css.input} required="required" name="size" placeholder="Size*"></input>
+                        <input type="file" className={css.input} required="required" name="fileType" placeholder="FileType*"></input>
                         <button className={css.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
-                        <input type="submit" value="Add" className={css.btnSubmit} />
+                        <input type="submit" value="Submit" className={css.btnSubmit} />
                     </div>
                 </form>
             </div>
