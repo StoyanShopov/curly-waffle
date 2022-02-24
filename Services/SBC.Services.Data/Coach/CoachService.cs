@@ -46,6 +46,7 @@
                 VideoUrl = coach.VideoUrl,
                 PricePerSession = coach.PricePerSession,
                 CalendlyUrl = coach.CalendlyUrl,
+                ImageUrl = coach.ImageUrl,
             };
 
             await this.coachRepository.AddAsync(coachModel);
@@ -115,24 +116,24 @@
             return true;
         }
 
-        private async void AddCategories(CategoryImportId[] categories, int coachId)
+        private async void AddCategories(ICollection<CategoryImportId> categories, int coachId)
         {
             foreach (var category in categories)
             {
-                if (!this.ExistCategory(coachId, category.CategoryId))
+                if (!this.ExistCategory(coachId, category.Id))
                 {
-                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = category.CategoryId });
+                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = category.Id });
                 }
             }
         }
 
-        private async void AddLanguages(LanguageImportId[] languages, int coachId)
+        private async void AddLanguages(ICollection<LanguageImportId> languages, int coachId)
         {
             foreach (var language in languages)
             {
-                if (!this.ExistLanguage(coachId, language.LanguageId))
+                if (!this.ExistLanguage(coachId, language.Id))
                 {
-                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = language.LanguageId });
+                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = language.Id });
                 }
             }
         }

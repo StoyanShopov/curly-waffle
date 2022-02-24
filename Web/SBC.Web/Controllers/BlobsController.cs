@@ -36,7 +36,7 @@
                 return this.BadRequest();
             }
 
-            return this.StatusCode(201);
+            return this.GenericResponse(await this.blobService.UploadFileBlobAsync(file));
         }
 
         [HttpGet(DownloadBlobByNameRoute)]

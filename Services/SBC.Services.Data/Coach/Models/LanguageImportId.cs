@@ -4,7 +4,7 @@
 
     public class LanguageImportId
     {
-        [Range(1, int.MaxValue)]
-        public int LanguageId { get; set; }
+        //[Range(1, int.MaxValue)]
+        public int Id { get; set; }
     }
 }

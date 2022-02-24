@@ -5,6 +5,13 @@
     padding-top: 20%;
 }
 
+.languageOptions{
+    width: 405px;
+    border: 2px solid #296cfb;
+    margin: 23px auto 0 auto;
+    border-radius: 5px;
+}
+
 .addContainer {
     position: relative;
     float: left;
@@ -50,6 +57,7 @@ div.inputContainer{
     border: 2px solid;
     border-color: #296cfb;
     margin-top: 25px;
+    border-radius: 5px;
 }
 
 .inputFile{
@@ -199,7 +207,7 @@ input[type="file"] {
     position: absolute;
     color: #e84855;
     left: 37.7%;
-    top: 552px;
+    top: 681px;
 }
 
 .starVideoUrl{

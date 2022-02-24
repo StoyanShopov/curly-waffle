@@ -3,7 +3,7 @@ import { baseUrl } from '../constants';
 
 export const createCoach = async (data) => {
     try {
-        const resp = await axios.post(baseUrl + "api/Coaches", data, {
+        const resp = await axios.post(baseUrl + "api/Coach", data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -31,6 +31,14 @@ export const deleteCoachById = async (coachId) =>{
         console.log(resp);
     })
     return resp;
+}
+
+export const getLanguages = async () =>{
+    return await axios.get(baseUrl + 'api/Language/Languages');
+}
+
+export const getCategories = async () =>{
+    return await axios.get(baseUrl + 'api/Category/Categories');
 }
 
 export const uploadImage = async (file) => {

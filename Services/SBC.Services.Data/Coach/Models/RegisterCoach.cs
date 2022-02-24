@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Coach.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using SBC.Data.Models;
@@ -8,40 +9,42 @@
 
     public class RegisterCoach
     {
-        [Required]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
+        //[Required]
+        //[StringLength(MaxLengthName, MinimumLength = MinLengthName)]
+        //[RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string FirstName { get; set; }
 
-        [Required]
-        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
-        [RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
+        //[Required]
+        //[StringLength(MaxLengthName, MinimumLength = MinLengthName)]
+        //[RegularExpression(NameRegex, ErrorMessage = NameRegexMessage)]
         public string LastName { get; set; }
 
-        [Required]
-        [StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
+        //[Required]
+        //[StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
         public string Description { get; set; }
 
-        [Required]
-        [Url]
+        //[Required]
+        //[Url]
         public string VideoUrl { get; set; }
 
-        [Range(0, double.MaxValue)]
+        //[Range(0, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
-        [Required]
-        [Url]
+        //[Required]
+        //[Url]
         public string CalendlyUrl { get; set; }
 
-        [Required]
-        [Url]
+        public string Company { get; set; }
+
+        //[Required]
+        //[Url]
         public string ImageUrl { get; set; }
 
-        [MinLength(MinCountAdd)]
-        [MaxLength(MaxCountLanguages)]
+        //[MinLength(MinCountAdd)]
+        //[MaxLength(MaxCountLanguages)]
         public LanguageImportId[] Languages { get; set; }
 
-        [MinLength(MinCountAdd)]
+        //[MinLength(MinCountAdd)]
         public CategoryImportId[] Categories { get; set; }
-    }
+    }   
 }

@@ -6,13 +6,14 @@
     using Azure.Storage.Blobs;
 
     using Microsoft.AspNetCore.Http;
+    using SBC.Common;
     using SBC.Web.ViewModels.Blob;
 
     public interface IBlobService
     {
         Task<ICollection<BlobResponseModel>> GetAllBlobsAsync();
 
-        Task<string> UploadFileBlobAsync(IFormFile file);
+        Task<Result> UploadFileBlobAsync(IFormFile file);
 
         Task<bool> DeleteBlobByNameAsync(string blobName);
 

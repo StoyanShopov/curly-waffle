@@ -1,22 +1,67 @@
-import { useState } from "react";
-import { createCoach, uploadImage } from "../../services/adminCoachesService";
+import { useEffect, useState } from "react";
+import { createCoach, uploadImage, getLanguages, getCategories } from "../../services/adminCoachesService";
+import Select from 'react-select'
 
 import styles from "./CreateCoach.module.css";
 
 const CreateCoach = () => {
   const [languages, setLanguages] = useState([]);
+  const [languagesOptions, setLanugagesOptions] = useState()
+  const [categories, setCategories] = useState([])
+  const [categoriesOptions, setCategoriesOptions] = useState()
 
-  const onDeleteLanguage = (e) => {
-    const array = [...languages];
-    const index = array.indexOf(e.target.value);
-    array.splice(index, 1);
-    setLanguages(array);
+  useEffect(() => { 
+    getLanguages().then(res =>{
+      setLanugagesOptions(res.data.map(x=> ({
+        value: x.id,
+        label: x.name
+      })))
+    })
+    getCategories().then(res =>{
+      setCategoriesOptions(res.data.map(x=> ({
+        value: x.id,
+        label: x.name
+      })))
+    })
+  }, [])
+
+  const onChangeLanguages = (languagesOptions) => {
+    setLanguages(languagesOptions);
+  };
+ 
+  const onChangeCategories = (categoriesOptions) => {
+    setCategories(categoriesOptions);
   };
 
-  const onChangeAddLanguage = (e) => {
-    const arr = [...languages];
-    arr.push(e.target.value);
-    setLanguages(arr);
+  const selectStyles = {
+    multiValue: styles => {
+      return {
+        ...styles,
+        backgroundColor: "#296CFB",
+        borderRadius: 10,
+        color: '#ffffff'
+      };
+    },
+    multiValueLabel: (styles) => ({
+      ...styles,
+      color: '#ffffff',
+    }),
+    multiValueRemove: (styles) => ({
+      ...styles,
+      color: "white",
+      ':hover': {
+        color: 'red',
+      },
+    }),
+    placeholder: (styles) => {
+      return {
+        ...styles,
+        color: "#296CFB",
+        fontWeight: 420,
+        position: 'absolute',
+        paddingLeft: 20
+      }
+    }
   };
 
   const onSubmitAddCoach = async (e) => {
@@ -28,9 +73,11 @@ const CreateCoach = () => {
       {}
     );
 
+    const imageUrl = await uploadImage(data.imageUrl);
+    data.imageUrl = imageUrl;
+    data.languages = languages.map(x=> ({id : x.value}))
+    data.categories = categories.map(x=> ({id : x.value}))
     console.log(data);
-    const file = await uploadImage(data.file);
-    data.file = file;
 
     createCoach(data).then((response) => {
       console.log(response);
@@ -46,7 +93,7 @@ const CreateCoach = () => {
             <div className={styles.fileUpload}>
               <input
                 type="file"
-                name="file"
+                name="imageUrl"
                 className={styles.upload}
                 required
               />
@@ -125,7 +172,7 @@ const CreateCoach = () => {
             <div>
               <input
                 className={styles.inputField}
-                name="price"
+                name="pricePerSession"
                 placeholder="Price"
                 type="text"
                 required
@@ -153,6 +200,32 @@ const CreateCoach = () => {
               <span className={styles.starCalendlyUrl}>*</span>
             </div>
 
+            <div className={styles.languageOptions}>
+              <Select
+                options={languagesOptions}
+                isMulti
+                name="languages"
+                defaultInputValue=""
+                onChange={(onChangeLanguages)}
+                styles={selectStyles}
+                placeholder="Select Languages"
+              >
+              </Select>
+            </div>
+
+            <div className={styles.languageOptions}>
+              <Select
+                options={categoriesOptions}
+                isMulti
+                name="categories"
+                defaultInputValue=""
+                onChange={(onChangeCategories)}
+                styles={selectStyles}
+                placeholder="Select Categories"
+              >
+              </Select>
+            </div>
+
             <div>
               <textarea
                 className={styles.inputField}
@@ -164,34 +237,6 @@ const CreateCoach = () => {
               <span className={styles.starDescription}>*</span>
             </div>
 
-            <div>
-              <select
-                className={styles.inputField}
-                onChange={onChangeAddLanguage}
-                name="languages"
-                data-placeholder="Choose languages"
-              >
-                <option disabled selected hidden>
-                  Choose Languages
-                </option>
-                <option value="English">English</option>
-                <option value="German">German</option>
-                <option value="Spanish">Spanish</option>
-              </select>
-              <span className={styles.starDescription}>*</span>
-              <div>
-                <span>
-                  <div className={styles.languages}>Selected languages :</div>
-                  <span>
-                    {languages.map((item, index) => (
-                      <span key={index} onClick={onDeleteLanguage}>
-                        {item}
-                      </span>
-                    ))}
-                  </span>
-                </span>
-              </div>
-            </div>
 
             <button className={styles.addAnotherCoachBtn}>
               + Add another coach
