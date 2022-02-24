@@ -29,7 +29,7 @@
         [HttpGet(nameof(GetAllCoachesAsync))]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
-            var result = await this.coachService.GetAllAsync<ListingCoachViewModel>();
+            var result = await this.coachService.GetAllAsync<CoachDetailsViewModel>();
             return this.GenericResponse(result);
         }
 

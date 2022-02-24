@@ -22,7 +22,7 @@
         [HttpGet(nameof(GetAllLanguagesAsync))]
         public async Task<ActionResult> GetAllLanguagesAsync()
         {
-            var result = await this.languageService.GetAllAsync<ListingLanguageViewModel>();
+            var result = await this.languageService.GetAllAsync<LanguageDetailsViewModel>();
 
             return this.GenericResponse(new ResultModel(result));
         }

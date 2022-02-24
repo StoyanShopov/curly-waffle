@@ -3,7 +3,7 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class ListingCoachViewModel : IMapFrom<Coach>
+    public class CoachDetailsViewModel : IMapFrom<Coach>
     {
         public string FirstName { get; set; }
 
