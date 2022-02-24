@@ -6,6 +6,6 @@
 
     public interface ICoursesService
     {
-        Task<Result> GetCount();
+        Task<Result> GetCountAsync();
     }
 }

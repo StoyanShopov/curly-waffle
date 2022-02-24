@@ -20,17 +20,19 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        [Route("Get")]
+        public async Task<ActionResult> GetAsync()
         {
-            var result = await this.profileService.GetAdminData(this.User.Id());
+            var result = await this.profileService.GetAdminDataAsync(this.User.Id());
 
             return this.GenericResponse(result);
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit(EditProfileServiceModel model)
+        [Route("Update/{id}")]
+        public async Task<ActionResult> EditAsync(EditProfileServiceModel model)
         {
-            var result = await this.profileService.Edit(model, this.User.Id());
+            var result = await this.profileService.EditAsync(model, this.User.Id());
 
             return this.GenericResponse(result);
         }

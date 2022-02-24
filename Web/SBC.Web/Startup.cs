@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Reflection;
     using System.Text;
-
+    using AutoMapper;
     using Azure.Storage.Blobs;
 
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -150,6 +150,8 @@
                 });
 
             // Application services
+            
+            services.AddAutoMapper(typeof(Startup));
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<IIdentityService, IdentityService>();

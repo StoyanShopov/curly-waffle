@@ -21,6 +21,6 @@
             this.courseRepository = courseRepository;
         }
 
-        public async Task<Result> GetCount() => new ResultModel(await this.courseRepository.AllAsNoTracking().CountAsync());
+        public async Task<Result> GetCountAsync() => new ResultModel(await this.courseRepository.AllAsNoTracking().CountAsync());
     }
 }

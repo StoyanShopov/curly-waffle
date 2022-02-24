@@ -17,6 +17,6 @@
 
         public CoachesService(IDeletableEntityRepository<Coach> coachRepository) => this.coachRepository = coachRepository;
 
-        public async Task<Result> GetCount() => new ResultModel(await this.coachRepository.AllAsNoTracking().CountAsync());
+        public async Task<Result> GetCountAsync() => new ResultModel(await this.coachRepository.AllAsNoTracking().CountAsync());
     }
 }

@@ -7,6 +7,6 @@
 
     public interface ICoachesService
     {
-        Task<Result> GetCount();
+        Task<Result> GetCountAsync();
     }
 }

@@ -13,13 +13,15 @@
     public class ProfileService : IProfileService
     {
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IConfigurationProvider autoMapper;
 
-        public ProfileService(UserManager<ApplicationUser> userManager)
+        public ProfileService(UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             this.userManager = userManager;
+            this.autoMapper = mapper.ConfigurationProvider;
         }
 
-        public async Task<Result> Edit(EditProfileServiceModel model, string userId)
+        public async Task<Result> EditAsync(EditProfileServiceModel model, string userId)
         {
             var user = await this.userManager.FindByIdAsync(userId);
 
@@ -43,11 +45,11 @@
             }
             else
             {
-               return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+                return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
             }
         }
 
-        public async Task<Result> GetAdminData(string userId)
+        public async Task<Result> GetAdminDataAsync(string userId)
         {
             var user = await this.userManager.FindByIdAsync(userId);
 
@@ -56,28 +58,11 @@
                 //TODO => error constant
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
-            else
-            {
-                var configuration = new MapperConfiguration(cfg =>
-                {
-                    cfg.CreateMap<ApplicationUser, AdminViewModel>()
-                    .ForMember(c => c.Fullname, cfg => cfg.MapFrom(c => c.FirstName +' ' + c.LastName));
-                }
-                );
-                var mapper = configuration.CreateMapper();
-                var result = new ResultModel(
-                   mapper.Map<AdminViewModel>(user)
-                // new AdminViewModel
-                //{
-                //    Fullname = user.FirstName + " " + user.LastName,
-                //    ProfileSummary = user.ProfileSummary,
-                //    PhotoUrl = user.PhotoUrl,
-                //    Email = user.Email,
-                //}
-                 ) ;
 
-                return result;
-            }
+            var mapper = this.autoMapper.CreateMapper();
+            var result = new ResultModel(mapper.Map<AdminViewModel>(user));
+
+            return result;
         }
     }
 }
