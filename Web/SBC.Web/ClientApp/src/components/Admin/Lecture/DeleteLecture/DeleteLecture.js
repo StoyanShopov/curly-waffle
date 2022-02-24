@@ -29,7 +29,7 @@ export default function DeleteLecture(props) {
             </div>
             <div className={style.bottomDiv}>
                 <button className={style.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
-                <button className={style.btnRemove} onClick={onDeleteHandler}>Remove</button>
+                <button className={style.btnRemove} onClick={onDeleteHandler}>Delete</button>
             </div>
         </section>
     )

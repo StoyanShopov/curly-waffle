@@ -46,8 +46,8 @@ const AllCourses = () => {
 
     useEffect(() => {
         courseService.getAll()
-            .then(courseResult => {
-                setCourses(courseResult.data);
+            .then(response => {
+                setCourses(response.data);
             });
     }, []);
 
@@ -64,7 +64,7 @@ const AllCourses = () => {
                 </div>
             </section>
             <section className={style.cardsSection}>
-                {courses.length > 0 && courses.map(x => <CardCourse key={x._id} course={x} openModal={openModal} closeModal={closeModal} setCourses={setCourses} courses={courses}/>)}
+                {courses.length > 0 && courses.map(x => <CardCourse key={x.id} course={x} openModal={openModal} closeModal={closeModal} setCourses={setCourses} courses={courses}/>)}
 
                 <div className={style.buttonDiv}>
                     <button className={style.addBtn} onClick={() => { openModal(<CreateModal closeModal={closeModal} courses={courses} setCourses={setCourses} />) }}>

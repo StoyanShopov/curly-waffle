@@ -1,16 +1,32 @@
-.resourseDiv{
+.resourseDiv {
     display: none;
 }
-.btnsDiv{
-width: 600px;
-height: 50px;
+
+.btnsDiv {
+    width: 600px;
+    height: 50px;
 }
-.lectureTitle{
+
+.lectureTitle {
     display: inline-block;
     font-family: Montserrat;
     cursor: pointer;
 }
-.btnDelete{
+
+.btnAdd {
+    width: 100px;
+    height: 60px;
+    margin-top: 15px;
+    margin-top: 15px;
+    display: inline-block;
+    background-color: transparent;
+    color: #296CFB;
+    border-color: #296CFB;
+    font-family: Montserrat;
+    cursor: pointer;
+}
+
+.btnDelete {
     width: 60px;
     height: 25px;
     float: right;

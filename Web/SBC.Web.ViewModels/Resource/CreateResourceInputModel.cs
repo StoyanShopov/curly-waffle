@@ -10,7 +10,7 @@
 
         public int Size { get; set; }
 
-        public FileType FileType { get; set; }
+        public string FileType { get; set; }
 
         public string LectureId { get; set; }
     }
