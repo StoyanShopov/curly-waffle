@@ -29,7 +29,7 @@
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountUpdate)]
-        public int[]  Languages { get; set; }
+        public int[] Languages { get; set; }
 
         [MinLength(MinCountUpdate)]
         public int[] Categories { get; set; }

@@ -136,7 +136,7 @@ const EditCoach = (props) => {
                     options={"languagesOptions"}
                     isMulti
                     name="languages"
-                    defaultInputValue={props.languages}
+                    // defaultInputValue={props.languages}
                     // onChange={(onChangeLanguages)}
                     // styles={selectStyles}
                     placeholder="Select Languages"
@@ -149,7 +149,7 @@ const EditCoach = (props) => {
                     options={"categoriesOptions"}
                     isMulti
                     name="categories"
-                    defaultInputValue=""
+                    // defaultInputValue=""
                     // onChange={(onChangeCategories)}
                     // styles={selectStyles}
                     placeholder="Select Categories"

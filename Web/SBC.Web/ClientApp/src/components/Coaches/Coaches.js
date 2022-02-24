@@ -91,7 +91,6 @@ const Coaches = () => {
         </div>
       </div>
       <div className={styles.cardscontainer}>
-
         {coaches.map(x => <CoachCard
           key={x.id}
           coach={x}
@@ -100,7 +99,7 @@ const Coaches = () => {
           deleteModalStyle={deleteModalStyle}
           editModalStyle={editModalStyle}
           coaches={coaches}
-          setCoaches={setCoaches} />)}
+          setCoaches={setCoaches}/>)}
       </div>
       <Modal
         style={subtitle}

@@ -8,6 +8,13 @@
     position: relative;
 }
 
+.languageOptions{
+    width: 405px;
+    border: 2px solid #296cfb;
+    margin: 23px auto 0 auto;
+    border-radius: 5px;
+}
+
 .headerContainer{
     height: 100px;
     background: #296CFB 0% 0% no-repeat padding-box;

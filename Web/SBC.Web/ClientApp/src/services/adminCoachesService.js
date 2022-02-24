@@ -34,11 +34,11 @@ export const deleteCoachById = async (coachId) =>{
 }
 
 export const getLanguages = async () =>{
-    return await axios.get(baseUrl + 'api/Language/Languages');
+    return await axios.get(baseUrl + 'api/Languages/GetAllLanguagesAsync');
 }
 
 export const getCategories = async () =>{
-    return await axios.get(baseUrl + 'api/Category/Categories');
+    return await axios.get(baseUrl + 'api/Categories/GetAllCategoriesAsync');
 }
 
 export const uploadImage = async (file) => {

@@ -75,8 +75,8 @@ const CreateCoach = () => {
 
     const imageUrl = await uploadImage(data.imageUrl);
     data.imageUrl = imageUrl;
-    data.languages = languages.map(x=> ({id : x.value}))
-    data.categories = categories.map(x=> ({id : x.value}))
+    data.languages = languages.map(x=> (x.value))
+    data.categories = categories.map(x=> (x.value))
     console.log(data);
 
     createCoach(data).then((response) => {

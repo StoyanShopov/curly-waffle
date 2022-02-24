@@ -5,7 +5,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Coach.Contracts;
+    using SBC.Services.Data.Coach;
     using SBC.Services.Data.Coach.Models;
     using SBC.Web.ViewModels.Administration.Coach;
 
@@ -21,7 +21,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterCoach coach)
+        public async Task<ActionResult> Register(CreateCoachInputModel coach)
         {
             return this.GenericResponse(await this.coachService.CreateAsync(coach));
         }
@@ -29,13 +29,13 @@
         [HttpGet("Coaches")]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
-            var result = await this.coachService.GetAllAsync<ListingCoachModel>();
+            var result = await this.coachService.GetAllAsync<CoachDetailsViewModel>();
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update(UpdateCoachModel coach)
+        public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             return this.GenericResponse(await this.coachService.UpdateAsync(coach));
         }
