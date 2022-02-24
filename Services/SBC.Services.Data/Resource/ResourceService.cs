@@ -35,13 +35,11 @@
 
             var newResource = new Resource()
             {
-
                 Name = resourceModel.Name,
                 FileUrl = resourceModel.FileUrl,
                 Size = resourceModel.Size,
                 FileType = resourceModel.FileType,
                 LectureId = resourceModel.LectureId,
-
             };
 
             await this.resources.AddAsync(newResource);

@@ -20,7 +20,7 @@
         [Route("/api/Courses")]
         public async Task<ActionResult> Get()
         {
-            var result = await this.courseService.GetAllAsync<CourseListingViewModel>();
+            var result = await this.courseService.GetAllAsync<CourseDetailsViewModel>();
 
             return this.GenericResponse(new ResultModel(result));
         }

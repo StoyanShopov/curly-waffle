@@ -89,7 +89,7 @@ export default function CourseDetails() {
                         </div>
                         <div>
                             <p className={css.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
-                            <img src="image 30.png" className={css.google} alt="" />
+                            <p></p>
                         </div>
                     </section>
                     <p className={css.pInstructor}>{course.coachDescription}</p>
@@ -99,7 +99,7 @@ export default function CourseDetails() {
                         <button className={css.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} />) }}>Add Lecture</button>
                         <h1 className={css.lecturesHeading}>Lectures</h1>
                         <ul className={css.ulLectures}>
-                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x._id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
+                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
                             <img src="Line 396.png" className={css.google} alt="" />
                         </ul>
                         <button className={css.btnViewMore}>View More</button>
