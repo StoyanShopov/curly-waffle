@@ -67,9 +67,10 @@
     position: relative;
     top: 40%;
     bottom: 40%;
-    background-color: #FFFFFF;
+    left: 40%;
+    right: 40%;
+    background: transparent;
     cursor: pointer;
-    border-radius: 40px;
     border: none;
 }
 

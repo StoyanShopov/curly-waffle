@@ -35,13 +35,13 @@ export default function EditLecture(props) {
             <div className={style.container}>
                 <form onSubmit={onLectureEdit} method="PUT">
                     <div>
-                        <button className={style.btnClose} onClick={() => { closeEditModal(false) }}>X</button>
+                        <button className={style.btnClose} onClick={() => { props.closeModal() }}>X</button>
                         <p className={style.p}>Edit Lecture</p>
                     </div>
                     <div>
                         <input className={style.imput} required="required" name="Name" defaultValue={lecture.name} placeholder="Name*"></input>
                         <input className={style.imput} required="required" name="Description" defaultValue={lecture.description} placeholder="Description*"></input>
-                        <button className={style.btnCancel} onClick={() => { closeEditModal(false) }}>Cancel</button>
+                        <button className={style.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
                         <input type="submit" value="Edit" className={style.btnEdit} />
                     </div>
                 </form>

@@ -15,10 +15,12 @@
     public class CourseService : ICourseService
     {
         private readonly IDeletableEntityRepository<Course> courses;
+        private readonly IDeletableEntityRepository<Coach> coaches;
 
-        public CourseService(IDeletableEntityRepository<Course> courses)
+        public CourseService(IDeletableEntityRepository<Course> courses, IDeletableEntityRepository<Coach> coaches)
         {
             this.courses = courses;
+            this.coaches = coaches;
         }
 
         public async Task<Result> CreateAsync(CreateCourseInputModel courseModel)
@@ -47,9 +49,23 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            courseModel.Id = newCourse.Id;
+            var currentCoach = this.coaches
+                .AllAsNoTracking()
+                .Include(c => c.Company)
+                .FirstOrDefaultAsync(c => c.Id == newCourse.CoachId);
 
-            return new ResultModel(courseModel);
+            var listingModel = new CourseDetailsViewModel
+            {
+                Id = newCourse.Id,
+                Title = newCourse.Title,
+                PricePerPerson = newCourse.PricePerPerson,
+                PictureUrl = newCourse.PictureUrl,
+                CoachFirstName = currentCoach.Result.FirstName,
+                CoachLastName = currentCoach.Result.LastName,
+                CoachCompanyName = currentCoach.Result.Company.Name,
+            };
+
+            return new ResultModel(listingModel);
         }
 
         public async Task<Result> DeleteByIdAsync(int id)
@@ -96,9 +112,28 @@
 
             await this.courses.SaveChangesAsync();
 
-            courseModel.Id = course.Id;
+            var currentCoach = this.coaches
+               .AllAsNoTracking()
+               .Include(c => c.Company)
+               .FirstOrDefaultAsync(c => c.Id == course.CoachId);
 
-            return new ResultModel(courseModel);
+            var listingModel = new CourseDetailsViewModel
+            {
+                Id = course.Id,
+                Title = course.Title,
+                Description = course.Description,
+                PricePerPerson = course.PricePerPerson,
+                PictureUrl = course.PictureUrl,
+                VideoUrl = course.VideoUrl,
+                CoachId = course.CoachId,
+                LanguageId = course.LanguageId,
+                CategoryId = course.CategoryId,
+                CoachFirstName = currentCoach.Result.FirstName,
+                CoachLastName = currentCoach.Result.LastName,
+                CoachCompanyName = currentCoach.Result.Company.Name,
+            };
+
+            return new ResultModel(listingModel);
         }
 
         public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()

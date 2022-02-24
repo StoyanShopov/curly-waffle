@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Resource
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -12,6 +13,7 @@
     using SBC.Services.Data.Resource.Contracts;
     using SBC.Services.Data.Resource.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Resource;
 
     public class ResourceService : IResourceService
     {
@@ -35,19 +37,24 @@
 
             var newResource = new Resource()
             {
-
                 Name = resourceModel.Name,
                 FileUrl = resourceModel.FileUrl,
                 Size = resourceModel.Size,
-                FileType = resourceModel.FileType,
+                //FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType),
                 LectureId = resourceModel.LectureId,
-
             };
 
             await this.resources.AddAsync(newResource);
             await this.resources.SaveChangesAsync();
 
-            return true;
+            var currentResource = new ResourceViewModel
+            {
+                Id = newResource.Id,
+                Name = newResource.Name,
+                LectureId = newResource.LectureId,
+            };
+
+            return new ResultModel(currentResource);
         }
 
         public async Task<Result> DeleteByIdAsync(string id)
@@ -67,11 +74,11 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(EditResourceInputModel resourceModel)
+        public async Task<Result> EditAsync(string id, EditResourceInputModel resourceModel)
         {
             var resource = await this.resources
                 .All()
-                .FirstOrDefaultAsync(c => c.Id == resourceModel.Id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (resource == null)
             {
@@ -81,18 +88,27 @@
             resource.Name = resourceModel.Name;
             resource.FileUrl = resourceModel.FileUrl;
             resource.Size = resourceModel.Size;
-            resource.FileType = resourceModel.FileType;
             resource.LectureId = resourceModel.LectureId;
+            //resource.FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType);
 
             await this.resources.SaveChangesAsync();
 
-            return true;
+            var currentResource = new ResourceViewModel
+            {
+                Id = resource.Id,
+                Name = resource.Name,
+                //FileUrl = resource.FileUrl,
+                Size = resource.Size,
+                LectureId = resource.LectureId,
+            };
+
+            return new ResultModel(currentResource);
         }
 
         public async Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id)
                   => await this.resources
                       .AllAsNoTracking()
-                       .Where(c => c.LectureId == id)
+                      .Where(c => c.LectureId == id)
                       .To<TModel>()
                       .ToListAsync();
 

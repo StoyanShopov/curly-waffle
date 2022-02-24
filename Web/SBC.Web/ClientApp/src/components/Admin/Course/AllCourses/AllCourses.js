@@ -46,8 +46,8 @@ const AllCourses = () => {
 
     useEffect(() => {
         courseService.getAll()
-            .then(courseResult => {
-                setCourses(courseResult.data);
+            .then(response => {
+                setCourses(response.data);
             });
     }, []);
 

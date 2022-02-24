@@ -107,7 +107,7 @@ export default function CourseDetails() {
                         </div>
                         <div>
                             <p className={style.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
-                            <img src="image 30.png" className={style.google} alt="" />
+                            <p className={style.pCompanyName}>{course.coachCompanyName}</p>
                         </div>
                     </section>
                     <p className={style.pInstructor}>{course.coachDescription}</p>
