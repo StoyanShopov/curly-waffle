@@ -20,7 +20,6 @@
         }
 
         [HttpGet]
-        [Route("Get")]
         public async Task<ActionResult> GetAsync()
         {
             var result = await this.profileService.GetAdminDataAsync(this.User.Id());
@@ -29,7 +28,6 @@
         }
 
         [HttpPut]
-        [Route("Update/{id}")]
         public async Task<ActionResult> EditAsync(EditProfileServiceModel model)
         {
             var result = await this.profileService.EditAsync(model, this.User.Id());

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Services\SBC.Services.Data\SBC.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
     <ProjectReference Include="..\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
   </ItemGroup>

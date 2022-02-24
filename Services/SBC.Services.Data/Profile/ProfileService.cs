@@ -21,7 +21,7 @@
             this.autoMapper = mapper.ConfigurationProvider;
         }
 
-        public async Task<Result> EditAsync(EditProfileServiceModel model, string userId)
+        public async Task<Result> EditAsync(EditProfileServiceModel inputModelUser, string userId)
         {
             var user = await this.userManager.FindByIdAsync(userId);
 
@@ -30,12 +30,13 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
 
-            var names = model.Fullname.Trim().Split(" ");
-            user.Email = model.Email;
-            user.FirstName = names[0];
-            user.LastName = names[1];
-            user.ProfileSummary = model.ProfileSummary;
-            user.PhotoUrl = model.PhotoUrl;
+            var mapModel = this.autoMapper.CreateMapper().Map<ApplicationUser>(inputModelUser);
+
+          // user.Email = mapModel.Email;
+            user.FirstName = mapModel.FirstName;
+            user.LastName = mapModel.LastName;
+            user.ProfileSummary = mapModel.ProfileSummary;
+            user.PhotoUrl = mapModel.PhotoUrl;
 
             var result = await this.userManager.UpdateAsync(user);
 
@@ -43,10 +44,8 @@
             {
                 return result.Succeeded;
             }
-            else
-            {
-                return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
-            }
+
+            return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
         }
 
         public async Task<Result> GetAdminDataAsync(string userId)
@@ -55,7 +54,7 @@
 
             if (user == null)
             {
-                //TODO => error constant
+                // TODO => error constant
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
 
