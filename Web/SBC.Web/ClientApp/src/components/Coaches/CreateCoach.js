@@ -205,7 +205,7 @@ const CreateCoach = () => {
                 options={languagesOptions}
                 isMulti
                 name="languages"
-                defaultInputValue=""
+                defaultInputValue={[languagesOptions]}
                 onChange={(onChangeLanguages)}
                 styles={selectStyles}
                 placeholder="Select Languages"

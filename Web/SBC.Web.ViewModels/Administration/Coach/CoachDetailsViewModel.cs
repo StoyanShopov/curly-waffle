@@ -2,6 +2,7 @@
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;
+    using System.Collections.Generic;
 
     public class CoachDetailsViewModel : IMapFrom<Coach>
     {
@@ -22,5 +23,10 @@
         public int? CompanyId { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public ICollection<CategoryCoachViewModel> Categories { get; set; }
+
+        public ICollection<LanguageCoachViewModel> Languages { get; set; }
+
     }
 }

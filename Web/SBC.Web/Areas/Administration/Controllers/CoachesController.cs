@@ -26,14 +26,14 @@
             return this.GenericResponse(result);
         }
 
-        [HttpGet(nameof(GetAllCoachesAsync))]
+        [HttpGet]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
             var result = await this.coachService.GetAllAsync<CoachDetailsViewModel>();
             return this.GenericResponse(result);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             var result = await this.coachService.UpdateAsync(coach);

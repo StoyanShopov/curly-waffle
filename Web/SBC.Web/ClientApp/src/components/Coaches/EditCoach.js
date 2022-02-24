@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
+import { createCoach, uploadImage, getLanguages, getCategories } from "../../services/adminCoachesService";
+
 
 import styles from './EditCoach.module.css';
 
@@ -12,8 +14,90 @@ const EditCoach = (props) => {
     const [calendlyUrl, setCalendlyUrl] = useState('');
     const [file, setFile] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
+    const [languages, setLanguages] = useState([]);
+    const [languagesOptions, setLanugagesOptions] = useState([])
+    const [categories, setCategories] = useState([])
+    const [categoriesOptions, setCategoriesOptions] = useState()
 
     const coach = props.coach;
+    const currentCoachLanguages = coach.languages;
+    const newlangs = currentCoachLanguages.map(x=>x.languageId)
+    const filtered = languagesOptions.filter(x=> newlangs.includes(x.value))
+    console.log(filtered);
+
+    const selectStyles = {
+      multiValue: styles => {
+        return {
+          ...styles,
+          backgroundColor: "#296CFB",
+          borderRadius: 10,
+          color: '#ffffff'
+        };
+      },
+      multiValueLabel: (styles) => ({
+        ...styles,
+        color: '#ffffff',
+      }),
+      multiValueRemove: (styles) => ({
+        ...styles,
+        color: "white",
+        ':hover': {
+          color: 'red',
+        },
+      }),
+      placeholder: (styles) => {
+        return {
+          ...styles,
+          color: "#296CFB",
+          fontWeight: 420,
+          position: 'absolute',
+          paddingLeft: 20
+        }
+      }
+    };
+
+  function createSelect() {
+    if (filtered.length > 0) {
+      return (
+        <Select
+          defaultValue={filtered}
+          isMulti
+          styles={selectStyles}
+          name="languages"
+          placeholder="Select Languages"
+          options={languagesOptions}
+        >
+        </Select>
+      )
+    } else {
+      return(
+      <Select
+        name="languages"
+        isMulti
+        styles={selectStyles}
+        placeholder="Select Languages"
+        options={languagesOptions}
+      >
+      </Select> )
+    }
+  }
+
+    useEffect(() => { 
+      getLanguages().then(res =>{
+        setLanugagesOptions(res.data.map(x=> ({
+          value: x.id,
+          label: x.name
+        })))
+      })
+      getCategories().then(res =>{
+        setCategoriesOptions(res.data.map(x=> ({
+          value: x.id,
+          label: x.name
+        })))
+      })
+    }, [])
+
+    
 
     return (
         <div className={styles.bodyContainer}>
@@ -132,29 +216,18 @@ const EditCoach = (props) => {
                 </div>
     
                 <div className={styles.languageOptions}>
-                  <Select
-                    options={"languagesOptions"}
-                    isMulti
-                    name="languages"
-                    // defaultInputValue={props.languages}
-                    // onChange={(onChangeLanguages)}
-                    // styles={selectStyles}
-                    placeholder="Select Languages"
-                  >
-                  </Select>
+                    {createSelect()}
                 </div>
     
                 <div className={styles.languageOptions}>
-                  <Select
-                    options={"categoriesOptions"}
-                    isMulti
-                    name="categories"
-                    // defaultInputValue=""
-                    // onChange={(onChangeCategories)}
-                    // styles={selectStyles}
-                    placeholder="Select Categories"
-                  >
-                  </Select>
+                <Select
+                  options={categoriesOptions}
+                  isMulti
+                  name="categories"
+                  // styles={selectStyles}
+                  placeholder="Select Categories"
+                >
+                </Select>
                 </div>
     
                 <div>

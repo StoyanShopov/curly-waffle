@@ -15,7 +15,7 @@ export const createCoach = async (data) => {
 }
 
 export const getAllCoaches = async () =>{
-        return await axios.get(baseUrl + "api/Coach/Coaches", {
+        return await axios.get(baseUrl + "api/Coaches", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
