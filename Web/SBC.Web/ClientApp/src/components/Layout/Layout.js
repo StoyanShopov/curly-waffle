@@ -2,17 +2,18 @@
 import NavBar from './NavBar';
 import Footer from './Footer';
 
-export class Layout extends Component {
 
-    render() {
+export function Layout(props) /*extends Component*/ {
+    
+    
         return (
             <>
                 <NavBar />
-                <main>
-                    {this.props.children}
+                <main style={{ top: "160px", position: "relative" }}>
+                    {props.children}
                 </main>
                 <Footer />
             </>
         );
-    }
+    
 }
