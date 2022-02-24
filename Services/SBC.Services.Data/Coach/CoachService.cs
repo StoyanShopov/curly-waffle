@@ -3,39 +3,54 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Reflection;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach.Contracts;
-    using SBC.Services.Data.Coach.Models;
-    using SBC.Services.Data.Language.Contracts;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Coach;
+
+    using static SBC.Common.GlobalConstants.RequestsConstants;
 
     public class CoachService : ICoachService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
         private readonly IDeletableEntityRepository<CategoryCoach> categoryCoachRepo;
         private readonly IDeletableEntityRepository<LanguageCoach> languageCoachRepo;
+        private readonly IDeletableEntityRepository<Language> languageRepo;
+        private readonly IDeletableEntityRepository<Category> categoryRepo;
 
         public CoachService(
-            IDeletableEntityRepository<Coach> data,
+            IDeletableEntityRepository<Coach> coachRepository,
             IDeletableEntityRepository<CategoryCoach> categoryCoachRepo,
-            IDeletableEntityRepository<LanguageCoach> languageCoachRepo)
+            IDeletableEntityRepository<LanguageCoach> languageCoachRepo,
+            IDeletableEntityRepository<Language> languageRepo,
+            IDeletableEntityRepository<Category> categoryRepo)
         {
-            this.coachRepository = data;
+            this.coachRepository = coachRepository;
             this.languageCoachRepo = languageCoachRepo;
             this.categoryCoachRepo = categoryCoachRepo;
+            this.languageRepo = languageRepo;
+            this.categoryRepo = categoryRepo;
         }
 
-        public async Task<Result> CreateAsync(RegisterCoach coach)
+        public async Task<Result> CreateAsync(CreateCoachInputModel coach)
         {
-            if (this.ExistingCoach(coach.CalendlyUrl))
+            if (this.ExistLanguageId(coach.Languages))
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Coach already exist!");
+                return new ErrorModel(HttpStatusCode.BadRequest, LanguageBadRequest);
+            }
+
+            if (this.ExistCategoryId(coach.Categories))
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, CategoryBadRequest);
+            }
+
+            if (this.coachRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == coach.CalendlyUrl && x.IsDeleted == false))
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
             var coachModel = new Coach
@@ -46,49 +61,59 @@
                 VideoUrl = coach.VideoUrl,
                 PricePerSession = coach.PricePerSession,
                 CalendlyUrl = coach.CalendlyUrl,
-                ImageUrl = coach.ImageUrl,
             };
 
             await this.coachRepository.AddAsync(coachModel);
+            this.AddLanguages(coach.Languages, coachModel);
+            this.AddCategories(coach.Categories, coachModel);
+
             await this.coachRepository.SaveChangesAsync();
-
-            this.AddLanguages(coach.Languages, coachModel.Id);
-            await this.languageCoachRepo.SaveChangesAsync();
-
-            this.AddCategories(coach.Categories, coachModel.Id);
-            await this.categoryCoachRepo.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-             => await this.coachRepository
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.coachRepository
                 .AllAsNoTracking()
                 .To<TModel>()
-                .ToListAsync();
+                .ToListAsync());
 
-        public async Task<Result> UpdateAsync(UpdateCoachModel coach)
+        public async Task<Result> UpdateAsync(UpdateCoachInputModel coach)
         {
+            if (this.ExistLanguageId(coach.Languages))
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, LanguageBadRequest);
+            }
+
+            if (this.ExistCategoryId(coach.Categories))
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, CategoryBadRequest);
+            }
+
             var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.CoachId);
 
             if (coachModel == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
+                return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
-            await this.coachRepository.SaveChangesAsync();
+            coachModel.Description = coach.Description;
+            coachModel.PricePerSession = coach.PricePerSession;
+            coachModel.VideoUrl = coach.VideoUrl;
+            coachModel.CalendlyUrl = coach.CalendlyUrl;
+
             if (coach.Languages.Length != 0)
             {
-                this.AddLanguages(coach.Languages, coachModel.Id);
-                await this.languageCoachRepo.SaveChangesAsync();
+                this.AddLanguages(coach.Languages, coachModel);
             }
 
             if (coach.Categories.Length != 0)
             {
-                this.AddCategories(coach.Categories, coachModel.Id);
-                await this.categoryCoachRepo.SaveChangesAsync();
+                this.AddCategories(coach.Categories, coachModel);
             }
 
+            this.coachRepository.Update(coachModel);
+            await this.coachRepository.SaveChangesAsync();
             return true;
         }
 
@@ -97,18 +122,17 @@
             var coachModel = this.coachRepository.AllAsNoTracking().Where(x => x.Id == coachId).FirstOrDefault();
             if (coachModel == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Coach not'exist!");
+                return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
-            foreach (var language in this.languageCoachRepo.All().Where(x => x.CoachId == coachId).ToArray())
-            {
-                this.languageCoachRepo.Delete(language);
-            }
+            this.categoryCoachRepo.All()
+                .Where(x => x.CoachId == coachId).ToList()
+                .ForEach(x => this.categoryCoachRepo.Delete(x));
 
-            foreach (var category in this.categoryCoachRepo.All().Where(x => x.CoachId == coachId).ToArray())
-            {
-                this.categoryCoachRepo.Delete(category);
-            }
+            this.languageCoachRepo.All()
+
+                .Where(x => x.CoachId == coachId).ToList()
+                .ForEach(x => this.languageCoachRepo.Delete(x));
 
             this.coachRepository.Delete(coachModel);
             await this.coachRepository.SaveChangesAsync();
@@ -116,35 +140,32 @@
             return true;
         }
 
-        private async void AddCategories(ICollection<CategoryImportId> categories, int coachId)
+        private void AddCategories(int[] categories, Coach coach)
         {
-            foreach (var category in categories)
-            {
-                if (!this.ExistCategory(coachId, category.Id))
-                {
-                    await this.categoryCoachRepo.AddAsync(new CategoryCoach { CoachId = coachId, CategoryId = category.Id });
-                }
-            }
+            coach.Categories = categories
+                             .Where(x => !this.ExistCategory(coach.Id, x))
+                             .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x })
+                             .ToArray();
         }
 
-        private async void AddLanguages(ICollection<LanguageImportId> languages, int coachId)
+        private void AddLanguages(int[] languages, Coach coach)
         {
-            foreach (var language in languages)
-            {
-                if (!this.ExistLanguage(coachId, language.Id))
-                {
-                    await this.languageCoachRepo.AddAsync(new LanguageCoach { CoachId = coachId, LanguageId = language.Id });
-                }
-            }
+            coach.Languages = languages
+                            .Where(x => !this.ExistLanguage(coach.Id, x))
+                            .Select(x => new LanguageCoach { CoachId = coach.Id, LanguageId = x })
+                            .ToArray();
         }
-
-        private bool ExistingCoach(string calendlyUrl)
-        => this.coachRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == calendlyUrl && x.IsDeleted == false);
 
         private bool ExistCategory(int coachId, int categoryId)
         => this.categoryCoachRepo.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);
 
         private bool ExistLanguage(int coachId, int languigeId)
         => this.languageCoachRepo.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
+
+        private bool ExistLanguageId(int[] languages)
+        => languages.Any(x => !this.languageRepo.AllAsNoTracking().Any(y => y.Id == x));
+
+        private bool ExistCategoryId(int[] categories)
+        => categories.Any(x => !this.categoryRepo.AllAsNoTracking().Any(y => y.Id == x));
     }
 }

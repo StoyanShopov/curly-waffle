@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.User.Models
+﻿namespace SBC.Web.ViewModels.User
 {
     public class RegisterServiceModel
     {

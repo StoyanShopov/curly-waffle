@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Company.Contracts
+﻿namespace SBC.Services.Data.Company
 {
     using System.Threading.Tasks;
 

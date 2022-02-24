@@ -4,9 +4,10 @@
 
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using SBC.Services.Data.User.Contracts;
-    using SBC.Services.Data.User.Models;
+    using SBC.Services.Data.User;
+
     using SBC.Web.Models.Identity;
+    using SBC.Web.ViewModels.User;
 
     public class IdentityController : ApiController
     {

@@ -1,9 +1,9 @@
-﻿namespace SBC.Services.Data.User.Contracts
+﻿namespace SBC.Services.Data.User
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Services.Data.User.Models;
+    using SBC.Web.ViewModels.User;
 
     public interface IUserService
     {

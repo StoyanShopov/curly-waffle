@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Language.Contracts
+﻿namespace SBC.Services.Data.Language
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

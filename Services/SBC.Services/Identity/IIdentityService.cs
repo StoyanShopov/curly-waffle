@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Identity.Contracts
+﻿namespace SBC.Services.Identity
 {
     public interface IIdentityService
     {
