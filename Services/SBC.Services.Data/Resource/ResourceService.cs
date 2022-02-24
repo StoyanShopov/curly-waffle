@@ -18,18 +18,11 @@
         private readonly IDeletableEntityRepository<Resource> resources;
 
         public ResourceService(IDeletableEntityRepository<Resource> resources)
-    public async Task<Result> CreateAsync(CreateResourceInputModel resourceModel)
-    {
-        var resource = await this.resources
-            .All()
-            .FirstOrDefaultAsync(c => c.Name == resourceModel.Name);
-
-        if (resource != null)
         {
             this.resources = resources;
         }
 
-        public async Task<Result> CreateAsync(CreateResourceServiceModel resourceModel)
+        public async Task<Result> CreateAsync(CreateResourceInputModel resourceModel)
         {
             var resource = await this.resources
                 .All()
@@ -42,11 +35,13 @@
 
             var newResource = new Resource()
             {
+
                 Name = resourceModel.Name,
                 FileUrl = resourceModel.FileUrl,
                 Size = resourceModel.Size,
                 FileType = resourceModel.FileType,
                 LectureId = resourceModel.LectureId,
+
             };
 
             await this.resources.AddAsync(newResource);
@@ -72,7 +67,7 @@
             return true;
         }
 
-        public async Task<Result> EditAsync(EditResourceServiceModel resourceModel)
+        public async Task<Result> EditAsync(EditResourceInputModel resourceModel)
         {
             var resource = await this.resources
                 .All()
@@ -90,41 +85,22 @@
             resource.LectureId = resourceModel.LectureId;
 
             await this.resources.SaveChangesAsync();
-    public async Task<Result> EditAsync(EditResourceInputModel resourceModel)
-    {
-        var resource = await this.resources
-            .All()
-            .FirstOrDefaultAsync(c => c.Id == resourceModel.Id);
 
             return true;
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-            => await this.resources
-                .AllAsNoTracking()
-                .To<TModel>()
-                .ToListAsync();
+        public async Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id)
+                  => await this.resources
+                      .AllAsNoTracking()
+                       .Where(c => c.LectureId == id)
+                      .To<TModel>()
+                      .ToListAsync();
 
         public async Task<TModel> GetByIdAsync<TModel>(string id)
-            => await this.resources
-                .AllAsNoTracking()
-                .Where(c => c.Id == id)
-                .To<TModel>()
-                .FirstOrDefaultAsync();
-    }
-
-    public async Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id)
-              => await this.resources
-                  .AllAsNoTracking()
-                   .Where(c => c.LectureId == id)
-                  .To<TModel>()
-                  .ToListAsync();
-
-    public async Task<TModel> GetByIdAsync<TModel>(string id)
-            => await this.resources
-                .AllAsNoTracking()
-                .Where(c => c.Id == id)
-                .To<TModel>()
-                .FirstOrDefaultAsync();
+                => await this.resources
+                    .AllAsNoTracking()
+                    .Where(c => c.Id == id)
+                    .To<TModel>()
+                    .FirstOrDefaultAsync();
     }
 }
