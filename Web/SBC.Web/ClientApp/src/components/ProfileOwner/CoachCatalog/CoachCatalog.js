@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import styles from "./CoachCatalog.module.css";
 import Modal from 'react-modal';
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
-
+import { CategoriesList } from "../CourseCatalog/CategoriesList";
+import { LanguagesList } from "../CourseCatalog/LanguagesList";
 
 export default function CoachCatalog(prop) {
     const [showModal, setShowModal] = useState(false);
@@ -30,16 +31,54 @@ export default function CoachCatalog(prop) {
         <>
             <div className={styles.container}>
                 <div className={styles.headContainer}>
-                    <div className={styles.megaphoneImage}>
-                        <img
-                            className={styles.megaphone}
-                            src="assets/images/Group 49.svg"
-                            alt=""
-                        />
+                    <div className={styles.categoryContainer}>
+                        <h3>Category</h3>
+                        <ul className={styles.categoryList}>
+                            {CategoriesList.map(({ name }, index) => {
+                                return (
+                                    <li key={index}>
+                                        <input
+                                            type="checkbox"
+                                            id={`custom-checkbox-${index}`}
+                                            name={name}
+                                            value={name}
+                                        />
+                                        <span></span>
+                                        <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                        <span></span>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    <div className={styles.lineContainer}>
+                    </div>
+                    <div className={styles.categoryContainer}>
+                        <h3>Languages</h3>
+                        <ul className={styles.languageList}>
+                            {LanguagesList.map(({ name }, index) => {
+                                return (
+                                    <li key={index}>
+                                        <input
+                                            type="checkbox"
+                                            id={`custom-checkbox-${index}`}
+                                            name={name}
+                                            value={name}
+                                        />
+                                        <span></span>
+                                        <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                        <span></span>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    <div className={styles.imageC}>
+                        <img className={styles.megaphone} src="assets/images/Group 49.svg" alt="" />
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.upper}>
                             <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt="" />
                         </div>
@@ -57,7 +96,7 @@ export default function CoachCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.upper}>
                             <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt="" />
                         </div>
@@ -75,7 +114,6 @@ export default function CoachCatalog(prop) {
                             </div>
                         </div>
                     </div>
-
                     <div className={styles.card}>
                         <div className={styles.upper}>
                             <img className={styles.cardpic} src="assets/images/Mask Group 10.png" alt="" />
@@ -130,7 +168,6 @@ export default function CoachCatalog(prop) {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className={styles.buttonContainer}>
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>

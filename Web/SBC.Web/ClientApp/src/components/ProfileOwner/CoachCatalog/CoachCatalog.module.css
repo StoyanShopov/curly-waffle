@@ -1,23 +1,99 @@
 .container {
     margin: 0 auto;
     width: 100%;
+    height: auto;
     position: relative;
 }
 
 .headContainer {
     background-color: #EAF0FF;
     font-size: 16px;
-    height: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: auto;
 }
 
-.megaphoneImage {
-    width: 5%;
+    .headContainer ul {
+        list-style-type: none;
+    }
+
+.categoryContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+    padding-left: 0.5%;
+    padding-top: 1%;
+}
+
+    .categoryContainer li {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        padding-bottom: 5px;
+    }
+
+        .categoryContainer li span {
+            height: 30px;
+            display: block;
+        }
+
+    .categoryContainer label {
+        display: flex;
+    }
+
+    .categoryContainer input[type="checkbox"]:focus {
+        outline: 1px dotted #aaa;
+        border-color: aquamarine;
+        cursor: pointer;
+    }
+
+    .categoryContainer input[type="checkbox"] {
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+.categoryList {
+    margin: 0;
+    padding: 0;
+    column-gap: 15%;
+    column-count: 2;
+}
+
+    .categoryList label {
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+.lineContainer {
+    border-right: 1.8px solid #000000;
+    width: 10px;
+    opacity: 0.4;
+    margin-top: 2.5%;
+    margin-bottom: 31px;
+}
+
+.languageList {
+    margin: 0;
+    padding: 0;
+    column-gap: 15%;
+    column-count: 1;
+}
+
+    .languageList label {
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+.imageC {
+    align-self: center;
+    padding-right: 2%;
 }
 
 .megaphone {
-    left: 1115px;
-    position: relative;
-    width: 310%;
+    max-width: 14rem;
+    height: auto;
+    padding-top: 5%;
 }
 
 .cardscontainer {
@@ -37,6 +113,10 @@
     box-shadow: 0px 3px 10px #00000029;
 }
 
+.removeCard {
+    background-color: #EAF0FF;
+}
+
 .upper {
     background-color: #1cc18a;
     width: 100%;
@@ -49,7 +129,6 @@
     width: auto;
     height: 115%;
     bottom: 0;
-    /*left: -8%;*/
 }
 
 .name {
@@ -92,8 +171,6 @@
     font-size: 16px;
     cursor: pointer;
 }
-
-
 
 .buttonContainer {
     margin-left: 45%;

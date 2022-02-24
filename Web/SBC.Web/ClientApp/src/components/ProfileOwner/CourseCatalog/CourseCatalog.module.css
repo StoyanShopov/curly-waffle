@@ -12,6 +12,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     height: auto;
+    padding-bottom: 1.4%;
+    padding-top: 6px;
 }
 
     .headContainer ul {
@@ -21,43 +23,72 @@
 .categoryContainer {
     display: flex;
     flex-direction: column;
-    max-width: 30%;
+    max-width: 20%;
+    padding-left: 0.5%;
 }
 
-.categoryHeader {
-}
+    .categoryContainer li {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        padding-bottom: 5px;
+    }
+
+        .categoryContainer li span {
+            height: 30px;
+            display: block;
+        }
+
+    .categoryContainer label {
+        display: flex;
+    }
+
+    .categoryContainer input[type="checkbox"]:focus {
+        outline: 1px dotted #aaa;
+        border-color: aquamarine;
+        cursor: pointer;
+    }
+
+    .categoryContainer input[type="checkbox"] {
+        border-radius: 2px;
+        cursor: pointer;
+    }
 
 .categoryList {
-    display: flex;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
-    align-content:space-around;
+    column-gap: 15%;
+    column-count: 2;
 }
+
     .categoryList label {
         font-weight: 500;
         font-size: 15px;
     }
-       
 
-    .lineContainer {
-        border-right: 1.8px solid #000000;
-        width: 10px;
-        opacity: 0.4;
-        margin-top: 1.5%;
-        margin-bottom: 1.5%;
-    }
-
-/*.languagesContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
+.lineContainer {
+    border-right: 1.8px solid #000000;
+    width: 10px;
+    opacity: 0.4;
+    margin-top: 2%;
+    margin-bottom: 8px;
 }
-*/
 
+.languageList {
+    margin: 0;
+    padding: 0;
+    column-gap: 15%;
+    column-count: 1;
+}
+
+    .languageList label {
+        font-weight: 500;
+        font-size: 15px;
+    }
 
 .imageC {
     align-self: center;
+    padding-right: 2%;
 }
 
 .book {
@@ -67,12 +98,6 @@
     padding-bottom: 5%;
 }
 
-
-
-
-
-
-
 .cardscontainer {
     display: flex;
     position: relative;
@@ -80,7 +105,7 @@
     row-gap: 1rem;
     align-items: center;
     gap: 88px 116px;
-    padding-top: 2.6%;
+    padding-top: 3.4%;
     padding-left: 11%;
 }
 
@@ -88,6 +113,11 @@
     width: 23%;
     height: auto;
     box-shadow: 0px 3px 10px #00000029;
+   
+}
+
+.removeCard {
+    background-color: #EAF0FF;
 }
 
 .cardpic {

@@ -27,77 +27,58 @@ export default function CourseCatalog(prop) {
         });
     }
 
-
-
     return (
         <>
             <div className={styles.container}>
-
-
                 <div className={styles.headContainer}>
-
                     <div className={styles.categoryContainer}>
-                        <h3 className={styles.categoryHeader}>Category</h3>
+                        <h3>Category</h3>
                         <ul className={styles.categoryList}>
                             {CategoriesList.map(({ name }, index) => {
                                 return (
                                     <li key={index}>
-                                        <div className="toppings-list-item">
-                                            <div className="left-section">
-                                                <input
-                                                    type="checkbox"
-                                                    id={`custom-checkbox-${index}`}
-                                                    name={name}
-                                                    value={name}
-                                                />
-                                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                            </div>
-                                        </div>
+                                        <input
+                                            type="checkbox"
+                                            id={`custom-checkbox-${index}`}
+                                            name={name}
+                                            value={name}
+                                        />
+                                        <span></span>
+                                        <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                        <span></span>
                                     </li>
                                 );
                             })}
-
                         </ul>
                     </div>
                     <div className={styles.lineContainer}>
                     </div>
-
                     <div className={styles.categoryContainer}>
-                        <h3 className={styles.categoryHeader}>Languages</h3>
-                        <ul className={styles.categoryList}>
+                        <h3>Languages</h3>
+                        <ul className={styles.languageList}>
                             {LanguagesList.map(({ name }, index) => {
                                 return (
                                     <li key={index}>
-                                        <div className="toppings-list-item">
-                                            <div className="left-section">
-                                                <input
-                                                    type="checkbox"
-                                                    id={`custom-checkbox-${index}`}
-                                                    name={name}
-                                                    value={name}
-                                                />
-                                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                            </div>
-                                        </div>
+                                        <input
+                                            type="checkbox"
+                                            id={`custom-checkbox-${index}`}
+                                            name={name}
+                                            value={name}
+                                        />
+                                        <span></span>
+                                        <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                                        <span></span>
                                     </li>
                                 );
                             })}
-
                         </ul>
                     </div>
-
                     <div className={styles.imageC}>
                         <img className={styles.book} src="assets/images/Group 23.svg" alt="" />
                     </div>
-
-
                 </div>
-
-
-
-
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
                         </div>
@@ -115,7 +96,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
                         </div>
@@ -133,7 +114,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
                         </div>
@@ -151,7 +132,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
                         </div>
