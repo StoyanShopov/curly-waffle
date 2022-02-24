@@ -30,7 +30,7 @@ export default function ModalRemoveCourse(props) {
             <section>
                 <div className={styles.modal}>
                     <div className={styles.modalHead}>
-                        <h2 className={styles.modalTitle}>Are you sure you want to remove this course?</h2>
+                        <h2 className={styles.modalTitle}>Are you sure you want to remove this item?</h2>
                         <Link to="" className={styles.closeBtn} onClick={props.handleClose} >X</Link>
                     </div>
                     <div className={styles.modalContented}>

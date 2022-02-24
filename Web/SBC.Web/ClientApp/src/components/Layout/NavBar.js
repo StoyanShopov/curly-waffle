@@ -36,15 +36,18 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
+                        </li>                        
+                        <li>
+                            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
                         </li>
                         <li>
                             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
                         </li>
                         <li>
-                            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
+                            <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
                         </li>
                         <li>
-                            <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
+                            <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
                         </li>
                         <li>
                             <a href="/docs">Swagger</a>

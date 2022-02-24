@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
-import ModalAddEmployee from "./ModalAddEmployee";
+import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
 import Sidebar from "../../Sidebar/Sidebar"
 

@@ -39,6 +39,7 @@
     color: #ffffff;
     /* font-size-adjust: inherit; */
     /* padding: 100px 130px 40px 130px; */
+    font-size: 22px;
     opacity: 1;
     margin: 0;
 }
@@ -98,6 +99,7 @@
     font-family: "Montserrat", sans-serif;
     color: #296CFB;
     font-weight: 500;
+    font-size: 18px;
     opacity: 1;
     content: "*";
 }

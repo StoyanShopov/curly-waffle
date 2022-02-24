@@ -10,14 +10,14 @@
     height: 240px;
 }
 
-.bookImage {
+.megaphoneImage {
     width: 5%;
 }
 
-.book {
-    left: 900px;
-    top: 28px;
+.megaphone {
+    left: 1115px;
     position: relative;
+    width: 310%;
 }
 
 .cardscontainer {
@@ -27,22 +27,29 @@
     row-gap: 1rem;
     align-items: center;
     gap: 88px 116px;
-    padding-top: 2.6%;
-    padding-left: 11%;
+    padding-top: 3.5%;
+    padding-left: 7%;
 }
 
 .card {
-    width: 23%;
+    width: 26%;
     height: auto;
     box-shadow: 0px 3px 10px #00000029;
 }
 
-.cardpic {
-    position: relative;
+.upper {
+    background-color: #1cc18a;
     width: 100%;
-    height: auto;
+    height: 248px;
+    position: relative;
+}
+
+.cardpic {
+    position: absolute;
+    width: auto;
+    height: 115%;
     bottom: 0;
-    background-size: cover;
+    /*left: -8%;*/
 }
 
 .name {
@@ -85,6 +92,8 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+
 
 .buttonContainer {
     margin-left: 45%;

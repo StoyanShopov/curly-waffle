@@ -15,6 +15,7 @@ import Invoice from "./components/ProfileOwner/Invoice/Invoice";
 import ActiveCoaches from "./components/ProfileOwner/ActiveCoaches/ActiveCoaches";
 import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
+import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 
 import "./App.css";
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/activeCoaches" element={<ActiveCoaches />} />
                     <Route path="/activeCourses" element={<ActiveCourses />} />
                     <Route path="/courseCatalog" element={<CourseCatalog />} />
+                    <Route path="/coachCatalog" element={<CoachCatalog />} />
                 </Routes>
             </Layout>
         </Provider>
