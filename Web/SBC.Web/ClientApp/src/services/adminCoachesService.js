@@ -3,12 +3,25 @@ import { baseUrl } from '../constants';
 
 export const createCoach = async (data) => {
     try {
-        const resp = await axios.post(baseUrl + "api/Coach", data, {
+        const resp = await axios.post(baseUrl + "api/Coaches", data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         }).then((coach) => {
             console.log(coach)
+        });
+        return resp;
+    } catch (error) { }
+}
+
+export const updateCoach = async (data) => {
+    try {
+        const resp = await axios.put(baseUrl + `api/Coaches/${data.coachId}`, data, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((resp) => {
+            console.log(resp)
         });
         return resp;
     } catch (error) { }
@@ -23,7 +36,7 @@ export const getAllCoaches = async () =>{
 }
 
 export const deleteCoachById = async (coachId) =>{
-    const resp = await axios.delete(baseUrl + `api/Coach/${coachId}` , {
+    const resp = await axios.delete(baseUrl + `api/Coaches/${coachId}` , {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         }

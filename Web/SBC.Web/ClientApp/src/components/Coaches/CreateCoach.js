@@ -202,13 +202,15 @@ const CreateCoach = () => {
 
             <div className={styles.languageOptions}>
               <Select
+
                 options={languagesOptions}
                 isMulti
                 name="languages"
-                defaultInputValue={[languagesOptions]}
+                defaultInputValue=""
                 onChange={(onChangeLanguages)}
                 styles={selectStyles}
                 placeholder="Select Languages"
+                selecte
               >
               </Select>
             </div>

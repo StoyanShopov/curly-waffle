@@ -12,12 +12,9 @@ const DeleteCoach = (props) => {
 
         console.log(props.id);
 
-
-
-        deleteCoachById(props.id).then(res =>{
-            props.closeModal();
-        })
+        deleteCoachById(props.id)
         .finally(() =>{
+            props.closeModal();
             props.setCoaches(coaches)
         })
     }

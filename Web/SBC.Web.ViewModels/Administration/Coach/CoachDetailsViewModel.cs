@@ -27,6 +27,5 @@
         public ICollection<CategoryCoachViewModel> Categories { get; set; }
 
         public ICollection<LanguageCoachViewModel> Languages { get; set; }
-
     }
 }

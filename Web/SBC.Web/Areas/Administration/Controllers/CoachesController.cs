@@ -33,7 +33,8 @@
             return this.GenericResponse(result);
         }
 
-        [HttpPut("{id}")]
+        [Route("{id}")]
+        [HttpPut]
         public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             var result = await this.coachService.UpdateAsync(coach);
@@ -42,9 +43,9 @@
 
         [Route("{id}")]
         [HttpDelete]
-        public async Task<ActionResult> Delete(int coachId)
+        public async Task<ActionResult> Delete(int id)
         {
-            var result = await this.coachService.DeleteAsync(coachId);
+            var result = await this.coachService.DeleteAsync(id);
             return this.GenericResponse(result);
         }
     }

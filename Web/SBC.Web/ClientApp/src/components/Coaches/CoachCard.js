@@ -6,7 +6,8 @@ import EditCoach from "./EditCoach";
 import Modal from 'react-modal';
 
 const CoachCard = (props) => {
-    const [coach] = useState(props.coach)
+    const [coach, setCoach] = useState(props.coach)
+    const [coaches, setCoaches] = useState(props.coaches)
 
     return (
         <div className={styles.card}>
@@ -18,8 +19,11 @@ const CoachCard = (props) => {
                      <EditCoach 
                      closeModal={props.closeModal} 
                      coach={props.coach} 
-                     coaches={props.coaches} 
-                     setCoaches={props.setCoaches}/>)
+                     coaches={coaches}
+                     setCoach={setCoach}
+                     setCoaches={setCoaches}
+                     languages={[props.languages]}
+                     />)
                       }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
                             <path id="iconmonstr-pencil-2" d="M19.075,2.946l2.981,2.98L6.4,21.585l-3.732.752L3.417,18.6,19.075,2.946Zm0-2.946L1.5,17.576,0,25l7.424-1.5L25,5.926,19.075,0Z" />

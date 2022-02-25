@@ -61,6 +61,7 @@
                 VideoUrl = coach.VideoUrl,
                 PricePerSession = coach.PricePerSession,
                 CalendlyUrl = coach.CalendlyUrl,
+                ImageUrl = coach.ImageUrl,
             };
 
             await this.coachRepository.AddAsync(coachModel);
@@ -97,10 +98,13 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
+            coachModel.FirstName = coach.FirstName;
+            coachModel.LastName = coach.LastName;
             coachModel.Description = coach.Description;
             coachModel.PricePerSession = coach.PricePerSession;
             coachModel.VideoUrl = coach.VideoUrl;
             coachModel.CalendlyUrl = coach.CalendlyUrl;
+            coachModel.ImageUrl = coach.ImageUrl;
 
             if (coach.Languages.Length != 0)
             {

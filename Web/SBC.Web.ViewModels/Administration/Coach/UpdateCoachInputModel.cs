@@ -9,29 +9,35 @@
     {
         public int CoachId { get; set; }
 
-        [Required]
-        [StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        //[Required]
+        //[StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
         public string Description { get; set; }
 
-        [Required]
-        [Url]
+        //[Required]
+        //[Url]
         public string VideoUrl { get; set; }
 
-        [Range(0, double.MaxValue)]
+        //[Range(0, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
-        [Required]
-        [Url]
+        //[Required]
+        //[Url]
         public string ImageUrl { get; set; }
 
-        [Required]
-        [Url]
+        public string CompanyId { get; set; }
+
+        //[Required]
+        //[Url]
         public string CalendlyUrl { get; set; }
 
-        [MinLength(MinCountUpdate)]
+        //[MinLength(MinCountUpdate)]
         public int[] Languages { get; set; }
 
-        [MinLength(MinCountUpdate)]
+        //[MinLength(MinCountUpdate)]
         public int[] Categories { get; set; }
     }
 }
