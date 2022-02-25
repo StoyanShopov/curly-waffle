@@ -60,7 +60,7 @@ export default function OwnerEmployees(prop) {
                         </tr>
                         <tr id={css.flex}>
                             <td>
-                                <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
+                                <Link to="" className={css.link} onClick={() => { prop.handleViewMore() }}>View More</Link>
                             </td>
                         </tr>
                     </tbody>
