@@ -78,7 +78,7 @@ export default function CourseCatalog(prop) {
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card + ' ' + styles.removeCard}}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
                             <div className={styles.centered}>JAVA</div>                              
@@ -97,7 +97,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                <div className={styles.card + ' ' + styles.removeCard}}>
+                <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
                             <div className={styles.centered}>JAVA</div>                            
@@ -116,7 +116,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card + ' ' + styles.removeCard}}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
                             <div className={styles.centered}>JAVA</div>                           
@@ -135,7 +135,7 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card + ' ' + styles.removeCard}}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
                             <div className={styles.centered}>JAVA</div>                    
