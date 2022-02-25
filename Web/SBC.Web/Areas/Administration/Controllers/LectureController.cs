@@ -18,9 +18,9 @@
 
         [HttpGet]
         [Route("All/{id}")]
-        public async Task<ActionResult> Get(int id)
+        public async Task<ActionResult> Get(int skip, int id, int take)
         {
-            var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(id);
+            var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(skip, id);
 
             return this.GenericResponse(new ResultModel(result));
         }

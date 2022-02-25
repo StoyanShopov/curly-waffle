@@ -15,8 +15,11 @@ export default function CreateLecture(props) {
             .then((response) => {
                 if (response.status === 200) {
                     props.closeModal();
-                    props.setLectures([...props.lectures, response.data]);
+                    props.setLectures(response.data);
                 }
+            })
+            .finally(() =>{
+                props.setSkipPlusOne();
             })
     }
 

@@ -14,6 +14,7 @@
 
     public class LectureService : ILectureService
     {
+        private const int LecturesToTake = 6;
         private readonly IDeletableEntityRepository<Lecture> lectures;
         private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
 
@@ -96,11 +97,14 @@
             return new ResultModel(lectureModel);
         }
 
-        public async Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int id)
+        public async Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int skip, int id, int take = LecturesToTake)
         => await this.lectures
             .AllAsNoTracking()
             .Where(x => x.Courses.Any(x => x.CourseId == id))
+            .OrderByDescending(x => x.CreatedOn)
             .To<TModel>()
+            .Skip(skip)
+            .Take(take)
             .ToListAsync();
 
         public async Task<TModel> GetByIdAsync<TModel>(string id)

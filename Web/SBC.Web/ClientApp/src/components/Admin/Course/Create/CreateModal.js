@@ -16,7 +16,8 @@ const CreateCourse = (props) => {
                     props.closeModal();
                     props.setCourses([...props.courses, response.data]);
                 }
-            })
+            }
+            )
     }
 
     return (
