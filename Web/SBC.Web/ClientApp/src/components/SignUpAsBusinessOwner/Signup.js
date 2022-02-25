@@ -6,16 +6,26 @@ import css from "./Signup.module.css";
 function Signup() {
     return (
 
-        <section className={css.container}> <div className={css.picDiv}>
-            <img src="/assets/images/Path9.png" className={css.signupFigure} />
-            <img src="assets/images/Group52.png" className={css.Man} />
-        </div>
-            <div className={css.ButtonAndText}>
-                <ul className={css.ulForSignup}>
-                    <li className={css.Logo}><img src="/assets/images/Group5.png" /></li>
-                    <Link to="/registerAsOwner"><li><button className={css.ButtonForSignUp}>SignUp as Business Owner</button></li></Link>
-                    <li className={css.TextOnBottom}><p className={css.have}>Already have an account?</p> <Link to="/loginAsEmployee"><p className={css.login}>LogIn here.</p></Link></li>
-                </ul>
+        <section className={css.container}>
+            <div className={css.picDiv}>
+                <img src="/assets/images/Path9.png" className={css.signupFigure} />
+                <img src="assets/images/Group52.png" className={css.man} />
+            </div>
+            <div className={css.buttonAndText}>
+                <img src="/assets/images/Group5.png" className={css.arrow} />
+                <Link to="/registerAsOwner" className={css.buttonForSignUp}>
+                    SignUp as Business Owner
+                </Link>
+                <div className={css.flex}>
+                    <ul className={css.textOnBottom}>
+                        <li className={css.have}>
+                            Already have an account?
+                        </li>
+                        <Link to="/loginAsEmployee" className={css.login}>
+                            LogIn here.
+                        </Link>
+                    </ul>
+                </div>
             </div>
         </section>
     );

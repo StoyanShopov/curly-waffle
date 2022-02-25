@@ -1,50 +1,68 @@
 .container {
-    position: relative;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    width: 1320px;
-    height: 1096px; 
+    background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    max-width: 90%;
+    height: auto;
+    flex-wrap: wrap;
 }
 
-.picDiv{
+.picDiv {
+    flex-grow: 1;
+    flex-basis: 50%;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.signupFigure {
+    width: 42%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.man {
+    width: 21%;
+    height: auto;
     position: absolute;
-   
+    padding-top: 7%;
+    padding-left: 4%;
 }
 
-.signupFigure{
+.buttonAndText {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
+    top: 21%;
+    width: 50%;
+    height: auto;
+    left: 40%;
+    row-gap: 37px;
 }
 
-.Man{ 
-    position: absolute;  
-    top: 200px;
-    left: 100px;
+.arrow {
+    width: 20%;
+    padding-bottom: 2%;
 }
 
-.ulForSignup {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;  
-    top: 400px;
-    left: 1500px;
-  }
-
-.ButtonForSignUp
-{
-    position: absolute;  
-    top: 200px;
-    padding: 14px 40px;
-    width: 580px;
-    height: 70px;
+.buttonForSignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 64%;
+    min-height: 62px;
     background-color: white;
     color: #296CFB;
-    font-size: 24px;
-    text-align: center;
-    left: -175px;
-    border-color: #296CFB;
-    border-style: solid;
-    font-style: Montserrat;
     font-weight: normal;
     letter-spacing: 2px;
     font-size: 23px;
@@ -52,36 +70,46 @@
     cursor: pointer;
 }
 
-.have
-{
-    position: absolute;  
-    top: 300px;
-    text-align: left;
-    left: -110px;
-    color: #296CFB;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font: bold 27px Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    color:#296CFB;
-    font-size: 27px;
+.flex {
+    width: 85%;
 }
 
-.login
-{
-    font-weight: bold;
-    color:#296CFB;
-    font: bold 27px Arial, Helvetica, sans-serif;   
-    letter-spacing: 1px;
-    opacity: 1;
-    position: absolute;  
-    top: 300px;
-    text-align: center;
-    left: 220px;
-    color: #296CFB;
-    white-space: nowrap;
+.textOnBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 93%;
+    height: auto;
+    list-style-type: none;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.have {
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: normal;
+    color: #296CFB;
+    font-size: 23px;
+    flex-grow: 1;    
+    width: 43%;
+    margin: 0;
+    padding: 0;
+    padding-left: 14%;
+}
+
+.login {
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 1px;
+    opacity: 1;
+    color: #296CFB;
+    text-overflow: ellipsis;
     text-decoration: underline;
+    flex-grow: 1;
+    padding-bottom: 9px;
+    position: relative;
+    bottom: 4px;
 }
