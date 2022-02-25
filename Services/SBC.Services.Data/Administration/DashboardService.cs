@@ -20,11 +20,11 @@
 
     public class DashboardService : IDasboardService
     {
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companyService;
         private readonly ICourseService courseService;
         private readonly ICoachService coachService;
 
-        public DashboardService(ICompanyService companyService, ICourseService courseService, ICoachService coachService)
+        public DashboardService(ICompaniesService companyService, ICourseService courseService, ICoachService coachService)
         {
             this.coachService = coachService;
             this.courseService = courseService;

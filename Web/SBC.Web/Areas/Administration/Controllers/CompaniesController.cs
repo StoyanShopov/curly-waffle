@@ -6,17 +6,21 @@
     using SBC.Services.Data.Company;
     using SBC.Web.ViewModels.Administration.Company;
 
-    public class CompanyController : AdministrationController
+    public class CompaniesController : AdministrationController
     {
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companyService;
 
-        public CompanyController(ICompanyService clientService)
+        public CompaniesController(ICompaniesService clientService)
         {
             this.companyService = clientService;
         }
 
         [HttpPost]
         public async Task<ActionResult> Add(CreateCompanyInputModel model)
-            => this.GenericResponse(await this.companyService.AddAsync(model));
+        {
+            var result = await this.companyService.AddAsync(model);
+
+            return this.GenericResponse(result);
+        }
     }
 }

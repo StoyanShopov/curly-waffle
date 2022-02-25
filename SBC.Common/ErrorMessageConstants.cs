@@ -23,5 +23,11 @@
         public const string ExistsByEmail = "The company's email '{0}' already exists.";
 
         #endregion
+
+        #region User Service
+
+
+
+        #endregion
     }
 }

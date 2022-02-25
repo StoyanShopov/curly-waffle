@@ -5,7 +5,7 @@
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Company;
 
-    public interface ICompanyService
+    public interface ICompaniesService
     {
         Task<Result> AddAsync(CreateCompanyInputModel model);
 

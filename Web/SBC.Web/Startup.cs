@@ -146,16 +146,16 @@
                 });
 
             // Application services
-            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IUserService, UserService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
-            services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICourseService, CourseService>();
-            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachService, CoachService>();
             services.AddTransient<IProfileService, ProfileService>();
         }

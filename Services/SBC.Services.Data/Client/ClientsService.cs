@@ -16,33 +16,33 @@
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    public class ClientService : IClientService
+    public class ClientsService : IClientsService
     {
         private const int TakeDefaultValue = 3;
 
-        private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly ICompanyService companyService;
-        private readonly IUserService userService;
+        private readonly IDeletableEntityRepository<ApplicationUser> applicationUsers;
+        private readonly ICompaniesService companiesService;
+        private readonly IUserService usersService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public ClientService(
+        public ClientsService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            ICompanyService companyService,
+            ICompaniesService companyService,
             IUserService userService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)
         {
-            this.applicationUser = applicationUser;
-            this.companyService = companyService;
-            this.userService = userService;
+            this.applicationUsers = applicationUser;
+            this.companiesService = companyService;
+            this.usersService = userService;
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
 
         public async Task<Result> AddAsync(CreateClientInputModel model)
         {
-            var emailExists = await this.userService.ExistsByFullNameByEmailAsync(model.FullName, model.Email);
+            var emailExists = await this.usersService.ExistsByFullNameByEmailAsync(model.FullName, model.Email);
 
             if (!emailExists)
             {
@@ -51,9 +51,9 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
 
-            var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(model.Email);
+            var user = await this.usersService.GetByEmailIncludedRolesAndCompanyAsync(model.Email);
 
-            var ownerExists = await this.companyService.ExistsOwnerAsync(user.Company.Name);
+            var ownerExists = await this.companiesService.ExistsOwnerAsync(user.Company.Name);
 
             if (ownerExists)
             {
@@ -107,18 +107,18 @@
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
 
-            var clientsCount = await this.applicationUser
+            var clientsCount = await this.applicationUsers
                 .AllAsNoTracking()
                 .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
                 .CountAsync();
 
             var isViewMoreAvaliable = (clientsCount - skip - take) > 0;
 
-            var portions = await this.applicationUser
+            var portions = await this.applicationUsers
                  .AllAsNoTracking()
                  .Include(au => au.Company)
-                 .OrderByDescending(au => au.CreatedOn)
                  .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
+                 .OrderByDescending(au => au.CreatedOn)
                  .Skip(skip)
                  .Take(take)
                  .To<ClientDetailsViewModel>()
