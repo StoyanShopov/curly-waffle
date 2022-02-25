@@ -79,7 +79,7 @@ export default function CourseDetails() {
     useEffect(() => {
         courseService.getById(id)
             .then(course => {
-                showLectures(course.data);
+                setCourse(course.data);
             })
     }, [id]);
 
@@ -114,7 +114,7 @@ export default function CourseDetails() {
                 </div>
                 <div className={style.rightPart}>
                     <div className={style.lectureList} >
-                        <button className={style.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={showLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
+                        <button className={style.btnAddLecture} onClick={() => { openModal(<CreateLecture id={id} closeModal={closeModal} setLectures={setLectures} lectures={lectures} skip = {skip} setSkipPlusOne ={SkipPlusOne}/>)}}>Add Lecture</button>
                         <h1 className={style.lecturesHeading}>Lectures</h1>
                         <ul className={style.ulLectures}>
                             {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id} description={description} setDescription={setDescription} openModal={openModal} closeModal={closeModal} setLectures={setLectures} lectures={lectures} lecture={x} index={i} />)}
