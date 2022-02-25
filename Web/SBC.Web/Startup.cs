@@ -33,7 +33,6 @@
     using SBC.Services.Data.Profile;
     using SBC.Services.Data.Profile.Contracts;
     using SBC.Services.Data.User;
-    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
@@ -148,8 +147,8 @@
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IIdentitiesService, IdentitiesService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
             services.AddTransient<IClientsService, ClientsService>();

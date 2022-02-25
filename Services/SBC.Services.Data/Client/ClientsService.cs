@@ -10,10 +10,11 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.User.Contracts;
+    using SBC.Services.Data.User;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
 
+    using static SBC.Common.ErrorMessageConstants.Client;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class ClientsService : IClientsService
@@ -22,14 +23,14 @@
 
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUsers;
         private readonly ICompaniesService companiesService;
-        private readonly IUserService usersService;
+        private readonly IUsersService usersService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public ClientsService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
             ICompaniesService companyService,
-            IUserService userService,
+            IUsersService userService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)
         {
@@ -46,18 +47,22 @@
 
             if (!emailExists)
             {
-                var error = string.Format(ErrorMessageConstants.EmailExists, model.FullName, model.Email);
+                var error = string.Format(EmailExists, model.FullName, model.Email);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
 
-            var user = await this.usersService.GetByEmailIncludedRolesAndCompanyAsync(model.Email);
+            var user = await this.applicationUsers
+                .All()
+                .Include(au => au.Roles)
+                .Include(au => au.Company)
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == model.Email.ToUpper()); ;
 
             var ownerExists = await this.companiesService.ExistsOwnerAsync(user.Company.Name);
 
             if (ownerExists)
             {
-                var error = string.Format(ErrorMessageConstants.OwnerExists, user.Company.Name);
+                var error = string.Format(OwnerExists, user.Company.Name);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -68,18 +73,14 @@
 
                 if (user.Roles.Any(r => r.RoleId == administratorRole.Id))
                 {
-                    var error = ErrorMessageConstants.AdminDowngrade;
-
-                    return new ErrorModel(HttpStatusCode.BadRequest, error);
+                    return new ErrorModel(HttpStatusCode.BadRequest, AdminDowngrade);
                 }
 
                 var ownerRole = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
 
                 if (user.Roles.Any(r => r.RoleId == ownerRole.Id))
                 {
-                    var error = ErrorMessageConstants.AlreadyOwner;
-
-                    return new ErrorModel(HttpStatusCode.BadRequest, error);
+                    return new ErrorModel(HttpStatusCode.BadRequest, AlreadyOwner);
                 }
 
                 var employeeRole = await this.roleManager.FindByNameAsync(CompanyEmployeeRoleName);
@@ -116,7 +117,6 @@
 
             var portions = await this.applicationUsers
                  .AllAsNoTracking()
-                 .Include(au => au.Company)
                  .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
                  .OrderByDescending(au => au.CreatedOn)
                  .Skip(skip)

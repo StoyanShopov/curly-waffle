@@ -1,6 +1,5 @@
 ﻿namespace SBC.Services.Data.Company
 {
-    using System;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -12,6 +11,7 @@
     using SBC.Data.Models;
     using SBC.Web.ViewModels.Administration.Company;
 
+    using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class CompaniesService : ICompaniesService
@@ -33,7 +33,7 @@
 
             if (existsByName)
             {
-                var error = string.Format(ErrorMessageConstants.ExistsByName, model.Name);
+                var error = string.Format(ExistsByName, model.Name);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -42,7 +42,7 @@
 
             if (existsByEmail)
             {
-                var error = string.Format(ErrorMessageConstants.ExistsByEmail, model.Email);
+                var error = string.Format(ExistsByEmail, model.Email);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -66,7 +66,7 @@
         public async Task<bool> ExistsByEmailAsync(string email)
             => await this.companiesRepository
                 .AllAsNoTracking()
-                .AnyAsync(c => c.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+                .AnyAsync(c => c.Email.ToLower() == email.ToLower());
 
         public async Task<bool> ExistsOwnerAsync(string name)
         {
@@ -76,7 +76,7 @@
                 .AllAsNoTracking()
                 .Include(c => c.Employees)
                     .ThenInclude(e => e.Roles)
-                .Where(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                .Where(c => c.Name.ToLower() == name.ToLower())
                 .AnyAsync(c =>
                     c.Employees.Any(e =>
                         e.Roles.Any(r => r.RoleId == role.Id)));
@@ -85,12 +85,12 @@
         public async Task<bool> ExistsByNameAsync(string name)
             => await this.companiesRepository
                 .AllAsNoTracking()
-                .AnyAsync(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
         public async Task<int> GetIdByNameAsync(string name)
             => await this.companiesRepository
                 .AllAsNoTracking()
-                .Where(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                .Where(c => c.Name.ToLower() == name.ToLower())
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync();
     }
