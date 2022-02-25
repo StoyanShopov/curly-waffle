@@ -35,8 +35,9 @@ export default function ActiveCourses(prop) {
                 </div>
                 <div className={styles.cardscontainer}>
                     <div className={styles.card}>
-                        <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt=""/>
+                        <div className={styles.imgContainer}>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
+                            <div className={styles.centered}>MARKETING</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -54,8 +55,9 @@ export default function ActiveCourses(prop) {
                     </div>
 
                     <div className={styles.card}>
-                        <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt=""/>
+                        <div className={styles.imgContainer}>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
+                            <div className={styles.centered}>DESIGN</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -72,8 +74,9 @@ export default function ActiveCourses(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt=""/>
+                        <div className={styles.imgContainer}>
+                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
+                            <div className={styles.centered}>HTML&CSS</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -90,8 +93,9 @@ export default function ActiveCourses(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>

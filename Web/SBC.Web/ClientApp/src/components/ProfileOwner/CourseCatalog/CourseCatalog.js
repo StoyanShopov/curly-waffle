@@ -74,13 +74,14 @@ export default function CourseCatalog(prop) {
                         </ul>
                     </div>
                     <div className={styles.imageC}>
-                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />
+                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />                    
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div>
+                    <div className={styles.card + ' ' + styles.removeCard}}>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>                              
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -96,9 +97,10 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div>
+                <div className={styles.card + ' ' + styles.removeCard}}>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>                            
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -114,9 +116,10 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div>
+                    <div className={styles.card + ' ' + styles.removeCard}}>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>                           
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -132,9 +135,10 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div>
+                    <div className={styles.card + ' ' + styles.removeCard}}>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>                    
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -151,8 +155,10 @@ export default function CourseCatalog(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>        
+                           
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -169,8 +175,9 @@ export default function CourseCatalog(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1240.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -187,8 +194,9 @@ export default function CourseCatalog(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1269.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -205,8 +213,9 @@ export default function CourseCatalog(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1270.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -223,8 +232,9 @@ export default function CourseCatalog(prop) {
                         </div>
                     </div>
                     <div className={styles.card}>
-                        <div>
+                        <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1281.png" alt="" />
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -245,6 +255,7 @@ export default function CourseCatalog(prop) {
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
                 </div>
             </div>
+
             <Modal
                 style={{
                     content: {
