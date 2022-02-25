@@ -1,9 +1,10 @@
 ﻿namespace SBC.Web
 {
+    using System;
     using System.Linq;
     using System.Reflection;
     using System.Text;
-    using AutoMapper;
+
     using Azure.Storage.Blobs;
 
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -29,7 +30,6 @@
     using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Admin;
-    using SBC.Services.Data.Admin.Contracts;
     using SBC.Services.Data.Client;
     using SBC.Services.Data.Client.Contracts;
     using SBC.Services.Data.Coach;
@@ -42,7 +42,6 @@
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
-    using SBC.Web.Infrastructure.MapperConfig;
     using SBC.Web.ViewModels;
 
     public class Startup
@@ -103,7 +102,7 @@
                                 Id = "Bearer",
                             },
                         },
-                        new string[] { }
+                    Array.Empty<string>()
                     },
                 });
 
@@ -151,8 +150,6 @@
                 });
 
             // Application services
-            
-            services.AddAutoMapper(typeof(MappingProfile));
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<IIdentityService, IdentityService>();

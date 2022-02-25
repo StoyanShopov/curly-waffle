@@ -11,7 +11,6 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Admin.Contracts;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Course;
@@ -56,7 +55,7 @@
                            .Select((x, y) => new DiagramViewModelPoint<int, string>()
                            {
                                X = x,
-                               Y = DateTimeFormatInfo.CurrentInfo.MonthNames[y].Substring(0, 3),
+                               Y = DateTimeFormatInfo.CurrentInfo.MonthNames[y][..3],
                            })
                            .ToList();
     }

@@ -6,19 +6,18 @@
     using Microsoft.AspNetCore.Identity;
     using SBC.Common;
     using SBC.Data.Models;
-    using SBC.Services.Data.Admin.Models;
     using SBC.Services.Data.Profile;
+    using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration;
+    using SBC.Web.ViewModels.Administration.Profile;
 
     public class ProfileService : IProfileService
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IConfigurationProvider autoMapper;
 
-        public ProfileService(UserManager<ApplicationUser> userManager, IMapper mapper)
+        public ProfileService(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
-            this.autoMapper = mapper.ConfigurationProvider;
         }
 
         public async Task<Result> EditAsync(EditProfileServiceModel inputModelUser, string userId)
@@ -30,14 +29,11 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
 
-            var mapModel = this.autoMapper.CreateMapper().Map<ApplicationUser>(inputModelUser);
-            this.autoMapper. 
-                //todo use ihavecustomMapping
-          // user.Email = mapModel.Email;
-            user.FirstName = mapModel.FirstName;
-            user.LastName = mapModel.LastName;
-            user.ProfileSummary = mapModel.ProfileSummary;
-            user.PhotoUrl = mapModel.PhotoUrl;
+            // user.Email = mapModel.Email;
+            user.FirstName = inputModelUser.Fullname.Split(" ")[0];
+            user.LastName = inputModelUser.Fullname.Split(" ")[1];
+            user.ProfileSummary = inputModelUser.ProfileSummary;
+            user.PhotoUrl = inputModelUser.PhotoUrl;
 
             var result = await this.userManager.UpdateAsync(user);
 
@@ -59,10 +55,9 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
             }
 
-            var mapper = this.autoMapper.CreateMapper();
-            var result = new ResultModel(mapper.Map<AdminViewModel>(user));
+            var result = AutoMapperConfig.MapperInstance.Map<AdminViewModel>(user);
 
-            return result;
+            return new ResultModel(result);
         }
     }
 }

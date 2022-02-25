@@ -6,9 +6,9 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Admin.Models;
     using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Profile;
+    using SBC.Web.ViewModels.Administration.Profile;
 
     public class ProfileController : AdministrationController
     {

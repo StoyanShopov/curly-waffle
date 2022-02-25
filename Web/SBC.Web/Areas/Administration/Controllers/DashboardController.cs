@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data.Admin.Contracts;
+    using SBC.Services.Data.Admin;
 
     public class DashboardController : AdministrationController
     {

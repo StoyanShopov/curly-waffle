@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Admin.Contracts
+﻿namespace SBC.Services.Data.Admin
 {
     using System;
     using System.Collections.Generic;

@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Services.Data.Admin.Models;
+    using SBC.Web.ViewModels.Administration.Profile;
 
     public interface IProfileService
     {
