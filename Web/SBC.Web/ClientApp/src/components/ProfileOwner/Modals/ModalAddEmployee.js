@@ -15,7 +15,8 @@ export default function ModalAddEmployee(props) {
             email: enteredEmail,
         }
 
-        const response = await axios.post(baseUrl + 'Administration/Client', clientData)
+        const response = await axios
+            .post(baseUrl + 'Administration/Client', clientData)
 
         if (response.status === 200) {
             props.handleSkip(1);
@@ -47,6 +48,7 @@ export default function ModalAddEmployee(props) {
                                 <input
                                     type="text"
                                     className={styles.formField}
+                                    required="required"
                                     placeholder="Full Name*"
                                     name="fullName" />
                             </div>
@@ -54,6 +56,7 @@ export default function ModalAddEmployee(props) {
                                 <input
                                     type="email"
                                     className={styles.formField}
+                                    required="required"
                                     placeholder="Email Address*"
                                     name="email" />
                             </div>

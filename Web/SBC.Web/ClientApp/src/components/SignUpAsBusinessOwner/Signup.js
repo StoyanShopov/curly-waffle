@@ -13,8 +13,8 @@ function Signup() {
             <div className={css.ButtonAndText}>
                 <ul className={css.ulForSignup}>
                     <li className={css.Logo}><img src="/assets/images/Group5.png" /></li>
-                    <Link to="/Signup"><li><button className={css.ButtonForSignUp}>SignUp as Business Owner</button></li></Link>
-                    <li className={css.TextOnBottom}><p className={css.have}>Already have an account?</p> <Link to="/Login"><p className={css.login}>LogIn here.</p></Link></li>
+                    <Link to="/registerAsOwner"><li><button className={css.ButtonForSignUp}>SignUp as Business Owner</button></li></Link>
+                    <li className={css.TextOnBottom}><p className={css.have}>Already have an account?</p> <Link to="/loginAsEmployee"><p className={css.login}>LogIn here.</p></Link></li>
                 </ul>
             </div>
         </section>
