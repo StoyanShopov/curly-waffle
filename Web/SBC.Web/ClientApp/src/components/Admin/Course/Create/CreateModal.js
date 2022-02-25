@@ -2,6 +2,24 @@ import style from './CreateModal.module.css';
 
 import { courseService } from "../../../../services/course.service.js";
 
+const languages = [
+    { id: 1, name: 'Spanish' },
+    { id: 2, name: 'German' },
+    { id: 3, name: 'English' },
+]
+
+const categories = [
+    { id: 1, name: 'Marketing' },
+    { id: 2, name: 'Design' },
+    { id: 3, name: 'Art' },
+]
+
+const coaches = [
+    { id: 1, name: 'Emil' },
+    { id: 2, name: 'Maria' },
+    { id: 3, name: 'Ivan Ivanov' },
+]
+
 const CreateCourse = (props) => {
 
     const onCourseCreate = (e) => {
@@ -16,8 +34,7 @@ const CreateCourse = (props) => {
                     props.closeModal();
                     props.setCourses([...props.courses, response.data]);
                 }
-            }
-            )
+            })
     }
 
     return (
@@ -33,22 +50,16 @@ const CreateCourse = (props) => {
                     <input type="text" className={style.inputContainer} required="required" name="pictureUrl" placeholder="PictureUrl" />
                     <input type="text" className={style.inputContainer} required="required" name="videoUrl" placeholder="VideoUrl" />
 
-                    <select className={style.selectContainer} name="coachId" defaultValue="3">
-                        <option value="1">Emil</option>
-                        <option value="2">Maria</option>
-                        <option value="3">Ivan Ivanov</option>
+                    <select className={style.selectContainer} name="coachId" id="coachId" defaultValue={coaches[0].id}>
+                        {coaches.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
-                    <select className={style.selectContainer} name="categoryId" defaultValue="2">
-                        <option value="1">Marketing</option>
-                        <option value="2">Design</option>
-                        <option value="3">Art</option>
+                    <select className={style.selectContainer} name="categoryId" defaultValue={categories[0].id}>
+                        {categories.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
-                    <select className={style.selectContainer} name="languageId" defaultValue="1">
-                        <option value="1">Spanish</option>
-                        <option value="2">German</option>
-                        <option value="3">English</option>
+                    <select className={style.selectContainer} name="languageId" defaultValue={languages[0].id}>
+                        {languages.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
                     <div className={style.buttonContainer}>
