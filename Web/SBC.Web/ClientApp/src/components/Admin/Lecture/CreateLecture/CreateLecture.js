@@ -15,7 +15,7 @@ export default function CreateLecture(props) {
             .then((response) => {
                 if (response.status === 200) {
                     props.closeModal();
-                    props.setLectures(response.data);
+                    props.setLectures(prevSkip => [response.data, ...prevSkip]);
                 }
             })
             .finally(() =>{

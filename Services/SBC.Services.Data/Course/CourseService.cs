@@ -49,7 +49,7 @@
             await this.courses.AddAsync(newCourse);
             await this.courses.SaveChangesAsync();
 
-            var currentCoach = this.coaches
+            var currentCoach = await this.coaches
                 .AllAsNoTracking()
                 .Include(c => c.Company)
                 .FirstOrDefaultAsync(c => c.Id == newCourse.CoachId);
@@ -60,9 +60,9 @@
                 Title = newCourse.Title,
                 PricePerPerson = newCourse.PricePerPerson,
                 PictureUrl = newCourse.PictureUrl,
-                CoachFirstName = currentCoach.Result.FirstName,
-                CoachLastName = currentCoach.Result.LastName,
-                CoachCompanyName = currentCoach.Result.Company.Name,
+                CoachFirstName = currentCoach.FirstName,
+                CoachLastName = currentCoach.LastName,
+                CoachCompanyName = currentCoach.Company.Name,
             };
 
             return new ResultModel(listingModel);
@@ -112,7 +112,7 @@
 
             await this.courses.SaveChangesAsync();
 
-            var currentCoach = this.coaches
+            var currentCoach = await this.coaches
                .AllAsNoTracking()
                .Include(c => c.Company)
                .FirstOrDefaultAsync(c => c.Id == course.CoachId);
@@ -128,9 +128,9 @@
                 CoachId = course.CoachId,
                 LanguageId = course.LanguageId,
                 CategoryId = course.CategoryId,
-                CoachFirstName = currentCoach.Result.FirstName,
-                CoachLastName = currentCoach.Result.LastName,
-                CoachCompanyName = currentCoach.Result.Company.Name,
+                CoachFirstName = currentCoach.FirstName,
+                CoachLastName = currentCoach.LastName,
+                CoachCompanyName = currentCoach.Company.Name,
             };
 
             return new ResultModel(listingModel);
