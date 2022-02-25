@@ -4,11 +4,9 @@
     using SBC.Data.Models;
     using SBC.Services.Data.Admin.Models;
     using SBC.Web.ViewModels.Administration;
-    using System;
 
     public class MappingProfile : Profile
     {
-
         public MappingProfile()
         {
             this.CreateMap<EditProfileServiceModel, ApplicationUser>()

@@ -31,7 +31,8 @@
             }
 
             var mapModel = this.autoMapper.CreateMapper().Map<ApplicationUser>(inputModelUser);
-
+            this.autoMapper. 
+                //todo use ihavecustomMapping
           // user.Email = mapModel.Email;
             user.FirstName = mapModel.FirstName;
             user.LastName = mapModel.LastName;
