@@ -93,13 +93,7 @@
 
             await this.userManager.AddToRoleAsync(user, CompanyOwnerRoleName);
 
-            var client = new ClientDetailsViewModel
-            {
-                Id = user.Id,
-                Email = user.Email,
-                NormalizedEmail = user.NormalizedEmail,
-                CompanyName = user.Company?.Name,
-            };
+            var client = AutoMapperConfig.MapperInstance.Map<ClientDetailsViewModel>(user);
 
             return new ResultModel(client);
         }
