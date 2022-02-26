@@ -1,5 +1,6 @@
 ﻿namespace SBC.Web
 {
+    using System;
     using System.Linq;
     using System.Reflection;
     using System.Text;
@@ -94,7 +95,7 @@
                                 Id = "Bearer",
                             },
                         },
-                    Array.Empty<string>()
+                        Array.Empty<string>()
                     },
                 });
 
