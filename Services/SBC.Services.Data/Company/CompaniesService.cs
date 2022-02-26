@@ -9,7 +9,6 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company;
     using SBC.Web.ViewModels.Administration.Company;
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
@@ -27,13 +26,13 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<Result> AddAsync(AddRequestModel model)
+        public async Task<Result> AddAsync(CreateCompanyInputModel model)
         {
             var existsByName = await this.ExistsByNameAsync(model.Name);
 
             if (existsByName)
             {
-                var error = $"The company's name '{model.Name}' already exists.";
+                var error = string.Format(ErrorMessageConstants.ExistsByName, model.Name);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -42,7 +41,7 @@
 
             if (existsByEmail)
             {
-                var error = $"The company's email '{model.Name}' already exists.";
+                var error = string.Format(ErrorMessageConstants.ExistsByEmail, model.Email);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -67,7 +66,6 @@
             => await this.NoTrackGetQuery()
                 .AnyAsync(c => c.Email.ToLower() == email.ToLower());
 
-        // TODO: Improve
         public async Task<bool> ExistsOwnerAsync(string name)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);

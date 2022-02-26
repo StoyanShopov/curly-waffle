@@ -20,7 +20,7 @@ export default function ModalAddClients(props) {
 
       props.handleSkip(1);
 
-      props.handleClient(response.data.client);
+      props.handleClient(response.data);
 
       const btnId = e.nativeEvent.submitter.id;
 

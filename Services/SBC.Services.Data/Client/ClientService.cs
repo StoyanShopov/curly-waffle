@@ -9,8 +9,6 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Client.Contracts;
-    using SBC.Services.Data.Client.Models;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Mapping;
@@ -42,13 +40,15 @@
             this.userManager = userManager;
         }
 
-        public async Task<Result> AddAsync(AddRequestModel model)
+        public async Task<Result> AddAsync(CreateClientInputModel model)
         {
             var emailExists = await this.userService.ExistsByFullNameByEmailAsync(model.FullName, model.Email);
 
             if (!emailExists)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, $"There is no user with the given '{model.FullName}' and '{model.Email}'.");
+                var error = string.Format(ErrorMessageConstants.EmailExists, model.FullName, model.Email);
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
 
             var user = await this.userService.GetByEmailIncludedRolesAndCompanyAsync(model.Email);
@@ -57,7 +57,7 @@
 
             if (ownerExists)
             {
-                var error = $"The user's company '{user.Company.Name}' has already a owner.";
+                var error = string.Format(ErrorMessageConstants.OwnerExists, user.Company.Name);
 
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
@@ -68,7 +68,7 @@
 
                 if (user.Roles.Any(r => r.RoleId == administratorRole.Id))
                 {
-                    var error = $"The user is {AdministratorRoleName}. Cannot downgrade to {CompanyOwnerRoleName} role.";
+                    var error = ErrorMessageConstants.AdminDowngrade;
 
                     return new ErrorModel(HttpStatusCode.BadRequest, error);
                 }
@@ -77,7 +77,7 @@
 
                 if (user.Roles.Any(r => r.RoleId == ownerRole.Id))
                 {
-                    var error = $"The user is already an {CompanyOwnerRoleName}.";
+                    var error = ErrorMessageConstants.AlreadyOwner;
 
                     return new ErrorModel(HttpStatusCode.BadRequest, error);
                 }
@@ -92,47 +92,45 @@
 
             await this.userManager.AddToRoleAsync(user, CompanyOwnerRoleName);
 
-            return new ResultModel(new AddServiceModel
+            var client = new ClientDetailsViewModel
             {
-                Client = new GetPortionServiceModel
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    NormalizedEmail = user.NormalizedEmail,
-                    CompanyName = user.Company?.Name,
-                },
-            });
+                Id = user.Id,
+                Email = user.Email,
+                NormalizedEmail = user.NormalizedEmail,
+                CompanyName = user.Company?.Name,
+            };
+
+            return new ResultModel(client);
         }
 
         public async Task<Result> GetPortionAsync(int skip = default, int take = TakeDefaultValue)
         {
             var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
 
+            var clientsCount = await this.applicationUser
+                .AllAsNoTracking()
+                .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
+                .CountAsync();
+
+            var isViewMoreAvaliable = (clientsCount - skip - take) > 0;
+
             var portions = await this.applicationUser
                  .AllAsNoTracking()
+                 .Include(au => au.Company)
                  .OrderByDescending(au => au.CreatedOn)
                  .Where(au => au.Roles.Any(r => r.RoleId == role.Id))
                  .Skip(skip)
                  .Take(take)
-                 .Include(au => au.Company)
-                 .To<GetPortionResponseModel>()
+                 .To<ClientDetailsViewModel>()
                  .ToListAsync();
 
-            return new ResultModel(new GetPortionsServiceModel
+            var clients = new ClientsDetailsViewModel
             {
                 Portions = portions,
-                ViewMoreAvaliable = await this.IsViewMoreAvaliable(skip, take, role.Id),
-            });
-        }
+                ViewMoreAvaliable = isViewMoreAvaliable,
+            };
 
-        private async Task<bool> IsViewMoreAvaliable(int skip, int take, string roleId)
-        {
-            var clientsCount = await this.applicationUser
-                .AllAsNoTracking()
-                .Where(au => au.Roles.Any(r => r.RoleId == roleId))
-                .CountAsync();
-
-            return (clientsCount - skip - take) > 0;
+            return new ResultModel(clients);
         }
     }
 }
