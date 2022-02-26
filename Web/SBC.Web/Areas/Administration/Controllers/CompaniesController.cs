@@ -16,7 +16,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Add(AddRequestModel model)
+        public async Task<ActionResult> Add(CreateCompanyInputModel model)
         {
             var result = await this.companyService.AddAsync(model);
 

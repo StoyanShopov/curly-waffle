@@ -64,7 +64,6 @@
 
 	<ItemGroup>
 	  <Folder Include="ClientApp\src\components\Register\" />
-	  <Folder Include="Models\NewFolder\" />
 	</ItemGroup>
 
 

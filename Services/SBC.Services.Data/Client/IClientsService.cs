@@ -1,13 +1,13 @@
-﻿namespace SBC.Services.Data.Client.Contracts
+﻿namespace SBC.Services.Data.Client
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Client;
 
-    public interface IClientService
+    public interface IClientsService
     {
-        Task<Result> AddAsync(AddRequestModel model);
+        Task<Result> AddAsync(CreateClientInputModel model);
 
         Task<Result> GetPortionAsync(int skip, int take = 3);
     }

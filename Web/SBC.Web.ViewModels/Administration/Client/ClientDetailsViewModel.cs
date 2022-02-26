@@ -1,9 +1,9 @@
-﻿namespace SBC.Services.Data.Client.Models
+﻿namespace SBC.Web.ViewModels.Administration.Client
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class GetPortionServiceModel : IMapFrom<ApplicationUser>
+    public class ClientDetailsViewModel : IMapFrom<ApplicationUser>
     {
         public string Id { get; set; }
 
