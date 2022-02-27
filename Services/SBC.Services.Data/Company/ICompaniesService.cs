@@ -7,7 +7,7 @@
 
     public interface ICompaniesService
     {
-        Task<Result> AddAsync(AddRequestModel model);
+        Task<Result> AddAsync(CreateCompanyInputModel model);
 
         Task<Result> GetCountAsync();
 

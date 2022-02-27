@@ -26,7 +26,7 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: ErrorMessageConstants.NotExistsUser);
             }
 
             // user.Email = mapModel.Email;
@@ -51,8 +51,7 @@
 
             if (user == null)
             {
-                // TODO => error constant
-                return new ErrorModel(HttpStatusCode.Unauthorized, "User does not exist");
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: ErrorMessageConstants.NotExistsUser);
             }
 
             var result = AutoMapperConfig.MapperInstance.Map<AdminViewModel>(user);
