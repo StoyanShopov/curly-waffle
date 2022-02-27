@@ -6,7 +6,6 @@
     {
         public class Client
         {
-
             public const string AdminDowngrade = "The user is " + AdministratorRoleName + ". Cannot downgrade to " + CompanyOwnerRoleName + " role.";
 
             public const string AlreadyOwner = "The user is already an " + CompanyOwnerRoleName + ".";
@@ -30,12 +29,8 @@
             public const string EmailExists = "Email '{0}' is already taken.";
 
             public const string InvalidPassOrEmail = "Password/Email is invalid!";
+
+            public const string NotExistsUser = "User does not exist.";
         }
-
-        #region Profile Service
-
-        public const string NotExistsUser = "User does not exist.";
-
-        #endregion
     }
 }

@@ -2,6 +2,7 @@
 {
     using System.Net;
     using System.Threading.Tasks;
+
     using AutoMapper;
     using Microsoft.AspNetCore.Identity;
     using SBC.Common;
@@ -10,6 +11,8 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration;
     using SBC.Web.ViewModels.Administration.Profile;
+
+    using static SBC.Common.ErrorMessageConstants.User;
 
     public class ProfileService : IProfileService
     {
@@ -26,7 +29,7 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: ErrorMessageConstants.NotExistsUser);
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
             }
 
             // user.Email = mapModel.Email;
@@ -51,7 +54,7 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: ErrorMessageConstants.NotExistsUser);
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
             }
 
             var result = AutoMapperConfig.MapperInstance.Map<AdminViewModel>(user);
