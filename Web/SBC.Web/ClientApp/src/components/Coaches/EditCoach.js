@@ -19,7 +19,6 @@ const EditCoach = (props) => {
         label: x.name
       })))
     })
-    setLanguages(coachLanguages)
     getCategories().then(res => {
       setCategoriesOptions(res.data.map(x => ({
         value: x.id,

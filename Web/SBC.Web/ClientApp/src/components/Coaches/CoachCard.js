@@ -18,11 +18,11 @@ const CoachCard = (props) => {
                     onClick={() => {props.openModal((props.editModalStyle),
                      <EditCoach 
                      closeModal={props.closeModal} 
-                     coach={props.coach} 
+                     coach={coach} 
                      coaches={coaches}
                      setCoach={setCoach}
                      setCoaches={setCoaches}
-                     languages={[props.languages]}
+                     languages={[coach.languages]}
                      />)
                       }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
