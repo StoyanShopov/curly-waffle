@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SBC.Web.ViewModels.Administration.Client
 {
-    internal class ClientViewModel
+    internal class ClientDetailsViewModel2
     {
     }
 }

@@ -8,7 +8,7 @@
     using Microsoft.IdentityModel.Tokens;
     using SBC.Services.Identity.Contracts;
 
-    public class IdentityService : IIdentityService
+    public class IdentitiesService : IIdentitiesService
     {
         private const int DaysToExpire = 3;
 

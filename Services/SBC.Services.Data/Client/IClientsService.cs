@@ -5,7 +5,7 @@
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Client;
 
-    public interface IClientService
+    public interface IClientsService
     {
         Task<Result> AddAsync(CreateClientInputModel model);
 

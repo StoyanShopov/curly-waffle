@@ -31,7 +31,6 @@
     using SBC.Services.Data.Course;
     using SBC.Services.Data.Profile;
     using SBC.Services.Data.User;
-    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
@@ -96,7 +95,7 @@
                                 Id = "Bearer",
                             },
                         },
-                    Array.Empty<string>()
+                        Array.Empty<string>()
                     },
                 });
 
@@ -146,11 +145,11 @@
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IIdentitiesService, IdentitiesService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
-            services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();

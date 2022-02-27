@@ -8,20 +8,28 @@
 
     public class ClientsController : AdministrationController
     {
-        private readonly IClientService clientService;
+        private readonly IClientsService clientsService;
 
-        public ClientsController(IClientService clientService)
+        public ClientsController(IClientsService clientService)
         {
-            this.clientService = clientService;
+            this.clientsService = clientService;
         }
 
         [HttpGet]
         [Route(nameof(Portion))]
         public async Task<ActionResult> Portion(int skip)
-            => this.GenericResponse(await this.clientService.GetPortionAsync(skip));
+        {
+            var result = await this.clientsService.GetPortionAsync(skip);
+
+            return this.GenericResponse(result);
+        }
 
         [HttpPost]
         public async Task<ActionResult> Add(CreateClientInputModel model)
-            => this.GenericResponse(await this.clientService.AddAsync(model));
+        {
+            var result = await this.clientsService.AddAsync(model);
+
+            return this.GenericResponse(result);
+        }
     }
 }
