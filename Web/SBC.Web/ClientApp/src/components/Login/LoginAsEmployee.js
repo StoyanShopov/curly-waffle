@@ -47,8 +47,8 @@ const LoginAsEmployee = (props) => {
                     </div>
                     <h1>Welcome back!</h1>
                     <h5>Please login to your account</h5>
-                    <form onSubmit={onLogin} ref={form}>
-                        <div className={styles.inputcontainer}>
+                    <form onSubmit={onLogin} ref={form} className={styles.inputcontainer}>
+                        <div>
                             <label htmlFor="email"></label>
                             <input
                                 type="text"
@@ -56,7 +56,7 @@ const LoginAsEmployee = (props) => {
                                 name="email"
                                 required="required"
                                 id="name"
-                                placeholder="Email Address"
+                                placeholder="Email Address*"
                                 value={email}
                                 onChange={onChangeEmail}
                             />
@@ -67,7 +67,7 @@ const LoginAsEmployee = (props) => {
                                 type="password"
                                 name="password"
                                 className={`${styles.input} ${styles.inputpass}`}
-                                placeholder="Password"
+                                placeholder="Password*"
                                 required="required"
                                 value={password}
                                 onChange={onChangePassword}

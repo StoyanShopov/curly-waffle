@@ -13,6 +13,11 @@ import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
 import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
+import Invoice from "./components/ProfileOwner/Invoice/Invoice";
+import ActiveCoaches from "./components/ProfileOwner/ActiveCoaches/ActiveCoaches";
+import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses";
+import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
+import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 
 import "./App.css";
 
@@ -29,6 +34,11 @@ function App() {
                     <Route path="/details/:id" element={<CourseDetails />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/ownerEmployees" element={<OwnerEmployees />} />
+                    <Route path="/ownerInvoice" element={<Invoice />} />
+                    <Route path="/activeCoaches" element={<ActiveCoaches />} />
+                    <Route path="/activeCourses" element={<ActiveCourses />} />
+                    <Route path="/courseCatalog" element={<CourseCatalog />} />
+                    <Route path="/coachCatalog" element={<CoachCatalog />} />
                 </Routes>
             </Layout>
         </Provider>

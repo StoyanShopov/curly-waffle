@@ -19,29 +19,27 @@
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
-            Task.Run(async () =>
+            const string adminEmail = "admin@test.test";
+
+            var adminUser = new ApplicationUser
             {
-                const string adminEmail = "admin@test.test";
+                Email = adminEmail,
+                UserName = adminEmail,
+            };
 
-                var adminUser = new ApplicationUser
-                {
-                    Email = adminEmail,
-                    UserName = adminEmail,
-                };
+            await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);
 
-                await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);
+            const string ownerEmail = "owner@test.test";
 
-                const string ownerEmail = "owner@test.test";
+            var ownerUser = new ApplicationUser
+            {
+                Email = ownerEmail,
+                UserName = ownerEmail,
+            };
 
-                var ownerUser = new ApplicationUser
-                {
-                    Email = ownerEmail,
-                    UserName = ownerEmail,
-                };
+            await SeedUsersRoles(dbContext, userManager, ownerUser, CompanyOwnerPassword, CompanyOwnerRoleName);
 
-                await SeedUsersRoles(dbContext, userManager, ownerUser, CompanyOwnerPassword, CompanyOwnerRoleName);
-
-                var applicationUsersList = new List<ApplicationUser>()
+            var applicationUsersList = new List<ApplicationUser>()
                 {
                     new ApplicationUser
                     {
@@ -117,13 +115,10 @@
                     },
                 };
 
-                foreach (ApplicationUser applicationUser in applicationUsersList)
-                {
-                   await SeedUsersRoles(dbContext, userManager, applicationUser, EmployeePassword, CompanyEmployeeRoleName);
-                }
-            })
-                .GetAwaiter()
-                .GetResult();
+            foreach (ApplicationUser applicationUser in applicationUsersList)
+            {
+                await SeedUsersRoles(dbContext, userManager, applicationUser, EmployeePassword, CompanyEmployeeRoleName);
+            }
         }
 
         private static async Task SeedUsersRoles(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, ApplicationUser user, string password, string roleName)
