@@ -27,6 +27,8 @@
         //[Url]
         public string ImageUrl { get; set; }
 
+        public string CompanyEmail { get; set; }
+
         //[Required]
         //[Url]
         public string VideoUrl { get; set; }

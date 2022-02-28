@@ -21,19 +21,22 @@
         private readonly IDeletableEntityRepository<LanguageCoach> languageCoachRepo;
         private readonly IDeletableEntityRepository<Language> languageRepo;
         private readonly IDeletableEntityRepository<Category> categoryRepo;
+        private readonly IDeletableEntityRepository<Company> companiesRepository;
 
         public CoachService(
             IDeletableEntityRepository<Coach> coachRepository,
             IDeletableEntityRepository<CategoryCoach> categoryCoachRepo,
             IDeletableEntityRepository<LanguageCoach> languageCoachRepo,
             IDeletableEntityRepository<Language> languageRepo,
-            IDeletableEntityRepository<Category> categoryRepo)
+            IDeletableEntityRepository<Category> categoryRepo,
+            IDeletableEntityRepository<Company> companiesRepository)
         {
             this.coachRepository = coachRepository;
             this.languageCoachRepo = languageCoachRepo;
             this.categoryCoachRepo = categoryCoachRepo;
             this.languageRepo = languageRepo;
             this.categoryRepo = categoryRepo;
+            this.companiesRepository = companiesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateCoachInputModel coach)
@@ -53,6 +56,8 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
+
+
             var coachModel = new Coach
             {
                 FirstName = coach.FirstName,
@@ -63,6 +68,16 @@
                 CalendlyUrl = coach.CalendlyUrl,
                 ImageUrl = coach.ImageUrl,
             };
+
+            if (coach.CompanyEmail != null)
+            {
+                var company = this.companiesRepository.AllAsNoTracking().FirstOrDefault(c => c.Email == coach.CompanyEmail);
+
+                if (company != null)
+                {
+                    coachModel.CompanyId = company.Id;
+                }
+            }
 
             await this.coachRepository.AddAsync(coachModel);
             this.AddLanguages(coach.Languages, coachModel);

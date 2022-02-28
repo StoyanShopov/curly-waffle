@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { useState } from "react";
 import CoachCard from "./CoachCard";
 import { getAllCoaches, getCategories, getLanguages } from "../../services/adminCoachesService"
+import CreateCoach from "./CreateCoach";
 
 const Coaches = () => {
 
@@ -29,7 +30,7 @@ const Coaches = () => {
       left: '50%',
       right: 'auto',
       width: '38%',
-      height: '520px',
+      height: '1000px',
       bottom: 'auto',
       marginTop: '-5%',
       marginRight: '-50%',
@@ -78,7 +79,7 @@ const Coaches = () => {
         label: x.name
       })))
     })
-  }, []);
+  }, [coaches]);
 
   return (
     <div className={styles.container}>
@@ -115,6 +116,19 @@ const Coaches = () => {
           setCoaches={setCoaches}
           languages={languages}
           categories={categories}/>)}
+          <div className={styles.pluscontainer}>
+          <img
+            src="assets/images/Group 79.svg"
+            alt=""
+            className={styles.plus}
+            onClick={() => {
+              openModal(editModalStyle, <CreateCoach
+                closeModal={closeModal}
+                coaches={coaches}
+                setCoaches={setCoaches} />);
+            }}
+          />
+        </div>
       </div>
       <Modal
         style={subtitle}

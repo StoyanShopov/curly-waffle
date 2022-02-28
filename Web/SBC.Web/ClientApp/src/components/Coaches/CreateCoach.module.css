@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
 
-.bodyContainer{
-    display: flow-root;
-    padding-top: 20%;
-}
-
 .languageOptions{
     width: 405px;
     border: 2px solid #296cfb;
@@ -12,17 +7,7 @@
     border-radius: 5px;
 }
 
-.addContainer {
-    position: relative;
-    float: left;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-}
-
 .headerContainer{
-    width: 600px;
     height: 100px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;

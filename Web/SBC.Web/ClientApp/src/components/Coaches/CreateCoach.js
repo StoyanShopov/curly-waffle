@@ -4,12 +4,13 @@ import Select from 'react-select'
 
 import styles from "./CreateCoach.module.css";
 
-const CreateCoach = () => {
+const CreateCoach = (props) => {
   const [languages, setLanguages] = useState([]);
   const [languagesOptions, setLanugagesOptions] = useState()
   const [categories, setCategories] = useState([])
   const [categoriesOptions, setCategoriesOptions] = useState()
-
+  const [coaches, setCoaches] = useState(props.coaches)
+ 
   useEffect(() => { 
     getLanguages().then(res =>{
       setLanugagesOptions(res.data.map(x=> ({
@@ -81,7 +82,9 @@ const CreateCoach = () => {
 
     createCoach(data).then((response) => {
       console.log(response);
-    });
+    }).finally(() =>{
+      props.closeModal()
+    })
   };
 
   return (
@@ -99,7 +102,8 @@ const CreateCoach = () => {
               />
               <span>Upload image</span>
             </div>
-            <button className={styles.closeBtn}>
+            <button className={styles.closeBtn}
+            onClick={props.closeModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.92"
@@ -183,8 +187,8 @@ const CreateCoach = () => {
             <div>
               <input
                 className={styles.inputField}
-                name="company"
-                placeholder="Company(optional)"
+                name="companyEmail"
+                placeholder="Company Email(optional)"
                 type="text"
               />
             </div>
@@ -245,7 +249,7 @@ const CreateCoach = () => {
             </button>
 
             <div className={styles.footerContainer}>
-              <button className={styles.btnCancel} type="button">
+              <button className={styles.btnCancel} onClick={props.closeModal} type="button">
                 Cancel
               </button>
               <button className={styles.btnSave} type="submit">
