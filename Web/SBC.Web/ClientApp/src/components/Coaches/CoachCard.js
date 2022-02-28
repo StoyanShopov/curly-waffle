@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 const CoachCard = (props) => {
     const [coach, setCoach] = useState(props.coach)
     const [coaches, setCoaches] = useState(props.coaches)
-
+    console.log(coach);
     return (
         <div className={styles.card}>
             <div className={styles.upper}>
@@ -22,7 +22,8 @@ const CoachCard = (props) => {
                      coaches={coaches}
                      setCoach={setCoach}
                      setCoaches={setCoaches}
-                     languages={[coach.languages]}
+                     languages={props.languages}
+                     categories={props.categories}
                      />)
                       }}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">

@@ -1,31 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Select from 'react-select'
-import { uploadImage, getLanguages, getCategories, updateCoach } from "../../services/adminCoachesService";
+import { uploadImage, updateCoach } from "../../services/adminCoachesService";
 
 
 import styles from './EditCoach.module.css';
 
 const EditCoach = (props) => {
   const [languages, setLanguages] = useState([]);
-  const [languagesOptions, setLanugagesOptions] = useState([])
+  const [languagesOptions] = useState(props.languages)
   const [categories, setCategories] = useState([])
-  const [categoriesOptions, setCategoriesOptions] = useState([])
-  const [coach , setCoach] = useState(props.coach)
+  const [categoriesOptions] = useState(props.categories)
+  const [coach] = useState(props.coach)
 
-  useEffect(() => {
-    getLanguages().then(res => {
-      setLanugagesOptions(res.data.map(x => ({
-        value: x.id,
-        label: x.name
-      })))
-    })
-    getCategories().then(res => {
-      setCategoriesOptions(res.data.map(x => ({
-        value: x.id,
-        label: x.name
-      })))
-    })
-  }, [])
+  console.log(languagesOptions);
 
   const coachLanguagesAsArrayOfIds = coach.languages.map(x => x.languageId);
   const coachLanguages = languagesOptions.filter(x => coachLanguagesAsArrayOfIds.includes(x.value))
@@ -87,7 +74,7 @@ const EditCoach = (props) => {
       {}
     );
 
-    if (data.imageUrl == null || data.imageUrl.size == 0) {
+    if (data.imageUrl === null || data.imageUrl.size === 0) {
       data.imageUrl = coach.imageUrl
     }
     else {
@@ -95,11 +82,11 @@ const EditCoach = (props) => {
       data.imageUrl = result
     }
 
-    languages.length == 0 ?
+    languages.length === 0 ?
       data.languages = coachLanguages.map(x => (x.value)) :
       data.languages = languages.map(x => (x.value))
 
-    categories.length == 0 ?
+    categories.length === 0 ?
       data.categories = coachCategories.map(x => (x.value)) :
       data.categories = categories.map(x => (x.value))
 
@@ -108,6 +95,11 @@ const EditCoach = (props) => {
           props.closeModal();
       })
       .finally(() =>{
+        const languagesAsObj = data.languages.map(x=> ({languageId : x}))
+        const categoriesAsObj = data.categories.map(x=> ({categoryId : x}))
+        data.languages = languagesAsObj
+        data.categories = categoriesAsObj
+
         props.setCoach(data)
       })
   }

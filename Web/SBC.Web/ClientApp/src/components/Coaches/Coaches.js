@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import styles from "../Coaches/Coaches.module.css";
 import Modal from 'react-modal';
-import DeleteCoach from "./DeleteCoach";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import EditCoach from "./EditCoach";
 import CoachCard from "./CoachCard";
-import { getAllCoaches } from "../../services/adminCoachesService"
+import { getAllCoaches, getCategories, getLanguages } from "../../services/adminCoachesService"
 
 const Coaches = () => {
 
@@ -46,6 +43,8 @@ const Coaches = () => {
   const [child, setChild] = useState();
   const [subtitle, setSubtitle] = useState();
   const [coaches, setCoaches] = useState([])
+  const [languages, setLanguages] = useState([])
+  const [categories, setCategories] = useState([])
 
   function openModal(style, child) {
     setSubtitle(style);
@@ -64,6 +63,20 @@ const Coaches = () => {
   useEffect(() => {
     getAllCoaches().then(res => {
       setCoaches(res.data)
+    })
+
+    getCategories().then(res => {
+      setCategories(res.data.map(x=> ({
+        value: x.id,
+        label: x.name
+    })))
+    })
+
+    getLanguages().then(res => {
+      setLanguages(res.data.map(x => ({
+        value: x.id,
+        label: x.name
+      })))
     })
   }, []);
 
@@ -99,7 +112,9 @@ const Coaches = () => {
           deleteModalStyle={deleteModalStyle}
           editModalStyle={editModalStyle}
           coaches={coaches}
-          setCoaches={setCoaches}/>)}
+          setCoaches={setCoaches}
+          languages={languages}
+          categories={categories}/>)}
       </div>
       <Modal
         style={subtitle}
@@ -115,5 +130,3 @@ const Coaches = () => {
 };
 
 export default Coaches;
-
-

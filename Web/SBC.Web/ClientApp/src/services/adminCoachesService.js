@@ -45,7 +45,6 @@ export const deleteCoachById = async (coachId) =>{
     })
     return resp;
 }
-
 export const getLanguages = async () =>{
     return await axios.get(baseUrl + 'api/Languages/GetAllLanguagesAsync');
 }
