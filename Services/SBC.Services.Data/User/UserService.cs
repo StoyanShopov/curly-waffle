@@ -9,7 +9,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Companies;
     using SBC.Services.Data.User.Contracts;
     using SBC.Services.Data.User.Models;
     using SBC.Services.Identity.Contracts;
@@ -19,20 +19,20 @@
     public class UserService : IUserService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companiesService;
         private readonly IIdentityService identityService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public UserService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            ICompanyService companyService,
+            ICompaniesService companiesService,
             IIdentityService identityService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)
         {
             this.applicationUser = applicationUser;
-            this.companyService = companyService;
+            this.companiesService = companiesService;
             this.identityService = identityService;
             this.roleManager = roleManager;
             this.userManager = userManager;
@@ -49,14 +49,14 @@
 
             var (firstName, lastName) = GetNames(model.FullName);
 
-            var companyExists = await this.companyService.ExistsByNameAsync(model.CompanyName);
+            var companyExists = await this.companiesService.ExistsByNameAsync(model.CompanyName);
 
             if (!companyExists)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, $"Company '{model.CompanyName}' is not registered.");
             }
 
-            var companyId = await this.companyService.NoTrackGetCompanyByNameAsync(model.CompanyName);
+            var companyId = await this.companiesService.NoTrackGetCompanyByNameAsync(model.CompanyName);
 
             var user = new ApplicationUser
             {
