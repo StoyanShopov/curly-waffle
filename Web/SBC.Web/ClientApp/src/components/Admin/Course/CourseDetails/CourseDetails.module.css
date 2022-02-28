@@ -1,88 +1,93 @@
-.background{
+.background {
     position: relative;
 }
-.container{
+
+.container {
     display: flex;
     position: relative;
     width: 100%;
     padding-top: 4%;
 }
-.leftPart{
-    width: 66%;
+
+.leftPart {
+    width: 56%;
     margin-left: 7%;
+    margin-right: 7%;
 }
-.rightPart{
-    width: 34%; 
+
+.rightPart {
+    width: 34%;
 }
-.lectureList{
-    background-color: rgba(0,0,255,0.1);
+
+.lectureList {
+    background-color: rgba(0, 0, 255, 0.1);
 }
-.marketingHeading{
+
+.marketingHeading {
     font-size: 40px;
     font-weight: bolder;
     color: black;
     font-style: Montserrat;
 }
-.controllsDiv{
+
+.controllsDiv {
     width: 1035px;
     height: 70px;
     margin-top: 10px;
     background-color: #296CFB;
 }
-.play{
-    padding-top: 20px;
-    padding-left: 60px;
+
+.videoPlayer {
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
-.audio{
-    padding-left: 30px;
-}
-.time{
-    padding-left: 90px;
-}
-.options{
-    padding-left: 450px;
-}
-.fullScreen{
-    padding-left: 30px;
-}
-.descriptionHeading{
+
+.descriptionHeading {
     font-size: 22px;
     font-style: Montserrat;
 }
-.instructorHeading{
+
+.instructorHeading {
     font-size: 22px;
     font-style: Montserrat;
 }
-.pDescription{
+
+.pDescription {
     font-size: 22px;
     font-style: Montserrat;
-    width: 820px; 
+    width: 820px;
 }
-.lectorPic{
+
+.lectorPic {
     width: 100px;
     height: 100px;
     background-color: gray;
 }
-.pCreatedBy{
+
+.pCreatedBy {
     margin-left: 20px;
     margin-top: 0px;
     font-size: 22px;
     font-style: Montserrat;
-    font-weight:500;
+    font-weight: 500;
 }
-.lectorSection{
+
+.lectorSection {
     display: flex;
     width: 250px;
 }
-.google{
+
+.google {
     margin-left: 20px;
 }
-.pInstructor{
+
+.pInstructor {
     font-size: 22px;
     font-style: Montserrat;
-    width: 820px;  
+    width: 820px;
 }
-.btnAddLecture{
+
+.btnAddLecture {
     width: 200px;
     height: 50px;
     font-size: 22px;
@@ -93,23 +98,27 @@
     margin-left: 8%;
     cursor: pointer;
 }
-.lecturesHeading{
+
+.lecturesHeading {
     font-size: 22px;
     font-style: Montserrat;
     margin-top: 9%;
     padding-left: 8%;
 }
-.ulLectures{
+
+.ulLectures {
     list-style-type: none;
     padding-left: 8%;
 }
-.liName{
+
+.liName {
     font-size: 22px;
     font-style: Montserrat;
     font-weight: 450;
     margin: 2%;
 }
-.btnViewMore{
+
+.btnViewMore {
     width: 250px;
     height: 50px;
     font-size: 22px;
