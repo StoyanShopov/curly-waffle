@@ -11,10 +11,8 @@ export default function RegisterAsOwner(prop) {
             </div>
             <div className={styles.right}>
                 <div className={styles.formContainer}>
-                    <div className={styles.arrowContainer}>
-                        <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
-                    </div>
-                    <form action="">
+                    <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+                    <form action="" className={styles.inputformsContainer}>
                         <div className={styles.inputcontainer}>
                             <input
                                 type="text"
@@ -24,6 +22,16 @@ export default function RegisterAsOwner(prop) {
                                 placeholder="Full Name"
                             />
                             <span className={styles.starfullname}>*</span>
+                        </div>
+                        <div className={styles.inputcontainer}>
+                            <input
+                                type="text"
+                                className={styles.inputuser}
+                                name="email"
+                                required="required"
+                                placeholder="Email Address"
+                            />
+                            <span className={styles.staremail}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -39,11 +47,11 @@ export default function RegisterAsOwner(prop) {
                             <input
                                 type="text"
                                 className={styles.inputuser}
-                                name="email"
+                                name="companyEemail"
                                 required="required"
-                                placeholder="Email Address"
+                                placeholder="Company Email Address"
                             />
-                            <span className={styles.staremail}>*</span>
+                            <span className={styles.starcompanyemail}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
@@ -67,23 +75,16 @@ export default function RegisterAsOwner(prop) {
                             <span className={styles.starconfirmpassword}>*</span>
                             <img src="assets/images/Eye.svg" className={styles.eye}></img>
                         </div>
-                        <div>
-                            <div className={styles.btncontainer}>
-                                <input type="submit" value="SignUp" />
-                            </div>
-                            <br />
-                            <div className={styles.checkcontainer}>
-                                < div>
-                                    <p className={styles.alreadyHave}>
-                                        Already have an account?
-                                    </p>
-                                </div>
-                                < div>
-                                    <NavLink to="/login" className={styles.loginhere}>
-                                        Login here
-                                    </NavLink>
-                                </div>
-                            </div>
+                        <div className={styles.btncontainer}>
+                            <input type="submit" value="SignUp" />
+                        </div>
+                        <div className={styles.checkcontainer}>
+                            <p className={styles.alreadyHave}>
+                                Already have an account?
+                            </p>
+                            <NavLink to="/login" className={styles.loginhere}>
+                                Login here
+                            </NavLink>
                         </div>
                     </form>
                 </div>

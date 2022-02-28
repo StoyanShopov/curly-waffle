@@ -1,0 +1,73 @@
+﻿.body {
+    font-family: "Montserrat", sans-serif;
+    align-items: center;
+    margin: 0;
+    letter-spacing: 1.4px;
+}
+
+.modal {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    opacity: 1;
+    text-align: center;
+    position: relative;
+}
+
+.modalHead {
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.modalTitle {
+    color: #ffffff;
+    opacity: 1;
+    margin: 0;
+    font-size: 19px;
+    padding-top: 38px;
+}
+
+.closeBtn {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+    padding-bottom: 84px;
+}
+
+.modalFooter {
+    padding-top: 12px;
+}
+
+.modalBtnCancel {
+    width: 150px;
+    height: 50px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    color: #296CFB;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.modalBtnRemove {
+    width: 150px;
+    height: 50px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: #296CFB;
+    margin-left: 25px;
+    margin-top: 30px;
+    color: #ffffff;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 19px;
+}
