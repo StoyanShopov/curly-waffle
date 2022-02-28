@@ -14,14 +14,14 @@ export default function Main() {
                 </div>
                 <p className={css.pDemo}>Request a Demo</p>
                 <p className={css.pRequestDemo}>Don’t find what you are looking for? We would be more than happy to help you and assist you in everything you need! Let us know about your personal requirements by filling our request form:</p>
-                <form>
+                <form className={css.inputForm}>
                     <div>
-                        <input className={css.inputBase} placeholder='Name*'></input>
-                        <input className={css.inputOne} placeholder='Company Name*'></input>
+                        <input className={css.inputBase} required="required" placeholder='Name*'></input>
+                        <input className={css.inputOne} required="required" placeholder='Company Name*'></input>
                     </div>
                     <div>
-                        <input className={css.inputBase} placeholder='Email Address*'></input>
-                        <input className={css.inputOne} placeholder='Phone number*'></input>
+                        <input className={css.inputBase} required="required" placeholder='Email Address*'></input>
+                        <input className={css.inputOne} required="required" placeholder='Phone number*'></input>
                     </div>
                     <input type="submit" value="Submit" className={css.submitBtn} />
                 </form>
