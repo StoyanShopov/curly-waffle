@@ -33,10 +33,8 @@ function EditResource(props) {
 
         if (resourceData.fileUrl) {
             let blobName = resource.fileUrl.split('/').pop();
-            resourceService.deleteFile(blobName)
-                .then((response) => {
-                    console.log(response);
-                });
+            console.log(blobName);
+            let deletedFile = await resourceService.deleteFile(blobName);
 
             let result = await resourceService.uploadFile(resourceData.fileUrl);
             resourceData.fileUrl = result.fileUrl;

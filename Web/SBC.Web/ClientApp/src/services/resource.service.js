@@ -59,16 +59,18 @@ const uploadFile = async (file) => {
 
 const deleteFile = async (blobName) => {
     const formData = new FormData();
-    formData.append('blobName', blobName);
+    formData.blobName = blobName;
 
     let response = await axios({
         method: 'DELETE',
-        url: baseUrl + "api/Blobs/delete",
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data', }
+        url: baseUrl + "api/Blobs/delete", formData,
+        headers: {
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+            'Content-Type': 'multipart/form-data',
+        },
     });
 
-    return response.data;
+    return response;
 }
 
 export const resourceService = {
