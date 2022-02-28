@@ -32,13 +32,36 @@ export default function LectureCard(props) {
         <div onClick={onLectureHandler}>
             <div className={style.btnsDiv}>
                 <h3 className={style.lectureTitle} >{props.index + 1}. {lecture.name}</h3>
-                <button className={style.btnDelete} onClick={() => { props.openModal(<DeleteLecture closeModal={props.closeModal} lecture={props.lecture} lectures={props.lectures} setLectures={props.setLectures} />) }
-                }>Delete</button>
-                <button className={style.btnEdit} onClick={() => { props.openModal(<EditLecture closeModal={props.closeModal} lectureId={lecture.id} setLectureCard={setLecture} />) }} >Edit</button>
+                <button className={style.btnDelete} onClick={() => {
+                    props.openModal(<DeleteLecture
+                        closeModal={props.closeModal}
+                        lecture={props.lecture}
+                        lectures={props.lectures}
+                        setLectures={props.setLectures} />)
+                }}>Delete</button>
+                <button className={style.btnEdit} onClick={() => {
+                    props.openModal(<EditLecture
+                        closeModal={props.closeModal}
+                        lectureId={lecture.id}
+                        setLectureCard={setLecture} />)
+                }} >Edit</button>
             </div>
             <div className={style.resourseDiv}>
-                <button className={style.btnAdd} onClick={() => { props.openModal(<CreateResource closeModal={props.closeModal} resources={resources} setResources={setResources} lectureId={lecture.id} />) }}>Add Resource</button>
-                {resources.length > 0 && resources.map((r, i) => <ResourceCard key={r.id} resource={r} openModal={props.openModal} closeModal={props.closeModal} setResources={setResources} resources={resources} index={i} />)}
+                <button className={style.btnAdd} onClick={() => {
+                    props.openModal(<CreateResource
+                        closeModal={props.closeModal}
+                        resources={resources}
+                        setResources={setResources}
+                        lectureId={lecture.id} />)
+                }}>Add Resource</button>
+                {resources.length > 0 && resources.map((r, i) => <ResourceCard key={r.id}
+                    openModal={props.openModal}
+                    closeModal={props.closeModal}
+                    setResources={setResources}
+                    setVideo={props.setVideo}
+                    index={i}
+                    resource={r}
+                    resources={resources} />)}
             </div>
         </div>
     )

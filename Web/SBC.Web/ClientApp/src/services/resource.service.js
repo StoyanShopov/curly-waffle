@@ -43,10 +43,40 @@ const deleteResource = async (resourceId) => {
         });
 }
 
+const uploadFile = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    let response = await axios({
+        method: 'POST',
+        url: baseUrl + "api/Blobs/upload",
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data', }
+    });
+
+    return response.data;
+}
+
+const deleteFile = async (blobName) => {
+    const formData = new FormData();
+    formData.append('blobName', blobName);
+
+    let response = await axios({
+        method: 'DELETE',
+        url: baseUrl + "api/Blobs/delete",
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data', }
+    });
+
+    return response.data;
+}
+
 export const resourceService = {
     getAll,
     getById,
     create,
     update,
     deleteResource,
+    uploadFile,
+    deleteFile,
 }

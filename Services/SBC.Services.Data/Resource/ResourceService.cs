@@ -40,7 +40,7 @@
                 Name = resourceModel.Name,
                 FileUrl = resourceModel.FileUrl,
                 Size = resourceModel.Size,
-                //FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType),
+                FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType),
                 LectureId = resourceModel.LectureId,
             };
 
@@ -51,6 +51,8 @@
             {
                 Id = newResource.Id,
                 Name = newResource.Name,
+                FileType = newResource.FileType.ToString(),
+                FileUrl = newResource.FileUrl,
                 LectureId = newResource.LectureId,
             };
 
@@ -89,7 +91,7 @@
             resource.FileUrl = resourceModel.FileUrl;
             resource.Size = resourceModel.Size;
             resource.LectureId = resourceModel.LectureId;
-            //resource.FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType);
+            resource.FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType);
 
             await this.resources.SaveChangesAsync();
 
@@ -97,8 +99,8 @@
             {
                 Id = resource.Id,
                 Name = resource.Name,
-                //FileUrl = resource.FileUrl,
-                Size = resource.Size,
+                FileType = resource.FileType.ToString(),
+                FileUrl = resource.FileUrl,
                 LectureId = resource.LectureId,
             };
 
