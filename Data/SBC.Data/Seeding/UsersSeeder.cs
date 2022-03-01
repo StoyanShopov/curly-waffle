@@ -119,7 +119,6 @@
             {
                 await SeedUsersRoles(dbContext, userManager, applicationUser, EmployeePassword, CompanyEmployeeRoleName);
             }
-
         }
 
         private static async Task SeedUsersRoles(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, ApplicationUser user, string password, string roleName)

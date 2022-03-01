@@ -1,52 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-header {
-  display: initial;
-  position: sticky;
+.headerC {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
 }
 
 .headerContainer {
-  position: sticky;
-  top: 0px;
-  left: 0px;
-  width: auto;
-  height: 10rem;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
-  opacity: 1;
-  z-index: 10;
-  display: flex;
-  justify-content: right;
+    height: 6rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
 }
 
+    .headerContainer ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 .logoContainer {
-  position: absolute;
-  left: 2px;
+    position: absolute;
+    flex-grow: 0.4;
+    flex-shrink: 1;
+    left: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    flex-basis: 0;
 }
 
 .arrow {
-  position: absolute;
-  left: 100px;
-  top: 66px;
-  width: 76px;
-  height: 26px;
-  opacity: 100%;
-  margin-left: 10%;
-  display: flex;
-  flex-wrap: wrap;
+    width: 76px;
+    opacity: 100%;
 }
 
 .upskillContainer {
-  text-align: left;
-  width: 113px;
-  height: 37px;
-  text-transform: lowercase;
-  opacity: 1;
-  position: absolute;
-  left: 180px;
-  top: 61.5px;
-  display: flex;
-  flex-wrap: wrap;
+    text-align: left;
 }
 
 .upskillContainer input {
@@ -62,115 +56,107 @@ header {
 }
 
 .testedLinks {
-  display: inline;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 18%;
+    flex-grow: 0.59;
+    flex-shrink: 2;
+    flex-basis: 0;
 }
 
-.testedLinks li {
-  display: inline;
-}
+    .testedLinks li {
+        display: inline-flex;
+    }
 
-.testedLinks ul {
-  position: relative;
-  margin: 0;
-}
+    .testedLinks ul {
+        flex-grow: 0.97;
+        align-items: center;
+        align-content: space-around;        
+        flex-basis: 8%;
+    }
 
-.testedLinks ul li {
-  margin-left: 16px;
-  font-size: 24px;
-}
-
-/* .greenCircle {
-   top: 55px; 
-  left: 1720px;
-  width: 50px;
-  height: 50px;
-  position: inherit;
-  background: #16d696 0% 0% no-repeat padding-box;
-  border-radius: 100px;
-} */
-
-.greenCircle p {
-  background: #16d696 0% 0% no-repeat padding-box;
-  text-align: center;
-  font: normal normal bold 22px/27px Montserrat;
-  letter-spacing: 1.1px;
-  color: #ffffff;
-  opacity: 1;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  top: 9px;
-  border-radius: 70px;
-}
+        .testedLinks ul li {
+            margin-left: 8px;
+            font-size: 13px;
+        }
 
 .homePageButtons {
-  flex-wrap: wrap;
-  display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    left: 17%;
+    align-items: center;
+    position: relative;
+    flex-grow: 1.1;
+    flex-shrink: 3;
+    flex-basis: 0;
 }
 
-.homePageButtons li {
-  text-decoration: none;
-  padding-right: 25px;
-  margin-bottom: 7px;
-}
+    .homePageButtons li {
+        text-decoration: none;
+    }
 
-.homePageButtons ul {
-  text-decoration: none;
-  padding-top: 7%;
-  display: flex;
-  flex-wrap: wrap;
-}
+    .homePageButtons ul {
+        text-decoration: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 3px;
+        margin: 3px;
+        align-items: center;
+        justify-content: space-around;
+        gap: 4px 18px;
+    }
 
 .loginButton {
-  width: 150px;
-  height: 50px;
-  text-decoration: none;
-  border-color: #296cfb;
-  text-decoration: none;
-  font: normal normal bold 22px/27px Montserrat;
-  font-weight: bold;
-  color: #296cfb;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: white;
+    width: 130px;
+    height: 40px;
+    text-decoration: none;
+    border-color: #296CFB;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
 }
 
 .requestDemoBtn {
-  width: 250px;
-  height: 50px;
-  background-color: #296cfb;
-  border-color: #296cfb;
-  color: floralwhite;
-  text-decoration: none;
-  font: normal normal bold 22px/27px Montserrat;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
+    width: 200px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .coursesCoaches {
-  display: flex;
-  flex-wrap: wrap;
-  cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding-right: 2%;
+    position: relative;
+    left: -3%;
+    flex-grow: 0.4;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
 
-.coursesCoaches li {
-  display: inline-flex;
-}
+    .coursesCoaches ul {
+        align-items: center;
+        gap: 8px 18px;
+        justify-content: space-evenly;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
-.coursesCoaches ul {
-  display: flex;
-  position: relative;
-  margin: 0;
-  padding-top: 10%;
-  flex-flow: row wrap;
-  padding-left: 3px;
-}
-
-.coursesCoaches ul li {
-  margin-left: 20px;
-  font-size: 15px;
-}
+        .coursesCoaches ul li {
+            margin-left: 5px;
+        }
 
 .coursesCoaches a:hover,
 .coursesCoaches a:visited,
@@ -179,57 +165,38 @@ header {
   text-decoration: none;
 }
 
-.coursesNotActive {
-  font: normal normal normal 22px/27px Montserrat;
-  letter-spacing: 1.1px;
-  color: #000000;
-  font-weight: normal;
-  opacity: 1;
-  font-size: 22px;
+.coursesActive {
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    font-weight: bold;
+    opacity: 1;
+    font-size: 18px;
 }
 
-.coursesActive {
-  font: normal normal bold 22px/27px Montserrat;
-  letter-spacing: 1.1px;
-  color: #296cfb;
-  font-weight: bold;
-  opacity: 1;
-  font-size: 22px;
+.coursesNotActive {
+    font: normal normal normal 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #000000;
+    font-weight: normal;
+    opacity: 1;
+    font-size: 18px;
 }
 
 .greenCircle {
-  width: 50px;
-  height: 50px;
-  color: #ffffff;
-  background-color: #16d696;
-  position: relative;
-  top: 30%;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  line-height: 50px;
-  border-radius: 75px;
-  margin-right: 2%;
-  margin-left: 1%;
-}
-
-.testedLinks {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.testedLinks li {
-  display: inline-flex;
-}
-
-.testedLinks ul {
-  position: relative;
-  margin: 0;
-  margin-left: 350px;
-  padding-top: 8%;
-}
-
-.testedLinks ul li {
-  margin-left: 10px;
-  font-size: 15px;
+    width: 44px;
+    height: 44px;
+    color: #FFFFFF;
+    background-color: #16D696;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 43px;
+    border-radius: 50%;
+    margin-right: 3%;
+    position: absolute;
+    left: 93%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
