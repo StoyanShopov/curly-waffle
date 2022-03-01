@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import style from './EditModal.module.css';
+import style from './EditCourse.module.css';
 
 import { courseService } from "../../../../services/course.service.js";
 

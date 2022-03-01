@@ -31,21 +31,20 @@ export default function EditLecture(props) {
             });
     }
     return (
-        <section className={style.section}>
-            <div className={style.container}>
-                <form onSubmit={onLectureEdit} method="PUT">
-                    <div>
-                        <button className={style.btnClose} onClick={() => { props.closeModal() }}>X</button>
-                        <p className={style.p}>Edit Lecture</p>
-                    </div>
-                    <div>
-                        <input className={style.imput} required="required" name="Name" defaultValue={lecture.name} placeholder="Name*"></input>
-                        <input className={style.imput} required="required" name="Description" defaultValue={lecture.description} placeholder="Description*"></input>
+        <section className={style.editPage}>
+            <p className={style.p}>Edit Lecture</p>
+            <button className={style.btnClose} onClick={() => { props.closeModal() }}>&times;</button>
+
+            <form onSubmit={onLectureEdit} method="PUT">
+                <div>
+                    <input className={style.input} required="required" name="Name" defaultValue={lecture.name} placeholder="Name*" />
+                    <input className={style.input} required="required" name="Description" defaultValue={lecture.description} placeholder="Description*" />
+                    <div className={style.buttonContainer}>
                         <button className={style.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
                         <input type="submit" value="Edit" className={style.btnEdit} />
                     </div>
-                </form>
-            </div>
-        </section>
+                </div>
+            </form>
+        </section >
     )
 }

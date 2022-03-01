@@ -1,68 +1,72 @@
-.section{
+.editPage {
+    text-align: center;
+}
 
-}
-.container{
-    position: fixed;
-    width: 600px;
-    height: 500px;
-    background-color:white;
-    z-index: 1;
-}
-.p{
+.p {
+    text-align: center;
     color: #296CFB;
     font-family: Montserrat;
     font-size: 28px;
     font-weight: bold;
-    margin-left: 37%;
     padding-top: 20px;
 }
-.btnClose{
-    float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 20px;
-    background-color: white;
+
+.btnClose {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
     color: #296CFB;
+    background-color: #FFFFFF;
     border: none;
 }
-.imput{
+
+.input {
     display: block;
     width: 500px;
-    height: 70px;
+    height: 3rem;
     border-color: #296CFB;
     border-width: 2px;
     font-family: Montserrat;
     font-size: larger;
-    margin-top: 50px;
-    margin-left: 45px;
+    margin-top: 20px;
+    margin-left: 14%;
 }
-.btnEdit{
-    width: 130px;
-    height: 45px;
+
+.buttonContainer {
+    margin: 10px;
+    padding-top: 15px;
+}
+
+.btnEdit {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
     border-color: #296CFB;
     background-color: #296CFB;
     font-family: Montserrat;
     font-weight: bold;
-    color: white;;
+    color: white;
     font-size: larger;
-    margin-left: 5%;
     cursor: pointer;
-    }
-.btnCancel{
-    width: 130px;
-    height: 45px;
+}
+
+.btnCancel {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
     border-color: #296CFB;
     background-color: white;
     font-family: Montserrat;
     font-weight: bold;
-    color: #296CFB;;
+    color: #296CFB;
     font-size: larger;
     cursor: pointer;
-    margin-top: 15%;
-    margin-left: 26%;
 }
-::placeholder{
+
+::placeholder {
     font-family: Montserrat;
     text-align: center;
     color: #296CFB;

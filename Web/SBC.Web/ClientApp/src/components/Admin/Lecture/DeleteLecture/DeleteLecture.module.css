@@ -1,60 +1,73 @@
-.section{
-
-}
-.topDiv{
-    width: 750px;
-    height: 200px;
-    background-color: #296CFB;
-    z-index: 1;
-}
-.p{
-    width: 350px;
-    height: 70px;
-    padding-left: 26%;
-    padding-top: 13%;
+.deleteWindow {
+    position: relative;
     text-align: center;
-    color: white;
-    font-size: 28px;
-    font-family: Montserrat;
+}
+
+.closeDelete {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    font-size: 30px;
     font-weight: bold;
-}
-.bottomDiv{
-    width: 750px;
-    height: 200px;
-    background-color:white;
-    z-index: 1;
-}
-.btnCancel{
-    width: 130px;
-    height: 45px;
-    margin-top: 9%;
-    margin-left: 30%;
-    color: #296CFB;
-    background-color:white ;
-    font-size: 22px;
-    font-family: Montserrat;
-    font-weight: bold;
-    border-color: #296CFB;
-    cursor: pointer;
-}
-.btnRemove{
-    width: 130px;
-    height: 45px;
-    margin-left: 5%;
-    color: white;
-    background-color: #296CFB;
-    font-size: 22px;
-    font-family: Montserrat;
-    font-weight: bold;
-    border-color: #296CFB;
-    cursor: pointer;
-}
-.btnClose{
-    padding: 12px 16px;
-    float: right;
-    font-size: 35px;
-    background-color: #296CFB;
-    color: white;
+    text-decoration: none;
+    color: #FFFFFF;
     border: none;
+    background-color: #296CFB;
+    cursor: pointer;
+}
+
+.topDiv {
+    background: #296CFB;
+    opacity: 1;
+    width: 100%;
+    height: 200px;
+}
+
+.textQuestion {
+    text-align: center;
+    font: normal normal bold 28px/36px Montserrat;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+    opacity: 1;
+    left: 173px;
+    width: 408px;
+    height: 70px;
+    padding-top: 13%;
+    padding-left: 22%;
+}
+
+.bottomDiv {
+    width: 100%;
+    height: 200px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.buttonDiv {
+    padding: 40px;
+}
+
+.btnCancel {
+    width: 120px;
+    height: 2.5rem;
+    margin: 10px;
+    text-align: center;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    background-color: #FFFFFF;
+    border-color: #296CFB;
+    cursor: pointer;
+}
+
+.btnDelete {
+    width: 120px;
+    height: 2.5rem;
+    margin: 10px;
+    text-align: center;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
     cursor: pointer;
 }

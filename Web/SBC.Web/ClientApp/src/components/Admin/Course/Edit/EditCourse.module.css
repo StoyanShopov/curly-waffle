@@ -1,13 +1,5 @@
 .editPage {
-    position: fixed;
-    background-color: #fefefe;
-    padding: 2.4rem;
-    border: 1px solid #888;
-    width: 34.4rem;
-    top: 2.4rem;
-    left: 28rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 1;
+    text-align: center;
 }
 
 .headingCourse {
@@ -22,15 +14,15 @@
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+    color: #296CFB;
     background-color: #FFFFFF;
     border: none;
 }
 
 .inputContainer {
     width: 500px;
-    height: 2.5rem;
-    margin: 7px;
+    height: 3rem;
+    margin: 10px;
     opacity: 1;
     border: 2px solid #296CFB;
     font-size: 20px;
@@ -38,8 +30,8 @@
 
 .selectContainer {
     width: 500px;
-    height: 2.7rem;
-    margin: 7px;
+    height: 3rem;
+    margin: 10px;
     opacity: 1;
     border: 2px solid #296cfb;
     font-size: 20px;
@@ -53,17 +45,18 @@
 }
 
 .btnCancel {
-    margin: 5px;
+    margin: 10px;
     width: 120px;
     height: 2.5rem;
     font: normal normal bold 22px/27px Montserrat;
     letter-spacing: 1.1px;
     color: #296CFB;
     border-color: #296CFB;
+    cursor: pointer;
 }
 
 .btnSubmit {
-    margin: 5px;
+    margin: 10px;
     width: 120px;
     height: 2.5rem;
     font: normal normal bold 22px/27px Montserrat;
@@ -71,6 +64,7 @@
     color: #FFFFFF;
     background-color: #296CFB;
     border-color: #296CFB;
+    cursor: pointer;
 }
 
 ::placeholder {
