@@ -42,7 +42,7 @@ export default function CourseDetails() {
 
     let subtitle = {
         content: {
-            top: '45%',
+            top: '33%',
             left: '50%',
             right: 'auto',
             width: '35%',
