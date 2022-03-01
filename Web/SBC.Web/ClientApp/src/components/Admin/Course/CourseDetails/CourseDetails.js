@@ -86,7 +86,7 @@ export default function CourseDetails() {
         <div className={style.background}>
             <section className={style.container}>
                 <div className={style.leftPart}>
-                    <h1 className={style.marketingHeading}>{course.title}</h1>
+                    <h1 className={style.marketingHeading} onClick={() => {setVideo(course.videoUrl)}} >{course.title}</h1>
                     <div className={style.videoPlayer}>
                         <ResponsivePlayer videoUrl={video} />
                     </div>
