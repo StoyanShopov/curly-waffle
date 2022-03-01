@@ -22,7 +22,7 @@ const AllCourses = () => {
 
     let subtitle = {
         content: {
-            top: '45%',
+            top: '40%',
             left: '50%',
             right: 'auto',
             width: '35%',

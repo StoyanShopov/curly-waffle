@@ -88,7 +88,7 @@
             }
 
             resource.Name = resourceModel.Name;
-            resource.FileUrl = resourceModel.FileUrl;
+            resource.FileUrl = resourceModel.FileUrl == null ? resource.FileUrl : resourceModel.FileUrl;
             resource.Size = resourceModel.Size;
             resource.LectureId = resourceModel.LectureId;
             resource.FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType);

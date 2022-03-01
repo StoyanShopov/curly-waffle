@@ -3,15 +3,26 @@
 import { baseUrl } from '../constants';
 
 const apiUrl = baseUrl + 'api/resource';
+const token = localStorage.getItem('token');
 
 const getAll = async (lectureId) => {
     return await axios
-        .get(`${apiUrl}/All/${lectureId}`);
+        .get(`${apiUrl}/All/${lectureId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            }
+        });
 }
 
 const getById = async (resourceId) => {
     return await axios
-        .get(`${apiUrl}/${resourceId}`);
+        .get(`${apiUrl}/${resourceId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            }
+        });
 }
 
 const create = async (resourceData) => {
@@ -19,7 +30,7 @@ const create = async (resourceData) => {
         .post(`${apiUrl}`, resourceData, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             },
         });
 }
@@ -29,7 +40,7 @@ const update = async (resourceId, resourceData) => {
         .put(`${apiUrl}/${resourceId}`, resourceData, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             },
         });
 }
@@ -38,7 +49,7 @@ const deleteResource = async (resourceId) => {
     return await axios
         .delete(`${apiUrl}/${resourceId}`, {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             }
         });
 }
@@ -51,22 +62,21 @@ const uploadFile = async (file) => {
         method: 'POST',
         url: baseUrl + "api/Blobs/upload",
         data: formData,
-        headers: { 'Content-Type': 'multipart/form-data', }
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+        }
     });
 
     return response.data;
 }
 
 const deleteFile = async (blobName) => {
-    const formData = new FormData();
-    formData.blobName = blobName;
-
     let response = await axios({
         method: 'DELETE',
-        url: baseUrl + "api/Blobs/delete", formData,
+        url: baseUrl + `api/Blobs/${blobName}`,
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
-            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
         },
     });
 

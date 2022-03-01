@@ -4,7 +4,10 @@
 
 .headingCourse {
     color: #296CFB;
-    margin: 10px;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: bold;
+    padding-top: 20px;
 }
 
 .closeCreate {
