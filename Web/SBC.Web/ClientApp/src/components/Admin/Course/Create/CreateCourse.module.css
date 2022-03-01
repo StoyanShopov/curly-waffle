@@ -25,16 +25,17 @@
 .inputContainer {
     width: 500px;
     height: 3rem;
-    margin: 10px;
+    margin-top: 20px;
     opacity: 1;
     border: 2px solid #296CFB;
     font-size: 20px;
 }
 
 .selectContainer {
-    width: 500px;
-    height: 3rem;
-    margin: 10px;
+    width: 510px;
+    height: 3.1rem;
+    margin-top: 20px;
+    margin-left: -3px;
     opacity: 1;
     border: 2px solid #296cfb;
     font-size: 20px;
