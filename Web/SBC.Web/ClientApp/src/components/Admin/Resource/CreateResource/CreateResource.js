@@ -32,25 +32,23 @@ function CreateResource(props) {
     }
 
     return (
-        <section className={style.section}>
-            <div className={style.container}>
-                <form onSubmit={onResourceCreate} method="POST">
-                    <div>
-                        <button className={style.btnClose} onClick={() => { props.closeModal() }}>X</button>
-                        <p className={style.p}>Add Resource</p>
-                    </div>
-                    <div>
-                        <input type="text" className={style.input} required="required" name="name" placeholder="Name*" />
-                        <select type="text" className={style.input} name="fileType">
-                            {Object.keys(fileTypeEnums).map(key => <option key={key} value={key}>{key}</option>)}
-                        </select>
-                        <input type="number" className={style.input} required="required" name="size" placeholder="Size*" />
-                        <input type="file" className={style.input} required="required" name="fileUrl" placeholder="File*" />
+        <section className={style.container}>
+            <p className={style.p}>Add Resource</p>
+            <button className={style.btnClose} onClick={() => { props.closeModal() }}>&times;</button>
+            <form onSubmit={onResourceCreate} method="POST">
+                <div>
+                    <input type="text" className={style.input} required="required" name="name" placeholder="Name*" />
+                    <input type="number" className={style.input} required="required" name="size" placeholder="Size*" />
+                    <select type="text" className={style.selectContainer} name="fileType">
+                        {Object.keys(fileTypeEnums).map(key => <option key={key} value={key}>{key}</option>)}
+                    </select>
+                    <input type="file" className={style.input} required="required" name="fileUrl" placeholder="File*" />
+                    <div className={style.buttonContainer}>
                         <button className={style.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
                         <input type="submit" value="Submit" className={style.btnSubmit} />
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </section>
     )
 }

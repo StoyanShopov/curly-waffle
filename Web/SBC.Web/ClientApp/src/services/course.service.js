@@ -1,18 +1,28 @@
 import axios from "axios";
-import { getLocalAccessToken } from '../helpers/token.js';
 
 import { baseUrl } from '../constants';
 
 const apiUrl = baseUrl + 'api/course';
+const token = localStorage.getItem('token');
 
 const getAll = async () => {
     return await axios
-        .get(`${apiUrl}s`);
+        .get(`${apiUrl}s`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            }
+        });
 }
 
 const getById = async (courseId) => {
     return await axios
-        .get(`${apiUrl}/${courseId}`);
+        .get(`${apiUrl}/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
 }
 
 const create = async (courseData) => {
@@ -20,7 +30,7 @@ const create = async (courseData) => {
         .post(`${apiUrl}`, courseData, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             },
         });
 }
@@ -30,7 +40,7 @@ const update = async (courseId, courseData) => {
         .put(`${apiUrl}/${courseId}`, courseData, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             },
         });
 }
@@ -39,7 +49,7 @@ const deleteCourse = async (courseId) => {
     return await axios
         .delete(`${apiUrl}/${courseId}`, {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYzVhNThjYS1mYmMzLTRjYTYtYTk1My1iNjg4YmU4NTdlN2QiLCJ1bmlxdWVfbmFtZSI6ImFkbWluQHRlc3QudGVzdCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwibmJmIjoxNjQ1MDQwNTc4LCJleHAiOjE2NDUyOTk3NzgsImlhdCI6MTY0NTA0MDU3OH0.2FcWBguW2llwBG5TeiZtOHIi5WExsovQwnQG5zfyHY8',
+                Authorization: `Bearer ${token}`,
             }
         });
 }

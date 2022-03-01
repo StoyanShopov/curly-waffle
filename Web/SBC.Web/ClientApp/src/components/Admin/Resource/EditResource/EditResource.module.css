@@ -1,64 +1,83 @@
-.container{
-    width: 600px;
-    height: 750px;
-    border-top: 10px;
-    background-color: white;
-   
+.container {
+    text-align: center;
 }
-.p{
+
+.p {
+    text-align: center;
     color: #296CFB;
     font-family: Montserrat;
     font-size: 28px;
-    font-weight:lighter;
-    margin-left: 37%;
+    font-weight: bold;
     padding-top: 20px;
 }
-.btnClose{
-    float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 20px;
-    background-color: white;
+
+.btnClose {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
     color: #296CFB;
+    background-color: #FFFFFF;
     border: none;
 }
-.input{
+
+.input {
     display: block;
     width: 500px;
-    height: 70px;
+    height: 3rem;
     border-color: #296CFB;
-    font-family: Montserrat;
     border-width: 2px;
-    font-size: larger;
-    margin-top: 50px;
-    margin-left: 45px;
-}
-.btnSubmit{
-    width: 130px;
-    height: 45px;
-    border-color: #296CFB;
-    background-color: #296CFB;
     font-family: Montserrat;
-    color: white;;
     font-size: larger;
-    margin-left: 5%;
-    cursor: pointer;
-}
-.btnCancel{
-    width: 130px;
-    height: 45px;
-    border-color: #296CFB;
-    background-color: #296CFB;
-    font-family: Montserrat;
-    color: white;;
-    font-size: larger;
-    cursor: pointer;
-    margin-top: 15%;
-    margin-left: 25%;
+    margin-top: 20px;
+    margin-left: 14%;
 }
 
-::placeholder{
+.selectContainer{
+    width: 500px;
+    height: 3rem;
+    margin-top: 20px;
+    opacity: 1;
+    border: 2px solid #296cfb;
+    font-size: 20px;
+    color: #296CFB;
+    padding-left: 28px;
+}
+
+.buttonContainer {
+    margin: 10px;
+    padding-top: 15px;
+}
+
+.btnSubmit {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: white;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.btnCancel {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    border-color: #296CFB;
+    background-color: white;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: larger;
+    cursor: pointer;
+}
+
+::placeholder {
     text-align: center;
     font-family: Montserrat;
     color: #296CFB;

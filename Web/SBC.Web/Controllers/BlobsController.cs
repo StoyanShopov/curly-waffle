@@ -52,7 +52,7 @@
             return this.File(result.Value.Content, result.Value.ContentType);
         }
 
-        [HttpDelete(DeleteRoute)]
+        [HttpDelete("{blobName}")]
         public async Task<IActionResult> DeleteBlobByNameAsync(string blobName)
         {
             var result = await this.blobService.DeleteBlobByNameAsync(blobName);
