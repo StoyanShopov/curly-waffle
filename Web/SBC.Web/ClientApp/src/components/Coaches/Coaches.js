@@ -79,7 +79,7 @@ const Coaches = () => {
         label: x.name
       })))
     })
-  }, [coaches]);
+  }, []);
 
   return (
     <div className={styles.container}>

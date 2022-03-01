@@ -1,10 +1,8 @@
 ﻿namespace SBC.Web.Areas.Administration.Controllers
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Data.Coach;
     using SBC.Web.ViewModels.Administration.Coach;
 

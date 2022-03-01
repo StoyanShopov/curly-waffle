@@ -17,10 +17,10 @@
     public class CoachService : ICoachService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
-        private readonly IDeletableEntityRepository<CategoryCoach> categoryCoachRepo;
-        private readonly IDeletableEntityRepository<LanguageCoach> languageCoachRepo;
-        private readonly IDeletableEntityRepository<Language> languageRepo;
-        private readonly IDeletableEntityRepository<Category> categoryRepo;
+        private readonly IDeletableEntityRepository<CategoryCoach> categoriesCoachRepository;
+        private readonly IDeletableEntityRepository<LanguageCoach> languagesCoachRepository;
+        private readonly IDeletableEntityRepository<Language> languagesRepository;
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IDeletableEntityRepository<Company> companiesRepository;
 
         public CoachService(
@@ -32,10 +32,10 @@
             IDeletableEntityRepository<Company> companiesRepository)
         {
             this.coachRepository = coachRepository;
-            this.languageCoachRepo = languageCoachRepo;
-            this.categoryCoachRepo = categoryCoachRepo;
-            this.languageRepo = languageRepo;
-            this.categoryRepo = categoryRepo;
+            this.languagesCoachRepository = languageCoachRepo;
+            this.categoriesCoachRepository = categoryCoachRepo;
+            this.languagesRepository = languageRepo;
+            this.categoriesRepository = categoryRepo;
             this.companiesRepository = companiesRepository;
         }
 
@@ -56,8 +56,6 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
-
-
             var coachModel = new Coach
             {
                 FirstName = coach.FirstName,
@@ -71,7 +69,9 @@
 
             if (coach.CompanyEmail != null)
             {
-                var company = this.companiesRepository.AllAsNoTracking().FirstOrDefault(c => c.Email == coach.CompanyEmail);
+                var company = await this.companiesRepository
+                    .AllAsNoTracking()
+                    .FirstOrDefaultAsync(c => c.Email == coach.CompanyEmail);
 
                 if (company != null)
                 {
@@ -133,25 +133,28 @@
 
             this.coachRepository.Update(coachModel);
             await this.coachRepository.SaveChangesAsync();
+
             return true;
         }
 
         public async Task<Result> DeleteAsync(int coachId)
         {
-            var coachModel = this.coachRepository.AllAsNoTracking().Where(x => x.Id == coachId).FirstOrDefault();
+            var coachModel = await this.coachRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == coachId);
+
             if (coachModel == null)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachBadRequest);
             }
 
-            this.categoryCoachRepo.All()
+            this.categoriesCoachRepository.All()
                 .Where(x => x.CoachId == coachId).ToList()
-                .ForEach(x => this.categoryCoachRepo.Delete(x));
+                .ForEach(x => this.categoriesCoachRepository.Delete(x));
 
-            this.languageCoachRepo.All()
-
+            this.languagesCoachRepository.All()
                 .Where(x => x.CoachId == coachId).ToList()
-                .ForEach(x => this.languageCoachRepo.Delete(x));
+                .ForEach(x => this.languagesCoachRepository.Delete(x));
 
             this.coachRepository.Delete(coachModel);
             await this.coachRepository.SaveChangesAsync();
@@ -176,15 +179,15 @@
         }
 
         private bool ExistCategory(int coachId, int categoryId)
-        => this.categoryCoachRepo.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);
+        => this.categoriesCoachRepository.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);
 
         private bool ExistLanguage(int coachId, int languigeId)
-        => this.languageCoachRepo.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
+        => this.languagesCoachRepository.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
 
         private bool ExistLanguageId(int[] languages)
-        => languages.Any(x => !this.languageRepo.AllAsNoTracking().Any(y => y.Id == x));
+        => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x));
 
         private bool ExistCategoryId(int[] categories)
-        => categories.Any(x => !this.categoryRepo.AllAsNoTracking().Any(y => y.Id == x));
+        => categories.Any(x => !this.categoriesRepository.AllAsNoTracking().Any(y => y.Id == x));
     }
 }

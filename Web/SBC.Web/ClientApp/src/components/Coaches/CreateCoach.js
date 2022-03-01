@@ -9,8 +9,8 @@ const CreateCoach = (props) => {
   const [languagesOptions, setLanugagesOptions] = useState()
   const [categories, setCategories] = useState([])
   const [categoriesOptions, setCategoriesOptions] = useState()
-  const [coaches, setCoaches] = useState(props.coaches)
- 
+  const [coaches] = useState(props.coaches)
+
   useEffect(() => { 
     getLanguages().then(res =>{
       setLanugagesOptions(res.data.map(x=> ({
@@ -84,6 +84,7 @@ const CreateCoach = (props) => {
       console.log(response);
     }).finally(() =>{
       props.closeModal()
+      props.setCoaches([...coaches, data])
     })
   };
 
