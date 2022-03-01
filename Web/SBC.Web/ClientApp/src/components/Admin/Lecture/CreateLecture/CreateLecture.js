@@ -18,27 +18,25 @@ export default function CreateLecture(props) {
                     props.setLectures(prevSkip => [response.data, ...prevSkip]);
                 }
             })
-            .finally(() =>{
+            .finally(() => {
                 props.setSkipPlusOne();
             })
     }
 
     return (
-        <section className={style.section}>
-            <div className={style.container}>
-                <form onSubmit={onLectureCreate} method="POST">
-                    <div>
-                        <button className={style.btnClose} onClick={() => { props.closeModal() }}>X</button>
-                        <p className={style.p}>Add Lecture</p>
-                    </div>
-                    <div>
-                        <input className={style.imput} required="required" name="Name" placeholder="Name*"></input>
-                        <input className={style.imput} required="required" name="Description" placeholder="Description*"></input>
+        <section className={style.container}>
+            <p className={style.p}>Add Lecture</p>
+            <button className={style.btnClose} onClick={() => { props.closeModal() }}>&times;</button>
+            <form onSubmit={onLectureCreate} method="POST">
+                <div>
+                    <input className={style.input} required="required" name="Name" placeholder="Name*"></input>
+                    <input className={style.input} required="required" name="Description" placeholder="Description*"></input>
+                    <div className={style.btnContainer}>
                         <button className={style.btnCancel} onClick={() => { props.closeModal() }}>Cancel</button>
                         <input type="submit" value="Add" className={style.btnSubmit} />
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </section>
     )
 }

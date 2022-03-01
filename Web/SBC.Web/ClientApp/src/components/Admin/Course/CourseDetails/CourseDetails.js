@@ -42,14 +42,14 @@ export default function CourseDetails() {
 
     let subtitle = {
         content: {
-            top: '50%',
+            top: '45%',
             left: '50%',
             right: 'auto',
-            width: '34%',
-            height: '70%',
+            width: '35%',
+            height: 'auto',
             bottom: 'auto',
             marginTop: '-5%',
-            marginRight: '-50%',
+            marginRight: '0%',
             transform: 'translate(-50%, -20%)',
             padding: '0px',
         },
