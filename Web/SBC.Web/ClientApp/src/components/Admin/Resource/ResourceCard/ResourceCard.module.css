@@ -17,6 +17,7 @@
     margin-top: 10px;  
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
     z-index: 1;
@@ -28,6 +29,7 @@
     margin-top: 10px;
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
 }

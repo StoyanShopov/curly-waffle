@@ -21,9 +21,9 @@
     margin-top: 15px;
     margin-top: 15px;
     display: inline-block;
-    background-color: transparent;
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
 }
@@ -37,6 +37,7 @@
     margin-right: 5%;
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
 }
@@ -47,9 +48,9 @@
     margin-top: 15px;
     float: right;
     margin-top: 15px;
-    background-color: transparent;
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
 }
