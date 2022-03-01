@@ -1,5 +1,6 @@
 .container{
     width: 335px;
+    margin-top: 0px;
 }
 .resourceTitle{
     display: inline-block;
@@ -12,8 +13,8 @@
     float: right;
     width: 60px;
     height: 25px;
-
-    margin-top: 15px;  
+    margin-left: 10px; 
+    margin-top: 10px;  
     color: #296CFB;
     border-color: #296CFB;
     font-family: Montserrat;
@@ -23,9 +24,8 @@
 .btnEdit{
     float: right;
     width: 60px;
-    height: 25px; 
-    margin-left: 15px;  
-    margin-top: 15px;
+    height: 25px;  
+    margin-top: 10px;
     color: #296CFB;
     border-color: #296CFB;
     font-family: Montserrat;
