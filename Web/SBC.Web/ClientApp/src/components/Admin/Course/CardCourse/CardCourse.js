@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import style from './CardCourse.module.css';
 
-import EditCourse from "../Edit/EditModal.js";
+import EditCourse from "../Edit/EditCourse.js";
 
-import DeleteModal from "../Delete/DeleteModal.js";
+import DeleteModal from "../Delete/DeleteCourse.js";
 
 const CardCourse = (props) => {
     const [course, setCourse] = useState(props.course);

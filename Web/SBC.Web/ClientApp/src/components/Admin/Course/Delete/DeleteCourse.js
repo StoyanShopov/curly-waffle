@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from "./DeleteModal.module.css";
+import style from "./DeleteCourse.module.css";
 
 import { courseService } from '../../../../services/course.service';
 

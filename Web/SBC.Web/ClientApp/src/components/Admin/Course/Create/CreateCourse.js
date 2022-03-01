@@ -1,4 +1,4 @@
-import style from './CreateModal.module.css';
+import style from './CreateCourse.module.css';
 
 import { courseService } from "../../../../services/course.service.js";
 
