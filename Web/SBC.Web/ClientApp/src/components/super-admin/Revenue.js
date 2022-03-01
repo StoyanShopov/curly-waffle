@@ -2,17 +2,17 @@ import css from "./Revenue.module.css";
 
 export default function Revenue() {
     return (
-        <div className={css.revenue}>
-            <table>
+        <div className={css.revenueContent}>
+            <table className={css.tableRevenue}>
                 <thead style={{ background: "#296CFB" }}>
-                    <tr>
+                    <tr className={css.revenueTHeadRow}>
                         <th>Course/Coach</th>
                         <th>Revenue</th>
                         <th>Expenses</th>
                         <th>Profit</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className={css.revenueTbody}>
                     <tr>
                         <td>Design</td>
                         <td>1 0000€</td>
@@ -32,7 +32,7 @@ export default function Revenue() {
                         <td>2 000€</td>
                     </tr>
                 </tbody>
-                <tfoot>
+                <tfoot className={css.revenueTfoot}>
                     <tr>
                         <td>Total</td>
                         <td></td>

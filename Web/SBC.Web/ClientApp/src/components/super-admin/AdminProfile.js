@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import css from './AdminProfile.module.css'
-import Clients from './super-admin/Clinets';
-import Dashboard from './super-admin/Dashboard';
-import EditProfile from './super-admin/EditProfile';
-import NavigationBar from './super-admin/NavigationBar';
-import Revenue from './super-admin/Revenue';
-import { GetAdminData } from '../services/super-admin-service';
-import { TokenManagement } from '../helpers';
+import Clients from './Clinets';
+import Dashboard from './Dashboard';
+import EditProfile from './EditProfile';
+import NavigationBar from './NavigationBar';
+import Revenue from './Revenue';
+import { GetAdminData } from '../../services/super-admin-service';
+import { TokenManagement } from '../../helpers';
 
 export  async function GetAdmin(_setAdminData,_setIcon) {
   await GetAdminData().then(a => {

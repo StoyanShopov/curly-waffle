@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
-import AdminProfile from './components/AdminProfile';
+import AdminProfile from './components/super-admin/AdminProfile';
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
