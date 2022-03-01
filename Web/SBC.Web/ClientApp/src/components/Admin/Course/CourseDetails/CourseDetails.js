@@ -98,7 +98,8 @@ export default function CourseDetails() {
                             <div className={style.lectorPic}></div>
                         </div>
                         <div>
-                            <p className={style.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
+                            <p className={style.pCreatedBy}>Created by </p>
+                            <p className={style.lectorName}>{course.coachFirstName} {course.coachLastName}</p>
                             <p className={style.pCompanyName}>{course.coachCompanyName}</p>
                         </div>
                     </section>
