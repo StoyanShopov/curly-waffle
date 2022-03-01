@@ -28,6 +28,7 @@
     width: 500px;
     height: 3rem;
     border-color: #296CFB;
+    color: #296CFB;
     border-width: 2px;
     font-family: Montserrat;
     font-size: larger;
@@ -36,9 +37,10 @@
 }
 
 .selectContainer{
-    width: 500px;
-    height: 3rem;
+    width: 510px;
+    height: 3.1rem;
     margin-top: 20px;
+    margin-left: -3px;
     opacity: 1;
     border: 2px solid #296cfb;
     font-size: 20px;
