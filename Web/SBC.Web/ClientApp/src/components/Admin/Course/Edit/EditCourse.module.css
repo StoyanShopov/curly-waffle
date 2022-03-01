@@ -1,13 +1,5 @@
 .editPage {
-    position: fixed;
-    background-color: #fefefe;
-    padding: 2.4rem;
-    border: 1px solid #888;
-    width: 34.4rem;
-    top: 2.4rem;
-    left: 28rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 1;
+    text-align: center;
 }
 
 .headingCourse {

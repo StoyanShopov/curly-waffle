@@ -9,20 +9,27 @@ import CardCourse from '../CardCourse/CardCourse.js';
 import CreateCourse from '../Create/CreateCourse.js';
 
 const AllCourses = () => {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [childModal, setChildModal] = useState(null);
     const [courses, setCourses] = useState([]);
 
+    useEffect(() => {
+        courseService.getAll()
+            .then(response => {
+                setCourses(response.data);
+            });
+    }, []);
+
     let subtitle = {
         content: {
-            top: '50%',
+            top: '45%',
             left: '50%',
             right: 'auto',
-            width: '44%',
-            height: '70%',
+            width: '35%',
+            height: 'auto',
             bottom: 'auto',
             marginTop: '-5%',
-            marginRight: '-50%',
+            marginRight: '0%',
             transform: 'translate(-50%, -20%)',
             padding: '0px',
         },
@@ -41,13 +48,6 @@ const AllCourses = () => {
     function closeModal() {
         setIsOpen(false);
     }
-
-    useEffect(() => {
-        courseService.getAll()
-            .then(response => {
-                setCourses(response.data);
-            });
-    }, []);
 
     return (
         <div className={style.container}>
