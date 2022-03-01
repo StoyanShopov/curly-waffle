@@ -104,7 +104,7 @@
   font-weight: bold;
 }
 
-div.bodyContainer3 * {
+.bodyContainer3 * {
   padding-left: 15px;
   font-size: 20px;
   font-weight: medium;
@@ -117,7 +117,7 @@ div.bodyContainer3 * {
 input:nth-child(2)::placeholder {
   color: #a0bbf5;
 }
-textarea {
+.resizableContent {
   padding-top: 8px;
 }
 
@@ -152,7 +152,7 @@ textarea {
   cursor: pointer;
 }
 
-.fileUpload input.upload {
+.fileUpload .upload {
   position: absolute;
   top: 0;
   right: 0;
@@ -165,13 +165,11 @@ textarea {
   width: 148px;
   height: 46px;
   cursor: pointer;
-}
-
-input[type="file"] {
   position: fixed;
   right: 100%;
   bottom: 100%;
 }
+
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;

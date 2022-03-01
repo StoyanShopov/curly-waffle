@@ -30,7 +30,7 @@ useEffect(() => {
 
   let subtitle = {
     content: {
-      top: '50%',
+      top: '55%',
       left: '50%',
       right: 'auto',
       width: '44%',
