@@ -1,3 +1,7 @@
+.container{
+    width: 335px;
+    margin-top: 0px;
+}
 .resourceTitle{
     display: inline-block;
     font-size: 18px;
@@ -5,26 +9,27 @@
     font-family: Montserrat;
     cursor: pointer;
 }
-
-.btnEdit{
+.btnDelete{
+    float: right;
     width: 60px;
     height: 25px;
-    margin-left: 10%;
-    margin-top: 15px;
-    margin-top: 15px;
-    background-color: transparent;
+    margin-left: 10px; 
+    margin-top: 10px;  
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
+    z-index: 1;
 }
-.btnDelete{
+.btnEdit{
+    float: right;
     width: 60px;
-    height: 25px;
-    margin-top: 15px;
-    margin-left: 10px;
+    height: 25px;  
+    margin-top: 10px;
     color: #296CFB;
     border-color: #296CFB;
+    border-radius: 5px;
     font-family: Montserrat;
     cursor: pointer;
 }

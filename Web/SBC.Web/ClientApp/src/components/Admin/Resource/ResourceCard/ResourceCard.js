@@ -21,19 +21,19 @@ export default function ResourceCard(props) {
     return (
         <div className={style.container}>
             <p className={style.resourceTitle} onClick={onResourceHandler}>{index + 1}. {resource.name}</p>
-            <button className={style.btnEdit} onClick={() => {
-                props.openModal(<EditResource
-                    closeModal={props.closeModal}
-                    resourceId={resource.id}
-                    setResource={setResource} />)
-            }}>Edit</button>
-            <button className={style.btnDelete} onClick={() => {
+            .<button className={style.btnDelete} onClick={() => {
                 props.openModal(<DeleteResource
                     closeModal={props.closeModal}
                     resourceId={resource.id}
                     setResources={props.setResources}
                     resources={props.resources} />)
             }}>Delete</button>
+            <button className={style.btnEdit} onClick={() => {
+                props.openModal(<EditResource
+                    closeModal={props.closeModal}
+                    resourceId={resource.id}
+                    setResource={setResource} />)
+            }}>Edit</button>
         </div>
     )
 }

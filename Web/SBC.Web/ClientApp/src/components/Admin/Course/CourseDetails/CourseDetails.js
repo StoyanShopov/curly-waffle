@@ -86,7 +86,7 @@ export default function CourseDetails() {
         <div className={style.background}>
             <section className={style.container}>
                 <div className={style.leftPart}>
-                    <h1 className={style.marketingHeading}>{course.title}</h1>
+                    <h1 className={style.marketingHeading} onClick={() => {setVideo(course.videoUrl)}} >{course.title}</h1>
                     <div className={style.videoPlayer}>
                         <ResponsivePlayer videoUrl={video} />
                     </div>
@@ -98,7 +98,8 @@ export default function CourseDetails() {
                             <div className={style.lectorPic}></div>
                         </div>
                         <div>
-                            <p className={style.pCreatedBy}>Created by {course.coachFirstName} {course.coachLastName}</p>
+                            <p className={style.pCreatedBy}>Created by </p>
+                            <p className={style.lectorName}>{course.coachFirstName} {course.coachLastName}</p>
                             <p className={style.pCompanyName}>{course.coachCompanyName}</p>
                         </div>
                     </section>
