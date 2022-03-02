@@ -25,10 +25,12 @@ const CardCourse = (props) => {
                 </button>
             </div>
             <div className={style.infoCourse}>
-                <p className={style.cardName}>{course.title}</p>
-                <p className={style.cardCoach}>{course.coachFirstName} {course.coachLastName}</p>
-                <p className={style.cardPrice}>{course.pricePerPerson.toFixed(2)}&#8364; per person</p>
-                <p className={style.cardCompany}>{course.coachCompanyName}</p>
+                <div>
+                    <p className={style.cardName}>{course.title}</p>
+                    <p className={style.cardCoach}>{course.coachFirstName} {course.coachLastName}</p>
+                    <p className={style.cardPrice}>{course.pricePerPerson.toFixed(2)}&#8364; per person</p>
+                    <p className={style.cardCompany}>{course.coachCompanyName}</p>
+                </div>
                 <div className={style.cardButtonDiv}>
                     <button className={style.cardDeleteBtn} type="submit" onClick={() => {
                         props.openModal(<DeleteModal
