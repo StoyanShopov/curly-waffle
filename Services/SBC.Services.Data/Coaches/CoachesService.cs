@@ -42,7 +42,7 @@
                         Languages = coach.Languages,
                         Categories = coach.Categories,
                         PricePerSession = coach.PricePerSession,
-                        CompanyLogoUrl = coach.Company.LogoUrl,
+                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                         IsActive = true,
                     });
                 }
@@ -55,7 +55,7 @@
                         Languages = coach.Languages,
                         Categories = coach.Categories,
                         PricePerSession = coach.PricePerSession,
-                        CompanyLogoUrl = coach.Company.LogoUrl,
+                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                         IsActive = false,
                     });
                 }

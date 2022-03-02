@@ -42,7 +42,7 @@
                         LanguageId = course.LanguageId,
                         CategoryId = course.CategoryId,
                         CoachName = course.Coach.FirstName,
-                        CompanyLogoUrl = course.Coach.Company.LogoUrl,
+                        CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
                         IsActive = true,
                     });
                 }
@@ -56,7 +56,7 @@
                         LanguageId = course.LanguageId,
                         CategoryId = course.CategoryId,
                         CoachName = course.Coach.FirstName, // check
-                        CompanyLogoUrl = course.Coach.Company.LogoUrl,
+                        CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
                         IsActive = false,
                     });
                 }

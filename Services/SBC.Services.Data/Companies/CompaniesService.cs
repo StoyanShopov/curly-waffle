@@ -147,7 +147,7 @@
                     Languages = x.Languages,
                     Categories = x.Categories,
                     PricePerSession = x.PricePerSession,
-                    CompanyLogoUrl = x.Company.LogoUrl,
+                    CompanyLogoUrl = x.CompanyId != null ? x.Company.LogoUrl : "Null",
                 })
                 .ToListAsync();
 
@@ -199,7 +199,7 @@
                     CategoryId = x.CategoryId,
                     LanguageId = x.LanguageId,
                     CoachName = $"{x.Coach.FirstName} {x.Coach.LastName}",
-                    CompanyLogoUrl = x.Coach.Company.LogoUrl,
+                    CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
                 })
                 .ToListAsync();
 
