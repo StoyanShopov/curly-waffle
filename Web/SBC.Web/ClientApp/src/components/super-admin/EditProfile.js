@@ -20,9 +20,9 @@ export default function EditProfile(props) {
         e.preventDefault();
 
         const fd = new FormData(e.target);
-
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
-
+        console.log(data)
+        
         if (data.photoUrl == null || data.photoUrl.size == 0) {
             data.photoUrl = admin.photoUrl
         }
@@ -62,11 +62,13 @@ export default function EditProfile(props) {
                                     </svg>
                             }
                         </div>
-                        <button className={css.fileUpload}>
+                        <button type='button' className={css.fileUpload}>
                             Edit Photo
                             <input name="photoUrl" type="file" className={css.upload} />
                         </button>
+                           
                     </div>
+
                     <div className={css.bodyContainer3}>
                         <input
                             name="fullname"

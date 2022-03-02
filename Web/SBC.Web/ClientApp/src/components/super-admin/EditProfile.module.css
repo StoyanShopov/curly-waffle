@@ -165,11 +165,13 @@ input:nth-child(2)::placeholder {
   width: 148px;
   height: 46px;
   cursor: pointer;
+  
+}
+input[type="file"] {
   position: fixed;
   right: 100%;
   bottom: 100%;
 }
-
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
