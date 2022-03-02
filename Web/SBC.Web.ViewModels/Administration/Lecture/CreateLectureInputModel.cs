@@ -4,7 +4,6 @@
 
     public class CreateLectureInputModel
     {
-        [Required]
         public string Id { get; set; }
 
         [Required]
