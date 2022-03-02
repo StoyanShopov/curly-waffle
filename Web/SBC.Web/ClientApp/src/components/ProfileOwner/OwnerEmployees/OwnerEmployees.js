@@ -51,7 +51,7 @@ export default function OwnerEmployees() {
                             <th className={css.secondTh}>Email</th>
                             <th >
                                 <div className={css.plusSignContainer} >
-                                    <Link to="" onClick={() => setShowModal(true)}>
+                                    <Link to="" onClick={() => prop.setShowModal(true)}>
                                         <img src="assets/images/Plus.svg" alt="add-icon"></img>
                                     </Link>
                                 </div>
