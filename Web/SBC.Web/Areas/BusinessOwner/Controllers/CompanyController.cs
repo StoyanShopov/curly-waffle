@@ -4,6 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Infrastructures;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
 
     public class CompanyController : BusinessOwnerController
@@ -17,8 +18,8 @@
 
         [HttpGet]
         [Route("employees")]
-        public async Task<ActionResult> GetEmployees(string managerId, int skip)
-            => this.GenericResponse(await this.companiesService.GetEmployees(managerId, skip));
+        public async Task<ActionResult> GetEmployees(int skip)
+            => this.GenericResponse(await this.companiesService.GetEmployees(this.User.Id(), skip));
 
         [HttpPost]
         [Route("addEmployee")]

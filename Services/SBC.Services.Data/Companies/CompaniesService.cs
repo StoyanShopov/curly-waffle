@@ -5,14 +5,19 @@
     using System.Net;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Company;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
     using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Courses;
+
+    using static SBC.Common.ErrorMessageConstants.Company;
+    using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class CompaniesService : ICompaniesService
     {
@@ -24,6 +29,7 @@
         private readonly IDeletableEntityRepository<CompanyCoach> companyCoachesRepository;
         private readonly IDeletableEntityRepository<CompanyCourse> companyCoursesRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
+        private readonly RoleManager<ApplicationRole> roleManager;
 
         public CompaniesService(
             IDeletableEntityRepository<Company> company,
@@ -31,7 +37,8 @@
             IDeletableEntityRepository<Course> coursesRepository,
             IDeletableEntityRepository<CompanyCoach> companyCoachesRepository,
             IDeletableEntityRepository<CompanyCourse> companyCoursesRepository,
-            IDeletableEntityRepository<ApplicationUser> userRepository)
+            IDeletableEntityRepository<ApplicationUser> userRepository,
+            RoleManager<ApplicationRole> roleManager)
         {
             this.companiesRepository = company;
             this.coachesRepository = coachesRepository;
@@ -39,19 +46,8 @@
             this.companyCoachesRepository = companyCoachesRepository;
             this.companyCoursesRepository = companyCoursesRepository;
             this.userRepository = userRepository;
+            this.roleManager = roleManager;
         }
-
-        public async Task<bool> ExistsByNameAsync(string name)
-            => await this.companiesRepository
-                .AllAsNoTracking()
-                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
-
-        public async Task<int> NoTrackGetCompanyByNameAsync(string name)
-            => await this.companiesRepository
-                .AllAsNoTracking()
-                .Where(c => c.Name.ToLower() == name.ToLower())
-                .Select(c => c.Id)
-                .FirstOrDefaultAsync();
 
         public async Task<Result> GetEmployees(string managerId, int skip = default, int take = TakeDefaultValue)
         {
@@ -240,5 +236,74 @@
 
             return new ResultModel(activeCourse);
         }
+
+        public async Task<Result> AddAsync(CreateCompanyInputModel model)
+        {
+            var existsByName = await this.ExistsByNameAsync(model.Name);
+
+            if (existsByName)
+            {
+                var error = string.Format(ExistsByName, model.Name);
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
+            }
+
+            var existsByEmail = await this.ExistsByEmailAsync(model.Email);
+
+            if (existsByEmail)
+            {
+                var error = string.Format(ExistsByEmail, model.Email);
+
+                return new ErrorModel(HttpStatusCode.BadRequest, error);
+            }
+
+            var company = new Company
+            {
+                Name = model.Name,
+                Email = model.Email,
+                LogoUrl = model.LogoUrl,
+            };
+
+            await this.companiesRepository.AddAsync(company);
+            await this.companiesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<int> GetCountAsync()
+            => await this.companiesRepository
+                .AllAsNoTracking()
+                .CountAsync();
+
+        public async Task<bool> ExistsByEmailAsync(string email)
+            => await this.companiesRepository
+                .AllAsNoTracking()
+                .AnyAsync(c => c.Email.ToLower() == email.ToLower());
+
+        public async Task<bool> ExistsOwnerAsync(string name)
+        {
+            var role = await this.roleManager.FindByNameAsync(CompanyOwnerRoleName);
+
+            return await this.companiesRepository
+                .AllAsNoTracking()
+                .Include(c => c.Employees)
+                    .ThenInclude(e => e.Roles)
+                .Where(c => c.Name.ToLower() == name.ToLower())
+                .AnyAsync(c =>
+                    c.Employees.Any(e =>
+                        e.Roles.Any(r => r.RoleId == role.Id)));
+        }
+
+        public async Task<bool> ExistsByNameAsync(string name)
+            => await this.companiesRepository
+                .AllAsNoTracking()
+                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+
+        public async Task<int> GetIdByNameAsync(string name)
+            => await this.companiesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == name.ToLower())
+                .Select(c => c.Id)
+                .FirstOrDefaultAsync();
     }
 }

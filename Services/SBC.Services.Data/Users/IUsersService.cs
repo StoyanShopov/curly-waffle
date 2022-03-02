@@ -1,9 +1,8 @@
-﻿namespace SBC.Services.Data.User
+﻿namespace SBC.Services.Data.Users
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Web.ViewModels.Administration.Profile;
     using SBC.Web.ViewModels.User;
 
     public interface IUsersService

@@ -3,24 +3,24 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data.Profile;
-    using SBC.Web.ViewModels.BusinessOwner.Profile;
+    using SBC.Services.Data.Users;
+    using SBC.Web.ViewModels.User;
 
     public class BusinessOwnerProfileController : BusinessOwnerController
     {
-        private readonly IBusinessOwnerProfileService businessOwnerProfileService;
+        private readonly IUsersService usersService;
 
-        public BusinessOwnerProfileController(IBusinessOwnerProfileService businessOwnerProfileService)
+        public BusinessOwnerProfileController(IUsersService usersService)
         {
-            this.businessOwnerProfileService = businessOwnerProfileService;
+            this.usersService = usersService;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAsync(string userId)
-            => this.GenericResponse(await this.businessOwnerProfileService.GetBusinessOwnerDataAsync(userId));
+            => this.GenericResponse(await this.usersService.GetAdminDataAsync<ProfileViewModel>(userId));
 
         [HttpPut]
-        public async Task<ActionResult> EditAsync(EditProfileServiceModel model, string userId)
-            => this.GenericResponse(await this.businessOwnerProfileService.EditAsync(model, userId));
+        public async Task<ActionResult> EditAsync(EditProfileInputModel model, string userId)
+            => this.GenericResponse(await this.usersService.EditAsync(model, userId));
     }
 }

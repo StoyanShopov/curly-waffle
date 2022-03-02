@@ -25,17 +25,13 @@
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
     using SBC.Services.Data;
+    using SBC.Services.Data.Admin;
     using SBC.Services.Data.BusinessOwner;
+    using SBC.Services.Data.Clients;
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
-    using SBC.Services.Data.Profile;
-    using SBC.Services.Data.Admin;
-    using SBC.Services.Data.Client;
-
-
-
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Users;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
@@ -158,8 +154,6 @@
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICoachesService, CoachesService>();
-
-            services.AddTransient<IBusinessOwnerProfileService, BusinessOwnerProfileService>();
             services.AddTransient<IBusinessOwnerDashboardService, BusinessOwnerDashboardService>();
         }
 

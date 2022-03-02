@@ -1,4 +1,4 @@
-namespace SBC.Common
+﻿namespace SBC.Common
 {
     public static class GlobalConstants
     {

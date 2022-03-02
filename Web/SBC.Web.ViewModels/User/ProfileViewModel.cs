@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration
+﻿namespace SBC.Web.ViewModels.User
 {
     using AutoMapper;
     using SBC.Data.Models;
@@ -13,6 +13,8 @@
         public string ProfileSummary { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public int CompanyId { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

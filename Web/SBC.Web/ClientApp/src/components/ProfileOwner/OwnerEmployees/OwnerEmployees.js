@@ -11,12 +11,11 @@ import { OwnerService } from '../../../services';
 
 export default function OwnerEmployees() {
     const [showModal, setShowModal] = useState(false);
-    const testId = '8d8ffd9c-a69c-48a3-a66a-ebc6f9138468';
 
     const [employees, setEmployees] = useState([]);
 
     useEffect(() => {
-        OwnerService.CompanyGetEmployees(testId, 0)
+        OwnerService.CompanyGetEmployees(0)
             .then(res => {
                 setEmployees(res.portions);
                 console.log(res);

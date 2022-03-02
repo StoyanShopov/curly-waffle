@@ -7,5 +7,7 @@
     public interface ICoachesService
     {
         Task<Result> GetAllWithActive(int companyId);
+
+        Task<int> GetCountAsync();
     }
 }

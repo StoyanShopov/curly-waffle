@@ -63,5 +63,10 @@
 
             return new ResultModel(filteredCoaches);
         }
+
+        public async Task<int> GetCountAsync()
+            => await this.coachesRepository
+                .AllAsNoTracking()
+                .CountAsync();
     }
 }

@@ -64,5 +64,10 @@
 
             return new ResultModel(filteredCourses);
         }
+
+        public async Task<int> GetCountAsync()
+            => await this.coursesRepository
+                .AllAsNoTracking()
+                .CountAsync();
     }
 }

@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data.Client;
+    using SBC.Services.Data.Clients;
     using SBC.Web.ViewModels.Administration.Client;
 
     public class ClientsController : AdministrationController

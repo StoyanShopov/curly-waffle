@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration.Profile
+﻿namespace SBC.Web.ViewModels.User
 {
     using System.ComponentModel.DataAnnotations;
 

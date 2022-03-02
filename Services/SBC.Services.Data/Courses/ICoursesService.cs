@@ -7,5 +7,7 @@
     public interface ICoursesService
     {
         Task<Result> GetAllWithActive(int companyId);
+
+        Task<int> GetCountAsync();
     }
 }

@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.User;
 
     public class IdentityController : ApiController

@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Client
+﻿namespace SBC.Services.Data.Clients
 {
     using System.Linq;
     using System.Net;
@@ -9,8 +9,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company;
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
 

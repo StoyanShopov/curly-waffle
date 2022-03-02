@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.User
+﻿namespace SBC.Services.Data.Users
 {
     using System.Linq;
     using System.Net;
@@ -10,10 +10,9 @@
     using SBC.Common.Extensions;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Companies;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Administration.Profile;
     using SBC.Web.ViewModels.User;
 
     using static SBC.Common.ErrorMessageConstants.User;
