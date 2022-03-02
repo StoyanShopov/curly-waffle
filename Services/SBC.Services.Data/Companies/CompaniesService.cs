@@ -68,7 +68,12 @@
                 .OrderByDescending(u => u.CreatedOn)
                 .Skip(skip)
                 .Take(take)
-                .To<EmployeeViewModel>()
+                .Select(x => new EmployeeViewModel
+                {
+                    Email = x.Email,
+                    Id = x.Id,
+                    FullName = $"{x.FirstName} {x.LastName}",
+                })
                 .ToListAsync();
 
             var employees = new EmployeesViewModel

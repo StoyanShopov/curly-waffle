@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styles from "./Sidebar.module.css";
 
 export default function Sidebar(prop) {
+    const testId = '8d8ffd9c-a69c-48a3-a66a-ebc6f9138468';
+
     return (
 
         <div className={styles.container}>
@@ -30,6 +32,7 @@ export default function Sidebar(prop) {
                     <li><NavLink to="/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Coaches</NavLink></li>
                     <li><NavLink to="/item1" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Item 1</NavLink></li>
                     <li><NavLink to="/item2" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Item 2</NavLink></li>
+                    <li><NavLink to='/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
                     <li><NavLink to="/logout" className={styles.logout}>Log Out</NavLink></li>
                 </ul>
             </div>

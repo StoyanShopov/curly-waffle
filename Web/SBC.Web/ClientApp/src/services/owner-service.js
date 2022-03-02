@@ -6,14 +6,14 @@ import { baseUrl } from '../constants/GlobalConstants';
 
 // from BusinessOwnerProfileController:
 
-export const GetOwnerData = async (userId) => {
+const GetOwnerData = async (userId) => {
     let response = await axios({
         method: 'get',
         url: baseUrl + "manager/BusinessOwnerProfile",
         data: userId,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
+             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
         }
     });
    
@@ -24,7 +24,7 @@ export const GetOwnerData = async (userId) => {
     return response;
 }
 
-export const EditOwner = async (_data) => {
+const EditOwner = async (_data) => {
     let response = await axios({
         method: 'PUT',
         url: baseUrl + "manager/BusinessOwnerProfile",
@@ -43,7 +43,7 @@ export const EditOwner = async (_data) => {
 
 // from CoachesController:
 
-export const GetCoachesCatalog = async (companyId) => {
+const GetCoachesCatalog = async (companyId) => {
     const response = await axios.get(baseUrl + 'manager/Coaches', companyId,
         {
             headers: {
@@ -60,7 +60,7 @@ export const GetCoachesCatalog = async (companyId) => {
 
 // from CoursesController:
 
-export const GetCoursesCatalog = async (companyId) => {
+const GetCoursesCatalog = async (companyId) => {
     const response = await axios.get(baseUrl + 'manager/Courses', companyId,
         {
             headers: {
@@ -77,12 +77,11 @@ export const GetCoursesCatalog = async (companyId) => {
 
 // from CompanyController:
 
-export const CompanyGetEmployees = async (managerId, skip, cancelTokenSource) => {
+const CompanyGetEmployees = async (managerId, skip) => {
     const response = await axios.get(baseUrl + 'manager/Company/employees?skip=' + skip, {
-        cancelToken: cancelTokenSource.token,
         data: managerId,
         headers: {
-            Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+            // Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
         },
     });
 
@@ -93,7 +92,7 @@ export const CompanyGetEmployees = async (managerId, skip, cancelTokenSource) =>
     return response.data;
 }
 
-export const CompanyAddEmployee = async (model) => {
+const CompanyAddEmployee = async (model) => {
     const response = await axios.post(baseUrl + 'manager/Company/addEmployee', model,
         {
             headers: {
@@ -108,7 +107,7 @@ export const CompanyAddEmployee = async (model) => {
     return response;
 }
 
-export const CompanyRemoveEmployee = async (employeeId) => {
+const CompanyRemoveEmployee = async (employeeId) => {
     const response = await axios.delete(baseUrl + 'manager/Company/removeEmployee', employeeId,
         {
             headers: {
@@ -123,7 +122,7 @@ export const CompanyRemoveEmployee = async (employeeId) => {
     return response;
 }
 
-export const CompanyGetActiveCoaches = async (employeeId) => {
+const CompanyGetActiveCoaches = async (employeeId) => {
     const response = await axios.get(baseUrl + 'manager/Company/activeCoaches', employeeId,
         {
             headers: {
@@ -138,7 +137,7 @@ export const CompanyGetActiveCoaches = async (employeeId) => {
     return response;
 }
 
-export const CompanySetCoachToActive = async (_data) => {
+const CompanySetCoachToActive = async (_data) => {
     const response = await axios.post(baseUrl + 'manager/Company/addCoach', _data,
         {
             headers: {
@@ -153,7 +152,7 @@ export const CompanySetCoachToActive = async (_data) => {
     return response;
 }
 
-export const CompanyRemoveCoachFromActive = async (_data) => {
+const CompanyRemoveCoachFromActive = async (_data) => {
     const response = await axios.delete(baseUrl + 'manager/Company/removeCoach', _data,
         {
             headers: {
@@ -168,7 +167,7 @@ export const CompanyRemoveCoachFromActive = async (_data) => {
     return response;
 }
 
-export const CompanyGetActiveCourses = async (companyId) => {
+const CompanyGetActiveCourses = async (companyId) => {
     const response = await axios.get(baseUrl + 'manager/Company/activeCourses', companyId,
         {
             headers: {
@@ -183,7 +182,7 @@ export const CompanyGetActiveCourses = async (companyId) => {
     return response;
 }
 
-export const CompanySetCourseToActive = async (_data) => {
+const CompanySetCourseToActive = async (_data) => {
     const response = await axios.post(baseUrl + 'manager/Company/addCourse', _data,
         {
             headers: {
@@ -198,7 +197,7 @@ export const CompanySetCourseToActive = async (_data) => {
     return response;
 }
 
-export const CompanyRemoveCourseFromActive = async (_data) => {
+const CompanyRemoveCourseFromActive = async (_data) => {
     const response = await axios.delete(baseUrl + 'manager/Company/removeCourse', _data,
         {
             headers: {
@@ -215,7 +214,7 @@ export const CompanyRemoveCourseFromActive = async (_data) => {
 
 // from DashboardController:
 
-export const GetOwnerDashboard = async (companyId) => {
+const GetOwnerDashboard = async (companyId) => {
     let response = await axios({
         method: 'get',
         url: baseUrl + "manager/Dashboard",
@@ -230,4 +229,23 @@ export const GetOwnerDashboard = async (companyId) => {
         throw new Error(response.Error);
     }
     return response;
+}
+
+
+export const OwnerService = {
+    GetOwnerData,
+    GetOwnerDashboard,
+    GetCoachesCatalog,
+    GetCoursesCatalog,
+    EditOwner,
+    GetOwnerDashboard,
+    CompanyAddEmployee,
+    CompanyGetEmployees,
+    CompanyRemoveEmployee,
+    CompanyGetActiveCoaches,
+    CompanySetCoachToActive,
+    CompanyRemoveCoachFromActive,
+    CompanyGetActiveCourses,
+    CompanySetCourseToActive,
+    CompanyRemoveCourseFromActive,
 }

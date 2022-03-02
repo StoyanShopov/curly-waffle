@@ -6,10 +6,23 @@ import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
 import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
-import Sidebar from "../../Sidebar/Sidebar"
+import Sidebar from "../../Sidebar/Sidebar";
+import { OwnerService } from '../../../services';
 
-export default function OwnerEmployees(prop) {
+export default function OwnerEmployees() {
     const [showModal, setShowModal] = useState(false);
+    const testId = '8d8ffd9c-a69c-48a3-a66a-ebc6f9138468';
+
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+        OwnerService.CompanyGetEmployees(testId, 0)
+            .then(res => {
+                setEmployees(res.portions);
+                console.log(res);
+            });
+
+    }, []);
 
     const handleClose = useCallback(() => {
         setShowModal(false)
@@ -46,18 +59,19 @@ export default function OwnerEmployees(prop) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr key={1}>
-                            <td className={css.name}> Aya Krusteva</td>
-                            <td className={css.email} >aya.krusteva@motion-software.com</td>
-                        </tr>
-                        <tr key={2}>
-                            <td className={css.name}>Anna Vasileva</td>
-                            <td className={css.email}>anna.vasileva@motion-software.com</td>
-                        </tr>
-                        <tr key={3}>
-                            <td className={css.name}>Victor Georgiev</td>
-                            <td className={css.email}>victor.georgiev@motion-software.com</td>
-                        </tr>
+                        {employees.length > 0
+                            ? employees.map(x => {
+                                return (
+                                    <tr key={x.id}>
+                                        <td className={css.name}> { x.fullName}</td>
+                                        <td className={css.email} >{ x.email}</td>
+                                    </tr>
+                                    )
+                            })
+                            : <tr>
+                                <td>Test</td>
+                             </tr>
+                        }
                         <tr id={css.flex}>
                             <td>
                                 <Link to="" className={css.link} onClick={() => { prop.handleViewMore() }}>View More</Link>
