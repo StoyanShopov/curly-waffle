@@ -1,14 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .containerH {
     position: absolute;
     justify-content: center;
-    left: 735px;
-    top: 75px;
+    left: 440px;
+    top: 50px;
     width: 1035px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
-    padding-top: 150px;
 }
 
 .dashboard {
@@ -68,18 +65,19 @@
     text-align: center;
     border: 2px solid #296CFB;
     color: #296CFB;
+    line-height: 48px;
 }
 
-div.containerT {
+.containerT {
     position: relative;
     justify-content: center;
-    top: 516px;
-    left: 735px;
+    top: 278px;
+    left: 440px;
     width: 1035px;
-    height: 654px;
+    height: 820px;
 }
 
-table.table {
+.tableContainer {
     width: 1035px;
     border-collapse: collapse;
     font-size: 22px;
@@ -91,30 +89,30 @@ table.table {
     padding-left: 7%;
 }
 
-.table tbody {
+.tableContainer tbody {
     display: block;
     padding-left: 55px;
     padding-right: 55px;
 }
 
-.table thead {
+.tableContainer thead {
     background-color: #296CFB;
     border: #296CFB;
     color: white;
     box-shadow: 0px 3px 10px #00000029;
 }
 
-.table tbody {
+.tableContainer tbody {
     background-color: white;
     box-shadow: 0px 3px 10px #00000029;
 }
 
-table.table td {
+.tableContainer td {
     padding-top: 37px;
     padding-bottom: 37px;
 }
 
-.table thead th {
+.tableContainer thead th {
     padding-top: 30px;
     padding-bottom: 16px;
 }
@@ -125,7 +123,7 @@ table.table td {
     padding-bottom: 20px;
 }
 
-.table tbody tr {
+.tableContainer tbody tr {
     border-bottom: 1px solid #000000;
     display: flex;
     justify-content: space-between;
@@ -177,43 +175,6 @@ table.table td {
     font-weight: bold;
 }
 
-td + td {
-    font-weight: bold;
-}
-
-a.link {
-    font-weight: normal;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    color: inherit;
-    text-decoration: inherit;
-    color: #16D696;
-}
-
-    a.link:hover {
-        cursor: pointer;
+    .total td {
         font-weight: bold;
-    }
-
-th img {
-    width: 20px;
-    height: 20px;
-    padding: 15px;
-}
-
-tbody {
-    width: 980px;
-}
-
-.containerC {
-    position: relative;
-    justify-content: center;
-    left: 735px;
-    top: 75px;
-    width: 1035px;
-}
-
-    .containerC thead {
-        background-color: #16D696;
-        border: #16D696;
     }

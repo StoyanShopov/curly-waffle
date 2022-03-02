@@ -23,9 +23,8 @@ export default function OwnerDashboard(prop) {
                     </section>
                 </div>
             </div >
-
             <div className={styles.containerT}>
-                <table className={styles.table}>
+                <table className={styles.tableContainer}>
                     <thead>
                         <tr>
                             <th className={styles.theadTh}>
@@ -48,18 +47,18 @@ export default function OwnerDashboard(prop) {
                     </thead>
                     <tbody>
                         <tr key={1}>
-                            <td className={styles.name}>Aya Krusteva</td>
+                            <td className={styles.name}>HTML & CSS</td>
                             <td className={styles.enrolled} >23</td>
                         </tr>
                         <tr key={2}>
-                            <td className={styles.name}>Anna Vasileva</td>
+                            <td className={styles.name}>Python Masterclass</td>
                             <td className={styles.enrolled}>45</td>
                         </tr>
                         <tr key={3}>
-                            <td className={styles.name}>Victor Georgiev</td>
+                            <td className={styles.name}>Marketing Basics</td>
                             <td className={styles.enrolled}>67</td>
                         </tr>
-                        <tr id={styles.flex}>
+                        <tr id={styles.flexViewMore}>
                             <td>
                                 <Link to="/profileOwner" className={styles.link}>View More</Link>
                             </td>
@@ -67,9 +66,8 @@ export default function OwnerDashboard(prop) {
                     </tbody>
                 </table>
             </div>
-
             <div className={styles.containerC}>
-                <table className={styles.table}>
+                <table className={styles.tableContainer}>
                     <thead>
                         <tr>
                             <th className={styles.theadTh}>
@@ -103,7 +101,7 @@ export default function OwnerDashboard(prop) {
                             <td className={styles.name}>Veronica Casey</td>
                             <td className={styles.enrolled}>34</td>
                         </tr>
-                        <tr id={styles.flex}>
+                        <tr id={styles.flexViewMore}>
                             <td>
                                 <Link to="/profileOwner" className={styles.link}>View More</Link>
                             </td>

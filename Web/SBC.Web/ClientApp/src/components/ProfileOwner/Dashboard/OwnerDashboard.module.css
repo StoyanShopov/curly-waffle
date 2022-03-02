@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .containerH {
     position: relative;
     justify-content: center;
-    left: 735px;
-    top: 75px;
+    width: 24%;
+    left: 26%;
+    top: 72px;
     height: auto;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -16,7 +15,7 @@
     flex-direction: column;
     width: 1080px;
     font-weight: bold;
-    margin-bottom: 75px;
+    margin-bottom: 64px;
 }
 
 .dashboardHeader {
@@ -50,19 +49,19 @@
         }
 
         .dashboardHeader span:nth-child(2) {
-            font-size: 55px;
+            font-size: 50px;
             line-height: 90px;
         }
 
-div.containerT {
+.containerT {
     position: relative;
     justify-content: center;
     top: 75px;
-    left: 735px;
+    left: 26%;
     width: 1035px;
 }
 
-table.table {
+.tableContainer table {
     width: 1035px;
     border-collapse: collapse;
     font-size: 22px;
@@ -70,11 +69,11 @@ table.table {
     text-align: start;
 }
 
-thead > svg {
+.tableContainer thead > svg {
     margin-left: 7%;
 }
 
-.table tbody {
+.tableContainer tbody {
     display: block;
     padding-left: 55px;
     padding-right: 55px;
@@ -82,19 +81,19 @@ thead > svg {
     box-shadow: 0px 3px 10px #00000029;
 }
 
-.table thead {
+.tableContainer thead {
     background-color: #296CFB;
     border: #296CFB;
     color: white;
     box-shadow: 0px 3px 10px #00000029;
 }
 
-table.table td {
+.tableContainer td {
     padding-top: 37px;
     padding-bottom: 37px;
 }
 
-.table thead th {
+.tableContainer thead th {
     padding-top: 30px;
     padding-bottom: 16px;
 }
@@ -105,13 +104,13 @@ table.table td {
     padding-bottom: 20px;
 }
 
-.table tbody tr {
+.tableContainer tbody tr {
     border-bottom: 1px solid #000000;
     display: flex;
     justify-content: space-between;
 }
 
-tbody {
+.tableContainer tbody {
     width: 980px;
 }
 
@@ -136,7 +135,7 @@ tbody {
     padding-right: 50px;
 }
 
-a.link {
+.link {
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -145,17 +144,12 @@ a.link {
     color: #16D696;
 }
 
-    a.link:hover {
+    .link:hover {
         cursor: pointer;
         font-weight: bold;
     }
 
-td + td {
-    color: #000000;
-    font-weight: normal;
-}
-
-#flex {
+#flexViewMore {
     display: flex;
     justify-content: center;
     border: none;
@@ -165,9 +159,10 @@ td + td {
 .containerC {
     position: relative;
     justify-content: center;
-    left: 735px;
-    top: 75px;
+    left: 26%;
+    top: 138px;
     width: 1035px;
+    margin-bottom: 30px;
 }
 
     .containerC thead {
