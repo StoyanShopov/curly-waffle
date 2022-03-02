@@ -39,12 +39,12 @@
             var numberOfClients = this.ParseDiagramByCountAndMonths(new int[] { 45, 15, 25, 60, 30, 45 });
             var totalRevenue = this.ParseDiagramByCountAndMonths(new int[] { 1000, 800, 1000, 900, 1300, 1000 });
 
-            return new ResultModel(new DashBoardViewModel
+            return new ResultModel(new DashboardViewModel
             {
-                Clients = (int)clients.Data.Value,
+                Clients = clients,
                 Revenue = 1245,
-                Courses = (int)courses.Data.Value,
-                Coaches = (int)coaches.Data.Value,
+                Courses = courses,
+                Coaches = coaches,
                 NumberOfClients = this.ParseDiagramByCountAndMonths(new int[] { 45, 15, 25, 60, 30, 45 }),
                 TotalRevenue = this.ParseDiagramByCountAndMonths(new int[] { 1000, 800, 1000, 900, 1300, 1000 }),
             });

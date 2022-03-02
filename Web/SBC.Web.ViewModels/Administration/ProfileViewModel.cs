@@ -4,7 +4,7 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class AdminViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
+    public class ProfileViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
     {
         public string Fullname { get; set; }
 
@@ -16,7 +16,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<ApplicationUser, AdminViewModel>()
+            configuration.CreateMap<ApplicationUser, ProfileViewModel>()
                         .ForMember(c => c.Fullname, cfg => cfg.MapFrom(c => c.FirstName + ' ' + c.LastName));
         }
     }

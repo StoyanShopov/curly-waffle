@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class DashBoardViewModel
+    public class DashboardViewModel
     {
         public int Clients { get; set; }
 

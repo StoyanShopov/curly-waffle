@@ -13,6 +13,7 @@
     using SBC.Services.Data.Company;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Profile;
     using SBC.Web.ViewModels.User;
 
     using static SBC.Common.ErrorMessageConstants.User;
@@ -110,6 +111,45 @@
             var jwt = this.identitiesService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
 
             return new ResultModel(new { JWT = jwt });
+        }
+
+        public async Task<Result> EditAsync(EditProfileInputModel inputModelUser, string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
+            }
+
+            // TODO: user.Email = mapModel.Email;
+            user.FirstName = inputModelUser.Fullname.Split(" ")[0];
+            user.LastName = inputModelUser.Fullname.Split(" ")[1];
+            user.ProfileSummary = inputModelUser.ProfileSummary;
+            user.PhotoUrl = inputModelUser.PhotoUrl;
+
+            var result = await this.userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return result.Succeeded;
+            }
+
+            return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+        }
+
+        public async Task<Result> GetAdminDataAsync<TModel>(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
+            }
+
+            var result = AutoMapperConfig.MapperInstance.Map<TModel>(user);
+
+            return new ResultModel(result);
         }
 
         public async Task<TModel> GetByEmailAsync<TModel>(string email)

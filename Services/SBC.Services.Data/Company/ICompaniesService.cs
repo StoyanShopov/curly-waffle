@@ -9,7 +9,7 @@
     {
         Task<Result> AddAsync(CreateCompanyInputModel model);
 
-        Task<Result> GetCountAsync();
+        Task<int> GetCountAsync();
 
         Task<bool> ExistsByEmailAsync(string email);
 

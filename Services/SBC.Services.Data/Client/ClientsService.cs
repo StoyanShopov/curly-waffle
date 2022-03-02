@@ -56,7 +56,7 @@
                 .All()
                 .Include(au => au.Roles)
                 .Include(au => au.Company)
-                .FirstOrDefaultAsync(u => u.NormalizedEmail == model.Email.ToUpper()); ;
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == model.Email.ToUpper());
 
             var ownerExists = await this.companiesService.ExistsOwnerAsync(user.Company.Name);
 

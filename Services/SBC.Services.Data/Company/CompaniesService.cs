@@ -60,8 +60,10 @@
             return true;
         }
 
-        public async Task<Result> GetCountAsync()
-            => new ResultModel(await this.companiesRepository.AllAsNoTracking().CountAsync());
+        public async Task<int> GetCountAsync()
+            => await this.companiesRepository
+                .AllAsNoTracking()
+                .CountAsync();
 
         public async Task<bool> ExistsByEmailAsync(string email)
             => await this.companiesRepository

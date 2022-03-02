@@ -23,13 +23,11 @@
     using SBC.Data.Models;
     using SBC.Data.Repositories;
     using SBC.Services.Blob;
-    using SBC.Services.Data;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.Client;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Course;
-    using SBC.Services.Data.Profile;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
@@ -154,7 +152,6 @@
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
-            services.AddTransient<IProfileService, ProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -5,6 +5,7 @@
     public class CreateClientInputModel
     {
         [Required(AllowEmptyStrings = true)]
+        [StringLength(30, MinimumLength = 2)]
         public string FullName { get; set; }
 
         [Required]
