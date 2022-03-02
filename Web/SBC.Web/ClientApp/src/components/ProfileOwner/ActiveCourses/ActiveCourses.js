@@ -31,7 +31,7 @@ export default function ActiveCourses(prop) {
             <Sidebar />
             <div className={styles.container}>
                 <div className={styles.buttonContainer}>
-                    <Link to="/manage" ><button className={styles.manageButton}>Manage</button></Link>
+                    <Link to="/courseCatalog" ><button className={styles.manageButton}>Manage</button></Link>
                 </div>
                 <div className={styles.cardscontainer}>
                     <div className={styles.card}>

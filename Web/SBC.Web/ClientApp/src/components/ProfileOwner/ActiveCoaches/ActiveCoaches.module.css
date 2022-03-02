@@ -9,6 +9,7 @@
     margin-left: 78%;
     padding-top: 3%;
     position: absolute;
+    z-index: 100;
 }
 
 .manageButton {
