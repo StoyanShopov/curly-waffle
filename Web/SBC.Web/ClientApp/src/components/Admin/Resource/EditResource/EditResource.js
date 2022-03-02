@@ -30,14 +30,17 @@ function EditResource(props) {
 
         let resourceData = Object.fromEntries(new FormData(e.currentTarget));
         resourceData.lectureId = lectureId;
+        const oldFileUrl = resource.fileUrl;
 
-        if (resourceData.fileUrl) {
-            let blobName = resource.fileUrl.split('/').pop();
+        if (resourceData.fileUrl.name !== "") {
+            let blobName = oldFileUrl.split('/').pop();
 
             await resourceService.deleteFile(blobName);
 
             let result = await resourceService.uploadFile(resourceData.fileUrl);
             resourceData.fileUrl = result.fileUrl;
+        } else {
+            resourceData.fileUrl = oldFileUrl;
         }
 
         resourceService
