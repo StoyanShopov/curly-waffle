@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Invoice.module.css";
-import Sidebar from "../../Sidebar/Sidebar"
+import Sidebar from "../../Fragments/Sidebar"
 import { Link } from "react-router-dom";
 
 export default function Invoice(prop) {

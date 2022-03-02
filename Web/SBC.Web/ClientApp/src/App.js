@@ -17,6 +17,7 @@ import ActiveCoaches from "./components/ProfileOwner/ActiveCoaches/ActiveCoaches
 import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
+import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
 
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path='/super-admin/*' element={<AdminProfile />} />
+                    <Route path='/managerProfile' element={<ManagerProfile />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/ownerEmployees" element={<OwnerEmployees />} />
                     <Route path="/ownerInvoice" element={<Invoice />} />

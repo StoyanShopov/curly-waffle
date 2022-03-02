@@ -6,7 +6,7 @@ import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
 import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
-import Sidebar from "../../Sidebar/Sidebar";
+import Sidebar from "../../Fragments/Sidebar";
 import { OwnerService } from '../../../services';
 
 export default function OwnerEmployees() {

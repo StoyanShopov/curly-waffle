@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import css from './EditProfile.module.css';
 
-import { EditAdmin, GetAdminData } from './../../services/super-admin-service';
+import { EditAdmin, GetAdminData } from '../../services/super-admin-service';
 import { uploadImage } from '../../services/blob-service';
 
 export default function EditProfile(props) {

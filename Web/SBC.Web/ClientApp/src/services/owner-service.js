@@ -77,11 +77,10 @@ const GetCoursesCatalog = async (companyId) => {
 
 // from CompanyController:
 
-const CompanyGetEmployees = async (managerId, skip) => {
+const CompanyGetEmployees = async (skip) => {
     const response = await axios.get(baseUrl + 'manager/Company/employees?skip=' + skip, {
-        data: managerId,
         headers: {
-            // Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
         },
     });
 

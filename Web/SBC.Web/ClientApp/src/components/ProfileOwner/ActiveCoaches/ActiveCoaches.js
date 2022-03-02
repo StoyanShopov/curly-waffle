@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
-import Sidebar from "../../Sidebar/Sidebar";
+import Sidebar from "../../Fragments/Sidebar";
 import styles from "./ActiveCoaches.module.css";
 
 export default function ActiveCoaches(prop) {

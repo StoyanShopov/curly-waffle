@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./OwnerDashboard.module.css";
-import Sidebar from "../../Sidebar/Sidebar";
+import Sidebar from "../../Fragments/Sidebar";
 
-export default function OwnerDashboard(prop) {
+export default function OwnerDashboard() {
     return (
         <>
             <Sidebar />
