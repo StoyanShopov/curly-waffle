@@ -44,7 +44,7 @@ export const EditOwner = async (_data) => {
 // from CoachesController:
 
 export const GetCoachesCatalog = async (companyId) => {
-    const response = await axios.get(baseUrl + 'manager/Coaches/coachCatalog', companyId,
+    const response = await axios.get(baseUrl + 'manager/Coaches', companyId,
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -61,7 +61,7 @@ export const GetCoachesCatalog = async (companyId) => {
 // from CoursesController:
 
 export const GetCoursesCatalog = async (companyId) => {
-    const response = await axios.get(baseUrl + 'manager/Courses/coursesCatalog', companyId,
+    const response = await axios.get(baseUrl + 'manager/Courses', companyId,
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
