@@ -16,47 +16,47 @@
         }
 
         [HttpGet]
-        [Route("/employees")]
+        [Route("employees")]
         public async Task<ActionResult> GetEmployees(string managerId, int skip)
             => this.GenericResponse(await this.companiesService.GetEmployees(managerId, skip));
 
         [HttpPost]
-        [Route("/addEmployee")]
+        [Route("addEmployee")]
         public async Task<ActionResult> AddEmployee(CreateEmployeeInputModel model)
             => this.GenericResponse(await this.companiesService.AddEmployee(model));
 
         [HttpDelete]
-        [Route("/removeEmployee")]
+        [Route("removeEmployee")]
         public async Task<ActionResult> RemoveEmployee(string employeeId)
             => this.GenericResponse(await this.companiesService.RemoveEmployee(employeeId));
 
         [HttpGet]
-        [Route("/activeCoaches")]
+        [Route("activeCoaches")]
         public async Task<ActionResult> GetActiveCoaches(int companyId)
             => this.GenericResponse(await this.companiesService.GetActiveCoaches(companyId));
 
         [HttpPost]
-        [Route("/addCoach")]
+        [Route("addCoach")]
         public async Task<ActionResult> SetCoachToActive(int coachId, int companyId)
             => this.GenericResponse(await this.companiesService.SetCoachToActive(coachId, companyId));
 
         [HttpDelete]
-        [Route("/removeCoach")]
+        [Route("removeCoach")]
         public async Task<ActionResult> RemoveCoachFromActive(int coachId, int companyId)
             => this.GenericResponse(await this.companiesService.RemoveCoach(coachId, companyId));
 
         [HttpGet]
-        [Route("/activeCourses")]
+        [Route("activeCourses")]
         public async Task<ActionResult> GetActiveCourses(int companyId)
             => this.GenericResponse(await this.companiesService.GetActiveCourses(companyId));
 
         [HttpPost]
-        [Route("/addCourse")]
+        [Route("addCourse")]
         public async Task<ActionResult> SetCourseToActive(int courseId, int companyId)
             => this.GenericResponse(await this.companiesService.SetCourseToActive(courseId, companyId));
 
         [HttpDelete]
-        [Route("/removeCourse")]
+        [Route("removeCourse")]
         public async Task<ActionResult> RemoveCourseFromActive(int courseId, int companyId)
             => this.GenericResponse(await this.companiesService.RemoveCourse(courseId, companyId));
     }

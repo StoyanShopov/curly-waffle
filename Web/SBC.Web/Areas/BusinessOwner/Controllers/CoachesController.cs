@@ -15,7 +15,6 @@
         }
 
         [HttpGet]
-        [Route("/coachCatalog")]
         public async Task<ActionResult> GetCoachesCatalog(int companyId)
             => this.GenericResponse(await this.coachesService.GetAllWithActive(companyId));
     }
