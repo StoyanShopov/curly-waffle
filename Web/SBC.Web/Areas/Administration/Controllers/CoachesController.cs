@@ -10,24 +10,24 @@
 
     public class CoachesController : AdministrationController
     {
-        private readonly ICoachService coachService;
+        private readonly ICoachesService coachesService;
 
-        public CoachesController(ICoachService coachService)
+        public CoachesController(ICoachesService coachService)
         {
-            this.coachService = coachService;
+            this.coachesService = coachService;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(CreateCoachInputModel coach)
+        public async Task<ActionResult> CreateAsync(CreateCoachInputModel coach)
         {
-            var result = await this.coachService.CreateAsync(coach);
+            var result = await this.coachesService.CreateAsync(coach);
             return this.GenericResponse(result);
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllCoachesAsync()
         {
-            var result = await this.coachService.GetAllAsync<CoachDetailsViewModel>();
+            var result = await this.coachesService.GetAllAsync<CoachDetailsViewModel>();
             return this.GenericResponse(result);
         }
 
@@ -35,7 +35,7 @@
         [HttpPut]
         public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
-            var result = await this.coachService.UpdateAsync(coach);
+            var result = await this.coachesService.UpdateAsync(coach);
             return this.GenericResponse(result);
         }
 
@@ -43,7 +43,7 @@
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await this.coachService.DeleteAsync(id);
+            var result = await this.coachesService.DeleteAsync(id);
             return this.GenericResponse(result);
         }
     }

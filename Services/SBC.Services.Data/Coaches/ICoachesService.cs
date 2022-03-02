@@ -8,7 +8,7 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Coach;
 
-    public interface ICoachService
+    public interface ICoachesService
     {
         Task<Result> CreateAsync(CreateCoachInputModel coach);
 

@@ -15,17 +15,17 @@
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    public class UserService : IUserService
+    public class UsersService : IUsersService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUser;
-        private readonly ICompanyService companyService;
+        private readonly ICompaniesService companyService;
         private readonly IIdentityService identityService;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public UserService(
+        public UsersService(
             IDeletableEntityRepository<ApplicationUser> applicationUser,
-            ICompanyService companyService,
+            ICompaniesService companyService,
             IIdentityService identityService,
             RoleManager<ApplicationRole> roleManager,
             UserManager<ApplicationUser> userManager)

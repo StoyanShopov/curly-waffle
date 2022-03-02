@@ -1,13 +1,12 @@
-﻿using SBC.Data.Models;
-using SBC.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SBC.Web.ViewModels.Administration.Coach
+﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
-    public class CategoryCoachViewModel : IMapFrom<CategoryCoach>
+    using SBC.Data.Models;
+    using SBC.Services.Mapping;
+
+    public class CategoryCoachViewModel : IMapFrom<CategoryCoach>, IMapTo<CategoryCoach>
     {
         public int CategoryId { get; set; }
+
+        public int? CoachId { get; set; }
     }
 }

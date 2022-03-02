@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select'
-import { uploadImage, updateCoach } from "../../services/adminCoachesService";
+import { uploadImage, updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
 
 
 import styles from './EditCoach.module.css';
@@ -11,14 +11,22 @@ const EditCoach = (props) => {
   const [categories, setCategories] = useState([])
   const [categoriesOptions] = useState(props.categories)
   const [coach] = useState(props.coach)
+  const [companyEmail, setCompanyEmail] = useState();
 
-  console.log(languagesOptions);
 
   const coachLanguagesAsArrayOfIds = coach.languages.map(x => x.languageId);
   const coachLanguages = languagesOptions.filter(x => coachLanguagesAsArrayOfIds.includes(x.value))
 
   const coachCategoriesAsArrayOfIds = coach.categories.map(x => x.categoryId)
   const coachCategories = categoriesOptions.filter(x => coachCategoriesAsArrayOfIds.includes(x.value))
+
+  useEffect(() => {
+    if(coach.companyId!==null){
+      getCompanyEmailById(coach.companyId).then(res =>{
+        setCompanyEmail(res)
+      })
+    }
+  })
 
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
@@ -83,20 +91,32 @@ const EditCoach = (props) => {
     }
 
     languages.length === 0 ?
-      data.languages = coachLanguages.map(x => (x.value)) :
-      data.languages = languages.map(x => (x.value))
+      data.languages = coachLanguages.map(x => ({
+        languageId: x.value,
+        coachId: coach.id
+      })) :
+      data.languages = languages.map(x => ({
+        languageId: x.value,
+        coachId: coach.id
+      }))
 
     categories.length === 0 ?
-      data.categories = coachCategories.map(x => (x.value)) :
-      data.categories = categories.map(x => (x.value))
+      data.categories = coachCategories.map(x => ({
+        categoryId: x.value,
+        coachId: coach.id
+      })) :
+      data.categories = categories.map(x => ({
+        categoryId: x.value,
+        coachId: coach.id
+      }))
 
     updateCoach(data)
       .then(() => {
           props.closeModal();
       })
       .finally(() =>{
-        const languagesAsObj = data.languages.map(x=> ({languageId : x}))
-        const categoriesAsObj = data.categories.map(x=> ({categoryId : x}))
+        const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
+        const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
         data.languages = languagesAsObj
         data.categories = categoriesAsObj
 
@@ -207,8 +227,8 @@ const EditCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
-                defaultValue={coach.company}
-                name="company"
+                defaultValue={companyEmail}
+                name="companyEmail"
                 placeholder="Company(optional)"
                 type="text"
               />

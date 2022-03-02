@@ -64,3 +64,8 @@ export const uploadImage = async (file) => {
     });
     return response.data.photoUrl;
 }
+
+export const getCompanyEmailById = async(id) => {
+    const resp = await axios.get(baseUrl + `api/Companies/${id}`)
+    return resp.data;
+}

@@ -12,9 +12,9 @@
 
     public class LanguagesController : ApiController
     {
-        private readonly ILanguageService languageService;
+        private readonly ILanguagesService languageService;
 
-        public LanguagesController(ILanguageService languageService)
+        public LanguagesController(ILanguagesService languageService)
         {
             this.languageService = languageService;
         }

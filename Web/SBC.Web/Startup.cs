@@ -143,13 +143,13 @@
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
-            services.AddTransient<ICoachService, CoachService>();
-            services.AddTransient<ICompanyService, CompanyService>();
-            services.AddTransient<ILanguageService, LanguageService>();
-            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ICoachesService, CoachesService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
+            services.AddTransient<ILanguagesService, LanguagesService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

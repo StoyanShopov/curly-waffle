@@ -11,11 +11,11 @@
 
     using SBC.Services.Mapping;
 
-    public class LanguageService : ILanguageService
+    public class LanguagesService : ILanguagesService
     {
         private readonly IDeletableEntityRepository<Language> languageRepository;
 
-        public LanguageService(IDeletableEntityRepository<Language> data)
+        public LanguagesService(IDeletableEntityRepository<Language> data)
         {
             this.languageRepository = data;
         }

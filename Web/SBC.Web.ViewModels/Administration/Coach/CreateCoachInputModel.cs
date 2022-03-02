@@ -27,6 +27,7 @@
         //[Url]
         public string ImageUrl { get; set; }
 
+        //[EmailAddress]
         public string CompanyEmail { get; set; }
 
         //[Required]
@@ -41,9 +42,9 @@
         public string CalendlyUrl { get; set; }
 
         //[MinLength(MinCountAdd)]
-        public int[] Languages { get; set; }
+        public ICollection<LanguageCoachViewModel> Languages { get; set; }
 
         //[MinLength(MinCountAdd)]
-        public int[] Categories { get; set; }
+        public ICollection<CategoryCoachViewModel> Categories { get; set; }
     }
 }

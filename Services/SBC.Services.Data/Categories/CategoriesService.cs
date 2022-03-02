@@ -9,11 +9,11 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class CategoryService : ICategoryService
+    public class CategoriesService : ICategoriesService
     {
         private readonly IDeletableEntityRepository<Category> categoryRepository;
 
-        public CategoryService(IDeletableEntityRepository<Category> data)
+        public CategoriesService(IDeletableEntityRepository<Category> data)
         {
             this.categoryRepository = data;
         }

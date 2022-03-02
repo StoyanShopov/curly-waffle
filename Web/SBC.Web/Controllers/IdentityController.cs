@@ -11,10 +11,10 @@
 
     public class IdentityController : ApiController
     {
-        private readonly IUserService userService;
+        private readonly IUsersService userService;
         private readonly AppSettings appSettings;
 
-        public IdentityController(IOptions<AppSettings> appSettings, IUserService userService)
+        public IdentityController(IOptions<AppSettings> appSettings, IUsersService userService)
         {
             this.appSettings = appSettings.Value;
             this.userService = userService;

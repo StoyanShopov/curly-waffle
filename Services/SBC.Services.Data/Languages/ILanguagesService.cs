@@ -6,7 +6,7 @@
     using SBC.Common;
     using SBC.Data.Models;
 
-    public interface ILanguageService
+    public interface ILanguagesService
     {
         Task<IEnumerable<TModel>> GetAllAsync<TModel>();
     }

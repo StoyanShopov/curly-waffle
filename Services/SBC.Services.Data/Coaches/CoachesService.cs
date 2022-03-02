@@ -14,7 +14,7 @@
 
     using static SBC.Common.GlobalConstants.RequestsConstants;
 
-    public class CoachService : ICoachService
+    public class CoachesService : ICoachesService
     {
         private readonly IDeletableEntityRepository<Coach> coachRepository;
         private readonly IDeletableEntityRepository<CategoryCoach> categoriesCoachRepository;
@@ -23,7 +23,7 @@
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IDeletableEntityRepository<Company> companiesRepository;
 
-        public CoachService(
+        public CoachesService(
             IDeletableEntityRepository<Coach> coachRepository,
             IDeletableEntityRepository<CategoryCoach> categoryCoachRepo,
             IDeletableEntityRepository<LanguageCoach> languageCoachRepo,
@@ -121,20 +121,25 @@
             coachModel.CalendlyUrl = coach.CalendlyUrl;
             coachModel.ImageUrl = coach.ImageUrl;
 
-            if (coach.Languages.Length != 0)
+            if (coach.CompanyEmail != null)
             {
-                this.AddLanguages(coach.Languages, coachModel);
+                var company = await this.companiesRepository
+                    .AllAsNoTracking()
+                    .FirstOrDefaultAsync(c => c.Email == coach.CompanyEmail);
+
+                if (company != null)
+                {
+                    coachModel.CompanyId = company.Id;
+                }
             }
 
-            if (coach.Categories.Length != 0)
-            {
-                this.AddCategories(coach.Categories, coachModel);
-            }
+            this.AddLanguages(coach.Languages, coachModel);
+            this.AddCategories(coach.Categories, coachModel);
 
             this.coachRepository.Update(coachModel);
             await this.coachRepository.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(coachModel);
         }
 
         public async Task<Result> DeleteAsync(int coachId)
@@ -162,32 +167,32 @@
             return true;
         }
 
-        private void AddCategories(int[] categories, Coach coach)
+        private void AddCategories(ICollection<CategoryCoachViewModel> categories, Coach coach)
         {
             coach.Categories = categories
-                             .Where(x => !this.ExistCategory(coach.Id, x))
-                             .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x })
+                             .Where(x => !this.ExistCategory(coach.Id, x.CategoryId))
+                             .Select(x => new CategoryCoach { CoachId = coach.Id, CategoryId = x.CategoryId })
                              .ToArray();
         }
 
-        private void AddLanguages(int[] languages, Coach coach)
+        private void AddLanguages(ICollection<LanguageCoachViewModel> languages, Coach coach)
         {
             coach.Languages = languages
-                            .Where(x => !this.ExistLanguage(coach.Id, x))
-                            .Select(x => new LanguageCoach { CoachId = coach.Id, LanguageId = x })
+                            .Where(x => !this.ExistLanguage(coach.Id, x.LanguageId))
+                            .Select(x => new LanguageCoach { CoachId = coach.Id, LanguageId = x.LanguageId })
                             .ToArray();
         }
 
         private bool ExistCategory(int coachId, int categoryId)
         => this.categoriesCoachRepository.AllAsNoTracking().Any(x => x.CategoryId == categoryId && x.CoachId == coachId && x.IsDeleted == false);
 
-        private bool ExistLanguage(int coachId, int languigeId)
-        => this.languagesCoachRepository.AllAsNoTracking().Any(x => x.LanguageId == languigeId && x.CoachId == coachId && x.IsDeleted == false);
+        private bool ExistLanguage(int coachId, int languageId)
+        => this.languagesCoachRepository.AllAsNoTracking().Any(x => x.LanguageId == languageId && x.CoachId == coachId && x.IsDeleted == false);
 
-        private bool ExistLanguageId(int[] languages)
-        => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x));
+        private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)
+        => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x.LanguageId));
 
-        private bool ExistCategoryId(int[] categories)
-        => categories.Any(x => !this.categoriesRepository.AllAsNoTracking().Any(y => y.Id == x));
+        private bool ExistCategoryId(ICollection<CategoryCoachViewModel> categories)
+        => categories.Any(x => !this.categoriesRepository.AllAsNoTracking().Any(y => y.Id == x.CategoryId));
     }
 }

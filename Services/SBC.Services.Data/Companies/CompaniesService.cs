@@ -4,25 +4,33 @@
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
+    using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
 
-    public class CompanyService : ICompanyService
+    public class CompaniesService : ICompaniesService
     {
-        private readonly IDeletableEntityRepository<Company> company;
+        private readonly IDeletableEntityRepository<Company> companiesRepository;
 
-        public CompanyService(IDeletableEntityRepository<Company> company)
+        public CompaniesService(IDeletableEntityRepository<Company> company)
         {
-            this.company = company;
+            this.companiesRepository = company;
+        }
+
+        public async Task<Result> GetEmailByIdAsync(int id)
+        {
+            var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+
+            return new ResultModel(result.Email);
         }
 
         public async Task<bool> ExistsByNameAsync(string name)
-            => await this.company
+            => await this.companiesRepository
                 .AllAsNoTracking()
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
         public async Task<int> NoTrackGetCompanyByNameAsync(string name)
-            => await this.company
+            => await this.companiesRepository
                 .AllAsNoTracking()
                 .Where(c => c.Name.ToLower() == name.ToLower())
                 .Select(c => c.Id)

@@ -28,16 +28,17 @@
         //[Url]
         public string ImageUrl { get; set; }
 
-        public string CompanyId { get; set; }
+        //[EmailAddress]
+        public string CompanyEmail { get; set; }
 
         //[Required]
         //[Url]
         public string CalendlyUrl { get; set; }
 
         //[MinLength(MinCountUpdate)]
-        public int[] Languages { get; set; }
+        public ICollection<CategoryCoachViewModel> Categories { get; set; }
 
         //[MinLength(MinCountUpdate)]
-        public int[] Categories { get; set; }
+        public ICollection<LanguageCoachViewModel> Languages { get; set; }
     }
 }

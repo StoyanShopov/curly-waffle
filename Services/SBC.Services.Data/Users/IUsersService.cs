@@ -5,7 +5,7 @@
     using SBC.Common;
     using SBC.Web.ViewModels.User;
 
-    public interface IUserService
+    public interface IUsersService
     {
         Task<Result> Register(RegisterServiceModel model);
 

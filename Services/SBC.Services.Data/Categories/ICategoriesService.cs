@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface ICategoryService
+    public interface ICategoriesService
     {
         Task<IEnumerable<TModel>> GetAllAsync<TModel>();
     }
