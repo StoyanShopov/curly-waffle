@@ -1,0 +1,104 @@
+div.container {
+  display: block;
+  padding-top: 65px;
+}
+
+table.table {
+  border-collapse: collapse;
+  font-size: 16px;
+  margin: 0px auto 25px auto;
+  text-align: start;
+}
+
+.table thead,
+.table tbody {
+  display: block;
+  justify-content: start;
+}
+
+.table thead {
+  background-color: #296CFB;
+  border: #296CFB;
+  color: white;
+}
+
+.table tbody {
+  background-color: white;
+  box-shadow: 0px 3px 10px #00000029;
+  padding: 0px 30px;
+}
+
+table.table td {
+  padding: 22px 60px;
+}
+
+.table thead th {
+  padding: 22px 90px 22px 60px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #000000;
+}
+
+.table tbody td {
+  color: #296CFB;
+  font-weight: bold;
+}
+
+a.link {
+  color: #296CFB;
+  font-weight: normal;
+  font-family: "Helvetica", sans-serif;
+  font-size: large;
+  text-decoration: none;
+}
+
+a.link:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.table tbody td+td {
+  color: #000000;
+}
+
+#pending {
+  color: #296CFB;
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 0px 0px;
+  margin: 0px;
+}
+
+#flex {
+  display: flex;
+  justify-content: center;
+  border: none;
+  padding: 10px 0px;
+}
+
+.dot {
+  height: 5px;
+  width: 5px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#circle {
+  color: white;
+  font-size: 25px;
+  font-weight: initial;
+  position: relative;
+  float: right;
+}
+
+.plus {
+  width: 20%;
+  height: 50%;
+}
+
+td.add-client {
+  padding: 0;
+}

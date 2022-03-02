@@ -4,49 +4,34 @@
 
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using SBC.Services.Data.User.Contracts;
-    using SBC.Services.Data.User.Models;
-    using SBC.Web.Models.Identity;
+    using SBC.Services.Data.User;
+    using SBC.Web.ViewModels.User;
 
     public class IdentityController : ApiController
     {
-        private readonly IUserService userService;
+        private readonly IUsersService usersService;
         private readonly AppSettings appSettings;
 
-        public IdentityController(IOptions<AppSettings> appSettings, IUserService userService)
+        public IdentityController(IOptions<AppSettings> appSettings, IUsersService userService)
         {
             this.appSettings = appSettings.Value;
-            this.userService = userService;
+            this.usersService = userService;
         }
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult> Register(RegisterRequestModel model)
+        public async Task<ActionResult> Register(RegisterInputModel model)
         {
-            var serviceModel = new RegisterServiceModel()
-            {
-                FullName = model.FullName,
-                CompanyName = model.CompanyName,
-                Email = model.Email,
-                Password = model.Password,
-            };
-
-            var result = await this.userService.Register(serviceModel);
+            var result = await this.usersService.RegisterAsync(model);
 
             return this.GenericResponse(result);
         }
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult> Login(LoginRequestModel model)
+        public async Task<ActionResult> Login(LoginInputModel model)
         {
-            var serviceModel = new LoginServiceModel
-            {
-                Email = model.Email,
-                Password = model.Password,
-            };
-
-            var result = await this.userService.Login(serviceModel, this.appSettings.Secret);
+            var result = await this.usersService.LoginAsync(model, this.appSettings.Secret);
 
             return this.GenericResponse(result);
         }

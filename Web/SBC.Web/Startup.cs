@@ -1,16 +1,15 @@
 ﻿namespace SBC.Web
 {
+    using System;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
 
     using Azure.Storage.Blobs;
-
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -18,7 +17,6 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-    using Microsoft.WindowsAzure.Storage;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -26,11 +24,12 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
-    using SBC.Services.Data;
+    using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Client;
+    using SBC.Services.Data.Coach;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.Company.Contracts;
+    using SBC.Services.Data.Course;
     using SBC.Services.Data.User;
-    using SBC.Services.Data.User.Contracts;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
@@ -95,9 +94,11 @@
                                 Id = "Bearer",
                             },
                         },
-                        new string[] { }
+                        Array.Empty<string>()
                     },
                 });
+
+                c.CustomSchemaIds(cs => string.Join('.', cs.FullName.Split('.').TakeLast(2)));
             });
 
             services.AddSpaStaticFiles(configuration =>
@@ -141,13 +142,17 @@
                 });
 
             // Application services
-            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IIdentitiesService, IdentitiesService>();
+            services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
+            services.AddTransient<IClientsService, ClientsService>();
+            services.AddTransient<IDasboardService, DashboardService>();
+            services.AddTransient<ICoursesService, CoursesService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
+            services.AddTransient<ICoachesService, CoachesService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

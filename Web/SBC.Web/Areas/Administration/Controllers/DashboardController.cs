@@ -1,16 +1,25 @@
 ﻿namespace SBC.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data;
-    using SBC.Web.ViewModels.Administration.Dashboard;
+    using SBC.Services.Data.Admin;
 
     public class DashboardController : AdministrationController
     {
-        private readonly ISettingsService settingsService;
+        private readonly IDasboardService profileService;
 
-        public DashboardController(ISettingsService settingsService)
+        public DashboardController(IDasboardService profileService)
         {
-            this.settingsService = settingsService;
+            this.profileService = profileService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Dasboard()
+        {
+            var result = await this.profileService.GetDashboard();
+
+            return this.GenericResponse(result);
         }
     }
 }

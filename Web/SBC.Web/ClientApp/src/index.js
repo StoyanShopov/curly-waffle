@@ -8,9 +8,11 @@ import { BrowserRouter } from "react-router-dom";
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-    <BrowserRouter>
+    <React.StrictMode>
+        <BrowserRouter>
       <App />
-    </BrowserRouter>,
+        </BrowserRouter>,
+    </React.StrictMode>,
     rootElement);
 
 reportWebVitals();
