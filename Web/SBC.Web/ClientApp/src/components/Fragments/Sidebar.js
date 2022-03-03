@@ -1,5 +1,5 @@
-﻿import React, { useEffect,} from 'react';
-import { NavLink, Link } from 'react-router-dom';
+﻿import React, { useEffect, useState} from 'react';
+import { NavLink, } from 'react-router-dom';
 
 import { userService } from '../../services';
 import { TokenManagement } from '../../helpers';
@@ -9,20 +9,21 @@ import styles from "./Sidebar.module.css";
 export default function Sidebar(props) {
 
     let userData = TokenManagement.getUserData();
-    const onLogout = () => {
-        userService.logout();
-    }
 
     useEffect(() => {
         userData = TokenManagement.getUserData();
     }, [])
 
+    const onLogout = () => {
+        userService.logout();
+    }
+
     return (
 
         <div className={styles.container}>
-            <NavLink to="/profileOwner" className={styles.pencilLink}>
+            <button className={styles.pencilLink} onClick={() => props.showModal()}>
                 <img src="assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
-            </NavLink>
+            </button>
             <div className={styles.namesContainer}>
                 <div className={styles.greenCircle}>
                     {userData ? userData.fullname[0] : "N/A"}
