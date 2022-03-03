@@ -1,15 +1,15 @@
-import Modal from 'react-modal';//
-import { useState, useEffect } from "react";//
-import { Route, Routes } from "react-router-dom";//
+import Modal from 'react-modal';
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 
-import css from './AdminProfile.module.css'//
-import Clients from './Clinets';//
-import Dashboard from './Dashboard';//
+import css from './AdminProfile.module.css'
+import Clients from './Clinets';
+import Dashboard from './Dashboard';
 import EditProfile from '../Fragments/EditProfile';
-import NavigationBar from './NavigationBar';//
-import Revenue from './Revenue';//
-import { GetAdminData } from '../../services/super-admin-service';//
-import { TokenManagement } from '../../helpers';//
+import NavigationBar from './NavigationBar';
+import Revenue from './Revenue';
+import { GetAdminData } from '../../services/super-admin-service';
+import { TokenManagement } from '../../helpers';
 
 export  async function GetAdmin(_setAdminData,_setIcon) {
   await GetAdminData().then(a => {

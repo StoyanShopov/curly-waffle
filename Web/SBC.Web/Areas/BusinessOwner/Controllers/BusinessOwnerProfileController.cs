@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.User;
 
@@ -16,8 +17,8 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAsync(string userId)
-            => this.GenericResponse(await this.usersService.GetAdminDataAsync<ProfileViewModel>(userId));
+        public async Task<ActionResult> GetAsync()
+            => this.GenericResponse(await this.usersService.GetAdminDataAsync<ProfileViewModel>(this.User.Id()));
 
         [HttpPut]
         public async Task<ActionResult> EditAsync(EditProfileInputModel model, string userId)

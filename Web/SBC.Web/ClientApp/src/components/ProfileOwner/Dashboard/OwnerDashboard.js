@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styles from "./OwnerDashboard.module.css";
-import Sidebar from "../../Fragments/Sidebar";
 
-export default function OwnerDashboard() {
+import { OwnerService } from '../../../services'
+
+import styles from "./OwnerDashboard.module.css";
+
+export default function OwnerDashboard(props) {
+    const [items, setItems] = useState({});
+
+    useEffect(() => {
+        OwnerService.GetOwnerDashboard(props.companyId)
+            .then(res => {
+                setItems(res);
+                console.log('dashboard', items);//
+            })
+
+    }, [props.companyId])
+
     return (
         <>
-            <Sidebar />
-
             <div className={styles.containerH}>
                 <div className={styles.dashboard}>
                     <section className={styles.dashboardHeader} >
-                        <article><span>Employees</span><span>12</span></article>
+                        <article><span>Employees</span><span>{items.employeesCount}</span></article>
                         <svg width="1" height="126" viewBox="0 0 1 126">
                             <line id="Line_63" data-name="Line 63" y2="125" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                         </svg>
-                        <article><span>Courses</span><span style={{ color: "#296CFB" }}>34</span></article>
+                        <article><span>Courses</span><span style={{ color: "#296CFB" }}>{items.courses}</span></article>
                         <svg width="1" height="126" viewBox="0 0 1 126">
                             <line id="Line_63" data-name="Line 63" y2="125" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                         </svg>
-                        <article><span>Coaches</span><span style={{ color: "#16D696" }}>56</span></article>
+                        <article><span>Coaches</span><span style={{ color: "#16D696" }}>{items.coaches}</span></article>
                     </section>
                 </div>
             </div >

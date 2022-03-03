@@ -33,16 +33,9 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
-                    <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path='/super-admin/*' element={<AdminProfile />} />
-                    <Route path='/managerProfile' element={<ManagerProfile />} />
+                    <Route path='/managerProfile/*' element={<ManagerProfile />} />
                     <Route path="/signUp" element={<Signup />} />
-                    <Route path="/ownerEmployees" element={<OwnerEmployees />} />
-                    <Route path="/ownerInvoice" element={<Invoice />} />
-                    <Route path="/activeCoaches" element={<ActiveCoaches />} />
-                    <Route path="/activeCourses" element={<ActiveCourses />} />
-                    <Route path="/courseCatalog" element={<CourseCatalog />} />
-                    <Route path="/coachCatalog" element={<CoachCatalog />} />
                 </Routes>
             </Layout>
         </Provider>

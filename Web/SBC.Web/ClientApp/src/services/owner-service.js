@@ -6,11 +6,10 @@ import { baseUrl } from '../constants/GlobalConstants';
 
 // from BusinessOwnerProfileController:
 
-const GetOwnerData = async (userId) => {
+const GetOwnerData = async () => {
     let response = await axios({
         method: 'get',
         url: baseUrl + "manager/BusinessOwnerProfile",
-        data: userId,
         headers: {
             'Content-Type': 'application/json',
              Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`

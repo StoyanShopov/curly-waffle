@@ -32,17 +32,17 @@ export default function Sidebar(props) {
                         {userData ? userData.fullname : "N/A"}
                     </div>
                     <div className={styles.companyName}>
-                        {!props.adminData['company'] ? null : props.adminData['company']}
+                        Motion
                     </div>
                 </div>
             </div>
             <div className={styles.navigation}>
                 <ul>
-                    <li><NavLink to="/profileOwner" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
-                    <li><NavLink to="/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
-                    <li><NavLink to="/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li> 
-                    <li><NavLink to='/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
-                    <li><NavLink to="/item2" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
+                    <li><NavLink to="/managerProfile/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+                    <li><NavLink to="/managerProfile/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
+                    <li><NavLink to="/managerProfile/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
+                    <li><NavLink to='/managerProfile/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+                    <li><NavLink to="/managerProfile/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
                     <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
                 </ul>
             </div>
