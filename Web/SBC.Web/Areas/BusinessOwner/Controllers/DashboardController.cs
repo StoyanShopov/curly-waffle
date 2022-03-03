@@ -4,6 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.BusinessOwner;
+    using SBC.Services.Data.Infrastructures;
 
     public class DashboardController : BusinessOwnerController
     {
@@ -15,7 +16,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Dashboard(int companyId)
-            => this.GenericResponse(await this.businessOwnerDashboardService.GetDashboard(companyId));
+        public async Task<ActionResult> Dashboard()
+            => this.GenericResponse(await this.businessOwnerDashboardService.GetDashboard(this.User.Id()));
     }
 }

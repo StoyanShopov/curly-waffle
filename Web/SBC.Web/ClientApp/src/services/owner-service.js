@@ -212,11 +212,10 @@ const CompanyRemoveCourseFromActive = async (_data) => {
 
 // from DashboardController:
 
-const GetOwnerDashboard = async (companyId) => {
+const GetOwnerDashboard = async () => {
     let response = await axios({
         method: 'get',
         url: baseUrl + "manager/Dashboard",
-        data: companyId,
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`

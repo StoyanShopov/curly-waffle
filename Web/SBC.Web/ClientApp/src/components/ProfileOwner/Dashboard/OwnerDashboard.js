@@ -5,17 +5,15 @@ import { OwnerService } from '../../../services'
 
 import styles from "./OwnerDashboard.module.css";
 
-export default function OwnerDashboard(props) {
+export default function OwnerDashboard() {
     const [items, setItems] = useState({});
 
     useEffect(() => {
-        OwnerService.GetOwnerDashboard(props.companyId)
+        OwnerService.GetOwnerDashboard()
             .then(res => {
-                setItems(res);
-                console.log('dashboard', items);//
+                setItems(res.data);
             })
-
-    }, [props.companyId])
+    }, [])
 
     return (
         <>
@@ -26,11 +24,11 @@ export default function OwnerDashboard(props) {
                         <svg width="1" height="126" viewBox="0 0 1 126">
                             <line id="Line_63" data-name="Line 63" y2="125" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                         </svg>
-                        <article><span>Courses</span><span style={{ color: "#296CFB" }}>{items.courses}</span></article>
+                        <article><span>Courses</span><span style={{ color: "#296CFB" }}>{items.coursesCount}</span></article>
                         <svg width="1" height="126" viewBox="0 0 1 126">
                             <line id="Line_63" data-name="Line 63" y2="125" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                         </svg>
-                        <article><span>Coaches</span><span style={{ color: "#16D696" }}>{items.coaches}</span></article>
+                        <article><span>Coaches</span><span style={{ color: "#16D696" }}>{items.coachesCount}</span></article>
                     </section>
                 </div>
             </div >
