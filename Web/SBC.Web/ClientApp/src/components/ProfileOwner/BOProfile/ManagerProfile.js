@@ -16,17 +16,6 @@ import Invoice from '../Invoice/Invoice';
 
 export default function ManagerProfile() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [managerData, setManagerData] = useState({ fullname: '', email: '', companyId: '', photoUrl: '', profileSummary: '',});
-    const [icon, setIcon] = useState();
-
-    useEffect( async () => {
-        await OwnerService.GetOwnerData()
-            .then(res => {
-                setManagerData(res.data);
-                console.log('res', res.data);//
-            })
-        console.log('user', managerData)//
-    }, [])
 
     let subtitle = {
         content: {
@@ -63,10 +52,10 @@ export default function ManagerProfile() {
             margin: '0px',
             padding: '0px',
             }}>
-            <SideBar showModal={openModal} userData={managerData} icon={icon} />
+            <SideBar showModal={openModal} />
             <Routes>
-                <Route index element={<OwnerDashboard companyId={managerData.companyId} />} />
-                <Route path="dashboard" element={<OwnerDashboard companyId={managerData.companyId} />} />
+                <Route index element={<OwnerDashboard />} />
+                <Route path="dashboard" element={<OwnerDashboard />} />
                 <Route path="activeCoaches" element={<ActiveCoaches />} />
                 <Route path="activeCourses" element={<ActiveCourses />} />
                 <Route path="OwnerEmployees" element={<OwnerEmployees />} />
@@ -80,7 +69,7 @@ export default function ManagerProfile() {
                 onRequestClose={closeModal}
                 ariaHideApp={false}
             >
-                <EditProfile closeModal={closeModal} getData={managerData} />
+                <EditProfile closeModal={closeModal} />
             </Modal>
         </div>
     )

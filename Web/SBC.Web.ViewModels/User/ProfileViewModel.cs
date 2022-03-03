@@ -16,6 +16,8 @@
 
         public int CompanyId { get; set; }
 
+        public string CompanyName { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, ProfileViewModel>()
