@@ -10,9 +10,19 @@ const EditCoach = (props) => {
   const [languagesOptions] = useState(props.languages)
   const [categories, setCategories] = useState([])
   const [categoriesOptions] = useState(props.categories)
-  const [coach] = useState(props.coach)
+  const [coach, setCoach] = useState(props.coach)
   const [companyEmail, setCompanyEmail] = useState();
 
+  if(coach.companyId!==null){
+    getCompanyEmailById(coach.companyId).then(res =>{
+      setCompanyEmail(res)
+    })
+  }
+  
+  useEffect(() => {
+    setCoach(props.coach)
+
+  },[props.coach])
 
   const coachLanguagesAsArrayOfIds = coach.languages.map(x => x.languageId);
   const coachLanguages = languagesOptions.filter(x => coachLanguagesAsArrayOfIds.includes(x.value))
@@ -20,13 +30,7 @@ const EditCoach = (props) => {
   const coachCategoriesAsArrayOfIds = coach.categories.map(x => x.categoryId)
   const coachCategories = categoriesOptions.filter(x => coachCategoriesAsArrayOfIds.includes(x.value))
 
-  useEffect(() => {
-    if(coach.companyId!==null){
-      getCompanyEmailById(coach.companyId).then(res =>{
-        setCompanyEmail(res)
-      })
-    }
-  })
+
 
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
@@ -76,7 +80,9 @@ const EditCoach = (props) => {
     e.preventDefault()
 
     const fd = new FormData(e.target);
-    fd.append('coachId', coach.id)
+    coach.id === undefined ?
+    fd.append('id',coach.coachId):
+    fd.append('id', coach.id)
     const data = [...fd.entries()].reduce(
       (p, [k, v]) => Object.assign(p, { [k]: v }),
       {}
@@ -111,16 +117,18 @@ const EditCoach = (props) => {
       }))
 
     updateCoach(data)
-      .then(() => {
-          props.closeModal();
-      })
-      .finally(() =>{
-        const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
-        const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
-        data.languages = languagesAsObj
-        data.categories = categoriesAsObj
+      .then(() => { 
+      const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
+      const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
+      data.languages = languagesAsObj
+      data.categories = categoriesAsObj
+      data['companyId'] = coach.companyId
+      console.log(data);
+      props.setCoach(data)
+      setCoach(data)
 
-        props.setCoach(data)
+      props.closeModal();
+      }).finally(()=>{
       })
   }
 

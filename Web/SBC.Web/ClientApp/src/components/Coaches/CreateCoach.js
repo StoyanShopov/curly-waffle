@@ -9,7 +9,7 @@ const CreateCoach = (props) => {
   const [languagesOptions, setLanugagesOptions] = useState()
   const [categories, setCategories] = useState([])
   const [categoriesOptions, setCategoriesOptions] = useState()
-  const [coaches] = useState(props.coaches)
+  const [coaches, setCoaches] = useState(props.coaches)
 
   useEffect(() => { 
     getLanguages().then(res =>{
@@ -24,7 +24,7 @@ const CreateCoach = (props) => {
         label: x.name
       })))
     })
-  }, [])
+  }, [props.coaches])
 
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
@@ -85,10 +85,10 @@ const CreateCoach = (props) => {
     console.log(data);
 
     createCoach(data).then((response) => {
-      console.log(response);
-    }).finally(() =>{
-      props.closeModal()
+      console.log(response.data);
+      data['id'] = response.data
       props.setCoaches([...coaches, data])
+      props.closeModal()
     })
   };
 

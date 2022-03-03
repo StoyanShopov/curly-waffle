@@ -85,7 +85,7 @@
 
             await this.coachRepository.SaveChangesAsync();
 
-            return true;
+            return new ResultModel(coachModel.Id);
         }
 
         public async Task<Result> GetAllAsync<TModel>()
@@ -106,7 +106,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, CategoryBadRequest);
             }
 
-            var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.CoachId);
+            var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.Id);
 
             if (coachModel == null)
             {

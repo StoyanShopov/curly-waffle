@@ -7,9 +7,8 @@ export const createCoach = async (data) => {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
-        }).then((coach) => {
-            console.log(coach)
         });
+        console.log(resp);
         return resp;
     } catch (error) { }
 }
@@ -20,8 +19,6 @@ export const updateCoach = async (data) => {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
-        }).then((resp) => {
-            console.log(resp)
         });
         return resp;
     } catch (error) { }

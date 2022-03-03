@@ -7,7 +7,7 @@
 
     public class UpdateCoachInputModel
     {
-        public int CoachId { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 

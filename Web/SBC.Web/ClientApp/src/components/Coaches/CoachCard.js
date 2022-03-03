@@ -1,5 +1,5 @@
 import styles from "./CoachCard.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteCoach from "./DeleteCoach";
 import { Link } from "react-router-dom";
 import EditCoach from "./EditCoach";
@@ -8,6 +8,11 @@ import Modal from 'react-modal';
 const CoachCard = (props) => {
     const [coach, setCoach] = useState(props.coach)
     const [coaches, setCoaches] = useState(props.coaches)
+
+    useEffect(() => {
+      setCoach(coach)
+      setCoaches(coaches)
+    },[props.coach,props.coaches])
     
       return (
         <div className={styles.card}>

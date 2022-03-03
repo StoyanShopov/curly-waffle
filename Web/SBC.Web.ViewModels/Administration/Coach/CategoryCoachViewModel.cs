@@ -6,7 +6,5 @@
     public class CategoryCoachViewModel : IMapFrom<CategoryCoach>, IMapTo<CategoryCoach>
     {
         public int CategoryId { get; set; }
-
-        public int? CoachId { get; set; }
     }
 }
