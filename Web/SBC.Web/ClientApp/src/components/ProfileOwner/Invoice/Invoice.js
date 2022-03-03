@@ -1,12 +1,9 @@
 import React from "react";
 import css from "./Invoice.module.css";
-import Sidebar from "../../Fragments/Sidebar"
-import { Link } from "react-router-dom";
 
-export default function Invoice(prop) {
+export default function Invoice() {
     return (
         <>
-            <Sidebar />
             <div className={css.containerH}>
                 <div className={css.dashboard}>
                     <section className={css.dashboardHeader} >

@@ -41,7 +41,6 @@ export default function OwnerEmployees() {
 
     return (
         <>
-            <Sidebar />
             <div className={css.container}>
                 <table className={css.tableContainer}>
                     <thead>
