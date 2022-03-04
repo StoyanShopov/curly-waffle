@@ -13,6 +13,7 @@ table.table {
 .table thead,
 .table tbody {
   display: block;
+  padding: 0px 30px;
   justify-content: start;
 }
 
@@ -25,7 +26,6 @@ table.table {
 .table tbody {
   background-color: white;
   box-shadow: 0px 3px 10px #00000029;
-  padding: 0px 30px;
 }
 
 table.table td {
@@ -94,8 +94,8 @@ a.link:hover {
   float: right;
 }
 
-.plus {
-  width: 20%;
+.addClient img {
+  width: 50%;
   height: 50%;
 }
 

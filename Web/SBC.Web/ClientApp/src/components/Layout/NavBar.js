@@ -3,13 +3,15 @@ import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
 import { TokenManagement } from '../../helpers';
-import { Links } from './Links';
 
 const NavBar = () => {
-    let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
+    let userRole = TokenManagement.getUserRole() == null ? null : TokenManagement.getUserRole();
+    let icon = TokenManagement.getIcon();
     let status = TokenManagement.getUser();
+
     useEffect(() => {
-        user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
+        userRole = TokenManagement.getUserRole() == null ? null : TokenManagement.getUserRole();
+        icon = TokenManagement.getIcon();
         status = TokenManagement.getUser();
     }, [])
 
@@ -24,83 +26,97 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className={styles.testedLinks}>
-                    <ul>
-                        <li>
-                            <NavLink tag={Link} to="/signUp">SignUp</NavLink>
-                        </li>
-                        {/* <li>
-                            <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
-                        </li> */}
-                        <li>
-                            <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/profileOwner">Owner</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
-                        </li>
-                        <li>
-                            <a href="/docs">Swagger</a>
-                        </li>
-                    </ul>
+                    {status
+                        ? loggedOwner
+                        : null}
                 </div>
-                {/* {location.pathname === "/" &&*/}
-                <div className={styles.homePageButtons}>
-                    <ul>
-                        <li>
-                            <Link to="/loginasemployee" ><button className={styles.loginButton}>Login</button></Link>
-                        </li>
-                        <li>
-                            <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-                        </li>
-                    </ul>
-                </div>
-                {/* }*/}
 
-                {/*{location.pathname !== "/" &&*/}
+                <div className={styles.homePageButtons}>
+                    {status
+                        ? null
+                        : unLogged}
+                </div>
+
                 <div className={styles.coursesCoaches}>
-                    <ul>
-                        <li>
-                            <NavLink
-                                to="/courses"
-                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-                            >
-                                Courses
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/coaches"
-                                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-                            >
-                                Coaches
-                            </NavLink>
-                        </li>
-                    </ul>
+                    {status
+                        ? courses
+                        : null}
                 </div>
-                {/* }*/}
-                <div className={styles.greenCircle}>
-                    A
-                </div>
+                {status
+                    ?
+                    <div className={styles.greenCircle}>
+                        <NavLink tag={Link} to="profile">{icon}</NavLink>
+                    </div>
+                    : null}
             </div>
         </header>
     )
 }
 
 export default NavBar;
+const courses = (
+    <ul>
+
+        <li>
+            <NavLink
+                to="/courses"
+                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+            >
+                Courses
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/coaches"
+                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+            >
+                Coaches
+            </NavLink>
+        </li>
+    </ul>
+);
+const unLogged = (<ul>
+    {/* <li>
+        <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
+    </li> */}
+    <li>
+        <Link to="/loginasemployee" ><button className={styles.loginButton}>Login</button></Link>
+    </li>
+    <li>
+        <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
+    </li>
+    <li>
+        <NavLink tag={Link} to="/signUp">SignUp</NavLink>
+    </li>
+</ul>);
+
+const loggedOwner = (
+    <ul>
+        <li>
+            <a href="/docs">Swagger</a>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="profile">Profile</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
+        </li>
+        <li>
+            <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
+        </li></ul>
+);

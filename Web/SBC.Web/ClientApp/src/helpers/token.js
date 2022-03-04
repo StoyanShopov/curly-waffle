@@ -28,6 +28,10 @@ export const removeUser = () => {
 export const setUserData = async (user) => {
     localStorage.setItem("userData", user);
 }
+export const getIcon = () => {
+    const user = getUserData();
+    return user ? user['fullname'][0] : null;
+};
 export const getUserRole = () => {
     const user = getUser();
     return user ? user['role'] : null;

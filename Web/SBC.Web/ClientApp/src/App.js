@@ -32,8 +32,8 @@ function App() {
                 <Routes>
                     <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
-                    {hasRole(userRole, ['Administrator']) && <Route path='/super-admin/*' element={<AdminProfile />} />}
-                    {hasRole(userRole, ['Owner']) && <Route path='/managerProfile/*' element={<ManagerProfile />} />}
+                    {hasRole(userRole, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile />} />}
+                    {hasRole(userRole, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile />} />}
                     <Route path="/" element={<Homepage />} />
                     <Route path="/signUp" element={<Signup />} />
                 </Routes>

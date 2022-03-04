@@ -1,4 +1,4 @@
-﻿import React, {  useRef, useState } from "react";
+﻿import React, { useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -32,10 +32,10 @@ const LoginAsEmployee = (props) => {
 
         await dispatch(userActions.login(email, password));
         await GetAdminData().then(data => {
-//            console.log(data)
+            //            console.log(data)
         });
-
-        navigate('/');
+        window.location.href = "/";
+        // navigate('/');
     };
 
     const link = "Забравена парола?";

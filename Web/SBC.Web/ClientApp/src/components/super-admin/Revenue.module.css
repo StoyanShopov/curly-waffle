@@ -4,10 +4,10 @@
     padding-top: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    
-    font-family: Montserrat,sans-serif;    
+
+    font-family: Montserrat,sans-serif;
     font-weight: bold;
-    font-size: 120%; 
+    font-size: 120%;
     text-align: left;
 }
 
@@ -20,7 +20,7 @@
 .revenueTHeadRow *{
     color: white;
 }
-.tableRevenue th,td{
+.tableRevenue th,.tableRevenue td{
     width: 10%;
     padding-top: 6%;
     padding-bottom: 5%;

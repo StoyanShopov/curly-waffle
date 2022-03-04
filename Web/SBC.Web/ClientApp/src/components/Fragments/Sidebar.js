@@ -54,11 +54,11 @@ const onLogout = () => {
 }
 const _ownerUrls = (
     <ul>
-        <li><NavLink to="/managerProfile/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
-        <li><NavLink to="/managerProfile/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
-        <li><NavLink to="/managerProfile/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
-        <li><NavLink to='/managerProfile/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
-        <li><NavLink to="/managerProfile/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
+        <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+        <li><NavLink to="/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
+        <li><NavLink to="/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
+        <li><NavLink to='/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+        <li><NavLink to="/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
@@ -66,9 +66,9 @@ const _ownerUrls = (
 
 const _adminUrl = (
     <ul>
-        <li> <NavLink to="/super-admin/dashboard">Dashboard</NavLink></li>
-        <li> <NavLink to="/super-admin/clients">Clients</NavLink></li>
-        <li> <NavLink to="/super-admin/revenue">Revenue</NavLink></li>
+        <li> <NavLink to="/dashboard">Dashboard</NavLink></li>
+        <li> <NavLink to="/clients">Clients</NavLink></li>
+        <li> <NavLink to="/revenue">Revenue</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );

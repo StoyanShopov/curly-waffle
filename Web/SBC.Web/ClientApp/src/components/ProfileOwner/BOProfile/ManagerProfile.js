@@ -47,8 +47,8 @@ export default function ManagerProfile() {
             <Routes>
                 <Route index element={<OwnerDashboard />} />
                 <Route path="dashboard" element={<OwnerDashboard />} />
-                <Route path="activeCoaches" element={<ActiveCoaches />} />
-                <Route path="activeCourses" element={<ActiveCourses />} />
+                <Route path="coaches" element={<ActiveCoaches />} />
+                <Route path="courses" element={<ActiveCourses />} />
                 <Route path="OwnerEmployees" element={<OwnerEmployees />} />
                 <Route path="invoice" element={<Invoice />} />
             </Routes>
