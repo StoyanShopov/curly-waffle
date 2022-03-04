@@ -4,15 +4,14 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Resource.Contracts;
-    using SBC.Services.Data.Resource.Models;
-    using SBC.Web.ViewModels.Resource;
+    using SBC.Services.Data.Resources;
+    using SBC.Web.ViewModels.Administration.Resources;
 
-    public class ResourceController : AdministrationController
+    public class ResourcesController : AdministrationController
 {
-    private readonly IResourceService resourceService;
+    private readonly IResourcesService resourceService;
 
-    public ResourceController(IResourceService resourceService)
+    public ResourcesController(IResourcesService resourceService)
     {
         this.resourceService = resourceService;
     }

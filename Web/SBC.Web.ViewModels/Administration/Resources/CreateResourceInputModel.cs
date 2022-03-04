@@ -1,13 +1,14 @@
-﻿namespace SBC.Services.Data.Resource.Models
+﻿namespace SBC.Web.ViewModels.Administration.Resources
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class EditResourceInputModel
+    public class CreateResourceInputModel
     {
         [Required]
         [StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
 
+        [Required]
         public string FileUrl { get; set; }
 
         [Required]

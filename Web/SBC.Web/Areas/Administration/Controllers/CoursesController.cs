@@ -4,20 +4,19 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Course;
-    using SBC.Web.ViewModels.Course;
+    using SBC.Services.Data.Courses;
+    using SBC.Web.ViewModels.Administration.Courses;
 
-    public class CourseController : AdministrationController
+    public class CoursesController : AdministrationController
     {
-        private readonly ICourseService courseService;
+        private readonly ICoursesService courseService;
 
-        public CourseController(ICourseService courseService)
+        public CoursesController(ICoursesService courseService)
         {
             this.courseService = courseService;
         }
 
         [HttpGet]
-        [Route("/api/Courses")]
         public async Task<ActionResult> Get()
         {
             var result = await this.courseService.GetAllAsync<CourseDetailsViewModel>();

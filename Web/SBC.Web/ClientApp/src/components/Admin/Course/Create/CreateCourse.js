@@ -44,11 +44,11 @@ const CreateCourse = (props) => {
 
             <form id="create-form" onSubmit={onCourseCreate} method="POST">
                 <div>
-                    <input type="text" className={style.inputContainer} required="required" name="title" placeholder="Title" />
-                    <textarea type="text" className={style.inputContainer} required="required" name="description" placeholder="Description" ></textarea>
-                    <input type="number" className={style.inputContainer} required="required" name="pricePerPerson" placeholder="Price" />
-                    <input type="text" className={style.inputContainer} required="required" name="pictureUrl" placeholder="PictureUrl" />
-                    <input type="text" className={style.inputContainer} required="required" name="videoUrl" placeholder="VideoUrl" />
+                    <input type="text" className={style.inputContainer} required="required" name="title" placeholder="Title*" />
+                    <textarea type="text" className={style.inputContainer} required="required" name="description" placeholder="Description*" ></textarea>
+                    <input type="number" className={style.inputContainer} required="required" name="pricePerPerson" placeholder="Price*" />
+                    <input type="text" className={style.inputContainer} required="required" name="pictureUrl" placeholder="PictureUrl*" />
+                    <input type="text" className={style.inputContainer} required="required" name="videoUrl" placeholder="VideoUrl*" />
 
                     <select className={style.selectContainer} name="coachId" id="coachId" defaultValue={coaches[0].id}>
                         {coaches.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}

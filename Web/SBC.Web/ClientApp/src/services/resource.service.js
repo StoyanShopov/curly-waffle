@@ -2,7 +2,7 @@
 
 import { baseUrl } from '../constants';
 
-const apiUrl = baseUrl + 'api/resource';
+const apiUrl = baseUrl + 'administration/resources';
 const token = localStorage.getItem('token');
 
 const getAll = async (lectureId) => {
@@ -57,10 +57,10 @@ const deleteResource = async (resourceId) => {
 const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-
+console.log(formData);
     let response = await axios({
         method: 'POST',
-        url: baseUrl + "api/Blobs/upload",
+        url: baseUrl + "api/Blobs",
         data: formData,
         headers: {
             'Content-Type': 'multipart/form-data',

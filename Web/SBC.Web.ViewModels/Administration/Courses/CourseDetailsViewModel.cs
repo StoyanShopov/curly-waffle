@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Course
+﻿namespace SBC.Web.ViewModels.Administration.Courses
 {
     using System.ComponentModel.DataAnnotations;
 

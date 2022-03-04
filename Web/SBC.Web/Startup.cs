@@ -28,12 +28,9 @@
     using SBC.Services.Data.Client;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Company;
-    using SBC.Services.Data.Company.Contracts;
-    using SBC.Services.Data.Course;
-    using SBC.Services.Data.Lecture;
-    using SBC.Services.Data.Resource;
-    using SBC.Services.Data.Resource.Contracts;
-    using SBC.Services.Data.Course;
+    using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
@@ -149,12 +146,8 @@
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<ICourseService, CourseService>();
-            services.AddTransient<ILectureService, LectureService>();
-            services.AddTransient<IResourceService, ResourceService>();
+            services.AddTransient<ILecturesService, LecturesService>();
+            services.AddTransient<IResourcesService, ResourcesService>();
             services.AddTransient<IIdentitiesService, IdentitiesService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));

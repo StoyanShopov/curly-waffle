@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Resource
+﻿namespace SBC.Services.Data.Resources
 {
     using System;
     using System.Collections.Generic;
@@ -10,16 +10,14 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Resource.Contracts;
-    using SBC.Services.Data.Resource.Models;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Resource;
+    using SBC.Web.ViewModels.Administration.Resources;
 
-    public class ResourceService : IResourceService
+    public class ResourcesService : IResourcesService
     {
         private readonly IDeletableEntityRepository<Resource> resources;
 
-        public ResourceService(IDeletableEntityRepository<Resource> resources)
+        public ResourcesService(IDeletableEntityRepository<Resource> resources)
         {
             this.resources = resources;
         }

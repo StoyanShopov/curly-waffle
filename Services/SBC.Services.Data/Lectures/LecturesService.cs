@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Lecture
+﻿namespace SBC.Services.Data.Lectures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -10,15 +10,15 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Administration.Lecture;
+    using SBC.Web.ViewModels.Administration.Lectures;
 
-    public class LectureService : ILectureService
+    public class LecturesService : ILecturesService
     {
         private const int LecturesToTake = 6;
         private readonly IDeletableEntityRepository<Lecture> lectures;
         private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
 
-        public LectureService(IDeletableEntityRepository<Lecture> repo, IDeletableEntityRepository<CourseLecture> courseLectures)
+        public LecturesService(IDeletableEntityRepository<Lecture> repo, IDeletableEntityRepository<CourseLecture> courseLectures)
         {
             this.lectures = repo;
             this.courseLectures = courseLectures;

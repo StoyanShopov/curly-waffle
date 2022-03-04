@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 
-::placeholder {
+.inputContainer::placeholder {
     padding-left: 30px;
     text-align: left;
     color: #296CFB;
