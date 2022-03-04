@@ -1,6 +1,16 @@
 div.container {
-  display: block;
-  padding-top: 65px;
+  /* display: block;
+  padding-top: 65px; */
+
+    margin-left: 35%;
+    margin-top: 0px;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: Montserrat,sans-serif;
+    font-weight: bold;
+    font-size: 120%;
+    text-align: left;
 }
 
 table.table {
@@ -102,3 +112,4 @@ a.link:hover {
 td.add-client {
   padding: 0;
 }
+

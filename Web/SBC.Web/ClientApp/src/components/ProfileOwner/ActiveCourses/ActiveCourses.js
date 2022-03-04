@@ -28,7 +28,6 @@ export default function ActiveCourses(prop) {
 
     return (
         <>
-            <Sidebar />
             <div className={styles.container}>
                 <div className={styles.buttonContainer}>
                     <Link to="/courseCatalog" ><button className={styles.manageButton}>Manage</button></Link>
