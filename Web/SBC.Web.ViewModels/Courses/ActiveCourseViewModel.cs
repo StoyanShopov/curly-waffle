@@ -5,6 +5,10 @@
 
     public class ActiveCourseViewModel : IMapFrom<Course>
     {
+        public ActiveCourseViewModel()
+        {
+            this.IsActive = true;
+        }
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -18,5 +22,7 @@
         public string CoachName { get; set; }
 
         public string CompanyLogoUrl { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

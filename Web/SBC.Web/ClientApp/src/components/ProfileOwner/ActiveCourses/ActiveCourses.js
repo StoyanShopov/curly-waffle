@@ -1,30 +1,27 @@
-import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
-import Sidebar from "../../Fragments/Sidebar";
+import { OwnerService } from '../../../services';
 import styles from "./ActiveCourses.module.css";
 
-export default function ActiveCourses(prop) {
+export default function ActiveCourses() {
     const [showModal, setShowModal] = useState(false);
+
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        OwnerService.CompanyGetActiveCourses()
+            .then(res => {
+                setCourses(res.data);
+                console.log("courses", res.data);//
+            });
+    }, []);
 
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
-
-    const handleSkip = (skip) => {
-        prop.setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        prop.setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
 
     return (
         <>
@@ -111,7 +108,7 @@ export default function ActiveCourses(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} />
             </Modal>
         </>
     );
