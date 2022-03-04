@@ -5,15 +5,18 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Infrastructures;
+    using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
 
     public class CompanyController : BusinessOwnerController
     {
         private readonly ICompaniesService companiesService;
+        private readonly IUsersService usersService;
 
-        public CompanyController(ICompaniesService companiesService)
+        public CompanyController(ICompaniesService companiesService, IUsersService usersService)
         {
             this.companiesService = companiesService;
+            this.usersService = usersService;
         }
 
         [HttpGet]
@@ -33,32 +36,50 @@
 
         [HttpGet]
         [Route("activeCoaches")]
-        public async Task<ActionResult> GetActiveCoaches(int companyId)
-            => this.GenericResponse(await this.companiesService.GetActiveCoaches(companyId));
+        public async Task<ActionResult> GetActiveCoaches()
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.GetActiveCoaches(companyId));
+        }
 
         [HttpPost]
         [Route("addCoach")]
-        public async Task<ActionResult> SetCoachToActive(int coachId, int companyId)
-            => this.GenericResponse(await this.companiesService.SetCoachToActive(coachId, companyId));
+        public async Task<ActionResult> SetCoachToActive(int coachId)
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.SetCoachToActive(coachId, companyId));
+        }
 
         [HttpDelete]
         [Route("removeCoach")]
-        public async Task<ActionResult> RemoveCoachFromActive(int coachId, int companyId)
-            => this.GenericResponse(await this.companiesService.RemoveCoach(coachId, companyId));
+        public async Task<ActionResult> RemoveCoachFromActive(int coachId)
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.RemoveCoach(coachId, companyId));
+        }
 
         [HttpGet]
         [Route("activeCourses")]
-        public async Task<ActionResult> GetActiveCourses(int companyId)
-            => this.GenericResponse(await this.companiesService.GetActiveCourses(companyId));
+        public async Task<ActionResult> GetActiveCourses()
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.GetActiveCourses(companyId));
+        }
 
         [HttpPost]
         [Route("addCourse")]
-        public async Task<ActionResult> SetCourseToActive(int courseId, int companyId)
-            => this.GenericResponse(await this.companiesService.SetCourseToActive(courseId, companyId));
+        public async Task<ActionResult> SetCourseToActive(int courseId)
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.SetCourseToActive(courseId, companyId));
+        }
 
         [HttpDelete]
         [Route("removeCourse")]
-        public async Task<ActionResult> RemoveCourseFromActive(int courseId, int companyId)
-            => this.GenericResponse(await this.companiesService.RemoveCourse(courseId, companyId));
+        public async Task<ActionResult> RemoveCourseFromActive(int courseId)
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.RemoveCourse(courseId, companyId));
+        }
     }
 }

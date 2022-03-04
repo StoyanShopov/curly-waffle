@@ -11,6 +11,7 @@ import SideBar from '../../Fragments/Sidebar';
 import OwnerDashboard from '../Dashboard/OwnerDashboard';
 import ActiveCoaches from '../ActiveCoaches/ActiveCoaches';
 import ActiveCourses from '../ActiveCourses/ActiveCourses';
+import CoachCatalog from '../CoachCatalog/CoachCatalog';
 import OwnerEmployees from '../OwnerEmployees/OwnerEmployees';
 import Invoice from '../Invoice/Invoice';
 import { GetAdmin } from '../../super-admin/AdminProfile';

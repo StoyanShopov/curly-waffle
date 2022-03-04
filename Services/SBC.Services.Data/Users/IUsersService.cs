@@ -20,5 +20,7 @@
         Task<bool> ExistsByFullNameByEmailAsync(string fullName, string email);
 
         Task<bool> ExistsByEmailAsync(string email);
+
+        int GetCompanyId(string userId);
     }
 }

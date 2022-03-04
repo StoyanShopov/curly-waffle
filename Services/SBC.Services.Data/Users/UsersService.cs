@@ -168,5 +168,16 @@
             => await this.applicationUsers
                 .AllAsNoTracking()
                 .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public int GetCompanyId(string userId)
+        {
+            var companyId = this.applicationUsers
+                .AllAsNoTracking()
+                .Where(x => x.Id == userId)
+                .Select(x => x.CompanyId)
+                .FirstOrDefault();
+
+            return (int)companyId;
+        }
     }
 }

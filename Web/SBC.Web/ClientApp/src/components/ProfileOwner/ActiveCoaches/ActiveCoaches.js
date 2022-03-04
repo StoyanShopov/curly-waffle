@@ -4,27 +4,33 @@ import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
-import Sidebar from "../../Fragments/Sidebar";
+import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
+import { OwnerService } from '../../../services';
 import styles from "./ActiveCoaches.module.css";
 
-export default function ActiveCoaches(prop) {
+export default function ActiveCoaches() {
+    const [coaches, setCoaches] = useState([]);
+
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        OwnerService.CompanyGetActiveCoaches()
+            .then(res => {
+                setCoaches(res.data)
+                console.log(res.data)//
+            })
+    }, []);
 
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
 
     const handleSkip = (skip) => {
-        prop.setSkip(prevSkip => {
+        setSkip(prevSkip => {
             return prevSkip + skip;
         });
     }
 
-    const handleClient = (client) => {
-        prop.setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
 
     return (
         <>
@@ -32,80 +38,11 @@ export default function ActiveCoaches(prop) {
                 <div className={styles.buttonContainer}>
                     <Link to="/coachCatalog" ><button className={styles.manageButton}>Manage</button></Link>
                 </div>
-                <div className={styles.cardscontainer}>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 7.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 8.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {coaches.length > 0
+                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
+                    : <h3>No coaches yet</h3>
+                }
+                    
             </div>
             <Modal
                 style={{
@@ -124,7 +61,7 @@ export default function ActiveCoaches(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} />
             </Modal>
         </>
     );

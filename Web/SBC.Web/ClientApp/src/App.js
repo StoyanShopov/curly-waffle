@@ -36,6 +36,7 @@ function App() {
                     {hasRole(userRole, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile />} />}
                     <Route path="/" element={<Homepage />} />
                     <Route path="/signUp" element={<Signup />} />
+                    <Route path="/coachCatalog" element={<CoachCatalog />} />
                 </Routes>
             </Layout>
         </Provider>

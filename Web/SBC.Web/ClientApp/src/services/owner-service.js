@@ -42,8 +42,8 @@ const EditOwner = async (_data) => {
 
 // from CoachesController:
 
-const GetCoachesCatalog = async (companyId) => {
-    const response = await axios.get(baseUrl + 'manager/Coaches', companyId,
+const GetCoachesCatalog = async () => {
+    const response = await axios.get(baseUrl + 'manager/Coaches', 
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -59,8 +59,8 @@ const GetCoachesCatalog = async (companyId) => {
 
 // from CoursesController:
 
-const GetCoursesCatalog = async (companyId) => {
-    const response = await axios.get(baseUrl + 'manager/Courses', companyId,
+const GetCoursesCatalog = async () => {
+    const response = await axios.get(baseUrl + 'manager/Courses',
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -121,8 +121,8 @@ const CompanyRemoveEmployee = async (employeeId) => {
     return response;
 }
 
-const CompanyGetActiveCoaches = async (employeeId) => {
-    const response = await axios.get(baseUrl + 'manager/Company/activeCoaches', employeeId,
+const CompanyGetActiveCoaches = async () => {
+    const response = await axios.get(baseUrl + 'manager/Company/activeCoaches',
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -136,7 +136,7 @@ const CompanyGetActiveCoaches = async (employeeId) => {
     return response;
 }
 
-const CompanySetCoachToActive = async (_data) => {
+const CompanySetCoachToActive = async (_data) => { //TODO
     const response = await axios.post(baseUrl + 'manager/Company/addCoach', _data,
         {
             headers: {
@@ -151,7 +151,7 @@ const CompanySetCoachToActive = async (_data) => {
     return response;
 }
 
-const CompanyRemoveCoachFromActive = async (_data) => {
+const CompanyRemoveCoachFromActive = async (_data) => { //TODO
     const response = await axios.delete(baseUrl + 'manager/Company/removeCoach', _data,
         {
             headers: {
@@ -166,8 +166,8 @@ const CompanyRemoveCoachFromActive = async (_data) => {
     return response;
 }
 
-const CompanyGetActiveCourses = async (companyId) => {
-    const response = await axios.get(baseUrl + 'manager/Company/activeCourses', companyId,
+const CompanyGetActiveCourses = async () => {
+    const response = await axios.get(baseUrl + 'manager/Company/activeCourses',
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -181,7 +181,7 @@ const CompanyGetActiveCourses = async (companyId) => {
     return response;
 }
 
-const CompanySetCourseToActive = async (_data) => {
+const CompanySetCourseToActive = async (_data) => { //TODO
     const response = await axios.post(baseUrl + 'manager/Company/addCourse', _data,
         {
             headers: {
@@ -196,7 +196,7 @@ const CompanySetCourseToActive = async (_data) => {
     return response;
 }
 
-const CompanyRemoveCourseFromActive = async (_data) => {
+const CompanyRemoveCourseFromActive = async (_data) => { //TODO
     const response = await axios.delete(baseUrl + 'manager/Company/removeCourse', _data,
         {
             headers: {

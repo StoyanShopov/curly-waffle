@@ -12,6 +12,7 @@ export default function OwnerDashboard() {
         OwnerService.GetOwnerDashboard()
             .then(res => {
                 setItems(res.data);
+                console.log(res.data)//
             })
     }, [])
 

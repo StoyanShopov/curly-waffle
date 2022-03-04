@@ -10,6 +10,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
+    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Company;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
