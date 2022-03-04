@@ -27,7 +27,10 @@
         [HttpPost]
         [Route("addEmployee")]
         public async Task<ActionResult> AddEmployee(CreateEmployeeInputModel model)
-            => this.GenericResponse(await this.companiesService.AddEmployee(model));
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.companiesService.AddEmployee(model, companyId, this.User.Id()));
+        }
 
         [HttpDelete]
         [Route("removeEmployee")]

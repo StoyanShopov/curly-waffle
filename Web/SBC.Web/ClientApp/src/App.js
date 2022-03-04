@@ -37,6 +37,7 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/coachCatalog" element={<CoachCatalog />} />
+                    <Route path="/courseCatalog" element={<CourseCatalog />} />
                 </Routes>
             </Layout>
         </Provider>

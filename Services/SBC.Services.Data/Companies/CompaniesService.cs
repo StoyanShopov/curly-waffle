@@ -82,7 +82,7 @@
             return new ResultModel(employees);
         }
 
-        public async Task<Result> AddEmployee(CreateEmployeeInputModel input)
+        public async Task<Result> AddEmployee(CreateEmployeeInputModel input, int companyId, string userId)
         {
             var user = await this.userRepository
                 .All()
@@ -96,8 +96,8 @@
                     user.ManagerId == null &&
                     user.CompanyId == null)
                 {
-                    user.ManagerId = input.ManagerId;
-                    user.CompanyId = input.CompanyId;
+                    user.ManagerId = userId;
+                    user.CompanyId = companyId;
                 }
                 else if (user.FirstName != input.FullName.Split(" ")[0] ||
                     user.LastName != input.FullName.Split(" ")[1])
