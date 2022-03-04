@@ -96,6 +96,11 @@
 
         public async Task<Result> UpdateAsync(UpdateCoachInputModel coach)
         {
+            var coachModel = await this.coachRepository.AllAsNoTracking()
+                .Include(x => x.Languages)
+                .Include(x => x.Categories)
+                .FirstOrDefaultAsync(x => x.Id == coach.Id);
+
             if (this.ExistLanguageId(coach.Languages))
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, LanguageBadRequest);
@@ -105,8 +110,6 @@
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, CategoryBadRequest);
             }
-
-            var coachModel = this.coachRepository.All().FirstOrDefault(x => x.Id == coach.Id);
 
             if (coachModel == null)
             {
@@ -121,6 +124,19 @@
             coachModel.CalendlyUrl = coach.CalendlyUrl;
             coachModel.ImageUrl = coach.ImageUrl;
 
+            coachModel.Languages = coach.Languages.Select(x => new LanguageCoach
+            {
+                CoachId = coach.Id,
+                LanguageId = x.LanguageId,
+            })
+                .ToHashSet();
+            coachModel.Categories = coach.Categories.Select(x => new CategoryCoach
+            {
+                CategoryId = x.CategoryId,
+                CoachId = coach.Id,
+            })
+                .ToHashSet();
+
             if (coach.CompanyEmail != null)
             {
                 var company = await this.companiesRepository
@@ -132,9 +148,6 @@
                     coachModel.CompanyId = company.Id;
                 }
             }
-
-            this.AddLanguages(coach.Languages, coachModel);
-            this.AddCategories(coach.Categories, coachModel);
 
             this.coachRepository.Update(coachModel);
             await this.coachRepository.SaveChangesAsync();

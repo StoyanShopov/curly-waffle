@@ -15,7 +15,7 @@ export const createCoach = async (data) => {
 
 export const updateCoach = async (data) => {
     try {
-        const resp = await axios.put(baseUrl + `api/Coaches/${data.coachId}`, data, {
+        const resp = await axios.put(baseUrl + `api/Coaches/${data.id}`, data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },

@@ -113,6 +113,10 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSectionConfiguration);

@@ -18,7 +18,7 @@ const EditCoach = (props) => {
       setCompanyEmail(res)
     })
   }
-  
+
   useEffect(() => {
     setCoach(props.coach)
 
@@ -117,18 +117,16 @@ const EditCoach = (props) => {
       }))
 
     updateCoach(data)
-      .then(() => { 
+      .then((res) => { 
       const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
       const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
       data.languages = languagesAsObj
       data.categories = categoriesAsObj
       data['companyId'] = coach.companyId
-      console.log(data);
+      console.log(res['data']);
       props.setCoach(data)
       setCoach(data)
-
       props.closeModal();
-      }).finally(()=>{
       })
   }
 
