@@ -24,7 +24,7 @@ export default function ResourceCard(props) {
             .<button className={style.btnDelete} onClick={() => {
                 props.openModal(<DeleteResource
                     closeModal={props.closeModal}
-                    resourceId={resource.id}
+                    resource={resource}
                     setResources={props.setResources}
                     resources={props.resources} />)
             }}>Delete</button>

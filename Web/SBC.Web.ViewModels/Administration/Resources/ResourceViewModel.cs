@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Resource
+﻿namespace SBC.Web.ViewModels.Administration.Resources
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;

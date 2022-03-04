@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration.Lecture
+﻿namespace SBC.Web.ViewModels.Administration.Lectures
 {
     using System.ComponentModel.DataAnnotations;
 

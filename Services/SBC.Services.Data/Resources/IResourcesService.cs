@@ -1,12 +1,12 @@
-﻿namespace SBC.Services.Data.Resource.Contracts
+﻿namespace SBC.Services.Data.Resources
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Services.Data.Resource.Models;
+    using SBC.Web.ViewModels.Administration.Resources;
 
-    public interface IResourceService
+    public interface IResourcesService
     {
         Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id);
 

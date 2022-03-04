@@ -4,14 +4,14 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
-    using SBC.Services.Data.Lecture;
-    using SBC.Web.ViewModels.Administration.Lecture;
+    using SBC.Services.Data.Lectures;
+    using SBC.Web.ViewModels.Administration.Lectures;
 
-    public class LectureController : AdministrationController
+    public class LecturesController : AdministrationController
     {
-        private readonly ILectureService lectureService;
+        private readonly ILecturesService lectureService;
 
-        public LectureController(ILectureService lectureService)
+        public LecturesController(ILecturesService lectureService)
         {
             this.lectureService = lectureService;
         }

@@ -1,12 +1,12 @@
-﻿namespace SBC.Services.Data.Course
+﻿namespace SBC.Services.Data.Courses
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Web.ViewModels.Course;
+    using SBC.Web.ViewModels.Administration.Courses;
 
-    public interface ICourseService
+    public interface ICoursesService
     {
         Task<IEnumerable<TModel>> GetAllAsync<TModel>();
 
@@ -18,6 +18,6 @@
 
         Task<Result> DeleteByIdAsync(int id);
 
-        Task<int> GetCount();
+        Task<int> GetCountAsync();
     }
 }

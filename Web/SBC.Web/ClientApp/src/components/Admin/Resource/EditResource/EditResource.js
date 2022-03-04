@@ -38,7 +38,7 @@ function EditResource(props) {
             await resourceService.deleteFile(blobName);
 
             let result = await resourceService.uploadFile(resourceData.fileUrl);
-            resourceData.fileUrl = result.fileUrl;
+            resourceData.fileUrl = result.photoUrl;
         } else {
             resourceData.fileUrl = oldFileUrl;
         }
