@@ -4,18 +4,25 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Coaches;
+    using SBC.Services.Data.Infrastructures;
+    using SBC.Services.Data.Users;
 
     public class CoachesController : BusinessOwnerController
     {
         private readonly ICoachesService coachesService;
+        private readonly IUsersService usersService;
 
-        public CoachesController(ICoachesService coachesService)
+        public CoachesController(ICoachesService coachesService, IUsersService usersService)
         {
             this.coachesService = coachesService;
+            this.usersService = usersService;
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetCoachesCatalog(int companyId)
-            => this.GenericResponse(await this.coachesService.GetAllWithActive(companyId));
+        public async Task<ActionResult> GetCoachesCatalog()
+        {
+            var companyId = this.usersService.GetCompanyId(this.User.Id());
+            return this.GenericResponse(await this.coachesService.GetAllWithActive(companyId));
+        }
     }
 }

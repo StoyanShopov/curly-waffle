@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
@@ -25,12 +24,6 @@ export default function ActiveCoaches() {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
 
     return (
         <>
@@ -38,11 +31,12 @@ export default function ActiveCoaches() {
                 <div className={styles.buttonContainer}>
                     <Link to="/coachCatalog" ><button className={styles.manageButton}>Manage</button></Link>
                 </div>
+                <div className={styles.cardscontainer}>
                 {coaches.length > 0
                     ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
                     : <h3>No coaches yet</h3>
-                }
-                    
+                    }
+                </div>
             </div>
             <Modal
                 style={{
@@ -61,7 +55,7 @@ export default function ActiveCoaches() {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} />
+                <ModalRemoveCourse handleClose={handleClose}/>
             </Modal>
         </>
     );

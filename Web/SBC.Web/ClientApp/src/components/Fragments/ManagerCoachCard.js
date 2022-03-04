@@ -18,7 +18,10 @@ export default function ManagerCoachCard(props) {
                     <span><img src={props.coach.companyLogoUrl} /></span>
                 </div>
                 <div className={styles.button}>
-                    <button>Remove</button>
+                    {props.coach.isActive
+                        ? <button>Remove</button>
+                        : <button>Add</button>
+                    }
                 </div>
             </div>
         </div>

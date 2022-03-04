@@ -7,6 +7,11 @@
 
     public class ActiveCoachViewModel : IMapFrom<Coach>
     {
+        public ActiveCoachViewModel()
+        {
+            this.IsActive = true;
+        }
+
         public int Id { get; set; }
 
         public string FullName { get; set; }
@@ -18,5 +23,7 @@
         public ICollection<CategoryCoach> Categories { get; set; }
 
         public ICollection<LanguageCoach> Languages { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

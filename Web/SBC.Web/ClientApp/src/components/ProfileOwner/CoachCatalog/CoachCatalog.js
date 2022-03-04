@@ -1,31 +1,32 @@
 import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
-
-import styles from "./CoachCatalog.module.css";
 import Modal from 'react-modal';
+
+import { OwnerService } from '../../../services';
+import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
 import { CategoriesList } from "../CourseCatalog/CategoriesList";
 import { LanguagesList } from "../CourseCatalog/LanguagesList";
 
-export default function CoachCatalog(prop) {
+import styles from "./CoachCatalog.module.css";
+
+export default function CoachCatalog() {
     const [showModal, setShowModal] = useState(false);
+
+    const [coaches, setCoaches] = useState([]);
+
+    useEffect(() => {
+        OwnerService.GetCoachesCatalog()
+            .then(res => {
+                setCoaches(res.data);
+                console.log(res.data);//
+            });
+    }, []);
 
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
-
-    const handleSkip = (skip) => {
-        prop.setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        prop.setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
 
     return (
         <>
@@ -78,96 +79,11 @@ export default function CoachCatalog(prop) {
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 10.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 7.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 8.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
+                    {coaches.length > 0
+                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
+                        : <h3>No coaches yet</h3>
+                    }
+
                 </div>
                 <div className={styles.buttonContainer}>
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
@@ -190,7 +106,7 @@ export default function CoachCatalog(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} />
             </Modal>
         </>
     );
