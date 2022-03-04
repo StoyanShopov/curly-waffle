@@ -1,6 +1,7 @@
 ﻿import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
+import { GetAdminData } from '../services/super-admin-service';
 import jwt from 'jwt-decode';
 
 
@@ -36,4 +37,3 @@ export const logout = async () => {
     await userService.logout();
     return { type: userConstants.LOGOUT };
 }
-

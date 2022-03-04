@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.0.0-beta3",
+    "@fortawesome/free-solid-svg-icons": "^6.0.0-beta3",
+    "@fortawesome/react-fontawesome": "^0.1.17",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

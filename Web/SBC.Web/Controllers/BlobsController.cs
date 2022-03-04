@@ -1,10 +1,11 @@
 ﻿namespace SBC.Web.Controllers
 {
+    using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
+    using SBC.Common;
     using SBC.Services.Blob;
 
     using static SBC.Common.GlobalConstants.ControllerRouteConstants;
@@ -18,7 +19,7 @@
             this.blobService = blobService;
         }
 
-        [HttpGet(GetAllRoute)]
+        [HttpGet]
         public async Task<IActionResult> GetAllBlobsAsync()
         {
             var blobs = await this.blobService.GetAllBlobsAsync();
@@ -26,9 +27,14 @@
             return this.Ok(blobs);
         }
 
-        [HttpPost(UploadBlobRoute)]
+        [HttpPost]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
+            if (file == null)
+            {
+                return this.GenericResponse(new ErrorModel(HttpStatusCode.NotFound, "file is empty"));
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
@@ -37,7 +43,7 @@
             return this.GenericResponse(await this.blobService.UploadFileBlobAsync(file));
         }
 
-        [HttpGet(DownloadBlobByNameRoute)]
+        [HttpGet("{name}")]
         public async Task<IActionResult> DownloadBlobByNameAsync(string blobName)
         {
             var blob = this.blobService.DownloadBlobByName(blobName);
