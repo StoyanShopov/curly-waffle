@@ -57,7 +57,7 @@ const deleteResource = async (resourceId) => {
 const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-console.log(formData);
+
     let response = await axios({
         method: 'POST',
         url: baseUrl + "api/Blobs",
