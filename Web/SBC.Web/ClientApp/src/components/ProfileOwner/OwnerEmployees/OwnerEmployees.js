@@ -27,6 +27,10 @@ export default function OwnerEmployees() {
         }
     }, [])
 
+    const RemoveEmployee = async (id) => {
+        await OwnerService.CompanyRemoveEmployee(id);
+    }
+
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
@@ -80,9 +84,10 @@ export default function OwnerEmployees() {
                     </thead>
                     <tbody>
                         {employees && employees.map(employee => (
-                            <tr key={employee?.id}>
-                                <td className={css.name}>{employee?.fullName}</td>
-                                <td className={css.email}>{employee?.email?.toLowerCase()}</td>
+                            <tr key={employee.id}>
+                                <td className={css.name}>{employee.fullName}</td>
+                                <td className={css.email}>{employee.email.toLowerCase()}</td>
+                                <td><button onClick={() => { RemoveEmployee(employee.id) }}>X</button></td>
                             </tr>
                         ))}
                         <tr key={"unique_loading"} id='pending'>
