@@ -19,7 +19,7 @@
             this.categoryService = categoryService;
         }
 
-        [HttpGet(nameof(GetAllCategoriesAsync))]
+        [HttpGet]
         public async Task<ActionResult> GetAllCategoriesAsync()
         {
             var result = await this.categoryService.GetAllAsync<CategoryDetailsViewModel>();

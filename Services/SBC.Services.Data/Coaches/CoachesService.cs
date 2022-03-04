@@ -96,7 +96,7 @@
 
         public async Task<Result> UpdateAsync(UpdateCoachInputModel coach)
         {
-            var coachModel = await this.coachRepository.AllAsNoTracking()
+            var coachModel = await this.coachRepository.All()
                 .Include(x => x.Languages)
                 .Include(x => x.Categories)
                 .FirstOrDefaultAsync(x => x.Id == coach.Id);

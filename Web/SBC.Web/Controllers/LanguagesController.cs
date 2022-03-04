@@ -19,7 +19,7 @@
             this.languageService = languageService;
         }
 
-        [HttpGet(nameof(GetAllLanguagesAsync))]
+        [HttpGet]
         public async Task<ActionResult> GetAllLanguagesAsync()
         {
             var result = await this.languageService.GetAllAsync<LanguageDetailsViewModel>();

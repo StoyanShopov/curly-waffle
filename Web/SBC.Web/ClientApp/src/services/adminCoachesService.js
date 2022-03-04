@@ -43,11 +43,11 @@ export const deleteCoachById = async (coachId) =>{
     return resp;
 }
 export const getLanguages = async () =>{
-    return await axios.get(baseUrl + 'api/Languages/GetAllLanguagesAsync');
+    return await axios.get(baseUrl + 'api/Languages');
 }
 
 export const getCategories = async () =>{
-    return await axios.get(baseUrl + 'api/Categories/GetAllCategoriesAsync');
+    return await axios.get(baseUrl + 'api/Categories');
 }
 
 export const uploadImage = async (file) => {
