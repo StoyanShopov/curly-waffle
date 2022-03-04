@@ -130,6 +130,7 @@
                 LanguageId = x.LanguageId,
             })
                 .ToHashSet();
+
             coachModel.Categories = coach.Categories.Select(x => new CategoryCoach
             {
                 CategoryId = x.CategoryId,

@@ -80,9 +80,8 @@ const EditCoach = (props) => {
     e.preventDefault()
 
     const fd = new FormData(e.target);
-    coach.id === undefined ?
-    fd.append('id',coach.coachId):
-    fd.append('id', coach.id)
+    fd.append('id', props.id);
+
     const data = [...fd.entries()].reduce(
       (p, [k, v]) => Object.assign(p, { [k]: v }),
       {}
@@ -136,7 +135,7 @@ const EditCoach = (props) => {
       <div className={styles.addContainer}>
         <form onSubmit={onSubmitEditCoach}>
           <div className={styles.headerContainer}>
-            <div className={styles.titleContainer}>Add Coach</div>
+            <div className={styles.titleContainer}>Edit Coach</div>
             <div className={styles.fileUpload}>
               <input
                 type="file"

@@ -211,15 +211,14 @@ const CreateCoach = (props) => {
 
             <div className={styles.languageOptions}>
               <Select
-
                 options={languagesOptions}
                 isMulti
                 name="languages"
-                defaultInputValue=""
                 onChange={(onChangeLanguages)}
                 styles={selectStyles}
                 placeholder="Select Languages"
-                selecte
+                isSearchable
+                required
               >
               </Select>
             </div>
@@ -229,10 +228,10 @@ const CreateCoach = (props) => {
                 options={categoriesOptions}
                 isMulti
                 name="categories"
-                defaultInputValue=""
                 onChange={(onChangeCategories)}
                 styles={selectStyles}
                 placeholder="Select Categories"
+                required
               >
               </Select>
             </div>

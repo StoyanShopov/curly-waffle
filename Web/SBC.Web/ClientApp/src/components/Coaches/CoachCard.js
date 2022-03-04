@@ -26,6 +26,7 @@ const CoachCard = (props) => {
                     <EditCoach
                     closeModal={props.closeModal} 
                     coach={coach} 
+                    id={coach.id}
                     coaches={coaches}
                     setCoach={setCoach}
                     setCoaches={setCoaches}
