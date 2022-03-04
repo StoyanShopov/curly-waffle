@@ -6,22 +6,26 @@ import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
 import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
-import Sidebar from "../../Fragments/Sidebar";
 import { OwnerService } from '../../../services';
 
 export default function OwnerEmployees() {
-    const [showModal, setShowModal] = useState(false);
-
     const [employees, setEmployees] = useState([]);
 
-    useEffect(() => {
-        OwnerService.CompanyGetEmployees(0)
-            .then(res => {
-                setEmployees(res.portions);
-                console.log(res);
-            });
+    const [isPending, setIsPending] = useState(false);
+    const [skip, setSkip] = useState(0);
+    const [showModal, setShowModal] = useState(false);
+    const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
 
-    }, []);
+    const cancelTokenSource = axios.CancelToken.source();
+
+    useEffect(() => {
+        handleViewMore(0);
+        setSkip(0);
+
+        return () => {
+            cancelTokenSource.cancel();
+        }
+    }, [])
 
     const handleClose = useCallback(() => {
         setShowModal(false)
@@ -33,10 +37,28 @@ export default function OwnerEmployees() {
         });
     }
 
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
+    const handleEmployee = (employee) => {
+        setEmployees(prevPortions => {
+            return [employee, ...prevPortions];
         });
+    }
+
+    const handleViewMore = async () => {
+        setIsPending(true);
+
+        const json = await OwnerService.CompanyGetEmployees(skip, cancelTokenSource);
+
+        console.log(json)//
+
+        setIsPending(false);
+
+        setEmployees(prevPortions => {
+            return [...prevPortions, ...json.portions];
+        });
+
+        handleSkip(3);
+
+        setViewMoreAvailable(json.viewMoreAvailable);
     }
 
     return (
@@ -49,7 +71,7 @@ export default function OwnerEmployees() {
                             <th className={css.secondTh}>Email</th>
                             <th >
                                 <div className={css.plusSignContainer} >
-                                    <Link to="" onClick={() => prop.setShowModal(true)}>
+                                    <Link to="" onClick={() => setShowModal(true)}>
                                         <img src="assets/images/Plus.svg" alt="add-icon"></img>
                                     </Link>
                                 </div>
@@ -57,22 +79,24 @@ export default function OwnerEmployees() {
                         </tr>
                     </thead>
                     <tbody>
-                        {employees.length > 0
-                            ? employees.map(x => {
-                                return (
-                                    <tr key={x.id}>
-                                        <td className={css.name}> { x.fullName}</td>
-                                        <td className={css.email} >{ x.email}</td>
-                                    </tr>
-                                    )
-                            })
-                            : <tr>
-                                <td>Test</td>
-                             </tr>
-                        }
-                        <tr id={css.flex}>
+                        {employees && employees.map(employee => (
+                            <tr key={employee?.id}>
+                                <td className={css.name}>{employee?.fullName}</td>
+                                <td className={css.email}>{employee?.email?.toLowerCase()}</td>
+                            </tr>
+                        ))}
+                        <tr key={"unique_loading"} id='pending'>
+                            {isPending &&
+                                <td>
+                                    <h2>Loading...</h2>
+                                </td>
+                            }
+                        </tr>
+                        <tr key={"unique_view_more"} id={css.flex}>
                             <td>
-                                <Link to="" className={css.link} onClick={() => { prop.handleViewMore() }}>View More</Link>
+                                {viewMoreAvailable &&
+                                    <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
+                                }
                             </td>
                         </tr>
                     </tbody>
@@ -94,7 +118,7 @@ export default function OwnerEmployees() {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalAddEmployee handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalAddEmployee handleClose={handleClose} handleSkip={handleSkip} handleEmployee={handleEmployee} />
             </Modal>
         </>);
 }
