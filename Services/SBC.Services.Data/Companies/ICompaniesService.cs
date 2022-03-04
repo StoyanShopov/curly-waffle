@@ -10,7 +10,7 @@
     {
         Task<Result> GetEmployees(string managerId, int skip, int take = 3);
 
-        Task<Result> AddEmployee(CreateEmployeeInputModel model);
+        Task<Result> AddEmployee(CreateEmployeeInputModel model, int companyId, string userId);
 
         Task<Result> RemoveEmployee(string employeeId);
 
