@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
-import { useLocation } from 'react-router-dom';
+import { TokenManagement } from '../../helpers';
+import { Links } from './Links';
 
 const NavBar = () => {
-    let location = useLocation();
-    console.log(location)
+    let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
+    let status = TokenManagement.getUser() ;
+    useEffect(() => {
+        user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
+        status = TokenManagement.getUser();
+    }, [])
+
 
     return (
         <header className={styles.headerC}>
             <div className={styles.headerContainer}>
                 < div className={styles.logoContainer}>
-                    <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+                    <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     < div className={styles.upskillContainer}>
                         <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
                     </div>

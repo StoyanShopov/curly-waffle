@@ -1,9 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 
 import { store } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
+import AdminProfile from './components/super-admin/AdminProfile';
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
@@ -21,7 +22,11 @@ import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 
 import "./App.css";
 
+
 function App() {
+   
+
+
     return (
         <Provider store={store}>
             <Layout>
@@ -32,6 +37,7 @@ function App() {
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path="/courses" element={<AllCourses />} />
                     <Route path="/details/:id" element={<CourseDetails />} />
+                    <Route path='/super-admin/*' element={<AdminProfile />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/ownerEmployees" element={<OwnerEmployees />} />
                     <Route path="/ownerInvoice" element={<Invoice />} />

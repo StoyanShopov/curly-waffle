@@ -3,11 +3,18 @@ import style from "./DeleteResource.module.css"
 import { resourceService } from "../../../../services/resource.service";
 
 function DeleteResource(props) {
-    const resourceId = props.resourceId;
+    const resourceId = props.resource.id;
     const resources = props.resources.filter(x => x.id !== resourceId);
 
-    const onDeleteHandler = (e) => {
+    const onDeleteHandler = async (e) => {
         e.preventDefault();
+
+        if (props.resource.fileUrl) {
+            let blobName = props.resource.fileUrl.split('/').pop();
+            await resourceService.deleteFile(blobName);
+        }
+
+
 
         resourceService
             .deleteResource(resourceId)

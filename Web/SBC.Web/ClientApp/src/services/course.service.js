@@ -2,12 +2,12 @@ import axios from "axios";
 
 import { baseUrl } from '../constants';
 
-const apiUrl = baseUrl + 'api/course';
+const apiUrl = baseUrl + 'administration/courses';
 const token = localStorage.getItem('token');
 
 const getAll = async () => {
     return await axios
-        .get(`${apiUrl}s`, {
+        .get(`${apiUrl}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${token}`,

@@ -57,11 +57,11 @@ const EditCourse = (props) => {
 
             <form id="create-form" onSubmit={onCourseEdit} method="POST">
                 <div>
-                    <input type="text" className={style.inputContainer} required="required" name="title" defaultValue={course.title} placeholder="Title" />
-                    <textarea type="text" className={style.inputContainer} required="required" name="description" defaultValue={course.description} placeholder="Description" ></textarea>
-                    <input type="number" className={style.inputContainer} required="required" name="pricePerPerson" defaultValue={course.pricePerPerson} placeholder="Price" />
-                    <input type="text" className={style.inputContainer} required="required" name="pictureUrl" defaultValue={course.pictureUrl} placeholder="PictureUrl" />
-                    <input type="text" className={style.inputContainer} required="required" name="videoUrl" defaultValue={course.videoUrl} placeholder="VideoUrl" />
+                    <input type="text" className={style.inputContainer} required="required" name="title" defaultValue={course.title} placeholder="Title*" />
+                    <textarea type="text" className={style.inputContainer} required="required" name="description" defaultValue={course.description} placeholder="Description*" ></textarea>
+                    <input type="number" className={style.inputContainer} required="required" name="pricePerPerson" defaultValue={course.pricePerPerson} placeholder="Price*" />
+                    <input type="text" className={style.inputContainer} required="required" name="pictureUrl" defaultValue={course.pictureUrl} placeholder="PictureUrl*" />
+                    <input type="text" className={style.inputContainer} required="required" name="videoUrl" defaultValue={course.videoUrl} placeholder="VideoUrl*" />
 
                     <select className={style.selectContainer} name="coachId" id="coachId" value={course.coachId}
                         onChange={(e) => setCourse(s => ({ ...s, coachId: e.target.value }))}>

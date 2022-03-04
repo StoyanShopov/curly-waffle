@@ -19,7 +19,7 @@ function CreateResource(props) {
         resourceData.lectureId = props.lectureId;
 
         let result = await resourceService.uploadFile(resourceData.fileUrl);
-        resourceData.fileUrl = result.fileUrl;
+        resourceData.fileUrl = result.photoUrl;
 
         resourceService
             .create(resourceData)

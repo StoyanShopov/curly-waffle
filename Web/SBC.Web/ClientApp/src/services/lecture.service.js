@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { baseUrl } from '../constants';
 
-const apiUrl = baseUrl + 'api/lecture';
+const apiUrl = baseUrl + 'administration/lectures';
 const token = localStorage.getItem('token');
 
 const getAll = async (courseId, skip) => {
@@ -25,7 +25,7 @@ const getById = async (lectureId) => {
         });
 }
 
-const create = async (lectureData,) => {
+const create = async (lectureData) => {
     return await axios
         .post(`${apiUrl}`, lectureData, {
             headers: {
