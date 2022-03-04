@@ -31,8 +31,6 @@ const logout = async () => {
         .then((data) => {
         },
             (err) => console.error(err));
-
-
 };
 
 const getUser = () => {
