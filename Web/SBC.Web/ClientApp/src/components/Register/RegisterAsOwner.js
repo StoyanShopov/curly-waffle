@@ -27,16 +27,6 @@ export default function RegisterAsOwner(prop) {
                             <input
                                 type="text"
                                 className={styles.inputuser}
-                                name="email"
-                                required="required"
-                                placeholder="Email Address"
-                            />
-                            <span className={styles.staremail}>*</span>
-                        </div>
-                        <div className={styles.inputcontainer}>
-                            <input
-                                type="text"
-                                className={styles.inputuser}
                                 name="companyName"
                                 required="required"
                                 placeholder="Company Name"
@@ -47,11 +37,11 @@ export default function RegisterAsOwner(prop) {
                             <input
                                 type="text"
                                 className={styles.inputuser}
-                                name="companyEemail"
+                                name="email"
                                 required="required"
-                                placeholder="Company Email Address"
+                                placeholder="Email Address"
                             />
-                            <span className={styles.starcompanyemail}>*</span>
+                            <span className={styles.staremail}>*</span>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input

@@ -28,13 +28,14 @@
 }
 
 .formField {
-  margin-top: 50px;
-  width: 550px;
-  height: 55px;
-  border: 2px solid #296CFB;
-  opacity: 1;
-  align-content: center;
-  position: relative;
+    margin-top: 50px;
+    width: 550px;
+    height: 55px;
+    border: 2px solid #296CFB;
+    opacity: 1;
+    align-content: center;
+    position: relative;
+    font-size: 18px;
 }
 
 .modalTitle {
@@ -96,10 +97,10 @@
   padding-bottom: 20px;
 }
 
-::placeholder {
-  font-family: "Montserrat", sans-serif;
-  color: #296CFB;
-  font-weight: 500;
-  opacity: 1;
-  content: "*";
+.modalContented ::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: #296CFB;
+    font-weight: 500;
+    opacity: 1;
+    content: "*";
 }

@@ -46,7 +46,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 3%;
+    top: 6%;
 }
 
 .arrow {
@@ -63,14 +63,14 @@
     align-items: center;
     font-size: 16px;
     width: 100%;
-    row-gap: 23px;
+    row-gap: 25px;
 }
 
 .inputcontainer {
     opacity: 1;
     border: 2px solid #296cfb;
     width: 26rem;
-    min-height: 2.4rem;
+    min-height: 2.5rem;
 }
 
 .inputuser {
@@ -162,38 +162,31 @@
     position: absolute;
 }
 
-.staremail {
-    color: #E84855;
-    left: 34%;
-    top: 150px;
-    position: absolute;
-}
-
 .starcompanyname {
     color: #E84855;
     left: 37%;
-    top: 215px;
+    top: 154px;
     position: absolute;
 }
 
-.starcompanyemail {
+.staremail {
     color: #E84855;
-    left: 55%;
-    top: 281px;
+    left: 34%;
+    top: 225px;
     position: absolute;
 }
 
 .starpassword {
     color: #E84855;
     left: 24%;
-    top: 347px;
+    top: 293px;
     position: absolute;
 }
 
 .starconfirmpassword {
     color: #E84855;
     left: 42%;
-    top: 413px;
+    top: 363px;
     position: absolute;
 }
 
