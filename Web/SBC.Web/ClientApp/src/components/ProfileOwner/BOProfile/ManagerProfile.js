@@ -13,26 +13,17 @@ import ActiveCoaches from '../ActiveCoaches/ActiveCoaches';
 import ActiveCourses from '../ActiveCourses/ActiveCourses';
 import OwnerEmployees from '../OwnerEmployees/OwnerEmployees';
 import Invoice from '../Invoice/Invoice';
+import { GetAdmin } from '../../super-admin/AdminProfile';
 
 export default function ManagerProfile() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-
-    let subtitle = {
-        content: {
-            top: '55%',
-            left: '50%',
-            right: 'auto',
-            width: '44%',
-            height: '500px',
-            bottom: 'auto',
-            marginTop: '-5%',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -40%)',
-            padding: '0px',
-        },
-        color: '#f00'
-    };
-
+    const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
+    const [icon, setIcon] = useState();
+    let _userData = TokenManagement.getUserData();
+    useEffect(() => {
+        _userData = TokenManagement.getUserData();
+        GetAdmin(setUserData, setIcon);
+    }, [])
     function openModal() {
         setModalIsOpen(true);
     }
@@ -48,11 +39,11 @@ export default function ManagerProfile() {
     return (
         <div style=
             {{
-            'flex-direction': 'row',
-            margin: '0px',
-            padding: '0px',
+                flexDirection: 'row',
+                margin: '0px',
+                padding: '0px',
             }}>
-            <SideBar showModal={openModal} />
+            <SideBar showModal={openModal} userData={_userData} icon={icon} />
             <Routes>
                 <Route index element={<OwnerDashboard />} />
                 <Route path="dashboard" element={<OwnerDashboard />} />
@@ -69,8 +60,24 @@ export default function ManagerProfile() {
                 onRequestClose={closeModal}
                 ariaHideApp={false}
             >
-                <EditProfile closeModal={closeModal} />
+                <EditProfile closeModal={closeModal} getAdminData={() => GetAdmin(setUserData, setIcon)} />
             </Modal>
         </div>
     )
 }
+
+const subtitle = {
+    content: {
+        top: '55%',
+        left: '50%',
+        right: 'auto',
+        width: '44%',
+        height: '500px',
+        bottom: 'auto',
+        marginTop: '-5%',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -40%)',
+        padding: '0px',
+    },
+    color: '#f00'
+};

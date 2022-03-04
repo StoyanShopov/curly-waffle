@@ -15,13 +15,13 @@ export default function ActiveCourses(prop) {
     }, []);
 
     const handleSkip = (skip) => {
-        setSkip(prevSkip => {
+        prop.setSkip(prevSkip => {
             return prevSkip + skip;
         });
     }
 
     const handleClient = (client) => {
-        setClients(prevPortions => {
+        prop.setClients(prevPortions => {
             return [client, ...prevPortions];
         });
     }

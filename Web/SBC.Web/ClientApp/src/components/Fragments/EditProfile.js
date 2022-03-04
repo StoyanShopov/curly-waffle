@@ -4,6 +4,7 @@ import css from './EditProfile.module.css';
 
 import { EditAdmin, GetAdminData } from '../../services/super-admin-service';
 import { uploadImage } from '../../services/blob-service';
+import { EditUser } from '../../services/user.service';
 
 export default function EditProfile(props) {
     let [admin, setAdmin] = useState({ fullname: '', email: '', profileSummary: '' });
@@ -22,7 +23,7 @@ export default function EditProfile(props) {
         const fd = new FormData(e.target);
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
         console.log(data)
-        
+
         if (data.photoUrl == null || data.photoUrl.size == 0) {
             data.photoUrl = admin.photoUrl
         }
@@ -30,7 +31,8 @@ export default function EditProfile(props) {
             let result = await uploadImage(data.photoUrl);
             data.photoUrl = result.photoUrl;
         }
-        EditAdmin(data)
+        //   EditAdmin(data)
+        EditUser(data)
             .then((data) => {
                 if (data['status']) {
                     props.closeModal();
@@ -66,7 +68,7 @@ export default function EditProfile(props) {
                             Edit Photo
                             <input name="photoUrl" type="file" className={css.upload} />
                         </button>
-                           
+
                     </div>
 
                     <div className={css.bodyContainer3}>
@@ -82,7 +84,7 @@ export default function EditProfile(props) {
                             className={css.nameCntr}
                             type="text"
                             value={admin.email}
-                            onChange={()=>{}}
+                            onChange={() => { }}
                             placeholder="Hello@Motion-Software.com" />
                         <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={admin.profileSummary}></textarea>
                     </div>

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 
-import { store } from "./helpers";
+import { store, TokenManagement } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
 import AdminProfile from './components/super-admin/AdminProfile';
@@ -23,23 +23,25 @@ import "./App.css";
 
 
 function App() {
-   
+    const userRole = TokenManagement.getUserRole();
 
 
     return (
         <Provider store={store}>
             <Layout>
                 <Routes>
-                    <Route path="/" element={<Homepage />} />
                     <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
-                    <Route path='/super-admin/*' element={<AdminProfile />} />
-                    <Route path='/managerProfile/*' element={<ManagerProfile />} />
+                    {hasRole(userRole, ['Administrator']) && <Route path='/super-admin/*' element={<AdminProfile />} />}
+                    {hasRole(userRole, ['Owner']) && <Route path='/managerProfile/*' element={<ManagerProfile />} />}
+                    <Route path="/" element={<Homepage />} />
                     <Route path="/signUp" element={<Signup />} />
                 </Routes>
             </Layout>
         </Provider>
     );
 }
-
+const hasRole = (userRole, roles) =>
+    userRole == roles;
+//roles.some(role => user.roles.includes(role));
 export default App;

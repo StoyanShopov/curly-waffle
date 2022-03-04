@@ -7,7 +7,7 @@ import { Links } from './Links';
 
 const NavBar = () => {
     let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
-    let status = TokenManagement.getUser() ;
+    let status = TokenManagement.getUser();
     useEffect(() => {
         user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
         status = TokenManagement.getUser();
@@ -28,9 +28,9 @@ const NavBar = () => {
                         <li>
                             <NavLink tag={Link} to="/signUp">SignUp</NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
                         </li>
@@ -42,7 +42,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
-                        </li>                        
+                        </li>
                         <li>
                             <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
                         </li>
@@ -64,7 +64,7 @@ const NavBar = () => {
                 <div className={styles.homePageButtons}>
                     <ul>
                         <li>
-                            <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
+                            <Link to="/loginasemployee" ><button className={styles.loginButton}>Login</button></Link>
                         </li>
                         <li>
                             <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>

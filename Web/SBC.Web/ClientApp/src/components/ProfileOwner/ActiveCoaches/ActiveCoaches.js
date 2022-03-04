@@ -15,13 +15,13 @@ export default function ActiveCoaches(prop) {
     }, []);
 
     const handleSkip = (skip) => {
-        setSkip(prevSkip => {
+        prop.setSkip(prevSkip => {
             return prevSkip + skip;
         });
     }
 
     const handleClient = (client) => {
-        setClients(prevPortions => {
+        prop.setClients(prevPortions => {
             return [client, ...prevPortions];
         });
     }
@@ -36,7 +36,7 @@ export default function ActiveCoaches(prop) {
                 <div className={styles.cardscontainer}>
                     <div className={styles.card}>
                         <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -54,7 +54,7 @@ export default function ActiveCoaches(prop) {
                     </div>
                     <div className={styles.card}>
                         <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -72,7 +72,7 @@ export default function ActiveCoaches(prop) {
                     </div>
                     <div className={styles.card}>
                         <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 7.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Mask Group 7.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -90,7 +90,7 @@ export default function ActiveCoaches(prop) {
                     </div>
                     <div className={styles.card}>
                         <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 8.png" alt=""/>
+                            <img className={styles.cardpic} src="assets/images/Mask Group 8.png" alt="" />
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>

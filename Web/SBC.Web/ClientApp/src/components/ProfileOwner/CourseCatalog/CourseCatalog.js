@@ -16,13 +16,13 @@ export default function CourseCatalog(prop) {
     }, []);
 
     const handleSkip = (skip) => {
-        setSkip(prevSkip => {
+        prop.setSkip(prevSkip => {
             return prevSkip + skip;
         });
     }
 
     const handleClient = (client) => {
-        setClients(prevPortions => {
+        prop.setClients(prevPortions => {
             return [client, ...prevPortions];
         });
     }
@@ -74,14 +74,14 @@ export default function CourseCatalog(prop) {
                         </ul>
                     </div>
                     <div className={styles.imageC}>
-                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />                    
+                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
                     <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                              
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -97,10 +97,10 @@ export default function CourseCatalog(prop) {
                             </div>
                         </div>
                     </div>
-                <div className={styles.card + ' ' + styles.removeCard}>
+                    <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                            
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -119,7 +119,7 @@ export default function CourseCatalog(prop) {
                     <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                           
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -138,7 +138,7 @@ export default function CourseCatalog(prop) {
                     <div className={styles.card + ' ' + styles.removeCard}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                    
+                            <div className={styles.centered}>JAVA</div>
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>
@@ -157,8 +157,8 @@ export default function CourseCatalog(prop) {
                     <div className={styles.card}>
                         <div className={styles.imgContainer}>
                             <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>        
-                           
+                            <div className={styles.centered}>JAVA</div>
+
                         </div>
                         <div className={styles.down}>
                             <div className={styles.name}>

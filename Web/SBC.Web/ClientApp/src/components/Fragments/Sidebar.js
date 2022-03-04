@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState} from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { NavLink, } from 'react-router-dom';
 
 import { userService } from '../../services';
@@ -9,14 +9,14 @@ import styles from "./Sidebar.module.css";
 export default function Sidebar(props) {
 
     let userData = TokenManagement.getUserData();
-
+    let userRole = TokenManagement.getUserRole();
     useEffect(() => {
+        userRole = TokenManagement.getUserRole();
         userData = TokenManagement.getUserData();
+        console.log(userRole)
     }, [])
 
-    const onLogout = () => {
-        userService.logout();
-    }
+
 
     return (
 
@@ -33,20 +33,42 @@ export default function Sidebar(props) {
                         {userData ? userData.fullname : "N/A"}
                     </div>
                     <div className={styles.companyName}>
-                        Motion
+                        {!userData['company'] ? null : userData.company}
                     </div>
                 </div>
             </div>
             <div className={styles.navigation}>
-                <ul>
-                    <li><NavLink to="/managerProfile/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
-                    <li><NavLink to="/managerProfile/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
-                    <li><NavLink to="/managerProfile/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
-                    <li><NavLink to='/managerProfile/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
-                    <li><NavLink to="/managerProfile/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
-                    <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
-                </ul>
+
+                {userRole == "Administrator"
+                    ? _adminUrl
+                    : userRole == "Owner"
+                        ? _ownerUrls
+                        : null}
+
             </div>
         </div>
     );
 }
+const onLogout = () => {
+    userService.logout();
+}
+const _ownerUrls = (
+    <ul>
+        <li><NavLink to="/managerProfile/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+        <li><NavLink to="/managerProfile/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
+        <li><NavLink to="/managerProfile/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
+        <li><NavLink to='/managerProfile/ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+        <li><NavLink to="/managerProfile/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
+        <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
+    </ul>
+);
+
+
+const _adminUrl = (
+    <ul>
+        <li> <NavLink to="/super-admin/dashboard">Dashboard</NavLink></li>
+        <li> <NavLink to="/super-admin/clients">Clients</NavLink></li>
+        <li> <NavLink to="/super-admin/revenue">Revenue</NavLink></li>
+        <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
+    </ul>
+);
