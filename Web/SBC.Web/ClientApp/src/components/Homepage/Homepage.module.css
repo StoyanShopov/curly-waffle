@@ -10,6 +10,8 @@
     height: 100%;
     float: left;
     margin-bottom: 12%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .rightHalf {
@@ -21,7 +23,7 @@
 .hOne {
     float: left;
     padding-left: 10%;
-    font-size: 70px;
+    font-size: 48px;
     width: 760px;
     display: block;
     text-align: left;
@@ -56,7 +58,7 @@
 }
 
 .pDemo {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
     padding-left: 10%;
 }
@@ -65,15 +67,18 @@
     font-size: 22px;
     padding-left: 10%;
     width: 747px;
-    height: 156px;
     line-height: 42px;
     display: block;
+}
+
+.inputForm {
+    width: 100%;
 }
 
 .inputBase {
     width: 300px;
     height: 70px;
-    margin-left: 10%;
+    margin-left: 7%;
     border-color: #296CFB;
     margin-bottom: 7%;
     text-align: center;
@@ -107,10 +112,11 @@
 
 .inputForm ::placeholder {
     color: #296CFB;
+    font-size: 19px;
 }
 
 .hTwo {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: bold;
 }
 
