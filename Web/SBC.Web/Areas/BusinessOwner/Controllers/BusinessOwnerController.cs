@@ -6,7 +6,7 @@
 
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    // [Authorize(Roles = CompanyOwnerRoleName)]
+    [Authorize(Roles = CompanyOwnerRoleName)]
     [Area("BusinessOwner")]
     [Route("manager/[controller]")] // check
     public class BusinessOwnerController : ApiController

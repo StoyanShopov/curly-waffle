@@ -1,1 +1,70 @@
-﻿
+﻿.card {
+    width: 29%;
+    height: auto;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+.imgContainer {
+    position: relative;
+    text-align: center;
+}
+
+.cardpic {
+    position: relative;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    filter: brightness(70%);
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: normal normal 800 30px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.name {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 20px;
+}
+
+    .name span:first-child {
+        color: #000000;
+        font-weight: bold;
+    }
+
+.price {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    color: #296CFB;
+}
+
+.button {
+    text-align: center;
+    padding-bottom: 6%;
+}
+
+.removeButton {
+    width: 120px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}

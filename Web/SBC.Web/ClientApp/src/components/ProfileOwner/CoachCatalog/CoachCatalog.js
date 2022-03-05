@@ -75,7 +75,7 @@ export default function CoachCatalog() {
                         </ul>
                     </div>
                     <div className={styles.imageC}>
-                        <img className={styles.megaphone} src="assets/images/Group 49.svg" alt="" />
+                        <img className={styles.megaphone} src="/assets/images/Group 49.svg" alt="" />
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
@@ -83,7 +83,6 @@ export default function CoachCatalog() {
                         ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
                         : <h3>No coaches yet</h3>
                     }
-
                 </div>
                 <div className={styles.buttonContainer}>
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
