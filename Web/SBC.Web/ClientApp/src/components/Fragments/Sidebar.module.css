@@ -7,15 +7,19 @@
     background-color: #296cfb1a;
     overflow: auto;
 }
+.pencilLink {
+    cursor: pointer;
+    border-style: none;
+    float: right;
+    position: relative;
+    top: 4%;
+    right: 5%;
+    z-index: +10;
+}
 
 .pencil {
-    width: 18px;
-    padding-top: 5%;
-    padding-right: 5%;
-    display: block;
-    margin-left: auto;
-    height: auto;
-    float: none;
+    width: 24px;    
+    height: auto;    
 }
 
 .namesContainer {

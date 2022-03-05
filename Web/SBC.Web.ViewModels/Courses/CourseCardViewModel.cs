@@ -4,7 +4,7 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class CourseCardViewModel : IMapFrom<Course>/*, IMapFrom<Coach>,  IHaveCustomMappings*/
+    public class CourseCardViewModel : IMapFrom<Course>
     {
         public int Id { get; set; }
 
@@ -21,11 +21,5 @@
         public string CompanyLogoUrl { get; set; }
 
         public bool IsActive { get; set; }
-
-        //public void CreateMappings(IProfileExpression configuration)
-        //{
-        //    configuration.CreateMap<Coach, CourseCardViewModel>()
-        //                .ForMember(c => c.CoachFullName, cfg => cfg.MapFrom(c => c.FirstName + ' ' + c.LastName));
-        //}
     }
 }
