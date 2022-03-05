@@ -22,7 +22,7 @@ export default function Sidebar(props) {
 
         <div className={styles.container}>
             <button className={styles.pencilLink} onClick={() => props.showModal()}>
-                <img src="assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
+                <img src="/assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
             </button>
             <div className={styles.namesContainer}>
                 <div className={styles.greenCircle}>

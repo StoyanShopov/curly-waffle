@@ -40,10 +40,26 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
     margin-bottom: 1%;
     margin-top: 1%;
     color: #296CFB;
+}
+
+
+.imgContainer img {
+    align-self: flex-start;
+    padding-top: 4px;
+    max-width: 93px;
+    max-height: 46px;
+}
+
+.imgContainer {
+    width: 100px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button {

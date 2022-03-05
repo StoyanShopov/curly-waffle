@@ -15,15 +15,15 @@ export default function ManagerCoachCard(props) {
                 </div>
                 <div className={styles.price}>
                     <span>{props.coach.pricePerSession}&#8364; per session</span>
-                    <span><img src={props.coach.companyLogoUrl} /></span>
+                    <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
                 </div>
                 <div className={styles.button}>
                     {props.coach.isActive
-                        ? <button>Remove</button>
-                        : <button>Add</button>
+                        ? <button className={styles.removeButton}>Remove</button>
+                        : <button className={styles.removeButton}>Add</button>
                     }
                 </div>
             </div>
         </div>
-        )
+    )
 }
