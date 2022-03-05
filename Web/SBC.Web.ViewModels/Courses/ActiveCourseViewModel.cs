@@ -20,7 +20,7 @@
 
         public int LanguageId { get; set; }
 
-        public string CoachName { get; set; }
+        public string CoachFullName { get; set; }
 
         public string CompanyLogoUrl { get; set; }
 

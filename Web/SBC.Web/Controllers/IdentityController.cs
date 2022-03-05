@@ -46,7 +46,6 @@
             return this.GenericResponse(result);
         }
 
-
         [HttpGet]
         [Route("Profile")]
         public async Task<ActionResult> GetProfile()

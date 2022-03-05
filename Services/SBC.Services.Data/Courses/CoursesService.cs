@@ -41,7 +41,7 @@
                         PricePerPerson = course.PricePerPerson,
                         LanguageId = course.LanguageId,
                         CategoryId = course.CategoryId,
-                        CoachName = course.Coach.FirstName,
+                        CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
                         CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
                         IsActive = true,
                     });
@@ -55,7 +55,7 @@
                         PricePerPerson = course.PricePerPerson,
                         LanguageId = course.LanguageId,
                         CategoryId = course.CategoryId,
-                        CoachName = course.Coach.FirstName, // check
+                        CoachFullName = course.Coach.FirstName + ' ' + course.Coach.LastName, // check
                         CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
                         IsActive = false,
                     });

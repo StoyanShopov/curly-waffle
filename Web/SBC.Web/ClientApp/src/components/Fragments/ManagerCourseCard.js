@@ -13,7 +13,7 @@ export default function ManagerCourseCard(props) {
             <div className={styles.down}>
                 <div className={styles.name}>
                     <span>Category?</span>
-                    <span>{props.course.coachName}</span>
+                    <span>{props.course.coachFullName}</span>
                 </div>
                 <div className={styles.price}>
                     <span>{props.course.pricePerPerson}&#8364; per person</span>
