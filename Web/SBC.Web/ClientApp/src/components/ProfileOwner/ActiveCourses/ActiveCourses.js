@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 
 import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
 import { OwnerService } from '../../../services';
 import styles from "./ActiveCourses.module.css";
 
@@ -15,8 +16,8 @@ export default function ActiveCourses() {
         OwnerService.CompanyGetActiveCourses()
             .then(res => {
                 setCourses(res.data);
-                console.log("courses", res.data);//
-            });
+                console.log(res.data)//
+            })
     }, []);
 
     const handleClose = useCallback(() => {
@@ -30,65 +31,10 @@ export default function ActiveCourses() {
                     <Link to="/courseCatalog" ><button className={styles.manageButton}>Manage</button></Link>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
-                            <div className={styles.centered}>MARKETING</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
-                            <div className={styles.centered}>DESIGN</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
-                            <div className={styles.centered}>HTML&CSS</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {courses.length > 0
+                        ? courses.map(x => <ManagerCourseCard key={x.id} course={x} />)
+                        : <h3>No courses yet</h3>
+                    }                    
                 </div>
             </div>
             <Modal

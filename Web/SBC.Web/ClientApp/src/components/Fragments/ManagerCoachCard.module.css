@@ -79,3 +79,7 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+.removeCard {
+    background-color: #EAF0FF;
+}
