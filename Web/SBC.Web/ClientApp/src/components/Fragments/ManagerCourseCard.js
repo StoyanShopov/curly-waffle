@@ -6,7 +6,7 @@ export default function ManagerCourseCard(props) {
     return (
 
         <div className={styles.card}>
-            <div className={styles.imgContainer}>
+            <div className={styles.cardpicContainer}>
                 <img className={styles.cardpic} src="/assets/images/Rectangle 1221.png" alt="" />
                 <div className={styles.centered}>{props.course.title}</div>
             </div>
@@ -17,7 +17,7 @@ export default function ManagerCourseCard(props) {
                 </div>
                 <div className={styles.price}>
                     <span>{props.course.pricePerPerson}&#8364; per person</span>
-                    <span><img src={props.course.companyLogoUrl} /></span>
+                    <span className={styles.imgContainer}><img src={props.course.companyLogoUrl} /></span>
                 </div>
                 <div className={styles.button}>
                     {props.course.isActive

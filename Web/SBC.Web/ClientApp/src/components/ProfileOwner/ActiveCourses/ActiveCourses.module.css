@@ -1,22 +1,20 @@
 .container {
     margin: 0 auto;
     width: 75%;
-    left: 16%;
+    left: 13%;
     position: relative;
     text-align: center;
 }
 
 .buttonContainer {
-    margin-left: 78%;
+    margin-left: 81%;
     padding-top: 3%;
-    position: absolute;
-    z-index: 100;
+    position: absolute;   
 }
 
 .manageButton {
     width: 130px;
     height: 40px;
-    text-decoration: none;
     border-color: #296CFB;
     text-decoration: none;
     font: normal normal bold 22px/27px Montserrat;
@@ -31,10 +29,9 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    row-gap: 1rem;
     align-items: center;
-    gap: 120px 150px;
-    padding-top: 10%;
+    gap: 76px 120px;
+    padding-top: 5%;
     padding-left: 6%;
     z-index: -10;
 }
