@@ -1,8 +1,25 @@
 ﻿import React from 'react';
 
+import { OwnerService } from '../../services';
+
 import styles from './ManagerCoachCard.module.css';
 
 export default function ManagerCoachCard(props) {
+
+    const onDelete = () => {
+        OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
+            .then(res => {
+                console.log('Successful delete')//
+            })
+    }
+
+    const onSet = async () => {
+        await OwnerService.CompanySetCoachToActive(props.coach.id)
+            .then(res => {
+                console.log('Successful set')//
+            })
+    }
+
     return (
         <div className={styles.card}>
             <div className={styles.upper}>
@@ -19,8 +36,8 @@ export default function ManagerCoachCard(props) {
                 </div>
                 <div className={styles.button}>
                     {props.coach.isActive
-                        ? <button className={styles.removeButton}>Remove</button>
-                        : <button className={styles.removeButton}>Add</button>
+                        ? <button className={styles.removeButton} onClick={onDelete}>Remove</button>
+                        : <button className={styles.removeButton} onClick={onSet}>Add</button>
                     }
                 </div>
             </div>

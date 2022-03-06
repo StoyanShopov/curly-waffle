@@ -8,7 +8,7 @@
 
     [Authorize(Roles = CompanyOwnerRoleName)]
     [Area("BusinessOwner")]
-    [Route("manager/[controller]")] // check
+    [Route("manager/[controller]")]
     public class BusinessOwnerController : ApiController
     {
     }
