@@ -14,6 +14,7 @@ export default function Sidebar(props) {
         userRole = TokenManagement.getUserRole();
         userData = TokenManagement.getUserData();
         console.log(userRole)
+        console.log(userData)
     }, [])
 
 

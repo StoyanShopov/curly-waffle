@@ -76,7 +76,7 @@ export default function OwnerEmployees() {
                             <th >
                                 <div className={css.plusSignContainer} >
                                     <Link to="" onClick={() => setShowModal(true)}>
-                                        <img src="assets/images/Plus.svg" alt="add-icon"></img>
+                                        <img src="/assets/images/Plus.svg" alt="add-icon"></img>
                                     </Link>
                                 </div>
                             </th>
@@ -87,10 +87,10 @@ export default function OwnerEmployees() {
                             <tr key={employee.id}>
                                 <td className={css.name}>{employee.fullName}</td>
                                 <td className={css.email}>{employee.email.toLowerCase()}</td>
-                                <td><button onClick={() => { RemoveEmployee(employee.id) }}>X</button></td>
+                                <td ><button onClick={() => { RemoveEmployee(employee.id) }} className={css.remove}>X</button></td>
                             </tr>
                         ))}
-                        <tr key={"unique_loading"} id='pending'>
+                        <tr key={"unique_loading"} id={css.pending}>
                             {isPending &&
                                 <td>
                                     <h2>Loading...</h2>

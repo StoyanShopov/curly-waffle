@@ -104,14 +104,15 @@
     }
 
     .tableContainer thead th {
-        padding-top: 20px;
-        padding-bottom: 16px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
 .tableTr {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
+    padding-top: 10px;
     border-top: 1px solid white;
     margin-left: 30px;
     margin-right: 30px;
@@ -128,8 +129,8 @@
 }
 
 .theadTr {
-    display: grid;
     align-self: center;
+    padding: 6px 0;
 }
 
 .theadTh svg {

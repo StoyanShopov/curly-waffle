@@ -33,9 +33,13 @@ export default function Invoice() {
                                 </svg>
                             </th>
                         </tr>
-                        <svg className={css.line} width="926" height="4" viewBox="0 0 926 4">
-                            <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="2" />
-                        </svg>
+                        <tr>
+                            <th>
+                                <svg className={css.line} width="926" height="4" viewBox="0 0 926 4">
+                                    <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="2" />
+                                </svg>
+                            </th>
+                        </tr>
                         <tr className={css.tableTr}>
                             <th className={css.firstTh}>Course/Coach</th>
                             <th className={css.secondTh}>Date</th>

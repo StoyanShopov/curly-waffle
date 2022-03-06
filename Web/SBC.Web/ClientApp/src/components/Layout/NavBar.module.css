@@ -43,16 +43,16 @@
     text-align: left;
 }
 
-.upskillContainer input {
-  cursor: pointer;
-}
+    .upskillContainer input {
+        cursor: pointer;
+    }
 
 .upskillLink {
-  color: inherit;
-  text-decoration: inherit;
-  font: normal normal bold 30px/37px Montserrat;
-  letter-spacing: 1.5px;
-  color: #000000;
+    color: inherit;
+    text-decoration: inherit;
+    font: normal normal bold 30px/37px Montserrat;
+    letter-spacing: 1.5px;
+    color: #000000;
 }
 
 .testedLinks {
@@ -72,7 +72,7 @@
     .testedLinks ul {
         flex-grow: 0.97;
         align-items: center;
-        align-content: space-around;        
+        align-content: space-around;
         flex-basis: 8%;
     }
 
@@ -158,12 +158,12 @@
             margin-left: 5px;
         }
 
-.coursesCoaches a:hover,
-.coursesCoaches a:visited,
-.coursesCoaches a:link,
-.coursesCoaches a:active {
-  text-decoration: none;
-}
+    .coursesCoaches a:hover,
+    .coursesCoaches a:visited,
+    .coursesCoaches a:link,
+    .coursesCoaches a:active {
+        text-decoration: none;
+    }
 
 .coursesActive {
     font: normal normal bold 22px/27px Montserrat;
@@ -200,3 +200,11 @@
     flex-shrink: 1;
     flex-basis: 0;
 }
+
+    .greenCircle a:hover,
+    .greenCircle a:visited,
+    .greenCircle a:link,
+    .greenCircle a:active {
+        text-decoration: none;
+        color: inherit;
+    }

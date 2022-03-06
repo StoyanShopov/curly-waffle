@@ -38,24 +38,17 @@ export default function OwnerDashboard() {
                     <thead>
                         <tr className={styles.theadTr}>
                             <th className={styles.theadTh}>
-                                <td>
-                                    <svg width="11.4" height="20" viewBox="0 0 11.4 20">
-                                        <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
-                                    </svg>
-                                </td>
-                                <td>September</td>
-                                <td>
-                                    <svg width="11.4" height="20" viewBox="0 0 11.4 20">
-                                        <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
-                                    </svg>
-                                </td>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
+                                </svg>
+                            </th>
+                            <th>September</th>
+                            <th className={styles.theadTh}>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
+                                </svg>
                             </th>
                         </tr>
-                        {/*<tr>*/}
-                        {/*    <svg width="926" height="4" viewBox="0 0 926 4">*/}
-                        {/*        <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="2" />*/}
-                        {/*    </svg>*/}
-                        {/*</tr>*/}
                         <tr className={styles.tableTr}>
                             <th className={styles.firstTh}>Course Name</th>
                             <th className={styles.secondTh}>Enrolled</th>
@@ -86,27 +79,18 @@ export default function OwnerDashboard() {
                 <table className={styles.tableContainer}>
                     <thead>
                         <tr className={styles.theadTr}>
-                            <th className={styles.theadTh} >
-                                <td>
-                                    <svg width="11.4" height="20" viewBox="0 0 11.4 20">
-                                        <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
-                                    </svg>
-                                </td>
-                                <td> September</td>
-                                <td>
-                                    <svg width="11.4" height="20" viewBox="0 0 11.4 20">
-                                        <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
-                                    </svg>
-                                </td>
+                            <th className={styles.theadTh}>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1035" data-name="Path 1035" d="M10,108.541a1.4,1.4,0,0,1-.99-.41l-8.6-8.6a1.4,1.4,0,0,1,1.981-1.981L10,105.16l7.609-7.609a1.4,1.4,0,0,1,1.98,1.981l-8.6,8.6A1.4,1.4,0,0,1,10,108.541Z" transform="translate(108.541 -0.001) rotate(90)" fill="#fff" />
+                                </svg>
+                            </th>
+                            <th> September</th>
+                            <th className={styles.theadTh}>
+                                <svg width="11.4" height="20" viewBox="0 0 11.4 20">
+                                    <path id="Path_1034" data-name="Path 1034" d="M10,0a1.4,1.4,0,0,0-.99.41L.41,9.01A1.4,1.4,0,0,0,2.391,10.99L10,3.381l7.609,7.609a1.4,1.4,0,0,0,1.98-1.981L10.99.41A1.4,1.4,0,0,0,10,0Z" transform="translate(11.4) rotate(90)" fill="#fff" />
+                                </svg>
                             </th>
                         </tr>
-                        {/* <tr>
-                            <td>
-                                <svg width="926" height="4" viewBox="0 0 926 4">
-                                    <line id="Line_49" data-name="Line 49" x2="925" transform="translate(0.5 0.5)" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="2" />
-                                </svg>
-                            </td>
-                        </tr> */}
                         <tr className={styles.tableTr}>
                             <th className={styles.firstTh}>Coach Name</th>
                             <th className={styles.secondTh}>Sessions</th>
