@@ -7,6 +7,8 @@
     {
         Task<Result> GetEmailByIdAsync(int id);
 
+        Task<Result> GetAllAsync<TModel>();
+
         Task<bool> ExistsByNameAsync(string name);
 
         Task<int> NoTrackGetCompanyByNameAsync(string name);

@@ -7,6 +7,7 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
+    using SBC.Services.Mapping;
 
     public class CompaniesService : ICompaniesService
     {
@@ -35,5 +36,11 @@
                 .Where(c => c.Name.ToLower() == name.ToLower())
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync();
+
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.companiesRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync());
     }
 }
