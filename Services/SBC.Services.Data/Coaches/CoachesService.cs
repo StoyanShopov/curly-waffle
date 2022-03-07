@@ -198,6 +198,11 @@
             return new ResultModel(coachId);
         }
 
+        public async Task<int> GetCountAsync()
+    => await this.coachesRepository
+        .AllAsNoTracking()
+        .CountAsync();
+
         private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)
         => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x.LanguageId));
 

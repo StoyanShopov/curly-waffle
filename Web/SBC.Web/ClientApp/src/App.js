@@ -8,7 +8,7 @@ import AdminProfile from './components/super-admin/AdminProfile';
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
-import OwnerDashboard from "./components/ProfileOwner/OwnerDashboard";
+import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
 import CreateCoach from "./components/Coaches/CreateCoach";
 import EditCoach from "./components/Coaches/EditCoach";
 import Coaches from "./components/Coaches/Coaches";
@@ -17,7 +17,6 @@ import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
 import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
 
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
-import OwnerDashboard from "./components/ProfileOwner/Dashboard/OwnerDashboard";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";
 import Invoice from "./components/ProfileOwner/Invoice/Invoice";
 import ActiveCoaches from "./components/ProfileOwner/ActiveCoaches/ActiveCoaches";

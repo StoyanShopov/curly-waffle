@@ -6,7 +6,6 @@
     using Microsoft.Extensions.Options;
     using SBC.Services.Data.User;
 
-    using SBC.Web.Models.Identity;
     using SBC.Web.ViewModels.User;
 
     public class IdentityController : ApiController

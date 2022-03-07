@@ -4,12 +4,22 @@ import DeleteCoach from "./DeleteCoach";
 import { Link } from "react-router-dom";
 import EditCoach from "./EditCoach";
 import Modal from 'react-modal';
+import { getCompanyEmailById } from "../../services/adminCoachesService";
 
 const CoachCard = (props) => {
     const [coach, setCoach] = useState(props.coach)
     const [coaches, setCoaches] = useState(props.coaches)
+    const [companyUrl, setCompanyUrl] = useState();
+
+
 
     useEffect(() => {
+      if(coach.companyId!==null){
+        getCompanyEmailById(coach.companyId).then(res =>{
+          setCompanyUrl(res['logoUrl']);
+        })
+      }
+
       setCoach(coach)
       setCoaches(coaches)
     },[props.coach,props.coaches])
@@ -55,8 +65,8 @@ const CoachCard = (props) => {
               <span>
                 <img
                   className={styles.company}
-                  src={"logo"}
-                  alt="Company logo"
+                  src={companyUrl}
+                  alt="Unemployed"
                 />
               </span>
             </div>

@@ -3,7 +3,7 @@ import { baseUrl } from '../constants';
 
 export const createCoach = async (data) => {
     try {
-        const resp = await axios.post(baseUrl + "api/Coaches", data, {
+        const resp = await axios.post(baseUrl + "Administration/Coaches", data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -14,7 +14,7 @@ export const createCoach = async (data) => {
 
 export const updateCoach = async (data) => {
     try {
-        const resp = await axios.put(baseUrl + `api/Coaches/${data.id}`, data, {
+        const resp = await axios.put(baseUrl + `Administration/Coaches/${data.id}`, data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -24,7 +24,7 @@ export const updateCoach = async (data) => {
 }
 
 export const getAllCoaches = async () =>{
-        return await axios.get(baseUrl + "api/Coaches", {
+        return await axios.get(baseUrl + "Administration/Coaches", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
@@ -32,7 +32,7 @@ export const getAllCoaches = async () =>{
 }
 
 export const deleteCoachById = async (coachId) =>{
-    const resp = await axios.delete(baseUrl + `api/Coaches/${coachId}` , {
+    const resp = await axios.delete(baseUrl + `Administration/Coaches/${coachId}` , {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         }

@@ -40,6 +40,7 @@
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
+    using SBC.Services.Identity.Contracts;
 
     public class Startup
     {
@@ -153,7 +154,6 @@
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<ILecturesService, LecturesService>();
             services.AddTransient<IResourcesService, ResourcesService>();
             services.AddTransient<IIdentitiesService, IdentitiesService>();
