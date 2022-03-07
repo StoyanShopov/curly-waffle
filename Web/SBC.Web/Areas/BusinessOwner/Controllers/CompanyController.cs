@@ -69,7 +69,7 @@
             return this.GenericResponse(await this.companiesService.GetActiveCourses(companyId));
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("addCourse")]
         public async Task<ActionResult> SetCourseToActive(int courseId)
         {

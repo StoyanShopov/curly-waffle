@@ -21,46 +21,21 @@
 
         public async Task<Result> GetAllWithActive(int companyId)
         {
-            var courses = await this.coursesRepository
-                .AllAsNoTracking()
-                .Include(x => x.Companies)
-                .Include(x => x.Coach)
-                .ThenInclude(c => c.Company)
-                .ToListAsync();
-
-            var filteredCourses = new List<CourseCardViewModel>();
-
-            foreach (var course in courses)
-            {
-                if (course.Companies.Any(x => x.CompanyId == companyId))
-                {
-                    filteredCourses.Add(new CourseCardViewModel
-                    {
-                        Id = course.Id,
-                        Title = course.Title,
-                        PricePerPerson = course.PricePerPerson,
-                        LanguageId = course.LanguageId,
-                        CategoryId = course.CategoryId,
-                        CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
-                        CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
-                        IsActive = true,
-                    });
-                }
-                else
-                {
-                    filteredCourses.Add(new CourseCardViewModel
-                    {
-                        Id = course.Id,
-                        Title = course.Title,
-                        PricePerPerson = course.PricePerPerson,
-                        LanguageId = course.LanguageId,
-                        CategoryId = course.CategoryId,
-                        CoachFullName = course.Coach.FirstName + ' ' + course.Coach.LastName, // check
-                        CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
-                        IsActive = false,
-                    });
-                }
-            }
+            var filteredCourses = await this.coursesRepository
+               .AllAsNoTracking()
+               .Select(course => new CourseCardViewModel
+               {
+                   Id = course.Id,
+                   Title = course.Title,
+                   LanguageId = course.LanguageId,
+                   CategoryId = course.CategoryId,
+                   CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
+                   CategoryName = course.Category.Name,
+                   PricePerPerson = course.PricePerPerson,
+                   CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
+                   IsActive = course.Companies.Any(x => x.CompanyId == companyId),
+               })
+               .ToListAsync();
 
             return new ResultModel(filteredCourses);
         }

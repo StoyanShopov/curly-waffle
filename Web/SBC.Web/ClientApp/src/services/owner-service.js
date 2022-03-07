@@ -145,7 +145,7 @@ const CompanyGetActiveCourses = async () => {
 }
 
 const CompanySetCourseToActive = async (courseId) => { //TODO
-    const response = await axios.post(baseUrl + `manager/Company/addCourse?courseId=${courseId}`,
+    const response = await axios.get(baseUrl + `manager/Company/addCourse?courseId=${courseId}`,
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,

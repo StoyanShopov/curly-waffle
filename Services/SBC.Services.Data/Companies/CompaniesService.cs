@@ -197,6 +197,7 @@
                     CategoryId = x.CategoryId,
                     LanguageId = x.LanguageId,
                     CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    CategoryName = x.Category.Name,
                     CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
                 })
                 .ToListAsync();

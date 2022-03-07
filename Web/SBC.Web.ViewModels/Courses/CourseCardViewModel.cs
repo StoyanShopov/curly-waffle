@@ -20,6 +20,8 @@
 
         public string CompanyLogoUrl { get; set; }
 
+        public string CategoryName { get; set; }
+
         public bool IsActive { get; set; }
     }
 }
