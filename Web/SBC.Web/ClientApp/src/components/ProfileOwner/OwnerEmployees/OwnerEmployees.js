@@ -15,18 +15,6 @@ export default function OwnerEmployees(prop) {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
-
     return (
         <>
             <Sidebar />
@@ -82,7 +70,7 @@ export default function OwnerEmployees(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalAddEmployee handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalAddEmployee handleClose={handleClose}/>
             </Modal>
         </>);
 }

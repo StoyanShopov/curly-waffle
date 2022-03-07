@@ -113,7 +113,7 @@ export default function ActiveCoaches(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} />
             </Modal>
         </>
     );
