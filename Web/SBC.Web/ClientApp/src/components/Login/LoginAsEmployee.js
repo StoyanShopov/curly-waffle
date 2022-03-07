@@ -31,6 +31,7 @@ const LoginAsEmployee = (props) => {
         e.preventDefault();
 
         await dispatch(userActions.login(email, password));
+
         await GetAdminData().then(data => {
             //            console.log(data)
         });

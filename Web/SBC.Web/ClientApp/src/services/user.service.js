@@ -21,6 +21,25 @@ const login = async (email, password) => {
     return data;
 };
 
+const register = async (fullName, companyName, email, password, confirmPassword) => {
+    let data = instance
+        .post(apiUrl + "Register", {
+            fullName,
+            companyName,
+            email,
+            password,
+            confirmPassword
+        })
+        .then((response) => {
+            if (response.data.jwt) {
+                TokenManagement.setUser(response.data);
+            }
+            return response.data.jwt;
+        });
+
+    return data;
+};
+
 const logout = async () => {
     TokenManagement.removeUser();
     window.location.href = "/";
@@ -60,6 +79,7 @@ const EditUser = async (_data) => {
 
 export const userService = {
     login,
+    register,
     logout,
     GetUserData,
     EditUser,
