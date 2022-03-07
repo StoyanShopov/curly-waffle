@@ -13,8 +13,8 @@ export default function ManagerCoachCard(props) {
             })
     }
 
-    const onSet = async () => {
-        await OwnerService.CompanySetCoachToActive(props.coach.id)
+    const onSet = () => {
+         OwnerService.CompanySetCoachToActive(props.coach.id)
             .then(res => {
                 console.log('Successful set')//
             })

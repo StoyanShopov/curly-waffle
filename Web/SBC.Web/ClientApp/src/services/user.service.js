@@ -33,14 +33,10 @@ const logout = async () => {
             (err) => console.error(err));
 };
 
-const getUser = () => {
-    return (localStorage.getItem('user')) || null;
-}
-
-export const GetUserData = async () => {
+const GetUserData = async () => {
     let response = await axios({
         method: 'get',
-        url: baseUrl + GetLink(),
+        url: apiUrl + "Profile",
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
@@ -49,18 +45,11 @@ export const GetUserData = async () => {
     TokenManagement.setUserData(JSON.stringify(response.data));
     return response.data;
 }
-function GetLink() {
-    switch (TokenManagement.getUserRole()) {
-        case "Administrator": return "Administration/Profile";
-        case "Owner": return "manager/BusinessOwnerProfile";
-        default: return "api/Identity/Profile";
-    }
 
-}
-export const EditUser = async (_data) => {
+const EditUser = async (_data) => {
     return await axios({
         method: 'PUT',
-        url: baseUrl + GetLink(),
+        url: apiUrl + 'Profile',
         data: _data,
         headers: {
             'Content-Type': 'application/json',
@@ -72,5 +61,6 @@ export const EditUser = async (_data) => {
 export const userService = {
     login,
     logout,
-    getUser,
+    GetUserData,
+    EditUser,
 };

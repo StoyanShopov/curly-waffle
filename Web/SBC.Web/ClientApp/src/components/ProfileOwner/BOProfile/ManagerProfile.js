@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { OwnerService } from '../../../services';
+import { GetUser } from '../../../hooks/setUser';
 import { TokenManagement } from '../../../helpers';
 
 import EditProfile from '../../Fragments/EditProfile';
@@ -11,20 +11,23 @@ import SideBar from '../../Fragments/Sidebar';
 import OwnerDashboard from '../Dashboard/OwnerDashboard';
 import ActiveCoaches from '../ActiveCoaches/ActiveCoaches';
 import ActiveCourses from '../ActiveCourses/ActiveCourses';
-import CoachCatalog from '../CoachCatalog/CoachCatalog';
 import OwnerEmployees from '../OwnerEmployees/OwnerEmployees';
 import Invoice from '../Invoice/Invoice';
-import { GetAdmin } from '../../super-admin/AdminProfile';
 
-export default function ManagerProfile() {
+
+export default function ManagerProfile(props) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
     const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
-    const [icon, setIcon] = useState();
-    let _userData = TokenManagement.getUserData();
+
+    let userRole = TokenManagement.getUserRole();
     useEffect(() => {
-        _userData = TokenManagement.getUserData();
-        GetAdmin(setUserData, setIcon);
+        userRole = TokenManagement.getUserRole();
+        console.log(props.editUser())//
+
+        GetUser(setUserData);
     }, [])
+
     function openModal() {
         setModalIsOpen(true);
     }
@@ -44,7 +47,7 @@ export default function ManagerProfile() {
                 margin: '0px',
                 padding: '0px',
             }}>
-            <SideBar showModal={openModal} userData={_userData} icon={icon} />
+            <SideBar showModal={openModal} userData={userData} userRole={userRole} />
             <Routes>
                 <Route index element={<OwnerDashboard />} />
                 <Route path="dashboard" element={<OwnerDashboard />} />
@@ -61,7 +64,7 @@ export default function ManagerProfile() {
                 onRequestClose={closeModal}
                 ariaHideApp={false}
             >
-                <EditProfile closeModal={closeModal} getAdminData={() => GetAdmin(setUserData, setIcon)} />
+                <EditProfile closeModal={closeModal} getUserData={() => GetUser(setUserData)} editUser={() => props.editUser()} />
             </Modal>
         </div>
     )

@@ -45,7 +45,7 @@
             return this.GenericResponse(await this.companiesService.GetActiveCoaches(companyId));
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("addCoach")]
         public async Task<ActionResult> SetCoachToActive(int coachId)
         {

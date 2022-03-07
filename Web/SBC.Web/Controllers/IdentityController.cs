@@ -37,7 +37,7 @@
             return this.GenericResponse(result);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("Profile")]
         public async Task<ActionResult> EditProfile(EditProfileInputModel model)
         {
@@ -50,7 +50,7 @@
         [Route("Profile")]
         public async Task<ActionResult> GetProfile()
         {
-            var result = await this.usersService.GetAdminDataAsync<ProfileViewModel>(this.User.Id());
+            var result = await this.usersService.GetUserDataAsync<ProfileViewModel>(this.User.Id());
 
             return this.GenericResponse(result);
         }

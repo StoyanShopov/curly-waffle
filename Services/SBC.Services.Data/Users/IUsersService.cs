@@ -13,7 +13,7 @@
 
         Task<Result> EditAsync(EditProfileInputModel model, string userId);
 
-        Task<Result> GetAdminDataAsync<TModel>(string userId);
+        Task<Result> GetUserDataAsync<TModel>(string userId);
 
         Task<TModel> GetByEmailAsync<TModel>(string email);
 

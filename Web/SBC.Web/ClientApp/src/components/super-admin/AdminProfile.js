@@ -6,27 +6,21 @@ import css from './AdminProfile.module.css'
 import Clients from './Clinets';
 import Dashboard from './Dashboard';
 import EditProfile from '../Fragments/EditProfile';
-import NavigationBar from './NavigationBar';
 import Revenue from './Revenue';
-import { GetAdminData } from '../../services/super-admin-service';
 import { TokenManagement } from '../../helpers';
+import { GetUser } from '../../hooks/setUser';
+import SideBar from '../Fragments/Sidebar';
 
-export  async function GetAdmin(_setAdminData,_setIcon) {
-  await GetAdminData().then(a => {
-     _setAdminData(a)
-     _setIcon(a.fullname.substring(0, 1))
-  })
-}
+export default function AdminProfile(props) {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
-export default function AdminProfile() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [adminData, setAdminData] = useState({ fullName: '',email:'', company: ''});
-  const [icon, setIcon] = useState();
-  let userData= TokenManagement.getUserData();
-useEffect(() => {
-  userData= TokenManagement.getUserData();
-    GetAdmin(setAdminData,setIcon);
-}, [])
+    const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
+
+    let userRole = TokenManagement.getUserRole();
+    useEffect(() => {
+        userRole = TokenManagement.getUserRole();
+        GetUser(setUserData);
+    }, [])
 
   let subtitle = {
     content: {
@@ -58,7 +52,7 @@ useEffect(() => {
 
   return (
     <div className={css.mainContent}>
-      <NavigationBar showModal={openModal} adminData={adminData} icon={icon} />
+      <SideBar showModal={openModal} userData={userData} userRole={userRole} />
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
@@ -73,7 +67,7 @@ useEffect(() => {
         onRequestClose={closeModal}
         ariaHideApp={false}
       >
-        <EditProfile closeModal={closeModal} getAdminData={()=>GetAdmin (setAdminData,setIcon)}/>
+      <EditProfile closeModal={closeModal} getUserData={() => GetUser(setUserData)} editUser={() => props.editUser()}/>
       </Modal>
     </div>
   )

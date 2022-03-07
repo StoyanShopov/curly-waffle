@@ -3,43 +3,6 @@
 import { TokenManagement } from '../helpers';
 import { baseUrl } from '../constants/GlobalConstants';
 
-
-// from BusinessOwnerProfileController:
-
-const GetOwnerData = async () => {
-    let response = await axios({
-        method: 'get',
-        url: baseUrl + "manager/BusinessOwnerProfile",
-        headers: {
-            'Content-Type': 'application/json',
-             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
-        }
-    });
-   
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-   
-    return response;
-}
-
-const EditOwner = async (_data) => {
-    let response = await axios({
-        method: 'PUT',
-        url: baseUrl + "manager/BusinessOwnerProfile",
-        data: _data,
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
-        },
-    });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-    return response;
-}
-
 // from CoachesController:
 
 const GetCoachesCatalog = async () => {
@@ -137,7 +100,7 @@ const CompanyGetActiveCoaches = async () => {
 }
 
 const CompanySetCoachToActive = async (coachId) => { //TODO
-    const response = await axios.post(baseUrl + `manager/Company/addCoach?coachId=${coachId}`,
+    const response = await axios.get(baseUrl + `manager/Company/addCoach?coachId=${coachId}`,
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -231,11 +194,9 @@ const GetOwnerDashboard = async () => {
 
 
 export const OwnerService = {
-    GetOwnerData,
     GetOwnerDashboard,
     GetCoachesCatalog,
-    GetCoursesCatalog,
-    EditOwner,   
+    GetCoursesCatalog,  
     CompanyAddEmployee,
     CompanyGetEmployees,
     CompanyRemoveEmployee,

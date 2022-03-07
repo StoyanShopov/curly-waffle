@@ -4,18 +4,12 @@ import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
 import { TokenManagement } from '../../helpers';
 
-const NavBar = () => {
-    let userRole = TokenManagement.getUserRole() == null ? null : TokenManagement.getUserRole();
-    let icon = TokenManagement.getIcon();
-    let status = TokenManagement.getUser();
+const NavBar = (props) => {
 
     useEffect(() => {
-        userRole = TokenManagement.getUserRole() == null ? null : TokenManagement.getUserRole();
-        icon = TokenManagement.getIcon();
-        status = TokenManagement.getUser();
-    }, [])
-
-
+        console.log(props.auth.user)//
+    })
+   
     return (
         <header className={styles.headerC}>
             <div className={styles.headerContainer}>
@@ -26,26 +20,27 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className={styles.testedLinks}>
-                    {status
+                    {props.auth.user != null
                         ? loggedOwner
-                        : null}
+                        : null
+                    }
                 </div>
 
                 <div className={styles.homePageButtons}>
-                    {status
+                    {props.auth.user != null
                         ? null
                         : unLogged}
                 </div>
 
                 <div className={styles.coursesCoaches}>
-                    {status
+                    {props.auth.user != null
                         ? courses
                         : null}
                 </div>
-                {status
+                {props.auth.user != null
                     ?
                     <div className={styles.greenCircle}>
-                        <NavLink tag={Link} to="profile">{icon}</NavLink>
+                        <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
                     </div>
                     : null}
             </div>
