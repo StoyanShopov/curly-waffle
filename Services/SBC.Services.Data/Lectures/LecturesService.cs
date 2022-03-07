@@ -18,9 +18,11 @@
         private readonly IDeletableEntityRepository<Lecture> lectures;
         private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
 
-        public LecturesService(IDeletableEntityRepository<Lecture> repo, IDeletableEntityRepository<CourseLecture> courseLectures)
+        public LecturesService(
+            IDeletableEntityRepository<Lecture> lectures, 
+            IDeletableEntityRepository<CourseLecture> courseLectures)
         {
-            this.lectures = repo;
+            this.lectures = lectures;
             this.courseLectures = courseLectures;
         }
 
