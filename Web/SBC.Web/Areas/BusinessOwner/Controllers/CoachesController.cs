@@ -22,7 +22,8 @@
         public async Task<ActionResult> GetCoachesCatalog()
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.coachesService.GetAllWithActive(companyId));
+            var coachesresult = await this.coachesService.GetAllWithActive(companyId);
+            return this.GenericResponse(coachesresult);
         }
     }
 }

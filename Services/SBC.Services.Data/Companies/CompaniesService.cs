@@ -138,16 +138,12 @@
         {
             var activeCoaches = await this.coachesRepository
                 .AllAsNoTracking()
-                .Include(x => x.Company)
-                .Include(x => x.Languages)
-                .Include(x => x.Categories)
                 .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
                 .Select(x => new ActiveCoachViewModel
                 {
                     Id = x.Id,
                     FullName = $"{x.FirstName} {x.LastName}",
-                    Languages = x.Languages,
-                    Categories = x.Categories,
+                    CategoryByDefault = x.Categories.Count == 0 ? "Uncategorized" : x.Categories.FirstOrDefault().Category.Name,
                     PricePerSession = x.PricePerSession,
                     CompanyLogoUrl = x.CompanyId != null ? x.Company.LogoUrl : "Null",
                 })

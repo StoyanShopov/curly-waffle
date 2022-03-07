@@ -20,6 +20,10 @@ export default function ManagerCoachCard(props) {
             })
     }
 
+
+    console.log(props.coach)
+
+
     return (
         <div className={styles.card}>
             <div className={styles.upper}>
@@ -27,7 +31,7 @@ export default function ManagerCoachCard(props) {
             </div>
             <div className={styles.down}>
                 <div className={styles.name}>
-                    <span>Category?</span>
+                    <span>{props.coach.categoryByDefault}</span>
                     <span>{props.coach.fullName}</span>
                 </div>
                 <div className={styles.price}>

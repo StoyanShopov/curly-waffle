@@ -21,45 +21,18 @@
 
         public async Task<Result> GetAllWithActive(int companyId)
         {
-            var coaches = await this.coachesRepository
+            var filteredCoaches = await this.coachesRepository
                 .AllAsNoTracking()
-                .Include(x => x.ClientCompanies)
-                .Include(x => x.Company)
-                .Include(x => x.Languages)
-                .Include(x => x.Categories)
+                .Select(coach => new CoachCardViewModel
+                {
+                    Id = coach.Id,
+                    FullName = $"{coach.FirstName} {coach.LastName}",
+                    CategoryByDefault = coach.Categories.Count == 0 ? "Uncategorized" : coach.Categories.FirstOrDefault().Category.Name,
+                    PricePerSession = coach.PricePerSession,
+                    CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                    IsActive = coach.ClientCompanies.Any(x => x.CompanyId == companyId),
+                })
                 .ToListAsync();
-
-            var filteredCoaches = new List<CoachCardViewModel>();
-
-            foreach (var coach in coaches)
-            {
-                if (coach.ClientCompanies.Any(x => x.CompanyId == companyId))
-                {
-                    filteredCoaches.Add(new CoachCardViewModel
-                    {
-                        Id = coach.Id,
-                        FullName = $"{coach.FirstName} {coach.LastName}",
-                        Languages = coach.Languages,
-                        Categories = coach.Categories,
-                        PricePerSession = coach.PricePerSession,
-                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
-                        IsActive = true,
-                    });
-                }
-                else
-                {
-                    filteredCoaches.Add(new CoachCardViewModel
-                    {
-                        Id = coach.Id,
-                        FullName = $"{coach.FirstName} {coach.LastName}",
-                        Languages = coach.Languages,
-                        Categories = coach.Categories,
-                        PricePerSession = coach.PricePerSession,
-                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
-                        IsActive = false,
-                    });
-                }
-            }
 
             return new ResultModel(filteredCoaches);
         }

@@ -20,9 +20,11 @@
 
         public string CompanyLogoUrl { get; set; }
 
-        public ICollection<CategoryCoach> Categories { get; set; }
+        public string CategoryByDefault { get; set; }
 
-        public ICollection<LanguageCoach> Languages { get; set; }
+        public ICollection<CategoryViewModel> Categories { get; set; } = new List<CategoryViewModel>();
+
+        public ICollection<LanguageViewModel> Languages { get; set; } = new List<LanguageViewModel>();
 
         public bool IsActive { get; set; }
     }
