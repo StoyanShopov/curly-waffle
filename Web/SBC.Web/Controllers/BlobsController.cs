@@ -7,8 +7,6 @@
 
     using SBC.Services.Blob;
 
-    using static SBC.Common.GlobalConstants.ControllerRouteConstants;
-
     public class BlobsController : ApiController
     {
         private readonly IBlobService blobService;
@@ -18,15 +16,15 @@
             this.blobService = blobService;
         }
 
-        [HttpGet(GetAllRoute)]
-        public async Task<IActionResult> GetAllBlobsAsync()
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
         {
-            var blobs = await this.blobService.GetAllBlobsAsync();
+            var blobs = await this.blobService.GetAllAsync();
 
             return this.Ok(blobs);
         }
 
-        [HttpPost(UploadBlobRoute)]
+        [HttpPost]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
             if (!this.ModelState.IsValid)
@@ -34,13 +32,13 @@
                 return this.BadRequest();
             }
 
-            return this.GenericResponse(await this.blobService.UploadFileBlobAsync(file));
+            return this.GenericResponse(await this.blobService.UploadBlobAsync(file));
         }
 
-        [HttpGet(DownloadBlobByNameRoute)]
+        [HttpGet("{blobName}")]
         public async Task<IActionResult> DownloadBlobByNameAsync(string blobName)
         {
-            var blob = this.blobService.DownloadBlobByName(blobName);
+            var blob = this.blobService.DownloadByName(blobName);
 
             if (!await blob.ExistsAsync())
             {
@@ -52,17 +50,17 @@
             return this.File(result.Value.Content, result.Value.ContentType);
         }
 
-        [HttpDelete(DeleteRoute)]
-        public async Task<IActionResult> DeleteBlobByNameAsync(string blobName)
+        [HttpDelete("{blobName}")]
+        public async Task<IActionResult> DeleteByNameAsync(string blobName)
         {
-            var result = await this.blobService.DeleteBlobByNameAsync(blobName);
+            var result = await this.blobService.DeleteByNameAsync(blobName);
 
             if (!result)
             {
                 return this.BadRequest("Couldn't find job with this name!");
             }
 
-            return this.Ok("Blob deleted successfully!");
+            return this.GenericResponse(result);
         }
     }
 }
