@@ -167,7 +167,7 @@ input:nth-child(2)::placeholder {
   cursor: pointer;
   
 }
-input[type="file"] {
+.upload input[type="file"] {
   position: fixed;
   right: 100%;
   bottom: 100%;

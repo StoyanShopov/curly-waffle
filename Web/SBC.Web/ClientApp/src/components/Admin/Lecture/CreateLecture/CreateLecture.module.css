@@ -1,0 +1,72 @@
+.container {
+    text-align: center;
+}
+
+.p {
+    color: #296CFB;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.btnClose {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #296CFB;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.input {
+    display: block;
+    width: 500px;
+    height: 3rem;
+    border-color: #296CFB;
+    font-family: Montserrat;
+    border-width: 2px;
+    font-size: larger;
+    margin-top: 20px;
+    margin-left: 14%;
+}
+
+.btnContainer{
+    margin: 15px;
+    padding-top: 15px;
+}
+
+.btnSubmit {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    border-color: #296CFB;
+    background-color: #296CFB;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: white;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.btnCancel {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    border-color: #296CFB;
+    background-color: white;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: larger;
+    cursor: pointer;
+}
+
+::placeholder {
+    text-align: center;
+    font-family: Montserrat;
+    color: #296CFB;
+}
