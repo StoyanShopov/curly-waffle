@@ -18,7 +18,7 @@
         private readonly IDeletableEntityRepository<Coach> coacheRepository;
 
         public CoursesService(
-            IDeletableEntityRepository<Course> courseRepository, 
+            IDeletableEntityRepository<Course> courseRepository,
             IDeletableEntityRepository<Coach> coacheRepository)
         {
             this.courseRepository = courseRepository;
