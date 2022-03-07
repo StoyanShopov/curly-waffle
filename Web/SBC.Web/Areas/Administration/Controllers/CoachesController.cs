@@ -3,10 +3,9 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+
     using SBC.Services.Data.Coach;
     using SBC.Web.ViewModels.Administration.Coach;
-
-    using static SBC.Common.GlobalConstants.ControllerRouteConstants;
 
     public class CoachesController : AdministrationController
     {

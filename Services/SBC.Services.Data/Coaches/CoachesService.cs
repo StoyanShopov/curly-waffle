@@ -43,6 +43,11 @@
 
         public async Task<Result> CreateAsync(CreateCoachInputModel coach)
         {
+            if (this.coachesRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == coach.CalendlyUrl && x.IsDeleted == false))
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, string.Format(CoachesConstants.CoachAlreadyExists, coach.CalendlyUrl));
+            }
+
             if (this.ExistLanguageId(coach.Languages))
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, LanguagesConstants.LanguageNotExist);
@@ -56,11 +61,6 @@
             if (coach.Languages.Count == 0 || coach.Categories.Count == 0)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachesConstants.CoachLangAndCategoriesFieldShouldNotBeEmpty);
-            }
-
-            if (this.coachesRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == coach.CalendlyUrl && x.IsDeleted == false))
-            {
-                return new ErrorModel(HttpStatusCode.BadRequest, string.Format(CoachesConstants.CoachAlreadyExists, coach.CalendlyUrl));
             }
 
             var coachModel = new Coach
@@ -113,6 +113,11 @@
                 .Include(x => x.Categories)
                 .FirstOrDefaultAsync(x => x.Id == coach.Id);
 
+            if (coachModel == null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, string.Format(CoachesConstants.CoachDoesNotExist, coachModel.Id));
+            }
+
             if (this.ExistLanguageId(coach.Languages))
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, LanguagesConstants.LanguageNotExist);
@@ -126,11 +131,6 @@
             if (coach.Languages.Count == 0 || coach.Categories.Count == 0)
             {
                 return new ErrorModel(HttpStatusCode.BadRequest, CoachesConstants.CoachLangAndCategoriesFieldShouldNotBeEmpty);
-            }
-
-            if (coachModel == null)
-            {
-                return new ErrorModel(HttpStatusCode.BadRequest, string.Format(CoachesConstants.CoachDoesNotExist, coachModel.Id));
             }
 
             coachModel.FirstName = coach.FirstName;

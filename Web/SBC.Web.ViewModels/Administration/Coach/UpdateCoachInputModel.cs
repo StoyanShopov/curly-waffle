@@ -10,9 +10,11 @@
         public int Id { get; set; }
 
         [Required]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string FirstName { get; set; }
 
         [Required]
+        [StringLength(MaxLengthName, MinimumLength = MinLengthName)]
         public string LastName { get; set; }
 
         [Required]
@@ -30,11 +32,10 @@
         [Url]
         public string ImageUrl { get; set; }
 
-        //[EmailAddress]
         public string CompanyEmail { get; set; }
 
-        //[Required]
-        //[Url]
+        [Required]
+        [Url]
         public string CalendlyUrl { get; set; }
 
         [MinLength(MinCountUpdate)]

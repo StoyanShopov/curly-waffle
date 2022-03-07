@@ -1,7 +1,8 @@
 ﻿namespace SBC.Services.Data.Company
 {
-    using SBC.Common;
     using System.Threading.Tasks;
+
+    using SBC.Common;
 
     public interface ICompaniesService
     {

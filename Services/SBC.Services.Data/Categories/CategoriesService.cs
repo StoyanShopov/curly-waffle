@@ -1,10 +1,10 @@
 ﻿namespace SBC.Services.Data.Category
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
-    using SBC.Common;
+
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
