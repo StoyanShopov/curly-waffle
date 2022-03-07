@@ -9,23 +9,25 @@
     {
         public int Id { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
-        //[Required]
-        //[StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
+        [Required]
+        [StringLength(MaxLengthDescription, MinimumLength = MinLengthDescription)]
         public string Description { get; set; }
 
-        //[Required]
-        //[Url]
+        [Required]
+        [Url]
         public string VideoUrl { get; set; }
 
-        //[Range(0, double.MaxValue)]
+        [Range(0, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
-        //[Required]
-        //[Url]
+        [Required]
+        [Url]
         public string ImageUrl { get; set; }
 
         //[EmailAddress]
@@ -35,10 +37,10 @@
         //[Url]
         public string CalendlyUrl { get; set; }
 
-        //[MinLength(MinCountUpdate)]
+        [MinLength(MinCountUpdate)]
         public ICollection<CategoryCoachViewModel> Categories { get; set; }
 
-        //[MinLength(MinCountUpdate)]
+        [MinLength(MinCountUpdate)]
         public ICollection<LanguageCoachViewModel> Languages { get; set; }
     }
 }

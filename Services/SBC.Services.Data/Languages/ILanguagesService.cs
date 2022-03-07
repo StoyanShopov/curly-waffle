@@ -8,6 +8,6 @@
 
     public interface ILanguagesService
     {
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
+        Task<Result> GetAllAsync<TModel>();
     }
 }

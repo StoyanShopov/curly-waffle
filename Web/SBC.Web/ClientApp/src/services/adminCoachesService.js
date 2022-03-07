@@ -8,7 +8,6 @@ export const createCoach = async (data) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        console.log(resp);
         return resp;
     } catch (error) { }
 }
@@ -38,7 +37,6 @@ export const deleteCoachById = async (coachId) =>{
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         }
     }).then((resp) => {
-        console.log(resp);
     })
     return resp;
 }
@@ -55,7 +53,7 @@ export const uploadImage = async (file) => {
     formData.append('file', file);
     let response = await axios({
         method: 'POST',
-        url: baseUrl + "api/Blobs/upload",
+        url: baseUrl + "api/Blobs",
         data: formData,
         headers: { 'Content-Type': 'multipart/form-data', }
     });

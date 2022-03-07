@@ -10,12 +10,10 @@ const DeleteCoach = (props) => {
     {
         e.preventDefault(); 	
 
-        console.log(props.id);
-
         deleteCoachById(props.id)
-        .finally(() =>{
-            props.closeModal();
+        .then(() =>{
             props.setCoaches(coaches)
+            props.closeModal();
         })
     }
 

@@ -1,9 +1,9 @@
-﻿using SBC.Data.Models;
-using SBC.Services.Mapping;
-
-namespace SBC.Web.ViewModels.Administration.Coach
+﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
-    public class LanguageCoachViewModel : IMapFrom<LanguageCoach>, IMapTo<LanguageCoach>
+    using SBC.Data.Models;
+    using SBC.Services.Mapping;
+
+    public class LanguageCoachViewModel : IMapFrom<LanguageCoach>
     {
         public int LanguageId { get; set; }
     }

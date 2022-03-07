@@ -20,11 +20,11 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllLanguagesAsync()
+        public async Task<ActionResult> GetAllAsync()
         {
             var result = await this.languageService.GetAllAsync<LanguageDetailsViewModel>();
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
     }
 }

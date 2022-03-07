@@ -1,8 +1,9 @@
 ﻿namespace SBC.Web.ViewModels.Administration.Coach
 {
+    using System.Collections.Generic;
+
     using SBC.Data.Models;
     using SBC.Services.Mapping;
-    using System.Collections.Generic;
 
     public class CoachDetailsViewModel : IMapFrom<Coach>
     {

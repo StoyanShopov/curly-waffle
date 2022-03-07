@@ -20,10 +20,10 @@
             this.languageRepository = data;
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-             => await this.languageRepository
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.languageRepository
                 .AllAsNoTracking()
                 .To<TModel>()
-                .ToListAsync();
+                .ToListAsync());
     }
 }
