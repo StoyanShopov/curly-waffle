@@ -21,7 +21,7 @@
         public async Task<ActionResult> GetAsync()
         {
             var result = await this.usersService
-                .GetAdminDataAsync<ProfileViewModel>(this.User.Id());
+                .GetUserDataAsync<ProfileViewModel>(this.User.Id());
 
             return this.GenericResponse(result);
         }

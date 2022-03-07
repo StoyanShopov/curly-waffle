@@ -2,18 +2,15 @@ import { useState, useEffect } from 'react';
 
 import css from './EditProfile.module.css';
 
-import { EditAdmin, GetAdminData } from '../../services/super-admin-service';
 import { uploadImage } from '../../services/blob-service';
-import { EditUser } from '../../services/user.service';
+import { userService } from '../../services';
+import { TokenManagement } from '../../helpers';
 
 export default function EditProfile(props) {
     let [user, setUser] = useState({});
 
     useEffect(() => {
-        TokenManagement.getUserData()
-            .then(res => {
-                setUser(res);
-            });
+        setUser(TokenManagement.getUserData())
     }, []);
 
     const OnEditUser = async (e) => {
@@ -21,7 +18,6 @@ export default function EditProfile(props) {
 
         const fd = new FormData(e.target);
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
-        console.log(data)
 
         if (data.photoUrl == null || data.photoUrl.size == 0) {
             data.photoUrl = user.photoUrl
@@ -30,12 +26,14 @@ export default function EditProfile(props) {
             let result = await uploadImage(data.photoUrl);
             data.photoUrl = result.photoUrl;
         }
-        //   EditAdmin(data)
-        EditUser(data)
-            .then((data) => {
-                if (data['status']) {
+
+        userService.EditUser(data)
+            .then((_data) => {
+                if (_data['status']) {
                     props.closeModal();
-                    props.getAdminData();
+                    TokenManagement.setUserData(JSON.stringify(data));
+                    props.getUserData();
+                    props.editUser();
                 }
             }, (err) => {
                 console.error(err)
@@ -82,7 +80,7 @@ export default function EditProfile(props) {
                             name="email"
                             className={css.nameCntr}
                             type="text"
-                            value={admin.email}
+                            value={user.email}
                             onChange={() => { }}
                             placeholder="Hello@Motion-Software.com" />
                         <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={user.profileSummary}></textarea>

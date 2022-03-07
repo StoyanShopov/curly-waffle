@@ -21,7 +21,8 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, ProfileViewModel>()
-                        .ForMember(c => c.Fullname, cfg => cfg.MapFrom(c => c.FirstName + ' ' + c.LastName));
+                        .ForMember(c => c.Fullname, cfg => cfg.MapFrom(c => c.FirstName + ' ' + c.LastName))
+                        .ForMember(c => c.CompanyName, cfg => cfg.MapFrom(c => c.Company.Name));
         }
     }
 }

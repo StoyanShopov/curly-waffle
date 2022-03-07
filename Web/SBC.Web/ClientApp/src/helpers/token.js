@@ -37,15 +37,5 @@ export const getUserRole = () => {
     return user ? user['role'] : null;
 };
 export const getUserData = () => {
-    // const _user =
     return JSON.parse(localStorage.getItem("userData"));
-    // const email = _user['email']?_user['email']:null;
-    // const fullname = _user['fullname'];
-    // const index = _user['fullname'][0];
-    // const profileSummary = _user['profileSummary'];
-    // const photoUrl = _user['photoUrl'];
-
-    // return {
-    //     email, fullname, index, profileSummary,photoUrl
-    // }
 }

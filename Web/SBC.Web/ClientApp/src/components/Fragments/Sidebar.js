@@ -2,23 +2,10 @@
 import { NavLink, } from 'react-router-dom';
 
 import { userService } from '../../services';
-import { TokenManagement } from '../../helpers';
 
 import styles from "./Sidebar.module.css";
 
 export default function Sidebar(props) {
-
-    let userData = TokenManagement.getUserData();
-    let userRole = TokenManagement.getUserRole();
-    useEffect(() => {
-        userRole = TokenManagement.getUserRole();
-        userData = TokenManagement.getUserData();
-        console.log(userRole)
-        console.log(userData)
-    }, [])
-
-
-
     return (
 
         <div className={styles.container}>
@@ -27,22 +14,22 @@ export default function Sidebar(props) {
             </button>
             <div className={styles.namesContainer}>
                 <div className={styles.greenCircle}>
-                    {userData ? userData.fullname[0] : "N/A"}
+                    {props.userData['fullname'] ? props.userData.fullname[0] : "N/A"}
                 </div>
                 <div className={styles.names}>
                     <div className={styles.fullName}>
-                        {userData ? userData.fullname : "N/A"}
+                        {props.userData ? props.userData.fullname : "N/A"}
                     </div>
                     <div className={styles.companyName}>
-                        {!userData['company'] ? null : userData.company}
+                        {!props.userData['companyName'] ? null : props.userData.companyName}
                     </div>
                 </div>
             </div>
             <div className={styles.navigation}>
 
-                {userRole == "Administrator"
+                {props.userRole == "Administrator"
                     ? _adminUrl
-                    : userRole == "Owner"
+                    : props.userRole == "Owner"
                         ? _ownerUrls
                         : null}
 

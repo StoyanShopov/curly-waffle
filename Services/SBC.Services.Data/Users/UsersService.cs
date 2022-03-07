@@ -137,7 +137,7 @@
             return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
         }
 
-        public async Task<Result> GetAdminDataAsync<TModel>(string userId)
+        public async Task<Result> GetUserDataAsync<TModel>(string userId)
         {
             var user = await this.userManager.FindByIdAsync(userId);
 

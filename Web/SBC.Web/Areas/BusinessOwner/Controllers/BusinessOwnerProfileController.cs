@@ -18,7 +18,7 @@
 
         [HttpGet]
         public async Task<ActionResult> GetAsync()
-            => this.GenericResponse(await this.usersService.GetAdminDataAsync<ProfileViewModel>(this.User.Id()));
+            => this.GenericResponse(await this.usersService.GetUserDataAsync<ProfileViewModel>(this.User.Id()));
 
         [HttpPut]
         public async Task<ActionResult> EditAsync(EditProfileInputModel model)

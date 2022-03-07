@@ -15,7 +15,6 @@
         [StringLength(300)]
         public string ProfileSummary { get; set; }
 
-        [Required]
         public string PhotoUrl { get; set; }
     }
 }
