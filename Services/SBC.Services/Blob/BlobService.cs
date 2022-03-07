@@ -8,7 +8,6 @@
     using Azure.Storage.Blobs.Models;
 
     using Microsoft.AspNetCore.Http;
-
     using SBC.Common;
     using SBC.Web.ViewModels.Blob;
 

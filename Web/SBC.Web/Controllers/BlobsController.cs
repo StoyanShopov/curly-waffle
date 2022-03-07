@@ -1,10 +1,11 @@
 ﻿namespace SBC.Web.Controllers
 {
+    using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
+    using SBC.Common;
     using SBC.Services.Blob;
 
     public class BlobsController : ApiController
@@ -27,6 +28,11 @@
         [HttpPost]
         public async Task<IActionResult> UploadBlobAsync(IFormFile file)
         {
+            if (file == null)
+            {
+                return this.GenericResponse(new ErrorModel(HttpStatusCode.NotFound, "file is empty"));
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();

@@ -10,6 +10,8 @@
         public Company()
         {
             this.Employees = new HashSet<ApplicationUser>();
+            this.ActiveCoaches = new HashSet<CompanyCoach>();
+            this.ActiveCourses = new HashSet<CompanyCourse>();
             this.Coaches = new HashSet<Coach>();
         }
 
@@ -24,5 +26,9 @@
         public ICollection<ApplicationUser> Employees { get; set; }
 
         public ICollection<Coach> Coaches { get; set; }
+
+        public ICollection<CompanyCourse> ActiveCourses { get; set; }
+
+        public ICollection<CompanyCoach> ActiveCoaches { get; set; }
     }
 }

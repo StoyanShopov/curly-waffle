@@ -13,6 +13,7 @@
             this.Languages = new HashSet<LanguageCoach>();
             this.Courses = new HashSet<Course>();
             this.Users = new HashSet<UserCoachSession>();
+            this.ClientCompanies = new HashSet<CompanyCoach>();
         }
 
         [Required]
@@ -42,5 +43,7 @@
         public ICollection<Course> Courses { get; set; }
 
         public ICollection<UserCoachSession> Users { get; set; }
+
+        public ICollection<CompanyCoach> ClientCompanies { get; set; }
     }
 }

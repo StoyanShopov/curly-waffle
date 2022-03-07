@@ -1,15 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 0px;
-    left: 0px;
-    width: 120rem;
-    height: 68rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    max-width: 90%;
+    height: auto;
+    flex-wrap: wrap;
 }
 
 .left {
@@ -19,25 +16,22 @@
     position: relative;
     top: 0;
     left: 0;
-    width: 60rem;
-    height: 68rem;
 }
 
 .backgnd {
-    width: 60rem;
-    height: 68rem;
+    width: 83%;
+    height: auto;
     position: relative;
     top: 0;
     left: 0;
 }
 
 .manWithCase {
-    max-width: 100%;
-    width: 21rem;
-    height: 46rem;
+    width: 34%;
+    height: auto;
     position: absolute;
-    top: 11rem;
-    left: 10rem;
+    padding-top: 7%;
+    padding-left: 7%;
 }
 
 .right {
@@ -45,112 +39,95 @@
     flex-basis: 50%;
     display: flex;
     justify-content: center;
-    width: 60rem;
-    height: 68rem;
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    top: 3%;
 }
 
 .arrow {
-    width: 11.1rem;
-    opacity: 100%;
-    margin-top: 5.4rem;
-    margin-right: 29rem;
-    margin-left: 20rem;
-    margin-bottom: 6rem;
+    width: 26%;
+    height: auto;
+    align-self: center;
+    padding-bottom: 5%;
+    margin-top: 3%;
+}
+
+.inputformsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+    row-gap: 23px;
 }
 
 .inputcontainer {
-    width: 34.4rem;
-    height: 4.4rem;
-    margin-bottom: 3rem;
     opacity: 1;
     border: 2px solid #296cfb;
+    width: 26rem;
+    min-height: 2.4rem;
 }
 
 .inputuser {
-    height: 27px;
-    margin-left: 2.8rem;
-    text-align: left;
-    font-family: "Montserrat", sans-serif;
-    font-size: 22px;
+    font-size: 16px;
     color: #296cfb;
     border-style: none;
     text-align: left;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-top: 1.36rem;
-    width: auto;
+    width: 52%;
+    padding-top: 2.4%;
+    padding-left: 3%;
 }
 
     .inputuser:focus {
         outline: none;
     }
-    
+
     .inputuser::placeholder::after {
         content: '002A';
         color: #E84855;
         vertical-align: text-top
     }
 
-::placeholder {
-    font-family: "Montserrat", sans-serif;
-    font-size: 22px;
-    color: #296CFB;
-    letter-spacing: 1px;
-}
-
-.inputpass {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-position: 525px;
-}
+    .inputuser::placeholder {
+        font-family: "Montserrat", sans-serif;
+        color: #296CFB;
+        letter-spacing: 1px;
+    }
 
 .eye {
     position: relative;
-    bottom: 40%;
-    margin-right: 2.8rem;
     cursor: pointer;
     float: right;
+    padding-top: 1.5%;
+    padding-right: 1.8%;
 }
 
 .btncontainer {
-    display: flex;
-    margin: auto;
     justify-content: center;
-    margin-bottom: 5%;
 }
 
     .btncontainer input {
-        width: 15.6rem;
-        height: 4.4rem;
         border: 2px solid #296cfb;
-        color: #296cfb;
-        font-family: "Montserrat", sans-serif;
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 700;
         letter-spacing: 1px;
         cursor: pointer;
-    }
-
-    .btncontainer :first-child {
         background: #296cfb;
         color: white;
+        width: 12rem;
+        height: 2.8rem;
     }
 
 .checkcontainer {
     display: flex;
-    justify-content: space-between;
-    padding-left: 11%;
-    padding-right: 13%;
-    height: 27px;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
 }
 
     .checkcontainer input {
@@ -158,67 +135,72 @@
     }
 
 .alreadyHave {
-    font-family: "Montserrat", sans-serif;   
-    font-size: 22px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
     color: #296cfb;
     letter-spacing: 0px;
     opacity: 1;
     margin: 0;
+    padding-left: 5%;
 }
 
 .loginhere {
-    color: inherit;   
+    color: inherit;
     text-decoration: underline;
-    font: normal normal bold 22px/27px Montserrat;
+    font-size: 18px;
+    font-weight: bold;
     letter-spacing: 0px;
     color: #296CFB;
     opacity: 1;
+    padding-right: 7%;
 }
 
 .starfullname {
     color: #E84855;
-    position: relative;
-    bottom: 38%;
-    left: 30.6%;
-    width: 10%;
-}
-
-.starcompanyname {
-    color: #E84855;
-    position: relative;
-    bottom: 38%;
-    left: 43.1%;
-    width: 10%;
+    left: 25%;
+    top: 85px;
+    position: absolute;
 }
 
 .staremail {
     color: #E84855;
-    position: relative;
-    bottom: 38%;
-    left: 39.4%;
-    width: 10%;
+    left: 34%;
+    top: 150px;
+    position: absolute;
+}
+
+.starcompanyname {
+    color: #E84855;
+    left: 37%;
+    top: 215px;
+    position: absolute;
+}
+
+.starcompanyemail {
+    color: #E84855;
+    left: 55%;
+    top: 281px;
+    position: absolute;
 }
 
 .starpassword {
     color: #E84855;
-    position: relative;
-    bottom: 38%;
-    left: 29.2%;
-    width: 10%;
+    left: 24%;
+    top: 347px;
+    position: absolute;
 }
 
 .starconfirmpassword {
     color: #E84855;
-    position: relative;
-    bottom: 38%;
-    left: 48%;
-    width: 10%;
+    left: 42%;
+    top: 413px;
+    position: absolute;
 }
 
-input[required]:invalid + span {
+.inputcontainer input[required]:invalid + span {
     display: inline-block;
 }
 
-input[required]:valid + span {
+.inputcontainer input[required]:valid + span {
     display: none;
-} 
+}

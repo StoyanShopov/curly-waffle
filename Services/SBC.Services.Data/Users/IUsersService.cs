@@ -3,14 +3,23 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
+    using SBC.Web.ViewModels.Administration.Profile;
     using SBC.Web.ViewModels.User;
 
     public interface IUsersService
     {
-        Task<Result> Register(RegisterServiceModel model);
+        Task<Result> RegisterAsync(RegisterInputModel model);
 
-        Task<Result> Login(LoginServiceModel model, string secret);
+        Task<Result> LoginAsync(LoginInputModel model, string secret);
 
-        Task<bool> NoTrackUserExistsByEmail(string email);
+        Task<Result> EditAsync(EditProfileInputModel model, string userId);
+
+        Task<Result> GetAdminDataAsync<TModel>(string userId);
+
+        Task<TModel> GetByEmailAsync<TModel>(string email);
+
+        Task<bool> ExistsByFullNameByEmailAsync(string fullName, string email);
+
+        Task<bool> ExistsByEmailAsync(string email);
     }
 }

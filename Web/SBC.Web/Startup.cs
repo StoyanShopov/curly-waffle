@@ -1,5 +1,7 @@
 ﻿namespace SBC.Web
 {
+    using System;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
 
@@ -8,8 +10,6 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -27,9 +27,14 @@
     using SBC.Services.Blob;
     using SBC.Services.Data;
     using SBC.Services.Data.Category;
+    using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Client;
     using SBC.Services.Data.Coach;
     using SBC.Services.Data.Company;
     using SBC.Services.Data.Language;
+    using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
     using SBC.Services.Mapping;
@@ -94,9 +99,11 @@
                                 Id = "Bearer",
                             },
                         },
-                        new string[] { }
+                        Array.Empty<string>()
                     },
                 });
+
+                c.CustomSchemaIds(cs => string.Join('.', cs.FullName.Split('.').TakeLast(2)));
             });
 
             services.AddSpaStaticFiles(configuration =>
@@ -144,12 +151,18 @@
                 });
 
             // Application services
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<ILecturesService, LecturesService>();
+            services.AddTransient<IResourcesService, ResourcesService>();
+            services.AddTransient<IIdentitiesService, IdentitiesService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
+            services.AddTransient<IClientsService, ClientsService>();
+            services.AddTransient<IDasboardService, DashboardService>();
+            services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICoachesService, CoachesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ILanguagesService, LanguagesService>();

@@ -1,0 +1,176 @@
+.containerH {
+    position: relative;
+    justify-content: center;
+    width: 24%;
+    left: 26%;
+    top: 72px;
+    height: auto;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.dashboard {
+    position: relative;
+    margin-top: 0px;
+    flex-direction: column;
+    width: 1080px;
+    font-weight: bold;
+    margin-bottom: 64px;
+}
+
+.dashboardHeader {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    justify-content: space-around;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 10px #00000029;
+    opacity: 1;
+}
+
+    .dashboardHeader svg {
+        width: 0px;
+        height: 125px;
+        background: transparent 0% 0% no-repeat padding-box;
+        border: 1px solid #5f5c5c29;
+        opacity: 1;
+    }
+
+    .dashboardHeader span {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+        .dashboardHeader span:nth-child(1) {
+            font-size: 22px;
+            line-height: 43px;
+        }
+
+        .dashboardHeader span:nth-child(2) {
+            font-size: 50px;
+            line-height: 90px;
+        }
+
+.containerT {
+    position: relative;
+    justify-content: center;
+    top: 75px;
+    left: 26%;
+    width: 1035px;
+}
+
+.tableContainer table {
+    width: 1035px;
+    border-collapse: collapse;
+    font-size: 22px;
+    margin: 0px auto 75px auto;
+    text-align: start;
+}
+
+.tableContainer thead > svg {
+    margin-left: 7%;
+}
+
+.tableContainer tbody {
+    display: block;
+    padding-left: 55px;
+    padding-right: 55px;
+    background-color: white;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+.tableContainer thead {
+    background-color: #296CFB;
+    border: #296CFB;
+    color: white;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+.tableContainer td {
+    padding-top: 37px;
+    padding-bottom: 37px;
+}
+
+.tableContainer thead th {
+    padding-top: 30px;
+    padding-bottom: 16px;
+}
+
+.tableTr {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.tableContainer tbody tr {
+    border-bottom: 1px solid #000000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableContainer tbody {
+    width: 980px;
+}
+
+.firstTh {
+    margin-left: 58px;
+}
+
+.secondTh {
+    margin-right: 58px;
+}
+
+.name {
+    font-weight: bold;
+    color: #16D696;
+    text-align: left;
+}
+
+.enrolled {
+    color: #000000;
+    opacity: 1;
+    font-weight: 500;
+    padding-right: 50px;
+}
+
+.link {
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: inherit;
+    text-decoration: inherit;
+    color: #16D696;
+}
+
+    .link:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+#flexViewMore {
+    display: flex;
+    justify-content: center;
+    border: none;
+    padding: 10px 0px;
+}
+
+.containerC {
+    position: relative;
+    justify-content: center;
+    left: 26%;
+    top: 138px;
+    width: 1035px;
+    margin-bottom: 30px;
+}
+
+    .containerC thead {
+        background-color: #16D696;
+        border: #16D696;
+    }
+
+.theadTh svg {
+    margin-right: 21px;
+    margin-left: 21px;
+}

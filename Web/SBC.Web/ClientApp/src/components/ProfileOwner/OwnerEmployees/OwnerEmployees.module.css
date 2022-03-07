@@ -1,0 +1,130 @@
+.container {
+    position: relative;
+    justify-content: center;
+    top: 90px;
+    left: 450px;
+    width: 800px;
+    height: 532px;
+}
+
+.tableContainer {
+    width: 800px;
+    height: 532px;
+    border-collapse: collapse;
+    font-size: 22px;
+    margin: 0px auto 25px auto;
+    text-align: start;
+}
+
+    .tableContainer thead {
+        display: block;
+        justify-content: start;
+    }
+
+    .tableContainer tbody {
+        display: block;
+        justify-content: start;
+        padding-left: 55px;
+    }
+
+    .tableContainer thead {
+        background-color: #296CFB;
+        border: #296CFB;
+        color: white;
+    }
+
+    .tableContainer tbody {
+        background-color: white;
+        box-shadow: 0px 3px 10px #00000029;
+    }
+
+    .tableContainer td {
+        padding-top: 37px;
+        padding-bottom: 37px;
+    }
+
+    .tableContainer th {
+        padding-top: 50px;
+        padding-bottom: 38px;
+    }
+
+    .tableContainer tr {
+        border-bottom: 1px solid #000000;
+    }
+
+.firstTh {
+    padding-left: 80px;
+    padding-right: 270px;
+}
+
+.secondTh {
+    padding-right: 338px;
+}
+
+.name {
+    font-weight: bold;
+    color: #296CFB;
+    text-align: left;
+    padding-right: 270px;
+}
+
+.email {
+    color: #000000;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.link {
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .link:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+.tableContainer td + td {
+    color: #000000;
+    font-weight: normal;
+}
+
+#flex {
+    display: flex;
+    justify-content: center;
+    border: none;
+    padding: 10px 0px;
+    margin-right: 80px;
+}
+
+#circle {
+    color: white;
+    font-size: 25px;
+    font-weight: initial;
+    position: relative;
+    float: right;
+}
+
+.plusSignContainer {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+
+    .plusSignContainer img {
+        width: 20px;
+        height: 20px;
+        padding: 15px;
+    }
+
+.tableContainer thead {
+    width: 100%;
+}
+
+.tableContainer tbody {
+    width: 980px;
+}

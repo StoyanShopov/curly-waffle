@@ -20,6 +20,8 @@
 
         public decimal PricePerPerson { get; set; }
 
+        public string PictureUrl { get; set; }
+
         public string VideoUrl { get; set; }
 
         public int CategoryId { get; set; }
@@ -37,5 +39,7 @@
         public ICollection<UserCourse> Users { get; set; }
 
         public ICollection<CourseLecture> Lectures { get; set; }
+
+        public ICollection<CompanyCourse> Companies { get; set; }
     }
 }

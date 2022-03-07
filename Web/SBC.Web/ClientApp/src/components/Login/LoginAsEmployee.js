@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { userActions } from "../../actions/index";
 
 import styles from "./LoginAsEmployee.module.css";
+import { GetAdminData } from "../../services/super-admin-service";
 
 const LoginAsEmployee = (props) => {
   const form = useRef();
@@ -13,24 +14,26 @@ const LoginAsEmployee = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
+    const onChangeEmail = (e) => {
+        const email = e.target.value;
+        setEmail(email);
+    };
 
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
+    const onChangePassword = (e) => {
+        const password = e.target.value;
+        setPassword(password);
+    };
 
-  const onLogin = async (e) => {
-    e.preventDefault();
+    const onLogin = async (e) => {
+        e.preventDefault();
 
-    await dispatch(userActions.login(email, password));
-    navigate("/");
-  };
+        await dispatch(userActions.login(email, password));
+        await GetAdminData();
+
+        navigate('/');
+    };
 
   const link = "Забравена парола?";
   return (
