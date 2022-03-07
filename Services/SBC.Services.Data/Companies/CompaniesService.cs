@@ -179,7 +179,7 @@
                 .Where(x => x.CompanyId == companyId && x.CoachId == coachId)
                 .FirstOrDefault();
 
-            this.companyCoachesRepository.Delete(coach);
+            this.companyCoachesRepository.HardDelete(coach);
 
             await this.companyCoachesRepository.SaveChangesAsync();
 
@@ -231,7 +231,7 @@
                 .Where(x => x.CourseId == courseId && x.CompanyId == companyId)
                 .FirstOrDefault();
 
-            this.companyCoursesRepository.Delete(activeCourse);
+            this.companyCoursesRepository.HardDelete(activeCourse);
 
             await this.companyCoursesRepository.SaveChangesAsync();
 

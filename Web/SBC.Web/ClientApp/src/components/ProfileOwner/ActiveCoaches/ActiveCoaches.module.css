@@ -30,12 +30,11 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    row-gap: 1rem;
     align-items: center;
     gap: 120px 150px;
-    padding-top: 10%;
+    top: 5rem;
     padding-left: 6%;
-    z-index: -10;
+    margin-bottom: 3rem;
 }
 
 /*for cards:*/

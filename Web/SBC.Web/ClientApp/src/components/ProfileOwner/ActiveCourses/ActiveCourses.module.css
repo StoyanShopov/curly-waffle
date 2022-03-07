@@ -30,10 +30,10 @@
     position: relative;
     flex-wrap: wrap;
     align-items: center;
-    gap: 76px 120px;
-    padding-top: 9%;
+    gap: 76px 120px;    
     padding-left: 6%;
-    z-index: -10;
+    top: 5rem;
+    margin-bottom: 4rem;
 }
 
 .card {
