@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Company;
-    using SBC.Web.ViewModels.Companies;
+    using SBC.Web.ViewModels.Company;
 
     public class CompaniesController : ApiController
     {
