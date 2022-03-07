@@ -53,7 +53,7 @@ const CoachCard = (props) => {
           </div>
           <div className={styles.down}>
             <div className={styles.name}>
-              <span className={styles.bold}>{"company"}</span>
+              <span className={styles.bold}>{"category"}</span>
               <span className={styles.names}>
                 {coach.firstName} {coach.lastName}
               </span>

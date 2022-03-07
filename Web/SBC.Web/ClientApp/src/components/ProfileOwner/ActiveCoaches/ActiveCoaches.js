@@ -14,18 +14,6 @@ export default function ActiveCoaches(prop) {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        prop.setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        prop.setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
-
     return (
         <>
             <Sidebar />

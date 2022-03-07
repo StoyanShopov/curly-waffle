@@ -15,18 +15,6 @@ export default function CourseCatalog(prop) {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        prop.setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        prop.setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
-
     return (
         <>
             <div className={styles.container}>

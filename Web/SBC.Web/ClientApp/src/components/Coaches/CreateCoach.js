@@ -40,7 +40,7 @@ const CreateCoach = (props) => {
         ...styles,
         backgroundColor: "#296CFB",
         borderRadius: 10,
-        color: '#ffffff'
+        color: '#ffffff',
       };
     },
     multiValueLabel: (styles) => ({
