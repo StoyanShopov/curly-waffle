@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SBC.Data.Common.Models;
-using SBC.Data.Common.Repositories;
-using SBC.Data.Models;
-using SBC.Services.Data.Company;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SBC.Web.Controllers
+﻿namespace SBC.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using SBC.Services.Data.Company;
+    using SBC.Web.ViewModels.Companies;
+
     public class CompaniesController : ApiController
     {
         private readonly ICompaniesService companiesService;
@@ -17,6 +13,13 @@ namespace SBC.Web.Controllers
         public CompaniesController(ICompaniesService companiesService)
         {
             this.companiesService = companiesService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAllCompaniesAsync()
+        {
+            var result = await this.companiesService.GetAllAsync<CompanyViewModel>();
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
