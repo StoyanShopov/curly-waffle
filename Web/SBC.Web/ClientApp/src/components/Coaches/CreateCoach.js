@@ -82,12 +82,12 @@ const CreateCoach = (props) => {
     data.categories = categories.map(x=> ({
       categoryId: x.value,
     }))
-    console.log(data);
 
     createCoach(data).then((response) => {
-      console.log(response.data);
-      data['id'] = response.data
+      data['id'] = response.data.id;
+      data['companyId'] = response.data.companyId;
       props.setCoaches([...coaches, data])
+      setCoaches([...coaches,data]);
       props.closeModal()
     })
   };
@@ -192,21 +192,21 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
-                name="companyEmail"
-                placeholder="Company Email(optional)"
-                type="text"
-              />
-            </div>
-
-            <div>
-              <input
-                className={styles.inputField}
                 name="calendlyUrl"
                 placeholder="Calendly URL"
                 type="text"
                 required
               />
               <span className={styles.starCalendlyUrl}>*</span>
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                name="companyEmail"
+                placeholder="Company Email(optional)"
+                type="text"
+              />
             </div>
 
             <div className={styles.languageOptions}>
@@ -216,7 +216,7 @@ const CreateCoach = (props) => {
                 name="languages"
                 onChange={(onChangeLanguages)}
                 styles={selectStyles}
-                placeholder="Select Languages"
+                placeholder="Select Languages (at least 1)"
                 isSearchable
                 required
               >
@@ -230,7 +230,7 @@ const CreateCoach = (props) => {
                 name="categories"
                 onChange={(onChangeCategories)}
                 styles={selectStyles}
-                placeholder="Select Categories"
+                placeholder="Select Categories (at least 1)"
                 required
               >
               </Select>
@@ -246,11 +246,6 @@ const CreateCoach = (props) => {
               />
               <span className={styles.starDescription}>*</span>
             </div>
-
-
-            <button className={styles.addAnotherCoachBtn}>
-              + Add another coach
-            </button>
 
             <div className={styles.footerContainer}>
               <button className={styles.btnCancel} onClick={props.closeModal} type="button">

@@ -26,15 +26,15 @@ const Coaches = () => {
 
   const editModalStyle = {
     content: {
-      top: '70%',
+      top: '60%',
       left: '50%',
       right: 'auto',
       width: '38%',
-      height: '1000px',
+      height: '735px',
       bottom: 'auto',
       marginTop: '-5%',
       marginRight: '-50%',
-      transform: 'translate(-60%, -50%)',
+      transform: 'translate(-50%, -50%)',
       padding: '0px',
     },
     color: '#f00'

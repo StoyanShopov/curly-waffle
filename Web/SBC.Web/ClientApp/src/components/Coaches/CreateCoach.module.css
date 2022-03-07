@@ -38,7 +38,7 @@ div.inputContainer{
 
 .inputField{
     width: 400px;
-    height: 40px;
+    height: 30px;
     border: 2px solid;
     border-color: #296cfb;
     margin-top: 25px;
@@ -63,7 +63,7 @@ div.inputContainer{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif; 
     width: 100px;
-    height: 40px;
+    height: 35px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
     border: #296CFB;
@@ -78,7 +78,7 @@ div.inputContainer{
 .btnCancel{
     background-color: white;
     width: 100px;
-    height: 40px;
+    height: 35px;
     border: 1px solid #296CFB;
     opacity: 1;
     color: #296CFB; 
@@ -161,45 +161,45 @@ input[type="file"] {
     cursor: pointer;
 }
 .starFirstName{
-    position: absolute;
+    position: fixed;
     color: #e84855;
-    left: 36.6%;
+    left: 38.6%;
     top: 132px;
 }
 
 .starLastName{
     position: absolute;
     color: #e84855;
-    left: 36.3%;
-    top: 204px;
+    left: 38.3%;
+    top: 190px;
 }
 
 .starPrice{
     position: absolute;
     color: #e84855;
-    left: 29%;
-    top: 346px;
+    left: 31%;
+    top: 311px;
 }
 
 .starCalendlyUrl{
     position: absolute;
     color: #e84855;
-    left: 39.7%;
-    top: 487px;
+    left: 41.7%;
+    top: 373px;
 }
 
 .starDescription{
     position: absolute;
     color: #e84855;
-    left: 37.7%;
-    top: 681px;
+    left: 39.7%;
+    top: 622px;
 }
 
 .starVideoUrl{
     position: absolute;
     color: #e84855;
-    left: 35.7%;
-    top: 275px;
+    left: 37.7%;
+    top: 252px;
 }
 
 .company{

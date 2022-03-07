@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;700&display=swap');
 
-.bodyContainer{
-    display: flow-root;
-}
-
-.addContainer {
-    position: relative;
-}
-
 .languageOptions{
     width: 405px;
     border: 2px solid #296cfb;
@@ -24,12 +16,11 @@
 }
 
 .titleContainer{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+    text-align: center;
     color: white;
-    margin-left: 15px;
     font: normal normal bold 28px/36px Montserrat;
+    padding-top: 30px;
+    margin-left: 96px;
 }
 
 .closeBtn{
@@ -42,14 +33,16 @@
 
 div.inputContainer{
     text-align: center;
+    height: 600px;
 }
 
 .inputField{
     width: 400px;
-    height: 40px;
+    height: 30px;
     border: 2px solid;
     border-color: #296cfb;
     margin-top: 25px;
+    border-radius: 5px;
 }
 
 .inputFile{
@@ -70,7 +63,7 @@ div.inputContainer{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif; 
     width: 100px;
-    height: 40px;
+    height: 35px;
     background: #296CFB 0% 0% no-repeat padding-box;
     opacity: 1;
     border: #296CFB;
@@ -85,7 +78,7 @@ div.inputContainer{
 .btnCancel{
     background-color: white;
     width: 100px;
-    height: 40px;
+    height: 35px;
     border: 1px solid #296CFB;
     opacity: 1;
     color: #296CFB; 
@@ -100,7 +93,7 @@ div.inputContainer{
     border: none;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 89px;
+    margin-left: 149px;
     font-weight: 500;
     background: none;
     display: flex;
@@ -168,7 +161,7 @@ input[type="file"] {
     cursor: pointer;
 }
 .starFirstName{
-    position: absolute;
+    position: fixed;
     color: #e84855;
     left: 36.6%;
     top: 132px;
@@ -178,35 +171,35 @@ input[type="file"] {
     position: absolute;
     color: #e84855;
     left: 36.3%;
-    top: 204px;
+    top: 190px;
 }
 
 .starPrice{
     position: absolute;
     color: #e84855;
     left: 29%;
-    top: 346px;
+    top: 311px;
 }
 
 .starCalendlyUrl{
     position: absolute;
     color: #e84855;
     left: 39.7%;
-    top: 487px;
+    top: 373px;
 }
 
 .starDescription{
     position: absolute;
     color: #e84855;
     left: 37.7%;
-    top: 552px;
+    top: 622px;
 }
 
 .starVideoUrl{
     position: absolute;
     color: #e84855;
     left: 35.7%;
-    top: 275px;
+    top: 252px;
 }
 
 .company{
@@ -227,4 +220,18 @@ textarea[required]:valid + span{
 
 textarea[required]:invalid + span{
     display: inline-block;
+}
+.languages{
+    font: normal normal bold 14px/27px Montserrat ;
+}
+
+.selectedLanguages{
+    font: normal normal bold 16px/27px Montserrat;
+    background-color: #296CFB;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 1px;
+    margin-bottom: 20px;
 }

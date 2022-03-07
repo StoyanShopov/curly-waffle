@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select'
 import { uploadImage, updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
 
-
 import styles from './EditCoach.module.css';
 
 const EditCoach = (props) => {
@@ -13,13 +12,14 @@ const EditCoach = (props) => {
   const [coach, setCoach] = useState(props.coach)
   const [companyEmail, setCompanyEmail] = useState();
 
-  if(coach.companyId!==null){
-    getCompanyEmailById(coach.companyId).then(res =>{
-      setCompanyEmail(res)
-    })
-  }
+
 
   useEffect(() => {
+    if(coach.companyId!==null){
+      getCompanyEmailById(coach.companyId).then(res =>{
+        setCompanyEmail(res)
+      })
+    }
     setCoach(props.coach)
 
   },[props.coach])
@@ -29,8 +29,6 @@ const EditCoach = (props) => {
 
   const coachCategoriesAsArrayOfIds = coach.categories.map(x => x.categoryId)
   const coachCategories = categoriesOptions.filter(x => coachCategoriesAsArrayOfIds.includes(x.value))
-
-
 
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
@@ -116,15 +114,15 @@ const EditCoach = (props) => {
       }))
 
     updateCoach(data)
-      .then((res) => { 
+      .then(() => { 
       const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
       const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
       data.languages = languagesAsObj
       data.categories = categoriesAsObj
+
       data['companyId'] = coach.companyId
-      console.log(res['data']);
+
       props.setCoach(data)
-      setCoach(data)
       props.closeModal();
       })
   }
@@ -232,16 +230,6 @@ const EditCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
-                defaultValue={companyEmail}
-                name="companyEmail"
-                placeholder="Company(optional)"
-                type="text"
-              />
-            </div>
-
-            <div>
-              <input
-                className={styles.inputField}
                 defaultValue={coach.calendlyUrl}
                 name="calendlyUrl"
                 placeholder="Calendly URL"
@@ -249,6 +237,16 @@ const EditCoach = (props) => {
                 required
               />
               <span className={styles.starCalendlyUrl}>*</span>
+            </div>
+
+            <div>
+              <input
+                className={styles.inputField}
+                defaultValue={companyEmail}
+                name="companyEmail"
+                placeholder="Company(optional)"
+                type="text"
+              />
             </div>
 
             <div className={styles.languageOptions}>
@@ -270,11 +268,6 @@ const EditCoach = (props) => {
               />
               <span className={styles.starDescription}>*</span>
             </div>
-
-
-            <button className={styles.addAnotherCoachBtn}>
-              + Add another coach
-            </button>
 
             <div className={styles.footerContainer}>
               <button className={styles.btnCancel} onClick={() => props.closeModal()} type="button">
