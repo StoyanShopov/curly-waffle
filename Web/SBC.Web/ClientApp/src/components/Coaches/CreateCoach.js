@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { createCoach, uploadImage, getLanguages, getCategories } from "../../services/adminCoachesService";
+import { createCoach,getLanguages, getCategories } from "../../services/adminCoachesService";
+import { uploadImage } from "../../services/blob-service";
 import Select from 'react-select'
 
 import styles from "./CreateCoach.module.css";
@@ -75,7 +76,7 @@ const CreateCoach = (props) => {
     );
 
     const imageUrl = await uploadImage(data.imageUrl);
-    data.imageUrl = imageUrl;
+    data.imageUrl = imageUrl.photoUrl;
     data.languages = languages.map(x=> ({
       languageId: x.value,
     }))

@@ -16,6 +16,5 @@
         Task<Result> DeleteAsync(int coachId);
 
         Task<int> GetCountAsync();
-
     }
 }

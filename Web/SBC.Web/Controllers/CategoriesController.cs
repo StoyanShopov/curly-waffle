@@ -10,17 +10,17 @@
 
     public class CategoriesController : ApiController
     {
-        private readonly ICategoriesService categoryService;
+        private readonly ICategoriesService categoriesService;
 
         public CategoriesController(ICategoriesService categoryService)
         {
-            this.categoryService = categoryService;
+            this.categoriesService = categoryService;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllAsync()
         {
-            var result = await this.categoryService.GetAllAsync<CategoryDetailsViewModel>();
+            var result = await this.categoriesService.GetAllAsync<CategoryDetailsViewModel>();
 
             return this.GenericResponse(new ResultModel(result));
         }

@@ -9,17 +9,17 @@
 
     public class LanguagesController : ApiController
     {
-        private readonly ILanguagesService languageService;
+        private readonly ILanguagesService languagesService;
 
         public LanguagesController(ILanguagesService languageService)
         {
-            this.languageService = languageService;
+            this.languagesService = languageService;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllAsync()
         {
-            var result = await this.languageService.GetAllAsync<LanguageDetailsViewModel>();
+            var result = await this.languagesService.GetAllAsync<LanguageDetailsViewModel>();
 
             return this.GenericResponse(result);
         }

@@ -48,18 +48,6 @@ export const getCategories = async () =>{
     return await axios.get(baseUrl + 'api/Categories');
 }
 
-export const uploadImage = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    let response = await axios({
-        method: 'POST',
-        url: baseUrl + "api/Blobs",
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data', }
-    });
-    return response.data.photoUrl;
-}
-
 export const getCompanyEmailById = async(id) => {
     const resp = await axios.get(baseUrl + `api/Companies/${id}`)
     return resp.data;

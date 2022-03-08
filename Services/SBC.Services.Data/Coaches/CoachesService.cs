@@ -1,6 +1,5 @@
 ﻿namespace SBC.Services.Data.Coach
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -199,9 +198,9 @@
         }
 
         public async Task<int> GetCountAsync()
-    => await this.coachesRepository
-        .AllAsNoTracking()
-        .CountAsync();
+            => await this.coachesRepository
+                .AllAsNoTracking()
+                .CountAsync();
 
         private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)
         => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x.LanguageId));

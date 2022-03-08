@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select'
-import { uploadImage, updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
+import { updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
+import { uploadImage } from '../../services/blob-service';
 
 import styles from './EditCoach.module.css';
 
@@ -88,7 +89,7 @@ const EditCoach = (props) => {
     }
     else {
       let result = await uploadImage(data.imageUrl);
-      data.imageUrl = result
+      data.imageUrl = result.photoUrl
     }
 
     languages.length === 0 ?
