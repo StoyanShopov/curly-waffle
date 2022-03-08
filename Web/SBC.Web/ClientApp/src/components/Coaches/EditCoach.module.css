@@ -38,7 +38,7 @@ div.inputContainer{
 
 .inputField{
     width: 400px;
-    height: 30px;
+    height: 20px;
     border: 2px solid;
     border-color: #296cfb;
     margin-top: 25px;
@@ -164,42 +164,42 @@ input[type="file"] {
     position: fixed;
     color: #e84855;
     left: 36.6%;
-    top: 132px;
+    top: 125px;
 }
 
 .starLastName{
     position: absolute;
     color: #e84855;
     left: 36.3%;
-    top: 190px;
+    top: 177px;
 }
 
 .starPrice{
     position: absolute;
     color: #e84855;
-    left: 29%;
-    top: 311px;
+    left: 31%;
+    top: 279px;
 }
 
 .starCalendlyUrl{
     position: absolute;
     color: #e84855;
-    left: 39.7%;
-    top: 373px;
+    left: 39.0%;
+    top: 330px;
 }
 
 .starDescription{
     position: absolute;
     color: #e84855;
-    left: 37.7%;
-    top: 622px;
+    left: 37.0%;
+    top: 562px;
 }
 
 .starVideoUrl{
     position: absolute;
     color: #e84855;
     left: 35.7%;
-    top: 252px;
+    top: 228px;
 }
 
 .company{

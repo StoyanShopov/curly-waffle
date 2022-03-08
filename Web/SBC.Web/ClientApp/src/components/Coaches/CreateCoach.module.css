@@ -164,43 +164,43 @@ input[type="file"] {
 .starFirstName{
     position: fixed;
     color: #e84855;
-    left: 38.6%;
-    top: 132px;
+    left: 36.6%;
+    top: 125px;
 }
 
 .starLastName{
     position: absolute;
     color: #e84855;
-    left: 38.3%;
-    top: 190px;
+    left: 36.3%;
+    top: 177px;
 }
 
 .starPrice{
     position: absolute;
     color: #e84855;
     left: 31%;
-    top: 311px;
+    top: 279px;
 }
 
 .starCalendlyUrl{
     position: absolute;
     color: #e84855;
-    left: 41.7%;
-    top: 373px;
+    left: 39.0%;
+    top: 330px;
 }
 
 .starDescription{
     position: absolute;
     color: #e84855;
-    left: 39.7%;
-    top: 622px;
+    left: 37.0%;
+    top: 562px;
 }
 
 .starVideoUrl{
     position: absolute;
     color: #e84855;
-    left: 37.7%;
-    top: 252px;
+    left: 35.7%;
+    top: 228px;
 }
 
 .company{

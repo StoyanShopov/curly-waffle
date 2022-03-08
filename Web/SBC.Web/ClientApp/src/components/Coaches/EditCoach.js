@@ -12,8 +12,6 @@ const EditCoach = (props) => {
   const [coach, setCoach] = useState(props.coach)
   const [companyEmail, setCompanyEmail] = useState();
 
-
-
   useEffect(() => {
     if(coach.companyId!==null){
       getCompanyEmailById(coach.companyId).then(res =>{

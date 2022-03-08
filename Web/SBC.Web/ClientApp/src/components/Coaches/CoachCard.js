@@ -11,8 +11,6 @@ const CoachCard = (props) => {
     const [coaches, setCoaches] = useState(props.coaches)
     const [companyUrl, setCompanyUrl] = useState();
 
-
-
     useEffect(() => {
       if(coach.companyId!==null){
         getCompanyEmailById(coach.companyId).then(res =>{
@@ -23,6 +21,13 @@ const CoachCard = (props) => {
       setCoach(coach)
       setCoaches(coaches)
     },[props.coach,props.coaches])
+    
+    const coachCategoriesAsArrayOfIds = coach.categories.map(x => x.categoryId)
+    const coachCategories = props.categories.filter(x => coachCategoriesAsArrayOfIds.includes(x.value))
+   
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
     
       return (
         <div className={styles.card}>
@@ -53,7 +58,8 @@ const CoachCard = (props) => {
           </div>
           <div className={styles.down}>
             <div className={styles.name}>
-              <span className={styles.bold}>{"category"}</span>
+              <span className={styles.bold}>{coachCategories.length > 0 ?
+                        coachCategories[getRandomInt(coachCategories.length)].label : ""}</span>
               <span className={styles.names}>
                 {coach.firstName} {coach.lastName}
               </span>
