@@ -36,6 +36,9 @@
             var courses = await this.courseService.GetCountAsync();
             var coaches = await this.coachService.GetCountAsync();
 
+            var numberOfClients = this.ParseDiagramByCountAndMonths(new int[] { 45, 15, 25, 60, 30, 45 });
+            var totalRevenue = this.ParseDiagramByCountAndMonths(new int[] { 1000, 800, 1000, 900, 1300, 1000 });
+
             return new ResultModel(new DashboardViewModel
             {
                 Clients = clients,

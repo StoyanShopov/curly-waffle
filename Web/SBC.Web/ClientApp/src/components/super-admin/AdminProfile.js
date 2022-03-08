@@ -17,10 +17,10 @@ export default function AdminProfile(props) {
     const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
 
     let userRole = TokenManagement.getUserRole();
-    useEffect(() => {
+useEffect(() => {
         userRole = TokenManagement.getUserRole();
         GetUser(setUserData);
-    }, [])
+}, [])
 
   let subtitle = {
     content: {

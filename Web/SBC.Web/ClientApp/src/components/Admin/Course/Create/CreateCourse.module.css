@@ -1,0 +1,77 @@
+.createPage {
+    text-align: center;
+}
+
+.headingCourse {
+    color: #296CFB;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.closeCreate {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #296CFB;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.inputContainer {
+    width: 500px;
+    height: 3rem;
+    margin-top: 20px;
+    opacity: 1;
+    border: 2px solid #296CFB;
+    font-size: 20px;
+}
+
+.selectContainer {
+    width: 510px;
+    height: 3.3rem;
+    margin-top: 20px;
+    opacity: 1;
+    border: 2px solid #296cfb;
+    font-size: 20px;
+    color: #296CFB;
+    padding-left: 30px;
+}
+
+.buttonContainer {
+    margin: 10px;
+    padding-top: 15px;
+}
+
+.btnCancel {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    border-color: #296CFB;
+    cursor: pointer;
+}
+
+.btnSubmit {
+    margin: 10px;
+    width: 120px;
+    height: 2.5rem;
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #FFFFFF;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    cursor: pointer;
+}
+
+.inputContainer::placeholder {
+    padding-left: 30px;
+    text-align: left;
+    color: #296CFB;
+}

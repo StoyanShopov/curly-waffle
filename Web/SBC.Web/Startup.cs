@@ -24,13 +24,14 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
-    using SBC.Services.Data;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.BusinessOwner;
     using SBC.Services.Data.Clients;
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Resources;
     using SBC.Services.Data.Users;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
@@ -146,6 +147,8 @@
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
+            services.AddTransient<ILecturesService, LecturesService>();
+            services.AddTransient<IResourcesService, ResourcesService>();
             services.AddTransient<IIdentitiesService, IdentitiesService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
@@ -165,9 +168,7 @@
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.EnsureCreated();
-
-                // dbContext.Database.Migrate();
+                dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 

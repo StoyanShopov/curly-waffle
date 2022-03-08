@@ -6,12 +6,12 @@ import { userService } from '../../services/user.service';
 import { TokenManagement } from '../../helpers';
 
 export default function NavigationBar(props) {
-
-
+    
+  
     let userData = TokenManagement.getUserData();
     const onLogout = () => {
         userService.logout();
-
+      
     }
 
     useEffect(() => {
