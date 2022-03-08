@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
@@ -10,6 +10,7 @@ import { OwnerService } from '../../../services';
 
 export default function OwnerEmployees() {
     const [employees, setEmployees] = useState([]);
+    const [count, setCount] = useState();
 
     const [isPending, setIsPending] = useState(false);
     const [skip, setSkip] = useState(0);
@@ -17,6 +18,7 @@ export default function OwnerEmployees() {
     const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
 
     const cancelTokenSource = axios.CancelToken.source();
+    let navigate = useNavigate();
 
     useEffect(() => {
         handleViewMore(0);
@@ -28,7 +30,10 @@ export default function OwnerEmployees() {
     }, [])
 
     const RemoveEmployee = async (id) => {
-        await OwnerService.CompanyRemoveEmployee(id);
+        await OwnerService.CompanyRemoveEmployee(id)
+            .then(res => {
+                navigate('/profile/dashboard')//
+            })
     }
 
     const handleClose = useCallback(() => {
@@ -52,7 +57,9 @@ export default function OwnerEmployees() {
 
         const json = await OwnerService.CompanyGetEmployees(skip, cancelTokenSource);
 
-        console.log(json)//
+        console.log('js', json)//
+
+        setCount(json.count);
 
         setIsPending(false);
 
@@ -71,7 +78,7 @@ export default function OwnerEmployees() {
                 <table className={css.tableContainer}>
                     <thead>
                         <tr>
-                            <th className={css.firstTh}>Employees (64)</th>
+                            <th className={css.firstTh}>Employees ({count})</th>
                             <th className={css.secondTh}>Email</th>
                             <th >
                                 <div className={css.plusSignContainer} >

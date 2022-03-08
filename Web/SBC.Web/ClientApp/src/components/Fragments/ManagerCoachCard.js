@@ -1,10 +1,15 @@
-﻿import React from 'react';
+﻿import React, { useState, useCallback } from 'react';
+import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
+import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
 import { OwnerService } from '../../services';
 
 import styles from './ManagerCoachCard.module.css';
 
 export default function ManagerCoachCard(props) {
+    const [showModal, setShowModal] = useState(false);
+    let navigate = useNavigate();
 
     const onDelete = () => {
         OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
@@ -14,37 +19,68 @@ export default function ManagerCoachCard(props) {
     }
 
     const onSet = () => {
-         OwnerService.CompanySetCoachToActive(props.coach.id)
+        OwnerService.CompanySetCoachToActive(props.coach.id)
             .then(res => {
-                console.log('Successful set')//
-            })
+                if (res.status) {
+                    console.log('Successful set', res);//
+                    navigate('/profile/coaches');//
+                }
+                else {
+                    console.log(error)//
+                }
+            });
     }
 
+    const handleClose = useCallback(() => {
+        setShowModal(false)
+    }, []);
 
-    console.log(props.coach)
-
+    function openModal() {
+        setShowModal(true);
+    }
 
     return (
-        <div className={styles.card}>
-            <div className={styles.upper}>
-                <img className={styles.cardpic} src="/assets/images/Mask Group 3.png" alt="" />
+        <>
+            <div className={styles.card}>
+                <div className={styles.upper}>
+                    <img className={styles.cardpic} src="/assets/images/Mask Group 3.png" alt="" />
+                </div>
+                <div className={styles.down}>
+                    <div className={styles.name}>
+                        <span>{props.coach.categoryByDefault}</span>
+                        <span>{props.coach.fullName}</span>
+                    </div>
+                    <div className={styles.price}>
+                        <span>{props.coach.pricePerSession}&#8364; per session</span>
+                        <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
+                    </div>
+                    <div className={styles.button}>
+                        {props.coach.isActive
+                            ? <button className={styles.removeButton} onClick={() => openModal()}>Remove</button>
+                            : <button className={styles.removeButton} onClick={onSet}>Add</button>
+                        }
+                    </div>
+                </div>
             </div>
-            <div className={styles.down}>
-                <div className={styles.name}>
-                    <span>{props.coach.categoryByDefault}</span>
-                    <span>{props.coach.fullName}</span>
-                </div>
-                <div className={styles.price}>
-                    <span>{props.coach.pricePerSession}&#8364; per session</span>
-                    <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
-                </div>
-                <div className={styles.button}>
-                    {props.coach.isActive
-                        ? <button className={styles.removeButton} onClick={onDelete}>Remove</button>
-                        : <button className={styles.removeButton} onClick={onSet}>Add</button>
+            <Modal
+                style={{
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        width: '30%',
+                        height: '40%',
+                        bottom: 'auto',
+                        transform: 'translate(-50%, -50%)',
+                        padding: '0px',
                     }
-                </div>
-            </div>
-        </div>
+                }}
+                isOpen={showModal}
+                onRequestClose={handleClose}
+                contentLabel="Example Modal"
+            >
+                <ModalRemoveCourse handleClose={handleClose} item="coach" delete={() => onDelete()} />
+            </Modal>
+        </>
     )
 }

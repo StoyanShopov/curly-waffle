@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 
-import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+import ModalRemoveCourse from '../Modals/ModalRemoveCourse';
 import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
 import { OwnerService } from '../../../services';
 import styles from "./ActiveCoaches.module.css";
@@ -10,7 +10,6 @@ import styles from "./ActiveCoaches.module.css";
 export default function ActiveCoaches() {
     const [coaches, setCoaches] = useState([]);
 
-    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         OwnerService.CompanyGetActiveCoaches()
@@ -20,11 +19,6 @@ export default function ActiveCoaches() {
             })
     }, []);
 
-    const handleClose = useCallback(() => {
-        setShowModal(false)
-    }, []);
-
-
     return (
         <>
             <div className={styles.container}>
@@ -33,30 +27,12 @@ export default function ActiveCoaches() {
                 </div>
                 <div className={styles.cardscontainer}>
                 {coaches.length > 0
-                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
+                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x}/>)
                     : <h3>No coaches yet</h3>
                     }
                 </div>
             </div>
-            <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
-            >
-                <ModalRemoveCourse handleClose={handleClose}/>
-            </Modal>
+            
         </>
     );
 }

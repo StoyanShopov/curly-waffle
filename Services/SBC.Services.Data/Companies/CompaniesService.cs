@@ -77,6 +77,7 @@
             {
                 Portions = portions,
                 ViewMoreAvailable = isViewMoreAvailable,
+                Count = employeesCount,
             };
 
             return new ResultModel(employees);

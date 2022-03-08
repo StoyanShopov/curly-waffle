@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { userActions } from '../../actions/index';
 
 import styles from "./LoginAsEmployee.module.css";
-import { GetAdminData } from "../../services/super-admin-service";
+import { userService } from '../../services';
 
 
 const LoginAsEmployee = (props) => {
@@ -32,7 +32,7 @@ const LoginAsEmployee = (props) => {
 
         await dispatch(userActions.login(email, password));
 
-        await GetAdminData().then(data => {
+        await userService.GetUserData().then(data => {
             //            console.log(data)
         });
         window.location.href = "/";

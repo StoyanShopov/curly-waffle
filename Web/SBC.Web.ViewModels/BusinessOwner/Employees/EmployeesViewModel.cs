@@ -7,5 +7,7 @@
         public IEnumerable<EmployeeViewModel> Portions { get; set; }
 
         public bool ViewMoreAvailable { get; set; }
+
+        public int Count { get; set; }
     }
 }

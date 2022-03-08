@@ -5,7 +5,7 @@ import styles from "./RegisterAsOwner.module.css";
 
 import { useDispatch } from 'react-redux';
 import { userActions } from '../../actions/index';
-import { GetAdminData } from "../../services/super-admin-service";
+import { userService } from '../../services';
 
 
 const RegisterAsOwner = (prop) => {
@@ -51,7 +51,7 @@ const RegisterAsOwner = (prop) => {
 
         await dispatch(userActions.register(fullName, companyName, email, password, confirmPassword));
 
-        await GetAdminData().then(data => {
+        await userService.GetUserData().then(data => {
             //            console.log(data)
         });
         window.location.href = "/";

@@ -1,9 +1,11 @@
 ﻿import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { OwnerService } from '../../services';
 import styles from './ManagerCourseCard.module.css';
 
 export default function ManagerCourseCard(props) {
+    let navigate = useNavigate();
 
     const onDelete = () => {
         OwnerService.CompanyRemoveCourseFromActive(props.course.id)
@@ -15,7 +17,13 @@ export default function ManagerCourseCard(props) {
     const onSet = () => {
         OwnerService.CompanySetCourseToActive(props.course.id)
             .then(res => {
-                console.log('Successful set')//
+                if (res) {
+                    console.log('Successful set')//
+                    navigate('/profile/courses');
+                }
+                else {
+                    console.log(res.statusText);//
+                }
             })
     }
 
