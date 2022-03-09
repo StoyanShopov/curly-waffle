@@ -22,13 +22,13 @@ const AllCourses = () => {
 
     let subtitle = {
         content: {
-            top: '40%',
+            top: '32%',
             left: '50%',
             right: 'auto',
-            width: '35%',
+            width: 'auto',
             height: 'auto',
-            bottom: 'auto',
-            marginTop: '-5%',
+            bottom: '-15%',
+            marginTop: '0%',
             marginRight: '0%',
             transform: 'translate(-50%, -20%)',
             padding: '0px',

@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration.Company
+﻿namespace SBC.Web.ViewModels.Administration.Companies
 {
     using System.ComponentModel.DataAnnotations;
 

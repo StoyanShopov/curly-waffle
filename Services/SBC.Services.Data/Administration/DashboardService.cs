@@ -11,8 +11,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Coaches;
+    using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
     using SBC.Web.ViewModels;
     using SBC.Web.ViewModels.Administration.Dashboard;

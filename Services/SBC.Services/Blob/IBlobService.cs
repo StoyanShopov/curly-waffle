@@ -11,12 +11,12 @@
 
     public interface IBlobService
     {
-        Task<ICollection<BlobResponseModel>> GetAllBlobsAsync();
+        Task<ICollection<BlobResponseModel>> GetAllAsync();
 
-        Task<Result> UploadFileBlobAsync(IFormFile file);
+        Task<Result> UploadBlobAsync(IFormFile file);
 
-        Task<bool> DeleteBlobByNameAsync(string blobName);
+        Task<bool> DeleteByNameAsync(string blobName);
 
-        BlobClient DownloadBlobByName(string blobName);
+        BlobClient DownloadByName(string blobName);
     }
 }

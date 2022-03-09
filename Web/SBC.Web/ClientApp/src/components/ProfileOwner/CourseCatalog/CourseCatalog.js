@@ -15,18 +15,6 @@ export default function CourseCatalog(prop) {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
-
     return (
         <>
             <div className={styles.container}>
@@ -273,7 +261,7 @@ export default function CourseCatalog(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} />
             </Modal>
         </>
     );

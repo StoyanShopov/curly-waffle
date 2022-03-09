@@ -14,18 +14,6 @@ export default function ActiveCoaches(prop) {
         setShowModal(false)
     }, []);
 
-    const handleSkip = (skip) => {
-        setSkip(prevSkip => {
-            return prevSkip + skip;
-        });
-    }
-
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
-
     return (
         <>
             <Sidebar />
@@ -125,7 +113,7 @@ export default function ActiveCoaches(prop) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
+                <ModalRemoveCourse handleClose={handleClose} />
             </Modal>
         </>
     );

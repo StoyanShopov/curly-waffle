@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Company
+﻿namespace SBC.Services.Data.Companies
 {
     using System.Linq;
     using System.Net;
@@ -9,7 +9,9 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Web.ViewModels.Administration.Company;
+    using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Companies;
+    using SBC.Web.ViewModels.Company;
 
     using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
@@ -25,6 +27,19 @@
         {
             this.companiesRepository = companiesRepository;
             this.roleManager = roleManager;
+        }
+
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.companiesRepository
+                .AllAsNoTracking()
+                .To<CompanyViewModel>()
+                .ToListAsync());
+
+        public async Task<Result> GetEmailByIdAsync(int id)
+        {
+            var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+
+            return new ResultModel(result);
         }
 
         public async Task<Result> AddAsync(CreateCompanyInputModel model)

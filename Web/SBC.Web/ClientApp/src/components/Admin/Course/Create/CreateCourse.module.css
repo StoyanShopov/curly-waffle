@@ -7,7 +7,8 @@
     font-family: Montserrat;
     font-size: 28px;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 15px;
+    margin: 0;
 }
 
 .closeCreate {
@@ -23,8 +24,8 @@
 }
 
 .inputContainer {
-    width: 500px;
-    height: 3rem;
+    width: 71%;
+    height: 2rem;
     margin-top: 20px;
     opacity: 1;
     border: 2px solid #296CFB;
@@ -32,8 +33,8 @@
 }
 
 .selectContainer {
-    width: 510px;
-    height: 3.3rem;
+    width: 72%;
+    height: 2.4rem;
     margin-top: 20px;
     opacity: 1;
     border: 2px solid #296cfb;
@@ -71,7 +72,6 @@
 }
 
 .inputContainer::placeholder {
-    padding-left: 30px;
-    text-align: left;
     color: #296CFB;
+    padding-left: 28px;
 }
