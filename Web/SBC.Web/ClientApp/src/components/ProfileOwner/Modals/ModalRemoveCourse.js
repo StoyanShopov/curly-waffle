@@ -1,5 +1,6 @@
 ﻿import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../constants';
 
 import styles from './ModalRemoveCourse.module.css'
 
@@ -7,7 +8,7 @@ export default function ModalRemoveCourse(props) {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const response = await axios.post(baseUrl + 'Administration/Client', clientData)
+        const response = await axios.post(baseUrl + 'Administration/Client', props.clientData)
 
         if (response.status === 200) {
             props.handleSkip(1);

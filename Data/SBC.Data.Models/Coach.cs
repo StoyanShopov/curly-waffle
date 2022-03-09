@@ -30,6 +30,8 @@
 
         public string CalendlyUrl { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public int? CompanyId { get; set; }
 
         public Company Company { get; set; }

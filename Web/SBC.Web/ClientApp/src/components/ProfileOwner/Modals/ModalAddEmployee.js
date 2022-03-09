@@ -1,5 +1,6 @@
 ﻿import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../constants';
 
 import styles from './ModalAddEmployee.module.css'
 
@@ -44,7 +45,7 @@ export default function ModalAddEmployee(props) {
                     </div>
                     <div className={styles.modalContented}>
                         <form className={styles.formMain} onSubmit={submitHandler}>
-                            <div className={styles.formGroup, styles.field}>
+                            <div className={styles.formField}>
                                 <input
                                     type="text"
                                     className={styles.formField}
@@ -52,7 +53,7 @@ export default function ModalAddEmployee(props) {
                                     placeholder="Full Name*"
                                     name="fullName" />
                             </div>
-                            <div className={styles.formGroup, styles.field}>
+                            <div className={styles.formField}>
                                 <input
                                     type="email"
                                     className={styles.formField}

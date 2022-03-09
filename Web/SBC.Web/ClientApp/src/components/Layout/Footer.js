@@ -13,7 +13,7 @@ const Footer = () => {
                         <div className={styles.flex}>
                             <ul className={styles.firstColumn}>
                                 <li className={styles.logoHeaderRow}>
-                                    <img src="assets/images/Group 5.svg" className={styles.logo} />
+                                    <img src="/assets/images/Group 5.svg" className={styles.logo} />
                                     <h1 className={styles.logoHeader}>upskill</h1>
                                 </li>
                                 <li><p className={styles.logoText}>Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field.</p></li>
@@ -32,9 +32,9 @@ const Footer = () => {
                                 <li><Link to="/requests"><p className={styles.requests}>Requests</p></Link></li>
                             </ul>
                             <ul className={styles.fourthColumn}>
-                                <li><Link to="/"><img src="assets/images/Group 12.svg" className={styles.facebookLogo} /></Link></li>
-                                <li><Link to="/"><img src="assets/images/Group 13.svg" className={styles.instagramLogo} /></Link> </li>
-                                <li><Link to="/"><img src="assets/images/Group 14.svg" className={styles.linkedInLogo} /></Link></li>
+                                <li><Link to="/"><img src="/assets/images/Group 12.svg" className={styles.facebookLogo} /></Link></li>
+                                <li><Link to="/"><img src="/assets/images/Group 13.svg" className={styles.instagramLogo} /></Link> </li>
+                                <li><Link to="/"><img src="/assets/images/Group 14.svg" className={styles.linkedInLogo} /></Link></li>
                             </ul>
                         </div>
                         <div className={styles.bottom}>

@@ -303,17 +303,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("CategoryId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CategoryCoaches");
                 });
@@ -342,6 +334,9 @@ namespace SBC.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -489,6 +484,9 @@ namespace SBC.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("PricePerPerson")
                         .HasColumnType("decimal(18,2)");
 
@@ -573,17 +571,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("LanguageId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("LanguageCoaches");
                 });
@@ -1046,6 +1036,8 @@ namespace SBC.Data.Migrations
                     b.Navigation("Claims");
 
                     b.Navigation("Courses");
+
+                    b.Navigation("Employees");
 
                     b.Navigation("Logins");
 
