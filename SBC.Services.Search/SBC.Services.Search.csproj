@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
     <ProjectReference Include="..\SBC.Common\SBC.Common.csproj" />
+    <ProjectReference Include="..\Web\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

@@ -17,6 +17,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Nest;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -113,7 +114,7 @@
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(Data.Common.Repositories.IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Jwt
@@ -142,6 +143,8 @@
                     };
                 });
 
+            services.AddSingleton<ISearchService>(new SearchService(this.configuration));
+
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
@@ -154,7 +157,6 @@
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
-            services.AddTransient<ISearchService, SearchService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
