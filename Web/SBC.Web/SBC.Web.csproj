@@ -41,6 +41,7 @@
 		<ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
 		<ProjectReference Include="..\..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
 		<ProjectReference Include="..\..\Data\SBC.Data\SBC.Data.csproj" />
+		<ProjectReference Include="..\..\SBC.Services.Search\SBC.Services.Search.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Data\SBC.Services.Data.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Messaging\SBC.Services.Messaging.csproj" />
