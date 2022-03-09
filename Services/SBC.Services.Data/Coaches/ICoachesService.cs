@@ -1,9 +1,9 @@
-﻿namespace SBC.Services.Data.Coach
+﻿namespace SBC.Services.Data.Coaches
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Web.ViewModels.Administration.Coach;
+    using SBC.Web.ViewModels.Administration.Coaches;
 
     public interface ICoachesService
     {

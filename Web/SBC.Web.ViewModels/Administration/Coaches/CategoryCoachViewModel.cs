@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration.Coach
+﻿namespace SBC.Web.ViewModels.Administration.Coaches
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;

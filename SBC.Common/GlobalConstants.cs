@@ -6,17 +6,6 @@
 
         public const string BlobContainer = "upskillcontainertest";
 
-        public class ControllerRouteConstants
-        {
-            public const string DeleteRoute = "delete";
-
-            public const string GetAllRoute = "getAll";
-
-            public const string DownloadBlobByNameRoute = "download";
-
-            public const string UploadBlobRoute = "upload";
-        }
-
         public class RolesNamesConstants
         {
             public const string AdministratorRoleName = "Administrator";
@@ -140,6 +129,7 @@
             public const string PhoneNumber2 = "+359 888000222";
             public const string PhoneNumber3 = "+359 888000333";
         }
+
         public class CoachesConstants
         {
             public const string CoachDoesNotExist = "Coach with id:{0} does not exists!";
@@ -156,6 +146,7 @@
         {
             public const string CategoryDoesNotExist = "Category does not exist!";
         }
+
         public class ApplicationUserConstants
         {
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";

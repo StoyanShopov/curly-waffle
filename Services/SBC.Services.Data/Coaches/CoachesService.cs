@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Coach
+﻿namespace SBC.Services.Data.Coaches
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -11,7 +11,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Administration.Coach;
+    using SBC.Web.ViewModels.Administration.Coaches;
 
     using static SBC.Common.GlobalConstants;
 

@@ -1,6 +1,6 @@
 import styles from './DeleteCoach.module.css';
-import { deleteCoachById } from '../../services/adminCoachesService';
 
+import { deleteCoachById } from '../../services/adminCoachesService';
 
 const DeleteCoach = (props) => {    
 

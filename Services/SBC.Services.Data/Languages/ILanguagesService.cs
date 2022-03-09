@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Language
+﻿namespace SBC.Services.Data.Languages
 {
     using System.Threading.Tasks;
 

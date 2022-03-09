@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select'
+
+import styles from './EditCoach.module.css';
+
 import { updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
 import { uploadImage } from '../../services/blob-service';
 
-import styles from './EditCoach.module.css';
 
 const EditCoach = (props) => {
   const [languages, setLanguages] = useState([]);
@@ -16,7 +18,7 @@ const EditCoach = (props) => {
   useEffect(() => {
     if(coach.companyId!==null){
       getCompanyEmailById(coach.companyId).then(res =>{
-        setCompanyEmail(res)
+        setCompanyEmail(res.email)
       })
     }
     setCoach(props.coach)

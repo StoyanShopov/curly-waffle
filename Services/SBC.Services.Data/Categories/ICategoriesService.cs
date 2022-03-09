@@ -1,10 +1,10 @@
-﻿namespace SBC.Services.Data.Category
+﻿namespace SBC.Services.Data.Categories
 {
-    using System.Collections.Generic;
+    using SBC.Common;
     using System.Threading.Tasks;
 
     public interface ICategoriesService
     {
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
+        Task<Result> GetAllAsync<TModel>();
     }
 }

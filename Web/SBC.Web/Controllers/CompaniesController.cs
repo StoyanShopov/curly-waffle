@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Services.Data.Company;
+    using SBC.Services.Data.Companies;
     using SBC.Web.ViewModels.Company;
 
     public class CompaniesController : ApiController

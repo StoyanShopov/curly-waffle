@@ -1,9 +1,9 @@
-﻿namespace SBC.Services.Data.Company
+﻿namespace SBC.Services.Data.Companies
 {
     using System.Threading.Tasks;
 
     using SBC.Common;
-    using SBC.Web.ViewModels.Administration.Company;
+    using SBC.Web.ViewModels.Administration.Companies;
 
     public interface ICompaniesService
     {

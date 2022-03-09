@@ -75,6 +75,7 @@ div.inputContainer{
     opacity: 1;
     cursor: pointer;
 }
+
 .btnCancel{
     background-color: white;
     width: 100px;
@@ -86,6 +87,7 @@ div.inputContainer{
     letter-spacing: 1.1px;
     cursor: pointer;
 }
+
 .addAnotherCoachBtn{
     color: #296CFB;
     text-align: left;
@@ -98,7 +100,8 @@ div.inputContainer{
     background: none;
     display: flex;
 }
-::placeholder {
+
+.inputContainer ::placeholder {
     font-family: "Montserrat", sans-serif;
     color: #296CFB;
     font-weight: 500;
@@ -148,7 +151,7 @@ div.inputContainer{
     cursor: pointer;
 }
 
-input[type="file"] {
+.upload input[type="file"] {
     position: fixed;
     right: 100%;
     bottom: 100%;
@@ -160,6 +163,7 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+
 .starFirstName{
     position: fixed;
     color: #e84855;
@@ -206,19 +210,18 @@ input[type="file"] {
     color: white;
 }
 
-input[required]:invalid + span {
+.inputContainer input[required]:invalid + span {
     display: inline-block;
 }
 
-input[required]:valid + span {
+.inputContainer input[required]:valid + span {
     display: none;
 }
 
-textarea[required]:valid + span{
+.inputContainer textarea[required]:valid + span{
     display: none;
 }
-
-textarea[required]:invalid + span{
+.inputContainer textarea[required]:invalid + span{
     display: inline-block;
 }
 .languages{

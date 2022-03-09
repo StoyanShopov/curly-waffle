@@ -4,8 +4,8 @@
 
     using Microsoft.AspNetCore.Mvc;
 
-    using SBC.Services.Data.Coach;
-    using SBC.Web.ViewModels.Administration.Coach;
+    using SBC.Services.Data.Coaches;
+    using SBC.Web.ViewModels.Administration.Coaches;
 
     public class CoachesController : AdministrationController
     {

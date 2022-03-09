@@ -26,12 +26,12 @@
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
     using SBC.Services.Data;
-    using SBC.Services.Data.Category;
+    using SBC.Services.Data.Categories;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.Client;
-    using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Company;
-    using SBC.Services.Data.Language;
+    using SBC.Services.Data.Coaches;
+    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Languages;
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Lectures;
     using SBC.Services.Data.Resources;

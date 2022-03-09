@@ -1,9 +1,9 @@
-﻿namespace SBC.Web.ViewModels.Language
+﻿namespace SBC.Web.ViewModels.Categories
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;
 
-    public class LanguageDetailsViewModel : IMapFrom<Language>
+    public class CategoryDetailsViewModel : IMapFrom<Category>
     {
         public int Id { get; set; }
 

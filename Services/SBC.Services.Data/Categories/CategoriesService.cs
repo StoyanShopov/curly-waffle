@@ -1,10 +1,10 @@
-﻿namespace SBC.Services.Data.Category
+﻿namespace SBC.Services.Data.Categories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
-
+    using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
@@ -18,10 +18,10 @@
             this.categoryRepository = data;
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-             => await this.categoryRepository
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.categoryRepository
                 .AllAsNoTracking()
                 .To<TModel>()
-                .ToListAsync();
+                .ToListAsync());
     }
 }

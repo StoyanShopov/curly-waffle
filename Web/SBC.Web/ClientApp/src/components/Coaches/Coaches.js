@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import styles from "../Coaches/Coaches.module.css";
-import Modal from 'react-modal';
-import { useState } from "react";
-import CoachCard from "./CoachCard";
+
 import { getAllCoaches, getCategories, getLanguages } from "../../services/adminCoachesService"
+
+import CoachCard from "./CoachCard";
 import CreateCoach from "./CreateCoach";
+import Modal from 'react-modal';
 
 const Coaches = () => {
 

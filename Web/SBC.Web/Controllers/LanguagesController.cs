@@ -4,8 +4,8 @@
 
     using Microsoft.AspNetCore.Mvc;
 
-    using SBC.Services.Data.Language;
-    using SBC.Web.ViewModels.Language;
+    using SBC.Services.Data.Languages;
+    using SBC.Web.ViewModels.Languages;
 
     public class LanguagesController : ApiController
     {

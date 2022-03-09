@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Company
+﻿namespace SBC.Services.Data.Companies
 {
     using System.Linq;
     using System.Net;
@@ -10,8 +10,9 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Administration.Company;
+    using SBC.Web.ViewModels.Administration.Companies;
     using SBC.Web.ViewModels.Company;
+
     using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 

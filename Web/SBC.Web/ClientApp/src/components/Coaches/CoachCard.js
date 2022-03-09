@@ -1,10 +1,13 @@
-import styles from "./CoachCard.module.css";
 import React, { useEffect, useState } from "react";
-import DeleteCoach from "./DeleteCoach";
 import { Link } from "react-router-dom";
+
+import styles from "./CoachCard.module.css";
+
+import { getCompanyEmailById } from "../../services/adminCoachesService";
+
+import DeleteCoach from "./DeleteCoach";
 import EditCoach from "./EditCoach";
 import Modal from 'react-modal';
-import { getCompanyEmailById } from "../../services/adminCoachesService";
 
 const CoachCard = (props) => {
     const [coach, setCoach] = useState(props.coach)

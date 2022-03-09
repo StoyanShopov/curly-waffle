@@ -5,8 +5,8 @@
     using Microsoft.AspNetCore.Mvc;
 
     using SBC.Common;
-    using SBC.Services.Data.Category;
-    using SBC.Web.ViewModels.Category;
+    using SBC.Services.Data.Categories;
+    using SBC.Web.ViewModels.Categories;
 
     public class CategoriesController : ApiController
     {
@@ -22,7 +22,7 @@
         {
             var result = await this.categoriesService.GetAllAsync<CategoryDetailsViewModel>();
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
     }
 }

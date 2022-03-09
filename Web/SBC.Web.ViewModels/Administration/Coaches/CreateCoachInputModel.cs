@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Administration.Coach
+﻿namespace SBC.Web.ViewModels.Administration.Coaches
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

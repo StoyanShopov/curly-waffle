@@ -3,49 +3,57 @@
   width: 100%;
   height: 100%;
 }
+
 .h1 {
   font-size: 70px;
   font-family: "Montserrat", sans-serif;
 }
+
 .p {
   font-size: 22px;
   font-family: "Montserrat", sans-serif;
 }
 
-
 .container {
   margin: 0 auto;
 }
+
 .headcontainer {
   display: flex;
   height: 322px;
   justify-content: space-between;
   margin-bottom: 20rem;
 }
+
 .textcontainer {
   width: 960px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
+
 .imagecontainer {
   width: 960px;
   position: relative;
 }
+
 .background {
   object-fit: none;
   position: absolute;
 }
+
 .guy {
   width: 280px;
   position: absolute;
   top: 10%;
   left: 50%;
 }
+
 .innertext {
   width: 609px;
   margin: 0 auto;
 }
+
 .card {
   width: 450px;
   height: 450px;
@@ -80,6 +88,7 @@
   width: 80%;
   margin-top: 20px;
 }
+
 .price {
   margin: 0 auto;
   display: flex;
@@ -87,12 +96,14 @@
   width: 80%;
   margin-bottom: 20px;
 }
+
 .button {
   margin: 0 auto;
   width: 80%;
   display: flex;
   justify-content: center;
 }
+
 .button {
   width: 150px;
   height: 50px;
@@ -129,6 +140,7 @@
   margin-left: 170px;
   margin-bottom: 10rem;
 }
+
 .plus {
   width: 50px;
 }
