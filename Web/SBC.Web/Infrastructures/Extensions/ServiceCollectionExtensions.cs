@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Text;
+
     using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -19,23 +20,98 @@
     using SBC.Data.Repositories;
     using SBC.Services.Blob;
     using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Categories;
     using SBC.Services.Data.Client;
-    using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Company;
-    using SBC.Services.Data.Course;
+    using SBC.Services.Data.Coaches;
+    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Languages;
+    using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
 
-    public static class ServiceCollectionExtensionss
+    public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddApplicationConfigurations(this IServiceCollection services)
+            => services
+                .Configure<CookiePolicyOptions>(options =>
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
+
+        public static IServiceCollection AddApplicationServices(
+            this IServiceCollection services,
+            IConfiguration configuration)
+            => services
+                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
+                .AddTransient<IIdentitiesService, IdentitiesService>()
+                .AddTransient<IUsersService, UsersService>()
+                .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
+                .AddSingleton<IBlobService, BlobService>()
+                .AddTransient<IClientsService, ClientsService>()
+                .AddTransient<IDasboardService, DashboardService>()
+                .AddTransient<ICoursesService, CoursesService>()
+                .AddTransient<ICompaniesService, CompaniesService>()
+                .AddTransient<ICoachesService, CoachesService>()
+                .AddTransient<ILecturesService, LecturesService>()
+                .AddTransient<IResourcesService, ResourcesService>()
+                .AddTransient<ILanguagesService, LanguagesService>()
+                .AddTransient<ICategoriesService, CategoriesService>();
+
+        public static AppSettings GetAppSettings(
+            this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            var appSettingsSectionConfiguration = configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSectionConfiguration);
+
+            return appSettingsSectionConfiguration.Get<AppSettings>();
+        }
+
         public static IServiceCollection AddDataBase(
             this IServiceCollection services,
             IConfiguration configuration)
             => services
                 .AddDbContext<ApplicationDbContext>(options => options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+        public static IServiceCollection AddDataRepositories(this IServiceCollection services)
+            => services
+                .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
+                .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
+                .AddScoped<IDbQueryRunner, DbQueryRunner>();
+
+        public static IServiceCollection AddJwtAuthentication(
+            this IServiceCollection services,
+            AppSettings appSettings)
+        {
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                    };
+                });
+
+            return services;
+        }
 
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
@@ -47,13 +123,15 @@
             return services;
         }
 
-        public static IServiceCollection AddApplicationConfigurations(this IServiceCollection services)
-            => services
-                .Configure<CookiePolicyOptions>(options =>
-                {
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
-                });
+        public static IServiceCollection AddSpaFiles(this IServiceCollection services)
+        {
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
+
+            return services;
+        }
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services
@@ -92,74 +170,5 @@
 
                     configure.CustomSchemaIds(cs => string.Join('.', cs.FullName.Split('.').TakeLast(2)));
                 });
-
-        public static IServiceCollection AddSpaFiles(this IServiceCollection services)
-        {
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
-
-            return services;
-        }
-
-        public static IServiceCollection AddDataRepositories(this IServiceCollection services)
-            => services
-                .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
-                .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
-                .AddScoped<IDbQueryRunner, DbQueryRunner>();
-
-        public static AppSettings GetAppSettings(
-            this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            var appSettingsSectionConfiguration = configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSectionConfiguration);
-
-            return appSettingsSectionConfiguration.Get<AppSettings>();
-        }
-
-        public static IServiceCollection AddJwtAuthentication(
-            this IServiceCollection services,
-            AppSettings appSettings)
-        {
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-
-            services
-                .AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(x =>
-                {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                    };
-                });
-
-            return services;
-        }
-
-        public static IServiceCollection AddApplicationServices(
-            this IServiceCollection services,
-            IConfiguration configuration)
-            => services
-                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
-                .AddTransient<IIdentitiesService, IdentitiesService>()
-                .AddTransient<IUsersService, UsersService>()
-                .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
-                .AddSingleton<IBlobService, BlobService>()
-                .AddTransient<IClientsService, ClientsService>()
-                .AddTransient<IDasboardService, DashboardService>()
-                .AddTransient<ICoursesService, CoursesService>()
-                .AddTransient<ICompaniesService, CompaniesService>()
-                .AddTransient<ICoachesService, CoachesService>();
     }
 }

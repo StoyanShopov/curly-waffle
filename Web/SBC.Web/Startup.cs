@@ -10,7 +10,6 @@
     using SBC.Services.Mapping;
     using SBC.Web.Infrastructures.Extensions;
     using SBC.Web.ViewModels;
-    using SBC.Services.Identity.Contracts;
 
     public class Startup
     {

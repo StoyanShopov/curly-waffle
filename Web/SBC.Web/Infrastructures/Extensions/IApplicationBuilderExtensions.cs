@@ -11,15 +11,6 @@
 
     public static class IApplicationBuilderExtensions
     {
-        public static IApplicationBuilder ApplySwagger(this IApplicationBuilder app)
-            => app
-                .UseSwagger()
-                .UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                    options.RoutePrefix = "docs";
-                });
-
         public static IApplicationBuilder ApplySpa(
             this IApplicationBuilder app,
             IWebHostEnvironment env)
@@ -36,6 +27,15 @@
 
             return app;
         }
+
+        public static IApplicationBuilder ApplySwagger(this IApplicationBuilder app)
+            => app
+                .UseSwagger()
+                .UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    options.RoutePrefix = "docs";
+                });
 
         public static IApplicationBuilder PrepareDataBase(this IApplicationBuilder app)
         {
