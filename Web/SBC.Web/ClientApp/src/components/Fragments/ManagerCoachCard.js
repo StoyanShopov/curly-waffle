@@ -11,10 +11,14 @@ export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
     let navigate = useNavigate();
 
+    Modal.setAppElement('body');
+
     const onDelete = () => {
         OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
             .then(res => {
-                console.log('Successful delete')//
+                console.log('Successful delete');//    
+                setShowModal(false);
+                navigate('/profile/coaches')
             })
     }
 
@@ -79,7 +83,7 @@ export default function ManagerCoachCard(props) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} item="coach" delete={() => onDelete()} />
+                <ModalRemoveCourse handleClose={handleClose} item="coach" delete={onDelete} />
             </Modal>
         </>
     )

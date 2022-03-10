@@ -144,7 +144,7 @@
                 {
                     Id = x.Id,
                     FullName = $"{x.FirstName} {x.LastName}",
-                    CategoryByDefault = x.Categories.Count == 0 ? "Uncategorized" : x.Categories.FirstOrDefault().Category.Name,
+                    CategoryByDefault = x.Categories.Count == 0 ? "Common" : x.Categories.FirstOrDefault().Category.Name,
                     PricePerSession = x.PricePerSession,
                     CompanyLogoUrl = x.CompanyId != null ? x.Company.LogoUrl : "Null",
                 })

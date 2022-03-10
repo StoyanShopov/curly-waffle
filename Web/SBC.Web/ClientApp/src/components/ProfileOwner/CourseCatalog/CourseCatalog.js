@@ -1,19 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
-import Modal from 'react-modal';
 
 import { OwnerService } from '../../../services';
 import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
-import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+
 import { CategoriesList } from "./CategoriesList";
 import { LanguagesList } from "./LanguagesList";
 
 import styles from "./CourseCatalog.module.css";
 
 export default function CourseCatalog(prop) {
-    const [showModal, setShowModal] = useState(false);
-
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
@@ -24,11 +20,6 @@ export default function CourseCatalog(prop) {
             });
     }, []);
 
-    const handleClose = useCallback(() => {
-        setShowModal(false)
-    }, []);
-
-   
     return (
         <>
             <div className={styles.container}>
@@ -90,25 +81,7 @@ export default function CourseCatalog(prop) {
                 </div>
             </div>
 
-            <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
-            >
-                <ModalRemoveCourse handleClose={handleClose} />
-            </Modal>
+
         </>
     );
 }

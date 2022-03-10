@@ -1,19 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
-import Modal from 'react-modal';
 
 import { OwnerService } from '../../../services';
 import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
-import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+
 import { CategoriesList } from "../CourseCatalog/CategoriesList";
 import { LanguagesList } from "../CourseCatalog/LanguagesList";
 
 import styles from "./CoachCatalog.module.css";
 
 export default function CoachCatalog() {
-    const [showModal, setShowModal] = useState(false);
-
     const [coaches, setCoaches] = useState([]);
 
     useEffect(() => {
@@ -22,10 +18,6 @@ export default function CoachCatalog() {
                 setCoaches(res.data);
                 console.log(res.data);//
             });
-    }, []);
-
-    const handleClose = useCallback(() => {
-        setShowModal(false)
     }, []);
 
     return (
@@ -88,25 +80,7 @@ export default function CoachCatalog() {
                     <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
                 </div>
             </div>
-            <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
-            >
-                <ModalRemoveCourse handleClose={handleClose} />
-            </Modal>
+
         </>
     );
 }
