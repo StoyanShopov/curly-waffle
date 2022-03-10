@@ -6,6 +6,7 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
+    using Elasticsearch.Net;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -156,7 +157,9 @@
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
 
-            var elasticSetting = new ConnectionSettings();
+            var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
+                                    .DisableDirectStreaming()
+                                    .PrettyJson();
             services.AddSingleton<IElasticClient>(new ElasticClient());
             services.AddTransient<ISearchService, SearchService>();
         }

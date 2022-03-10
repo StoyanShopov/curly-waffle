@@ -4,9 +4,8 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Data.Models;
     using SBC.Services.Search;
-    using SBC.Web.ViewModels.Coaches;
+    using SBC.Web.ViewModels.Search;
 
     public class SearchController : ApiController
     {
@@ -18,16 +17,25 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search([FromQuery(Name = "index")] string index, [FromQuery(Name = "id")] string id)
+        public async Task<IActionResult> Search(
+                                                [FromQuery(Name = "index")] string index,
+                                                [FromQuery(Name = "field")] string field,
+                                                [FromQuery(Name = "value")] string value,
+                                                [FromQuery(Name = "size")] int? size,
+                                                [FromQuery(Name = "sort")] string sort,
+                                                CancellationToken cancellationToken)
         {
-            var result = await this.searchService.Search(index, id);
+            var result = await this.searchService.Search(index, field, value, size != null ? (int)size : 20, sort, cancellationToken);
             return this.GenericResponse(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CoachSearchModel value, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create(
+                                                [FromQuery(Name = "index")] string index,
+                                                SearchModel value,
+                                                CancellationToken cancellationToken)
         {
-            var result = await this.searchService.Create(value, cancellationToken);
+            var result = await this.searchService.Create(index, value, cancellationToken);
             return this.GenericResponse(result);
         }
     }

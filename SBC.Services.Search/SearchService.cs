@@ -1,13 +1,13 @@
 ﻿namespace SBC.Services.Search
 {
+    using System.Collections.Generic;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
 
     using Nest;
     using SBC.Common;
-    using SBC.Data.Models;
-    using SBC.Web.ViewModels.Coaches;
+    using SBC.Web.ViewModels.Search;
 
     public class SearchService : ISearchService
     {
@@ -18,32 +18,41 @@
             this.client = elasticClient;
         }
 
-        public async Task<Common.Result> Create( CoachSearchModel value, CancellationToken cancellationToken)
+        public async Task<Common.Result> Create(string index, SearchModel value, CancellationToken cancellationToken)
         {
-            var response = await this.client.IndexAsync<CoachSearchModel>(value, x => x.Index("coach"), cancellationToken);
+            var response = await this.client.IndexAsync<SearchModel>(value, x => x.Index(index), cancellationToken);
 
             if (response.IsValid)
             {
-                return new ResultModel(response.Id);
+                return new ResultModel(new { response.Id, response.Index });
             }
-                return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
+            return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
         }
 
-        public async Task<Common.Result> Search(string index, string id)
+        public async Task<Common.Result> Search(string index, string field, string value, int size, string sort, CancellationToken cancellationToken)
         {
-            ISearchResponse<Coach> searchResponse = await client.SearchAsync<Coach>(s => s
-                  .Index(index)
-                  .Query(q => q
-                      .Match(m => m
-                          .Field(f => f.Id)
-                          .Query(id)
-                      )
+            var request = new SearchRequest<SearchModel>(index)
+            {
+                From = 0,
+                Size = size,
+                Query = new MatchQuery
+                {
+                    Field = field,
+                    Query = value,
+                },
+                
+                Sort = sort != null 
+                ? new List<ISort> { new FieldSort
+                                            {
+                                                Field = field,
+                                                Order = sort.Equals("desc") ?SortOrder.Descending: SortOrder.Ascending 
+                                            },
+                                      }
+                : null
+            };
+            var searchResponse = await client.SearchAsync<SearchModel>(request, cancellationToken);
 
-                  ));
-
-            var response = await client.GetAsync<Coach>(new DocumentPath<Coach>(new Id(id)), x => x.Index(index));
-
-            return new ResultModel(response?.Source);
+            return new ResultModel(searchResponse.Documents);
         }
     }
 }
