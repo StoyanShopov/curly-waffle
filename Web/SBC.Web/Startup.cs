@@ -143,8 +143,6 @@
                     };
                 });
 
-            services.AddSingleton<ISearchService>(new SearchService(this.configuration));
-
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGridAPIKey"]));
@@ -157,6 +155,10 @@
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
+
+            var elasticSetting = new ConnectionSettings();
+            services.AddSingleton<IElasticClient>(new ElasticClient());
+            services.AddTransient<ISearchService, SearchService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

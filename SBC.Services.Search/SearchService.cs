@@ -1,34 +1,32 @@
 ﻿namespace SBC.Services.Search
 {
-    using System;
+    using System.Net;
+    using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Configuration;
+
     using Nest;
     using SBC.Common;
     using SBC.Data.Models;
-    using SBC.Web.ViewModels.User;
+    using SBC.Web.ViewModels.Coaches;
 
     public class SearchService : ISearchService
     {
-        private readonly ElasticClient client;
+        private readonly IElasticClient client;
 
-        public SearchService(IConfiguration configuration)
+        public SearchService(IElasticClient elasticClient)
         {
-            var settings = new ConnectionSettings(
-                //  new Uri(configuration.GetValue<string>("ElasticCloud:Endpoint"))
-                )
-                .DefaultMappingFor<Coach>(x => x.IndexName("coaches"));
-            //          .DefaultIndex("kibana_sample_data_ecommerce")
-            //          .BasicAuthentication(configuration.GetValue<string>("ElasticCloud:BasicAuthUser"),
-            //              configuration.GetValue<string>("ElasticCloud:BasicAuthPassword"));
-            this.client = new ElasticClient(settings);
+            this.client = elasticClient;
         }
 
-        public async Task<Common.Result> Create(RegisterInputModel value)
+        public async Task<Common.Result> Create( CoachSearchModel value, CancellationToken cancellationToken)
         {
-            var response = await this.client.IndexAsync<RegisterInputModel>(value, x => x.Index("coach"));
-            
-            return new ResultModel(response.IsValid ? response.Id : response.OriginalException.Message);
+            var response = await this.client.IndexAsync<CoachSearchModel>(value, x => x.Index("coach"), cancellationToken);
+
+            if (response.IsValid)
+            {
+                return new ResultModel(response.Id);
+            }
+                return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
         }
 
         public async Task<Common.Result> Search(string index, string id)
@@ -40,6 +38,7 @@
                           .Field(f => f.Id)
                           .Query(id)
                       )
+
                   ));
 
             var response = await client.GetAsync<Coach>(new DocumentPath<Coach>(new Id(id)), x => x.Index(index));
