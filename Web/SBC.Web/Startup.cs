@@ -41,6 +41,7 @@
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
     using SBC.Services.Identity.Contracts;
+    using Microsoft.Extensions.FileProviders;
 
     public class Startup
     {
@@ -109,7 +110,7 @@
 
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/build";
             });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
@@ -225,6 +226,12 @@
                 if (env.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
+                    spa.Options.SourcePath = "ClientApp/";
+                }
+                else
+                {
+                    //spa.Options.DefaultPageStaticFileOptions = spaStaticFileOptions;
+                    spa.Options.SourcePath = "build";
                 }
             });
         }
