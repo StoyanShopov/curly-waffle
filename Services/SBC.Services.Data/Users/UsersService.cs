@@ -139,14 +139,12 @@
 
         public async Task<Result> GetUserDataAsync<TModel>(string userId)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
-
-            if (user == null)
-            {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
-            }
-
-            var result = AutoMapperConfig.MapperInstance.Map<TModel>(user);
+            var result = await this.applicationUsers
+                 .AllAsNoTracking()
+                 .Include(x => x.Company)
+                 .Where(u => u.Id == userId)
+                 .To<TModel>()
+                 .FirstOrDefaultAsync();
 
             return new ResultModel(result);
         }
