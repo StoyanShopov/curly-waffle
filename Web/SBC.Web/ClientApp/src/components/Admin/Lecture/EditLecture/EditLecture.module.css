@@ -67,7 +67,7 @@
     cursor: pointer;
 }
 
-::placeholder {
+.editPage::placeholder {
     font-family: Montserrat;
     text-align: center;
     color: #296CFB;

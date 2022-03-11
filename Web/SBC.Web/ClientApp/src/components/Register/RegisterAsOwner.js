@@ -54,19 +54,20 @@ const RegisterAsOwner = (prop) => {
         await userService.GetUserData().then(data => {
             //            console.log(data)
         });
-        window.location.href = "/";
+        window.location.href = "api/Identity/Login";
+      /* window.location.href = "/";*/         
         // navigate('/');
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <img src="assets/images/Path 9.svg" alt="" className={styles.backgnd} />
-                <img src="assets/images/Group 51.svg" alt="" className={styles.manWithCase} />
+                <img src="/assets/images/Path 9.svg" alt="" className={styles.backgnd} />
+                <img src="/assets/images/Group 51.svg" alt="" className={styles.manWithCase} />
             </div>
             <div className={styles.right}>
                 <div className={styles.formContainer}>
-                    <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+                    <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     <form onSubmit={onRegister} ref={form} className={styles.inputformsContainer}>
                         <div className={styles.inputcontainer}>
                             <input
@@ -106,7 +107,7 @@ const RegisterAsOwner = (prop) => {
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
-                                type="text"
+                                type="password"
                                 className={styles.inputuser}
                                 name="password"
                                 required="required"
@@ -115,11 +116,11 @@ const RegisterAsOwner = (prop) => {
                                 onChange={onChangePassword}
                             />
                             <span className={styles.starpassword}>*</span>
-                            <img src="assets/images/Eye.svg" className={styles.eye}></img>
+                            <img src="/assets/images/Eye.svg" className={styles.eye}></img>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
-                                type="text"
+                                type="password"
                                 className={styles.inputuser}
                                 name="confirmPassword"
                                 required="required"
@@ -128,7 +129,7 @@ const RegisterAsOwner = (prop) => {
                                 onChange={onChangeConfirmPassword}
                             />
                             <span className={styles.starconfirmpassword}>*</span>
-                            <img src="assets/images/Eye.svg" className={styles.eye}></img>
+                            <img src="/assets/images/Eye.svg" className={styles.eye}></img>
                         </div>
                         <div className={styles.btncontainer}>
                             <input type="submit" value="SignUp" />

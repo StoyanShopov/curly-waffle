@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 
-::placeholder {
+.container::placeholder {
     text-align: center;
     font-family: Montserrat;
     color: #296CFB;

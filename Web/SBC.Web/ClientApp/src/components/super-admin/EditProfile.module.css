@@ -110,12 +110,12 @@
   font-weight: medium;
 }
 
-::placeholder {
-  color: #296cfb;
-  font-size: 14px;
+.bodyContainer::placeholder {
+    color: #296cfb;
+    font-size: 14px;
 }
-input:nth-child(2)::placeholder {
-  color: #a0bbf5;
+.bodyContainer input:nth-child(2)::placeholder {
+    color: #a0bbf5;
 }
 .resizableContent {
   padding-top: 8px;
