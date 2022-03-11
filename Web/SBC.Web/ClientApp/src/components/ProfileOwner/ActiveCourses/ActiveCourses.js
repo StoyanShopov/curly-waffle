@@ -15,6 +15,12 @@ export default function ActiveCourses() {
             })
     });
 
+    const handleClient = (client) => {
+        setClients(prevPortions => {
+            return [client, ...prevPortions];
+        });
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.buttonContainer}>

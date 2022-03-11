@@ -25,15 +25,16 @@
 
 .textQuestion {
     text-align: center;
-    font: normal normal bold 28px/36px Montserrat;
+    font: normal normal bold 22px/33px Montserrat;
     letter-spacing: 1.4px;
     color: #FFFFFF;
     opacity: 1;
     left: 173px;
-    width: 408px;
-    height: 70px;
+    width: 60%;
+    height: 60%;
     padding-top: 13%;
     padding-left: 22%;
+    margin: 0;
 }
 
 .bottomDiv {

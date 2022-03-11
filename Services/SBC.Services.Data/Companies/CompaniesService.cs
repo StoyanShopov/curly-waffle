@@ -16,6 +16,8 @@
     using SBC.Web.ViewModels.BusinessOwner.Employees;
     using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Courses;
+    using SBC.Web.ViewModels.Administration.Companies;
+    using SBC.Web.ViewModels.Company;
 
     using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
@@ -305,4 +307,19 @@
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync();
     }
+
+
+    public async Task<Result> GetAllAsync<TModel>()
+         => new ResultModel(await this.companiesRepository
+            .AllAsNoTracking()
+            .To<CompanyViewModel>()
+            .ToListAsync());
+
+    public async Task<Result> GetEmailByIdAsync(int id)
+    {
+        var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+
+        return new ResultModel(result);
+    }
+
 }

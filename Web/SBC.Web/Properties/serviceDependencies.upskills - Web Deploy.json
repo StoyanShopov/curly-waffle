@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/upskillstoragetest",
+      "type": "storage.azure",
+      "connectionId": "AzureBlobStorageConnectionString",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

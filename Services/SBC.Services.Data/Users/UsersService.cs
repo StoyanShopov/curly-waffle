@@ -13,6 +13,7 @@
     using SBC.Services.Data.Companies;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Administration.Profile;
     using SBC.Web.ViewModels.User;
 
     using static SBC.Common.ErrorMessageConstants.User;
@@ -145,6 +146,8 @@
                  .Where(u => u.Id == userId)
                  .To<TModel>()
                  .FirstOrDefaultAsync();
+
+            var result = AutoMapperConfig.MapperInstance.Map<TModel>(user);
 
             return new ResultModel(result);
         }

@@ -17,6 +17,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -24,6 +25,17 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
+    using SBC.Services.Data;
+    using SBC.Services.Data.Categories;
+    using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Client;
+    using SBC.Services.Data.Coaches;
+    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Languages;
+    using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Resources;
+    using SBC.Services.Data.User;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.BusinessOwner;
     using SBC.Services.Data.Clients;
@@ -34,10 +46,10 @@
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.Users;
     using SBC.Services.Identity;
-    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
+    using SBC.Services.Identity.Contracts;
 
     public class Startup
     {
@@ -118,6 +130,10 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSectionConfiguration);
@@ -153,6 +169,13 @@
             services.AddTransient<IUsersService, UsersService>();
             services.AddSingleton(x => new BlobServiceClient(this.configuration["AzureBlobStorageConnectionString"]));
             services.AddSingleton<IBlobService, BlobService>();
+            services.AddTransient<IClientsService, ClientsService>();
+            services.AddTransient<IDasboardService, DashboardService>();
+            services.AddTransient<ICoursesService, CoursesService>();
+            services.AddTransient<ICoachesService, CoachesService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
+            services.AddTransient<ILanguagesService, LanguagesService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<IDasboardService, DashboardService>();
             services.AddTransient<ICoursesService, CoursesService>();
