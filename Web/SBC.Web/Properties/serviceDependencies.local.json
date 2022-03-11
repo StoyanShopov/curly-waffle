@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/upskills/databases/upskillsdb",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
+      "secretStore": "LocalSecretsFile"
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/upskillstoragetest",
+      "type": "storage.azure",
+      "connectionId": "AzureBlobStorageConnectionString",
+      "secretStore": "LocalSecretsFile"
+    },
+    "appInsights1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/upskills",
+      "type": "appInsights.azure",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}
