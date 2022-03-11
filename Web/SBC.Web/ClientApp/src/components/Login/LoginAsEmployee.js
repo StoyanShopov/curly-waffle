@@ -2,18 +2,17 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { userActions } from '../../actions/index';
+import { userActions } from "../../actions/index";
 
 import styles from "./LoginAsEmployee.module.css";
 import { userService } from '../../services';
 
-
 const LoginAsEmployee = (props) => {
-    const form = useRef();
-    const navigate = useNavigate();
+  const form = useRef();
+  const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
     const dispatch = useDispatch();
 

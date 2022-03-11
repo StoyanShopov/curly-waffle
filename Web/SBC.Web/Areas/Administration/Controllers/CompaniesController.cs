@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Companies;
-    using SBC.Web.ViewModels.Administration.Company;
+    using SBC.Web.ViewModels.Administration.Companies;
 
     public class CompaniesController : AdministrationController
     {

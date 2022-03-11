@@ -19,7 +19,7 @@
         private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
 
         public LecturesService(
-            IDeletableEntityRepository<Lecture> lectures,
+            IDeletableEntityRepository<Lecture> lectures, 
             IDeletableEntityRepository<CourseLecture> courseLectures)
         {
             this.lectures = lectures;

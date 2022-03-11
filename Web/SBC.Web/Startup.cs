@@ -17,6 +17,7 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -34,10 +35,10 @@
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.Users;
     using SBC.Services.Identity;
-    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
+    using SBC.Services.Identity.Contracts;
 
     public class Startup
     {
@@ -118,6 +119,10 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSectionConfiguration);
@@ -158,6 +163,8 @@
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICoachesService, CoachesService>();
             services.AddTransient<IBusinessOwnerDashboardService, BusinessOwnerDashboardService>();
+            services.AddTransient<ILanguagesService, LanguagesService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

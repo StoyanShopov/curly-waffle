@@ -1,7 +1,7 @@
-﻿namespace SBC.Data.Migrations
-{
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+namespace SBC.Data.Migrations
+{
     public partial class AddPictureUrlProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -40,12 +40,12 @@
     width: 510px;
     height: 3.3rem;
     margin-top: 20px;
-    margin-left: -5px;
+    margin-left: -5%;
     opacity: 1;
     border: 2px solid #296cfb;
     font-size: 20px;
     color: #296CFB;
-    padding-left: 28px;
+    padding-left: 30px;
 }
 
 .buttonContainer {
@@ -83,4 +83,5 @@
     text-align: center;
     font-family: Montserrat;
     color: #296CFB;
+    padding-left: 28px;
 }

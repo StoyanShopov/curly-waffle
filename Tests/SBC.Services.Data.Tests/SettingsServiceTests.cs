@@ -24,8 +24,7 @@
                                                             new Setting(),
                                                             new Setting(),
                                                         }.AsQueryable());
-
-            // var service = new SettingsService(repository.Object);
+          // var service = new SettingsService(repository.Object);
             // Assert.Equal(3, service.GetCountAsync());
             repository.Verify(x => x.All(), Times.Once);
         }
@@ -42,7 +41,6 @@
             await dbContext.SaveChangesAsync();
 
             using var repository = new EfDeletableEntityRepository<Setting>(dbContext);
-
             // var service = new SettingsService(repository);
             // Assert.Equal(3, service.GetCountAsync());
         }

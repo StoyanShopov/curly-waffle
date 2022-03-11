@@ -8,6 +8,8 @@
     using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.User;
 
+    using SBC.Web.ViewModels.User;
+
     public class IdentityController : ApiController
     {
         private readonly IUsersService usersService;

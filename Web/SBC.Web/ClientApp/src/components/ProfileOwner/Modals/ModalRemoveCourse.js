@@ -1,5 +1,6 @@
 ﻿import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../constants';
 
 import styles from './ModalRemoveCourse.module.css'
 
