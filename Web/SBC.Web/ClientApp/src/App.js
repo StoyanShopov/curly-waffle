@@ -1,4 +1,3 @@
-import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -17,8 +16,6 @@ import CreateCoach from "./components/Coaches/CreateCoach";
 import EditCoach from "./components/Coaches/EditCoach";
 import Coaches from "./components/Coaches/Coaches";
 import DeleteCoach from "./components/Coaches/DeleteCoach";
-import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
-import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
 
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
 import OwnerEmployees from "./components/ProfileOwner/OwnerEmployees/OwnerEmployees";

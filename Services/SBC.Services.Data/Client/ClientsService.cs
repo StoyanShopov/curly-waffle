@@ -10,7 +10,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Companies;
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
 

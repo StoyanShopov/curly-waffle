@@ -86,8 +86,8 @@ const LoginAsEmployee = (props) => {
                             <a href="/">{link}</a>
                         </div>
                         <div className={styles.btncontainer}>
-                            <input type="submit" value="Login" />
-                            <Link to="/register">SignUp</Link>
+                            <input type="submit" value="Login" className={styles.btnconLogin} />
+                            <Link to="/signUp"><button className={styles.btnconSignUp}>SignUp</button></Link>
                         </div>
                     </form>
                 </div>

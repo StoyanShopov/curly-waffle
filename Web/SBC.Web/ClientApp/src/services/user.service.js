@@ -31,11 +31,11 @@ const register = async (fullName, companyName, email, password, confirmPassword)
             confirmPassword
         })
         .then((response) => {
-            if (response.data.jwt) {
-                TokenManagement.setUser(response.data);
-            }
-            return response.data.jwt;
-        });
+            console.log(response)
+            if (response.status == 200) {            
+            window.location.href = "/loginAsEmployee";
+            }      
+        });    
 
     return data;
 };

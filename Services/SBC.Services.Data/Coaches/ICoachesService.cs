@@ -14,6 +14,7 @@
         Task<Result> UpdateAsync(UpdateCoachInputModel coach);
 
         Task<Result> DeleteAsync(int coachId);
+
         Task<Result> GetAllWithActive(int companyId);
 
         Task<int> GetCountAsync();

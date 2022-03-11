@@ -30,7 +30,7 @@ export default function ManagerCourseCard(props) {
                     navigate('/profile/courses');
                 }
                 else {
-                    console.log(error);//
+                    /*console.log(error);//*/
                 }
             })
     }

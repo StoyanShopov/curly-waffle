@@ -50,13 +50,6 @@ const RegisterAsOwner = (prop) => {
         e.preventDefault();
 
         await dispatch(userActions.register(fullName, companyName, email, password, confirmPassword));
-
-        await userService.GetUserData().then(data => {
-            //            console.log(data)
-        });
-        window.location.href = "api/Identity/Login";
-      /* window.location.href = "/";*/         
-        // navigate('/');
     }
 
     return (

@@ -15,11 +15,11 @@ export default function ActiveCourses() {
             })
     });
 
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
-        });
-    }
+    //const handleClient = (client) => {
+    //    setClients(prevPortions => {
+    //        return [client, ...prevPortions];
+    //    });
+    //}
 
     return (
         <div className={styles.container}>

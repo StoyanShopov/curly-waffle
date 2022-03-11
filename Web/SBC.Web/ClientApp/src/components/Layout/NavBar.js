@@ -20,10 +20,10 @@ const NavBar = (props) => {
                     </div>
                 </div>
                 <div className={styles.testedLinks}>
-                    {props.auth.user != null
-                        ? loggedOwner
-                        : null
-                    }
+                    {/*{props.auth.user != null*/}
+                    {/*    ? loggedOwner*/}
+                    {/*    : null*/}
+                    {/*}*/}
                 </div>
 
                 <div className={styles.homePageButtons}>
@@ -33,9 +33,12 @@ const NavBar = (props) => {
                 </div>
 
                 <div className={styles.coursesCoaches}>
-                    {props.auth.user != null
+                    {props.auth.role == "Administrator"
                         ? courses
                         : null}
+                    {/*{props.auth.user != null*/}
+                    {/*    ? courses*/}
+                    {/*    : null}*/}
                 </div>
                 {props.auth.user != null
                     ?
@@ -79,9 +82,6 @@ const unLogged = (<ul>
     </li>
     <li>
         <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-    </li>
-    <li>
-        <NavLink tag={Link} to="/signUp">SignUp</NavLink>
     </li>
 </ul>);
 

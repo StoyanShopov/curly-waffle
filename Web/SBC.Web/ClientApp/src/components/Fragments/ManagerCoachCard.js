@@ -30,11 +30,11 @@ export default function ManagerCoachCard(props) {
                     navigate('/profile/coaches');//
                 }
                 else {
-                    console.log(error)//
+                    /*console.log(error)//*/
                 }
             });
     }
-
+     
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
