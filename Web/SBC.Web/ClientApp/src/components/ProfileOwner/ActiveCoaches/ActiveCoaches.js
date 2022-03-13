@@ -11,9 +11,9 @@ export default function ActiveCoaches() {
     useEffect(() => {
         OwnerService.CompanyGetActiveCoaches()
             .then(res => {
-                setCoaches(res.data)                
+                setCoaches(res.data);
             })
-    });
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -22,7 +22,7 @@ export default function ActiveCoaches() {
             </div>
             <div className={styles.cardscontainer}>
                 {coaches.length > 0
-                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
+                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={true} />)
                     : <h3>No coaches yet</h3>
                 }
             </div>

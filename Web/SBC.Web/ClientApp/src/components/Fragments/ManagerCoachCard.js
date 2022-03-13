@@ -9,6 +9,9 @@ import styles from './ManagerCoachCard.module.css';
 
 export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
+
+    const coachId = props.coach.id;
+    console.log(coachId, props);
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
@@ -18,8 +21,17 @@ export default function ManagerCoachCard(props) {
             .then(res => {
                 console.log('Successful delete');//    
                 setShowModal(false);
-                navigate('/profile/coaches')
             })
+            .finally(() => {
+                if (props.isProfile) {
+                    OwnerService.CompanyGetActiveCoaches()
+                        .then(res => {
+                            props.setCoaches(res.data)
+                        });
+                }
+                console.log(coachId, props);
+                navigate('/profile/coaches');
+            });
     }
 
     const onSet = () => {
@@ -34,7 +46,7 @@ export default function ManagerCoachCard(props) {
                 }
             });
     }
-     
+
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);

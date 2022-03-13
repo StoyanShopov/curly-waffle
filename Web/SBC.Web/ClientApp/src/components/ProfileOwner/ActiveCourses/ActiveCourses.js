@@ -11,15 +11,9 @@ export default function ActiveCourses() {
     useEffect(() => {
         OwnerService.CompanyGetActiveCourses()
             .then(res => {
-                setCourses(res.data);                
+                setCourses(res.data);
             })
-    });
-
-    //const handleClient = (client) => {
-    //    setClients(prevPortions => {
-    //        return [client, ...prevPortions];
-    //    });
-    //}
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -28,7 +22,7 @@ export default function ActiveCourses() {
             </div>
             <div className={styles.cardscontainer}>
                 {courses.length > 0
-                    ? courses.map(x => <ManagerCourseCard key={x.id} course={x} />)
+                    ? courses.map(x => <ManagerCourseCard key={x.id} course={x} courses={courses} setCourses={setCourses} isProfile={true} />)
                     : <h3>No courses yet</h3>
                 }
             </div>

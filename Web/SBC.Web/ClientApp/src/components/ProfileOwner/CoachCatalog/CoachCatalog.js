@@ -72,7 +72,7 @@ export default function CoachCatalog() {
                 </div>
                 <div className={styles.cardscontainer}>
                     {coaches.length > 0
-                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} />)
+                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={false} />)
                         : <h3>No coaches yet</h3>
                     }
                 </div>

@@ -9,17 +9,29 @@ import styles from './ManagerCourseCard.module.css';
 
 export default function ManagerCourseCard(props) {
     const [showModal, setShowModal] = useState(false);
+
+    const courseId = props.course.id;    
+    console.log(courseId, props);   
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
 
     const onDelete = () => {
-        OwnerService.CompanyRemoveCourseFromActive(props.course.id)
+        OwnerService.CompanyRemoveCourseFromActive(courseId)
             .then(res => {
-                console.log('Successful delete')//
+                console.log('Successful delete');//
                 setShowModal(false);
-                navigate('/profile/courses');
             })
+            .finally(() => {
+                if (props.isProfile) {
+                    OwnerService.CompanyGetActiveCourses()
+                        .then(res => {
+                            props.setCourses(res.data);
+                        });
+                }
+                console.log(courseId, props);
+                navigate('/profile/courses');
+            });
     }
 
     const onSet = () => {
@@ -32,7 +44,7 @@ export default function ManagerCourseCard(props) {
                 else {
                     /*console.log(error);//*/
                 }
-            })
+            });
     }
 
     const handleClose = useCallback(() => {
