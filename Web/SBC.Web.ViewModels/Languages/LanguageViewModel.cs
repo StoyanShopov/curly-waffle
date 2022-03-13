@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Coaches
+﻿namespace SBC.Web.ViewModels.Languages
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;

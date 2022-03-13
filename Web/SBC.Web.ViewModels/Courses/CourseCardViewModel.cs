@@ -12,6 +12,8 @@
 
         public decimal PricePerPerson { get; set; }
 
+        public string PictureUrl { get; set; }
+
         public int CategoryId { get; set; }
 
         public int LanguageId { get; set; }

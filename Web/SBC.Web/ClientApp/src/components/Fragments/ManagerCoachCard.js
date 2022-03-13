@@ -29,8 +29,10 @@ export default function ManagerCoachCard(props) {
                             props.setCoaches(res.data)
                         });
                 }
+                else {
+                    navigate('/profile/coaches');
+                }
                 console.log(coachId, props);
-                navigate('/profile/coaches');
             });
     }
 
@@ -59,7 +61,7 @@ export default function ManagerCoachCard(props) {
         <>
             <div className={styles.card}>
                 <div className={styles.upper}>
-                    <img className={styles.cardpic} src="/assets/images/Mask Group 3.png" alt="" />
+                    <img className={styles.cardpic} src={props.coach.imageUrl} alt="" />
                 </div>
                 <div className={styles.down}>
                     <div className={styles.name}>

@@ -4,6 +4,8 @@
 
     using SBC.Data.Models;
     using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Categories;
+    using SBC.Web.ViewModels.Languages;
 
     public class CoachCardViewModel : IMapFrom<Coach>
     {
@@ -12,6 +14,8 @@
         public string FullName { get; set; }
 
         public decimal PricePerSession { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public string CompanyLogoUrl { get; set; }
 

@@ -212,6 +212,7 @@
                     FullName = $"{coach.FirstName} {coach.LastName}",
                     CategoryByDefault = coach.Categories.Count == 0 ? "Common" : coach.Categories.FirstOrDefault().Category.Name,
                     PricePerSession = coach.PricePerSession,
+                    ImageUrl = coach.ImageUrl,
                     CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                     IsActive = coach.ClientCompanies.Any(x => x.CompanyId == companyId),
                 })

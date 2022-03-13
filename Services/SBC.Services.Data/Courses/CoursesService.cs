@@ -170,6 +170,7 @@
                    CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
                    CategoryName = course.Category.Name,
                    PricePerPerson = course.PricePerPerson,
+                   PictureUrl = course.PictureUrl,
                    CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
                    IsActive = course.Companies.Any(x => x.CompanyId == companyId),
                })

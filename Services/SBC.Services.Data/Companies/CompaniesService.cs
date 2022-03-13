@@ -146,6 +146,7 @@
                     FullName = $"{x.FirstName} {x.LastName}",
                     CategoryByDefault = x.Categories.Count == 0 ? "Common" : x.Categories.FirstOrDefault().Category.Name,
                     PricePerSession = x.PricePerSession,
+                    ImageUrl = x.ImageUrl,
                     CompanyLogoUrl = x.CompanyId != null ? x.Company.LogoUrl : "Null",
                 })
                 .ToListAsync();
@@ -193,8 +194,9 @@
                 .Select(x => new ActiveCourseViewModel
                 {
                     Id = x.Id,
-                    PricePerPerson = x.PricePerPerson,
                     Title = x.Title,
+                    PricePerPerson = x.PricePerPerson,
+                    PictureUrl = x.PictureUrl,
                     CategoryId = x.CategoryId,
                     LanguageId = x.LanguageId,
                     CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",

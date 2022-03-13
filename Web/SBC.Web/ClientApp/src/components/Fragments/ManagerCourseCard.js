@@ -10,8 +10,8 @@ import styles from './ManagerCourseCard.module.css';
 export default function ManagerCourseCard(props) {
     const [showModal, setShowModal] = useState(false);
 
-    const courseId = props.course.id;    
-    console.log(courseId, props);   
+    const courseId = props.course.id;
+    console.log(courseId, props);
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
@@ -29,8 +29,10 @@ export default function ManagerCourseCard(props) {
                             props.setCourses(res.data);
                         });
                 }
-                console.log(courseId, props);
-                navigate('/profile/courses');
+                else {
+                    navigate('/profile/courses');
+                }
+                console.log(courseId, props);                
             });
     }
 
@@ -59,7 +61,7 @@ export default function ManagerCourseCard(props) {
         <>
             <div className={styles.card}>
                 <div className={styles.cardpicContainer}>
-                    <img className={styles.cardpic} src="/assets/images/Rectangle 1221.png" alt="" />
+                    <img className={styles.cardpic} src={props.course.pictureUrl} alt="" />
                     <div className={styles.centered}>{props.course.title}</div>
                 </div>
                 <div className={styles.down}>
