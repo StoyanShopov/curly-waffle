@@ -44,5 +44,7 @@
 
         [Required]
         public string CoachDescription { get; set; }
+
+        public string CoachImageUrl { get; set; }
     }
 }

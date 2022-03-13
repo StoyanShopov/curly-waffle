@@ -14,7 +14,7 @@ const NavBar = (props) => {
         <header className={styles.headerC}>
             <div className={styles.headerContainer}>
                 < div className={styles.logoContainer}>
-                    <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+                    <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     < div className={styles.upskillContainer}>
                         <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
                     </div>

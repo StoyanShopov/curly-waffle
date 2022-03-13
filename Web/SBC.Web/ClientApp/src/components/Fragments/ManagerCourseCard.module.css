@@ -9,10 +9,10 @@
     text-align: center;    
 }
 
-.cardpic {  
+.cardpic {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 11.7rem;
     bottom: 0;
     background-size: cover;
     filter: brightness(70%);

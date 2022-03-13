@@ -95,7 +95,9 @@ export default function CourseDetails() {
                     <h2 className={style.instructorHeading}>Instructor</h2>
                     <section className={style.lectorSection}>
                         <div>
-                            <div className={style.lectorPic}></div>
+                            <div className={style.lectorPic}>
+                                <img className={style.cardpic} src={course.coachImageUrl} alt="" />
+                            </div>
                         </div>
                         <div>
                             <p className={style.pCreatedBy}>Created by </p>

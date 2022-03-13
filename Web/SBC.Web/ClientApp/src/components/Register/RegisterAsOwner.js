@@ -123,6 +123,7 @@ const RegisterAsOwner = (prop) => {
                                 type={passwordType}
                                 className={styles.inputuser}
                                 name="password"
+                                autoComplete="off"
                                 required="required"
                                 placeholder={"Password"}
                                 value={password}
@@ -136,6 +137,7 @@ const RegisterAsOwner = (prop) => {
                                 type={confirmPasswordType}
                                 className={styles.inputuser}
                                 name="confirmPassword"
+                                autoComplete="off"
                                 required="required"
                                 placeholder={"Confirm Password"}
                                 value={confirmPassword}

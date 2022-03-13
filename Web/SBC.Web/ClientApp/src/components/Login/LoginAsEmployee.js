@@ -71,6 +71,7 @@ const LoginAsEmployee = (props) => {
                             <input
                                 type="password"
                                 name="password"
+                                autoComplete="off"
                                 className={`${styles.input} ${styles.inputpass}`}
                                 placeholder="Password*"
                                 required="required"
