@@ -18,6 +18,8 @@ const RegisterAsOwner = (prop) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordType, setPasswordType] = useState('password');
+    const [confirmPasswordType, setConfirmPasswordType] = useState('password');
 
     const dispatch = useDispatch();
 
@@ -50,6 +52,24 @@ const RegisterAsOwner = (prop) => {
         e.preventDefault();
 
         await dispatch(userActions.register(fullName, companyName, email, password, confirmPassword));
+    }
+
+    const onEyePassword = () => {
+        if (passwordType == 'password') {
+            setPasswordType('text');
+        }
+        else {
+            setPasswordType('password')
+        }        
+    }
+
+    const onEyeConfirmPassword = () => {
+        if (confirmPasswordType == 'password') {
+            setConfirmPasswordType('text');
+        }
+        else {
+            setConfirmPasswordType('password')
+        }
     }
 
     return (
@@ -100,7 +120,7 @@ const RegisterAsOwner = (prop) => {
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
-                                type="password"
+                                type={passwordType}
                                 className={styles.inputuser}
                                 name="password"
                                 required="required"
@@ -109,11 +129,11 @@ const RegisterAsOwner = (prop) => {
                                 onChange={onChangePassword}
                             />
                             <span className={styles.starpassword}>*</span>
-                            <img src="/assets/images/Eye.svg" className={styles.eye}></img>
+                            <img src="/assets/images/Eye.svg" className={styles.eye} onClick={onEyePassword}></img>
                         </div>
                         <div className={styles.inputcontainer}>
                             <input
-                                type="password"
+                                type={confirmPasswordType}
                                 className={styles.inputuser}
                                 name="confirmPassword"
                                 required="required"
@@ -122,7 +142,7 @@ const RegisterAsOwner = (prop) => {
                                 onChange={onChangeConfirmPassword}
                             />
                             <span className={styles.starconfirmpassword}>*</span>
-                            <img src="/assets/images/Eye.svg" className={styles.eye}></img>
+                            <img src="/assets/images/Eye.svg" className={styles.eye} onClick={onEyeConfirmPassword}></img>
                         </div>
                         <div className={styles.btncontainer}>
                             <input type="submit" value="SignUp" />
