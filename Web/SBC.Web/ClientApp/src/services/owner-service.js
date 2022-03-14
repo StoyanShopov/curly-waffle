@@ -5,9 +5,10 @@ import { baseUrl } from '../constants/GlobalConstants';
 
 // from CoachesController:
 
-const GetCoachesCatalog = async () => {
-    const response = await axios.get(baseUrl + 'manager/Coaches',
+const GetCoachesCatalog = async (skip, cancelTokenSource) => {
+    const response = await axios.get(baseUrl + 'manager/Coaches?skip=' + skip,
         {
+            cancelToken: cancelTokenSource.token,
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
             },

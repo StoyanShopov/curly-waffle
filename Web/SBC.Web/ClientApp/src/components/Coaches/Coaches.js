@@ -32,7 +32,6 @@ const Coaches = () => {
             left: '50%',
             right: 'auto',
             width: '38%',
-            /* height: '710px',*/
             height: '98%',
             bottom: 'auto',
             marginTop: '-5%',

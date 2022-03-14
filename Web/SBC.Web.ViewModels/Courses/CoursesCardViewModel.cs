@@ -7,7 +7,5 @@
         public IEnumerable<CourseCardViewModel> Portions { get; set; }
 
         public bool ViewMoreAvailable { get; set; }
-
-        public int Count { get; set; }
     }
 }

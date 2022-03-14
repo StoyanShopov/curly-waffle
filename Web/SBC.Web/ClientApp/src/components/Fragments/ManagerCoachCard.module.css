@@ -14,14 +14,13 @@
 }
 
 .cardpic {
+    width: 96%;
+    object-fit: cover;
+    bottom: 0px;
     position: absolute;
-    width: 119%;
-    height: auto;
-    bottom: 0;
-    left: -8%;
+    height: 270px;
+    padding-left: 2%;
 }
-
-/*.down*/
 
 .name {
     margin: 0 auto;

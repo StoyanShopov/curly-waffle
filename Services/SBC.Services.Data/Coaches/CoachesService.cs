@@ -17,6 +17,8 @@
 
     public class CoachesService : ICoachesService
     {
+        private const int TakeDefaultValue = 3;
+
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
         private readonly IDeletableEntityRepository<Language> languagesRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
@@ -202,10 +204,19 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
-        public async Task<Result> GetAllWithActive(int companyId)
+        public async Task<Result> GetAllWithActive(int companyId, int skip = default, int take = TakeDefaultValue)
         {
-            var filteredCoaches = await this.coachesRepository
+            var coachesCount = await this.coachesRepository
+               .AllAsNoTracking()
+               .CountAsync();
+
+            var isViewMoreAvailable = (coachesCount - skip - take) > 0;
+
+            var portions = await this.coachesRepository
                 .AllAsNoTracking()
+                .OrderByDescending(u => u.CreatedOn)
+                .Skip(skip)
+                .Take(take)
                 .Select(coach => new CoachCardViewModel
                 {
                     Id = coach.Id,
@@ -218,7 +229,13 @@
                 })
                 .ToListAsync();
 
-            return new ResultModel(filteredCoaches);
+            var coaches = new CoachesCardViewModel
+            {
+                Portions = portions,
+                ViewMoreAvailable = isViewMoreAvailable,
+            };
+
+            return new ResultModel(coaches);
         }
 
         private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)

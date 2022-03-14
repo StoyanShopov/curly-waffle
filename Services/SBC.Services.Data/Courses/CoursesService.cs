@@ -191,7 +191,6 @@
             {
                 Portions = portions,
                 ViewMoreAvailable = isViewMoreAvailable,
-                Count = coursesCount,
             };
 
             return new ResultModel(courses);

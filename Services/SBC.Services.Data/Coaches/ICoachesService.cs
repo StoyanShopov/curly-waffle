@@ -15,7 +15,7 @@
 
         Task<Result> DeleteAsync(int coachId);
 
-        Task<Result> GetAllWithActive(int companyId);
+        Task<Result> GetAllWithActive(int companyId, int skip, int take = 3);
 
         Task<int> GetCountAsync();
     }

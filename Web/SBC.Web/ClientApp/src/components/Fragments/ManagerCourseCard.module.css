@@ -16,6 +16,7 @@
     bottom: 0;
     background-size: cover;
     filter: brightness(70%);
+    object-fit: cover;
 }
 
 .centered {

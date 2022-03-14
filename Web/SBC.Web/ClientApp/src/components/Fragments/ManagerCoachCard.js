@@ -63,7 +63,7 @@ export default function ManagerCoachCard(props) {
                 <div className={styles.upper}>
                     <img className={styles.cardpic} src={props.coach.imageUrl} alt="" />
                 </div>
-                <div className={styles.down}>
+                <div>
                     <div className={styles.name}>
                         <span>{props.coach.categoryByDefault}</span>
                         <span>{props.coach.fullName}</span>

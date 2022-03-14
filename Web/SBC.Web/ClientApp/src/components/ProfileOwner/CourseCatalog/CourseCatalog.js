@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
 import { OwnerService } from '../../../services';
@@ -12,8 +12,7 @@ import styles from "./CourseCatalog.module.css";
 
 export default function CourseCatalog(prop) {
     const [courses, setCourses] = useState([]);
-    const [count, setCount] = useState();
-
+   
     const [isPending, setIsPending] = useState(false);
     const [skip, setSkip] = useState(0);
     const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
@@ -41,8 +40,6 @@ export default function CourseCatalog(prop) {
         const json = await OwnerService.GetCoursesCatalog(skip, cancelTokenSource);
 
         console.log('js', json)//  
-
-        setCount(json.data.count);
 
         setIsPending(false);
 
