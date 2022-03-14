@@ -69,7 +69,7 @@ export default function OwnerDashboard() {
                         </tr>
                         <tr id={styles.flexViewMore}>
                             <td>
-                                <Link to="/profileOwner" className={styles.link}>View More</Link>
+                                <Link to="/profile" className={styles.link}>View More</Link>
                             </td>
                         </tr>
                     </tbody>
@@ -111,7 +111,7 @@ export default function OwnerDashboard() {
                         </tr>
                         <tr id={styles.flexViewMore}>
                             <td>
-                                <Link to="/profileOwner" className={styles.link}>View More</Link>
+                                <Link to="/profile" className={styles.link}>View More</Link>
                             </td>
                         </tr>
                     </tbody>
