@@ -1,10 +1,5 @@
 ﻿namespace SBC.Web
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-
     using Azure.Storage.Blobs;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -17,7 +12,6 @@
     using Microsoft.Extensions.Hosting;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -25,23 +19,25 @@
     using SBC.Data.Repositories;
     using SBC.Data.Seeding;
     using SBC.Services.Blob;
-    using SBC.Services.Data;
-    using SBC.Services.Data.Categories;
     using SBC.Services.Data.Admin;
+    using SBC.Services.Data.Categories;
     using SBC.Services.Data.Client;
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
-    using SBC.Services.Data.Languages;
     using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
+    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
-    using SBC.Services.Identity.Contracts;
-    using Microsoft.Extensions.FileProviders;
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
 
     public class Startup
     {
