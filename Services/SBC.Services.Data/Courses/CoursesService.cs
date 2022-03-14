@@ -15,6 +15,8 @@
 
     public class CoursesService : ICoursesService
     {
+        private const int TakeDefaultValue = 3;
+
         private readonly IDeletableEntityRepository<Course> coursesRepository;
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
 
@@ -157,26 +159,42 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
-        public async Task<Result> GetAllWithActive(int companyId)
+        public async Task<Result> GetAllWithActive(int companyId, int skip = default, int take = TakeDefaultValue)
         {
-            var filteredCourses = await this.coursesRepository
-               .AllAsNoTracking()
-               .Select(course => new CourseCardViewModel
-               {
-                   Id = course.Id,
-                   Title = course.Title,
-                   LanguageId = course.LanguageId,
-                   CategoryId = course.CategoryId,
-                   CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
-                   CategoryName = course.Category.Name,
-                   PricePerPerson = course.PricePerPerson,
-                   PictureUrl = course.PictureUrl,
-                   CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
-                   IsActive = course.Companies.Any(x => x.CompanyId == companyId),
-               })
-               .ToListAsync();
+            var coursesCount = await this.coursesRepository
+                .AllAsNoTracking()
+                .CountAsync();
 
-            return new ResultModel(filteredCourses);
+            var isViewMoreAvailable = (coursesCount - skip - take) > 0;
+
+            var portions = await this.coursesRepository
+                .AllAsNoTracking()
+                .OrderByDescending(u => u.CreatedOn)
+                .Skip(skip)
+                .Take(take)
+                .Select(course => new CourseCardViewModel
+                {
+                    Id = course.Id,
+                    Title = course.Title,
+                    LanguageId = course.LanguageId,
+                    CategoryId = course.CategoryId,
+                    CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
+                    CategoryName = course.Category.Name,
+                    PricePerPerson = course.PricePerPerson,
+                    PictureUrl = course.PictureUrl,
+                    CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
+                    IsActive = course.Companies.Any(x => x.CompanyId == companyId),
+                })
+                .ToListAsync();
+
+            var courses = new CoursesCardViewModel
+            {
+                Portions = portions,
+                ViewMoreAvailable = isViewMoreAvailable,
+                Count = coursesCount,
+            };
+
+            return new ResultModel(courses);
         }
     }
 }

@@ -6,7 +6,7 @@ import { baseUrl } from '../constants/GlobalConstants';
 // from CoachesController:
 
 const GetCoachesCatalog = async () => {
-    const response = await axios.get(baseUrl + 'manager/Coaches', 
+    const response = await axios.get(baseUrl + 'manager/Coaches',
         {
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -22,9 +22,10 @@ const GetCoachesCatalog = async () => {
 
 // from CoursesController:
 
-const GetCoursesCatalog = async () => {
-    const response = await axios.get(baseUrl + 'manager/Courses',
+const GetCoursesCatalog = async (skip, cancelTokenSource) => {
+    const response = await axios.get(baseUrl + 'manager/Courses?skip=' + skip,
         {
+            cancelToken: cancelTokenSource.token,
             headers: {
                 Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
             },
@@ -40,12 +41,13 @@ const GetCoursesCatalog = async () => {
 // from CompanyController:
 
 const CompanyGetEmployees = async (skip, cancelTokenSource) => {
-    const response = await axios.get(baseUrl + 'manager/Company/employees?skip=' + skip, {
-        cancelToken: cancelTokenSource.token,
-        headers: {
-             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
-        },
-    });
+    const response = await axios.get(baseUrl + 'manager/Company/employees?skip=' + skip,
+        {
+            cancelToken: cancelTokenSource.token,
+            headers: {
+                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+            },
+        });
 
     if (response.status !== 200) {
         throw new Error(response.Error)
@@ -185,7 +187,7 @@ const GetOwnerDashboard = async () => {
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
         }
     });
-    
+
     if (response.status !== 200) {
         throw new Error(response.Error);
     }
@@ -196,7 +198,7 @@ const GetOwnerDashboard = async () => {
 export const OwnerService = {
     GetOwnerDashboard,
     GetCoachesCatalog,
-    GetCoursesCatalog,  
+    GetCoursesCatalog,
     CompanyAddEmployee,
     CompanyGetEmployees,
     CompanyRemoveEmployee,

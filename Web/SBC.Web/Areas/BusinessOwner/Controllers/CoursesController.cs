@@ -19,10 +19,10 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetCoursesCatalog()
+        public async Task<ActionResult> GetCoursesCatalog(int skip)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.coursesService.GetAllWithActive(companyId));
+            return this.GenericResponse(await this.coursesService.GetAllWithActive(companyId, skip));
         }
     }
 }

@@ -8,7 +8,7 @@
 
     public interface ICoursesService
     {
-        Task<Result> GetAllWithActive(int companyId);
+        Task<Result> GetAllWithActive(int companyId, int skip, int take = 3);
 
         Task<IEnumerable<TModel>> GetAllAsync<TModel>();
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
@@ -11,14 +12,48 @@ import styles from "./CourseCatalog.module.css";
 
 export default function CourseCatalog(prop) {
     const [courses, setCourses] = useState([]);
+    const [count, setCount] = useState();
+
+    const [isPending, setIsPending] = useState(false);
+    const [skip, setSkip] = useState(0);
+    const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
+
+    const cancelTokenSource = axios.CancelToken.source();
 
     useEffect(() => {
-        OwnerService.GetCoursesCatalog()
-            .then(res => {
-                setCourses(res.data);
-                console.log(res.data);//
-            });
-    }, []);
+        handleViewMore(0);
+        setSkip(0);
+
+        return () => {
+            cancelTokenSource.cancel();
+        }
+    }, [])
+
+    const handleSkip = (skip) => {
+        setSkip(prevSkip => {
+            return prevSkip + skip;
+        });
+    }
+
+    const handleViewMore = async () => {
+        setIsPending(true);
+
+        const json = await OwnerService.GetCoursesCatalog(skip, cancelTokenSource);
+
+        console.log('js', json)//  
+
+        setCount(json.data.count);
+
+        setIsPending(false);
+
+        setCourses(prevPortions => {
+            return [...prevPortions, ...json.data.portions];
+        });
+
+        handleSkip(3);
+
+        setViewMoreAvailable(json.data.viewMoreAvailable);
+    }
 
     return (
         <>
@@ -76,12 +111,17 @@ export default function CourseCatalog(prop) {
                         : <h3>No courses yet</h3>
                     }
                 </div>
-                <div className={styles.buttonContainer}>
-                    <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
+                <div key={"unique_loading"} id={styles.pending}>
+                    {isPending &&
+                        <h2>Loading...</h2>
+                    }
+                </div>
+                <div key={"unique_view_more"} className={styles.buttonContainer}>
+                    {viewMoreAvailable &&
+                        <Link to="" ><button className={styles.manageButton} onClick={() => { handleViewMore() }}>View More</button></Link>
+                    }
                 </div>
             </div>
-
-
         </>
     );
 }

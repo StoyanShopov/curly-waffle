@@ -184,6 +184,11 @@
     cursor: pointer;
 }
 
+#pending {
+    border: none;
+    padding: 0;
+}
+
 .buttonContainer {
     margin-left: 45%;
     padding-top: 3%;
