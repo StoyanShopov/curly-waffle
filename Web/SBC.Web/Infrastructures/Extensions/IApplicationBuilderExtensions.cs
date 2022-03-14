@@ -23,6 +23,10 @@
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
+                else
+                {
+                    spa.Options.SourcePath = "build";
+                }
             });
 
             return app;

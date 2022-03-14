@@ -20,15 +20,16 @@
     using SBC.Data.Repositories;
     using SBC.Services.Blob;
     using SBC.Services.Data.Admin;
+    using SBC.Services.Data.BusinessOwner;
     using SBC.Services.Data.Categories;
-    using SBC.Services.Data.Client;
+    using SBC.Services.Data.Clients;
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
     using SBC.Services.Data.Resources;
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Users;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
@@ -47,20 +48,21 @@
             this IServiceCollection services,
             IConfiguration configuration)
             => services
+                .AddTransient<IBusinessOwnerDashboardService, BusinessOwnerDashboardService>()
                 .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
                 .AddTransient<IIdentitiesService, IdentitiesService>()
                 .AddTransient<IUsersService, UsersService>()
                 .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
                 .AddSingleton<IBlobService, BlobService>()
                 .AddTransient<IClientsService, ClientsService>()
-                .AddTransient<IDasboardService, DashboardService>()
                 .AddTransient<ICoursesService, CoursesService>()
                 .AddTransient<ICompaniesService, CompaniesService>()
                 .AddTransient<ICoachesService, CoachesService>()
+                .AddTransient<ICategoriesService, CategoriesService>()
+                .AddTransient<IDasboardService, DashboardService>()
                 .AddTransient<ILecturesService, LecturesService>()
                 .AddTransient<IResourcesService, ResourcesService>()
-                .AddTransient<ILanguagesService, LanguagesService>()
-                .AddTransient<ICategoriesService, CategoriesService>();
+                .AddTransient<ILanguagesService, LanguagesService>();
 
         public static AppSettings GetAppSettings(
             this IServiceCollection services,

@@ -32,7 +32,9 @@
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
-                .AddControllers();
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -65,7 +67,7 @@
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllers();
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 })
                 .ApplySpa(env)
                 .UseSpaStaticFiles();
