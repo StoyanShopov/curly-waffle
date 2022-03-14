@@ -15,6 +15,7 @@
 
 	<PropertyGroup>
 		<CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+		<ApplicationInsightsResourceId>/subscriptions/cf2a399e-eef2-4081-976b-ba8a2c84e9a2/resourceGroups/upskills_group/providers/microsoft.insights/components/upskills</ApplicationInsightsResourceId>
 	</PropertyGroup>
 	<ItemGroup>
 		<AdditionalFiles Include="..\..\stylecop.json" />
