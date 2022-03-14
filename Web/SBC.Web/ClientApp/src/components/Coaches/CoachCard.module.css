@@ -130,11 +130,12 @@
 }
 
 .cardpic {
-    position: absolute;
-    width: 86%;
-    height: auto;
+    position: absolute;   
+    width: 79%;
     bottom: 0;
-   /* margin-left: 28px;*/
+    height: 305px;
+    object-fit: cover;
+    padding-left: 31px;
 }
 
 .cardscontainer {
