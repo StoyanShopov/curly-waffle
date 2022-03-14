@@ -9,6 +9,7 @@
     using Microsoft.Extensions.Hosting;
     using SBC.Services.Mapping;
     using SBC.Web.Infrastructures.Extensions;
+    using SBC.Web.Infrastructures.Hub;
     using SBC.Web.ViewModels;
 
     public class Startup
@@ -25,6 +26,7 @@
                 .AddDataBase(this.configuration)
                 .AddIdentity()
                 .AddApplicationConfigurations()
+                .AddAzureSignalRCore()
                 .AddSwagger()
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
@@ -63,6 +65,10 @@
                 .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
+                .UseAzureSignalR(builder =>
+                {
+                    builder.MapHub<NotificationHub>("/tralala");
+                })
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
