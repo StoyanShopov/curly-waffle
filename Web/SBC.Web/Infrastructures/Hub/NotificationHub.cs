@@ -6,9 +6,9 @@
 
     public class NotificationHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(NotifyMessage message)
         {
-            await this.Clients.All.SendAsync("ReceiveMessage", user, message);
+            await this.Clients.All.SendAsync("ReceiveMessage", message);
         }
     }
 }

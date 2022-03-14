@@ -67,7 +67,7 @@
                 .UseAuthorization()
                 .UseAzureSignalR(builder =>
                 {
-                    builder.MapHub<NotificationHub>("/tralala");
+                    builder.MapHub<NotificationHub>("/notification");
                 })
                 .UseEndpoints(endpoints =>
                 {
