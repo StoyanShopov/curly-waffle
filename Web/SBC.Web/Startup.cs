@@ -71,7 +71,7 @@
                 //})
                 .UseEndpoints(endpoints =>
                 {
-                    //endpoints.MapHub<NotificationHub>("/notification");
+                    endpoints.MapHub<NotificationHub>("/notification");
                     endpoints.MapControllers();
                 })
                 .ApplySpa(env)

@@ -2,6 +2,6 @@
 {
     public class NotifyMessage
     {
-        public string Message { get; set; }
+        public virtual string Message { get; set; }
     }
 }
