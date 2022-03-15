@@ -6,8 +6,8 @@
     {
         public static IServiceCollection AddAzureSignalRCore(this IServiceCollection services)
         {
-            services.AddSignalRCore().AddAzureSignalR("Endpoint=https://devtestdemo.service.signalr.net;AccessKey=blyKS7YA4/RSix0ZBxffvJJR1+zVvEgw2NAEPY9CR+Y=;Version=1.0;");
-
+            // services.AddSignalRCore().AddAzureSignalR("Endpoint=https://devtestdemo.service.signalr.net;AccessKey=blyKS7YA4/RSix0ZBxffvJJR1+zVvEgw2NAEPY9CR+Y=;Version=1.0;");
+            services.AddSignalR();
             return services;
         }
     }

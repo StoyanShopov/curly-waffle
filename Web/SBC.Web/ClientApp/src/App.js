@@ -24,12 +24,14 @@ import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 
+import Notification from "./SignalR-Notification/Notification";
+
 import "./App.css";
 
 
 
 function App() {
-   
+
 
 
     return (
@@ -55,6 +57,9 @@ function App() {
                     <Route path="/coaches/delete" element={<DeleteCoach />}/>
                     <Route path="/coaches" element={<Coaches />}/>
                 </Routes>
+
+                <Notification />
+
             </Layout>
         </Provider>
     );

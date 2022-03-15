@@ -65,12 +65,13 @@
                 .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
-                .UseAzureSignalR(builder =>
-                {
-                    builder.MapHub<NotificationHub>("/notification");
-                })
+                //.UseAzureSignalR(builder =>
+                //{
+                //    builder.MapHub<NotificationHub>("/notification");
+                //})
                 .UseEndpoints(endpoints =>
                 {
+                    //endpoints.MapHub<NotificationHub>("/notification");
                     endpoints.MapControllers();
                 })
                 .ApplySpa(env)

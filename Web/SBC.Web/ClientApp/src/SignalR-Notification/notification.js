@@ -1,52 +1,30 @@
-﻿import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
-import { Button, Input, notification } from "antd";
-import React, { useEffect, useState } from "react";
+﻿import * as signalR from "@microsoft/signalr";
+import React, { useState, useEffect } from 'react';
 
-export const Notify = () => {
-    const [connection, setConnection] = useState < null | HubConnection > (null);
-    const [inputText, setInputText] = useState("");
+const App = () => {
 
-    useEffect(() => {
-        const connect = new HubConnectionBuilder()
-            .withUrl("https://localhost:51130/hubs/notifications")
-            .withAutomaticReconnect()
-            .build();
+    const hubConnection = new signalR.HubConnectionBuilder().withUrl("/notification")
+        .build();
 
-        setConnection(connect);
-    }, []);
+    hubConnection.start();
 
-    useEffect(() => {
-        if (connection) {
-            connection
-                .start()
-                .then(() => {
-                    connection.on("ReceiveMessage", (message) => {
-                        notification.open({
-                            message: "New Notification",
-                            description: message,
-                        });
-                    });
-                })
-                .catch((error) => console.log(error));
-        }
-    }, [connection]);
+    let list = new Array();
 
-    const sendMessage = async () => {
-        if (connection) await connection.send("SendMessage", inputText);
-        setInputText("");
-    };
+    const Messages = (messageProps) => {
 
-    return (
-        <>
-            <Input
-                value={inputText}
-                onChange={(input) => {
-                    setInputText(input.target.value);
-                }}
-            />
-            <Button onClick={sendMessage} type="primary">
-                Send
-            </Button>
-        </>
-    );
-};
+       const [date, setDate] = useState();
+
+       useEffect(() => {
+           messageProps.HubConnection.on("sendToReact", message => {
+               list.push(message);
+               setDate(new Date());
+           })
+       },
+           []);
+
+       return <>{list.map((message, index) => <p key={`message${index}`}>{message}</p>)}</>
+    }
+    return <h1>TESTESTEST</h1>
+}
+
+export default App;
