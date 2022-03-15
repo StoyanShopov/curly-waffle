@@ -38,6 +38,7 @@
     using SBC.Services.Messaging;
     using SBC.Services.Search;
     using SBC.Web.ViewModels;
+    using SBC.Web.ViewModels.Search;
 
     public class Startup
     {
@@ -157,10 +158,28 @@
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
 
-            var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
-                                    .DisableDirectStreaming()
-                                    .PrettyJson();
-            services.AddSingleton<IElasticClient>(new ElasticClient(elasticSetting));
+            //var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
+            //                        .DisableDirectStreaming()
+            //                        .PrettyJson();
+            //services.AddSingleton<IElasticClient>(new ElasticClient(elasticSetting));            
+            //var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
+            //                        .DisableDirectStreaming()
+            //                        .PrettyJson();
+
+            services.AddSingleton<IElasticClient>(sp =>
+            {
+                var config = sp.GetRequiredService<IConfiguration>();
+
+                var settings = new ConnectionSettings(
+                    config["cloudId"],
+                    new BasicAuthenticationCredentials("elastic", config["password"]))
+                .DefaultIndex("an-example-index")
+                .DefaultMappingFor<SearchModel>(i => i
+                .IndexName("coach"));
+
+                return new ElasticClient(settings);
+            });
+
             services.AddTransient<ISearchService, SearchService>();
         }
 
