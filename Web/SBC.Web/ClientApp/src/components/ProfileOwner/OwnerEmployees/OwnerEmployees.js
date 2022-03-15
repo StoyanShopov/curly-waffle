@@ -20,6 +20,8 @@ export default function OwnerEmployees() {
     const cancelTokenSource = axios.CancelToken.source();
     let navigate = useNavigate();
 
+    Modal.setAppElement('body');
+
     useEffect(() => {
         handleViewMore(0);
         setSkip(0);
@@ -46,7 +48,9 @@ export default function OwnerEmployees() {
         });
     }
 
-    const handleEmployee = (employee) => {
+    const handleEmployee = (employee) => {       
+        employee.fullName = employee.firstName + ' ' + employee.lastName;
+        setCount(count +1);
         setEmployees(prevPortions => {
             return [employee, ...prevPortions];
         });

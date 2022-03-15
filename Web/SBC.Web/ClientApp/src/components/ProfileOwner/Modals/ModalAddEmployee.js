@@ -8,7 +8,7 @@ export default function ModalAddEmployee(props) {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const enteredFullName = e.target?.fullName?.value;
+        const enteredFullName = e.target?.fullName?.value;        
         const enteredEmail = e.target?.email?.value;
 
         const employeeData = {
