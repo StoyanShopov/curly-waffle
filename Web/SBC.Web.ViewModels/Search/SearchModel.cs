@@ -1,7 +1,5 @@
 ﻿namespace SBC.Web.ViewModels.Search
 {
-    using System.Collections.Generic;
-
     public class SearchModel
     {
         public string FullName { get; set; }

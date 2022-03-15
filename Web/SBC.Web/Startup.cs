@@ -160,7 +160,7 @@
             var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
                                     .DisableDirectStreaming()
                                     .PrettyJson();
-            services.AddSingleton<IElasticClient>(new ElasticClient());
+            services.AddSingleton<IElasticClient>(new ElasticClient(elasticSetting));
             services.AddTransient<ISearchService, SearchService>();
         }
 
