@@ -172,10 +172,10 @@
 
                 var settings = new ConnectionSettings(
                     config["cloudId"],
-                    new BasicAuthenticationCredentials("elastic", config["password"]))
-                .DefaultIndex("an-example-index")
-                .DefaultMappingFor<SearchModel>(i => i
-                .IndexName("coach"));
+                    new BasicAuthenticationCredentials("elastic", config["password"]));
+                //.DefaultIndex("coach")
+                //.DefaultMappingFor<SearchModel>(i => i
+                //.IndexName("coach"));
 
                 return new ElasticClient(settings);
             });
