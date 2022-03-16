@@ -8,27 +8,27 @@
 
     public interface ICompaniesService
     {
-        Task<Result> GetEmployees(string managerId, int skip, int take = 3);
+        Task<Result> GetEmployeesAsync(string managerId, int skip, int take = 3);
 
-        Task<Result> AddEmployee(CreateEmployeeInputModel model, int companyId, string userId);
+        Task<Result> AddEmployeeAsync(CreateEmployeeInputModel model, int companyId, string userId);
 
-        Task<Result> RemoveEmployee(string employeeId);
+        Task<Result> RemoveEmployeeAsync(string employeeId);
 
-        Task<Result> GetActiveCourses(int companyId);
+        Task<Result> GetActiveCoursesAsync(int companyId);
 
-        Task<Result> SetCourseToActive(int courseId, int companyId);
+        Task<Result> SetCourseToActiveAsync(int courseId, int companyId);
 
-        Task<Result> RemoveCourse(int courseId, int companyId);
+        Task<Result> RemoveCourseAsync(int courseId, int companyId);
 
-        Task<Result> GetActiveCoaches(int companyId);
+        Task<Result> GetActiveCoachesAsync(int companyId);
 
-        Task<Result> SetCoachToActive(int coachId, int companyId);
+        Task<Result> SetCoachToActiveAsync(int coachId, int companyId);
 
         Task<Result> AddAsync(CreateCompanyInputModel model);
 
         Task<Result> GetEmailByIdAsync(int id);
 
-        Task<Result> RemoveCoach(int coachId, int companyId);
+        Task<Result> RemoveCoachAsync(int coachId, int companyId);
 
         Task<Result> GetAllAsync<TModel>();
 

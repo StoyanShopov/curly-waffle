@@ -10,8 +10,7 @@ import styles from './ManagerCourseCard.module.css';
 export default function ManagerCourseCard(props) {
     const [showModal, setShowModal] = useState(false);
 
-    const courseId = props.course.id;
-    console.log(courseId, props);
+    const courseId = props.course.id;   
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
@@ -31,8 +30,7 @@ export default function ManagerCourseCard(props) {
                 }
                 else {
                     navigate('/profile/courses');
-                }
-                console.log(courseId, props);                
+                }                          
             });
     }
 

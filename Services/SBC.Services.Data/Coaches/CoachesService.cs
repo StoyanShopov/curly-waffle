@@ -204,7 +204,7 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
-        public async Task<Result> GetAllWithActive(int companyId, int skip = default, int take = TakeDefaultValue)
+        public async Task<Result> GetAllWithActiveAsync(int companyId, int skip = default, int take = TakeDefaultValue)
         {
             var coachesCount = await this.coachesRepository
                .AllAsNoTracking()
@@ -239,9 +239,11 @@
         }
 
         private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)
-      => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x.LanguageId));
+            => languages.Any(x => !this.languagesRepository.AllAsNoTracking()
+            .Any(y => y.Id == x.LanguageId));
 
         private bool ExistCategoryId(ICollection<CategoryCoachViewModel> categories)
-        => categories.Any(x => !this.categoriesRepository.AllAsNoTracking().Any(y => y.Id == x.CategoryId));
+            => categories.Any(x => !this.categoriesRepository.AllAsNoTracking()
+            .Any(y => y.Id == x.CategoryId));
     }
 }

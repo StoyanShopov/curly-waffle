@@ -50,7 +50,7 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<Result> GetEmployees(string managerId, int skip = default, int take = TakeDefaultValue)
+        public async Task<Result> GetEmployeesAsync(string managerId, int skip = default, int take = TakeDefaultValue)
         {
             var employeesCount = await this.userRepository
                 .AllAsNoTracking()
@@ -83,7 +83,7 @@
             return new ResultModel(employees);
         }
 
-        public async Task<Result> AddEmployee(CreateEmployeeInputModel input, int companyId, string userId)
+        public async Task<Result> AddEmployeeAsync(CreateEmployeeInputModel input, int companyId, string userId)
         {
             var user = await this.userRepository
                 .All()
@@ -120,7 +120,7 @@
             return new ResultModel(user);
         }
 
-        public async Task<Result> RemoveEmployee(string employeeId)
+        public async Task<Result> RemoveEmployeeAsync(string employeeId)
         {
             var employeeToRemove = this.userRepository
                 .All()
@@ -135,7 +135,7 @@
             return new ResultModel(employeeToRemove);
         }
 
-        public async Task<Result> GetActiveCoaches(int companyId)
+        public async Task<Result> GetActiveCoachesAsync(int companyId)
         {
             var activeCoaches = await this.coachesRepository
                 .AllAsNoTracking()
@@ -154,7 +154,7 @@
             return new ResultModel(activeCoaches);
         }
 
-        public async Task<Result> SetCoachToActive(int coachId, int companyId)
+        public async Task<Result> SetCoachToActiveAsync(int coachId, int companyId)
         {
             var newActiveCoach = new CompanyCoach
             {
@@ -170,7 +170,7 @@
             return new ResultModel(newActiveCoach);
         }
 
-        public async Task<Result> RemoveCoach(int coachId, int companyId)
+        public async Task<Result> RemoveCoachAsync(int coachId, int companyId)
         {
             var coach = this.companyCoachesRepository
                 .All()
@@ -184,7 +184,7 @@
             return new ResultModel(coach);
         }
 
-        public async Task<Result> GetActiveCourses(int companyId)
+        public async Task<Result> GetActiveCoursesAsync(int companyId)
         {
             var activeCourses = await this.coursesRepository
                 .AllAsNoTracking()
@@ -208,7 +208,7 @@
             return new ResultModel(activeCourses);
         }
 
-        public async Task<Result> SetCourseToActive(int courseId, int companyId)
+        public async Task<Result> SetCourseToActiveAsync(int courseId, int companyId)
         {
             var newActiveCourse = new CompanyCourse
             {
@@ -224,7 +224,7 @@
             return new ResultModel(newActiveCourse);
         }
 
-        public async Task<Result> RemoveCourse(int courseId, int companyId)
+        public async Task<Result> RemoveCourseAsync(int courseId, int companyId)
         {
             var activeCourse = this.companyCoursesRepository
                 .All()

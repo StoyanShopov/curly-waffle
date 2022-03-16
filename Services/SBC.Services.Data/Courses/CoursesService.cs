@@ -159,7 +159,7 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
-        public async Task<Result> GetAllWithActive(int companyId, int skip = default, int take = TakeDefaultValue)
+        public async Task<Result> GetAllWithActiveAsync(int companyId, int skip = default, int take = TakeDefaultValue)
         {
             var coursesCount = await this.coursesRepository
                 .AllAsNoTracking()

@@ -68,5 +68,4 @@ function App() {
 }
 const hasRole = (userRole, roles) =>
     userRole == roles;
-//roles.some(role => user.roles.includes(role));
 export default App;

@@ -6,6 +6,6 @@
 
     public interface IBusinessOwnerDashboardService
     {
-        Task<Result> GetDashboard(string userId);
+        Task<Result> GetDashboardAsync(string userId);
     }
 }

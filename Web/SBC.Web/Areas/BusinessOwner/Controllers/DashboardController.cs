@@ -17,6 +17,7 @@
 
         [HttpGet]
         public async Task<ActionResult> Dashboard()
-            => this.GenericResponse(await this.businessOwnerDashboardService.GetDashboard(this.User.Id()));
+            => this.GenericResponse(await this.businessOwnerDashboardService
+                .GetDashboardAsync(this.User.Id()));
     }
 }

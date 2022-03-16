@@ -25,7 +25,7 @@
             this.usersRepo = usersRepo;
         }
 
-        public async Task<Result> GetDashboard(string userId)
+        public async Task<Result> GetDashboardAsync(string userId)
         {
             var companyId = this.usersRepo
                 .AllAsNoTracking()
@@ -33,11 +33,22 @@
                 .Select(x => x.CompanyId)
                 .FirstOrDefault();
 
-            var employeesCount = await this.usersRepo.AllAsNoTracking().Where(x => x.CompanyId == companyId).ToListAsync();
+            var employeesCount = await this.usersRepo
+                .AllAsNoTracking()
+                .Where(x => x.CompanyId == companyId)
+                .ToListAsync();
 
-            var coursesCount = await this.coursesRepo.AllAsNoTracking().Where(x => x.Companies.Any(c => c.CompanyId == companyId)).ToListAsync();
+            var coursesCount = await this.coursesRepo
+                .AllAsNoTracking()
+                .Where(x => x.Companies
+                .Any(c => c.CompanyId == companyId))
+                .ToListAsync();
 
-            var coachesCount = await this.coachesRepo.AllAsNoTracking().Where(x => x.ClientCompanies.Any(c => c.CompanyId == companyId)).ToListAsync();
+            var coachesCount = await this.coachesRepo
+                .AllAsNoTracking()
+                .Where(x => x.ClientCompanies
+                .Any(c => c.CompanyId == companyId))
+                .ToListAsync();
 
             return new ResultModel(new DashboardViewModel
             {

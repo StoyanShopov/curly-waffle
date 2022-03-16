@@ -21,8 +21,12 @@
         [HttpGet]
         public async Task<ActionResult> GetCoachesCatalog(int skip)
         {
-            var companyId = this.usersService.GetCompanyId(this.User.Id());
-            var coachesresult = await this.coachesService.GetAllWithActive(companyId, skip);
+            var companyId = this.usersService
+                .GetCompanyId(this.User.Id());
+
+            var coachesresult = await this.coachesService
+                .GetAllWithActiveAsync(companyId, skip);
+
             return this.GenericResponse(coachesresult);
         }
     }

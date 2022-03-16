@@ -10,8 +10,7 @@ import styles from './ManagerCoachCard.module.css';
 export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
 
-    const coachId = props.coach.id;
-    console.log(coachId, props);
+    const coachId = props.coach.id;  
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
@@ -31,8 +30,7 @@ export default function ManagerCoachCard(props) {
                 }
                 else {
                     navigate('/profile/coaches');
-                }
-                console.log(coachId, props);
+                }               
             });
     }
 
