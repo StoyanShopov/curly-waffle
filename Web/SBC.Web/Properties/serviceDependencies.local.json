@@ -11,15 +11,6 @@
       "type": "storage.azure",
       "connectionId": "AzureBlobStorageConnectionString",
       "secretStore": "LocalSecretsFile"
-    },
-    "secrets1": {
-      "type": "secrets.user"
-    },
-    "appInsights1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/upskills",
-      "type": "appInsights.azure",
-      "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
-      "secretStore": "LocalSecretsFile"
     }
   }
 }

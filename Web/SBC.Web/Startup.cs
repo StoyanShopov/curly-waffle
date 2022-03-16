@@ -1,6 +1,12 @@
 ﻿namespace SBC.Web
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+
     using Azure.Storage.Blobs;
+    using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -34,10 +40,6 @@
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels;
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
 
     public class Startup
     {
@@ -164,6 +166,8 @@
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ILanguagesService, LanguagesService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddApplicationInsightsTelemetry();
+            services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "3i88wnuz72ea5h8w42b7mcffzvhp170pncxvlnuw");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -226,7 +230,6 @@
                 }
                 else
                 {
-                    //spa.Options.DefaultPageStaticFileOptions = spaStaticFileOptions;
                     spa.Options.SourcePath = "build";
                 }
             });
