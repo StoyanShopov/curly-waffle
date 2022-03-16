@@ -17,9 +17,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(NotifyMessage messagePost)
+        public async Task<IActionResult> Create(NotifyMessage messagePost, string groupName)
         {
-            await this.messageHub.Clients.All.SendAsync("sendToReact", "The message '" + messagePost.Message + "' has been received");
+            await this.messageHub.Clients.Group(groupName).SendAsync("sendToReact", "The message '" + messagePost.Message + "' has been received");
 
             return this.Ok();
         }

@@ -35,6 +35,20 @@
                 .To<CompanyViewModel>()
                 .ToListAsync());
 
+        public async Task<Result> GetAllEmployeesAsync(int companyId)
+        {
+            var result = await this.companiesRepository
+                .AllAsNoTracking()
+                .Select(x => new
+                {
+                   x.Employees,
+                   x.Id,
+                })
+                .FirstOrDefaultAsync(x => x.Id == companyId);
+
+            return new ResultModel(result);
+        }
+
         public async Task<Result> GetEmailByIdAsync(int id)
         {
             var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);

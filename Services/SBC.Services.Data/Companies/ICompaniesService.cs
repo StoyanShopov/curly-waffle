@@ -9,6 +9,8 @@
     {
         Task<Result> AddAsync(CreateCompanyInputModel model);
 
+        Task<Result> GetAllEmployeesAsync(int companyId);
+
         Task<Result> GetEmailByIdAsync(int id);
 
         Task<Result> GetAllAsync<TModel>();
