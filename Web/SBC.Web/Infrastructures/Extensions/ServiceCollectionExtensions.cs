@@ -5,6 +5,7 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
+    using Elasticsearch.Net;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Nest;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
@@ -33,6 +35,7 @@
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
+    using SBC.Services.Search;
 
     public static class ServiceCollectionExtensions
     {
@@ -62,7 +65,14 @@
                 .AddTransient<IDasboardService, DashboardService>()
                 .AddTransient<ILecturesService, LecturesService>()
                 .AddTransient<IResourcesService, ResourcesService>()
-                .AddTransient<ILanguagesService, LanguagesService>();
+                .AddTransient<ILanguagesService, LanguagesService>()
+                .AddSingleton<IElasticClient>(new ElasticClient(
+
+                   // new ConnectionSettings(
+                   // configuration["ElasticCloud:cloudId"],
+                   // new BasicAuthenticationCredentials(configuration["ElasticCloud:BasicAuthUser"], configuration["ElasticCloud:password"]))
+                   ))
+                .AddTransient<ISearchService, SearchService>();
 
         public static AppSettings GetAppSettings(
             this IServiceCollection services,
@@ -84,7 +94,7 @@
         public static IServiceCollection AddDataRepositories(this IServiceCollection services)
             => services
                 .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
-                .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
+                .AddScoped(typeof(Data.Common.Repositories.IRepository<>), typeof(EfRepository<>))
                 .AddScoped<IDbQueryRunner, DbQueryRunner>();
 
         public static IServiceCollection AddJwtAuthentication(
