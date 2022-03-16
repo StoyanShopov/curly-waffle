@@ -29,16 +29,16 @@ export const setUserData = async (user) => {
     localStorage.setItem("userData", user);
 }
 
-export const getUserData = () => {
-    // const _user = 
-    return JSON.parse(localStorage.getItem("userData"));
-    // const email = _user['email']?_user['email']:null;
-    // const fullname = _user['fullname'];
-    // const index = _user['fullname'][0];
-    // const profileSummary = _user['profileSummary'];
-    // const photoUrl = _user['photoUrl'];
+export const getIcon = () => {
+    const user = getUserData();
+    return user ? user['fullname'][0] : null;
+};
 
-    // return {
-    //     email, fullname, index, profileSummary,photoUrl
-    // }
+export const getUserRole = () => {
+    const user = getUser();
+    return user ? user['role'] : null;
+};
+
+export const getUserData = () => {
+    return JSON.parse(localStorage.getItem("userData"));
 }

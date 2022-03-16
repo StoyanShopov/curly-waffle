@@ -6,17 +6,19 @@
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
-
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Coaches;
+    using SBC.Web.ViewModels.Coaches;
 
     using static SBC.Common.GlobalConstants;
 
     public class CoachesService : ICoachesService
     {
+        private const int TakeDefaultValue = 3;
+
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
         private readonly IDeletableEntityRepository<Language> languagesRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
@@ -202,10 +204,46 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
+        public async Task<Result> GetAllWithActiveAsync(int companyId, int skip = default, int take = TakeDefaultValue)
+        {
+            var coachesCount = await this.coachesRepository
+               .AllAsNoTracking()
+               .CountAsync();
+
+            var isViewMoreAvailable = (coachesCount - skip - take) > 0;
+
+            var portions = await this.coachesRepository
+                .AllAsNoTracking()
+                .OrderByDescending(u => u.CreatedOn)
+                .Skip(skip)
+                .Take(take)
+                .Select(coach => new CoachCardViewModel
+                {
+                    Id = coach.Id,
+                    FullName = $"{coach.FirstName} {coach.LastName}",
+                    CategoryByDefault = coach.Categories.Count == 0 ? "Common" : coach.Categories.FirstOrDefault().Category.Name,
+                    PricePerSession = coach.PricePerSession,
+                    ImageUrl = coach.ImageUrl,
+                    CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                    IsActive = coach.ClientCompanies.Any(x => x.CompanyId == companyId),
+                })
+                .ToListAsync();
+
+            var coaches = new CoachesCardViewModel
+            {
+                Portions = portions,
+                ViewMoreAvailable = isViewMoreAvailable,
+            };
+
+            return new ResultModel(coaches);
+        }
+
         private bool ExistLanguageId(ICollection<LanguageCoachViewModel> languages)
-        => languages.Any(x => !this.languagesRepository.AllAsNoTracking().Any(y => y.Id == x.LanguageId));
+            => languages.Any(x => !this.languagesRepository.AllAsNoTracking()
+            .Any(y => y.Id == x.LanguageId));
 
         private bool ExistCategoryId(ICollection<CategoryCoachViewModel> categories)
-        => categories.Any(x => !this.categoriesRepository.AllAsNoTracking().Any(y => y.Id == x.CategoryId));
+            => categories.Any(x => !this.categoriesRepository.AllAsNoTracking()
+            .Any(y => y.Id == x.CategoryId));
     }
 }

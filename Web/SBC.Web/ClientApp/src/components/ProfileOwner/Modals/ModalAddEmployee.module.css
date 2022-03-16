@@ -27,7 +27,7 @@
 
 .formField {
     margin-top: 50px;
-    width: 550px;
+    width: 72%;
     height: 55px;
     border: 2px solid #296CFB;
     opacity: 1;
@@ -78,8 +78,7 @@
     font: normal normal bold 22px/27px Montserrat;
     margin-top: 20px;
     border: none;
-    cursor: pointer;
-    left: -146px;
+    cursor: pointer;   
     font-weight: 500;
     background: none;
 }

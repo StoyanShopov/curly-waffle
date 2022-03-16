@@ -6,17 +6,18 @@
     display: flex;
     position: relative;
     width: 100%;
-    padding-top: 4%;
+    padding-top: 2%;
 }
 
 .leftPart {
-    width: 56%;
-    margin-left: 7%;
-    margin-right: 7%;
+    width: 47%;
+    margin-left: 5%;
+    margin-right: 6%;
 }
 
 .rightPart {
-    width: 34%;
+    width: 40%;
+    padding-top: 36px;
 }
 
 .lectureList {
@@ -55,9 +56,13 @@
 }
 
 .lectorPic {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
+    width: 118px;
+    height: 100px;    
+    padding: 0;
+}
+
+.cardpic {
+    width: 114%;
 }
 
 .pCreatedBy {
@@ -86,7 +91,7 @@
 
 .lectorSection {
     display: flex;
-    width: 300px;
+    width: 100%;
 }
 
 .pInstructor {

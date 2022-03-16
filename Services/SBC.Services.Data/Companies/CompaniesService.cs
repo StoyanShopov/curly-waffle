@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Companies
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -11,35 +12,230 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Companies;
+    using SBC.Web.ViewModels.BusinessOwner.Employees;
+    using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Company;
+    using SBC.Web.ViewModels.Courses;
 
     using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class CompaniesService : ICompaniesService
     {
+        private const int TakeDefaultValue = 3;
+
         private readonly IDeletableEntityRepository<Company> companiesRepository;
+        private readonly IDeletableEntityRepository<Coach> coachesRepository;
+        private readonly IDeletableEntityRepository<Course> coursesRepository;
+        private readonly IDeletableEntityRepository<CompanyCoach> companyCoachesRepository;
+        private readonly IDeletableEntityRepository<CompanyCourse> companyCoursesRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly RoleManager<ApplicationRole> roleManager;
 
         public CompaniesService(
-            IDeletableEntityRepository<Company> companiesRepository,
+            IDeletableEntityRepository<Company> company,
+            IDeletableEntityRepository<Coach> coachesRepository,
+            IDeletableEntityRepository<Course> coursesRepository,
+            IDeletableEntityRepository<CompanyCoach> companyCoachesRepository,
+            IDeletableEntityRepository<CompanyCourse> companyCoursesRepository,
+            IDeletableEntityRepository<ApplicationUser> userRepository,
             RoleManager<ApplicationRole> roleManager)
         {
-            this.companiesRepository = companiesRepository;
+            this.companiesRepository = company;
+            this.coachesRepository = coachesRepository;
+            this.coursesRepository = coursesRepository;
+            this.companyCoachesRepository = companyCoachesRepository;
+            this.companyCoursesRepository = companyCoursesRepository;
+            this.userRepository = userRepository;
             this.roleManager = roleManager;
         }
 
-        public async Task<Result> GetAllAsync<TModel>()
-             => new ResultModel(await this.companiesRepository
-                .AllAsNoTracking()
-                .To<CompanyViewModel>()
-                .ToListAsync());
-
-        public async Task<Result> GetEmailByIdAsync(int id)
+        public async Task<Result> GetEmployeesAsync(string managerId, int skip = default, int take = TakeDefaultValue)
         {
-            var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+            var employeesCount = await this.userRepository
+                .AllAsNoTracking()
+                .Where(m => m.ManagerId == managerId)
+                .CountAsync();
 
-            return new ResultModel(result);
+            var isViewMoreAvailable = (employeesCount - skip - take) > 0;
+
+            var portions = await this.userRepository
+                .AllAsNoTracking()
+                .Where(u => u.ManagerId == managerId)
+                .OrderByDescending(u => u.CreatedOn)
+                .Skip(skip)
+                .Take(take)
+                .Select(x => new EmployeeViewModel
+                {
+                    Email = x.Email,
+                    Id = x.Id,
+                    FullName = $"{x.FirstName} {x.LastName}",
+                })
+                .ToListAsync();
+
+            var employees = new EmployeesViewModel
+            {
+                Portions = portions,
+                ViewMoreAvailable = isViewMoreAvailable,
+                Count = employeesCount,
+            };
+
+            return new ResultModel(employees);
+        }
+
+        public async Task<Result> AddEmployeeAsync(CreateEmployeeInputModel input, int companyId, string userId)
+        {
+            var user = await this.userRepository
+                .All()
+                .Where(x => x.Email == input.Email)
+                .FirstOrDefaultAsync();
+
+            if (user != null)
+            {
+                if (user.FirstName == input.FullName.Split(" ")[0] &&
+                    user.LastName == input.FullName.Split(" ")[1] &&
+                    user.ManagerId == null &&
+                    user.CompanyId == null)
+                {
+                    user.ManagerId = userId;
+                    user.CompanyId = companyId;
+                }
+                else if (user.FirstName != input.FullName.Split(" ")[0] ||
+                    user.LastName != input.FullName.Split(" ")[1])
+                {
+                    return new ErrorModel(HttpStatusCode.BadRequest, $"User with this {input.FullName} doesn't exist.");
+                }
+                else if (user.ManagerId != null || user.CompanyId != null)
+                {
+                    return new ErrorModel(HttpStatusCode.BadRequest, $"This user is already added to a company.");
+                }
+            }
+            else
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, $"User with this {input.Email} doesn't exist.");
+            }
+
+            await this.userRepository.SaveChangesAsync();
+
+            return new ResultModel(user);
+        }
+
+        public async Task<Result> RemoveEmployeeAsync(string employeeId)
+        {
+            var employeeToRemove = this.userRepository
+                .All()
+                .Where(x => x.Id == employeeId)
+                .FirstOrDefault();
+
+            employeeToRemove.ManagerId = null;
+            employeeToRemove.CompanyId = null;
+
+            await this.userRepository.SaveChangesAsync();
+
+            return new ResultModel(employeeToRemove);
+        }
+
+        public async Task<Result> GetActiveCoachesAsync(int companyId)
+        {
+            var activeCoaches = await this.coachesRepository
+                .AllAsNoTracking()
+                .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
+                .Select(x => new ActiveCoachViewModel
+                {
+                    Id = x.Id,
+                    FullName = $"{x.FirstName} {x.LastName}",
+                    CategoryByDefault = x.Categories.Count == 0 ? "Common" : x.Categories.FirstOrDefault().Category.Name,
+                    PricePerSession = x.PricePerSession,
+                    ImageUrl = x.ImageUrl,
+                    CompanyLogoUrl = x.CompanyId != null ? x.Company.LogoUrl : "Null",
+                })
+                .ToListAsync();
+
+            return new ResultModel(activeCoaches);
+        }
+
+        public async Task<Result> SetCoachToActiveAsync(int coachId, int companyId)
+        {
+            var newActiveCoach = new CompanyCoach
+            {
+                CompanyId = companyId,
+                CoachId = coachId,
+                IsDeleted = false,
+                HireDate = DateTime.UtcNow,
+            };
+
+            await this.companyCoachesRepository.AddAsync(newActiveCoach);
+            await this.companyCoachesRepository.SaveChangesAsync();
+
+            return new ResultModel(newActiveCoach);
+        }
+
+        public async Task<Result> RemoveCoachAsync(int coachId, int companyId)
+        {
+            var coach = this.companyCoachesRepository
+                .All()
+                .Where(x => x.CompanyId == companyId && x.CoachId == coachId)
+                .FirstOrDefault();
+
+            this.companyCoachesRepository.HardDelete(coach);
+
+            await this.companyCoachesRepository.SaveChangesAsync();
+
+            return new ResultModel(coach);
+        }
+
+        public async Task<Result> GetActiveCoursesAsync(int companyId)
+        {
+            var activeCourses = await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
+                .Include(x => x.Coach)
+                .ThenInclude(x => x.Company)
+                .Select(x => new ActiveCourseViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    PricePerPerson = x.PricePerPerson,
+                    PictureUrl = x.PictureUrl,
+                    CategoryId = x.CategoryId,
+                    LanguageId = x.LanguageId,
+                    CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    CategoryName = x.Category.Name,
+                    CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
+                })
+                .ToListAsync();
+
+            return new ResultModel(activeCourses);
+        }
+
+        public async Task<Result> SetCourseToActiveAsync(int courseId, int companyId)
+        {
+            var newActiveCourse = new CompanyCourse
+            {
+                CourseId = courseId,
+                CompanyId = companyId,
+                IsDeleted = false,
+                PurchaseDate = DateTime.UtcNow,
+            };
+
+            await this.companyCoursesRepository.AddAsync(newActiveCourse);
+            await this.companyCoursesRepository.SaveChangesAsync();
+
+            return new ResultModel(newActiveCourse);
+        }
+
+        public async Task<Result> RemoveCourseAsync(int courseId, int companyId)
+        {
+            var activeCourse = this.companyCoursesRepository
+                .All()
+                .Where(x => x.CourseId == courseId && x.CompanyId == companyId)
+                .FirstOrDefault();
+
+            this.companyCoursesRepository.HardDelete(activeCourse);
+
+            await this.companyCoursesRepository.SaveChangesAsync();
+
+            return new ResultModel(activeCourse);
         }
 
         public async Task<Result> AddAsync(CreateCompanyInputModel model)
@@ -110,5 +306,18 @@
                 .Where(c => c.Name.ToLower() == name.ToLower())
                 .Select(c => c.Id)
                 .FirstOrDefaultAsync();
+
+        public async Task<Result> GetAllAsync<TModel>()
+             => new ResultModel(await this.companiesRepository
+                .AllAsNoTracking()
+                .To<CompanyViewModel>()
+                .ToListAsync());
+
+        public async Task<Result> GetEmailByIdAsync(int id)
+        {
+            var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+
+            return new ResultModel(result);
+        }
     }
 }

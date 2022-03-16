@@ -72,6 +72,8 @@
 }
 
 .inputContainer::placeholder {
+    padding-left: 30px;
+    text-align: left;
     color: #296CFB;
     padding-left: 28px;
 }

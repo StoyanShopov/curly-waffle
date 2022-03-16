@@ -1,5 +1,5 @@
-import {  useEffect } from 'react';
-import { Link, NavLink} from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import css from './NavigationBar.module.css';
 import { userService } from '../../services/user.service';
@@ -8,14 +8,14 @@ import { TokenManagement } from '../../helpers';
 export default function NavigationBar(props) {
     
   
-    let userData= TokenManagement.getUserData();
+    let userData = TokenManagement.getUserData();
     const onLogout = () => {
         userService.logout();
       
     }
 
     useEffect(() => {
-        userData= TokenManagement.getUserData();
+        userData = TokenManagement.getUserData();
     }, [])
 
     return (
@@ -29,10 +29,10 @@ export default function NavigationBar(props) {
             </div>
             <div className={css.circleContainer}>
                 <div className={css.circleFloatChild}>
-                    <span className={css.nameVisualizer}> {userData?userData.fullname[0]:"N/A"} </span>
+                    <span className={css.nameVisualizer}> {userData ? userData.fullname[0] : "N/A"} </span>
                 </div>
                 <div className={css.floatChild2}>
-                    <label className={css.lable}>{userData?userData.fullname:"N/A"}</label>
+                    <label className={css.lable}>{userData ? userData.fullname : "N/A"}</label>
                     <label className={css.lableColored}>{!props.adminData.company ? null : props.adminData.company}</label>
                 </div>
                 <br />
@@ -42,18 +42,18 @@ export default function NavigationBar(props) {
                     <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
-                <NavLink to="/super-admin/dashboard">Dashboard</NavLink>
+                <NavLink to="dashboard">Dashboard</NavLink>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
                     <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
-                <NavLink to="/super-admin/clients">Clients</NavLink>
+                <NavLink to="clients">Clients</NavLink>
                 {/* <a href="/super-admin/clients">Clients</a> */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
                     <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>
 
-                <NavLink to="/super-admin/revenue">Revenue</NavLink>
+                <NavLink to="revenue">Revenue</NavLink>
                 <svg xmlns="http://www.w3.org/2000/svg" width="359" height="1" viewBox="0 0 359 1">
                     <line id="Line_28" data-name="Line 28" x2="358" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />
                 </svg>

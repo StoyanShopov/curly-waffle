@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.User
+﻿namespace SBC.Services.Data.Users
 {
     using System.Linq;
     using System.Net;
@@ -13,7 +13,7 @@
     using SBC.Services.Data.Companies;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Administration.Profile;
+
     using SBC.Web.ViewModels.User;
 
     using static SBC.Common.ErrorMessageConstants.User;
@@ -138,16 +138,14 @@
             return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
         }
 
-        public async Task<Result> GetAdminDataAsync<TModel>(string userId)
+        public async Task<Result> GetUserDataAsync<TModel>(string userId)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
-
-            if (user == null)
-            {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
-            }
-
-            var result = AutoMapperConfig.MapperInstance.Map<TModel>(user);
+            var result = await this.applicationUsers
+                 .AllAsNoTracking()
+                 .Include(x => x.Company)
+                 .Where(u => u.Id == userId)
+                 .To<TModel>()
+                 .FirstOrDefaultAsync();
 
             return new ResultModel(result);
         }
@@ -169,5 +167,16 @@
             => await this.applicationUsers
                 .AllAsNoTracking()
                 .AnyAsync(u => u.NormalizedEmail == email.ToUpper());
+
+        public int GetCompanyId(string userId)
+        {
+            var companyId = this.applicationUsers
+                .AllAsNoTracking()
+                .Where(x => x.Id == userId)
+                .Select(x => x.CompanyId)
+                .FirstOrDefault();
+
+            return (int)companyId;
+        }
     }
 }

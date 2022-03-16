@@ -67,7 +67,7 @@ export default function Clients() {
               <th>Email</th>
               <td className={css.addClient}>
                 <Link to="" onClick={() => setShowModal(true)}>
-                  <img className={css.plus} src={"../../../public/add-client.ico"} alt="add-icon"></img>
+                                    <img className={css.plus} src={"/add-client.ico"} alt="add-icon"></img>
                 </Link>
               </td>
             </tr>

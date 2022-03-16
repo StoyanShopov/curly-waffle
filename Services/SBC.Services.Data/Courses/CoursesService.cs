@@ -11,23 +11,26 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Courses;
+    using SBC.Web.ViewModels.Courses;
 
     public class CoursesService : ICoursesService
     {
-        private readonly IDeletableEntityRepository<Course> courseRepository;
-        private readonly IDeletableEntityRepository<Coach> coacheRepository;
+        private const int TakeDefaultValue = 3;
+
+        private readonly IDeletableEntityRepository<Course> coursesRepository;
+        private readonly IDeletableEntityRepository<Coach> coachesRepository;
 
         public CoursesService(
-            IDeletableEntityRepository<Course> courseRepository,
-            IDeletableEntityRepository<Coach> coacheRepository)
+            IDeletableEntityRepository<Course> coursesRepository,
+            IDeletableEntityRepository<Coach> coachesRepository)
         {
-            this.courseRepository = courseRepository;
-            this.coacheRepository = coacheRepository;
+            this.coursesRepository = coursesRepository;
+            this.coachesRepository = coachesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateCourseInputModel courseModel)
         {
-            var course = await this.courseRepository
+            var course = await this.coursesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Title == courseModel.Title);
 
@@ -48,10 +51,10 @@
                 CoachId = courseModel.CoachId,
             };
 
-            await this.courseRepository.AddAsync(newCourse);
-            await this.courseRepository.SaveChangesAsync();
+            await this.coursesRepository.AddAsync(newCourse);
+            await this.coursesRepository.SaveChangesAsync();
 
-            var currentCoach = await this.coacheRepository
+            var currentCoach = await this.coachesRepository
                 .AllAsNoTracking()
                 .Include(c => c.Company)
                 .FirstOrDefaultAsync(c => c.Id == newCourse.CoachId);
@@ -72,7 +75,7 @@
 
         public async Task<Result> DeleteByIdAsync(int id)
         {
-            var course = await this.courseRepository
+            var course = await this.coursesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
@@ -81,8 +84,8 @@
                 return new ErrorModel(HttpStatusCode.NotFound, "Course not found!");
             }
 
-            this.courseRepository.Delete(course);
-            await this.courseRepository.SaveChangesAsync();
+            this.coursesRepository.Delete(course);
+            await this.coursesRepository.SaveChangesAsync();
 
             return true;
         }
@@ -94,7 +97,7 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, "Id is null!");
             }
 
-            var course = await this.courseRepository
+            var course = await this.coursesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
@@ -112,9 +115,9 @@
             course.CategoryId = courseModel.CategoryId;
             course.LanguageId = courseModel.LanguageId;
 
-            await this.courseRepository.SaveChangesAsync();
+            await this.coursesRepository.SaveChangesAsync();
 
-            var currentCoach = await this.coacheRepository
+            var currentCoach = await this.coachesRepository
                .AllAsNoTracking()
                .Include(c => c.Company)
                .FirstOrDefaultAsync(c => c.Id == course.CoachId);
@@ -139,21 +142,58 @@
         }
 
         public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-            => await this.courseRepository
+            => await this.coursesRepository
                 .AllAsNoTracking()
                 .To<TModel>()
                 .ToListAsync();
 
         public async Task<TModel> GetByIdAsync<TModel>(int id)
-            => await this.courseRepository
+            => await this.coursesRepository
                 .AllAsNoTracking()
                 .Where(c => c.Id == id)
                 .To<TModel>()
                 .FirstOrDefaultAsync();
 
         public async Task<int> GetCountAsync()
-            => await this.courseRepository
+            => await this.coursesRepository
                 .AllAsNoTracking()
                 .CountAsync();
+
+        public async Task<Result> GetAllWithActiveAsync(int companyId, int skip = default, int take = TakeDefaultValue)
+        {
+            var coursesCount = await this.coursesRepository
+                .AllAsNoTracking()
+                .CountAsync();
+
+            var isViewMoreAvailable = (coursesCount - skip - take) > 0;
+
+            var portions = await this.coursesRepository
+                .AllAsNoTracking()
+                .OrderByDescending(u => u.CreatedOn)
+                .Skip(skip)
+                .Take(take)
+                .Select(course => new CourseCardViewModel
+                {
+                    Id = course.Id,
+                    Title = course.Title,
+                    LanguageId = course.LanguageId,
+                    CategoryId = course.CategoryId,
+                    CoachFullName = $"{course.Coach.FirstName} {course.Coach.LastName}",
+                    CategoryName = course.Category.Name,
+                    PricePerPerson = course.PricePerPerson,
+                    PictureUrl = course.PictureUrl,
+                    CompanyLogoUrl = course.Coach.CompanyId != null ? course.Coach.Company.LogoUrl : "Null",
+                    IsActive = course.Companies.Any(x => x.CompanyId == companyId),
+                })
+                .ToListAsync();
+
+            var courses = new CoursesCardViewModel
+            {
+                Portions = portions,
+                ViewMoreAvailable = isViewMoreAvailable,
+            };
+
+            return new ResultModel(courses);
+        }
     }
 }

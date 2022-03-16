@@ -1,4 +1,4 @@
-﻿namespace SBC.Services.Data.Client
+﻿namespace SBC.Services.Data.Clients
 {
     using System.Threading.Tasks;
 
