@@ -1,19 +1,18 @@
-﻿import React, {  useRef, useState } from "react";
+﻿import React, { useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { userActions } from '../../actions/index';
+import { userActions } from "../../actions/index";
 
 import styles from "./LoginAsEmployee.module.css";
-import { GetAdminData } from "../../services/super-admin-service";
-
+import { userService } from '../../services';
 
 const LoginAsEmployee = (props) => {
-    const form = useRef();
-    const navigate = useNavigate();
+  const form = useRef();
+  const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
     const dispatch = useDispatch();
 
@@ -31,24 +30,25 @@ const LoginAsEmployee = (props) => {
         e.preventDefault();
 
         await dispatch(userActions.login(email, password));
-        await GetAdminData().then(data => {
-//            console.log(data)
-        });
 
-        navigate('/');
+        await userService.GetUserData().then(data => {
+            //            console.log(data)
+        });
+        window.location.href = "/";
+        // navigate('/');
     };
 
     const link = "Забравена парола?";
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <img src="assets/images/Path 9.svg" alt="" className={styles.backgnd} />
-                <img src="assets/images/Group 17.svg" alt="" className={styles.woman} />
+                <img src="/assets/images/Path 9.svg" alt="" className={styles.backgnd} />
+                <img src="/assets/images/Group 17.svg" alt="" className={styles.woman} />
             </div>
             <div className={styles.right}>
                 <div className={styles.formContainer}>
                     <div className={styles.arrowContainer}>
-                        <img src="assets/images/Group 5.svg" className={styles.arrow} alt="" />
+                        <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
                     </div>
                     <h1>Welcome back!</h1>
                     <h5>Please login to your account</h5>
@@ -71,6 +71,7 @@ const LoginAsEmployee = (props) => {
                             <input
                                 type="password"
                                 name="password"
+                                autoComplete="off"
                                 className={`${styles.input} ${styles.inputpass}`}
                                 placeholder="Password*"
                                 required="required"
@@ -86,8 +87,8 @@ const LoginAsEmployee = (props) => {
                             <a href="/">{link}</a>
                         </div>
                         <div className={styles.btncontainer}>
-                            <input type="submit" value="Login" />
-                            <Link to="/register">SignUp</Link>
+                            <input type="submit" value="Login" className={styles.btnconLogin} />
+                            <Link to="/signUp"><button className={styles.btnconSignUp}>SignUp</button></Link>
                         </div>
                     </form>
                 </div>

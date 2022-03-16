@@ -118,11 +118,10 @@
     margin-top: 50px;
 }
 
-    .btncontainer input {
+    .btncontainer input, .btnconSignUp {
         width: 250px;
         height: 70px;
-        border: 2px solid #296cfb;
-        color: #296cfb;
+        border: 2px solid #296cfb;      
         font-family: "Montserrat", sans-serif;
         font-size: 22px;
         font-weight: 700;
@@ -130,10 +129,16 @@
         cursor: pointer;
     }
 
-    .btncontainer :first-child {
-        background: #296cfb;
-        color: white;
-    }
+.btnconLogin {
+    color: white;
+    background: #296cfb;
+}
+
+.btnconSignUp {
+    color: #296cfb;
+    background: white;
+    
+}
 
 .inputcontainer ::placeholder {
     font-family: "Montserrat", sans-serif;

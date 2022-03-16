@@ -1,0 +1,241 @@
+.languageOptions{
+    width: 405px;
+    border: 2px solid #296cfb;
+    margin: 23px auto 0 auto;
+    border-radius: 5px;
+}
+
+.headerContainer{
+    height: 100px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleContainer{
+    text-align: center;
+    color: white;
+    font: normal normal bold 28px/36px Montserrat;
+    padding-top: 30px;
+    margin-left: 96px;
+}
+
+.closeBtn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-right: 30px;
+}   
+
+div.inputContainer{
+    text-align: center;
+    height: 600px;
+}
+
+.inputField{
+    width: 400px;
+    height: 20px;
+    border: 2px solid;
+    border-color: #296cfb;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+.inputFile{
+    width: 250px;
+    height: 50px;
+    border: 2px solid #FFFFFF;
+    opacity: 1;
+    background-color: red;
+    position: relative;
+}
+
+.footerContainer{
+    text-align: center;
+    margin-top: -10px;
+}
+
+.btnSave{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; 
+    width: 100px;
+    height: 35px;
+    background: #296CFB 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: #296CFB;
+    margin-left: 25px;
+    margin-top: 30px;
+    color: #ffffff;
+    font: normal normal bold 14px/27px Montserrat;
+    letter-spacing: 1.1px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btnCancel{
+    background-color: white;
+    width: 100px;
+    height: 35px;
+    border: 1px solid #296CFB;
+    opacity: 1;
+    color: #296CFB; 
+    font: normal normal bold 14px/27px Montserrat;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+}
+
+.addAnotherCoachBtn{
+    color: #296CFB;
+    text-align: left;
+    font: normal normal bold 22px/27px Montserrat;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 149px;
+    font-weight: 500;
+    background: none;
+    display: flex;
+}
+
+.inputContainer ::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: #296CFB;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 1;
+    padding-left: 30px;    
+    float: left;
+}
+
+.fileUpload {
+	background: #296CFB;
+    border: 2px solid white;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 34px;/*20px/16px 0*/
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 150px;
+    cursor: pointer;
+
+}
+
+.fileUpload span{
+    display: block;
+    font: normal normal bold 14px/27px Montserrat;
+}
+
+.fileUpload:hover, .fileUpload:active, .fileUpload:focus {
+	background: white;
+    color: grey;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 148px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.upload input[type="file"] {
+    position: fixed;
+    right: 100%;
+    bottom: 100%;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.starFirstName{
+    position: fixed;
+    color: #e84855;
+    left: 36.6%;
+    top: 125px;
+}
+
+.starLastName{
+    position: absolute;
+    color: #e84855;
+    left: 36.3%;
+    top: 177px;
+}
+
+.starPrice{
+    position: absolute;
+    color: #e84855;
+    left: 31%;
+    top: 279px;
+}
+
+.starCalendlyUrl{
+    position: absolute;
+    color: #e84855;
+    left: 39.0%;
+    top: 330px;
+}
+
+.starDescription{
+    position: absolute;
+    color: #e84855;
+    left: 37.0%;
+    top: 562px;
+}
+
+.starVideoUrl{
+    position: absolute;
+    color: #e84855;
+    left: 35.7%;
+    top: 228px;
+}
+
+.company{
+    color: white;
+}
+
+.inputContainer input[required]:invalid + span {
+    display: inline-block;
+}
+
+.inputContainer input[required]:valid + span {
+    display: none;
+}
+
+.inputContainer textarea[required]:valid + span{
+    display: none;
+}
+
+.inputContainer textarea[required]:invalid + span{
+    display: inline-block;
+}
+
+.languages{
+    font: normal normal bold 14px/27px Montserrat ;
+}
+
+.selectedLanguages{
+    font: normal normal bold 16px/27px Montserrat;
+    background-color: #296CFB;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 1px;
+    margin-bottom: 20px;
+}

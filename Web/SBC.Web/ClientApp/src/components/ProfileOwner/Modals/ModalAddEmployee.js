@@ -1,5 +1,6 @@
-﻿import axios from 'axios';
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
+
+import { OwnerService } from '../../../services';
 
 import styles from './ModalAddEmployee.module.css'
 
@@ -7,21 +8,20 @@ export default function ModalAddEmployee(props) {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const enteredFullName = e.target?.fullName?.value;
+        const enteredFullName = e.target?.fullName?.value;        
         const enteredEmail = e.target?.email?.value;
 
-        const clientData = {
+        const employeeData = {
             fullName: enteredFullName,
             email: enteredEmail,
         }
 
-        const response = await axios
-            .post(baseUrl + 'Administration/Client', clientData)
+        try {
+            const response = await OwnerService.CompanyAddEmployee(employeeData);
 
-        if (response.status === 200) {
             props.handleSkip(1);
 
-            props.handleClient(response.data.client);
+            props.handleEmployee(response.data);
 
             const btnId = e.nativeEvent.submitter.id;
 
@@ -31,6 +31,8 @@ export default function ModalAddEmployee(props) {
             else {
                 props.handleClose();
             }
+        } catch (error) {
+            console.log(error);
         }
     }
 

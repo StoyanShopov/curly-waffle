@@ -36,6 +36,8 @@
                               new CoachesSeeder(),
                               new CoursesSeeder(),
                               new RequestsSeeder(),
+                              new CoachCategoriesSeeder(),
+                              new LanguageCoachSeeder(),
                           };
 
             foreach (var seeder in seeders)

@@ -1,19 +1,32 @@
 import axios from 'axios';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
-import styles from "./CourseCatalog.module.css";
-import Modal from 'react-modal';
-import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+import { OwnerService } from '../../../services';
+import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
+
 import { CategoriesList } from "./CategoriesList";
 import { LanguagesList } from "./LanguagesList";
 
-export default function CourseCatalog(prop) {
-    const [showModal, setShowModal] = useState(false);
+import styles from "./CourseCatalog.module.css";
 
-    const handleClose = useCallback(() => {
-        setShowModal(false)
-    }, []);
+export default function CourseCatalog(prop) {
+    const [courses, setCourses] = useState([]);
+   
+    const [isPending, setIsPending] = useState(false);
+    const [skip, setSkip] = useState(0);
+    const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
+
+    const cancelTokenSource = axios.CancelToken.source();
+
+    useEffect(() => {
+        handleViewMore(0);
+        setSkip(0);
+
+        return () => {
+            cancelTokenSource.cancel();
+        }
+    }, [])
 
     const handleSkip = (skip) => {
         setSkip(prevSkip => {
@@ -21,10 +34,22 @@ export default function CourseCatalog(prop) {
         });
     }
 
-    const handleClient = (client) => {
-        setClients(prevPortions => {
-            return [client, ...prevPortions];
+    const handleViewMore = async () => {
+        setIsPending(true);
+
+        const json = await OwnerService.GetCoursesCatalog(skip, cancelTokenSource);
+
+        console.log('js', json)//  
+
+        setIsPending(false);
+
+        setCourses(prevPortions => {
+            return [...prevPortions, ...json.data.portions];
         });
+
+        handleSkip(3);
+
+        setViewMoreAvailable(json.data.viewMoreAvailable);
     }
 
     return (
@@ -74,207 +99,26 @@ export default function CourseCatalog(prop) {
                         </ul>
                     </div>
                     <div className={styles.imageC}>
-                        <img className={styles.book} src="assets/images/Group 23.svg" alt="" />                    
+                        <img className={styles.book} src="/assets/images/Group 23.svg" alt="" />
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1221.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                              
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1225.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                            
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1237.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                           
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1229.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>                    
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1232.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>        
-                           
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1240.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1269.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1270.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.imgContainer}>
-                            <img className={styles.cardpic} src="assets/images/Rectangle 1281.png" alt="" />
-                            <div className={styles.centered}>JAVA</div>
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
+                    {courses.length > 0
+                        ? courses.map(x => <ManagerCourseCard key={x.id} course={x} courses={courses} setCourses={setCourses} isProfile={false} />)
+                        : <h3>No courses yet</h3>
+                    }
                 </div>
-                <div className={styles.buttonContainer}>
-                    <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
+                <div key={"unique_loading"} id={styles.pending}>
+                    {isPending &&
+                        <h2>Loading...</h2>
+                    }
+                </div>
+                <div key={"unique_view_more"} className={styles.buttonContainer}>
+                    {viewMoreAvailable &&
+                        <Link to="" ><button className={styles.manageButton} onClick={() => { handleViewMore() }}>View More</button></Link>
+                    }
                 </div>
             </div>
-
-            <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
-            >
-                <ModalRemoveCourse handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
-            </Modal>
         </>
     );
 }

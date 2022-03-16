@@ -1,40 +1,14 @@
 ﻿namespace SBC.Web
 {
-    using System;
-    using System.Linq;
     using System.Reflection;
-    using System.Text;
 
-    using Azure.Storage.Blobs;
-    using Elasticsearch.Net;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.IdentityModel.Tokens;
-    using Microsoft.OpenApi.Models;
-    using Nest;
-    using SBC.Data;
-    using SBC.Data.Common;
-    using SBC.Data.Common.Repositories;
-    using SBC.Data.Models;
-    using SBC.Data.Repositories;
-    using SBC.Data.Seeding;
-    using SBC.Services.Blob;
-    using SBC.Services.Data.Admin;
-    using SBC.Services.Data.Client;
-    using SBC.Services.Data.Coach;
-    using SBC.Services.Data.Company;
-    using SBC.Services.Data.Course;
-    using SBC.Services.Data.User;
-    using SBC.Services.Identity;
-    using SBC.Services.Identity.Contracts;
     using SBC.Services.Mapping;
+    using SBC.Web.Infrastructures.Extensions;
     using SBC.Services.Messaging;
     using SBC.Services.Search;
     using SBC.Web.ViewModels;
@@ -50,100 +24,51 @@
         }
 
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+            => services
+                .AddDataBase(this.configuration)
+                .AddIdentity()
+                .AddApplicationConfigurations()
+                .AddSwagger()
+                .AddSpaFiles()
+                .AddDatabaseDeveloperPageExceptionFilter()
+                .AddSingleton(this.configuration)
+                .AddDataRepositories()
+                .AddJwtAuthentication(services.GetAppSettings(this.configuration))
+                .AddApplicationServices(this.configuration)
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
-                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.Configure<CookiePolicyOptions>(
-                options =>
-                {
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
-                });
-
-            services.AddControllers();
-
-            // Authorization in Swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc(
-                    "v1",
-                    new OpenApiInfo
-                    {
-                        Title = "SBC API",
-                        Version = "v1",
-                    });
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer",
-                            },
-                        },
-                        Array.Empty<string>()
-                    },
-                });
-
-                c.CustomSchemaIds(cs => string.Join('.', cs.FullName.Split('.').TakeLast(2)));
-            });
-
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
-
-            services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddSingleton(this.configuration);
-
-            // Data repositories
-            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-            services.AddScoped(typeof(Data.Common.Repositories.IRepository<>), typeof(EfRepository<>));
+        // Data repositories
+        services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Jwt
             var appSettingsSectionConfiguration = this.configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSectionConfiguration);
+        services.Configure<AppSettings>(appSettingsSectionConfiguration);
 
             var appSettings = appSettingsSectionConfiguration.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+        var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-            services
-                .AddAuthentication(options =>
+        services
+            .AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(x =>
                 {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                    };
-                });
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+        };
+    });
 
             // Application services
             services.AddTransient<ICompaniesService, CompaniesService>();
@@ -157,8 +82,7 @@
             services.AddTransient<ICoursesService, CoursesService>();
             services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ICoachesService, CoachesService>();
-
-            //var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
+         //var elasticSetting = new ConnectionSettings(new StaticConnectionPool(new Uri[] { new Uri("https://localhost:9200/") }))
             //                        .DisableDirectStreaming()
             //                        .PrettyJson();
             //services.AddSingleton<IElasticClient>(new ElasticClient(elasticSetting));            
@@ -170,77 +94,55 @@
             {
                 var config = sp.GetRequiredService<IConfiguration>();
 
-                var settings = new ConnectionSettings(
-                    config["cloudId"],
-                    new BasicAuthenticationCredentials("elastic", config["password"]));
+    var settings = new ConnectionSettings(
+        config["cloudId"],
+        new BasicAuthenticationCredentials("elastic", config["password"]));
                 //.DefaultIndex("coach")
                 //.DefaultMappingFor<SearchModel>(i => i
                 //.IndexName("coach"));
 
                 return new ElasticClient(settings);
-            });
+});
 
-            services.AddTransient<ISearchService, SearchService>();
+services.AddTransient<ISearchService, SearchService>();
+        
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
+    if (env.IsDevelopment())
+    {
+        app
+            .ApplySwagger()
+            .UseDeveloperExceptionPage()
+            .UseMigrationsEndPoint();
+    }
+    else
+    {
+        // app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
+    }
+
+    app
+        .PrepareDataBase()
+        .UseHttpsRedirection()
+        .UseStaticFiles()
+        .UseCookiePolicy()
+        .UseCors(options => options
+           .AllowAnyOrigin()
+           .AllowAnyHeader()
+           .AllowAnyMethod())
+        .UseRouting()
+        .UseAuthentication()
+        .UseAuthorization()
+        .UseEndpoints(endpoints =>
         {
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
-
-            // Seed data on application startup
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-            }
-
-            if (env.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                    options.RoutePrefix = "docs";
-                });
-                app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
-            }
-            else
-            {
-                // app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-            app.UseCookiePolicy();
-
-            app.UseCors(options => options
-                    .AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod());
-
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(
-                endpoints =>
-                {
-                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                });
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
-        }
+            endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+        })
+        .ApplySpa(env)
+        .UseSpaStaticFiles();
+}
     }
 }

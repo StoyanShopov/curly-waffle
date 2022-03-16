@@ -20,11 +20,17 @@
 .revenueTHeadRow *{
     color: white;
 }
-.tableRevenue th,td{
+.tableRevenue th, .tableRevenue td{
     width: 10%;
     padding-top: 6%;
     padding-bottom: 5%;
     padding-left: 8%;
+}
+.revenueTbody{
+    border-left: 50px outset;
+    border-left-color: transparent;
+    border-right: 50px inset;
+    border-right-color: transparent;
 }
 .revenueTbody tr{
     border-bottom: 1px solid #181616 ;
