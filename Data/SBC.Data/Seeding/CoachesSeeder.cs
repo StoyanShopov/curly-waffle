@@ -17,6 +17,7 @@
             {
                 new Coach
                 {
+                    CompanyId = 1,
                     FirstName = CoachFirstNameIvan,
                     LastName = CoachLastNameIvanov,
                     Description = IvanDescription,
@@ -28,6 +29,7 @@
                 },
                 new Coach
                 {
+                   CompanyId = 2,
                    FirstName = CoachFirstNameMaria,
                    LastName = CoachLastNamePetrova,
                    Description = MariaDescription,
@@ -39,6 +41,8 @@
                 },
                 new Coach
                 {
+
+                   CompanyId = 3,
                    FirstName = CoachFirstNameEmil,
                    LastName = CoachLastNameEmilov,
                    Description = EmilDescription,

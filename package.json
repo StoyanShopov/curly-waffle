@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@microsoft/signalr": "^3.1.15",
     "react-modal": "^3.14.4"
   }
 }

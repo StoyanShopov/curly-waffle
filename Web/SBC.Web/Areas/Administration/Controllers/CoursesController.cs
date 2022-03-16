@@ -14,17 +14,14 @@
     public class CoursesController : AdministrationController
     {
         private readonly ICoursesService courseService;
-        private readonly NotificationHub notificationHubContext;
-        private readonly UserManager<ApplicationUser> userManager;
+       // private readonly NotificationHub notificationHubContext;
 
         public CoursesController(
-            ICoursesService courseService,
-            NotificationHub notificationHubContext,
-            UserManager<ApplicationUser> userManager)
+            ICoursesService courseService)
+           // NotificationHub notificationHubContext)
         {
             this.courseService = courseService;
-            this.notificationHubContext = notificationHubContext;
-            this.userManager = userManager;
+            //this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]
@@ -47,13 +44,6 @@
         public async Task<ActionResult> Post(CreateCourseInputModel courseModel)
         {
             var result = await this.courseService.CreateAsync(courseModel);
-
-            var message = new NotifyMessage
-            {
-                Message = "test",
-            };
-
-            await this.notificationHubContext.SendMessage(message);
 
             return this.GenericResponse(result);
         }

@@ -58,7 +58,7 @@ function App() {
                     <Route path="/coaches" element={<Coaches />}/>
                 </Routes>
 
-                <Notification />
+                {/*<Notification />*/}
 
             </Layout>
         </Provider>

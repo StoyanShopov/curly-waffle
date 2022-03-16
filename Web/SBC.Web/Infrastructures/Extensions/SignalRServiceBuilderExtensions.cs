@@ -4,10 +4,10 @@
 
     public static class SignalRServiceBuilderExtensions
     {
-        public static IServiceCollection AddAzureSignalRCore(this IServiceCollection services)
+        public static IServiceCollection AddAzureSignalR(this IServiceCollection services)
         {
-            // services.AddSignalRCore().AddAzureSignalR("Endpoint=https://devtestdemo.service.signalr.net;AccessKey=blyKS7YA4/RSix0ZBxffvJJR1+zVvEgw2NAEPY9CR+Y=;Version=1.0;");
-            services.AddSignalR();
+            services.AddSignalR().AddAzureSignalR("Endpoint=https://upskills.service.signalr.net;AccessKey=KinRlZlFDxiTRSjAowsvIWHpORS+Qmw/LmvQRnbzQJQ=;Version=1.0;");
+
             return services;
         }
     }

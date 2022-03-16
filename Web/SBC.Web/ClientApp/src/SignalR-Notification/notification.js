@@ -3,14 +3,15 @@ import React, { useState, useEffect } from 'react';
 
 const App = () => {
 
-  const hubConnection = new signalR.HubConnectionBuilder().withUrl("/notification")
-    .build();
+    const hubConnection = new signalR
+        .HubConnectionBuilder()
+        .withUrl("https://localhost:44319/Notification")
+        .build();
 
   hubConnection
     .start()
     .then(() => console.log('Connection started!'))
     .catch(err => console.log('Error while establishing connection :('));
-;
 
   let list = [];
 
@@ -29,7 +30,8 @@ const App = () => {
   }
 
   return (
-    <>
+      <>
+          <h1>TESTTEST </h1>
       <Messages HubConnection={hubConnection}></Messages>
     </>
   )

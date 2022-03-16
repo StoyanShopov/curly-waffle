@@ -26,7 +26,6 @@
                 .AddDataBase(this.configuration)
                 .AddIdentity()
                 .AddApplicationConfigurations()
-                .AddAzureSignalRCore()
                 .AddSwagger()
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
@@ -34,6 +33,7 @@
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
+                .AddAzureSignalR()
                 .AddControllers();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -65,13 +65,12 @@
                 .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
-                //.UseAzureSignalR(builder =>
-                //{
-                //    builder.MapHub<NotificationHub>("/notification");
-                //})
+                .UseAzureSignalR(builder =>
+                {
+                    builder.MapHub<NotificationHub>("/Notification");
+                })
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapHub<NotificationHub>("/notification");
                     endpoints.MapControllers();
                 })
                 .ApplySpa(env)
