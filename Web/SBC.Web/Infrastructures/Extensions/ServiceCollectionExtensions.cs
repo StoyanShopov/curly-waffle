@@ -20,6 +20,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Data.Repositories;
+    using SBC.Data.Seeding.SearchSeeding;
     using SBC.Services.Blob;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.BusinessOwner;
@@ -66,6 +67,7 @@
                 .AddTransient<ILecturesService, LecturesService>()
                 .AddTransient<IResourcesService, ResourcesService>()
                 .AddTransient<ILanguagesService, LanguagesService>()
+                .AddScoped<SearchSeeder>()
                 .AddSingleton<IElasticClient>(new ElasticClient(
 
                    // new ConnectionSettings(

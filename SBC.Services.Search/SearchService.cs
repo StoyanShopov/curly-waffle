@@ -19,9 +19,9 @@
             this.client = elasticClient;
         }
 
-        public async Task<Common.Result> Create(string index, SearchModel value, CancellationToken cancellationToken)
+        public async Task<Common.Result> Create(string index, CourseSearchModel value, CancellationToken cancellationToken)
         {
-            var response = await this.client.IndexAsync<SearchModel>(value, x => x.Index(index), cancellationToken);
+            var response = await this.client.IndexAsync<CourseSearchModel>(value, x => x.Index(index), cancellationToken);
 
             if (response.IsValid)
             {
@@ -30,9 +30,20 @@
             return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
         }
 
+        public async Task<Common.Result> CreateMany(string index, List<CourseSearchModel> values, CancellationToken cancellationToken)
+        {
+            var response = await this.client.IndexManyAsync<CourseSearchModel>(values, index, cancellationToken);
+
+            if (response.IsValid)
+            {
+                return new ResultModel(new { response.ServerError, response.Errors });
+            }
+            return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
+        }
+
         public async Task<Common.Result> Search(string index, string field, string value, int size, string sort, CancellationToken cancellationToken)
         {
-            var request = new SearchRequest<SearchModel>(index)
+            var request = new SearchRequest<CourseSearchModel>(index)
             {
                 From = 0,
                 Size = size,
@@ -60,7 +71,7 @@
                                       }
                 : null
             };
-            var searchResponse = await client.SearchAsync<SearchModel>(request, cancellationToken);
+            var searchResponse = await client.SearchAsync<CourseSearchModel>(request, cancellationToken);
 
             return new ResultModel(searchResponse.Documents);
         }
