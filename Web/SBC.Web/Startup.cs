@@ -32,6 +32,7 @@
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
+                .AddAppInsightsTelemetry()
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
