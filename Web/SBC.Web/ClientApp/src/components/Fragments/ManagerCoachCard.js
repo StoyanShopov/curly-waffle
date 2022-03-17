@@ -10,7 +10,7 @@ import styles from './ManagerCoachCard.module.css';
 export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
 
-    const coachId = props.coach.id;  
+    const coachId = props.coach.id;
     let navigate = useNavigate();
 
     Modal.setAppElement('body');
@@ -18,7 +18,7 @@ export default function ManagerCoachCard(props) {
     const onDelete = () => {
         OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
             .then(res => {
-                console.log('Successful delete');//    
+                console.log('Successful delete');//
                 setShowModal(false);
             })
             .finally(() => {
@@ -30,7 +30,7 @@ export default function ManagerCoachCard(props) {
                 }
                 else {
                     navigate('/profile/coaches');
-                }               
+                }
             });
     }
 

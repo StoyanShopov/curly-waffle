@@ -55,9 +55,9 @@ export default function AdminProfile(props) {
       <SideBar showModal={openModal} userData={userData} userRole={userRole} />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="clients" element={<Clients />} />
-        <Route path="revenue" element={<Revenue />} />
+        <Route path="admin/dashboard" element={<Dashboard />} />
+        <Route path="admin/clients" element={<Clients />} />
+        <Route path="admin/revenue" element={<Revenue />} />
       </Routes>
 
       <Modal

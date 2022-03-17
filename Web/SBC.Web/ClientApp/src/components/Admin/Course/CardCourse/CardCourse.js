@@ -21,7 +21,7 @@ const CardCourse = (props) => {
                         courseId={course.id}
                         setCourse={setCourse} />)
                 }}>
-                    <img src="./Group 81.svg" alt="" />
+                    <img src="/Group 81.svg" alt="" />
                 </button>
             </div>
             <div className={style.infoCourse}>

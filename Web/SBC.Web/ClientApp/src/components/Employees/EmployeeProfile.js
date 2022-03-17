@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import EmployeeDashboard from './Dashboard/Dashboard';
+import EmployeeDashboard from './Dashboard/EmployeeDashboard';
 import { TokenManagement } from '../../helpers';
 import Sidebar from '../Fragments/Sidebar';
 import { GetUser } from '../../hooks/setUser';
@@ -52,11 +52,10 @@ export default function EmployeeProfile(props) {
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
             <Routes>
                 <Route index element={<Revenue />} />
-                {/* <Route path="employee/dashboard" element={<EmployeeDashboard />} /> */}
-                <Route path="employee/dashboard" element={<Revenue />} />
-                {/* <Route path="employee/courses" element={<EmployeeCourses />} />
+                <Route path="employee/dashboard" element={<EmployeeDashboard />} />
+                <Route path="employee/courses" element={<EmployeeCourses />} />
                 <Route path="employee/coaches" element={<EmployeeCoaches />} />
-                <Route path="employee/achivements" element={<EmpolyeeAchievements />} /> */}
+                <Route path="employee/achivements" element={<EmpolyeeAchievements />} />
             </Routes>
 
             <Modal
