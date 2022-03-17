@@ -35,7 +35,7 @@
 
             foreach (CategoryCoach categoryCoach in categoryCoachList)
             {
-                var dbCoach = await dbContext.LanguageCoaches.FirstOrDefaultAsync(x => x.CoachId == categoryCoach.CoachId);
+                var dbCoach = await dbContext.CategoryCoaches.FirstOrDefaultAsync(x => x.CoachId == categoryCoach.CoachId && x.CategoryId == categoryCoach.CategoryId);
 
                 if (dbCoach == null)
                 {

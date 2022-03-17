@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-modal": "^3.14.4"
+    "react-modal": "^3.14.4",
+    "react-player": "^2.9.0"
   }
 }

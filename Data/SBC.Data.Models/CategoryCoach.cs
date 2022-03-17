@@ -1,6 +1,4 @@
-﻿using SBC.Data.Common.Models;
-
-namespace SBC.Data.Models
+﻿namespace SBC.Data.Models
 {
     public class CategoryCoach
     {

@@ -3,8 +3,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-
-    using SBC.Common;
     using SBC.Services.Data.Categories;
     using SBC.Web.ViewModels.Categories;
 

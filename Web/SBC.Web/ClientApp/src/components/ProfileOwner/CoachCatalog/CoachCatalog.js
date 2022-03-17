@@ -1,19 +1,56 @@
 import axios from 'axios';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
-import styles from "./CoachCatalog.module.css";
-import Modal from 'react-modal';
-import ModalRemoveCourse from "../Modals/ModalRemoveCourse";
+import { OwnerService } from '../../../services';
+import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
+
 import { CategoriesList } from "../CourseCatalog/CategoriesList";
 import { LanguagesList } from "../CourseCatalog/LanguagesList";
 
-export default function CoachCatalog(prop) {
-    const [showModal, setShowModal] = useState(false);
+import styles from "./CoachCatalog.module.css";
 
-    const handleClose = useCallback(() => {
-        setShowModal(false)
-    }, []);
+export default function CoachCatalog() {
+    const [coaches, setCoaches] = useState([]);
+
+    const [isPending, setIsPending] = useState(false);
+    const [skip, setSkip] = useState(0);
+    const [viewMoreAvailable, setViewMoreAvailable] = useState(false);
+
+    const cancelTokenSource = axios.CancelToken.source();
+
+    useEffect(() => {
+        handleViewMore(0);
+        setSkip(0);
+
+        return () => {
+            cancelTokenSource.cancel();
+        }
+    }, [])
+
+    const handleSkip = (skip) => {
+        setSkip(prevSkip => {
+            return prevSkip + skip;
+        });
+    }
+
+    const handleViewMore = async () => {
+        setIsPending(true);
+
+        const json = await OwnerService.GetCoachesCatalog(skip, cancelTokenSource);
+
+        console.log('js', json)//       
+
+        setIsPending(false);
+
+        setCoaches(prevPortions => {
+            return [...prevPortions, ...json.data.portions];
+        });
+
+        handleSkip(3);
+
+        setViewMoreAvailable(json.data.viewMoreAvailable);
+    }
 
     return (
         <>
@@ -62,124 +99,26 @@ export default function CoachCatalog(prop) {
                         </ul>
                     </div>
                     <div className={styles.imageC}>
-                        <img className={styles.megaphone} src="assets/images/Group 49.svg" alt="" />
+                        <img className={styles.megaphone} src="/assets/images/Group 49.svg" alt="" />
                     </div>
                 </div>
                 <div className={styles.cardscontainer}>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 2.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card + ' ' + styles.removeCard}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 3.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="" onClick={() => setShowModal(true)}><button className={styles.removeButton}>Remove</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 10.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 7.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <div className={styles.upper}>
-                            <img className={styles.cardpic} src="assets/images/Mask Group 8.png" alt="" />
-                        </div>
-                        <div className={styles.down}>
-                            <div className={styles.name}>
-                                <span>Management</span>
-                                <span>Timmy Ramsey</span>
-                            </div>
-                            <div className={styles.price}>
-                                <span>80&#8364; per person</span>
-                                <span><img src="assets/images/Image 2.png" /></span>
-                            </div>
-                            <div className={styles.button}>
-                                <Link to="add"><button className={styles.removeButton}>Add</button></Link>
-                            </div>
-                        </div>
-                    </div>
+                    {coaches.length > 0
+                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={false} />)
+                        : <h3>No coaches yet</h3>
+                    }
                 </div>
-                <div className={styles.buttonContainer}>
-                    <Link to="/manage" ><button className={styles.manageButton}>View More</button></Link>
+                <div key={"unique_loading"} id={styles.pending}>
+                    {isPending &&
+                        <h2>Loading...</h2>
+                    }
+                </div>
+                <div key={"unique_view_more"} className={styles.buttonContainer}>
+                    {viewMoreAvailable &&
+                        <Link to="" ><button className={styles.manageButton} onClick={() => { handleViewMore() }}>View More</button></Link>
+                    }
                 </div>
             </div>
-            <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
-            >
-                <ModalRemoveCourse handleClose={handleClose}/>
-            </Modal>
         </>
     );
 }

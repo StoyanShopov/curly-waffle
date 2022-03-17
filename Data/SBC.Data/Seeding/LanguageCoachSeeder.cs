@@ -35,7 +35,7 @@
 
             foreach (LanguageCoach languageCoach in languageCoachList)
             {
-                var dbCoach = await dbContext.LanguageCoaches.FirstOrDefaultAsync(x => x.CoachId == languageCoach.CoachId);
+                var dbCoach = await dbContext.LanguageCoaches.FirstOrDefaultAsync(x => x.CoachId == languageCoach.CoachId && x.LanguageId == languageCoach.LanguageId);
 
                 if (dbCoach == null)
                 {
