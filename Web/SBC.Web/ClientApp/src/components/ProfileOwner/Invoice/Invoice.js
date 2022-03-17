@@ -3,7 +3,7 @@ import css from "./Invoice.module.css";
 
 export default function Invoice() {
     return (
-        <>
+        <div>
             <div className={css.containerH}>
                 <div className={css.dashboard}>
                     <section className={css.dashboardHeader} >
@@ -70,6 +70,6 @@ export default function Invoice() {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 }

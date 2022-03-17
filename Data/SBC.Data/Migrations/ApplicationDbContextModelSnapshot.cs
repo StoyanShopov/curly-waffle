@@ -403,7 +403,7 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int>("CoachId")
@@ -429,7 +429,7 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int>("CourseId")
@@ -892,7 +892,7 @@ namespace SBC.Data.Migrations
                     b.HasOne("SBC.Data.Models.Company", "Company")
                         .WithMany("ActiveCoaches")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Coach");
@@ -905,7 +905,7 @@ namespace SBC.Data.Migrations
                     b.HasOne("SBC.Data.Models.Company", "Company")
                         .WithMany("ActiveCourses")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SBC.Data.Models.Course", "Course")
@@ -1036,8 +1036,6 @@ namespace SBC.Data.Migrations
                     b.Navigation("Claims");
 
                     b.Navigation("Courses");
-
-                    b.Navigation("Employees");
 
                     b.Navigation("Logins");
 

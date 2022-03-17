@@ -31,7 +31,7 @@ export default function EditProfile(props) {
             .then((_data) => {
                 if (_data['status']) {
                     props.closeModal();
-                    TokenManagement.setUserData(JSON.stringify(data));
+                    TokenManagement.setUserData(JSON.stringify(_data['data']));
                     props.getUserData();
                     props.editUser();
                 }

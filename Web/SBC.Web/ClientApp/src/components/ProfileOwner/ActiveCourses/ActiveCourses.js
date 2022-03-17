@@ -18,7 +18,7 @@ export default function ActiveCourses() {
     return (
         <div className={styles.container}>
             <div className={styles.buttonContainer}>
-                <Link to="/courseCatalog" ><button className={styles.manageButton}>Manage</button></Link>
+                <Link to="/owner/courses/courseCatalog" ><button className={styles.manageButton}>Manage</button></Link>
             </div>
             <div className={styles.cardscontainer}>
                 {courses.length > 0

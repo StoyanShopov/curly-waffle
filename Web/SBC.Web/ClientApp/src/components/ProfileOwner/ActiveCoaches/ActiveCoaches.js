@@ -18,7 +18,7 @@ export default function ActiveCoaches() {
     return (
         <div className={styles.container}>
             <div className={styles.buttonContainer}>
-                <Link to="/coachCatalog" ><button className={styles.manageButton}>Manage</button></Link>
+                <Link to="/owner/coaches/coachCatalog" ><button className={styles.manageButton}>Manage</button></Link>
             </div>
             <div className={styles.cardscontainer}>
                 {coaches.length > 0

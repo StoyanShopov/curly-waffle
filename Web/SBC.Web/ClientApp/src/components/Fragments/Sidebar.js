@@ -45,8 +45,8 @@ const _ownerUrls = (
         <li><NavLink to="owner/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
         <li><NavLink to="owner/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
         <li><NavLink to="owner/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
-        <li><NavLink to='owner/Employees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
-        <li><NavLink to="onwer/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
+        <li><NavLink to='owner/employees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+        <li><NavLink to="owner/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );

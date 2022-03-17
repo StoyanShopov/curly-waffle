@@ -53,7 +53,7 @@ export default function ManagerProfile(props) {
                 <Route path="owner/dashboard" element={<OwnerDashboard />} />
                 <Route path="owner/coaches" element={<ActiveCoaches />} />
                 <Route path="owner/courses" element={<ActiveCourses />} />
-                <Route path="owner/Employees" element={<OwnerEmployees />} />
+                <Route path="owner/employees" element={<OwnerEmployees />} />
                 <Route path="owner/invoice" element={<Invoice />} />
             </Routes>
 
