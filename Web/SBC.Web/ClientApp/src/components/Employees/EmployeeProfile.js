@@ -1,13 +1,21 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import EmployeeDashboard from './Dashboard/Dashboard';
 import { TokenManagement } from '../../helpers';
-import Sidebar from '../Fragments/Sidebar';
 import { GetUser } from '../../hooks/setUser';
+
+import Sidebar from '../Fragments/Sidebar';
 import EditProfile from '../Fragments/EditProfile';
-import css from './EmployeeProfile.module.css'
+
+import EmployeeDashboard from './Dashboard/EmployeeDashboard';
+import EmployeeCourses from './Courses/EmployeeCourses';
+import EmployeeCoaches from './Coaches/EmployeeCoaches';
+import Achievement from './Achievements/Achiviements';
+
 import Revenue from '../super-admin/Revenue';
+
+import css from './EmployeeProfile.module.css'
+
 export default function EmployeeProfile(props) {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,15 +58,15 @@ export default function EmployeeProfile(props) {
     return (
         <div className={css.mainContent}>
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
-            <Routes>
-                <Route index element={<Revenue />} />
-                {/* <Route path="employee/dashboard" element={<EmployeeDashboard />} /> */}
-                <Route path="employee/dashboard" element={<Revenue />} />
-                {/* <Route path="employee/courses" element={<EmployeeCourses />} />
-                <Route path="employee/coaches" element={<EmployeeCoaches />} />
-                <Route path="employee/achivements" element={<EmpolyeeAchievements />} /> */}
-            </Routes>
-
+            <div style={{ left: '24%', width: "65%", position: "relative" }}>
+                <Routes>
+                    <Route index element={<Revenue />} />
+                    <Route path="employee/dashboard" element={<EmployeeDashboard />} />
+                    <Route path="employee/courses" element={<EmployeeCourses />} />
+                    <Route path="employee/coaches" element={<EmployeeCoaches />} />
+                    <Route path="employee/achievement" element={<Achievement />} />
+                </Routes>
+            </div>
             <Modal
                 style={subtitle}
                 isOpen={modalIsOpen}

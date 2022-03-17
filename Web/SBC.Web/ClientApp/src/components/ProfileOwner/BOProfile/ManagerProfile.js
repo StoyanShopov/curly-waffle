@@ -50,11 +50,11 @@ export default function ManagerProfile(props) {
             <SideBar showModal={openModal} userData={userData} userRole={userRole} />
             <Routes>
                 <Route index element={<OwnerDashboard />} />
-                <Route path="dashboard" element={<OwnerDashboard />} />
-                <Route path="coaches" element={<ActiveCoaches />} />
-                <Route path="courses" element={<ActiveCourses />} />
-                <Route path="OwnerEmployees" element={<OwnerEmployees />} />
-                <Route path="invoice" element={<Invoice />} />
+                <Route path="owner/dashboard" element={<OwnerDashboard />} />
+                <Route path="owner/coaches" element={<ActiveCoaches />} />
+                <Route path="owner/courses" element={<ActiveCourses />} />
+                <Route path="owner/employees" element={<OwnerEmployees />} />
+                <Route path="owner/invoice" element={<Invoice />} />
             </Routes>
 
             <Modal

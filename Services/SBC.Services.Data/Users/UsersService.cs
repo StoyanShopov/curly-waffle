@@ -123,8 +123,12 @@
             }
 
             // TODO: user.Email = mapModel.Email;
-            user.FirstName = inputModelUser.Fullname.Split(" ")[0];
-            user.LastName = inputModelUser.Fullname.Split(" ")[1];
+            string[] names = inputModelUser.Fullname
+                .Trim()
+                .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);
+
+            user.FirstName = names[0];
+            user.LastName = names[1];
             user.ProfileSummary = inputModelUser.ProfileSummary;
             user.PhotoUrl = inputModelUser.PhotoUrl;
 
@@ -132,7 +136,7 @@
 
             if (result.Succeeded)
             {
-                return result.Succeeded;
+                return new ResultModel(AutoMapperConfig.MapperInstance.Map<ProfileViewModel>(user));
             }
 
             return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);

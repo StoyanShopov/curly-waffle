@@ -21,7 +21,7 @@ function Signup() {
                         <li className={css.have}>
                             Already have an account?
                         </li>
-                        <Link to="/loginAsEmployee" className={css.login}>
+                        <Link to="/login" className={css.login}>
                             LogIn here.
                         </Link>
                     </ul>
