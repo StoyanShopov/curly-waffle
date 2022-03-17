@@ -27,6 +27,7 @@ import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
+import EmployeeProfile from './components/Employees/EmployeeProfile';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
                     {hasRole(_role, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}
+                    {hasRole(_role, ['Employee']) && <Route path='/profile/*' element={<EmployeeProfile editUser={() => setUser()} />} />}
                     <Route path="/" element={<Homepage />} />
                     <Route path="/profileOwner" element={<OwnerDashboard />} />
                     <Route path="/courses" element={<AllCourses />} />
@@ -57,10 +59,10 @@ function App() {
                     <Route path="/courses" element={<AllCourses />} />
                     <Route path="/details/:id" element={<CourseDetails />} />
                     <Route path="/coachCatalog" element={<CoachCatalog />} />
-                    <Route path="/coaches/create" element={<CreateCoach />}/>
-                    <Route path="/coaches/edit" element={<EditCoach />}/>
-                    <Route path="/coaches/delete" element={<DeleteCoach />}/>
-                    <Route path="/coaches" element={<Coaches />}/>
+                    <Route path="/coaches/create" element={<CreateCoach />} />
+                    <Route path="/coaches/edit" element={<EditCoach />} />
+                    <Route path="/coaches/delete" element={<DeleteCoach />} />
+                    <Route path="/coaches" element={<Coaches />} />
                 </Routes>
             </Layout>
         </Provider>
