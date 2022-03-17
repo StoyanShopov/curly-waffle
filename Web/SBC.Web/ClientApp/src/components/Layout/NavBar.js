@@ -1,4 +1,9 @@
 import React, { useEffect } from 'react';
+import Modal from 'react-modal';
+import NotificationModal from './NotificationModal';
+
+import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
@@ -6,12 +11,45 @@ import { TokenManagement } from '../../helpers';
 import { Links } from './Links';
 
 const NavBar = () => {
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
     let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
     let status = TokenManagement.getUser() ;
     useEffect(() => {
         user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
         status = TokenManagement.getUser();
     }, [])
+    
+    var message = true;
+    
+    function openModal() {
+        setModalIsOpen(true);
+      }
+    
+      function afterOpenModal() {
+        subtitle.color = '#000';
+      }
+    
+      function closeModal() {
+        setModalIsOpen(false);
+      }
+
+    let subtitle = {
+        content: {
+          top: '55%',
+          left: '50%',
+          right: 'auto',
+          width: '30%',
+          height: '300px',
+          bottom: 'auto',
+          marginTop: '-5%',
+          marginRight: '-50%',
+          transform: 'translate(+65%, -70%)',
+          padding: '0px',
+        },
+        color: '#000'
+      };
 
 
     return (
@@ -92,13 +130,37 @@ const NavBar = () => {
                                 Coaches
                             </NavLink>
                         </li>
+                        <li>
+                            {message ? 
+                            <a c
+                                to="/" onClick={() => openModal()}>
+                        <i className="fa fa-bell fa-shake fa-lg fa-spin"></i>
+                            </a>
+                            :
+                            <div>
+                                <a
+                                     onClick={() => openModal()}>
+                                    <i className="fa fa-bell fa-lg rotate"></i>
+                                </a>
+                            </div>
+                            }
+                        </li>
                     </ul>
                 </div>
-                {/* }*/}
                 <div className={styles.greenCircle}>
                     A
                 </div>
             </div>
+
+            <Modal
+                style={subtitle}
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                ariaHideApp={false}
+            >
+            <NotificationModal closeModal={closeModal}/>
+            </Modal>
         </header>
     )
 }

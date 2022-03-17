@@ -19,9 +19,11 @@ export  async function GetAdmin(_setAdminData,_setIcon) {
 }
 
 export default function AdminProfile() {
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [adminData, setAdminData] = useState({ fullName: '',email:'', company: ''});
   const [icon, setIcon] = useState();
+  
   let userData= TokenManagement.getUserData();
 useEffect(() => {
   userData= TokenManagement.getUserData();

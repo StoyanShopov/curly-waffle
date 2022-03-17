@@ -200,3 +200,31 @@
     flex-shrink: 1;
     flex-basis: 0;
 }
+
+.circle {
+    background: red;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    margin-left: 30px;
+    position:absolute;
+    cursor: pointer;
+}
+
+.ringbell{
+    color: red;
+}
+
+
+.rotate {
+    animation: rotation 2s infinite linear;
+  }
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }

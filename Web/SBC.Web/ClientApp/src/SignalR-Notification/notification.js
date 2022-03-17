@@ -31,7 +31,7 @@ const App = () => {
 
   return (
       <>
-          <h1>TESTTEST </h1>
+          <h1>TEST TEST </h1>
       <Messages HubConnection={hubConnection}></Messages>
     </>
   )
