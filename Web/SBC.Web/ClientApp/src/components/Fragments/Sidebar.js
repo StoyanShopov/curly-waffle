@@ -31,7 +31,7 @@ export default function Sidebar(props) {
                     ? _adminUrl
                     : props.userRole == "Owner"
                         ? _ownerUrls
-                        : null}
+                        : props.userRole == "Employee" ? _employeeUrl : null}
 
             </div>
         </div>
@@ -57,6 +57,16 @@ const _adminUrl = (
         <li> <NavLink to="dashboard">Dashboard</NavLink></li>
         <li> <NavLink to="clients">Clients</NavLink></li>
         <li> <NavLink to="revenue">Revenue</NavLink></li>
+        <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
+    </ul>
+);
+
+const _employeeUrl = (
+    <ul>
+        <li> <NavLink to="employee/dashboard">Dashboard</NavLink></li>
+        <li> <NavLink to="employee/clients">Courses</NavLink></li>
+        <li> <NavLink to="employee/courses">Coaches</NavLink></li>
+        <li> <NavLink to="employee/achievement">Achievement</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
