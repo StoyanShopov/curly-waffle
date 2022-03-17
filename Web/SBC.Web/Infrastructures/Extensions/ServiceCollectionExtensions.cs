@@ -5,6 +5,7 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
+    using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -129,7 +130,7 @@
         {
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/build";
             });
 
             return services;
