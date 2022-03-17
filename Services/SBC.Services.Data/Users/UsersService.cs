@@ -123,8 +123,10 @@
             }
 
             // TODO: user.Email = mapModel.Email;
-            string[] names = inputModelUser.Fullname.Trim()
+            string[] names = inputModelUser.Fullname
+                .Trim()
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);
+
             user.FirstName = names[0];
             user.LastName = names[1];
             user.ProfileSummary = inputModelUser.ProfileSummary;
