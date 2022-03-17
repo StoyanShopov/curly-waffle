@@ -5,6 +5,7 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
+    using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -129,7 +130,7 @@
         {
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/build";
             });
 
             return services;
@@ -172,5 +173,10 @@
 
                     configure.CustomSchemaIds(cs => string.Join('.', cs.FullName.Split('.').TakeLast(2)));
                 });
+
+        public static IServiceCollection AddAppInsightsTelemetry(this IServiceCollection services)
+            => services
+                    .AddApplicationInsightsTelemetry()
+                    .ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "3i88wnuz72ea5h8w42b7mcffzvhp170pncxvlnuw");
     }
 }
