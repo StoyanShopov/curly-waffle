@@ -10,8 +10,8 @@ using SBC.Data;
 namespace SBC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220317121217_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220317151235_InititalCreate")]
+    partial class InititalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

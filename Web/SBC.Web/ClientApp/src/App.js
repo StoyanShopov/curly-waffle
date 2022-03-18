@@ -56,7 +56,7 @@ function App() {
 
                     {/* <Route path="/profileOwner" element={<OwnerDashboard />} /> */}
                     <Route path="/admin/courses" element={<AllCourses />} />
-                    <Route path="/admin/details/:id" element={<CourseDetails />} />
+                    <Route path="/admin/courses/details/:id" element={<CourseDetails />} />
 
                     <Route path="/admin/coaches" element={<Coaches />} />
                     <Route path="/admin/coaches/create" element={<CreateCoach />} />
