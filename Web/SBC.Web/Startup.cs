@@ -21,22 +21,21 @@
         }
 
         public void ConfigureServices(IServiceCollection services)
-        {
-            services
-               .AddDataBase(this.configuration)
-               .AddIdentity()
-               .AddApplicationConfigurations()
-               .AddSwagger()
-               .AddSpaFiles()
-               .AddDatabaseDeveloperPageExceptionFilter()
-               .AddSingleton(this.configuration)
-               .AddDataRepositories()
-               .AddJwtAuthentication(services.GetAppSettings(this.configuration))
-               .AddApplicationServices(this.configuration)
-               .AddControllers()
-               .AddNewtonsoftJson(options =>
-                   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-        }
+            => services
+                .AddDataBase(this.configuration)
+                .AddIdentity()
+                .AddApplicationConfigurations()
+                .AddSwagger()
+                .AddSpaFiles()
+                .AddDatabaseDeveloperPageExceptionFilter()
+                .AddSingleton(this.configuration)
+                .AddDataRepositories()
+                .AddJwtAuthentication(services.GetAppSettings(this.configuration))
+                .AddApplicationServices(this.configuration)
+                .AddAppInsightsTelemetry()
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -71,8 +70,9 @@
                 {
                     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 })
-                .ApplySpa(env)
                 .UseSpaStaticFiles();
+
+            app.ApplySpa(env);
         }
     }
 }
