@@ -44,6 +44,7 @@
 		<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.113" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.6" />
+		<PackageReference Include="NEST" Version="7.17.0" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.312" PrivateAssets="all">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
@@ -56,6 +57,7 @@
 		<ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
 		<ProjectReference Include="..\..\Data\SBC.Data.Models\SBC.Data.Models.csproj" />
 		<ProjectReference Include="..\..\Data\SBC.Data\SBC.Data.csproj" />
+		<ProjectReference Include="..\..\SBC.Services.Search\SBC.Services.Search.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Data\SBC.Services.Data.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
 		<ProjectReference Include="..\..\Services\SBC.Services.Messaging\SBC.Services.Messaging.csproj" />

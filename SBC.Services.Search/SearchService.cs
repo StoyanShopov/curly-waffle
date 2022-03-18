@@ -1,0 +1,66 @@
+﻿namespace SBC.Services.Search
+{
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using Nest;
+    using SBC.Common;
+    using SBC.Web.ViewModels.Search;
+
+    public class SearchService : ISearchService
+    {
+        private readonly IElasticClient client;
+
+        public SearchService(IElasticClient elasticClient)
+        {
+            this.client = elasticClient;
+        }
+
+        public async Task<Common.Result> Create(string index, CourseSearchModel value, CancellationToken cancellationToken)
+        {
+            var response = await this.client.IndexAsync<CourseSearchModel>(value, x => x.Index(index), cancellationToken);
+
+            if (response.IsValid)
+            {
+                return new ResultModel(new { response.Id, response.Index });
+            }
+            return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
+        }
+
+        public async Task<Common.Result> CreateMany(string index, List<CourseSearchModel> values, CancellationToken cancellationToken)
+        {
+            var response = await this.client.IndexManyAsync<CourseSearchModel>(values, index, cancellationToken);
+
+            if (response.IsValid)
+            {
+                return new ResultModel(new { response.ServerError, response.Errors });
+            }
+            return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
+        }
+
+        public async Task<Common.Result> Search(string index, string field, string value, int size, string sort, CancellationToken cancellationToken)
+        {
+            var request = new SearchRequest<CourseSearchModel>(index)
+            {
+                From = 0,
+                Size = size,
+
+                Query = new MatchQuery() { Field = field, Query = value },
+
+                Sort = sort != null
+                ? new List<ISort> { new FieldSort
+                                            {
+                                                Field = field,
+                                                Order = sort.Equals("desc") ?SortOrder.Descending: SortOrder.Ascending
+                                            },
+                                      }
+                : null
+            };
+            var searchResponse = await client.SearchAsync<CourseSearchModel>(request, cancellationToken);
+
+            return new ResultModel(searchResponse.Documents);
+        }
+    }
+}
