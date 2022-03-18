@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SBC.Services.Search
+﻿namespace SBC.Services.Search
 {
+    using System.Threading.Tasks;
+
     public interface ISearchSeedersService
     {
         Task SeedCoursesAsync();

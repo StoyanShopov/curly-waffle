@@ -1,14 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace SBC.Services.Search
+﻿namespace SBC.Services.Search
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class SearchHostedService : BackgroundService
     {
         protected IServiceProvider _serviceProvider;

@@ -1,17 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SBC.Data.Common.Repositories;
-using SBC.Data.Models;
-using SBC.Services.Mapping;
-using SBC.Web.ViewModels.Search;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace SBC.Services.Search
+﻿namespace SBC.Services.Search
 {
+    using Microsoft.EntityFrameworkCore;
+    using SBC.Data.Common.Repositories;
+    using SBC.Data.Models;
+    using SBC.Web.ViewModels.Search;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class SearchSeedersService : ISearchSeedersService
     {
 
