@@ -25,7 +25,7 @@
                                                             new Setting(),
                                                         }.AsQueryable());
 
-            // var service = new SettingsService(repository.Object);
+          // var service = new SettingsService(repository.Object);
             // Assert.Equal(3, service.GetCountAsync());
             repository.Verify(x => x.All(), Times.Once);
         }

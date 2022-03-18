@@ -32,6 +32,7 @@
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
+                .AddAppInsightsTelemetry()
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -49,7 +50,7 @@
             }
             else
             {
-             // app.UseExceptionHandler("/Home/Error");
+                // app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -69,8 +70,9 @@
                 {
                     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 })
-                .ApplySpa(env)
                 .UseSpaStaticFiles();
+
+            app.ApplySpa(env);
         }
     }
 }

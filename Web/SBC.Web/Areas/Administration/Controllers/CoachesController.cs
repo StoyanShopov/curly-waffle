@@ -24,7 +24,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllCoachesAsync()
+        public async Task<ActionResult> GetAllAsync()
         {
             var result = await this.coachesService.GetAllAsync<CoachDetailsViewModel>();
             return this.GenericResponse(result);

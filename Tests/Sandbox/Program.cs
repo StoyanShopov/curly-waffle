@@ -24,7 +24,7 @@
         public static int Main(string[] args)
         {
             Console.WriteLine($"{typeof(Program).Namespace} ({string.Join(" ", args)}) starts working...");
-            var serviceCollection = new ServiceCollection();
+            var serviceCollection = new Microsoft.Extensions.DependencyInjection.ServiceCollection();
             ConfigureServices(serviceCollection);
             IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider(true);
 
