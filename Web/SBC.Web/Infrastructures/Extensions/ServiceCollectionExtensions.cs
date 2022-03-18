@@ -5,6 +5,7 @@
     using System.Text;
 
     using Azure.Storage.Blobs;
+    using Elasticsearch.Net;
     using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
@@ -14,11 +15,13 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Nest;
     using SBC.Data;
     using SBC.Data.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Data.Repositories;
+    using SBC.Data.Seeding.SearchSeeding;
     using SBC.Services.Blob;
     using SBC.Services.Data.Admin;
     using SBC.Services.Data.BusinessOwner;
@@ -34,6 +37,7 @@
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
+    using SBC.Services.Search;
 
     public static class ServiceCollectionExtensions
     {
@@ -63,8 +67,17 @@
                 .AddTransient<IDasboardService, DashboardService>()
                 .AddTransient<ILecturesService, LecturesService>()
                 .AddTransient<IResourcesService, ResourcesService>()
-                .AddTransient<ILanguagesService, LanguagesService>();
+                .AddTransient<ILanguagesService, LanguagesService>()
+                .AddScoped<SearchSeeder>()
+                .AddSingleton<IElasticClient>(new ElasticClient())
+                .AddTransient<ISearchService, SearchService>()
+                .AddTransient<ISearchSeedersService, SearchSeedersService>();
 
+                // To setup ElasticSearch do:
+                // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip
+                // Next Unzip, Start ../bin/elasticsearch.bat
+                // Then uncomment next row
+                // .AddHostedService<SearchHostedService>();
         public static AppSettings GetAppSettings(
             this IServiceCollection services,
             IConfiguration configuration)
@@ -85,7 +98,7 @@
         public static IServiceCollection AddDataRepositories(this IServiceCollection services)
             => services
                 .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
-                .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
+                .AddScoped(typeof(Data.Common.Repositories.IRepository<>), typeof(EfRepository<>))
                 .AddScoped<IDbQueryRunner, DbQueryRunner>();
 
         public static IServiceCollection AddJwtAuthentication(
