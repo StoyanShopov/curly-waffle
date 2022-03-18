@@ -48,16 +48,6 @@
                 From = 0,
                 Size = size,
 
-                //Query = new MatchAllQuery(),
-                //{
-                //    Field = field,
-                //    Query = value,
-                //},
-
-                //Query = String.IsNullOrEmpty(field)
-                //? new MatchQuery() { Field = field, Query = value }
-                //: new MatchAllQuery(),
-
                 Query = new MatchQuery() { Field = field, Query = value },
 
                 Sort = sort != null

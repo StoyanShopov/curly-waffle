@@ -42,6 +42,10 @@
             return this.GenericResponse(result);
         }
 
+        // This endpoint is only for demo
+        // To setup ElasticSearch do:
+        // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip
+        // Next Unzip, Start ../bin/elasticsearch.bat
         [HttpPost("seed")]
         public async Task<IActionResult> Seed()
         {

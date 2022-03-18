@@ -68,16 +68,15 @@
                 .AddTransient<IResourcesService, ResourcesService>()
                 .AddTransient<ILanguagesService, LanguagesService>()
                 .AddScoped<SearchSeeder>()
-                .AddSingleton<IElasticClient>(new ElasticClient(
-
-                   // new ConnectionSettings(
-                   // configuration["ElasticCloud:cloudId"],
-                   // new BasicAuthenticationCredentials(configuration["ElasticCloud:BasicAuthUser"], configuration["ElasticCloud:password"]))
-                   ))
+                .AddSingleton<IElasticClient>(new ElasticClient())
                 .AddTransient<ISearchService, SearchService>()
-                .AddTransient<ISearchSeedersService, SearchSeedersService>()
-                .AddHostedService<SearchHostedService>();
+                .AddTransient<ISearchSeedersService, SearchSeedersService>();
 
+                // To setup ElasticSearch do:
+                // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip
+                // Next Unzip, Start ../bin/elasticsearch.bat
+                // Then uncomment next row
+                // .AddHostedService<SearchHostedService>();
         public static AppSettings GetAppSettings(
             this IServiceCollection services,
             IConfiguration configuration)

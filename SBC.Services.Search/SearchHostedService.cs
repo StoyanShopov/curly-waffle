@@ -12,13 +12,13 @@ namespace SBC.Services.Search
     public class SearchHostedService : BackgroundService
     {
         protected IServiceProvider _serviceProvider;
-        protected ISearchService _searchService;        
+        protected ISearchService _searchService;
 
         public SearchHostedService([NotNull] IServiceProvider serviceProvider,
-            [NotNull] ISearchService searchService)            
+            [NotNull] ISearchService searchService)
         {
             _serviceProvider = serviceProvider;
-            _searchService = searchService;            
+            _searchService = searchService;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -31,8 +31,10 @@ namespace SBC.Services.Search
                     await hostedServiceDbContext.SeedCoursesAsync();
                 }
 
-                await Task.Delay(new TimeSpan(24, 0, 0));
-            }  
+                int hoursDelay = 365 * 24;
+                await Task.Delay(new TimeSpan(hoursDelay, 0, 0));
+            }
+
         }
     }
 }
