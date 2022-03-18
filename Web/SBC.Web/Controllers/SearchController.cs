@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Data.Seeding.SearchSeeding;
     using SBC.Services.Search;
     using SBC.Web.ViewModels.Search;

@@ -74,7 +74,9 @@
                    // configuration["ElasticCloud:cloudId"],
                    // new BasicAuthenticationCredentials(configuration["ElasticCloud:BasicAuthUser"], configuration["ElasticCloud:password"]))
                    ))
-                .AddTransient<ISearchService, SearchService>();
+                .AddTransient<ISearchService, SearchService>()
+                .AddTransient<ISearchSeedersService, SearchSeedersService>()
+                .AddHostedService<SearchHostedService>();
 
         public static AppSettings GetAppSettings(
             this IServiceCollection services,

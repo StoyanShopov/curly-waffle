@@ -14,17 +14,13 @@
 
         public string PictureUrl { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
-        public int LanguageId { get; set; }
+        public int? LanguageId { get; set; }
 
         public string CoachFullName { get; set; }
 
-        public string CompanyLogoUrl { get; set; }
-
         public string CategoryName { get; set; }
-
-        public bool IsActive { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
