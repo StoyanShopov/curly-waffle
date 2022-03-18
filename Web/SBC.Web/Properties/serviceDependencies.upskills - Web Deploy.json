@@ -6,16 +6,16 @@
       "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
       "secretStore": "AzureAppSettings"
     },
-    "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/upskills/databases/SBC.Web_db",
-      "type": "mssql.azure",
-      "connectionId": "DefaultConnection",
-      "secretStore": "AzureAppSettings"
-    },
     "storage1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/upskillstoragetest",
       "type": "storage.azure",
       "connectionId": "AzureBlobStorageConnectionString",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/upskills/databases/SBC.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
       "secretStore": "AzureAppSettings"
     }
   }
