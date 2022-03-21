@@ -23,6 +23,7 @@
                     FileType = FileType.Video,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
                 new Resource
                 {
@@ -32,6 +33,7 @@
                     FileType = FileType.Pdf,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
                 new Resource
                 {
@@ -41,6 +43,7 @@
                     FileType = FileType.Audio,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
             };
 

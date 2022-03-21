@@ -38,6 +38,8 @@
                               new RequestsSeeder(),
                               new CoachCategoriesSeeder(),
                               new LanguageCoachSeeder(),
+                              new CompanyCoachesSeeder(),
+                              new CompanyCoursesSeeder(),
                           };
 
             foreach (var seeder in seeders)
