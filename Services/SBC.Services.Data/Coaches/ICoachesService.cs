@@ -7,6 +7,8 @@
 
     public interface ICoachesService
     {
+        Task<Result> GetAlLOfEmployeeAsync(int userId);
+
         Task<Result> CreateAsync(CreateCoachInputModel coach);
 
         Task<Result> GetAllAsync<TModel>();

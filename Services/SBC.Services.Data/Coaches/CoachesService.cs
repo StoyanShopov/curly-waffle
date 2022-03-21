@@ -42,6 +42,17 @@
             this.companiesRepository = companiesRepository;
         }
 
+        public async Task<Result> GetAlLOfEmployeeAsync(int companyId)
+        {
+            var result = await this.coachesRepository
+                    .AllAsNoTracking()
+                    .Where(e => e.CompanyId == companyId)
+                    .To<CoachCardViewModel>()
+                    .ToListAsync();
+
+            return new ResultModel(result);
+        }
+
         public async Task<Result> CreateAsync(CreateCoachInputModel coach)
         {
             if (this.coachesRepository.AllAsNoTracking().Any(x => x.CalendlyUrl == coach.CalendlyUrl && x.IsDeleted == false))
