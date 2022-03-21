@@ -45,8 +45,7 @@ const Notification = () => {
       await connection.invoke("JoinGroupAsync", email)
         .then(() => console.log("Joined room."))
         .catch(() => console.log("Couldn't join room!"))
-
-      setConnection(connection);
+        setConnection(connection);
     } catch (e) {
       console.log(e);
     }
@@ -73,7 +72,7 @@ const Notification = () => {
       {email &&
         <div>
           <h1>TESTTEST</h1>
-          <Link to="" onClick={() => sendNotification("The Client has joined the Group")}>Send</Link>
+          <button onClick={async () => await sendNotification("The Client has joined the Group")}>Send</button>
           {messages.map((message, index) => (
             <div key={index}>
               <p>{message}</p>
