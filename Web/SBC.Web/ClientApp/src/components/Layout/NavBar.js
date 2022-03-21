@@ -6,8 +6,9 @@ import styles from "./NavBar.module.css";
 const NavBar = (props) => {
 
     useEffect(() => {
-        console.log(props.auth.user)//
+        console.log(props.auth.user)
     })
+
 
     return (
         <header className={styles.headerC}>
@@ -73,34 +74,3 @@ const unLogged = (<ul>
         <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
     </li>
 </ul>);
-
-// const loggedOwner = (
-//     <ul>
-//         <li>
-//             <a href="/docs">Swagger</a>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="profile">Profile</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
-//         </li>
-//         <li>
-//             <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
-//         </li></ul>
-// );
