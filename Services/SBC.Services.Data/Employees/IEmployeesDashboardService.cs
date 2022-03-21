@@ -6,8 +6,6 @@ namespace SBC.Services.Data.Employees
 {
     public interface IEmployeesDashboardService
     {
-        Task<Result> GetUserCoursesAsync(string userId);
-
-        Task<Result> GetUserCoacheSessionsAsync(string userId);
+        Task<Result> GetAsync(string userId);
     }
 }

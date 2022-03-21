@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Employees
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -9,6 +10,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Users;
+    using SBC.Web.ViewModels.Employees;
 
     public class EmployeesDashboardService : IEmployeesDashboardService
     {
@@ -23,9 +25,11 @@
             this.applicationUserRepository = applicationUserRepository;
         }
 
-        public async Task<Result> GetUserCoacheSessionsAsync(string userId)
+        public async Task<Result> GetAsync(string userId)
         {
-            var user = await this.applicationUserRepository.AllAsNoTracking().FirstOrDefaultAsync(x => x.Id == userId);
+            var user = await this.applicationUserRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == userId);
 
             if (user == null)
             {
@@ -38,13 +42,35 @@
                 .Distinct()
                 .ToListAsync();
 
-            return new ResultModel(userCoachesSessions);
+            var userCourses = await this.userCoursesRepository
+                .AllAsNoTracking()
+                .Where(x => x.UserId == userId)
+                .ToListAsync();
+
+            var resultModel = new DashboardViewModel()
+            {
+                UserCoachSessions = userCoachesSessions,
+                UserCourses = userCourses,
+            };
+
+            return new ResultModel(resultModel);
         }
 
         public async Task<Result> GetUserCoursesAsync(string userId)
         {
+            var user = await this.applicationUserRepository.AllAsNoTracking().FirstOrDefaultAsync(x => x.Id == userId);
 
-            return null;
+            if (user == null)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, "User cannot be null");
+            }
+
+            var userCourses = await this.userCoursesRepository
+                .AllAsNoTracking()
+                .Where(x => x.UserId == userId)
+                .ToListAsync();
+
+            return new ResultModel(userCourses);
         }
     }
 }

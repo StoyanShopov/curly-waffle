@@ -16,9 +16,11 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetSessionsAsync()
+        public async Task<ActionResult> GetAsync()
         {
-            var result = await this.employeesDashboardService.GetUserCoacheSessionsAsync(this.User.Id());
+            var userId = this.User.Id();
+
+            var result = await this.employeesDashboardService.GetAsync(userId);
 
             return this.GenericResponse(result);
         }
