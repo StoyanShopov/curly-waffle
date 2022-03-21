@@ -12,15 +12,15 @@ import { GetUser } from '../../hooks/setUser';
 import SideBar from '../Fragments/Sidebar';
 
 export default function AdminProfile(props) {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
+  const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
 
-    let userRole = TokenManagement.getUserRole();
-useEffect(() => {
-        userRole = TokenManagement.getUserRole();
-        GetUser(setUserData);
-}, [])
+  let userRole = TokenManagement.getUserRole();
+  useEffect(() => {
+    userRole = TokenManagement.getUserRole();
+    GetUser(setUserData);
+  }, [])
 
   let subtitle = {
     content: {
@@ -55,9 +55,9 @@ useEffect(() => {
       <SideBar showModal={openModal} userData={userData} userRole={userRole} />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="clients" element={<Clients />} />
-        <Route path="revenue" element={<Revenue />} />
+        <Route path="admin/dashboard" element={<Dashboard />} />
+        <Route path="admin/clients" element={<Clients />} />
+        <Route path="admin/revenue" element={<Revenue />} />
       </Routes>
 
       <Modal
@@ -67,7 +67,7 @@ useEffect(() => {
         onRequestClose={closeModal}
         ariaHideApp={false}
       >
-      <EditProfile closeModal={closeModal} getUserData={() => GetUser(setUserData)} editUser={() => props.editUser()}/>
+        <EditProfile closeModal={closeModal} getUserData={() => GetUser(setUserData)} editUser={() => props.editUser()} />
       </Modal>
     </div>
   )

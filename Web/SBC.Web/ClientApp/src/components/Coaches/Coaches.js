@@ -100,11 +100,11 @@ const Coaches = () => {
                 </div>
                 <div className={styles.imagecontainer}>
                     <img
-                        src="assets/images/Path 3449.svg"
+                        src="/assets/images/Path 3449.svg"
                         alt=""
                         className={styles.background}
                     />
-                    <img src="assets/images/Group 47.svg" alt="" className={styles.guy} />
+                    <img src="/assets/images/Group 47.svg" alt="" className={styles.guy} />
                 </div>
             </div>
             <div className={styles.cardscontainer}>
@@ -121,7 +121,7 @@ const Coaches = () => {
                     categories={categories} />)}
                 <div className={styles.pluscontainer}>
                     <img
-                        src="assets/images/Group 79.svg"
+                        src="/assets/images/Group 79.svg"
                         alt=""
                         className={styles.plus}
                         onClick={() => {

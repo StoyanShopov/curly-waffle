@@ -27,6 +27,7 @@ import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
+import EmployeeProfile from './components/Employees/EmployeeProfile';
 
 
 function App() {
@@ -42,25 +43,25 @@ function App() {
         <Provider store={store}>
             <Layout auth={{ "user": _user, "role": _role }}>
                 <Routes>
-                    <Route path="/loginAsEmployee" element={<LoginAsEmployee />} />
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/login" element={<LoginAsEmployee />} />
                     <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
+                    <Route path="/signUp" element={<Signup />} />
                     {hasRole(_role, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}
-                    <Route path="/" element={<Homepage />} />
-                    <Route path="/profileOwner" element={<OwnerDashboard />} />
-                    <Route path="/courses" element={<AllCourses />} />
-                    <Route path="/details/:id" element={<CourseDetails />} />
-                    <Route path='/super-admin/*' element={<AdminProfile />} />
-                    <Route path="/signUp" element={<Signup />} />
-                    <Route path="/coachCatalog" element={<CoachCatalog />} />
-                    <Route path="/courseCatalog" element={<CourseCatalog />} />
-                    <Route path="/courses" element={<AllCourses />} />
-                    <Route path="/details/:id" element={<CourseDetails />} />
-                    <Route path="/coachCatalog" element={<CoachCatalog />} />
-                    <Route path="/coaches/create" element={<CreateCoach />}/>
-                    <Route path="/coaches/edit" element={<EditCoach />}/>
-                    <Route path="/coaches/delete" element={<DeleteCoach />}/>
-                    <Route path="/coaches" element={<Coaches />}/>
+                    {hasRole(_role, ['Employee']) && <Route path='/profile/*' element={<EmployeeProfile editUser={() => setUser()} />} />}
+
+                    {hasRole(_role, ['Owner']) && <Route path='/owner/coaches/coachCatalog' element={<CoachCatalog />} />}
+                    {hasRole(_role, ['Owner']) && <Route path='/owner/courses/courseCatalog' element={<CourseCatalog />} />}
+
+                    {/* <Route path="/profileOwner" element={<OwnerDashboard />} /> */}
+                    <Route path="/admin/courses" element={<AllCourses />} />
+                    <Route path="/admin/courses/details/:id" element={<CourseDetails />} />
+
+                    <Route path="/admin/coaches" element={<Coaches />} />
+                    <Route path="/admin/coaches/create" element={<CreateCoach />} />
+                    <Route path="/admin/coaches/edit" element={<EditCoach />} />
+                    <Route path="/admin/coaches/delete" element={<DeleteCoach />} />
                 </Routes>
             </Layout>
         </Provider>

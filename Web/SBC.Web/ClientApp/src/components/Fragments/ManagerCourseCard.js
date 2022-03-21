@@ -29,7 +29,7 @@ export default function ManagerCourseCard(props) {
                         });
                 }
                 else {
-                    navigate('/profile/courses');
+                    navigate('/profile/owner/courses');
                 }                          
             });
     }
@@ -39,7 +39,7 @@ export default function ManagerCourseCard(props) {
             .then(res => {
                 if (res.status) {
                     console.log('Successful set', res)//
-                    navigate('/profile/courses');
+                    navigate('/profile/owner/courses');
                 }
                 else {
                     /*console.log(error);//*/

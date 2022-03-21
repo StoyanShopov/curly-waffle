@@ -57,8 +57,8 @@ const AllCourses = () => {
                     <p className={style.textPage}>Upskill’s goal is to inspire you to master your technical and personal skills and give you the opportunity to gain knowledge from top specialists in various fields.</p>
                 </div>
                 <div className={style.rightSide}>
-                    <img src="./Group 23.png" alt="" className={style.book} />
-                    <img src="./Path 3449.png" alt="" className={style.backgroundClr} />
+                    <img src="/Group 23.png" alt="" className={style.book} />
+                    <img src="/Path 3449.png" alt="" className={style.backgroundClr} />
                 </div>
             </section>
             <section className={style.cardsSection}>
@@ -75,7 +75,7 @@ const AllCourses = () => {
                             courses={courses}
                             setCourses={setCourses} />)
                     }}>
-                        <img src="./Group 78.svg" alt="" />
+                        <img src="/Group 78.svg" alt="" />
                     </button>
                     <Modal
                         style={subtitle}

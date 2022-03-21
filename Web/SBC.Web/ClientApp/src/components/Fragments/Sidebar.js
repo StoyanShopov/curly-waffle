@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React from 'react';
 import { NavLink, } from 'react-router-dom';
 
 import { userService } from '../../services';
@@ -31,7 +31,7 @@ export default function Sidebar(props) {
                     ? _adminUrl
                     : props.userRole == "Owner"
                         ? _ownerUrls
-                        : null}
+                        : props.userRole == "Employee" ? _employeeUrl : null}
 
             </div>
         </div>
@@ -42,11 +42,11 @@ const onLogout = () => {
 }
 const _ownerUrls = (
     <ul>
-        <li><NavLink to="dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
-        <li><NavLink to="courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
-        <li><NavLink to="coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
-        <li><NavLink to='ownerEmployees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
-        <li><NavLink to="invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
+        <li><NavLink to="owner/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+        <li><NavLink to="owner/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
+        <li><NavLink to="owner/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
+        <li><NavLink to='owner/employees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+        <li><NavLink to="owner/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
@@ -54,9 +54,19 @@ const _ownerUrls = (
 
 const _adminUrl = (
     <ul>
-        <li> <NavLink to="dashboard">Dashboard</NavLink></li>
-        <li> <NavLink to="clients">Clients</NavLink></li>
-        <li> <NavLink to="revenue">Revenue</NavLink></li>
+        <li> <NavLink to="admin/dashboard">Dashboard</NavLink></li>
+        <li> <NavLink to="admin/clients">Clients</NavLink></li>
+        <li> <NavLink to="admin/revenue">Revenue</NavLink></li>
+        <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
+    </ul>
+);
+
+const _employeeUrl = (
+    <ul>
+        <li> <NavLink to="employee/dashboard">Dashboard</NavLink></li>
+        <li> <NavLink to="employee/courses">Courses</NavLink></li>
+        <li> <NavLink to="employee/coaches">Coaches</NavLink></li>
+        <li> <NavLink to="employee/achievement">Achievement</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );

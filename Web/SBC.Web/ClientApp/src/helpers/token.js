@@ -26,6 +26,7 @@ export const removeUser = () => {
 };
 
 export const setUserData = async (user) => {
+    console.log(user)
     localStorage.setItem("userData", user);
 }
 
