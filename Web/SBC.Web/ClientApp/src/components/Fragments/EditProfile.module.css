@@ -183,9 +183,7 @@
         cursor: pointer;
     }
 
-.editContainer input[type="file"] {
-    position: fixed;
-    right: 100%;
+.editContainer input[type="file"] {   
     bottom: 100%;
 }
 
