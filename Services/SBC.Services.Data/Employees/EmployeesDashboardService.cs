@@ -1,6 +1,5 @@
 ﻿namespace SBC.Services.Data.Employees
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -54,23 +53,6 @@
             };
 
             return new ResultModel(resultModel);
-        }
-
-        public async Task<Result> GetUserCoursesAsync(string userId)
-        {
-            var user = await this.applicationUserRepository.AllAsNoTracking().FirstOrDefaultAsync(x => x.Id == userId);
-
-            if (user == null)
-            {
-                return new ErrorModel(HttpStatusCode.BadRequest, "User cannot be null");
-            }
-
-            var userCourses = await this.userCoursesRepository
-                .AllAsNoTracking()
-                .Where(x => x.UserId == userId)
-                .ToListAsync();
-
-            return new ResultModel(userCourses);
         }
     }
 }

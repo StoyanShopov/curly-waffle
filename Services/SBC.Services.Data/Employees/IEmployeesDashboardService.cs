@@ -1,9 +1,9 @@
-﻿using SBC.Common;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace SBC.Services.Data.Employees
+﻿namespace SBC.Services.Data.Employees
 {
+    using System.Threading.Tasks;
+
+    using SBC.Common;
+
     public interface IEmployeesDashboardService
     {
         Task<Result> GetAsync(string userId);
