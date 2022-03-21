@@ -1,17 +1,56 @@
-﻿import * as signalR from "@microsoft/signalr";
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
-const App = () => {
+import { TokenManagement } from '../helpers';
 
-    const hubConnection = new signalR
-        .HubConnectionBuilder()
+const Notification = () => {
+  const [connection, setConnection] = useState();
+  const [messages, setMessages] = useState([]);
+  const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
+
+  useEffect(() => {
+    const a = async () => {
+      if (email) {
+        await joinRoom(email);
+      }
+    }
+
+    a();
+  }, []);
+
+  const sendNotification = async (message) => {
+    await connection.invoke("SendNotifyMessage", message)
+      .then(console.log(message))
+      .catch(err => console.log(err))
+  }
+
+  const joinRoom = async (email) => {
+    try {
+      const connection = new HubConnectionBuilder()
         .withUrl("https://localhost:44319/Notification")
+        .configureLogging(LogLevel.Information)
+        .withAutomaticReconnect()
         .build();
 
-  hubConnection
-    .start()
-    .then(() => console.log('Connection started!'))
-    .catch(err => console.log('Error while establishing connection :('));
+      connection.on("Notify", message => {
+        setMessages(prevMessages => [...prevMessages, message])
+      })
+
+      await connection
+        .start()
+        .then(() => console.log('Connection started!'))
+        .catch(err => console.log('Error while establishing connection :('));
+
+      await connection.invoke("JoinGroupAsync", email)
+        .then(() => console.log("Joined room."))
+        .catch(() => console.log("Couldn't join room!"))
+
+      setConnection(connection);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   let list = [];
 
@@ -30,11 +69,19 @@ const App = () => {
   }
 
   return (
-      <>
-          <h1>TESTTEST </h1>
-      <Messages HubConnection={hubConnection}></Messages>
+    <>
+      {email &&
+        <div>
+          <h1>TESTTEST</h1>
+          <Link to="" onClick={() => sendNotification("The Client has joined the Group")}>Send</Link>
+          {messages.map((message, index) => (
+            <div key={index}>
+              <p>{message}</p>
+            </div>
+          ))}
+        </div>}
     </>
   )
 }
 
-export default App;
+export default Notification;

@@ -1,42 +1,44 @@
 ﻿namespace SBC.Web.Infrastructures.Hub
 {
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.SignalR;
-    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.User;
+    using SBC.Web.ViewModels.User;
 
     public class NotificationHub : Hub
     {
-        private readonly ICompaniesService companiesService;
+        private readonly IDictionary<string, UserConnection> connections;
+        private readonly IUsersService usersService;
 
-        public NotificationHub(ICompaniesService companiesService)
+        public NotificationHub(
+            IDictionary<string, UserConnection> connections,
+            IUsersService usersService)
         {
-            this.companiesService = companiesService;
+            this.connections = connections;
+            this.usersService = usersService;
         }
 
-        public async Task SendMessage(NotifyMessage message)
+        public async Task JoinGroupAsync([NotNull] string email)
         {
-            await this.Clients.All.SendAsync("ReceiveMessage", message);
+            var userConnection = await this.usersService.GetByEmailAsync<UserConnection>(email);
+
+            await this.Groups.AddToGroupAsync(this.Context.ConnectionId, userConnection.CompanyName);
+
+            this.connections.Add(this.Context.ConnectionId, userConnection);
         }
 
-        public Task JoinGroupAsync(string groupName)
+        public async Task SendNotifyMessage([NotNull] string notifyMessage)
         {
-            return this.Groups.AddToGroupAsync(this.Context.ConnectionId, groupName);
+            if (this.connections
+                .TryGetValue(this.Context.ConnectionId, out UserConnection user))
+            {
+                await this.Clients
+                    .Group(user.CompanyName)
+                    .SendAsync("Notify", notifyMessage);
+            }
         }
-
-        public Task RemoveGroupAsync(string groupName)
-        {
-            return this.Groups.RemoveFromGroupAsync(this.Context.ConnectionId, groupName);
-        }
-
-        public override Task OnConnectedAsync()
-        {
-            string userName = this.Context.User.Identity.Name;
-
-            //TODO: write logic
-
-            return this.OnConnectedAsync();
-        }
-
     }
 }

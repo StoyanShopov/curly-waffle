@@ -27,10 +27,10 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new CompaniesSeeder(),
                               new UsersSeeder(),
                               new CategoriesSeeder(),
                               new LanguagesSeeder(),
-                              new CompaniesSeeder(),
                               new ResourcesSeeder(),
                               new LecturesSeeder(),
                               new CoachesSeeder(),
