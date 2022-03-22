@@ -27,6 +27,17 @@
                 .AddIdentity()
                 .AddApplicationConfigurations()
                 .AddSwagger()
+                .AddCors(options =>
+                {
+                    options.AddDefaultPolicy(
+                        builder =>
+                        {
+                            builder.WithOrigins("http://localhost:3000")
+                                .AllowAnyHeader()
+                                .WithMethods("GET", "POST", "PUT", "DELETE")
+                                .AllowCredentials();
+                        });
+                })
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
                 .AddSingleton(this.configuration)

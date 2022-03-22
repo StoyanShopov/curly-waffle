@@ -25,6 +25,7 @@
             {
                 Email = adminEmail,
                 UserName = adminEmail,
+                CompanyId = 1,
             };
 
             await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);

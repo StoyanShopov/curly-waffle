@@ -21,6 +21,8 @@
         {
             await this.messageHub.Clients.Group(groupName).SendAsync("sendToReact", "The message '" + messagePost.Message + "' has been received");
 
+            
+
             return this.Ok();
         }
     }

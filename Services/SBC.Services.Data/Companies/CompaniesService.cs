@@ -51,7 +51,9 @@
 
         public async Task<Result> GetEmailByIdAsync(int id)
         {
-            var result = await this.companiesRepository.AllAsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+            var result = await this.companiesRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             return new ResultModel(result);
         }
@@ -117,6 +119,15 @@
             => await this.companiesRepository
                 .AllAsNoTracking()
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+
+        //public async Task<int> GetNameByUserEmailAsync(string email)
+        //{
+        //    this.companiesRepository
+        //        .AllAsNoTracking()
+        //        .Include(c => c.Employees)
+        //        .Where(c => c.Employees.Any(e => e.NormalizedEmail == email.ToUpper())
+        //}
+
 
         public async Task<int> GetIdByNameAsync(string name)
             => await this.companiesRepository

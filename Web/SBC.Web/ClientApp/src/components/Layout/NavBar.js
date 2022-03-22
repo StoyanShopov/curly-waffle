@@ -4,15 +4,19 @@ import NotificationModal from './NotificationModal';
 
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
 import { TokenManagement } from '../../helpers';
 import { Links } from './Links';
+import Notification from '../../SignalR-Notification/Notification'
 
 const NavBar = () => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const [isLogin, setIsLogin] = useState(false); // only for test
 
     let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
     let status = TokenManagement.getUser() ;
@@ -94,6 +98,9 @@ const NavBar = () => {
                             <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
                         </li>
                         <li>
+                            <NavLink tag={Link} to="" onClick={() => setIsLogin(!isLogin)}>isLogin</NavLink>
+                        </li>
+                        <li>
                             <a href="/docs">Swagger</a>
                         </li>
                     </ul>
@@ -110,7 +117,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 {/* }*/}
-
+                {isLogin && <Notification />}
                 {/*{location.pathname !== "/" &&*/}
                 <div className={styles.coursesCoaches}>
                     <ul>

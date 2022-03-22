@@ -1,6 +1,7 @@
 ﻿namespace SBC.Web.Infrastructures.Extensions
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -27,11 +28,13 @@
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Notifications;
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
+    using SBC.Web.ViewModels.User;
 
     public static class ServiceCollectionExtensions
     {
@@ -47,20 +50,22 @@
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
-                .AddTransient<IIdentitiesService, IdentitiesService>()
-                .AddTransient<IUsersService, UsersService>()
                 .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
                 .AddSingleton<IBlobService, BlobService>()
+                .AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>())
+                .AddTransient<ICategoriesService, CategoriesService>()
                 .AddTransient<IClientsService, ClientsService>()
-                .AddTransient<IDasboardService, DashboardService>()
-                .AddTransient<ICoursesService, CoursesService>()
-                .AddTransient<ICompaniesService, CompaniesService>()
                 .AddTransient<ICoachesService, CoachesService>()
-                .AddTransient<ILecturesService, LecturesService>()
-                .AddTransient<IResourcesService, ResourcesService>()
+                .AddTransient<ICompaniesService, CompaniesService>()
+                .AddTransient<ICoursesService, CoursesService>()
+                .AddTransient<IDasboardService, DashboardService>()
+                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
+                .AddTransient<IIdentitiesService, IdentitiesService>()
                 .AddTransient<ILanguagesService, LanguagesService>()
-                .AddTransient<ICategoriesService, CategoriesService>();
+                .AddTransient<ILecturesService, LecturesService>()
+                .AddTransient<INotificationsService, NotificationsService>()
+                .AddTransient<IResourcesService, ResourcesService>()
+                .AddTransient<IUsersService, UsersService>();
 
         public static AppSettings GetAppSettings(
             this IServiceCollection services,

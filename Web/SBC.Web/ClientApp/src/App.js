@@ -57,9 +57,6 @@ function App() {
                     <Route path="/coaches/delete" element={<DeleteCoach />}/>
                     <Route path="/coaches" element={<Coaches />}/>
                 </Routes>
-
-                {/*<Notification />*/}
-
             </Layout>
         </Provider>
     );
