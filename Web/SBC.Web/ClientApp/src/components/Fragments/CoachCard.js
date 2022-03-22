@@ -33,7 +33,7 @@ export default function ManagerCoachCard(props) {
                         <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
                     </div>
                     <div className={styles.button}>
-                        {!props.coach.isActive
+                        {props.coach.isActive
                             ? <button className={styles.removeButton} onClick={() => onLeftFeedBack(props.coach.id)}>Feedback</button>
                             : <button className={styles.removeButton} onClick={() => onBook(props.coach.id)}>Book</button>
                         }

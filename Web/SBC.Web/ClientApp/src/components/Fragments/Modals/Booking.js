@@ -7,7 +7,9 @@ export default function Booking(props) {
         EmployeeService.bookCoach(props.coachId)
             .then(res => {
                 console.log(res);//
-                props.handleClose();
+                if (res['status'] == 200) {
+                    props.handleClose();
+                }
             });
     }
 

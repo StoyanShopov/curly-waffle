@@ -1,25 +1,48 @@
+import { useState } from 'react';
 import { EmployeeService } from '../../../services/employee-service';
 
 export default function Feedback(props) {
 
 
-    function onSendFeedback() {
-        console.log(props.coachId)
-        EmployeeService.leftFeedback(props.coachId)
+    function onSendFeedback(e) {
+        e.preventDefault();
+
+        const fd = new FormData(e.target);
+        fd.append("coachId", props.coachId)
+        const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
+
+        console.log(data)
+
+
+        EmployeeService.leftFeedback(data)
             .then(res => {
-                //         if (res.status) {
                 console.log(res);//
-                //             navigate('/profile/owner/coaches');//
-                //         }
-                //         else {
-                //             /*console.log(error)//*/
-                //         }
+                if (res['status'] == 200) {
+                    props.handleClose();
+                }
             });
     }
     return (
         <>
             <h2>Feedaback modal</h2>
-            <button onClick={() => onSendFeedback()}>Left Feedback</button>
+
+            <form onSubmit={onSendFeedback} >
+                <div>
+                    <label htmlFor="Message"></label>
+                    <input
+                        type="text"
+                        name="message"
+                        autoComplete="off"
+
+                        placeholder="Left Feedback*"
+                        required="required"
+                    />
+                </div>
+
+                <div >
+                    <button type="submit">Left Feedback</button>
+                </div>
+            </form>
         </>
     );
 }

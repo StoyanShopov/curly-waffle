@@ -27,8 +27,8 @@
             return this.GenericResponse(result);
         }
 
-        [HttpGet("book-coach/{coachId}")]
-        public async Task<ActionResult> GetAll(string coachId)
+        [HttpPost("book-coach/{coachId}")]
+        public async Task<ActionResult> GetAll(string coachId, object model)
         {
             var result = await this.coachesService.BookCoachAsync(this.User.Id(), coachId);
             return this.GenericResponse(result);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TokenManagement, instance } from '../helpers';
+import { TokenManagement } from '../helpers';
 import { baseUrl } from '../constants';
 
 
@@ -16,8 +16,9 @@ const getAllCoaches = async () => {
 
 const bookCoach = async (coachId) => {
     return await axios({
-        method: "GET",
+        method: "POST",
         url: baseUrl + "api/employees/coaches/book-coach/" + coachId,
+        data: {},
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -27,7 +28,7 @@ const bookCoach = async (coachId) => {
 
 const leftFeedback = async (_data) => {
     return await axios({
-        method: "PUT",
+        method: "POST",
         url: baseUrl + "api/employees/coaches/left-feadback",
         data: _data,
         headers: {
