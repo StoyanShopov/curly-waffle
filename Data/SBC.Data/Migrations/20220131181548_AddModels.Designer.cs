@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SBC.Data;
 
 namespace SBC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220131181548_AddModels")]
+    partial class AddModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,58 +406,6 @@ namespace SBC.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Companies");
-                });
-
-            modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
-                {
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CoachId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("CompanyId", "CoachId");
-
-                    b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("CompanyCoaches");
-                });
-
-            modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
-                {
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("PurchaseDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("CompanyId", "CourseId");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("CompanyCourses");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
@@ -855,7 +805,7 @@ namespace SBC.Data.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.HasOne("SBC.Data.Models.ApplicationUser", "Manager")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("ManagerId");
 
                     b.Navigation("Company");
@@ -889,44 +839,6 @@ namespace SBC.Data.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
-                {
-                    b.HasOne("SBC.Data.Models.Coach", "Coach")
-                        .WithMany("ClientCompanies")
-                        .HasForeignKey("CoachId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SBC.Data.Models.Company", "Company")
-                        .WithMany("ActiveCoaches")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Coach");
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
-                {
-                    b.HasOne("SBC.Data.Models.Company", "Company")
-                        .WithMany("ActiveCourses")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SBC.Data.Models.Course", "Course")
-                        .WithMany("Companies")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
@@ -1052,13 +964,13 @@ namespace SBC.Data.Migrations
                     b.Navigation("Roles");
 
                     b.Navigation("Sessions");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Coach", b =>
                 {
                     b.Navigation("Categories");
-
-                    b.Navigation("ClientCompanies");
 
                     b.Navigation("Courses");
 
@@ -1069,10 +981,6 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.Company", b =>
                 {
-                    b.Navigation("ActiveCoaches");
-
-                    b.Navigation("ActiveCourses");
-
                     b.Navigation("Coaches");
 
                     b.Navigation("Employees");
@@ -1080,8 +988,6 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
                 {
-                    b.Navigation("Companies");
-
                     b.Navigation("Lectures");
 
                     b.Navigation("Users");
