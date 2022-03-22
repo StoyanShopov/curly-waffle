@@ -9,15 +9,19 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Data.Users;
+    using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Employees;
 
     public class EmployeesDashboardService : IEmployeesDashboardService
     {
-        private readonly IDeletableEntityRepository<UserCourse> userCoursesRepository;
         private readonly IDeletableEntityRepository<UserCoachSession> userCoachSessionsRepository;
+        private readonly IDeletableEntityRepository<UserCourse> userCoursesRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> applicationUserRepository;
 
-        public EmployeesDashboardService(IDeletableEntityRepository<UserCoachSession> userCoachSessionsRepository, IDeletableEntityRepository<UserCourse> userCoursesRepository, IUsersService usersService, IDeletableEntityRepository<ApplicationUser> applicationUserRepository)
+        public EmployeesDashboardService(
+            IDeletableEntityRepository<UserCoachSession> userCoachSessionsRepository,
+            IDeletableEntityRepository<UserCourse> userCoursesRepository,
+            IDeletableEntityRepository<ApplicationUser> applicationUserRepository)
         {
             this.userCoachSessionsRepository = userCoachSessionsRepository;
             this.userCoursesRepository = userCoursesRepository;
@@ -37,13 +41,17 @@
 
             var userCoachesSessions = await this.userCoachSessionsRepository
                 .AllAsNoTracking()
+                .Include(c => c.Coach)
                 .Where(uc => uc.UserId == userId)
+                .To<UserCoachSessionViewModel>()
                 .Distinct()
                 .ToListAsync();
 
             var userCourses = await this.userCoursesRepository
                 .AllAsNoTracking()
+                .Include(c => c.Course)
                 .Where(x => x.UserId == userId)
+                .To<UserCourseViewModel>()
                 .ToListAsync();
 
             var resultModel = new DashboardViewModel()
