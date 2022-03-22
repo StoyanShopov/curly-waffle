@@ -2,9 +2,11 @@ import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 
-import { EmployeeService } from '../../services/employee-service';
+
 
 import styles from './ManagerCoachCard.module.css';
+import Booking from './Modals/Booking';
+import Feedback from './Modals/Feedaback';
 
 export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
@@ -17,42 +19,12 @@ export default function ManagerCoachCard(props) {
 
     const onBook = () => {
         console.log("Book");
-        //todo make comp for Modal Book
-        openModal();
-        return;
-        // OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
-        //     .then(res => {
-        //         console.log('Successful delete');//
-        //         setShowModal(false);
-        //     })
-        //     .finally(() => {
-        //         if (props.isProfile) {
-        //             OwnerService.CompanyGetActiveCoaches()
-        //                 .then(res => {
-        //                     props.setCoaches(res.data)
-        //                 });
-        //         }
-        //         else {
-        //             navigate('/profile/owner/coaches');
-        //         }
-        //     });
+        openModal(<Booking handleClose={handleClose} />);
     }
 
     const onLeftFeedBack = () => {
         console.log("Feedback");
-        //todo make comp for Feedback Book
-        openModal();
-        return;
-        // OwnerService.CompanySetCoachToActive(props.coach.id)
-        //     .then(res => {
-        //         if (res.status) {
-        //             console.log('Successful set', res);//
-        //             navigate('/profile/owner/coaches');//
-        //         }
-        //         else {
-        //             /*console.log(error)//*/
-        //         }
-        //     });
+        openModal(<Feedback handleClose={handleClose} />);
     }
 
     const handleClose = useCallback(() => {
@@ -81,8 +53,8 @@ export default function ManagerCoachCard(props) {
                     </div>
                     <div className={styles.button}>
                         {props.coach.isActive
-                            ? <button className={styles.removeButton} onClick={() => onBook()}>Book</button>
-                            : <button className={styles.removeButton} onClick={() => onLeftFeedBack()}>Feedback</button>
+                            ? <button className={styles.removeButton} onClick={() => onLeftFeedBack()}>Feedback</button>
+                            : <button className={styles.removeButton} onClick={() => onBook()}>Book</button>
                         }
                     </div>
                 </div>
@@ -105,7 +77,6 @@ export default function ManagerCoachCard(props) {
                 contentLabel="Example Modal"
             >
                 {child}
-                {/* <ModalRemoveCourse handleClose={handleClose} item="coach" delete={onDelete} /> */}
             </Modal>
         </>
     )
