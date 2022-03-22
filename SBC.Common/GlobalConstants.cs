@@ -58,12 +58,12 @@
         public class ResourcesConstants
         {
             public const string IntroductionVideoResourceName = "Introduction Video Resource";
-            public const string MarketingPDFResourceName = "Marketing PDF Resource";
-            public const string DigitalMarketAudioResourceName = "Digital Market Audio Resource";
+            public const string MarketingVideoResourceName = "Marketing Video Resource";
+            public const string DigitalMarketImageResourceName = "Digital Market Image Resource";
 
-            public const string IntroductionVideoFileUrl = "C:\\SBC\\Project";
-            public const string MarketingPDFFileUrl = "D:\\SBC\\Project";
-            public const string DigitalMarketAudioFileUrl = "F:\\SBC\\Project";
+            public const string IntroductionVideoFileUrl = "https://www.youtube.com/watch?v=uKYXK7K24J0";
+            public const string MarketingVideoFileUrl = "https://www.youtube.com/watch?v=yj2Y5O88lIw";
+            public const string DigitalMarketImageFileUrl = "https://cdn.pixabay.com/photo/2022/02/28/15/28/sea-7039471_960_720.jpg";
         }
 
         public class LecturesConstants

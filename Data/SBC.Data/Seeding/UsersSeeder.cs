@@ -61,6 +61,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -74,6 +75,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -87,6 +89,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -100,6 +103,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -113,6 +117,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -126,6 +131,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                 };
 
