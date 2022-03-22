@@ -7,6 +7,8 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
+    using SBC.Services.Mapping;
+    using SBC.Web.ViewModels.Notification;
 
     public class NotificationsService : INotificationsService
     {
@@ -22,16 +24,17 @@
             var result = await this.notificationRepository
                 .AllAsNoTracking()
                 .Where(n => n.UserEmail.Normalize() == email.Normalize())
+                .To<NotificationDetailsViewModel>()
                 .ToListAsync();
 
             return new ResultModel(result);
         }
 
-        public async Task AddAsync(string email, string message)
+        public async Task AddAsync(string userEmail, string message)
         {
             var notification = new Notification
             {
-                UserEmail = email,
+                UserEmail = userEmail,
                 Message = message,
             };
 
