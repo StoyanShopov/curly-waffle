@@ -18,5 +18,7 @@
         public int LecturesCount { get; set; }
 
         public string CompanyLogoUrl { get; set; }
+
+        public bool IsEnrolled { get; set; }
     }
 }

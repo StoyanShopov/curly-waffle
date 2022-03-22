@@ -208,6 +208,16 @@
                 .Select(x => x.CompanyId)
                 .FirstOrDefault();
 
+            var user = this.usersRepository
+                .AllAsNoTracking()
+                .Include(x => x.Courses)
+                .FirstOrDefault(x => x.Id == employeeId);
+
+            var userCourses = user
+                .Courses
+                .Select(x => x.CourseId)
+                .ToList();
+
             var activeCourses = await this.coursesRepository
                 .AllAsNoTracking()
                 .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
@@ -222,6 +232,7 @@
                     CategoryName = x.Category.Name,
                     CompanyLogoUrl = x.Coach.Company.LogoUrl,
                     LecturesCount = x.Lectures.Count,
+                    IsEnrolled = userCourses.Contains(x.Id),
                 })
                 .ToListAsync();
 

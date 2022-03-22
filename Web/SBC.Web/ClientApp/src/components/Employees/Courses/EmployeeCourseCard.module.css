@@ -1,0 +1,107 @@
+.card {
+    display: inline-block;
+    margin-left: 5%;
+    width: 21rem;
+    height: 21rem;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+.cardpicContainer {
+    position: relative;
+    text-align: center;    
+}
+
+.cardpic {
+    position: relative;
+    width: 100%;
+    height: 11.7rem;
+    bottom: 0;
+    background-size: cover;
+    filter: brightness(70%);
+    object-fit: cover;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: normal normal 800 30px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    text-transform: uppercase;
+}
+
+.name {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 12px;
+}
+
+    .name span:first-child {
+        color: #000000;
+        font-weight: bold;
+    }
+
+.price {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    color: #296CFB;
+}
+
+.imgContainer img {
+    align-self: flex-start;
+    padding-top: 4px;
+    max-width: 93px;
+    max-height: 46px;
+}
+
+.imgContainer {
+    width: 100px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    text-align: center;
+    padding-bottom: 6%;
+}
+
+.removeButton {
+    width: 120px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.practiceButton{
+    width: 120px;
+    height: 40px;
+    background-color: floralwhite;
+    border-color: #296CFB;
+    color: #296CFB;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.removeCard {
+    background-color: #EAF0FF;
+}

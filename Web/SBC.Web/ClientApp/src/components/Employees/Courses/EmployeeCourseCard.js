@@ -1,6 +1,6 @@
 //import styles from './ManagerCourseCard.module.css';
-import styles from '../../Fragments/ManagerCourseCard.module.css';
-
+//import styles from '../../Fragments/ManagerCourseCard.module.css';
+import styles from './EmployeeCourseCard.module.css'
 export default function ManagerCourseCard(props) {
     return (
         <>
@@ -19,7 +19,11 @@ export default function ManagerCourseCard(props) {
                         <span className={styles.imgContainer}><img src={props.course.companyLogoUrl} /></span>
                     </div>
                     <div className={styles.button}>
-                        <button className={styles.removeButton} onClick={() => openModal()}>Enroll</button>
+                        {
+                        props.course.isEnrolled
+                            ?<button className={styles.practiceButton} onClick={() => openModal()}>Practice</button>
+                            :<button className={styles.removeButton} onClick={() => openModal()}>Enroll</button>}
+
                     </div>
                 </div>
             </div>
