@@ -5,6 +5,8 @@
 
     public class UserCoachSessionViewModel : IMapFrom<UserCoachSession>
     {
+        public int CoachId { get; set; }
+
         public string CoachFirstName { get; set; }
 
         public string CoachLastName { get; set; }
