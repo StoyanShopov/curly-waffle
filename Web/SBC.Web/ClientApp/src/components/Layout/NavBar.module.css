@@ -72,7 +72,7 @@
     .testedLinks ul {
         flex-grow: 0.97;
         align-items: center;
-        align-content: space-around;        
+        align-content: space-around;
         flex-basis: 8%;
     }
 
@@ -158,12 +158,12 @@
             margin-left: 5px;
         }
 
-.coursesCoaches a:hover,
-.coursesCoaches a:visited,
-.coursesCoaches a:link,
-.coursesCoaches a:active {
-  text-decoration: none;
-}
+    .coursesCoaches a:hover,
+    .coursesCoaches a:visited,
+    .coursesCoaches a:link,
+    .coursesCoaches a:active {
+        text-decoration: none;
+    }
 
 .coursesActive {
     font: normal normal bold 22px/27px Montserrat;
@@ -201,30 +201,10 @@
     flex-basis: 0;
 }
 
-.circle {
-    background: red;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    margin: 0;
-    margin-left: 30px;
-    position:absolute;
-    cursor: pointer;
-}
-
-.ringbell{
-    color: red;
-}
-
-
-.rotate {
-    animation: rotation 2s infinite linear;
-  }
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
+    .greenCircle a:hover,
+    .greenCircle a:visited,
+    .greenCircle a:link,
+    .greenCircle a:active {
+        text-decoration: none;
+        color: inherit;
     }
-    to {
-      transform: rotate(180deg);
-    }
-  }

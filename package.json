@@ -1,6 +1,7 @@
 {
   "dependencies": {
+    "react-modal": "^3.14.4",
+    "react-player": "^2.9.0"
     "@microsoft/signalr": "^3.1.15",
-    "react-modal": "^3.14.4"
   }
 }

@@ -24,7 +24,7 @@
         public static int Main(string[] args)
         {
             Console.WriteLine($"{typeof(Program).Namespace} ({string.Join(" ", args)}) starts working...");
-            var serviceCollection = new ServiceCollection();
+            var serviceCollection = new Microsoft.Extensions.DependencyInjection.ServiceCollection();
             ConfigureServices(serviceCollection);
             IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider(true);
 
@@ -52,7 +52,6 @@
 
             // var settingsService = serviceProvider.GetService<ISettingsService>();
             // Console.WriteLine($"Count of settings: {settingsService.GetCountAsync()}");
-
             Console.WriteLine(sw.Elapsed);
             return await Task.FromResult(0);
         }
@@ -79,6 +78,8 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+
+            // services.AddTransient<ISettingsService, SettingsService>();
         }
     }
 }

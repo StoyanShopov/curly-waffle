@@ -41,11 +41,14 @@
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
                 .AddSingleton(this.configuration)
+                .AddAzureSignalR()
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
-                .AddAzureSignalR()
-                .AddControllers();
+                .AddAppInsightsTelemetry()
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -60,7 +63,7 @@
             }
             else
             {
-             // app.UseExceptionHandler("/Home/Error");
+                // app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -82,10 +85,11 @@
                 })
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllers();
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 })
-                .ApplySpa(env)
                 .UseSpaStaticFiles();
+
+            app.ApplySpa(env);
         }
     }
 }

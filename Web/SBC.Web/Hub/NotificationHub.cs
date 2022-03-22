@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.SignalR;
-    using SBC.Services.Data.User;
+    using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.User;
 
     public class NotificationHub : Hub

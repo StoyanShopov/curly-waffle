@@ -1,5 +1,6 @@
 .footerContainer {
     padding-top: 10%;
+    z-index: -20;
 }
 
 .trapezoid {

@@ -23,7 +23,6 @@
         [Url]
         public string ImageUrl { get; set; }
 
-        [EmailAddress]
         public string CompanyEmail { get; set; }
 
         [Required]

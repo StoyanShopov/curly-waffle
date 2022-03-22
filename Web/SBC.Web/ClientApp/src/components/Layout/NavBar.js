@@ -1,29 +1,27 @@
-import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import NotificationModal from './NotificationModal';
 
-import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from "./NavBar.module.css";
+
 import { TokenManagement } from '../../helpers';
 import { Links } from './Links';
 import Notification from '../../SignalR-Notification/Notification'
 
-const NavBar = () => {
-
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+const NavBar = (props) => {
+const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const [isLogin, setIsLogin] = useState(false); // only for test
 
-    let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
-    let status = TokenManagement.getUser() ;
-    useEffect(() => {
-        user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
-        status = TokenManagement.getUser();
-    }, [])
+    //let user = TokenManagement.getUserData() == null ? null : TokenManagement.getUserData();
+    //let status = TokenManagement.getUser() ;
+    // useEffect(() => {
+    //     user = TokenManagement.getUser() == null ? null : TokenManagement.getUserData();
+    //     status = TokenManagement.getUser();
+    // }, [])
     
     var message = true;
     
@@ -55,6 +53,9 @@ const NavBar = () => {
         color: '#000'
       };
 
+    useEffect(() => {
+        console.log(props.auth.user)//
+    })
 
     return (
         <header className={styles.headerC}>
@@ -66,55 +67,11 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className={styles.testedLinks}>
-                    <ul>
-                        <li>
-                            <NavLink tag={Link} to="/signUp">SignUp</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/loginasemployee">Login as Employee</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/registerAsOwner">Register</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/profileOwner">Owner</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/ownerEmployees">Owner Employees</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/ownerInvoice">Invoice</NavLink>
-                        </li>                        
-                        <li>
-                            <NavLink tag={Link} to="/activeCourses">Active Courses</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/activeCoaches">Active Coaches</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/courseCatalog">Courses</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="/coachCatalog">Coaches</NavLink>
-                        </li>
-                        <li>
-                            <NavLink tag={Link} to="" onClick={() => setIsLogin(!isLogin)}>isLogin</NavLink>
-                        </li>
-                        <li>
-                            <a href="/docs">Swagger</a>
-                        </li>
-                    </ul>
                 </div>
-                {/* {location.pathname === "/" &&*/}
                 <div className={styles.homePageButtons}>
-                    <ul>
-                        <li>
-                            <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
-                        </li>
-                        <li>
-                            <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-                        </li>
-                    </ul>
+                    {props.auth.user != null
+                        ? null
+                        : unLogged}
                 </div>
                 {/* }*/}
                 {isLogin && <Notification />}
@@ -157,6 +114,12 @@ const NavBar = () => {
                 <div className={styles.greenCircle}>
                     A
                 </div>
+                {props.auth.user != null
+                    ?
+                    <div className={styles.greenCircle}>
+                        <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
+                    </div>
+                    : null}
             </div>
 
             <Modal
@@ -173,3 +136,32 @@ const NavBar = () => {
 }
 
 export default NavBar;
+const courses = (
+    <ul>
+
+        <li>
+            <NavLink
+                to="admin/courses"
+                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+            >
+                Courses
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="admin/coaches"
+                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+            >
+                Coaches
+            </NavLink>
+        </li>
+    </ul>
+);
+const unLogged = (<ul>
+    <li>
+        <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
+    </li>
+    <li>
+        <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
+    </li>
+</ul>);
