@@ -36,7 +36,6 @@
                  .ForMember(c => c.CompanyLogoUrl, cfg => cfg.MapFrom(v => v.Company.Name))
                  .ForMember(c => c.CategoryByDefault, cfg => cfg.MapFrom(v => v.Categories.FirstOrDefault().Category.Name))
                  .ForMember(c => c.IsActive, cfg => cfg.MapFrom(v => v.ClientCompanies.Any(x => x.CompanyId == v.CompanyId)));
-
         }
     }
 }

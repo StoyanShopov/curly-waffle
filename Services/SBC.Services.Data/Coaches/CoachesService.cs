@@ -12,6 +12,7 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Coaches;
     using SBC.Web.ViewModels.Coaches;
+    using SBC.Web.ViewModels.Feedback;
 
     using static SBC.Common.GlobalConstants;
 
@@ -40,6 +41,18 @@
             this.languagesRepository = languagesRepository;
             this.categoriesRepository = categoriesRepository;
             this.companiesRepository = companiesRepository;
+        }
+
+        public async Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback)
+        {
+            // todo implement
+            return true;
+        }
+
+        public async Task<Result> BookCoachAsync(string employeeId, string coachId)
+        {
+            // todo implement
+            return true;
         }
 
         public async Task<Result> GetAlLOfEmployeeAsync(int companyId)

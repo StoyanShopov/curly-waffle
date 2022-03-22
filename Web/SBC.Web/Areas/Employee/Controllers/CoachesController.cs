@@ -6,6 +6,7 @@
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Users;
+    using SBC.Web.ViewModels.Feedback;
 
     public class CoachesController : EmployeesController
     {
@@ -23,6 +24,20 @@
         {
             int companyId = this.usersService.GetCompanyId(this.User.Id());
             var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId);
+            return this.GenericResponse(result);
+        }
+
+        [HttpGet("book-coach/{coachId}")]
+        public async Task<ActionResult> GetAll(string coachId)
+        {
+            var result = await this.coachesService.BookCoachAsync(this.User.Id(), coachId);
+            return this.GenericResponse(result);
+        }
+
+        [HttpPost("left-feadback")]
+        public async Task<ActionResult> LeftFeedback(FeedbackInputModel feedback)
+        {
+            var result = await this.coachesService.LeftFeedback(this.User.Id(), feedback);
             return this.GenericResponse(result);
         }
     }
