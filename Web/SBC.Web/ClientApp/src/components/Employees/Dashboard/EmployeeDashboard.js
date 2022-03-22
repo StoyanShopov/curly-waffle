@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
 import { getDashboard } from "../../../services/employeesService";
-import ManagerCoachCard from "../../Fragments/ManagerCoachCard";
+import DashboardCoachCard from "./DashboardCoachCard.js";
 
+import style from "./EmployeeDashboard.module.css";
 
 export default function EmployeeDashboard(props) {
-    
-    const [dashboard , setDashboard] = useState([]);
+
+    const [dashboard, setDashboard] = useState([]);
     const [userCourses, setUserCourses] = useState([]);
     const [userCoachSessions, setUserCoachSessions] = useState([]);
 
     useEffect(() => {
-        getDashboard().then(res=> {
+        getDashboard().then(res => {
             setDashboard(res)
             setUserCourses(res.userCourses)
             setUserCoachSessions(res.userCoachSessions)
@@ -21,10 +21,12 @@ export default function EmployeeDashboard(props) {
     console.log(userCoachSessions);
 
     return (
-        <div>
-            <div>
+        <div className={style.container}>
+            <div className={style.buttonContainer}>
+            </div>
+            <div className={style.cardscontainer}>
                 {userCoachSessions.length > 0
-                    ? userCoachSessions.map(x => <ManagerCoachCard key={x.coachId} coach={x} />)
+                    ? userCoachSessions.map(x => <DashboardCoachCard key={x.coachId} coach={x} />)
                     : <h3>No coaches yet</h3>}
             </div>
         </div>
