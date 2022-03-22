@@ -16,6 +16,8 @@
 
         public string CoursePictureUrl { get; set; }
 
+        public string CourseVideoUrl { get; set; }
+
         public int LecturesCount { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
