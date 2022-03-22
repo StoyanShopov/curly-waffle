@@ -55,12 +55,21 @@
             return true;
         }
 
-        public async Task<Result> GetAlLOfEmployeeAsync(int companyId)
+        public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId)
         {
             var result = await this.coachesRepository
                     .AllAsNoTracking()
-                    .Where(e => e.CompanyId == companyId)
-                    .To<CoachCardViewModel>()
+                    .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
+                    .Select(coach => new CoachCardViewModel
+                    {
+                        Id = coach.Id,
+                        FullName = $"{coach.FirstName} {coach.LastName}",
+                        CategoryByDefault = coach.Categories.Count == 0 ? "Common" : coach.Categories.FirstOrDefault().Category.Name,
+                        PricePerSession = coach.PricePerSession,
+                        ImageUrl = coach.ImageUrl,
+                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                        IsActive = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId),
+                    })
                     .ToListAsync();
 
             return new ResultModel(result);

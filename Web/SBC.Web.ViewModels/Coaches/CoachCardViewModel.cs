@@ -1,15 +1,13 @@
 ﻿namespace SBC.Web.ViewModels.Coaches
 {
     using System.Collections.Generic;
-    using System.Linq;
 
-    using AutoMapper;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Categories;
     using SBC.Web.ViewModels.Languages;
 
-    public class CoachCardViewModel : IMapFrom<Coach>, IHaveCustomMappings
+    public class CoachCardViewModel : IMapFrom<Coach>
     {
         public int Id { get; set; }
 
@@ -28,14 +26,5 @@
         public ICollection<LanguageViewModel> Languages { get; set; } = new List<LanguageViewModel>();
 
         public bool IsActive { get; set; }
-
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<Coach, CoachCardViewModel>()
-                 .ForMember(c => c.FullName, cfg => cfg.MapFrom(v => v.FirstName + " " + v.LastName))
-                 .ForMember(c => c.CompanyLogoUrl, cfg => cfg.MapFrom(v => v.Company.Name))
-                 .ForMember(c => c.CategoryByDefault, cfg => cfg.MapFrom(v => v.Categories.FirstOrDefault().Category.Name))
-                 .ForMember(c => c.IsActive, cfg => cfg.MapFrom(v => v.ClientCompanies.Any(x => x.CompanyId == v.CompanyId)));
-        }
     }
 }

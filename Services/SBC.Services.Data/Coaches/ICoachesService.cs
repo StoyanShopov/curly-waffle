@@ -12,7 +12,7 @@
 
         Task<Result> BookCoachAsync(string employeeId, string coachId);
 
-        Task<Result> GetAlLOfEmployeeAsync(int userId);
+        Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId);
 
         Task<Result> CreateAsync(CreateCoachInputModel coach);
 

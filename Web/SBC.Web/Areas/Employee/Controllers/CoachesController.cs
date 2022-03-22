@@ -23,12 +23,12 @@
         public async Task<ActionResult> GetAll()
         {
             int companyId = this.usersService.GetCompanyId(this.User.Id());
-            var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId);
+            var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId, this.User.Id());
             return this.GenericResponse(result);
         }
 
         [HttpPost("book-coach/{coachId}")]
-        public async Task<ActionResult> GetAll(string coachId, object model)
+        public async Task<ActionResult> GetAll(string coachId)
         {
             var result = await this.coachesService.BookCoachAsync(this.User.Id(), coachId);
             return this.GenericResponse(result);
