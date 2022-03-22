@@ -10,8 +10,8 @@ using SBC.Data;
 namespace SBC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220131181548_AddModels")]
-    partial class AddModels
+    [Migration("20220307141832_langcoachnotdeletable")]
+    partial class LanguageAndCoachNotDeletable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -305,17 +305,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("CategoryId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CategoryCoaches");
                 });
@@ -344,6 +336,9 @@ namespace SBC.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -523,17 +518,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("LanguageId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("LanguageCoaches");
                 });
@@ -805,7 +792,7 @@ namespace SBC.Data.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.HasOne("SBC.Data.Models.ApplicationUser", "Manager")
-                        .WithMany("Users")
+                        .WithMany("Employees")
                         .HasForeignKey("ManagerId");
 
                     b.Navigation("Company");
@@ -959,13 +946,13 @@ namespace SBC.Data.Migrations
 
                     b.Navigation("Courses");
 
+                   // b.Navigation("Employees");
+
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
 
                     b.Navigation("Sessions");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Coach", b =>
@@ -983,7 +970,7 @@ namespace SBC.Data.Migrations
                 {
                     b.Navigation("Coaches");
 
-                    // b.Navigation("Employees");
+                   // b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>

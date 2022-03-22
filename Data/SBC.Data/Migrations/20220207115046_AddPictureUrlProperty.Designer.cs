@@ -10,8 +10,8 @@ using SBC.Data;
 namespace SBC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220131181548_AddModels")]
-    partial class AddModels
+    [Migration("20220207115046_AddPictureUrlProperty")]
+    partial class AddPictureUrlProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -438,6 +438,9 @@ namespace SBC.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PricePerPerson")
                         .HasColumnType("decimal(18,2)");

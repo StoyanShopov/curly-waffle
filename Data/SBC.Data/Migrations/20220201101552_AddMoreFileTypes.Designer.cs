@@ -983,7 +983,7 @@ namespace SBC.Data.Migrations
                 {
                     b.Navigation("Coaches");
 
-                    b.Navigation("Employees");
+                    // b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
