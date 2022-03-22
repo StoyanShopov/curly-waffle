@@ -28,6 +28,7 @@
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Notifications;
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.User;
     using SBC.Services.Identity;
@@ -62,6 +63,7 @@
                 .AddTransient<IIdentitiesService, IdentitiesService>()
                 .AddTransient<ILanguagesService, LanguagesService>()
                 .AddTransient<ILecturesService, LecturesService>()
+                .AddTransient<INotificationsService, NotificationsService>()
                 .AddTransient<IResourcesService, ResourcesService>()
                 .AddTransient<IUsersService, UsersService>();
 

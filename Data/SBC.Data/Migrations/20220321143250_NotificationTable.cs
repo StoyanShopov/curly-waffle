@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace SBC.Data.Migrations
+﻿namespace SBC.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class NotificationTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
