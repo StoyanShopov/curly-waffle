@@ -23,7 +23,7 @@
         {
             var result = await this.notificationRepository
                 .AllAsNoTracking()
-                .Where(n => n.UserEmail.Normalize() == email.Normalize())
+                .Where(n => n.UserEmail.ToLower() == email.ToLower())
                 .To<NotificationDetailsViewModel>()
                 .ToListAsync();
 
