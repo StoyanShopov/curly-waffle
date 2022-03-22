@@ -1,5 +1,10 @@
 ﻿namespace SBC.Services.Data.Courses
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using SBC.Common;
     using SBC.Data.Common.Repositories;
@@ -8,10 +13,6 @@
     using SBC.Web.ViewModels.Administration.Courses;
     using SBC.Web.ViewModels.Courses;
     using SBC.Web.ViewModels.Employees;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Threading.Tasks;
 
     public class CoursesService : ICoursesService
     {
@@ -215,10 +216,11 @@
                 .Select(x => new CourseEmployeeViewModel
                 {
                     Id = x.Id,
-                    CoachName = x.Coach.FirstName,
+                    CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
                     PictureUrl = x.PictureUrl,
                     Title = x.Title,
-                    CoachCompanyLogoUrl = x.Coach.Company.LogoUrl,
+                    CategoryName = x.Category.Name,
+                    CompanyLogoUrl = x.Coach.Company.LogoUrl,
                     LecturesCount = x.Lectures.Count,
                 })
                 .ToListAsync();
