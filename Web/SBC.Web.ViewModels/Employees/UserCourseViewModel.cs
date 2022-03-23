@@ -6,13 +6,15 @@
 
     public class UserCourseViewModel : IMapFrom<UserCourse>, IHaveCustomMappings
     {
+        public int CourseId { get; set; }
+
         public string CourseTitle { get; set; }
 
         public string CourseCoachFirstName { get; set; }
 
         public string CourseCoachLastName { get; set; }
 
-        public string LogoUrl { get; set; }
+        public string CompanyLogoUrl { get; set; }
 
         public string CoursePictureUrl { get; set; }
 
@@ -22,15 +24,15 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Course, UserCourseViewModel>()
+            configuration.CreateMap<UserCourse, UserCourseViewModel>()
                 .ForMember(
                 c => c.LecturesCount,
-                c => c.MapFrom(c => c.Lectures.Count));
+                c => c.MapFrom(c => c.Course.Lectures.Count));
 
-            configuration.CreateMap<CompanyCoach, UserCourseViewModel>()
+            configuration.CreateMap<UserCourse, UserCourseViewModel>()
                 .ForMember(
-                c => c.LogoUrl,
-                c => c.MapFrom(c => c.Company.LogoUrl));
+                c => c.CompanyLogoUrl,
+                c => c.MapFrom(c => c.Course.Coach.Company.LogoUrl));
         }
     }
 }

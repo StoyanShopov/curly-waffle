@@ -1,7 +1,7 @@
 ﻿namespace SBC.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Lectures;
@@ -17,6 +17,7 @@
         }
 
         [HttpGet]
+        [Authorize(Roles = "Employee")]
         [Route("All/{id}")]
         public async Task<ActionResult> Get(int skip, int id, int take)
         {
