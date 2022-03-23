@@ -26,5 +26,13 @@
 
             return this.GenericResponse(courses);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetAsync(int id)
+        {
+            var course = await this.courseService.GetByIdEmployeeAsync(id);
+
+            return this.GenericResponse(course);
+        }
     }
 }

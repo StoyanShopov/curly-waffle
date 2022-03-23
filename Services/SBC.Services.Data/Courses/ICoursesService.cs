@@ -22,8 +22,9 @@
 
         Task<Result> GetAllByOwnerAsync(string employeeId);
 
-        //Task<Result> GetActiveCoursesAsync<TModel>(int companyId);
-
+        // Task<Result> GetActiveCoursesAsync<TModel>(int companyId);
         Task<int> GetCountAsync();
+
+        Task<Result> GetByIdEmployeeAsync(int id);
     }
 }

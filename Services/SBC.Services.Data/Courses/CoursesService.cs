@@ -262,5 +262,41 @@
 
             return new ResultModel(activeCourses);
         }
+
+        public async Task<Result> GetByIdEmployeeAsync(int id)
+        {
+            var course = await this.coursesRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            var lectures = course
+                .Lectures
+                .Select(x => x.Lecture)
+                .ToList();
+
+            var resourcesDuration = lectures
+                .SelectMany(x => x.Resources
+                .Where(x => ((int)x.FileType) == 1))
+                .Sum(x => x.Size);
+
+            var result = await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .Select(x => new EmployeeCourseDetailsViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    VideoUrl = x.VideoUrl,
+                    VideosDuration = resourcesDuration,
+                    LecturesCount = x.Lectures.Count(),
+                    CompanyLogoUrl = x.Coach.Company.LogoUrl,
+                    CoachName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    CoachPictureUrl = x.Coach.ImageUrl,
+                })
+                .FirstOrDefaultAsync();
+
+            return new ResultModel(result);
+        }
     }
 }
