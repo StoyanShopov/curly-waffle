@@ -25,6 +25,7 @@ import ActiveCourses from "./components/ProfileOwner/ActiveCourses/ActiveCourses
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
+import EmployeeCourseDetails from "./components/Employees/Courses/EmployeeCourseDetails";
 
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
@@ -53,6 +54,8 @@ function App() {
 
                     {hasRole(_role, ['Owner']) && <Route path='/owner/coaches/coachCatalog' element={<CoachCatalog />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/owner/courses/courseCatalog' element={<CourseCatalog />} />}
+
+                    <Route path="/api/EmployeesCourses/details/:id" element={<EmployeeCourseDetails />} />
 
                     {/* <Route path="/profileOwner" element={<OwnerDashboard />} /> */}
                     <Route path="/admin/courses" element={<AllCourses />} />

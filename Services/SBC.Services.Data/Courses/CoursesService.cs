@@ -282,7 +282,7 @@
             var result = await this.coursesRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
-                .Select(x => new EmployeeCourseDetailsViewModel
+                .Select(x => new EmployeeCourseModalViewModel
                 {
                     Id = x.Id,
                     Title = x.Title,

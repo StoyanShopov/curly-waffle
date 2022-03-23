@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { courseService } from "../../../services/EmployeesCoursesService.js"
+import { courseService } from "../../../services/employeeCourseService.js"
 
 import Card from '../Courses/EmployeeCourseCard.js';
 
@@ -14,8 +14,6 @@ export default function EmployeeCourses(props) {
                 setEmployeeCourses(response.data);
             });
     }, []);
-
-    console.log(employeeCourses);
 
     return (
         <div>

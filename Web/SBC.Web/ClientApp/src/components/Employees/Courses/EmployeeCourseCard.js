@@ -1,8 +1,9 @@
 import styles from './EmployeeCourseCard.module.css'
 import Modal from "react-modal/lib/components/Modal";
+
 import React, { useState, useEffect } from "react";
 import CourseModal from '../Courses/EmplyeeCourseModal.js'
-
+import { Link } from 'react-router-dom';
 
 export default function ManagerCourseCard(props) {
 
@@ -55,7 +56,7 @@ export default function ManagerCourseCard(props) {
                     <div className={styles.button}>
                         {
                         props.course.isEnrolled
-                            ?<button className={styles.practiceButton} onClick={() => openModal() }>Practice</button>
+                            ?<Link to={`/api/EmployeesCourses/details/${props.course.id}`}><button className={styles.practiceButton}>Practice</button></Link>
                             :<button className={styles.removeButton} onClick={() => openModal() }>Enroll</button>}
 
                     </div>

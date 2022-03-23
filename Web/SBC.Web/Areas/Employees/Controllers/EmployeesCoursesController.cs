@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using SBC.Common;
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Infrastructures;
     using SBC.Web.Areas.Employees.Controllers;
@@ -33,6 +34,15 @@
             var course = await this.courseService.GetByIdEmployeeAsync(id);
 
             return this.GenericResponse(course);
+        }
+
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<ActionResult> GetDetailsAsync(int id)
+        {
+            var course = await this.courseService.GetByIdAsync<EmployeeCourseDetailsViewModel>(id);
+
+            return this.GenericResponse(new ResultModel(course));
         }
     }
 }
