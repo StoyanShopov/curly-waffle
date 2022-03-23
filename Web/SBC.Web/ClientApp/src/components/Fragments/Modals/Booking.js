@@ -1,8 +1,10 @@
 import { PopupButton } from "react-calendly";
+import { TokenManagement } from "../../../helpers";
 
 export default function Booking(props) {
 
-
+    const user = TokenManagement.getUserData()
+    console.log(user)
     return (
         <div>
             <p>Booking modal</p>
@@ -15,6 +17,10 @@ export default function Booking(props) {
                  */
                 rootElement={document.getElementById("root")}
                 text="Book"
+                prefill={{
+                    email: user.email,
+                    name: user.fullname,
+                }}
             />
         </div>
     );

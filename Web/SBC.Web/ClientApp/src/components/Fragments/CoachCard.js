@@ -2,12 +2,25 @@ import Booking from './Modals/Booking';
 import Feedback from './Modals/Feedaback';
 
 import styles from './ManagerCoachCard.module.css';
+import axios from 'axios';
+import { calendly_token } from '../../constants';
 
 export default function ManagerCoachCard(props) {
 
-    const onBook = (coachId) => {
+    const onBook = async (coachId) => {
         console.log("Book");
-        props.openModal(<Booking handleClose={props.handleClose} openModal={props.openModal} coachId={coachId} />);
+        await axios({
+            method: "GET",
+            url: "https://api.calndly.com/event_types",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                Authorization: "Bearer " + calendly_token,
+                'Content-Type': 'application/json'
+            }
+        }).then(data => console.log(data))
+            .catch(err => console.log(err));
+        //    props.openModal(<Booking handleClose={props.handleClose} coachId={coachId} />);
     }
 
     const onLeftFeedBack = (coachId) => {

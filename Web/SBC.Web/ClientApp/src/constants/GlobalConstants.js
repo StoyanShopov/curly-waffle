@@ -1,1 +1,3 @@
 export const baseUrl = 'https://localhost:44319/';
+
+export const calendly_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjQ4MDI2MDY2LCJqdGkiOiI2MjZjZjgyMy04NGRkLTQ5ZWQtOGY5MS02NzczMDgxMDA5YjgiLCJ1c2VyX3V1aWQiOiJkY2QyZTE3OS1hNGY1LTRmNjctOTU0Ny1iMWNlNDAwMGJhZWMifQ.iOG7qLfJqvAiFUn494_4xZszCBpfbKZpTP2RFxQqTbI";
