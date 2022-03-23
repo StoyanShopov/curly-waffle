@@ -34,12 +34,8 @@ export default function EmployeeCoaches() {
     return (
         <div className={styles.container}>
             <div className={styles.cardscontainer}>
-                {/* {
-                    coaches.map(x => { console.log(x.index); return <CoachCard key={i++} coach={x} openModal={openModal} handleClose={handleClose} /> })
-
-                } */}
                 {coaches.length > 0
-                    ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={true} />)
+                    ? coaches.map((x, index) => { console.log(index); return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
                     : <h3>No coaches yet</h3>
                 }
             </div>

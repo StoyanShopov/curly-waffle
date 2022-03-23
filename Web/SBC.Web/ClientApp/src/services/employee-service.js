@@ -14,7 +14,8 @@ const getAllCoaches = async () => {
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
         }
     }).then(async (res) => {
-        res.data.forEach(async (x) => {
+        for (let index = 0; index < res.data.length; index++) {
+            const x = res.data[index];
             await axios({
                 method: "GET",
                 url: getTypeEvents + x.calendlyUrl,
@@ -29,7 +30,7 @@ const getAllCoaches = async () => {
                     _data.push(x);
                 });
             })
-        })
+        }
     })
     return _data;
 }
