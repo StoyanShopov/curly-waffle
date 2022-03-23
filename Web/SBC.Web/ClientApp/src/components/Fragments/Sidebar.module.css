@@ -9,6 +9,7 @@
 }
 
 .pencilLink {
+    background-color:transparent;
     cursor: pointer;
     border-style: none;
     float: right;

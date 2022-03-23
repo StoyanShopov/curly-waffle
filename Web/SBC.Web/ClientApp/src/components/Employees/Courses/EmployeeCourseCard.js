@@ -1,7 +1,41 @@
-//import styles from './ManagerCourseCard.module.css';
-//import styles from '../../Fragments/ManagerCourseCard.module.css';
 import styles from './EmployeeCourseCard.module.css'
+import Modal from "react-modal/lib/components/Modal";
+import React, { useState, useEffect } from "react";
+import CourseModal from '../Courses/EmplyeeCourseModal.js'
+
+
 export default function ManagerCourseCard(props) {
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    let subtitle = {
+        content: {
+            top: '55%',
+            left: '50%',
+            right: 'auto',
+            width: '44%',
+            height: '500px',
+            bottom: 'auto',
+            marginTop: '-5%',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -40%)',
+            padding: '0px',
+        },
+        color: '#f00'
+    };
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        subtitle.color = '#f00';
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
+
     return (
         <>
             <div className={styles.card}>
@@ -21,31 +55,21 @@ export default function ManagerCourseCard(props) {
                     <div className={styles.button}>
                         {
                         props.course.isEnrolled
-                            ?<button className={styles.practiceButton} onClick={() => openModal()}>Practice</button>
-                            :<button className={styles.removeButton} onClick={() => openModal()}>Enroll</button>}
+                            ?<button className={styles.practiceButton} onClick={() => openModal() }>Practice</button>
+                            :<button className={styles.removeButton} onClick={() => openModal() }>Enroll</button>}
 
                     </div>
                 </div>
             </div>
-            {/* <Modal
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        width: '30%',
-                        height: '40%',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)',
-                        padding: '0px',
-                    }
-                }}
-                isOpen={showModal}
-                onRequestClose={handleClose}
-                contentLabel="Example Modal"
+
+            <Modal
+                style={subtitle}
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
             >
-                <ModalRemoveCourse handleClose={handleClose} item="course" delete={onDelete} />
-            </Modal> */}
+                <CourseModal  />
+            </Modal>
         </>
     )
 }
