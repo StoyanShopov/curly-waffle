@@ -60,16 +60,14 @@
             var result = await this.coachesRepository
                     .AllAsNoTracking()
                     .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
-                    .Select(coach => new CoachCardViewModel
+                    .Select(coach => new EmployeeCoachCardViewModel
                     {
                         Id = coach.Id,
                         FullName = $"{coach.FirstName} {coach.LastName}",
-                        CategoryByDefault = coach.Categories.Count == 0 ? "Common" : coach.Categories.FirstOrDefault().Category.Name,
-                        PricePerSession = coach.PricePerSession,
                         ImageUrl = coach.ImageUrl,
                         CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
-                        CalendlyUrl = coach.CalendlyUrl,
-                        IsActive = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId),
+                        CalendlyId = coach.CalendlyUrl,
+                        Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId),
                     })
                     .ToListAsync();
 

@@ -31,17 +31,19 @@ export default function CoachCard(props) {
                 </div>
                 <div>
                     <div className={styles.name}>
-                        <span>{props.coach.categoryByDefault}</span>
+                        <span>{props.coach.calendlyName}</span>
                         <span>{props.coach.fullName}</span>
                     </div>
                     <div className={styles.price}>
-                        <span>Session: {props.coach.calendlyUrl} </span>
+                        <span>Session: {props.coach.duration} min </span>
                         <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
                     </div>
                     <div className={styles.button}>
                         {props.coach.isActive
                             ? <button className={styles.removeButton} onClick={() => onLeftFeedBack(props.coach.id)}>Feedback</button>
-                            : <button className={styles.removeButton} onClick={() => onBook(props.coach.id)}>Book</button>
+                            : props.coach.active
+                                ? <button className={styles.removeButton} onClick={() => onBook(props.coach.id)}>Book</button>
+                                : null
                         }
                     </div>
                 </div>

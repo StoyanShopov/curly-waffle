@@ -1,10 +1,7 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import Modal from "react-modal/lib/components/Modal";
-import { calendly_token } from "../../../constants";
 import { EmployeeService } from "../../../services/employee-service";
-import CoachCard, { getTypeEvents } from "../../Fragments/CoachCard.js";
-import ManagerCoachCard from "../../Fragments/ManagerCoachCard";
+import CoachCard from "../../Fragments/CoachCard.js";
 
 import styles from "./EmployeeCoaches.module.css";
 let i = 1;
@@ -35,7 +32,7 @@ export default function EmployeeCoaches() {
         <div className={styles.container}>
             <div className={styles.cardscontainer}>
                 {coaches.length > 0
-                    ? coaches.map((x, index) => { console.log(index); return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
+                    ? coaches.map((x, index) => { console.log(x.active); return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
                     : <h3>No coaches yet</h3>
                 }
             </div>

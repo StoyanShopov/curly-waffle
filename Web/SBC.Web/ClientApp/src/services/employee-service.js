@@ -18,7 +18,7 @@ const getAllCoaches = async () => {
             const x = res.data[index];
             await axios({
                 method: "GET",
-                url: getTypeEvents + x.calendlyUrl,
+                url: getTypeEvents + x.calendlyId,
                 headers: {
                     Authorization: "Bearer " + calendly_token,
                     'Content-Type': 'application/json'
@@ -26,14 +26,26 @@ const getAllCoaches = async () => {
             }).then(data => {
                 console.log(data.data.collection)
                 data.data.collection.forEach((element, index) => {
-                    x.calendlyId = index;
-                    _data.push(x);
+                    _data.push({
+                        "id": x.id,
+                        "fullName": x.fullName,
+                        "companyLogoUrl": calendly_token.companyLogoUrl,
+                        'calendlyId': element.calendlyId,
+                        "feedabcked": x.feedabcked,
+                        "imageUrl": x.imageUrl,
+
+                        "duration": element.duration,
+                        'active': element.active,
+                        'calendlyName': element.name,
+                    });
                 });
             })
         }
     })
     return _data;
 }
+
+//todo get calendly data
 
 const bookCoach = async (coachId) => {
     return await axios({
