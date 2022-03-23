@@ -1,17 +1,37 @@
 import axios from 'axios';
 import { TokenManagement } from '../helpers';
-import { baseUrl } from '../constants';
+import { baseUrl, calendly_token } from '../constants';
+import { getTypeEvents } from '../components/Fragments/CoachCard';
 
 
 const getAllCoaches = async () => {
-    return await axios({
+    let _data = [];
+    await axios({
         method: "GET",
         url: baseUrl + "api/employees/coaches",
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
         }
+    }).then(async (res) => {
+        res.data.forEach(async (x) => {
+            await axios({
+                method: "GET",
+                url: getTypeEvents + x.calendlyUrl,
+                headers: {
+                    Authorization: "Bearer " + calendly_token,
+                    'Content-Type': 'application/json'
+                }
+            }).then(data => {
+                console.log(data.data.collection)
+                data.data.collection.forEach((element, index) => {
+                    x.calendlyId = index;
+                    _data.push(x);
+                });
+            })
+        })
     })
+    return _data;
 }
 
 const bookCoach = async (coachId) => {
