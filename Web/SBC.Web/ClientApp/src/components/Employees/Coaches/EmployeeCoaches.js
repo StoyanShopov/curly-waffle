@@ -15,7 +15,6 @@ export default function EmployeeCoaches() {
 
     useEffect(async () => {
         const res = await EmployeeService.getAllCoaches()
-        console.log(res)
         setCoaches(res);
     }, []);
 
@@ -32,7 +31,7 @@ export default function EmployeeCoaches() {
         <div className={styles.container}>
             <div className={styles.cardscontainer}>
                 {coaches.length > 0
-                    ? coaches.map((x, index) => { console.log(x.active); return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
+                    ? coaches.map((x, index) => { return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
                     : <h3>No coaches yet</h3>
                 }
             </div>
