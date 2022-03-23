@@ -12,7 +12,7 @@
 
         public string CourseCoachLastName { get; set; }
 
-        public string CourseCoachCompanyName { get; set; }
+        public string LogoUrl { get; set; }
 
         public string CoursePictureUrl { get; set; }
 
@@ -26,6 +26,11 @@
                 .ForMember(
                 c => c.LecturesCount,
                 c => c.MapFrom(c => c.Lectures.Count));
+
+            configuration.CreateMap<CompanyCoach, UserCourseViewModel>()
+                .ForMember(
+                c => c.LogoUrl,
+                c => c.MapFrom(c => c.Company.LogoUrl));
         }
     }
 }

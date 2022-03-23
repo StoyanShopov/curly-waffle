@@ -1,6 +1,7 @@
 ﻿namespace SBC.Services.Data.Categories
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,12 @@
              => new ResultModel(await this.categoryRepository
                 .AllAsNoTracking()
                 .To<TModel>()
+                .ToListAsync());
+
+        public async Task<Result> GetByCoachIdAsync(int coachId)
+            => new ResultModel(await this.categoryRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == coachId)
                 .ToListAsync());
     }
 }

@@ -1,12 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import styles from './DashboardCoachCard.module.css';
+
+import { getCategoriesByCoachId } from '../../../services/categoryService';
 
 import ModalRemoveCourse from '../../ProfileOwner/Modals/ModalRemoveCourse';
 
 export default function DashboardCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
+    const [categories, setCategories] = useState([]);
+
+    const coachId = props.coach.coachId;
+
+    useEffect(() => {
+        getCategoriesByCoachId(coachId)
+            .then(response => {
+                console.log(response.data[0].name);
+                setCategories(response.data);
+            });
+    }, [coachId]);
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
     const handleClose = useCallback(() => {
         setShowModal(false)
@@ -24,7 +41,8 @@ export default function DashboardCoachCard(props) {
                 </div>
                 <div>
                     <div className={styles.name}>
-                        <span>{props.coach.coachCategory}</span>
+                        <span>{categories.length > 0 ?
+                        categories[getRandomInt(categories.length)].name : ""}</span>
                         <span>{props.coach.coachFirstName} {props.coach.coachLastName}</span>
                     </div>
                     <div className={styles.price}>
