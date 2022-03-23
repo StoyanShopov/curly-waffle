@@ -68,6 +68,7 @@
                         PricePerSession = coach.PricePerSession,
                         ImageUrl = coach.ImageUrl,
                         CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                        CalendlyUrl = coach.CalendlyUrl,
                         IsActive = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId),
                     })
                     .ToListAsync();

@@ -1,22 +1,21 @@
-import { EmployeeService } from '../../../services/employee-service';
+import { PopupButton } from "react-calendly";
 
 export default function Booking(props) {
 
-    function onBooking() {
-        console.log(props.coachId)
-        EmployeeService.bookCoach(props.coachId)
-            .then(res => {
-                console.log(res);//
-                if (res['status'] == 200) {
-                    props.handleClose();
-                }
-            });
-    }
 
     return (
         <div>
             <p>Booking modal</p>
-            <button onClick={() => onBooking()}>Book</button>
+            <button onClick={() => props.handleClose()}>X</button>
+            <PopupButton
+                url="https://calendly.com/sbc-upskill/30min"
+                /*
+                 * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+                 * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+                 */
+                rootElement={document.getElementById("root")}
+                text="Book"
+            />
         </div>
     );
 }

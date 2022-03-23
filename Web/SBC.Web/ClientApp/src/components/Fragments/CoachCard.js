@@ -7,15 +7,13 @@ export default function ManagerCoachCard(props) {
 
     const onBook = (coachId) => {
         console.log("Book");
-        props.openModal(<Booking handleClose={props.handleClose} coachId={coachId} />);
+        props.openModal(<Booking handleClose={props.handleClose} openModal={props.openModal} coachId={coachId} />);
     }
 
     const onLeftFeedBack = (coachId) => {
         console.log("Feedback");
         props.openModal(<Feedback handleClose={props.handleClose} coachId={coachId} />);
     }
-
-
 
     return (
         <>
@@ -29,7 +27,7 @@ export default function ManagerCoachCard(props) {
                         <span>{props.coach.fullName}</span>
                     </div>
                     <div className={styles.price}>
-                        <span>{props.coach.pricePerSession}&#8364; per session</span>
+                        <span>Session: {props.coach.calendlyUrl.substr(props.coach.calendlyUrl.length - 5)} </span>
                         <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
                     </div>
                     <div className={styles.button}>

@@ -21,6 +21,8 @@
 
         public string CategoryByDefault { get; set; }
 
+        public string CalendlyUrl { get; set; }
+
         public ICollection<CategoryViewModel> Categories { get; set; } = new List<CategoryViewModel>();
 
         public ICollection<LanguageViewModel> Languages { get; set; } = new List<LanguageViewModel>();
