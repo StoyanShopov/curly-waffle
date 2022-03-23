@@ -8,7 +8,7 @@ export default function DashboardCourseCard(props) {
         <div className={styles.card}>
             <div className={styles.cardpicContainer}>
                 <img className={styles.cardpic} src={props.course.coursePictureUrl} alt="" />
-                <Link to={`/admin/courses/details/${courseId}`}><div className={styles.centered}>{props.course.courseTitle}</div></Link>
+                <Link to={`/courses/details/${courseId}`}><div className={styles.centered}>{props.course.courseTitle}</div></Link>
             </div>
             <div className={styles.down}>
                 <div className={styles.name}>
@@ -20,7 +20,7 @@ export default function DashboardCourseCard(props) {
                     <span className={styles.imgContainer}><img src={props.course.companyLogoUrl} alt="" /></span>
                 </div>
                 <div className={styles.button}>
-                    <Link to={`/admin/courses/details/${courseId}`}><button className={styles.continueButton}>Continue</button></Link>
+                    <button className={styles.continueButton}><Link to={`/courses/details/${courseId}`}>Continue</Link></button>
                 </div>
             </div>
         </div>

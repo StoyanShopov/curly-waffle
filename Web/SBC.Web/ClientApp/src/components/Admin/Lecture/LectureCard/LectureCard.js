@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 
 import style from "./LectureCard.module.css"
 
-import { resourceService } from "../../../../services/resource.service"
+import { resourceService } from "../../../../services/resource.service";
+import { getAllResources } from "../../../../services/employeesService.js";
 
 import DeleteLecture from "../DeleteLecture/DeleteLecture"
 import EditLecture from "../EditLecture/EditLecture"
@@ -14,10 +15,17 @@ export default function LectureCard(props) {
     const [resources, setResources] = useState([]);
 
     useEffect(() => {
-        resourceService.getAll(lecture.id)
-            .then(response => {
-                setResources(response.data)
-            });
+        if (props.role === "Employee") {
+            getAllResources(lecture.id)
+                .then(response => {
+                    setResources(response.data)
+                });
+        } else {
+            resourceService.getAll(lecture.id)
+                .then(response => {
+                    setResources(response.data)
+                });
+        }
     }, []);
 
     const onLectureHandler = (e) => {

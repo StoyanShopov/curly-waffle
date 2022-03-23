@@ -19,7 +19,7 @@ export default function EmployeeDashboard(props) {
         })
     }, [])
 
-    console.log(userCoachSessions);
+    console.log(userCourses);
 
     return (
         <div className={style.container}>
