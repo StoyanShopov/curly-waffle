@@ -6,7 +6,7 @@ export const calendly_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGgu
 export const userId = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
 export const linkUsrById = "https://api.calendly.com/users/dcd2e179-a4f5-4f67-9547-b1ce4000baec";
 //type events
-export const getTypeEvents = "https://api.calendly.com/event_types?user=https%3A%2F%2Fapi.calendly.com%2Fusers%2F";
+export const getTypeEvents = "https://api.calendly.com/event_types?active=true&user=https%3A%2F%2Fapi.calendly.com%2Fusers%2F";
 export const getTypeEventById = "https://api.calendly.com/event_types/93be18fb-f981-4a4c-80e3-88cbd861a606";
 
 //schedule events

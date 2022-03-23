@@ -10,7 +10,7 @@
     {
         Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback);
 
-        Task<Result> BookCoachAsync(string employeeId, string coachId);
+        Task<Result> BookCoachAsync(string employeeId, int coachId);
 
         Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId);
 

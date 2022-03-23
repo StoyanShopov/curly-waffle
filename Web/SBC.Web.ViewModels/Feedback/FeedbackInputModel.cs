@@ -2,7 +2,7 @@
 {
     public class FeedbackInputModel
     {
-        public string CoachId { get; set; }
+        public int CoachId { get; set; }
 
         public string Message { get; set; }
     }

@@ -68,11 +68,10 @@ const getCalendlyEvents = async (data) => {
         console.log(_data)
         data.map(x => {
             if (_data.some(y => {
-                // todo add check from BE feedbacked? && time left
+                console.log(x.feedbacked)
                 return y.event_type === x.isBooked && !x.feedbacked
             }
             )) {
-                console.log(x.feedbacked)
                 x.feedbacked = false;
             }
             return x;

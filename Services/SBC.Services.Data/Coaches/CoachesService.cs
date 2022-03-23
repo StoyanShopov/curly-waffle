@@ -26,6 +26,8 @@
         private readonly IDeletableEntityRepository<Company> companiesRepository;
         private readonly IRepository<CategoryCoach> categoriesCoachRepository;
         private readonly IRepository<LanguageCoach> languagesCoachRepository;
+        private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
+
 
         public CoachesService(
             IDeletableEntityRepository<Coach> coachesRepository,
@@ -33,7 +35,8 @@
             IDeletableEntityRepository<Category> categoriesRepository,
             IDeletableEntityRepository<Company> companiesRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
-            IRepository<LanguageCoach> languagesCoachRepository)
+            IRepository<LanguageCoach> languagesCoachRepository,
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository)
         {
             this.coachesRepository = coachesRepository;
             this.languagesCoachRepository = languagesCoachRepository;
@@ -41,18 +44,37 @@
             this.languagesRepository = languagesRepository;
             this.categoriesRepository = categoriesRepository;
             this.companiesRepository = companiesRepository;
+            this.sessionsRepository = sessionsRepository;
         }
 
         public async Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback)
         {
-            // todo implement
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == feedback.CoachId);
+            session.LeftFeedback = true;
+            await this.sessionsRepository.SaveChangesAsync();
+
             return true;
         }
 
-        public async Task<Result> BookCoachAsync(string employeeId, string coachId)
+        public async Task<Result> BookCoachAsync(string employeeId, int coachId)
         {
-            // todo implement
-            return true;
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == coachId);
+
+            if (session != null)
+            {
+                this.sessionsRepository.HardDelete(session);
+            }
+
+            session = new UserCoachSession()
+            {
+                UserId = employeeId,
+                CoachId = coachId,
+            };
+
+            await this.sessionsRepository.AddAsync(session);
+            await this.sessionsRepository.SaveChangesAsync();
+
+            return true ;
         }
 
         public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId)
@@ -67,7 +89,7 @@
                         ImageUrl = coach.ImageUrl,
                         CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                         CalendlyId = coach.CalendlyUrl,
-                        Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId),
+                        Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
                     })
                     .ToListAsync();
 
