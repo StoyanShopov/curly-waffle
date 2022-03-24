@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getDashboard } from '../../../services/employeesService';
-import styles from './Achievements.module.css';
 
+import styles from './Achievements.module.css';
+import { format } from "date-fns";
+
+import { getDashboard } from '../../../services/employeesService';
 export default function Achievement(props) {
     const [userCourses, setUserCourses] = useState([]);
     const [userCoachSessions, setUserCoachSessions] = useState([])
@@ -13,11 +15,8 @@ export default function Achievement(props) {
         })
     }, [])
 
-    console.log(userCoachSessions);
-
     return (
         <div>
-
             <div className={styles.achievementsContent}>
                 <table className={styles.tableRevenue}>
                     <thead style={{ background: "#296CFB" }}>
@@ -29,10 +28,11 @@ export default function Achievement(props) {
                         </tr>
                     </thead>
                     <tbody className={styles.achievementsTbody}>
+                    {/* {userCourses.length > 0 ? console.log(format(new Date(userCourses[0].startDate), "MMMM do, yyyy H:mma")) : ' '} */}
                         {userCourses && userCourses.map(userCourses => (
                             <tr key={userCourses.courseId} className={styles.achievementsTD}>
                                 <td>{userCourses.courseTitle}</td>
-                                <td>{userCourses.startDate}</td>
+                                <td>{format(new Date(userCourses.startDate), "dd.mm.yyyy")}</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -55,7 +55,7 @@ export default function Achievement(props) {
                         {userCoachSessions && userCoachSessions.map(userCoachSessions => (
                             <tr key={userCoachSessions.coachId} className={styles.achievementsTD}>
                                 <td>{`${userCoachSessions.coachFirstName} ${userCoachSessions.coachLastName}`}</td>
-                                <td>{userCoachSessions.date}</td>
+                                <td>{format(new Date(userCoachSessions.date), "dd.mm.yyyy")}</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>

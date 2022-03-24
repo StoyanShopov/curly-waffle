@@ -60,7 +60,7 @@ export default function EmployeeProfile(props) {
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
             <div style={{ left: '24%', width: "65%", position: "relative" }}>
                 <Routes>
-                    <Route index element={<Revenue />} />
+                    <Route index element={<EmployeeDashboard />} />
                     <Route path="employee/dashboard" element={<EmployeeDashboard />} />
                     <Route path="employee/courses" element={<EmployeeCourses />} />
                     <Route path="employee/coaches" element={<EmployeeCoaches />} />
