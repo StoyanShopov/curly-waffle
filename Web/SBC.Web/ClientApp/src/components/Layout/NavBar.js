@@ -107,13 +107,15 @@ const NavBar = (props) => {
               {email && (props.notifications.length > 0 ?
                 <Link
                   to="" onClick={() => openModal()}>
-                  <i className="fa fa-bell fa-shake fa-lg fa-spin"></i>
+                  <div className={styles.circle}>
+                    <i className="fa fa-bell fa-lg"></i>
+                  </div>
                 </Link>
                 :
                 <div>
                   <Link
                     to="" onClick={() => openModal()}>
-                    <i className="fa fa-bell fa-lg rotate"></i>
+                    <i className="fa fa-bell fa-lg"></i>
                   </Link>
                 </div>)
               }

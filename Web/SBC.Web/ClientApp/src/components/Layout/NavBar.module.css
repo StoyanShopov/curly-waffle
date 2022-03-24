@@ -201,10 +201,32 @@
     flex-basis: 0;
 }
 
-    .greenCircle a:hover,
-    .greenCircle a:visited,
-    .greenCircle a:link,
-    .greenCircle a:active {
-        text-decoration: none;
-        color: inherit;
-    }
+.greenCircle a:hover,
+.greenCircle a:visited,
+.greenCircle a:link,
+.greenCircle a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    transform: rotate(-30deg);
+    -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+@-moz-keyframes spin { 
+    30% { -moz-transform: rotate(80deg); } 
+}
+@-webkit-keyframes spin { 
+    80% { -webkit-transform: rotate(100deg); } 
+}
+@keyframes spin { 
+    50% { 
+        -webkit-transform: rotate(45deg); 
+        transform:rotate(35deg); 
+    } 
+}  
+
