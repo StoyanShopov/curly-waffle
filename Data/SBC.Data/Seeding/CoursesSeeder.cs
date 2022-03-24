@@ -26,7 +26,7 @@
                     CoachId = 1,
                     DeletedOn = null,
                     IsDeleted = false,
-                    PictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/9f4e95f9-3f91-4f9e-b22b-e5cb09537360",
+                    PictureUrl = ManagementPictureUrl,
                 },
                 new Course
                 {
@@ -39,7 +39,7 @@
                     CoachId = 2,
                     DeletedOn = null,
                     IsDeleted = false,
-                    PictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/b0a4e660-36b8-4252-b24d-3b20ef3e8ba8",
+                    PictureUrl = LeadershipPictureUrl,
                 },
                 new Course
                 {
@@ -52,7 +52,7 @@
                     CoachId = 3,
                     DeletedOn = null,
                     IsDeleted = false,
-                    PictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/11033e92-a2e6-46d8-a2e4-d3e82bfc50e8",
+                    PictureUrl = DesignPictureUrl,
                 },
             };
 

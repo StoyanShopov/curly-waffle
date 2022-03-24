@@ -26,7 +26,7 @@
                     CompanyId = 1,
                     DeletedOn = null,
                     IsDeleted = false,
-                    ImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/ced7f6bb-5ada-4b69-b470-834e748326fe",
+                    ImageUrl = IvanImageUrl,
                 },
                 new Coach
                 {
@@ -39,7 +39,7 @@
                    CompanyId = 2,
                    DeletedOn = null,
                    IsDeleted = false,
-                   ImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c238e4e5-ab4e-4771-a6c8-be3f6e108a91",
+                   ImageUrl = MariaImageUrl,
                 },
                 new Coach
                 {
@@ -52,7 +52,7 @@
                    CompanyId = 3,
                    DeletedOn = null,
                    IsDeleted = false,
-                   ImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/aec644b0-4fe9-4b54-a114-20cc3a0d6bb7",
+                   ImageUrl = EmilImageUrl,
                 },
             };
 
