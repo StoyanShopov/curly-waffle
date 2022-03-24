@@ -8,7 +8,7 @@
     {
         Task<Result> GetAllByEmailAsyc(string email);
 
-        Task AddAsync(string email, string message);
+        Task<Result> AddAsync(string email, string message);
 
         Task DeleteAsync(int id);
     }

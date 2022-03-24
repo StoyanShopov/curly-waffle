@@ -28,10 +28,14 @@
         }
 
         [HttpPost]
-        public async Task Create(CreateNotificationInputModel model)
-            => await this.notificationsService.AddAsync(
+        public async Task<ActionResult> Create([FromQuery] CreateNotificationInputModel model)
+        {
+            var result = await this.notificationsService.AddAsync(
                 model.UserEmail,
                 model.Message);
+
+            return this.GenericResponse(result);
+        }
 
         [HttpDelete]
         public async Task Remove(int id)

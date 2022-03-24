@@ -8,7 +8,7 @@ import { notificationService } from '../../services/notification-service';
 import NotificationModal from './NotificationModal';
 
 const NavBar = (props) => {
-  const [notifications, setNotofications] = useState([]);
+  // const [notifications, setNotofications] = useState([]); // props
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
@@ -24,21 +24,21 @@ const NavBar = (props) => {
   const addNotifications = async () => {
     const json = await notificationService.getNotifications(email);
 
-    setNotofications([...json])
+    props.setNotifications(prevNotifications => [...json, ...prevNotifications]) //TODO: maybe remove prev
   }
 
   const removeNotification = async (id) => {
     await notificationService.deleteNotification(id);
 
-    setNotofications(prevNotifications => [...prevNotifications.filter(n => n.id !== id)])
+    props.setNotifications(prevNotifications => [...prevNotifications.filter(n => n.id !== id)])
   }
 
   const removeNotifications = async () => {
-    notifications.forEach(async (notification) => {
+    props.notifications.forEach(async (notification) => {
       await notificationService.deleteNotification(notification.id);
     });
 
-    setNotofications([])
+    props.setNotifications([])
   }
 
   function openModal() {
@@ -89,7 +89,7 @@ const NavBar = (props) => {
           <ul>
             <li>
               <NavLink
-                to="/courses"
+                to="/owner/courses/courseCatalog"
                 className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
               >
                 Courses
@@ -97,14 +97,14 @@ const NavBar = (props) => {
             </li>
             <li>
               <NavLink
-                to="/coaches"
+                to="/owner/coaches/coachCatalog"
                 className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
               >
                 Coaches
               </NavLink>
             </li>
             <li>
-              {email && (notifications.length > 0 ?
+              {email && (props.notifications.length > 0 ?
                 <Link
                   to="" onClick={() => openModal()}>
                   <i className="fa fa-bell fa-shake fa-lg fa-spin"></i>
@@ -138,7 +138,7 @@ const NavBar = (props) => {
         onRequestClose={closeModal}
         ariaHideApp={false}
       >
-        <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={notifications} email={email} closeModal={closeModal} />
+        <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
       </Modal>
     </header>
   )

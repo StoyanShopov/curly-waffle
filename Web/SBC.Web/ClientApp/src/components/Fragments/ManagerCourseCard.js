@@ -2,13 +2,15 @@
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 
+import styles from './ManagerCourseCard.module.css';
+
 import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
 import { OwnerService } from '../../services';
-
-import styles from './ManagerCourseCard.module.css';
+import { notificationService } from '../../services/notification-service';
 
 export default function ManagerCourseCard(props) {
     const [showModal, setShowModal] = useState(false);
+    const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
 
     const courseId = props.course.id;   
     let navigate = useNavigate();
@@ -34,12 +36,27 @@ export default function ManagerCourseCard(props) {
             });
     }
 
+    const sendNotification = async (id, message) => {
+      await props.connection.invoke("SendNotifyMessage", {id, message})
+        .then(console.log(message))
+        .catch(err => console.log(err))
+    }
+
     const onSet = () => {
         OwnerService.CompanySetCourseToActive(props.course.id)
             .then(res => {
                 if (res.status) {
-                    console.log('Successful set', res)//
-                    navigate('/profile/owner/courses');
+                    console.log('Successful set', res)
+
+                    const sendNotificationFunc = async () => {
+                      let message = "Course was added!!!";
+                      const id = await notificationService.addNotification(email, message)
+                      await sendNotification(id, message)
+
+                      navigate('/profile/owner/courses')
+                    }
+                    
+                    sendNotificationFunc();
                 }
                 else {
                     /*console.log(error);//*/

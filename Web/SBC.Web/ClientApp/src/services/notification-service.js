@@ -18,6 +18,20 @@ const getNotifications = async (email) => {
   return response.data;
 }
 
+const addNotification = async (userEmail, message) => {
+  const response = await axios.post(baseUrl + "api/Notifications?useremail=" + userEmail + '&message=' + message, {
+    headers: {
+      Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+    },
+  })
+
+  if (response.status !== 200) {
+    throw new Error(response.Error)
+  }
+
+  return response.data;
+}
+
 const deleteNotification = async (id) => {
   const response = await axios.delete(baseUrl + "api/Notifications?id=" + id, {
     headers: {
@@ -34,5 +48,6 @@ const deleteNotification = async (id) => {
 
 export const notificationService = {
   getNotifications,
+  addNotification,
   deleteNotification,
 }

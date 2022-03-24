@@ -6,6 +6,7 @@
 
     using Microsoft.AspNetCore.SignalR;
     using SBC.Services.Data.Users;
+    using SBC.Web.ViewModels.Notification;
     using SBC.Web.ViewModels.User;
 
     public class NotificationHub : Hub
@@ -23,21 +24,34 @@
 
         public async Task JoinGroupAsync([NotNull] string email)
         {
-            var userConnection = await this.usersService.GetByEmailAsync<UserConnection>(email);
+            var userConnection = await this.usersService
+                .GetByEmailAsync<UserConnection>(email);
 
-            await this.Groups.AddToGroupAsync(this.Context.ConnectionId, userConnection.CompanyName);
+            await this.Groups
+                .AddToGroupAsync(
+                this.Context.ConnectionId,
+                userConnection.CompanyName);
 
             this.connections.Add(this.Context.ConnectionId, userConnection);
         }
 
-        public async Task SendNotifyMessage([NotNull] string notifyMessage)
+        public async Task SendNotifyMessage(NotifyMessage notification)
         {
             if (this.connections
                 .TryGetValue(this.Context.ConnectionId, out UserConnection user))
             {
+                var notificationDetailsViewModel = new NotificationDetailsViewModel
+                {
+                    Id = notification.Id,
+                    Message = notification.Message,
+                    UserEmail = user.Email,
+                };
+
                 await this.Clients
                     .Group(user.CompanyName)
-                    .SendAsync("Notify", notifyMessage);
+                    .SendAsync(
+                    "Notify",
+                    notificationDetailsViewModel);
             }
         }
     }

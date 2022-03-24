@@ -30,7 +30,7 @@
             return new ResultModel(result);
         }
 
-        public async Task AddAsync(string userEmail, string message)
+        public async Task<Result> AddAsync(string userEmail, string message)
         {
             var notification = new Notification
             {
@@ -40,6 +40,8 @@
 
             await this.notificationRepository.AddAsync(notification);
             await this.notificationRepository.SaveChangesAsync();
+
+            return new ResultModel(notification.Id);
         }
 
         public async Task DeleteAsync(int id)
@@ -48,8 +50,11 @@
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(n => n.Id == id);
 
-            this.notificationRepository.Delete(notification);
-            await this.notificationRepository.SaveChangesAsync();
+            if (notification is not null)
+            {
+                this.notificationRepository.Delete(notification);
+                await this.notificationRepository.SaveChangesAsync();
+            }
         }
     }
 }
