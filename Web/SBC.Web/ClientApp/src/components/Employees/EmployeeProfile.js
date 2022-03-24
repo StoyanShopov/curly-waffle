@@ -64,7 +64,7 @@ export default function EmployeeProfile(props) {
                     <Route path="employee/dashboard" element={<EmployeeDashboard />} />
                     <Route path="employee/courses" element={<EmployeeCourses />} />
                     <Route path="employee/coaches" element={<EmployeeCoaches />} />
-                    <Route path="employee/achievement" element={<Achievements />} />
+                    <Route path="employee/achievements" element={<Achievements />} />
                 </Routes>
             </div>
             <Modal

@@ -16,5 +16,7 @@
         public string CoachCompanyLogoUrl { get; set; }
 
         public decimal CoachPricePerSession { get; set; }
+
+        public string Date { get; set; }
     }
 }

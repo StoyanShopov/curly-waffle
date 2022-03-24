@@ -66,7 +66,7 @@ const _employeeUrl = (
         <li> <NavLink to="employee/dashboard">Dashboard</NavLink></li>
         <li> <NavLink to="employee/courses">Courses</NavLink></li>
         <li> <NavLink to="employee/coaches">Coaches</NavLink></li>
-        <li> <NavLink to="employee/achievement">Achievement</NavLink></li>
+        <li> <NavLink to="employee/achievements">Achievements</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
