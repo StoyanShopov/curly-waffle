@@ -6,7 +6,7 @@ import style from "./EmployeeCourseDetails.module.css";
 import { courseService } from "../../../services/employeeCourseService.js";
 import { lectureService } from "../../../services/employeeLectureService.js";
 
-import LectureCard from "../../Admin/Lecture/LectureCard/LectureCard.js";
+import EmployeeLectureCard from "../Courses/EmployeeLectureCard.js";
 import ResponsivePlayer from "../../Admin/Player/VideoPlayer.js";
 
 export default function CourseDetails() {
@@ -31,6 +31,7 @@ export default function CourseDetails() {
             .then(response => {
                 setCourse(response.data);
                 setVideo(response.data.videoUrl);
+                console.log(response.data)
             })
     }, [id]);
 
@@ -47,7 +48,7 @@ export default function CourseDetails() {
 
         setSkip(prevSkip => prevSkip + 6)
     }
-
+   
     return (
         <div className={style.background}>
             <section className={style.container}>
@@ -78,7 +79,7 @@ export default function CourseDetails() {
                         
                         <h1 className={style.lecturesHeading}>Lectures</h1>
                         <ul className={style.ulLectures}>
-                            {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id}
+                            {lectures.length > 0 && lectures.map((x, i) => <EmployeeLectureCard key={x.id}
                                 setDescription={setDescription}
                                 setLectures={setLectures}
                                 setVideo={setVideo}

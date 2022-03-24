@@ -13,7 +13,7 @@ const getAllCourses = async () => {
 
 const getById = async (courseId) => {
     return await axios
-        .get(`https://localhost:44319/api/EmployeesCourses/${courseId}`, {
+        .get(`https://localhost:44319/api/EmployeesCourses/details/${courseId}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${token}`,
