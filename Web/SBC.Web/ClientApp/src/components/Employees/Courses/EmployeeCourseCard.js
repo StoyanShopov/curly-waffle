@@ -56,7 +56,7 @@ export default function EmployeeCourseCard(props) {
                     <div className={styles.button}>
                         {
                         props.course.isEnrolled
-                            ?<Link to={`/courses/details/${props.course.id}`}><button className={styles.practiceButton}>Practice</button></Link>
+                            ?<Link to={`/courses/details/${props.course.id}`}><button className={styles.practiceButton}>Continue</button></Link>
                             :<button className={styles.removeButton} onClick={() => openModal() }>Enroll</button>}
 
                     </div>
