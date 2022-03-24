@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Web/SBC.Web/Areas/Employees/Controllers
+/Web/SBC.Web/ClientApp/src/components/Employees/Courses/EmployeeLectureCard.js
+/Web/SBC.Web/ClientApp/src/services/employeeResourceService.js

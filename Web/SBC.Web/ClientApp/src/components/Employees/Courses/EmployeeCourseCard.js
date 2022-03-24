@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import CourseModal from '../Courses/EmplyeeCourseModal.js'
 import { Link } from 'react-router-dom';
 
-export default function ManagerCourseCard(props) {
+export default function EmployeeCourseCard(props) {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -56,7 +56,7 @@ export default function ManagerCourseCard(props) {
                     <div className={styles.button}>
                         {
                         props.course.isEnrolled
-                            ?<Link to={`/api/EmployeesCourses/details/${props.course.id}`}><button className={styles.practiceButton}>Practice</button></Link>
+                            ?<Link to={`/courses/details/${props.course.id}`}><button className={styles.practiceButton}>Practice</button></Link>
                             :<button className={styles.removeButton} onClick={() => openModal() }>Enroll</button>}
 
                     </div>
