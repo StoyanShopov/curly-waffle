@@ -1,5 +1,7 @@
 ﻿namespace SBC.Web.ViewModels.Employees
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
@@ -20,14 +22,14 @@
 
         public string CourseVideoUrl { get; set; }
 
-        public int LecturesCount { get; set; }
+        public IEnumerable<CourseLectureModel> CourseLectures { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<UserCourse, UserCourseViewModel>()
-                .ForMember(
-                c => c.LecturesCount,
-                c => c.MapFrom(c => c.Course.Lectures.Count));
+            configuration.CreateMap<CourseLecture, UserCourseViewModel>()
+              .ForMember(
+              c => c.CourseId,
+              c => c.MapFrom(c => c.CourseId));
 
             configuration.CreateMap<UserCourse, UserCourseViewModel>()
                 .ForMember(

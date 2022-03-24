@@ -23,6 +23,8 @@ export default function CourseDetails(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [childModal, setChildModal] = useState(null);
 
+    const isAdmin = !props.role;
+
     useEffect(() => {
         if (props.role === "Employee") {
             getAllLectures(id, skip)
@@ -79,12 +81,21 @@ export default function CourseDetails(props) {
     }
 
     function onGetNextLectures() {
-        lectureService.getAll(id, skip)
-            .then(lectureResult => {
-                setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
-            });
+        if (props.role === "Employee") {
+            getAllLectures(id, skip)
+                .then(lectureResult => {
+                    setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
+                });
 
-        setSkip(prevSkip => prevSkip + 6)
+            setSkip(prevSkip => prevSkip + 6)
+        } else {
+            lectureService.getAll(id, skip)
+                .then(lectureResult => {
+                    setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
+                });
+
+            setSkip(prevSkip => prevSkip + 6)
+        }
     }
 
     function openModal(childElement) {
@@ -127,18 +138,18 @@ export default function CourseDetails(props) {
                 </div>
                 <div className={style.rightPart}>
                     <div className={style.lectureList} >
-                        <button className={style.btnAddLecture} onClick={() => {
+                        {isAdmin && <button className={style.btnAddLecture} onClick={() => {
                             openModal(<CreateLecture id={id}
                                 closeModal={closeModal}
                                 setLectures={setLectures}
                                 lectures={lectures}
                                 skip={skip}
                                 setSkipPlusOne={SkipPlusOne} />)
-                        }}>Add Lecture</button>
+                        }}>Add Lecture</button>}
                         <h1 className={style.lecturesHeading}>Lectures</h1>
                         <ul className={style.ulLectures}>
                             {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id}
-                                role={props.role}
+                                isAdmin={isAdmin}
                                 openModal={openModal}
                                 closeModal={closeModal}
                                 setDescription={setDescription}
