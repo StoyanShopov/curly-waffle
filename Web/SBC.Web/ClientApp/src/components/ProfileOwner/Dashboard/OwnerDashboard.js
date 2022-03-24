@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { OwnerService } from '../../../services'
+import { OwnerService } from '../../../services/owner-service'
 
 import styles from "./OwnerDashboard.module.css";
 

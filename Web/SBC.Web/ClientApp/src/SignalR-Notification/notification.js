@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
-import {GetNotifications} from '../services/notification-service';
+import { notificationService } from '../services/notification-service';
 
 const Notification = () => {
   const [connection, setConnection] = useState();
@@ -21,7 +21,7 @@ const Notification = () => {
   }, []);
 
   const getMessages = async() => {
-    const json = await GetNotifications(email);
+    const json = await notificationService.GetNotifications(email);
 
     setMessages(prevMessages => [...json, ...prevMessages])
   }

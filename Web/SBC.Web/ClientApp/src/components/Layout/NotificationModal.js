@@ -1,34 +1,30 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import css from './NotificationModal.module.css';
 
 export default function EditProfile(props) {
-return (
-        
+
+  useEffect(() => {
+
+  })
+  console.log(props.notifications)
+  console.log(props.email)
+
+  return (
+
     <div className={css.NotificationContainer}>
-        <div className={css.HeaderDiv}>
-            <h3>SuperAdmin:<span> New course added - Art - English</span> </h3>
-            <h3 className={css.close}>X</h3>
+      {props.notifications.map(notification => (
+        <div key={notification.id} className={css.HeaderDiv}>
+          <h3>{notification.id}:<span> {notification.message}</span> </h3>
+          <Link to="" onClick={() => props.removeNotification(notification.id)}>X</Link>
         </div>
-        <div className={css.HeaderDiv}>
-            <h3>Admin:<span> New course added - Marketing - French</span> </h3>
-            <h3 className={css.close}>X</h3>
-        </div>
-        <div className={css.HeaderDiv}>
-            <h3>Admin:<span> New course added - Skiing - Bulgarian</span> </h3>
-            <h3 className={css.close}>X</h3>
-        </div>
-        <div className={css.HeaderDiv}>
-            <h3>SuperAdmin:<span> New course added - Hiking - Polish</span> </h3>
-            <h3 className={css.close}>X</h3>
-        </div>
-        <div className={css.HeaderDiv}>
-            <h3>Admin:<span> New course added - Running - German</span> </h3>
-            <h3 className={css.close}>X</h3>
-        </div>
+      ))}
+      {props.notifications.length > 0 ?
         <div>
-        <button className={css.clearBtn}>Clear All</button>
+          <button className={css.clearBtn} onClick={props.removeNotifications}>Clear All</button>
         </div>
+        : <div className={css.HeaderDiv}>No messages</div>}
     </div>
-    )
+  )
 }
