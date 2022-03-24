@@ -29,7 +29,7 @@ export default function ManagerCoachCard(props) {
                         });
                 }
                 else {
-                    navigate('/profile/coaches');
+                    navigate('/profile/owner/coaches');
                 }
             });
     }
@@ -39,7 +39,7 @@ export default function ManagerCoachCard(props) {
             .then(res => {
                 if (res.status) {
                     console.log('Successful set', res);//
-                    navigate('/profile/coaches');//
+                    navigate('/profile/owner/coaches');//
                 }
                 else {
                     /*console.log(error)//*/

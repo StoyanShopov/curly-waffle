@@ -30,6 +30,7 @@
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Employees;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
     using SBC.Services.Data.Resources;
@@ -71,6 +72,7 @@
                 .AddScoped<SearchSeeder>()
                 .AddSingleton<IElasticClient>(new ElasticClient())
                 .AddTransient<ISearchService, SearchService>()
+                .AddTransient<IEmployeesDashboardService, EmployeesDashboardService>()
                 .AddTransient<ISearchSeedersService, SearchSeedersService>();
 
                 // To setup ElasticSearch do:

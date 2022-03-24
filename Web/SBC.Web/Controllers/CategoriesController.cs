@@ -22,5 +22,13 @@
 
             return this.GenericResponse(result);
         }
+
+        [HttpGet("{coachId}")]
+        public async Task<ActionResult> GetByCoachIdAsync(int coachId)
+        {
+            var result = await this.categoriesService.GetByCoachIdAsync(coachId);
+
+            return this.GenericResponse(result);
+        }
     }
 }
