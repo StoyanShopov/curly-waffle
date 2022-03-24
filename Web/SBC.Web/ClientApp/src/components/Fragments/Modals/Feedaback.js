@@ -18,6 +18,7 @@ export default function Feedback(props) {
             .then(res => {
                 console.log(res);//
                 if (res['status'] == 200) {
+                    props.onChangeButton();
                     props.handleClose();
                 }
             });

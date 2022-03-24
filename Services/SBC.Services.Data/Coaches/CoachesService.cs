@@ -74,12 +74,14 @@
             await this.sessionsRepository.AddAsync(session);
             await this.sessionsRepository.SaveChangesAsync();
 
-            return true ;
+            return true;
         }
 
         public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId)
         {
-            var result = await this.coachesRepository
+            try
+            {
+                var result = await this.coachesRepository
                     .AllAsNoTracking()
                     .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
                     .Select(coach => new EmployeeCoachCardViewModel
@@ -93,7 +95,12 @@
                     })
                     .ToListAsync();
 
-            return new ResultModel(result);
+                return new ResultModel(result);
+            }
+            catch (System.Exception err)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, err);
+            }
         }
 
         public async Task<Result> CreateAsync(CreateCoachInputModel coach)

@@ -1,0 +1,110 @@
+﻿.editContainer {
+    display: block;
+    position: relative;
+    height: 100%;
+}
+
+.mainContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+}
+.upContainer {    
+    display: block;    
+    flex-grow: 2;
+}
+.colorUpContainer {
+    background-color: #16D696;
+}
+
+.lectorSection {
+    display: flex;
+    width: 100%;
+}
+
+.lectorPic {
+    width: 118px;
+    height: 100px;
+    padding: 0;
+}
+
+.cardpic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.pCreatedBy {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 22px;
+    font-style: Montserrat;
+    font-weight: 500;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.lectorName {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 22px;
+    font-style: Montserrat;
+    font-weight: bold;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.pCompanyName {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.downContainer {
+    max-width: 41%;
+    display: block;
+    flex-grow: 3;    
+}
+.downContainer p{
+    font-weight: bold;
+}
+
+
+.ulStyle {
+
+    list-style-type: square;
+}
+
+.rightContainer {
+    position: absolute;
+    top: 18%;
+    right: 10%;
+    height: 70%;
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 3px 10px #00000029;
+}
+
+    .rightContainer p{
+        margin: 0;
+    }
+
+    .videoPlayer {
+    }
+
+
+.bookButton {
+    width: 120px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}

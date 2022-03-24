@@ -2,16 +2,22 @@ import Booking from './Modals/Booking';
 import Feedback from './Modals/Feedaback';
 
 import styles from './ManagerCoachCard.module.css';
+import { useState } from 'react';
 
 
 export default function CoachCard(props) {
-    //  console.log(props.key)
+    const [button, setButton] = useState(props.coach.feedbacked);
     const onBook = async (coachId) => {
-        props.openModal(<Booking url={props.coach.scheduling_url} handleClose={props.handleClose} coachId={coachId} />);
+        props.openModal(<Booking url={props.coach.scheduling_url} onChangeButton={onChangeButton} openModal={props.openModal} handleClose={props.handleClose} coachId={coachId} />);
     }
 
     const onLeftFeedBack = (coachId) => {
-        props.openModal(<Feedback handleClose={props.handleClose} coachId={coachId} />);
+        props.openModal(<Feedback handleClose={props.handleClose} onChangeButton={onChangeButton} coachId={coachId} />);
+    }
+
+    const onChangeButton = () => {
+      /*  props.coach.feedbacked = !props.coach.feedbacked*/
+        setButton(!button);
     }
 
     return (
@@ -30,7 +36,7 @@ export default function CoachCard(props) {
                         <span className={styles.imgContainer}><img src={props.coach.companyLogoUrl} /></span>
                     </div>
                     <div className={styles.button}>
-                        {props.coach.feedbacked
+                        {button
                             ? <button className={styles.removeButton} onClick={() => onLeftFeedBack(props.coach.id)}>Feedback</button>
                             : props.coach.active
                                 ? <button className={styles.removeButton} onClick={() => onBook(props.coach.id)}>Book</button>

@@ -38,14 +38,14 @@ export default function EmployeeCoaches() {
             <Modal
                 style={{
                     content: {
-                        top: '50%',
+                        top: '58%',
                         left: '50%',
                         right: 'auto',
-                        width: '30%',
-                        height: '40%',
+                        width: '65%',
+                        height: '79%',
                         bottom: 'auto',
                         transform: 'translate(-50%, -50%)',
-                        padding: '0px',
+                        padding: '0px',                        
                     }
                 }}
                 isOpen={showModal}
