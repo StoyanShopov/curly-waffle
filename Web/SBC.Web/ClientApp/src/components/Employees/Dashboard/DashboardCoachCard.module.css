@@ -69,6 +69,7 @@
 .bookButton {
     width: 120px;
     height: 40px;
+    border:none;
     background-color: #296CFB;
     border-color: #296CFB;
     color: floralwhite;

@@ -28,9 +28,8 @@ export default function Achievement(props) {
                         </tr>
                     </thead>
                     <tbody className={styles.achievementsTbody}>
-                    {/* {userCourses.length > 0 ? console.log(format(new Date(userCourses[0].startDate), "MMMM do, yyyy H:mma")) : ' '} */}
                         {userCourses && userCourses.map(userCourses => (
-                            <tr key={userCourses.courseId} className={styles.achievementsTD}>
+                            <tr key={userCourses.courseId}>
                                 <td>{userCourses.courseTitle}</td>
                                 <td>{format(new Date(userCourses.startDate), "dd.mm.yyyy")}</td>
                                 <td>-</td>
@@ -53,7 +52,7 @@ export default function Achievement(props) {
                     </thead>
                     <tbody className={styles.achievementsTbody}>
                         {userCoachSessions && userCoachSessions.map(userCoachSessions => (
-                            <tr key={userCoachSessions.coachId} className={styles.achievementsTD}>
+                            <tr key={userCoachSessions.coachId}>
                                 <td>{`${userCoachSessions.coachFirstName} ${userCoachSessions.coachLastName}`}</td>
                                 <td>{format(new Date(userCoachSessions.date), "dd.mm.yyyy")}</td>
                                 <td>-</td>
