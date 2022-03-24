@@ -10,7 +10,7 @@ import EditProfile from '../Fragments/EditProfile';
 import EmployeeDashboard from './Dashboard/EmployeeDashboard';
 import EmployeeCourses from './Courses/EmployeeCourses';
 import EmployeeCoaches from './Coaches/EmployeeCoaches';
-import Achievement from './Achievements/Achiviements';
+import Achievements from './Achievements/Achievements';
 
 import Revenue from '../super-admin/Revenue';
 
@@ -64,7 +64,7 @@ export default function EmployeeProfile(props) {
                     <Route path="employee/dashboard" element={<EmployeeDashboard />} />
                     <Route path="employee/courses" element={<EmployeeCourses />} />
                     <Route path="employee/coaches" element={<EmployeeCoaches />} />
-                    <Route path="employee/achievement" element={<Achievement />} />
+                    <Route path="employee/achievement" element={<Achievements />} />
                 </Routes>
             </div>
             <Modal

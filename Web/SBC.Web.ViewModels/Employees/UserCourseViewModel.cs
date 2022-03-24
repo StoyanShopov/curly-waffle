@@ -22,6 +22,8 @@
 
         public string CourseVideoUrl { get; set; }
 
+        public string StartDate { get; set; }
+
         public IEnumerable<CourseLectureModel> CourseLectures { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)

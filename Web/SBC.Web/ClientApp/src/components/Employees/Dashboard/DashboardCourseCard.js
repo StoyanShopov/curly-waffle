@@ -21,7 +21,7 @@ export default function DashboardCourseCard(props) {
                     <span className={styles.imgContainer}><img src={course.companyLogoUrl} alt="" /></span>
                 </div>
                 <div className={styles.button}>
-                    <button className={styles.continueButton}><Link to={`/courses/details/${courseId}`} >Continue</Link></button>
+                    <Link to={`/courses/details/${courseId}`} ><button className={styles.continueButton}>Continue</button></Link>
                 </div>
             </div>
         </div>
