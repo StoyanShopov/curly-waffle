@@ -4,11 +4,12 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Web.Controllers;
 
-    using static SBC.Common.GlobalConstants.RolesNamesConstants;
+    using static SBC.Common.GlobalConstants;
 
-    [Authorize(Roles = "Employee")]
+    [Authorize(Roles = RolesNamesConstants.CompanyEmployeeRoleName)]
     [Area("Employee")]
-    public class EmployeesBaseController : ApiController
+    [Route("employees/[controller]")]
+    public abstract class EmployeesBaseController : ApiController
     {
     }
 }
