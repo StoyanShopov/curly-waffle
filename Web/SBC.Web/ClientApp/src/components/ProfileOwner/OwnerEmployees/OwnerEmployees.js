@@ -34,7 +34,7 @@ export default function OwnerEmployees() {
     const RemoveEmployee = async (id) => {
         await OwnerService.CompanyRemoveEmployee(id)
             .then(res => {
-                navigate('/profile/dashboard')//
+                navigate('/profile/owner/dashboard')//
             })
     }
 

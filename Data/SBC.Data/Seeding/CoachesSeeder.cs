@@ -26,6 +26,7 @@
                     CompanyId = 1,
                     DeletedOn = null,
                     IsDeleted = false,
+                    ImageUrl = IvanImageUrl,
                 },
                 new Coach
                 {
@@ -38,6 +39,7 @@
                    CompanyId = 2,
                    DeletedOn = null,
                    IsDeleted = false,
+                   ImageUrl = MariaImageUrl,
                 },
                 new Coach
                 {
@@ -50,6 +52,7 @@
                    CompanyId = 3,
                    DeletedOn = null,
                    IsDeleted = false,
+                   ImageUrl = EmilImageUrl,
                 },
             };
 
