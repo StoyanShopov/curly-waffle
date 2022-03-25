@@ -25,7 +25,7 @@ export default function CoachCard(props) {
                 eDescription: props.coach.description,
                 eVideoUrl: props.coach.videoUrl,
                 eDuration: `${props.coach.duration} minutes discussion`,
-                eResourse: `${23} downloadable resources`,
+                eResource: `${23} downloadable resources`,
             }}
 
         />);

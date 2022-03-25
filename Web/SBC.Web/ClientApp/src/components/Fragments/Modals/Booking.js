@@ -34,7 +34,7 @@ export default function Booking(props) {
                 <div className={style.upContainer + ' ' + style.colorUpContainer}>
                     <button className={style.closeButton} onClick={() => props.handleClose()}>X</button>
                     <p className={style.categoryName}>{props.entity.eCategoryName}</p>
-                    <div>
+                    <div className={style.lector}>
                         <section className={style.lectorSection}>
                             <div>
                                 <div className={style.lectorPic}>
@@ -63,18 +63,20 @@ export default function Booking(props) {
                 </div>
             </div>
             <div className={style.rightContainer}>
-                <div className={style.videoPlayer}>
+                <div>
                     <ResponsivePlayer videoUrl={props.entity.eVideoUrl} />
                 </div>
-                <p>This  {props.isMode == "coach" ? "session" : "course"} includes</p>
-                <p>{props.entity.eDuration}</p>
-                <p>{props.entity.eResourse}</p>
-                <p>Full lifetime access</p>
+                <p className={style.includes}>This  {props.isMode == "coach" ? "session" : "course"} includes</p>
+                <div className={style.resources}>
+                    <p>{props.entity.eDuration}</p>
+                    <p>{props.entity.eResource}</p>
+                    <p>Full lifetime access</p>
 
-                {props.isMode == "couch"
-                    ? <p>Access on mobile</p>
-                    : <p>Sertificate of completion</p>
-                }
+                    {props.isMode == "couch"
+                        ? <p>Access on mobile</p>
+                        : <p>Sertificate of completion</p>
+                    }
+                </div>
                 <div className={style.sessionIncludes}>
                     {props.isMode == "coach"
                         ? <PopupButton
