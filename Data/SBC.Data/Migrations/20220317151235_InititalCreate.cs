@@ -7,6 +7,7 @@ namespace SBC.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // return;
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new

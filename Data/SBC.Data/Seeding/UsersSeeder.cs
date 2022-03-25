@@ -23,8 +23,12 @@
 
             var adminUser = new ApplicationUser
             {
+                FirstName = "Admin",
+                LastName = "Adminov",
                 Email = adminEmail,
                 UserName = adminEmail,
+                CompanyId = 1,
+                ProfileSummary = "Admin Summary",
             };
 
             await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);
@@ -33,8 +37,12 @@
 
             var ownerUser = new ApplicationUser
             {
+                FirstName = "Owner",
+                LastName = "Ownerov",
                 Email = ownerEmail,
                 UserName = ownerEmail,
+                CompanyId = 2,
+                ProfileSummary = "Owner Summary",
             };
 
             await SeedUsersRoles(dbContext, userManager, ownerUser, CompanyOwnerPassword, CompanyOwnerRoleName);
@@ -52,6 +60,8 @@
                         ProfileSummary = "Vasil Vasilev Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -64,6 +74,8 @@
                         ProfileSummary = "Gergana Popova Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -76,6 +88,8 @@
                         ProfileSummary = "Nikolay Stefanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -88,6 +102,8 @@
                         ProfileSummary = "Emil Emilov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -100,6 +116,8 @@
                         ProfileSummary = "Maria Toncheva Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -112,6 +130,8 @@
                         ProfileSummary = "Ivan Ivanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
+                        CompanyId = 2,
+                        Manager = ownerUser,
                     },
                 };
 
