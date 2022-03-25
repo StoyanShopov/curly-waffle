@@ -10,6 +10,7 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
+    using SBC.Services.Messaging;
     using SBC.Web.ViewModels.Administration.Coaches;
     using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Feedback;
@@ -27,6 +28,7 @@
         private readonly IRepository<CategoryCoach> categoriesCoachRepository;
         private readonly IRepository<LanguageCoach> languagesCoachRepository;
         private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
+        private readonly IEmailSender emailSender;
 
 
         public CoachesService(
@@ -36,7 +38,8 @@
             IDeletableEntityRepository<Company> companiesRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
             IRepository<LanguageCoach> languagesCoachRepository,
-            IDeletableEntityRepository<UserCoachSession> sessionsRepository)
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository, 
+            IEmailSender emailSender)
         {
             this.coachesRepository = coachesRepository;
             this.languagesCoachRepository = languagesCoachRepository;
@@ -45,12 +48,14 @@
             this.categoriesRepository = categoriesRepository;
             this.companiesRepository = companiesRepository;
             this.sessionsRepository = sessionsRepository;
+            this.emailSender = emailSender;
         }
 
         public async Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback)
         {
             var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == feedback.CoachId);
             session.LeftFeedback = true;
+      //      emailSender.SendEmailAsync();
             await this.sessionsRepository.SaveChangesAsync();
 
             return true;
