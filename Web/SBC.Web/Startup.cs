@@ -27,17 +27,6 @@
                 .AddIdentity()
                 .AddApplicationConfigurations()
                 .AddSwagger()
-                .AddCors(options =>
-                {
-                    options.AddDefaultPolicy(
-                        builder =>
-                        {
-                            builder.WithOrigins("http://localhost:3000")
-                                .AllowAnyHeader()
-                                .WithMethods("GET", "POST", "PUT", "DELETE")
-                                .AllowCredentials();
-                        });
-                })
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
                 .AddSingleton(this.configuration)
@@ -57,7 +46,6 @@
             if (env.IsDevelopment())
             {
                 app
-                    .ApplySwagger()
                     .UseDeveloperExceptionPage()
                     .UseMigrationsEndPoint();
             }
@@ -69,6 +57,7 @@
 
             app
                 .PrepareDataBase()
+                .ApplySwagger()
                 .UseHttpsRedirection()
                 .UseStaticFiles()
                 .UseCookiePolicy()
@@ -85,7 +74,7 @@
                 })
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapDefaultControllerRoute();
                 })
                 .UseSpaStaticFiles();
 

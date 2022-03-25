@@ -27,8 +27,6 @@ import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
-import Notification from "./SignalR-Notification/Notification";
-
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
 

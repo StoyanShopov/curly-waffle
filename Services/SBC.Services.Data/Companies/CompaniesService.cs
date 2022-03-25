@@ -73,7 +73,7 @@
                 })
                 .ToListAsync();
 
-            var employees = new EmployeesViewModel
+            var employees = new Web.ViewModels.BusinessOwner.Employees.EmployeesViewModel
             {
                 Portions = portions,
                 ViewMoreAvailable = isViewMoreAvailable,
