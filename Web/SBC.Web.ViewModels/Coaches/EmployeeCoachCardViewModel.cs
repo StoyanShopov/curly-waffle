@@ -13,5 +13,11 @@
         public string CalendlyId { get; set; }
 
         public bool Feedbacked { get; set; }
+
+        public string VideoUrl { get; set; }
+
+        public string Description { get; set; }
+
+        public string CompanyName { get; set; }
     }
 }

@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -100,9 +99,12 @@
                         Id = coach.Id,
                         FullName = $"{coach.FirstName} {coach.LastName}",
                         ImageUrl = coach.ImageUrl,
+                        CompanyName=coach.Company.Name,
                         CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                         CalendlyId = coach.CalendlyUrl,
                         Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
+                        VideoUrl = coach.VideoUrl,
+                        Description = coach.Description,
                     })
                     .ToListAsync();
 

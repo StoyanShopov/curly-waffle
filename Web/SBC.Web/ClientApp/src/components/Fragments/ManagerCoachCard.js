@@ -95,7 +95,6 @@ export default function ManagerCoachCard(props) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                //todo use child
                 <ModalRemoveCourse handleClose={handleClose} item="coach" delete={onDelete} />
             </Modal>
         </>

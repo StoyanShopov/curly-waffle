@@ -2,7 +2,7 @@ import { TokenManagement } from "../helpers";
 
 export const baseUrl = 'https://localhost:44319/';
 
-export const calendly_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjQ4MDI2MDY2LCJqdGkiOiI2MjZjZjgyMy04NGRkLTQ5ZWQtOGY5MS02NzczMDgxMDA5YjgiLCJ1c2VyX3V1aWQiOiJkY2QyZTE3OS1hNGY1LTRmNjctOTU0Ny1iMWNlNDAwMGJhZWMifQ.iOG7qLfJqvAiFUn494_4xZszCBpfbKZpTP2RFxQqTbI";
+export const calendly_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjQ4MjI2Njk2LCJqdGkiOiJkMjkyNDZjYi0wZDZiLTRkYzgtYjFiOC1jYzhlYTVkMmJjMmQiLCJ1c2VyX3V1aWQiOiJkY2QyZTE3OS1hNGY1LTRmNjctOTU0Ny1iMWNlNDAwMGJhZWMifQ.JaNQ7ssEfXdKeXbram5zvI7hCHtqkdAxtpX11U_I0k4";
 
 //get user
 // const orgId = "3b91d81f-2042-4964-a5ce-e1c43314347b";

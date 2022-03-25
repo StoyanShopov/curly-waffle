@@ -30,7 +30,7 @@ const getAllEventTypes = async (res) => {
                 'Content-Type': 'application/json'
             }
         }).then(data => {
-            console.log(data.data.collection)
+           // console.log(res)
             data.data.collection.forEach((element, index) => {
                 _data.push({
                     "id": x.id,
@@ -39,9 +39,11 @@ const getAllEventTypes = async (res) => {
                     'calendlyId': x.calendlyId,
                     "feedbacked": x.feedbacked,
                     "imageUrl": x.imageUrl,
+                    "videoUrl": x.videoUrl,
+                    "description": x.description,
+                    "companyName": x.companyName,
 
                     "isBooked": element.uri,
-
                     "scheduling_url": element.scheduling_url,
                     "duration": element.duration,
                     'active': element.active,
@@ -63,12 +65,12 @@ const getCalendlyEvents = async (data) => {
             'Content-Type': 'application/json'
         }
     }).then(res => {
-        console.log(data)
+    //    console.log(data)
         _data = res.data.collection;
-        console.log(_data)
+      //  console.log(_data)
         data.map(x => {
             if (_data.some(y => {
-                console.log(x.feedbacked)
+       //         console.log(x.feedbacked)
                 return y.event_type === x.isBooked && !x.feedbacked
             }
             )) {
@@ -81,6 +83,7 @@ const getCalendlyEvents = async (data) => {
     return data;
 }
 const bookCoach = async (coachId) => {
+    console.log(coachId)
     return await axios({
         method: "POST",
         url: baseUrl + "employees/coaches/book-coach/" + coachId,

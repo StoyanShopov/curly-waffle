@@ -11,12 +11,8 @@ export default function Feedback(props) {
         fd.append("coachId", props.coachId)
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
 
-        console.log(data)
-
-
         EmployeeService.leftFeedback(data)
             .then(res => {
-                console.log(res);//
                 if (res['status'] == 200) {
                     props.onChangeButton();
                     props.handleClose();

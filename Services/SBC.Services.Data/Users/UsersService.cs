@@ -44,7 +44,10 @@
 
         public async Task<ApplicationUser> GetUser(string userId)
         {
-            return await this.userManager.FindByIdAsync(userId);
+            return await this.applicationUsers
+                .AllAsNoTracking()
+                .Include(x => x.Company)
+                .FirstOrDefaultAsync(x => x.Id == userId);
         }
 
         public async Task<Result> RegisterAsync(RegisterInputModel model)
