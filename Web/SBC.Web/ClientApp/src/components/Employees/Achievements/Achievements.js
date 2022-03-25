@@ -3,16 +3,18 @@ import { useEffect, useState } from 'react';
 import styles from './Achievements.module.css';
 import { format } from "date-fns";
 
-import { getDashboard } from '../../../services/employeesService';
-export default function Achievement(props) {
+import { employeeService } from '../../../services/employee-service';
+
+export default function Achievements() {
     const [userCourses, setUserCourses] = useState([]);
     const [userCoachSessions, setUserCoachSessions] = useState([])
 
     useEffect(() => {
-        getDashboard().then(res => {
-            setUserCourses(res.userCourses)
-            setUserCoachSessions(res.userCoachSessions)
-        })
+        employeeService
+            .getDashboard().then(res => {
+                setUserCourses(res.userCourses)
+                setUserCoachSessions(res.userCoachSessions)
+            })
     }, [])
 
     return (

@@ -5,7 +5,7 @@ import style from "./CourseDetails.module.css";
 
 import { courseService } from "../../../../services/course.service.js";
 import { lectureService } from "../../../../services/lecture.service.js";
-import { getAllLectures, getLectureById, getCourseById } from "../../../../services/employeesService.js";
+import { employeeService } from "../../../../services/employee-service";
 
 import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
 import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
@@ -27,14 +27,16 @@ export default function CourseDetails(props) {
 
     useEffect(() => {
         if (props.role === "Employee") {
-            getAllLectures(id, skip)
+            employeeService
+                .getAllLectures(id, skip)
                 .then(response => {
                     setLectures(response.data);
                 });
 
             setSkip(prevSkip => prevSkip + 6)
         } else {
-            lectureService.getAll(id, skip)
+            lectureService
+                .getAll(id, skip)
                 .then(response => {
                     setLectures(response.data);
                 });
@@ -45,13 +47,15 @@ export default function CourseDetails(props) {
 
     useEffect(() => {
         if (props.role === "Employee") {
-            getCourseById(id)
+            employeeService
+                .getCourseById(id)
                 .then(response => {
                     setCourse(response.data);
                     setVideo(response.data.videoUrl);
                 })
         } else {
-            courseService.getById(id)
+            courseService
+                .getById(id)
                 .then(response => {
                     setCourse(response.data);
                     setVideo(response.data.videoUrl);
@@ -82,14 +86,16 @@ export default function CourseDetails(props) {
 
     function onGetNextLectures() {
         if (props.role === "Employee") {
-            getAllLectures(id, skip)
+            employeeService
+                .getAllLectures(id, skip)
                 .then(lectureResult => {
                     setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
                 });
 
             setSkip(prevSkip => prevSkip + 6)
         } else {
-            lectureService.getAll(id, skip)
+            lectureService
+                .getAll(id, skip)
                 .then(lectureResult => {
                     setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
                 });

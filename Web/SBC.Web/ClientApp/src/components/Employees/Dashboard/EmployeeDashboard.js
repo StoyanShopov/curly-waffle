@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react"
-import { getDashboard } from "../../../services/employeesService";
+import { employeeService } from "../../../services/employee-service";
 
 import style from "./EmployeeDashboard.module.css";
 
 import DashboardCoachCard from "./DashboardCoachCard.js";
 import DashboardCourseCard from "./DashboardCourseCard.js";
 
-export default function EmployeeDashboard(props) {
-    // const [dashboard, setDashboard] = useState([]);
+export default function EmployeeDashboard() {
     const [userCourses, setUserCourses] = useState([]);
     const [userCoachSessions, setUserCoachSessions] = useState([]);
 
     useEffect(() => {
-        getDashboard().then(res => {
-            // setDashboard(res)
-            setUserCourses(res.userCourses)
-            setUserCoachSessions(res.userCoachSessions)
-        })
+        employeeService
+            .getDashboard()
+            .then(res => {
+                setUserCourses(res.userCourses)
+                setUserCoachSessions(res.userCoachSessions)
+            })
     }, [])
-
-    console.log(userCourses);
 
     return (
         <div className={style.container}>

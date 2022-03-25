@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 import axios from 'axios';
 
-export const getDashboard = async () => {
+const getDashboard = async () => {
     try {
         const resp = await axios.get(baseUrl + "api/Dashboard", {
             headers: {
@@ -12,7 +12,7 @@ export const getDashboard = async () => {
     } catch (error) { }
 }
 
-export const getAllLectures = async (courseId, skip) => {
+const getAllLectures = async (courseId, skip) => {
     return await axios
         .get(`${baseUrl}api/lectures/All/${courseId}?skip=${skip}`, {
             headers: {
@@ -22,7 +22,7 @@ export const getAllLectures = async (courseId, skip) => {
         });
 }
 
-export const getCourseById = async (courseId) => {
+const getCourseById = async (courseId) => {
     return await axios
         .get(`${baseUrl}api/courses/${courseId}`, {
             headers: {
@@ -32,7 +32,7 @@ export const getCourseById = async (courseId) => {
         });
 }
 
-export const getLectureById = async (lectureId) => {
+const getLectureById = async (lectureId) => {
     return await axios
         .get(`${baseUrl}api/lectures/${lectureId}`, {
             headers: {
@@ -42,7 +42,7 @@ export const getLectureById = async (lectureId) => {
         });
 }
 
-export const getAllResources = async (lectureId) => {
+const getAllResources = async (lectureId) => {
     return await axios
         .get(`${baseUrl}api/resources/All/${lectureId}`, {
             headers: {
@@ -50,4 +50,12 @@ export const getAllResources = async (lectureId) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             }
         });
+}
+
+export const employeeService = {
+    getDashboard,
+    getAllLectures,
+    getCourseById,
+    getLectureById,
+    getAllResources,
 }

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import style from "./LectureCard.module.css"
 
 import { resourceService } from "../../../../services/resource.service";
-import { getAllResources } from "../../../../services/employeesService.js";
+import { employeeService } from "../../../../services/employee-service";
 
 import DeleteLecture from "../DeleteLecture/DeleteLecture"
 import EditLecture from "../EditLecture/EditLecture"
@@ -18,12 +18,14 @@ export default function LectureCard(props) {
 
     useEffect(() => {
         if (!isAdmin) {
-            getAllResources(lecture.id)
+            employeeService
+                .getAllResources(lecture.id)
                 .then(response => {
                     setResources(response.data)
                 });
         } else {
-            resourceService.getAll(lecture.id)
+            resourceService
+                .getAll(lecture.id)
                 .then(response => {
                     setResources(response.data)
                 });
