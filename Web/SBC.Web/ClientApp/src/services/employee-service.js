@@ -68,6 +68,7 @@ const getAllCoaches = async () => {
     )
     return _data;
 }
+
 const getAllEventTypes = async (res) => {
     let _data = [];
     for (let index = 0; index < res.data.length; index++) {
@@ -103,6 +104,7 @@ const getAllEventTypes = async (res) => {
     let newdata = await getCalendlyEvents(_data);
     return newdata;
 }
+
 const getCalendlyEvents = async (data) => {
     let _data = [];
     await axios({
@@ -130,6 +132,7 @@ const getCalendlyEvents = async (data) => {
 
     return data;
 }
+
 const bookCoach = async (coachId) => {
     return await axios({
         method: "POST",

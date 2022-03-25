@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.Areas.Employee.Controlles
+﻿namespace SBC.Web.Areas.Employee.Controllers
 {
     using System.Threading.Tasks;
 
