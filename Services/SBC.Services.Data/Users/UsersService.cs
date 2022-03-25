@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Users
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -39,6 +40,11 @@
             this.identitiesService = identitiesService;
             this.roleManager = roleManager;
             this.userManager = userManager;
+        }
+
+        public async Task<ApplicationUser> GetUser(string userId)
+        {
+            return await this.userManager.FindByIdAsync(userId);
         }
 
         public async Task<Result> RegisterAsync(RegisterInputModel model)

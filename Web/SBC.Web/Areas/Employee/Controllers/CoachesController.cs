@@ -37,7 +37,8 @@
         [HttpPost("left-feadback")]
         public async Task<ActionResult> LeftFeedback(FeedbackInputModel feedback)
         {
-            var result = await this.coachesService.LeftFeedback(this.User, feedback);
+            var user = await this.usersService.GetUser(this.User.Id());
+            var result = await this.coachesService.LeftFeedback(user, feedback);
             return this.GenericResponse(result);
         }
     }

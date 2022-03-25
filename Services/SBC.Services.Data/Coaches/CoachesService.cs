@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -30,7 +31,6 @@
         private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
         private readonly IEmailSender emailSender;
 
-
         public CoachesService(
             IDeletableEntityRepository<Coach> coachesRepository,
             IDeletableEntityRepository<Language> languagesRepository,
@@ -38,7 +38,7 @@
             IDeletableEntityRepository<Company> companiesRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
             IRepository<LanguageCoach> languagesCoachRepository,
-            IDeletableEntityRepository<UserCoachSession> sessionsRepository, 
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository,
             IEmailSender emailSender)
         {
             this.coachesRepository = coachesRepository;
@@ -51,12 +51,18 @@
             this.emailSender = emailSender;
         }
 
-        public async Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback)
+        public async Task<Result> LeftFeedback(ApplicationUser user, FeedbackInputModel feedback)
         {
-            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == feedback.CoachId);
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == user.Id && x.CoachId == feedback.CoachId);
             session.LeftFeedback = true;
-      //      emailSender.SendEmailAsync();
             await this.sessionsRepository.SaveChangesAsync();
+
+            await this.emailSender.SendEmailAsync(
+               from: user.Email,
+               fromName: user.LastName + ' ' + user.FirstName,
+               to: user.Company.Email,
+               subject: $"Feedback from {user.FirstName} {user.LastName} about coach Session",
+               htmlContent: $"<div> < h4 > Top Secret Feedback from {user.FirstName} {user.LastName}</h4><p>Message: {feedback.Message}</p></div>");
 
             return true;
         }
