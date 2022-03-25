@@ -11,12 +11,35 @@
     height: 100%;
     overflow: auto;
 }
+
 .upContainer {    
     display: block;    
     flex-grow: 2;
 }
+
 .colorUpContainer {
     background-color: #16D696;
+}
+
+.closeButton {
+    float: right;
+    background: transparent 0% 0% no-repeat padding-box;
+    color: white;
+    border-style: none;
+    font-size: 20px;
+    padding: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.categoryName {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    padding-left: 2%;
+    top: 6%;
+    position: relative;
 }
 
 .lectorSection {
@@ -40,8 +63,7 @@
 .pCreatedBy {
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 22px;
-    font-style: Montserrat;
+    font-size: 22px;   
     font-weight: 500;
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -50,8 +72,7 @@
 .lectorName {
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 22px;
-    font-style: Montserrat;
+    font-size: 22px;   
     font-weight: bold;
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -65,7 +86,8 @@
 .downContainer {
     max-width: 41%;
     display: block;
-    flex-grow: 3;    
+    flex-grow: 3;
+    padding-left: 5%;
 }
 .downContainer p{
     font-weight: bold;
@@ -90,6 +112,7 @@
 
     .rightContainer p{
         margin: 0;
+        padding-left: 5%
     }
 
     .videoPlayer {

@@ -33,8 +33,8 @@ export default function Booking(props) {
             <div className={style.mainContainer}>
 
                 <div className={style.upContainer + ' ' + style.colorUpContainer}>
-                    <button onClick={() => props.handleClose()}>X</button>
-                    <p>MANAGEMENT</p>
+                    <button className={style.closeButton} onClick={() => props.handleClose()}>X</button>
+                    <p className={style.categoryName}>Management</p>
                     <div>
                         
                         <section className={style.lectorSection}>
