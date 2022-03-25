@@ -8,8 +8,8 @@
 
     [Authorize(Roles = RolesNamesConstants.CompanyEmployeeRoleName)]
     [Area("Employee")]
-    [Route("api/employees/[controller]")]
-    public class EmployeesController : ApiController
+    [Route("employees/[controller]")]
+    public abstract class EmployeesBaseController : ApiController
     {
     }
 }

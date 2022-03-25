@@ -8,7 +8,7 @@
     using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.Feedback;
 
-    public class CoachesController : EmployeesController
+    public class CoachesController : EmployeesBaseController
     {
         private readonly ICoachesService coachesService;
         private readonly IUsersService usersService;
