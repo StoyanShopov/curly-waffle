@@ -17,6 +17,8 @@
 
         public decimal CoachPricePerSession { get; set; }
 
+        public string CoachCalendlyUrl { get; set; }
+
         public string Date { get; set; }
     }
 }

@@ -5,7 +5,7 @@ import styles from './DashboardCoachCard.module.css';
 
 import { getCategoriesByCoachId } from '../../../services/categoryService';
 
-import ModalRemoveCourse from '../../ProfileOwner/Modals/ModalRemoveCourse';
+import Booking from '../../Fragments/Modals/Booking';
 
 export default function DashboardCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
@@ -16,7 +16,6 @@ export default function DashboardCoachCard(props) {
     useEffect(() => {
         getCategoriesByCoachId(coachId)
             .then(response => {
-                console.log(response.data[0].name);
                 setCategories(response.data);
             });
     }, [coachId]);
@@ -33,6 +32,10 @@ export default function DashboardCoachCard(props) {
         setShowModal(true);
     }
 
+    // const onBook = async (coachId) => {
+    //     openModal(<Booking url={props.coach.scheduling_url} openModal={openModal} handleClose={handleClose} coachId={coachId} />);
+    // }
+
     return (
         <>
             <div className={styles.card}>
@@ -42,7 +45,7 @@ export default function DashboardCoachCard(props) {
                 <div>
                     <div className={styles.name}>
                         <span>{categories.length > 0 ?
-                        categories[getRandomInt(categories.length)].name : ""}</span>
+                            categories[getRandomInt(categories.length)].name : ""}</span>
                         <span>{props.coach.coachFirstName} {props.coach.coachLastName}</span>
                     </div>
                     <div className={styles.price}>
@@ -50,18 +53,19 @@ export default function DashboardCoachCard(props) {
                         <span className={styles.imgContainer}><img src={props.coach.coachCompanyLogoUrl} alt="" /></span>
                     </div>
                     <div className={styles.button}>
-                        <button className={styles.bookButton} onClick={() => openModal()}>Book</button>
+                        <button>Button</button>
+                        {/* <button className={styles.removeButton} onClick={() => onBook(coachId)}>Book</button> */}
                     </div>
                 </div>
             </div>
             <Modal
                 style={{
                     content: {
-                        top: '50%',
+                        top: '58%',
                         left: '50%',
                         right: 'auto',
-                        width: '30%',
-                        height: '40%',
+                        width: '65%',
+                        height: '79%',
                         bottom: 'auto',
                         transform: 'translate(-50%, -50%)',
                         padding: '0px',
@@ -71,7 +75,7 @@ export default function DashboardCoachCard(props) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                <ModalRemoveCourse handleClose={handleClose} item="coach" />
+                {/* <Booking handleClose={handleClose} item="coach" /> */}
             </Modal>
         </>
     )
