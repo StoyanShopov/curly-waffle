@@ -1,31 +1,35 @@
-import { PopupButton, InlineWidget } from "react-calendly";
+import { useEffect } from "react";
+import { PopupButton, InlineWidget, CalendlyEventListener } from "react-calendly";
 import { TokenManagement } from "../../../helpers";
 import { EmployeeService } from "../../../services/employee-service";
+
 import style from './Booking.module.css';
 
 import ResponsivePlayer from "../../Admin/Player/VideoPlayer";
 
+
 export default function Booking(props) {
+    const CalendlyEventListener = (e) => {
+        return e.data.event &&
+            e.data.event.indexOf('calendly') === 0 &&
+            e.data.event === 'calendly.event_scheduled'
+    }
 
     const user = TokenManagement.getUserData()
-    const onBook = async () => {
-        console.log("Goes Book")
-        //await EmployeeService.bookCoach(props.coachId)
-        //    .then(res => console.log(res))
-        //    .catch(err => console.log(err))
-        props.onChangeButton();
-        props.openModal(<InlineWidget
-            url={props.url}
-            rootElement={document.getElementById("root")}
-            text="Book"
-            prefill={{
-                email: user.email,
-                name: user.fullname,
-            }}
-           /* style={{width: "320px", height: "620px"}}*/
-        />)
+    
+    useEffect(() => {
+        window.addEventListener(
+            'message',
+           async (e) => {
+               console.log( CalendlyEventListener(e));
+                if (CalendlyEventListener(e)) {
 
-    }
+                             await EmployeeService.bookCoach(props.coachId)
+                             props.onChangeButton();
+
+                        }
+                    })
+    }, []);
     return (
         <div className={style.editContainer}>
 
@@ -36,7 +40,7 @@ export default function Booking(props) {
                     <button className={style.closeButton} onClick={() => props.handleClose()}>X</button>
                     <p className={style.categoryName}>Management</p>
                     <div>
-                        
+
                         <section className={style.lectorSection}>
                             <div>
                                 <div className={style.lectorPic}>
@@ -76,22 +80,18 @@ export default function Booking(props) {
                 <p>Full lifetime access</p>
                 <p>Access on mobile</p>
                 <div className={style.sessionIncludes}>
+                    <PopupButton
+                        className={style.bookButton}
+                        url={props.url}
+                        rootElement={document.getElementById("root")}
+                        text="Book"
+                        prefill={{
+                            email: user.email,
+                            name: user.fullname,
+                        }}
+                    />
+                </div>
 
-                    <button className={style.bookButton} onClick={() => onBook()}>Book</button>
-                                        
-                        <PopupButton
-
-                            url={props.url}                           
-                            rootElement={document.getElementById("root")}
-                            text="Book"
-                            prefill={{
-                                email: user.email,
-                                name: user.fullname,
-                            }}
-                        />                   
-
-                </div>                   
-                
             </div>
 
 

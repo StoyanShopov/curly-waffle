@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Coaches
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using SBC.Common;
@@ -25,5 +26,7 @@
         Task<Result> GetAllWithActiveAsync(int companyId, int skip, int take = 3);
 
         Task<int> GetCountAsync();
+
+        Task LeftFeedback(ClaimsPrincipal user, FeedbackInputModel feedback);
     }
 }

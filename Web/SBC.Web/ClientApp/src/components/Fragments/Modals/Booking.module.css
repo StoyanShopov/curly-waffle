@@ -131,3 +131,9 @@
     font-size: 16px;
     cursor: pointer;
 }
+.mainBookButton{
+    padding: 0 0 0 0;
+border-color: none;
+border: none;
+background-color: transparent;
+}

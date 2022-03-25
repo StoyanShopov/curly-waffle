@@ -28,7 +28,7 @@
         }
 
         [HttpPost("book-coach/{coachId}")]
-        public async Task<ActionResult> GetAll(int coachId)
+        public async Task<ActionResult> Book(int coachId)
         {
             var result = await this.coachesService.BookCoachAsync(this.User.Id(), coachId);
             return this.GenericResponse(result);
@@ -37,7 +37,7 @@
         [HttpPost("left-feadback")]
         public async Task<ActionResult> LeftFeedback(FeedbackInputModel feedback)
         {
-            var result = await this.coachesService.LeftFeedback(this.User.Id(), feedback);
+            var result = await this.coachesService.LeftFeedback(this.User, feedback);
             return this.GenericResponse(result);
         }
     }
