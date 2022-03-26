@@ -16,7 +16,7 @@ namespace SBC.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -403,7 +403,7 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int>("CoachId")
@@ -429,7 +429,7 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
                 {
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int>("CourseId")
@@ -607,6 +607,43 @@ namespace SBC.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Lectures");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UniqueGroupKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Request", b =>
@@ -892,7 +929,7 @@ namespace SBC.Data.Migrations
                     b.HasOne("SBC.Data.Models.Company", "Company")
                         .WithMany("ActiveCoaches")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Coach");
@@ -905,7 +942,7 @@ namespace SBC.Data.Migrations
                     b.HasOne("SBC.Data.Models.Company", "Company")
                         .WithMany("ActiveCourses")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SBC.Data.Models.Course", "Course")
@@ -1036,8 +1073,6 @@ namespace SBC.Data.Migrations
                     b.Navigation("Claims");
 
                     b.Navigation("Courses");
-
-                    //b.Navigation("Employees");
 
                     b.Navigation("Logins");
 

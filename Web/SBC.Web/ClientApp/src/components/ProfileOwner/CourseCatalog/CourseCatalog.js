@@ -104,7 +104,7 @@ export default function CourseCatalog(props) {
                 </div>
                 <div className={styles.cardscontainer}>
                     {courses.length > 0
-                        ? courses.map(x => <ManagerCourseCard key={x.id} course={x} courses={courses} setCourses={setCourses} isProfile={false} connection={props.connection} />)
+                        ? courses.map(x => <ManagerCourseCard key={x.id} course={x} courses={courses} setCourses={setCourses} isProfile={false} connection={props.connection} sendNotification={props.sendNotification} />)
                         : <h3>No courses yet</h3>
                     }
                 </div>

@@ -8,7 +8,6 @@ import { notificationService } from '../../services/notification-service';
 import NotificationModal from './NotificationModal';
 
 const NavBar = (props) => {
-  // const [notifications, setNotofications] = useState([]); // props
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
@@ -24,21 +23,25 @@ const NavBar = (props) => {
   const addNotifications = async () => {
     const json = await notificationService.getNotifications(email);
 
-    props.setNotifications(prevNotifications => [...json, ...prevNotifications]) //TODO: maybe remove prev
+    props.setNotifications(prevNotifications => [...json, ...prevNotifications])
   }
 
   const removeNotification = async (id) => {
-    await notificationService.deleteNotification(id);
+    if (typeof id === 'string') {
+      await notificationService.deleteNotificationByKeyAndEmail(id, email);
+    } else {
+      await notificationService.deleteNotification(id);
+    }
 
     props.setNotifications(prevNotifications => [...prevNotifications.filter(n => n.id !== id)])
   }
 
   const removeNotifications = async () => {
-    props.notifications.forEach(async (notification) => {
-      await notificationService.deleteNotification(notification.id);
-    });
-
     props.setNotifications([])
+
+    props.notifications.forEach(async (notification) => {
+      await removeNotification(notification.id);
+    });
   }
 
   function openModal() {

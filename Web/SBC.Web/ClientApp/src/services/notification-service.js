@@ -18,8 +18,12 @@ const getNotifications = async (email) => {
   return response.data;
 }
 
-const addNotification = async (userEmail, message) => {
-  const response = await axios.post(baseUrl + "api/Notifications?useremail=" + userEmail + '&message=' + message, {
+const addNotification = async (uniquegroupkey, userEmail, message) => {
+  const response = await axios.post(
+    baseUrl 
+    + "api/Notifications?useremail=" + userEmail
+    + '&message=' + message
+    + "&uniquegroupkey=" + uniquegroupkey, {
     headers: {
       Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
     },
@@ -33,7 +37,24 @@ const addNotification = async (userEmail, message) => {
 }
 
 const deleteNotification = async (id) => {
-  const response = await axios.delete(baseUrl + "api/Notifications?id=" + id, {
+  console.log(id)
+  const response = await axios.delete(baseUrl + "api/Notifications/" + id, {
+    headers: {
+      Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+    },
+  })
+
+  if (response.status !== 200) {
+    throw new Error(response.Error)
+  }
+
+  return response.data;
+}
+
+const deleteNotificationByKeyAndEmail = async (uniqueGroupKey, email) => {
+  const response = await axios.delete(baseUrl 
+    + "api/Notifications?uniqueGroupKey=" + uniqueGroupKey
+    + "&userEmail=" + email, {
     headers: {
       Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
     },
@@ -50,4 +71,5 @@ export const notificationService = {
   getNotifications,
   addNotification,
   deleteNotification,
+  deleteNotificationByKeyAndEmail,
 }

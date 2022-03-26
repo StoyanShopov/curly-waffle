@@ -1,6 +1,7 @@
 ﻿import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import {v4 as uuid} from 'uuid';
 
 import styles from './ManagerCourseCard.module.css';
 
@@ -35,23 +36,18 @@ export default function ManagerCourseCard(props) {
                 }                          
             });
     }
-
-    const sendNotification = async (id, message) => {
-      await props.connection.invoke("SendNotifyMessage", {id, message})
-        .then(console.log(message))
-        .catch(err => console.log(err))
-    }
-
+    
     const onSet = () => {
         OwnerService.CompanySetCourseToActive(props.course.id)
             .then(res => {
                 if (res.status) {
-                    console.log('Successful set', res)
+                    const uniqueGroupKey = uuid();
 
                     const sendNotificationFunc = async () => {
-                      let message = "Course was added!!!";
-                      const id = await notificationService.addNotification(email, message)
-                      await sendNotification(id, message)
+                      let message = "Course '" + props.course.title + "' was added!";
+
+                      await notificationService.addNotification(uniqueGroupKey, email, message)
+                      await props.sendNotification(uniqueGroupKey, message)
 
                       navigate('/profile/owner/courses')
                     }

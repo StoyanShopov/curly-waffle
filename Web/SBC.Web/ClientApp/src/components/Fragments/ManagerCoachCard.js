@@ -1,14 +1,17 @@
 ﻿import React, { useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import {v4 as uuid} from 'uuid';
 
 import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
 import { OwnerService } from '../../services';
+import { notificationService } from '../../services/notification-service';
 
 import styles from './ManagerCoachCard.module.css';
 
 export default function ManagerCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
+    const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
 
     const coachId = props.coach.id;
     let navigate = useNavigate();
@@ -38,8 +41,18 @@ export default function ManagerCoachCard(props) {
         OwnerService.CompanySetCoachToActive(props.coach.id)
             .then(res => {
                 if (res.status) {
-                    console.log('Successful set', res);//
-                    navigate('/profile/owner/coaches');//
+                    const uniqueGroupKey = uuid();
+
+                    const sendNotificationFunc = async () => {
+                      let message = "Coach '" + props.coach.fullName + "' was added!";
+
+                      await notificationService.addNotification(uniqueGroupKey, email, message)
+                      await props.sendNotification(uniqueGroupKey, message)
+
+                      navigate('/profile/owner/coaches')
+                    }
+                    
+                    sendNotificationFunc();
                 }
                 else {
                     /*console.log(error)//*/

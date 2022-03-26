@@ -4,7 +4,7 @@
 
     public class NotifyMessage
     {
-        public int Id { get; set; }
+        public string UniqueGroupKey { get; set; }
 
         [Required(AllowEmptyStrings = true)]
         public string Message { get; set; }

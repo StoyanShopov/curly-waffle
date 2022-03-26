@@ -40,9 +40,9 @@
             if (this.connections
                 .TryGetValue(this.Context.ConnectionId, out UserConnection user))
             {
-                var notificationDetailsViewModel = new NotificationDetailsViewModel
+                var notificationDetailsViewModel = new
                 {
-                    Id = notification.Id,
+                    Id = notification.UniqueGroupKey,
                     Message = notification.Message,
                     UserEmail = user.Email,
                 };

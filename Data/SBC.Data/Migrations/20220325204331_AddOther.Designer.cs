@@ -10,15 +10,15 @@ using SBC.Data;
 namespace SBC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220207115046_AddPictureUrlProperty")]
-    partial class AddPictureUrlProperty
+    [Migration("20220325204331_AddOther")]
+    partial class AddOther
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -305,17 +305,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("CategoryId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("CategoryCoaches");
                 });
@@ -344,6 +336,9 @@ namespace SBC.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -406,6 +401,58 @@ namespace SBC.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
+                {
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoachId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("CompanyId", "CoachId");
+
+                    b.HasIndex("CoachId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("CompanyCoaches");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
+                {
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CompanyId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("CompanyCourses");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
@@ -526,17 +573,9 @@ namespace SBC.Data.Migrations
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("LanguageId", "CoachId");
 
                     b.HasIndex("CoachId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("LanguageCoaches");
                 });
@@ -570,6 +609,43 @@ namespace SBC.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Lectures");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UniqueGroupKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Request", b =>
@@ -808,7 +884,7 @@ namespace SBC.Data.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.HasOne("SBC.Data.Models.ApplicationUser", "Manager")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("ManagerId");
 
                     b.Navigation("Company");
@@ -842,6 +918,44 @@ namespace SBC.Data.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.CompanyCoach", b =>
+                {
+                    b.HasOne("SBC.Data.Models.Coach", "Coach")
+                        .WithMany("ClientCompanies")
+                        .HasForeignKey("CoachId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SBC.Data.Models.Company", "Company")
+                        .WithMany("ActiveCoaches")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coach");
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("SBC.Data.Models.CompanyCourse", b =>
+                {
+                    b.HasOne("SBC.Data.Models.Company", "Company")
+                        .WithMany("ActiveCourses")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SBC.Data.Models.Course", "Course")
+                        .WithMany("Companies")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
@@ -967,13 +1081,13 @@ namespace SBC.Data.Migrations
                     b.Navigation("Roles");
 
                     b.Navigation("Sessions");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SBC.Data.Models.Coach", b =>
                 {
                     b.Navigation("Categories");
+
+                    b.Navigation("ClientCompanies");
 
                     b.Navigation("Courses");
 
@@ -984,6 +1098,10 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.Company", b =>
                 {
+                    b.Navigation("ActiveCoaches");
+
+                    b.Navigation("ActiveCourses");
+
                     b.Navigation("Coaches");
 
                     b.Navigation("Employees");
@@ -991,6 +1109,8 @@ namespace SBC.Data.Migrations
 
             modelBuilder.Entity("SBC.Data.Models.Course", b =>
                 {
+                    b.Navigation("Companies");
+
                     b.Navigation("Lectures");
 
                     b.Navigation("Users");

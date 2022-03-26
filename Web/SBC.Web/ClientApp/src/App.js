@@ -30,7 +30,6 @@ import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
 
-
 function App() {
   const [connection, setConnection] = useState([]);
   const [notifications, setNotifications] = useState([]);
@@ -44,7 +43,6 @@ function App() {
     }
 
     connect();
-    // getMessages();
   }, []);
 
   const joinRoom = async (email) => {
@@ -72,6 +70,12 @@ function App() {
       console.log(e);
     }
   }
+
+  const sendNotification = async (uniqueGroupKey, message) => {
+    await connection.invoke("SendNotifyMessage", {uniqueGroupKey,  message})
+      .then(console.log(message))
+      .catch(err => console.log(err))
+  }
   
   const [_user, _setUser] = useState(TokenManagement.getUserData());
   const [_role, _setRole] = useState(TokenManagement.getUserRole());
@@ -93,8 +97,8 @@ function App() {
           {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}
           {hasRole(_role, ['Employee']) && <Route path='/profile/*' element={<EmployeeProfile editUser={() => setUser()} />} />}
 
-          {hasRole(_role, ['Owner']) && <Route path='/owner/coaches/coachCatalog' element={<CoachCatalog connection={connection} />} />}
-          {hasRole(_role, ['Owner']) && <Route path='/owner/courses/courseCatalog' element={<CourseCatalog connection={connection} />} />}
+          {hasRole(_role, ['Owner']) && <Route path='/owner/coaches/coachCatalog' element={<CoachCatalog connection={connection} sendNotification={sendNotification} />} />}
+          {hasRole(_role, ['Owner']) && <Route path='/owner/courses/courseCatalog' element={<CourseCatalog connection={connection} sendNotification={sendNotification} />} />}
           {/* <Route path="/profileOwner" element={<OwnerDashboard />} /> */}
           <Route path="/admin/courses" element={<AllCourses />} />
           <Route path="/admin/courses/details/:id" element={<CourseDetails />} />

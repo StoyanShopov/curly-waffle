@@ -1,6 +1,7 @@
 ﻿namespace SBC.Services.Data.Companies
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -327,10 +328,13 @@
 
             return new ResultModel(result);
         }
-        //TODO: Remove method
-        public Task<Result> GetAllEmployeesAsync(int companyId)
-        {
-            throw new NotImplementedException();
-        }
+
+        // TODO: Improve
+        public Task<IEnumerable<string>> GetAllEmployeesAsync(string companyName)
+            => this.companiesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == companyName.ToLower())
+                .Select(c => c.Employees.Select(e => e.Email))
+                .FirstOrDefaultAsync();
     }
 }

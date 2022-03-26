@@ -7,7 +7,7 @@ export default function EditProfile(props) {
     <div className={css.NotificationContainer}>
       {props.notifications.map(notification => (
         <div key={notification.id} className={css.HeaderDiv}>
-          <h3>{notification.id}:<span> {notification.message}</span> </h3>
+          <h3>Notification:<span> {notification.message}</span> </h3>
           <Link to="" onClick={() => props.removeNotification(notification.id)}>X</Link>
         </div>
       ))}

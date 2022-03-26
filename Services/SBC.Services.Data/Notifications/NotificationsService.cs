@@ -7,16 +7,26 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
+    using SBC.Services.Data.Companies;
+    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Notification;
+    using SBC.Web.ViewModels.User;
 
     public class NotificationsService : INotificationsService
     {
         private readonly IDeletableEntityRepository<Notification> notificationRepository;
+        private readonly IUsersService usersService;
+        private readonly ICompaniesService companiesService;
 
-        public NotificationsService(IDeletableEntityRepository<Notification> notificationRepository)
+        public NotificationsService(
+            IDeletableEntityRepository<Notification> notificationRepository,
+            IUsersService usersService,
+            ICompaniesService companiesService)
         {
             this.notificationRepository = notificationRepository;
+            this.usersService = usersService;
+            this.companiesService = companiesService;
         }
 
         public async Task<Result> GetAllByEmailAsyc(string email)
@@ -30,21 +40,30 @@
             return new ResultModel(result);
         }
 
-        public async Task<Result> AddAsync(string userEmail, string message)
+        public async Task<Result> AddAsync(string uniqueGroupKey, string userEmail, string message)
         {
-            var notification = new Notification
-            {
-                UserEmail = userEmail,
-                Message = message,
-            };
+            var user = await this.usersService.GetByEmailAsync<UserConnection>(userEmail);
 
-            await this.notificationRepository.AddAsync(notification);
+            var emails = await this.companiesService.GetAllEmployeesAsync(user.CompanyName);
+
+            foreach (var email in emails)
+            {
+                var notification = new Notification
+                {
+                    UniqueGroupKey = uniqueGroupKey,
+                    UserEmail = email,
+                    Message = message,
+                };
+
+                await this.notificationRepository.AddAsync(notification);
+            }
+
             await this.notificationRepository.SaveChangesAsync();
 
-            return new ResultModel(notification.Id);
+            return true;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<Result> DeleteAsync(int id)
         {
             var notification = await this.notificationRepository
                 .AllAsNoTracking()
@@ -55,6 +74,25 @@
                 this.notificationRepository.Delete(notification);
                 await this.notificationRepository.SaveChangesAsync();
             }
+
+            return true;
+        }
+
+        public async Task<Result> DeleteAsync(string uniqueGroupKey, string email)
+        {
+            var notification = await this.notificationRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(n =>
+                    n.UniqueGroupKey == uniqueGroupKey
+                    && n.UserEmail == email);
+
+            if (notification is not null)
+            {
+                this.notificationRepository.Delete(notification);
+                await this.notificationRepository.SaveChangesAsync();
+            }
+
+            return true;
         }
     }
 }

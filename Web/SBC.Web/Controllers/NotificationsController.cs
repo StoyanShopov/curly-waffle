@@ -31,6 +31,7 @@
         public async Task<ActionResult> Create([FromQuery] CreateNotificationInputModel model)
         {
             var result = await this.notificationsService.AddAsync(
+                model.UniqueGroupKey,
                 model.UserEmail,
                 model.Message);
 
@@ -38,8 +39,22 @@
         }
 
         [HttpDelete]
-        public async Task Remove(int id)
-            => await this.notificationsService
+        [Route("{id}")]
+        public async Task<ActionResult> Remove(int id)
+        {
+            var result = await this.notificationsService
                 .DeleteAsync(id);
+
+            return this.GenericResponse(result);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Remove([FromQuery] DeleteNotificationInputModel model)
+        {
+            var result = await this.notificationsService
+                .DeleteAsync(model.UniqueGroupKey, model.UserEmail);
+
+            return this.GenericResponse(result);
+        }
     }
 }
