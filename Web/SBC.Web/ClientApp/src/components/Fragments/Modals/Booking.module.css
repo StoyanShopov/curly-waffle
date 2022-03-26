@@ -12,13 +12,18 @@
     overflow: auto;
 }
 
-.upContainer {
+.colorUpContainerBlue {
+    background-color: #296CFB;
     display: block;
     flex-grow: 2;
+    height:36%;
 }
 
-.colorUpContainer {
+.colorUpContainerGreen {
     background-color: #16D696;
+    display: block;
+    flex-grow: 2;
+    height: 36%;
 }
 
 .closeButton {
@@ -100,17 +105,38 @@
     max-width: 41%;
     display: block;
     flex-grow: 3;
-    padding-left: 5%;
+    padding-left: 5%;  
 }
 
     .downContainer p {
         font-weight: bold;
+        margin-top: 11%;
     }
 
 
-.ulStyle {
-    list-style-type: square;
+.ulStyleGreen {
+    list-style-type: none;
 }
+
+    .ulStyleGreen li::before {
+        content: "\25AA";
+        color: #16D696;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em
+    }
+
+.ulStyleBlue {
+    list-style-type: none;
+}
+
+    .ulStyleBlue li::before {
+        content: "\25AA";
+        color: #296CFB;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em
+    }
 
 .rightContainer {
     position: absolute;
@@ -130,6 +156,7 @@
     flex-direction: column;
     align-content: space-around;
     row-gap: 20px;
+    position: relative;
 }
 
 .resources {
@@ -137,6 +164,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 7px;
+    position: relative;
 }
 
     .resources p {
@@ -145,13 +173,13 @@
     }
 
 .includes {
-    font-weight: bold;    
+    font-weight: bold;
     margin: 0;
-    padding-left: 13%;
+    padding-left: 19%;
 }
 
 .sessionIncludes {
-    align-self: center;    
+    align-self: center;
 }
 
 .bookButton {

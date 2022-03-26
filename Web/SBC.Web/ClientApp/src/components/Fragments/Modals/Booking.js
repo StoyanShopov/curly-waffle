@@ -17,6 +17,10 @@ export default function Booking(props) {
 
     const user = TokenManagement.getUserData()
 
+    const color = `${(props.isMode == "coach") ? style.colorUpContainerGreen : style.colorUpContainerBlue}`
+
+    const bulletColor = `${(props.isMode == "coach") ? style.ulStyleGreen : style.ulStyleBlue}`
+
     useEffect(() => {
         window.addEventListener(
             'message',
@@ -31,7 +35,7 @@ export default function Booking(props) {
     return (
         <div className={style.editContainer}>
             <div className={style.mainContainer}>
-                <div className={style.upContainer + ' ' + style.colorUpContainer}>
+                <div className={color}>
                     <button className={style.closeButton} onClick={() => props.handleClose()}>X</button>
                     <p className={style.categoryName}>{props.entity.eCategoryName}</p>
                     <div className={style.lector}>
@@ -55,7 +59,7 @@ export default function Booking(props) {
                         {props.entity.eDescription}
                     </div>
                     <p>What you will learn</p>
-                    <ul className={style.ulStyle}>
+                    <ul className={bulletColor}>
                         <li>Learn more information about {props.entity.eCategoryName.toLowerCase()}</li>
                         <li>Improve your strategic skills</li>
                         <li>Solve problems</li>
@@ -70,13 +74,18 @@ export default function Booking(props) {
 
                     <p className={style.includes}>This  {props.isMode == "coach" ? "session" : "course"} includes</p>
                     <div className={style.resources}>
-                        <p>{props.entity.eDuration}</p>
-                        <p>{props.entity.eResource}</p>
-                        <p>Full lifetime access</p>
 
-                        {props.isMode == "couch"
-                            ? <p>Access on mobile</p>
-                            : <p>Sertificate of completion</p>
+                        {props.isMode == "coach"
+                            ? <p>&#128490; &nbsp; &nbsp; {props.entity.eDuration}</p>
+                            : <p>&#9655; &nbsp; &nbsp; {props.entity.eDuration}</p>
+                        }
+
+                        <p>&#128459; &nbsp; &nbsp; {props.entity.eResource}</p>
+                        <p>&#8734; &nbsp; &nbsp; Full lifetime access</p>
+
+                        {props.isMode == "coach"
+                            ? <p>&#128241; &nbsp; &nbsp; Access on mobile</p>
+                            : <p>&#127942; &nbsp; &nbsp; Sertificate of completion</p>
                         }
                     </div>
                     <div className={style.sessionIncludes}>
