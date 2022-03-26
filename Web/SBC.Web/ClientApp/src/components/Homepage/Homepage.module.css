@@ -16,9 +16,106 @@
 
 .rightHalf {
     width: 50%;
-    height: 100%;
-    margin-top: 8%;
+    height: auto;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-wrap: wrap;
 }
+
+.picDivOne {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    height: 44%;
+}
+
+.path5 {
+    height: auto;
+    position: relative;
+    max-height: 93%;     
+}
+
+.image7 {   
+    height: auto;
+    position: absolute;
+    left: 34%;
+    top: 6%;
+}
+
+.textDiv {
+    position: relative;
+    min-height: 9%;
+}
+
+.hTwo {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.pTwo {
+    font-size: 22px;
+    width: 617px;
+    line-height: 42px;
+    text-align: right;
+}
+
+.buttonsDiv {
+    min-height: 4%;
+    position: relative;
+}
+
+.exploreCoursesBtn {   
+    width: 250px;
+    height: 70px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.findCoachesBtn {
+    margin-left: 25px;   
+    width: 250px;
+    height: 70px;
+    border-color: #296CFB;
+    font-size: 22px;
+    color: #296CFB;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.picDiv {
+    height: 35%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.path7 {
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+
+.Group53 {
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    height: auto;
+}
+
+
+
+
+
+
+
 
 .hOne {
     float: left;
@@ -115,63 +212,9 @@
     font-size: 19px;
 }
 
-.hTwo {
-    font-size: 48px;
-    font-weight: bold;
-}
 
-.image7 {
-    max-width: 100%;
-    padding-left: 15%;
-}
 
-.pTwo {
-    font-size: 22px;
-    width: 617px;
-    line-height: 42px;
-    text-align: right;
-}
 
-.exploreCoursesBtn {
-    margin-top: 5%;
-    margin-left: 7%;
-    margin-bottom: 8%;
-    width: 250px;
-    height: 70px;
-    background-color: #296CFB;
-    border-color: #296CFB;
-    font-size: 22px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-.findCoachesBtn {
-    margin-top: 5%;
-    margin-left: 25px;
-    margin-bottom: 8%;
-    width: 250px;
-    height: 70px;
-    border-color: #296CFB;
-    font-size: 22px;
-    color: #296CFB;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-.picDiv {
-    position: absolute;
-    left: 54%;
-}
 
-.path7 {
-    position: absolute;
-}
-
-.Group53 {
-    position: absolute;
-    top: 150px;
-    left: 300px;
-}
