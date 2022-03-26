@@ -21,6 +21,7 @@
                     Description = PlanningLectureDescription,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
                 new Lecture
                 {
@@ -28,6 +29,7 @@
                     Description = BrandingLectureDescription,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
                 new Lecture
                 {
@@ -35,6 +37,7 @@
                     Description = BusinessModelLectureDescription,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
                 },
             };
 

@@ -26,6 +26,7 @@
                     CalendlyUrl = IvanCalendlyUrl,
                     DeletedOn = null,
                     IsDeleted = false,
+                    ImageUrl = IvanImageUrl,
                 },
                 new Coach
                 {
@@ -38,6 +39,7 @@
                    CalendlyUrl = MariaCalendlyUrl,
                    DeletedOn = null,
                    IsDeleted = false,
+                   ImageUrl = MariaImageUrl,
                 },
                 new Coach
                 {
@@ -51,6 +53,7 @@
                    CalendlyUrl = EmilCalendlyUrl,
                    DeletedOn = null,
                    IsDeleted = false,
+                   ImageUrl = EmilImageUrl,
                 },
             };
 

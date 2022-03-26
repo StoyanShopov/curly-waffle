@@ -58,12 +58,12 @@
         public class ResourcesConstants
         {
             public const string IntroductionVideoResourceName = "Introduction Video Resource";
-            public const string MarketingPDFResourceName = "Marketing PDF Resource";
-            public const string DigitalMarketAudioResourceName = "Digital Market Audio Resource";
+            public const string MarketingVideoResourceName = "Marketing Video Resource";
+            public const string DigitalMarketImageResourceName = "Digital Market Image Resource";
 
-            public const string IntroductionVideoFileUrl = "C:\\SBC\\Project";
-            public const string MarketingPDFFileUrl = "D:\\SBC\\Project";
-            public const string DigitalMarketAudioFileUrl = "F:\\SBC\\Project";
+            public const string IntroductionVideoFileUrl = "https://www.youtube.com/watch?v=uKYXK7K24J0";
+            public const string MarketingVideoFileUrl = "https://www.youtube.com/watch?v=yj2Y5O88lIw";
+            public const string DigitalMarketImageFileUrl = "https://cdn.pixabay.com/photo/2022/02/28/15/28/sea-7039471_960_720.jpg";
         }
 
         public class LecturesConstants
@@ -90,6 +90,10 @@
             public const string ManagementVideoUrl = "https://www.youtube.com/watch?v=Kte7e8IspJw";
             public const string LeadershipVideoUrl = "https://www.youtube.com/watch?v=RDv_s0G91Ik";
             public const string DesignVideoUrl = "https://www.youtube.com/watch?v=NHahAT3oW7Y";
+
+            public const string ManagementPictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/9f4e95f9-3f91-4f9e-b22b-e5cb09537360";
+            public const string LeadershipPictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/b0a4e660-36b8-4252-b24d-3b20ef3e8ba8";
+            public const string DesignPictureUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/11033e92-a2e6-46d8-a2e4-d3e82bfc50e8";
         }
 
         public class CoachConstants
@@ -113,6 +117,10 @@
             public const string IvanCalendlyUrl = "https://calendly.com/1";
             public const string MariaCalendlyUrl = "https://calendly.com/2";
             public const string EmilCalendlyUrl = "https://calendly.com/3";
+
+            public const string IvanImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/ced7f6bb-5ada-4b69-b470-834e748326fe";
+            public const string MariaImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c238e4e5-ab4e-4771-a6c8-be3f6e108a91";
+            public const string EmilImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/aec644b0-4fe9-4b54-a114-20cc3a0d6bb7";
         }
 
         public class RequestsConstants
