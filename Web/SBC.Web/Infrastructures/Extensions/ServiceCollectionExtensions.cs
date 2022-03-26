@@ -1,6 +1,7 @@
 ﻿namespace SBC.Web.Infrastructures.Extensions
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -32,12 +33,14 @@
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
+    using SBC.Services.Data.Notifications;
     using SBC.Services.Data.Resources;
     using SBC.Services.Data.Users;
     using SBC.Services.Identity;
     using SBC.Services.Identity.Contracts;
     using SBC.Services.Messaging;
     using SBC.Services.Search;
+    using SBC.Web.ViewModels.User;
 
     public static class ServiceCollectionExtensions
     {
@@ -53,25 +56,26 @@
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddTransient<IBusinessOwnerDashboardService, BusinessOwnerDashboardService>()
-                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
-                .AddTransient<IIdentitiesService, IdentitiesService>()
-                .AddTransient<IUsersService, UsersService>()
                 .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
                 .AddSingleton<IBlobService, BlobService>()
+                .AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>())
+                .AddTransient<ICategoriesService, CategoriesService>()
                 .AddTransient<IClientsService, ClientsService>()
                 .AddTransient<ICoursesService, CoursesService>()
                 .AddTransient<ICompaniesService, CompaniesService>()
                 .AddTransient<ICoachesService, CoachesService>()
-                .AddTransient<ICategoriesService, CategoriesService>()
                 .AddTransient<IDasboardService, DashboardService>()
-                .AddTransient<ILecturesService, LecturesService>()
-                .AddTransient<IResourcesService, ResourcesService>()
+                .AddTransient<IEmailSender>(x => new SendGridEmailSender(configuration["SendGridAPIKey"]))
+                .AddTransient<IIdentitiesService, IdentitiesService>()
                 .AddTransient<ILanguagesService, LanguagesService>()
+                .AddTransient<ILecturesService, LecturesService>()
+                .AddTransient<INotificationsService, NotificationsService>()
+                .AddTransient<IResourcesService, ResourcesService>()
                 .AddScoped<SearchSeeder>()
                 .AddSingleton<IElasticClient>(new ElasticClient())
                 .AddTransient<ISearchService, SearchService>()
-                .AddTransient<ISearchSeedersService, SearchSeedersService>();
+                .AddTransient<ISearchSeedersService, SearchSeedersService>()
+                .AddTransient<IUsersService, UsersService>();
 
                 // To setup ElasticSearch do:
                 // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip

@@ -1,6 +1,7 @@
 ﻿namespace SBC.Services.Data.Companies
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -73,7 +74,7 @@
                 })
                 .ToListAsync();
 
-            var employees = new EmployeesViewModel
+            var employees = new Web.ViewModels.BusinessOwner.Employees.EmployeesViewModel
             {
                 Portions = portions,
                 ViewMoreAvailable = isViewMoreAvailable,
@@ -300,6 +301,14 @@
                 .AllAsNoTracking()
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
+        //public async Task<int> GetNameByUserEmailAsync(string email)
+        //{
+        //    this.companiesRepository
+        //        .AllAsNoTracking()
+        //        .Include(c => c.Employees)
+        //        .Where(c => c.Employees.Any(e => e.NormalizedEmail == email.ToUpper())
+        //}
+         
         public async Task<int> GetIdByNameAsync(string name)
             => await this.companiesRepository
                 .AllAsNoTracking()
@@ -319,5 +328,13 @@
 
             return new ResultModel(result);
         }
+
+        // TODO: Improve
+        public Task<IEnumerable<string>> GetAllEmployeesAsync(string companyName)
+            => this.companiesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Name.ToLower() == companyName.ToLower())
+                .Select(c => c.Employees.Select(e => e.Email))
+                .FirstOrDefaultAsync();
     }
 }

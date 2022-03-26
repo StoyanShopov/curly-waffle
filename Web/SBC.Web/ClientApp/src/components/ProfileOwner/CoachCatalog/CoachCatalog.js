@@ -10,7 +10,7 @@ import { LanguagesList } from "../CourseCatalog/LanguagesList";
 
 import styles from "./CoachCatalog.module.css";
 
-export default function CoachCatalog() {
+export default function CoachCatalog(props) {
     const [coaches, setCoaches] = useState([]);
 
     const [isPending, setIsPending] = useState(false);
@@ -104,7 +104,7 @@ export default function CoachCatalog() {
                 </div>
                 <div className={styles.cardscontainer}>
                     {coaches.length > 0
-                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={false} />)
+                        ? coaches.map(x => <ManagerCoachCard key={x.id} coach={x} coaches={coaches} setCoaches={setCoaches} isProfile={false} connection={props.connection} sendNotification={props.sendNotification} />)
                         : <h3>No coaches yet</h3>
                     }
                 </div>
