@@ -43,5 +43,16 @@
 
             return this.GenericResponse(courses);
         }
+
+        [HttpPost("{courseId}")]
+        public async Task<ActionResult> PostAsync(int courseId)
+        {
+            var userId = this.User.Id();
+
+            var isEnrolled = await this.courseService.EnrollCourse(userId, courseId);
+
+            return this.GenericResponse(isEnrolled);
+
+        }
     }
 }

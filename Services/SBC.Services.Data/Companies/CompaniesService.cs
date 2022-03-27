@@ -16,7 +16,7 @@
     using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Company;
     using SBC.Web.ViewModels.Courses;
-    using SBC.Web.ViewModels.Employees;
+
     using static SBC.Common.ErrorMessageConstants.Company;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 

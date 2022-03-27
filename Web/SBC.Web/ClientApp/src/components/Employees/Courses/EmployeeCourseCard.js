@@ -1,13 +1,17 @@
-import styles from './EmployeeCourseCard.module.css'
-import Modal from "react-modal/lib/components/Modal";
-
 import React, { useState, useEffect } from "react";
-import CourseModal from '../Courses/EmplyeeCourseModal.js'
 import { Link } from 'react-router-dom';
+
+import styles from './EmployeeCourseCard.module.css'
+
+import Modal from "react-modal/lib/components/Modal";
+import BookingModal from'../../Fragments/Modals/Booking.js'
+import { courseService } from "../../../services/employeeCourseService";
 
 export default function EmployeeCourseCard(props) {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const courseModalDetails = props.courseModalDetails;
+    const [isEnroled, setIsEnrolled] = useState(props.course.isEnrolled)
 
     let subtitle = {
         content: {
@@ -37,6 +41,22 @@ export default function EmployeeCourseCard(props) {
         setModalIsOpen(false);
     }
 
+    function onSetCoursemodalDetails (){
+        courseService.getModalDetailsById(props.course.id)
+        .then(response => {
+            console.log(response)
+            props.setCourseModalDetails(response.data)
+            openModal()
+        })
+    }
+
+    function onEnrollUser (){
+        courseService.enrollUser(props.course.id)
+        .then(response => {
+            setIsEnrolled(response.data)
+        })
+    }
+
     return (
         <>
             <div className={styles.card}>
@@ -55,9 +75,9 @@ export default function EmployeeCourseCard(props) {
                     </div>
                     <div className={styles.button}>
                         {
-                        props.course.isEnrolled
+                        isEnroled
                             ?<Link to={`/courses/details/${props.course.id}`}><button className={styles.practiceButton}>Continue</button></Link>
-                            :<button className={styles.removeButton} onClick={() => openModal() }>Enroll</button>}
+                            :<button className={styles.removeButton} onClick={() => onSetCoursemodalDetails() }>Enroll</button>}
 
                     </div>
                 </div>
@@ -69,7 +89,24 @@ export default function EmployeeCourseCard(props) {
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
             >
-                <CourseModal  />
+                <BookingModal  key={1}
+            isMode={"course"}
+            url=""
+            onEnrollUser = {onEnrollUser}
+            openModal={openModal}
+            handleClose={closeModal}
+            entity={{
+                coachId: courseModalDetails.id,
+                courseId: props.course.id,
+                eType: "Course",
+                eName: courseModalDetails.coachName,
+                eCompanyName: courseModalDetails.companyName,
+                eCoachImgUrl: courseModalDetails.coachPictureUrl,
+                eCategoryName: courseModalDetails.companyCategoryName,
+                eDescription: courseModalDetails.description,
+                eVideoUrl: courseModalDetails.videoUrl,
+                eDuration: `${courseModalDetails.videosDuration} minutes discussion`,
+                eResource: `${courseModalDetails.lecturesCount} downloadable resources`,}}/>
             </Modal>
         </>
     )

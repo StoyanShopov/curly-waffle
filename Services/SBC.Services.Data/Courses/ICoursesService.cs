@@ -26,5 +26,7 @@
         Task<int> GetCountAsync();
 
         Task<Result> GetByIdEmployeeAsync(int id);
+
+        Task<Result> EnrollCourse(string userId, int courseId);
     }
 }

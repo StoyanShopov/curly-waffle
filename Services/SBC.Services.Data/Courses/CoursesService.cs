@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Courses
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -21,15 +22,18 @@
         private readonly IDeletableEntityRepository<Course> coursesRepository;
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IDeletableEntityRepository<UserCourse> usersCoursesRepository;
 
         public CoursesService(
             IDeletableEntityRepository<Course> coursesRepository,
             IDeletableEntityRepository<Coach> coachesRepository,
-            IDeletableEntityRepository<ApplicationUser> usersRepository)
+            IDeletableEntityRepository<ApplicationUser> usersRepository,
+            IDeletableEntityRepository<UserCourse> usersCoursesRepository)
         {
             this.coursesRepository = coursesRepository;
             this.coachesRepository = coachesRepository;
             this.usersRepository = usersRepository;
+            this.usersCoursesRepository = usersCoursesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateCourseInputModel courseModel)
@@ -290,13 +294,30 @@
                     VideoUrl = x.VideoUrl,
                     VideosDuration = resourcesDuration,
                     LecturesCount = x.Lectures.Count(),
-                    CompanyLogoUrl = x.Coach.Company.LogoUrl,
+                    CompanyName = x.Coach.Company.Name,
+                    CompanyCategoryName = x.Category.Name,
                     CoachName = $"{x.Coach.FirstName} {x.Coach.LastName}",
                     CoachPictureUrl = x.Coach.ImageUrl,
                 })
                 .FirstOrDefaultAsync();
 
             return new ResultModel(result);
+        }
+
+        public async Task<Result> EnrollCourse(string userId, int courseId)
+        {
+            var userCourse = new UserCourse
+            {
+                UserId = userId,
+                CourseId = courseId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddMonths(3),
+            };
+
+            await this.usersCoursesRepository.AddAsync(userCourse);
+            await this.usersCoursesRepository.SaveChangesAsync();
+
+            return true;
         }
     }
 }
