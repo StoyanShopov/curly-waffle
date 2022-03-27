@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
+    using static SBC.Common.GlobalConstants.LecturesConstants;
     using static SBC.Common.GlobalConstants.ResourcesConstants;
 
     internal class ResourcesSeeder : ISeeder
@@ -23,24 +25,30 @@
                     FileType = FileType.Video,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
+                    Lecture = dbContext.Lectures.Where(x => x.Name == PlanningLectureName).FirstOrDefault(),
                 },
                 new Resource
                 {
-                    Name = MarketingPDFResourceName,
-                    FileUrl = MarketingPDFFileUrl,
+                    Name = MarketingVideoResourceName,
+                    FileUrl = MarketingVideoFileUrl,
                     Size = 200,
-                    FileType = FileType.Pdf,
+                    FileType = FileType.Video,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
+                    Lecture = dbContext.Lectures.Where(x => x.Name == BrandingLectureName).FirstOrDefault(),
                 },
                 new Resource
                 {
-                    Name = DigitalMarketAudioResourceName,
-                    FileUrl = DigitalMarketAudioFileUrl,
+                    Name = DigitalMarketImageResourceName,
+                    FileUrl = DigitalMarketImageFileUrl,
                     Size = 120,
-                    FileType = FileType.Audio,
+                    FileType = FileType.Image,
                     DeletedOn = null,
                     IsDeleted = false,
+                    CreatedOn = DateTime.Now,
+                    Lecture = dbContext.Lectures.Where(x => x.Name == BusinessModelLectureName).FirstOrDefault(),
                 },
             };
 

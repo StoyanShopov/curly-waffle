@@ -3,10 +3,13 @@
     using System.Threading.Tasks;
 
     using SBC.Common;
+    using SBC.Data.Models;
     using SBC.Web.ViewModels.User;
 
     public interface IUsersService
     {
+        Task<ApplicationUser> GetUser(string userId);
+
         Task<Result> RegisterAsync(RegisterInputModel model);
 
         Task<Result> LoginAsync(LoginInputModel model, string secret);

@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\SBC.Common\SBC.Common.csproj" />
     <ProjectReference Include="..\..\Web\SBC.Web.ViewModels\SBC.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SBC.Services.Mapping\SBC.Services.Mapping.csproj" />
+    <ProjectReference Include="..\SBC.Services.Messaging\SBC.Services.Messaging.csproj" />
     <ProjectReference Include="..\SBC.Services\SBC.Services.csproj" />
   </ItemGroup>
 

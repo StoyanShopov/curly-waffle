@@ -27,6 +27,8 @@
                 LastName = "Adminov",
                 Email = adminEmail,
                 UserName = adminEmail,
+                CompanyId = 1,
+                ProfileSummary = "Admin Summary",
             };
 
             await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);
@@ -40,6 +42,7 @@
                 Email = ownerEmail,
                 UserName = ownerEmail,
                 CompanyId = 2,
+                ProfileSummary = "Owner Summary",
             };
 
             await SeedUsersRoles(dbContext, userManager, ownerUser, CompanyOwnerPassword, CompanyOwnerRoleName);
@@ -58,6 +61,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -71,6 +75,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -84,6 +89,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -97,6 +103,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -110,6 +117,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                     new ApplicationUser
                     {
@@ -123,6 +131,7 @@
                         DeletedOn = null,
                         IsDeleted = false,
                         CompanyId = 2,
+                        Manager = ownerUser,
                     },
                 };
 

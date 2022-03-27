@@ -26,6 +26,7 @@
                     CoachId = 1,
                     DeletedOn = null,
                     IsDeleted = false,
+                    PictureUrl = ManagementPictureUrl,
                 },
                 new Course
                 {
@@ -38,6 +39,7 @@
                     CoachId = 2,
                     DeletedOn = null,
                     IsDeleted = false,
+                    PictureUrl = LeadershipPictureUrl,
                 },
                 new Course
                 {
@@ -50,6 +52,7 @@
                     CoachId = 3,
                     DeletedOn = null,
                     IsDeleted = false,
+                    PictureUrl = DesignPictureUrl,
                 },
             };
 

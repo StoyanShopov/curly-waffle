@@ -27,17 +27,20 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new CompaniesSeeder(),
                               new UsersSeeder(),
                               new CategoriesSeeder(),
                               new LanguagesSeeder(),
-                              new CompaniesSeeder(),
-                              new ResourcesSeeder(),
                               new LecturesSeeder(),
+                              new ResourcesSeeder(),
                               new CoachesSeeder(),
                               new CoursesSeeder(),
                               new RequestsSeeder(),
                               new CoachCategoriesSeeder(),
                               new LanguageCoachSeeder(),
+                              new CompanyCoachesSeeder(),
+                              new CompanyCoursesSeeder(),
+                              new CourseLecturesSeeder(),
                           };
 
             foreach (var seeder in seeders)
