@@ -88,6 +88,7 @@
 
 .inputForm {
     width: 100%;
+    padding-left: 3%;
 }
 
     .inputForm ::placeholder {
@@ -122,7 +123,7 @@
     height: 70px;
     background-color: #296CFB;
     border-color: #296CFB;
-    margin-left: 35%;
+    margin-left: 7%;
     color: white;
     font-family: Montserrat;
     font-size: 22px;
@@ -165,7 +166,7 @@
 .textDiv {
     position: relative;
     min-height: 9%;
-    top: -2%;
+    top: -1%;
     right: -13%;
     max-width: 93%;
 }
@@ -187,7 +188,7 @@
 .buttonsDiv {
     min-height: 4%;
     position: relative;
-    top: -6%;
+    top: -4%;
     left: 26%;
     max-width: 78%;
 }
@@ -202,7 +203,7 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .findCoachesBtn {
@@ -215,7 +216,7 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .picDiv {
