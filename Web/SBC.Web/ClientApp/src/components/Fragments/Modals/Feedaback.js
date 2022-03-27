@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { EmployeeService } from '../../../services/employee-service';
 
+import style from './Feedback.module.css';
+
 export default function Feedback(props) {
 
 
@@ -21,23 +23,24 @@ export default function Feedback(props) {
     }
     return (
         <>
-            <h2>Feedaback modal</h2>
-
-            <form onSubmit={onSendFeedback} >
-                <div>
+            <div className={style.header}>
+                <h2 className={style.text}>Leave Feedback</h2>
+            </div>
+            <form className={style.inputForm} onSubmit={onSendFeedback} >
+                <div className={style.inputField}>
                     <label htmlFor="Message"></label>
-                    <input
+                    <textarea
                         type="text"
                         name="message"
                         autoComplete="off"
 
-                        placeholder="Left Feedback*"
+                        placeholder="Write it down here..."
                         required="required"
                     />
                 </div>
 
-                <div >
-                    <button type="submit">Left Feedback</button>
+                <div className={style.btnDiv}>
+                    <button className={style.modalBtnSend} type="submit">Send</button>
                 </div>
             </form>
         </>

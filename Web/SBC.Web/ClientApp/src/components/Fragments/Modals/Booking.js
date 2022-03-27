@@ -7,7 +7,6 @@ import style from './Booking.module.css';
 
 import ResponsivePlayer from "../../Admin/Player/VideoPlayer";
 
-
 export default function Booking(props) {
     const CalendlyEventListener = (e) => {
         return e.data.event &&
