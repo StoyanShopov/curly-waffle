@@ -10,7 +10,8 @@ export default function Main() {
                 <p className={css.pOne}>Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field. We inspire your people to master their skills and become the best version of themselves. Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>
                 <Link to="/get-started" ><button className={css.getStartedBtn}>Get Started</button></Link>
                 <div className={css.divOne}>
-                    <img src="/assets/images/Group 9.jpg" alt="image" />
+                    <img src="/assets/images/Path 6.png" alt="image" className={css.path6} />
+                    <img src="/assets/images/Group 9.png" alt="image" className={css.image9} />
                 </div>
                 <p className={css.pDemo}>Request a Demo</p>
                 <p className={css.pRequestDemo}>Don’t find what you are looking for? We would be more than happy to help you and assist you in everything you need! Let us know about your personal requirements by filling our request form:</p>
@@ -42,7 +43,7 @@ export default function Main() {
                 </div>
                 <div className={css.picDiv}>
                     <img src="/assets/images/Path 7.png" className={css.path7} />
-                    <img src="/assets/images/Group 53.svg" className={css.Group53} />
+                    <img src="/assets/images/Group 53.svg" className={css.group53} />
                 </div>
 
             </div>
