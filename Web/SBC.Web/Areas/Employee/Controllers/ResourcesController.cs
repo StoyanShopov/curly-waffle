@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Resources;
+    using SBC.Web.Areas.Employee.Controlles;
     using SBC.Web.ViewModels.Administration.Resources;
 
     public class ResourcesController : EmployeesBaseController

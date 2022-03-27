@@ -6,6 +6,7 @@
     using SBC.Common;
     using SBC.Services.Data.Courses;
     using SBC.Services.Data.Infrastructures;
+    using SBC.Web.Areas.Employee.Controlles;
     using SBC.Web.ViewModels.Administration.Courses;
 
     public class CoursesController : EmployeesBaseController

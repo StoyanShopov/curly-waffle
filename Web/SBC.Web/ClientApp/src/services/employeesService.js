@@ -14,7 +14,7 @@ export const getDashboard = async () => {
 
 export const getAllLectures = async (courseId, skip) => {
     return await axios
-        .get(`${baseUrl}api/lectures/All/${courseId}?skip=${skip}`, {
+        .get(`${baseUrl}employees/lectures/All/${courseId}?skip=${skip}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -24,7 +24,7 @@ export const getAllLectures = async (courseId, skip) => {
 
 export const getCourseById = async (courseId) => {
     return await axios
-        .get(`${baseUrl}api/courses/${courseId}`, {
+        .get(`${baseUrl}employees/courses/${courseId}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -34,7 +34,7 @@ export const getCourseById = async (courseId) => {
 
 export const getLectureById = async (lectureId) => {
     return await axios
-        .get(`${baseUrl}api/lectures/${lectureId}`, {
+        .get(`${baseUrl}employees/lectures/${lectureId}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -44,7 +44,7 @@ export const getLectureById = async (lectureId) => {
 
 export const getAllResources = async (lectureId) => {
     return await axios
-        .get(`${baseUrl}api/resources/All/${lectureId}`, {
+        .get(`${baseUrl}employees/resources/All/${lectureId}`, {
             headers: {
                 "Content-Type": "application/json;charset=UTF-8",
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
