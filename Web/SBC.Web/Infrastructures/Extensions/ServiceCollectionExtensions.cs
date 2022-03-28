@@ -59,6 +59,7 @@
                 .AddSingleton(x => new BlobServiceClient(configuration["AzureBlobStorageConnectionString"]))
                 .AddSingleton<IBlobService, BlobService>()
                 .AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>())
+                .AddTransient<IBusinessOwnerDashboardService, BusinessOwnerDashboardService>()
                 .AddTransient<ICategoriesService, CategoriesService>()
                 .AddTransient<IClientsService, ClientsService>()
                 .AddTransient<ICoursesService, CoursesService>()
