@@ -29,12 +29,13 @@ import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
+import { baseUrl } from "../src/constants/GlobalConstants"
 
 function App() {
   const [connection, setConnection] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const email = localStorage?.userData?.split(',')[1]?.split(':')[1]?.replace('"', "")?.replace('"', "");
-  
+
   useEffect(() => {
     const connect = async () => {
       if (email) {
@@ -48,7 +49,7 @@ function App() {
   const joinRoom = async (email) => {
     try {
       const connection = new HubConnectionBuilder()
-        .withUrl("https://localhost:44319/Notification")
+        .withUrl(`${baseUrl}Notification`)
         .configureLogging(LogLevel.Information)
         .withAutomaticReconnect()
         .build();
@@ -65,18 +66,18 @@ function App() {
       await connection.invoke("JoinGroupAsync", email)
         .then(() => console.log("Joined room."))
         .catch(() => console.log("Couldn't join room!"))
-        setConnection(connection);
+      setConnection(connection);
     } catch (e) {
       console.log(e);
     }
   }
 
   const sendNotification = async (uniqueGroupKey, message) => {
-    await connection.invoke("SendNotifyMessage", {uniqueGroupKey,  message})
+    await connection.invoke("SendNotifyMessage", { uniqueGroupKey, message })
       .then(console.log(message))
       .catch(err => console.log(err))
   }
-  
+
   const [_user, _setUser] = useState(TokenManagement.getUserData());
   const [_role, _setRole] = useState(TokenManagement.getUserRole());
 
