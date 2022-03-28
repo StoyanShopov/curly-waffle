@@ -10,11 +10,15 @@ export default function Sidebar(props) {
 
         <div className={styles.container}>
             <button className={styles.pencilLink} onClick={() => props.showModal()}>
-                <img src="/assets/images/iconmonstr-pencil-2.svg" className={styles.pencil} alt="" />
+                <img className={styles.pencil} src="/assets/images/iconmonstr-pencil-2.svg" alt="" />
             </button>
             <div className={styles.namesContainer}>
                 <div className={styles.greenCircle}>
-                    {props.userData['fullname'] ? props.userData.fullname[0] : "N/A"}
+                    {props.userData['photoUrl']
+                            ? <img className={styles.profilePhoto} src={props.userData['photoUrl']} alt="" />
+                            : props.userData['fullname']
+                                ? props.userData.fullname[0]
+                                : "N/A"}
                 </div>
                 <div className={styles.names}>
                     <div className={styles.fullName}>

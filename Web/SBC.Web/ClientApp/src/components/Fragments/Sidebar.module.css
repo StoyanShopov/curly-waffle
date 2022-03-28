@@ -46,6 +46,14 @@
     border-radius: 50%;
 }
 
+.profilePhoto {
+    width: 70px;
+    height: 70px;    
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+}
+
 .names {
     display: flex;
     flex-direction: column;
