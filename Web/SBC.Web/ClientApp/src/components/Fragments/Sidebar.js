@@ -31,7 +31,9 @@ export default function Sidebar(props) {
                     ? _adminUrl
                     : props.userRole == "Owner"
                         ? _ownerUrls
-                        : props.userRole == "Employee" ? _employeeUrl : null}
+                        : props.userRole == "Employee"
+                            ? _employeeUrl
+                            : null}
 
             </div>
         </div>
@@ -45,7 +47,7 @@ const _ownerUrls = (
         <li><NavLink to="owner/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
         <li><NavLink to="owner/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Courses</NavLink></li>
         <li><NavLink to="owner/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Active Coaches</NavLink></li>
-        <li><NavLink to='owner/employees' className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
+        <li><NavLink to="owner/employees" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Employees</NavLink></li>
         <li><NavLink to="owner/invoice" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Invoice</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
@@ -54,19 +56,19 @@ const _ownerUrls = (
 
 const _adminUrl = (
     <ul>
-        <li> <NavLink to="admin/dashboard">Dashboard</NavLink></li>
-        <li> <NavLink to="admin/clients">Clients</NavLink></li>
-        <li> <NavLink to="admin/revenue">Revenue</NavLink></li>
+        <li> <NavLink to="admin/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+        <li> <NavLink to="admin/clients" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Clients</NavLink></li>
+        <li> <NavLink to="admin/revenue" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Revenue</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
 
 const _employeeUrl = (
     <ul>
-        <li> <NavLink to="employee/dashboard">Dashboard</NavLink></li>
-        <li> <NavLink to="employee/courses">Courses</NavLink></li>
-        <li> <NavLink to="employee/coaches">Coaches</NavLink></li>
-        <li> <NavLink to="employee/achievement">Achievement</NavLink></li>
+        <li> <NavLink to="employee/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
+        <li> <NavLink to="employee/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Courses</NavLink></li>
+        <li> <NavLink to="employee/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Coaches</NavLink></li>
+        <li> <NavLink to="employee/achievement" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Achievement</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );

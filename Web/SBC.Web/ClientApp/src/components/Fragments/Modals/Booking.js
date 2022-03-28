@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { PopupButton } from "react-calendly";
 import { TokenManagement } from "../../../helpers";
 import { EmployeeService } from "../../../services/employee-service";
@@ -76,16 +76,16 @@ export default function Booking(props) {
                     <div className={style.resources}>
 
                         {props.isMode == "coach"
-                            ? <p>&#128490; &nbsp; &nbsp; {props.entity.eDuration}</p>
+                            ? <p>&#128490; &nbsp; &nbsp; {props.entity.eDuration} &#128223; &#128250; </p>
                             : <p>&#9655; &nbsp; &nbsp; {props.entity.eDuration}</p>
                         }
 
-                        <p>&#128459; &nbsp; &nbsp; {props.entity.eResource}</p>
-                        <p>&#8734; &nbsp; &nbsp; Full lifetime access</p>
+                        <p>&#128203; &nbsp; &nbsp; {props.entity.eResource} &#128196;</p>
+                        <p>&#4113;  &nbsp; &nbsp; Full lifetime access &nbsp;  &#9655;</p>
 
                         {props.isMode == "coach"
-                            ? <p>&#128241; &nbsp; &nbsp; Access on mobile</p>
-                            : <p>&#127942; &nbsp; &nbsp; Sertificate of completion</p>
+                            ? <p className={style.resourceFour}>&#128241; &nbsp; &nbsp; Access on mobile &#127942;</p>
+                            : <p className={style.resourceFour}>&#127942; &nbsp; &nbsp; Sertificate of completion</p>
                         }
                     </div>
                     <div className={style.sessionIncludes}>

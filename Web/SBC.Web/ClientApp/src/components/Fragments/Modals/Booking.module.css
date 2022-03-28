@@ -16,14 +16,14 @@
     background-color: #296CFB;
     display: block;
     flex-grow: 2;
-    height:36%;
+    height: 37%;
 }
 
 .colorUpContainerGreen {
     background-color: #16D696;
     display: block;
     flex-grow: 2;
-    height: 36%;
+    height: 37%;
 }
 
 .closeButton {
@@ -105,7 +105,7 @@
     max-width: 41%;
     display: block;
     flex-grow: 3;
-    padding-left: 5%;  
+    padding-left: 5%;
 }
 
     .downContainer p {
@@ -140,9 +140,9 @@
 
 .rightContainer {
     position: absolute;
-    top: 16%;
+    top: 14%;
     right: 10%;
-    height: 77%;
+    max-height: 30rem;
     width: 37%;
     display: flex;
     flex-direction: column;
@@ -157,6 +157,14 @@
     align-content: space-around;
     row-gap: 20px;
     position: relative;
+    flex-wrap: wrap;
+}
+
+.includes {
+    font-weight: bold;
+    margin: 0;
+    padding-left: 9%;
+    padding-top: 9%;
 }
 
 .resources {
@@ -165,17 +173,17 @@
     flex-direction: column;
     row-gap: 7px;
     position: relative;
+    padding-bottom: 1%;
 }
 
     .resources p {
-        padding-left: 20%;
+        padding-left: 0%;
         margin: 0;
     }
 
-.includes {
-    font-weight: bold;
-    margin: 0;
-    padding-left: 19%;
+.resourceFour {
+    position: relative;
+    top: -7px;
 }
 
 .sessionIncludes {
@@ -193,6 +201,7 @@
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 14%;
 }
 
 .mainBookButton {
