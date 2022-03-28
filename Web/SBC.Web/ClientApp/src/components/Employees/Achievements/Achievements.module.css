@@ -1,8 +1,7 @@
 .achievementsContent{
-    margin-left: 10%;
     margin-top: 0px;
     padding-top: 5%;
-    padding-left: 4%;
+    padding-left: 6%;
     padding-right: 5%;
     font-family: Montserrat,sans-serif;
     font-weight: bold;
@@ -11,6 +10,7 @@
 }
 
 .tableRevenue{
+    width: 80%;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 10px #00000029;
     opacity: 1;

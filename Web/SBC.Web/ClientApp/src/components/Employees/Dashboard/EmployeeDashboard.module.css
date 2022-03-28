@@ -1,29 +1,7 @@
 .container {
     margin: 0 auto;
     width: 100%;
-    left: 15%;
     position: relative;
-}
-
-.buttonContainer {
-    margin-left: 78%;
-    padding-top: 3%;
-    position: absolute;
-    cursor: pointer;
-}
-
-.manageButton {
-    width: 130px;
-    height: 40px;
-    text-decoration: none;
-    border-color: #296CFB;
-    text-decoration: none;
-    font: normal normal bold 22px/27px Montserrat;
-    font-weight: bold;
-    color: #296CFB;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: white;
 }
 
 .cardscontainer {
@@ -33,7 +11,7 @@
     align-items: center;
     gap: 120px 150px;
     top: 5rem;
-    padding-left: 2%;
+    padding-left: 6%;
     margin-bottom: 3rem;
 }
 

@@ -58,7 +58,7 @@ export default function EmployeeProfile(props) {
     return (
         <div className={css.mainContent}>
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
-            <div style={{ left: '24%', width: "65%", position: "relative" }}>
+            <div style={{ left: '24%', width: "75%", position: "relative" }}>
                 <Routes>
                     <Route index element={<EmployeeDashboard />} />
                     <Route path="employee/dashboard" element={<EmployeeDashboard />} />

@@ -21,8 +21,6 @@ export default function EmployeeDashboard() {
 
     return (
         <div className={style.container}>
-            <div className={style.buttonContainer}>
-            </div>
             <div className={style.cardscontainer}>
                 {userCoachSessions.length > 0
                     ? userCoachSessions.map(x => <DashboardCoachCard key={x.coachId} coach={x} />)
