@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Companies
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
@@ -25,6 +26,8 @@
         Task<Result> SetCoachToActiveAsync(int coachId, int companyId);
 
         Task<Result> AddAsync(CreateCompanyInputModel model);
+
+        Task<IEnumerable<string>> GetAllEmployeesAsync(string companyName);
 
         Task<Result> GetEmailByIdAsync(int id);
 

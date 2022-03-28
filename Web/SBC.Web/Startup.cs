@@ -9,6 +9,7 @@
     using Microsoft.Extensions.Hosting;
     using SBC.Services.Mapping;
     using SBC.Web.Infrastructures.Extensions;
+    using SBC.Web.Infrastructures.Hub;
     using SBC.Web.ViewModels;
 
     public class Startup
@@ -29,6 +30,7 @@
                 .AddSpaFiles()
                 .AddDatabaseDeveloperPageExceptionFilter()
                 .AddSingleton(this.configuration)
+                .AddAzureSignalR()
                 .AddDataRepositories()
                 .AddJwtAuthentication(services.GetAppSettings(this.configuration))
                 .AddApplicationServices(this.configuration)
@@ -44,7 +46,6 @@
             if (env.IsDevelopment())
             {
                 app
-                    .ApplySwagger()
                     .UseDeveloperExceptionPage()
                     .UseMigrationsEndPoint();
             }
@@ -56,6 +57,7 @@
 
             app
                 .PrepareDataBase()
+                .ApplySwagger()
                 .UseHttpsRedirection()
                 .UseStaticFiles()
                 .UseCookiePolicy()
@@ -66,9 +68,13 @@
                 .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
+                .UseAzureSignalR(builder =>
+                {
+                    builder.MapHub<NotificationHub>("/Notification");
+                })
                 .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapDefaultControllerRoute();
                 })
                 .UseSpaStaticFiles();
 
