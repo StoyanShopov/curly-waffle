@@ -1,6 +1,6 @@
 import { PopupButton, InlineWidget } from "react-calendly";
 import { TokenManagement } from "../../../helpers";
-import { EmployeeService } from "../../../services/employee-service";
+import { employeeService } from "../../../services/employee-service";
 import style from './Booking.module.css';
 
 import ResponsivePlayer from "../../Admin/Player/VideoPlayer";

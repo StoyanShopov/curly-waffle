@@ -157,17 +157,14 @@ const leftFeedback = async (_data) => {
     })
 }
 
-export const EmployeeService = {
-    getAllCoaches,
-    bookCoach,
-    leftFeedback,
-    getCalendlyEvents
-}
-
 export const employeeService = {
     getDashboard,
     getAllLectures,
     getCourseById,
     getLectureById,
     getAllResources,
+    getAllCoaches,
+    bookCoach,
+    leftFeedback,
+    getCalendlyEvents,
 }

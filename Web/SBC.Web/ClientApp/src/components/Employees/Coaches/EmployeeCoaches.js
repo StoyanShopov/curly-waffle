@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Modal from "react-modal/lib/components/Modal";
-import { EmployeeService } from "../../../services/employee-service";
+import { employeeService } from "../../../services/employee-service";
 import CoachCard from "../../Fragments/CoachCard.js";
 
 import styles from "./EmployeeCoaches.module.css";
@@ -13,8 +13,12 @@ export default function EmployeeCoaches() {
 
     Modal.setAppElement('body');
 
-    useEffect(async () => {
-        const res = await EmployeeService.getAllCoaches()
+    const getCoaches = async () => {
+        return await employeeService.getAllCoaches();
+    }
+    
+    useEffect(() => {
+        const res = getCoaches;
         setCoaches(res);
     }, []);
 
@@ -45,7 +49,7 @@ export default function EmployeeCoaches() {
                         height: '79%',
                         bottom: 'auto',
                         transform: 'translate(-50%, -50%)',
-                        padding: '0px',                        
+                        padding: '0px',
                     }
                 }}
                 isOpen={showModal}
