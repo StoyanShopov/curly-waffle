@@ -54,8 +54,12 @@ function App() {
                     {hasRole(_role, ['Owner']) && <Route path='/owner/coaches/coachCatalog' element={<CoachCatalog />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/owner/courses/courseCatalog' element={<CourseCatalog />} />}
 
+                    
+
                     {/* <Route path="/profileOwner" element={<OwnerDashboard />} /> */}
                     <Route path="/admin/courses" element={<AllCourses />} />
+
+                    {hasRole(_role, ['Employee']) && <Route path='/courses/details/:id' element={<CourseDetails role={_role} />} />}
                     <Route path="/admin/courses/details/:id" element={<CourseDetails />} />
 
                     <Route path="/admin/coaches" element={<Coaches />} />

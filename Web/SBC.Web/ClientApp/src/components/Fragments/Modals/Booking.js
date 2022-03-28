@@ -6,6 +6,7 @@ import { EmployeeService } from "../../../services/employee-service";
 import style from './Booking.module.css';
 
 import ResponsivePlayer from "../../Admin/Player/VideoPlayer";
+import { Link } from "react-router-dom";
 
 export default function Booking(props) {
     const CalendlyEventListener = (e) => {
@@ -118,7 +119,7 @@ export default function Booking(props) {
                                     name: user.fullname,
                                 }}
                             />
-                            : <p>Put your booking</p>
+                            : <Link to={`/courses/details/${props.entity.courseId}`}><button className={style.enrollButton} onClick={() => props.onEnrollUser(props.courseId)}>Enroll</button></Link>
                         }
                     </div>
                 </div>

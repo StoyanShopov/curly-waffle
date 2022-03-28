@@ -9,6 +9,7 @@ export default function ResourceCard(props) {
     const index = props.index;
     const [resource, setResource] = useState(props.resource);
     const fileUrl = resource.fileUrl;
+    const isAdmin = props.isAdmin;
 
     const onResourceHandler = () => {
         if (resource.fileType === 'Video') {
@@ -21,19 +22,19 @@ export default function ResourceCard(props) {
     return (
         <div className={style.container}>
             <p className={style.resourceTitle} onClick={onResourceHandler}>{index + 1}. {resource.name}</p>
-            .<button className={style.btnDelete} onClick={() => {
+            .{isAdmin && <button className={style.btnDelete} onClick={() => {
                 props.openModal(<DeleteResource
                     closeModal={props.closeModal}
                     resource={resource}
                     setResources={props.setResources}
                     resources={props.resources} />)
-            }}>Delete</button>
-            <button className={style.btnEdit} onClick={() => {
+            }}>Delete</button>}
+            {isAdmin && <button className={style.btnEdit} onClick={() => {
                 props.openModal(<EditResource
                     closeModal={props.closeModal}
                     resourceId={resource.id}
                     setResource={setResource} />)
-            }}>Edit</button>
+            }}>Edit</button>}
         </div>
     )
 }

@@ -20,6 +20,13 @@
 
         Task<Result> DeleteByIdAsync(int id);
 
+        Task<Result> GetAllByOwnerAsync(string employeeId);
+
+        // Task<Result> GetActiveCoursesAsync<TModel>(int companyId);
         Task<int> GetCountAsync();
+
+        Task<Result> GetByIdEmployeeAsync(int id);
+
+        Task<Result> EnrollCourse(string userId, int courseId);
     }
 }

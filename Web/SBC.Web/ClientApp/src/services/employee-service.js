@@ -2,6 +2,7 @@ import axios from 'axios';
 import { TokenManagement } from '../helpers';
 import { baseUrl, calendly_token, getTypeEvents, scheduled_events } from '../constants';
 
+const token = localStorage.getItem('token');
 
 const getAllCoaches = async () => {
     let _data = [];
@@ -106,10 +107,54 @@ const leftFeedback = async (_data) => {
         }
     })
 }
+
+const getAllCourses = async () => {
+    return await axios.get(`${baseUrl}employees/Courses`, {
+        headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+    })
+}
+
+const getById = async (courseId) => {
+    return await axios
+        .get(`${baseUrl}employees/Courses/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
+const getModalDetailsById = async (courseId) => {
+    return await axios
+        .get(`${baseUrl}employees/Courses/modalDetails/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
+const enrollUser = async (courseId) => {
+    return await axios
+        .post(`${baseUrl}employees/Courses/${courseId}`, {}, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
 export const EmployeeService = {
     getAllCoaches,
     bookCoach,
     leftFeedback,
-    getCalendlyEvents
+    getCalendlyEvents,
+    getAllCourses,
+    getById,
+    getModalDetailsById,
+    enrollUser,
 }
 

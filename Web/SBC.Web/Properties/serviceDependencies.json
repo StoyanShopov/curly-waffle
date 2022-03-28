@@ -8,6 +8,9 @@
       "type": "storage",
       "connectionId": "AzureBlobStorageConnectionString"
     },
+    "secrets1": {
+      "type": "secrets"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "DefaultConnection"

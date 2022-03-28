@@ -19,11 +19,13 @@
             this.usersService = usersService;
         }
 
+        // Employee Controller
         [HttpGet]
         [Route("employees")]
         public async Task<ActionResult> GetEmployees(int skip)
             => this.GenericResponse(await this.companiesService.GetEmployeesAsync(this.User.Id(), skip));
 
+        // Employee Controller
         [HttpPost]
         [Route("addEmployee")]
         public async Task<ActionResult> AddEmployee(CreateEmployeeInputModel model)
