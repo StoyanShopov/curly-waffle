@@ -5,7 +5,7 @@ import styles from './EmployeeCourseCard.module.css'
 
 import Modal from "react-modal/lib/components/Modal";
 import BookingModal from'../../Fragments/Modals/Booking.js'
-import { courseService } from "../../../services/employeeCourseService";
+import { EmployeeService } from "../../../services/employee-service.js";
 
 export default function EmployeeCourseCard(props) {
 
@@ -42,7 +42,7 @@ export default function EmployeeCourseCard(props) {
     }
 
     function onSetCoursemodalDetails (){
-        courseService.getModalDetailsById(props.course.id)
+        EmployeeService.getModalDetailsById(props.course.id)
         .then(response => {
             console.log(response)
             props.setCourseModalDetails(response.data)
@@ -51,7 +51,7 @@ export default function EmployeeCourseCard(props) {
     }
 
     function onEnrollUser (){
-        courseService.enrollUser(props.course.id)
+        EmployeeService.enrollUser(props.course.id)
         .then(response => {
             setIsEnrolled(response.data)
         })

@@ -1,5 +1,6 @@
 import { TokenManagement } from "../helpers";
 
+// TODO: change to azure URL before dev merge
 export const baseUrl = 'https://localhost:44319/';
 
 export const calendly_token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjQ4MjI2Njk2LCJqdGkiOiJkMjkyNDZjYi0wZDZiLTRkYzgtYjFiOC1jYzhlYTVkMmJjMmQiLCJ1c2VyX3V1aWQiOiJkY2QyZTE3OS1hNGY1LTRmNjctOTU0Ny1iMWNlNDAwMGJhZWMifQ.JaNQ7ssEfXdKeXbram5zvI7hCHtqkdAxtpX11U_I0k4";
