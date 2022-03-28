@@ -72,10 +72,85 @@ const NavBar = (props) => {
     color: '#000'
   };
 
+  // return (
+  //   <header className={styles.headerC}>
+  //     <div className={styles.headerContainer}>
+  //       < div className={styles.logoContainer}>
+  //         <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
+  //         < div className={styles.upskillContainer}>
+  //           <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
+  //         </div>
+  //       </div>
+  //       <div className={styles.testedLinks}>
+  //       </div>
+  //       <div className={styles.homePageButtons}>
+  //         {props.auth.user != null
+  //           ? null
+  //           : unLogged}
+  //       </div>
+  //       <div className={styles.coursesCoaches}>
+  //         <ul>
+  //           <li>
+  //             <NavLink
+  //               to="/owner/courses/courseCatalog"
+  //               className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+  //             >
+  //               Courses
+  //             </NavLink>
+  //           </li>
+  //           <li>
+  //             <NavLink
+  //               to="/owner/coaches/coachCatalog"
+  //               className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
+  //             >
+  //               Coaches
+  //             </NavLink>
+  //           </li>
+  //           <li>
+  //             {email && (props.notifications.length > 0 ?
+  //               <Link
+  //                 to="" onClick={() => openModal()}>
+  //                 <div className={styles.circle}>
+  //                   <i className="fa fa-bell fa-lg"></i>
+  //                 </div>
+  //               </Link>
+  //               :
+  //               <div>
+  //                 <Link
+  //                   to="" onClick={() => openModal()}>
+  //                   <i className="fa fa-bell fa-lg"></i>
+  //                 </Link>
+  //               </div>)
+  //             }
+  //           </li>
+  //         </ul>
+  //       </div>
+  //       <div className={styles.greenCircle}>
+  //         A
+  //       </div>
+  //       {props.auth.user != null
+  //         ?
+  //         <div className={styles.greenCircle}>
+  //           <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
+  //         </div>
+  //         : null}
+  //     </div>
+
+  //     <Modal
+  //       style={subtitle}
+  //       isOpen={modalIsOpen}
+  //       onAfterOpen={afterOpenModal}
+  //       onRequestClose={closeModal}
+  //       ariaHideApp={false}
+  //     >
+  //       <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
+  //     </Modal>
+  //   </header>
+  // )
   return (
     <header className={styles.headerC}>
       <div className={styles.headerContainer}>
-        < div className={styles.logoContainer}>
+        <div className={styles.logoContainer}>
           <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
           < div className={styles.upskillContainer}>
             <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
@@ -83,59 +158,43 @@ const NavBar = (props) => {
         </div>
         <div className={styles.testedLinks}>
         </div>
+
         <div className={styles.homePageButtons}>
           {props.auth.user != null
             ? null
             : unLogged}
         </div>
-        <div className={styles.coursesCoaches}>
-          <ul>
-            <li>
-              <NavLink
-                to="/owner/courses/courseCatalog"
-                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-              >
-                Courses
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/owner/coaches/coachCatalog"
-                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-              >
-                Coaches
-              </NavLink>
-            </li>
-            <li>
-              {email && (props.notifications.length > 0 ?
-                <Link
-                  to="" onClick={() => openModal()}>
-                  <div className={styles.circle}>
-                    <i className="fa fa-bell fa-lg"></i>
-                  </div>
-                </Link>
-                :
-                <div>
-                  <Link
-                    to="" onClick={() => openModal()}>
-                    <i className="fa fa-bell fa-lg"></i>
-                  </Link>
-                </div>)
-              }
-            </li>
-          </ul>
-        </div>
-        <div className={styles.greenCircle}>
-          A
-        </div>
-        {props.auth.user != null
-          ?
-          <div className={styles.greenCircle}>
-            <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
-          </div>
-          : null}
-      </div>
 
+        <div className={styles.coursesCoaches}>
+          {props.auth.role == "Administrator"
+            ? courses
+            : null}
+        </div>
+
+        <div className={styles.coursesCoaches}>
+          {email && (props.notifications.length > 0 ?
+            <Link
+              to="" onClick={() => openModal()}>
+              <div className={styles.circle}>
+                <i className="fa fa-bell fa-lg"></i>
+              </div>
+            </Link>
+            :
+            <div>
+              <Link
+                to="" onClick={() => openModal()}>
+                <i className="fa fa-bell fa-lg"></i>
+              </Link>
+            </div>)
+          }
+          {props.auth.user != null
+            ?
+            <div className={styles.greenCircle}>
+              <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
+            </div>
+            : null}
+        </div>
+      </div>
       <Modal
         style={subtitle}
         isOpen={modalIsOpen}
