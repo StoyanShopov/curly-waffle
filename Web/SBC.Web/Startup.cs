@@ -11,6 +11,7 @@
     using SBC.Web.Infrastructures.Extensions;
     using SBC.Web.Infrastructures.Hub;
     using SBC.Web.ViewModels;
+    using Stripe;
 
     public class Startup
     {
@@ -54,6 +55,8 @@
                 // app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            StripeConfiguration.ApiKey = "sk_test_51KiIAkHikRg6a9YedmQu2FnBO5o8en1nK3VhwzdSjoGVkoR8D7smJrUjVbhpV6gZhWZvA18mPw8W3G6RXULLGS0F00cOOKNwlI";
 
             app
                 .PrepareDataBase()
