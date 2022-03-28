@@ -163,7 +163,7 @@
 .includes {
     font-weight: bold;
     margin: 0;
-    padding-left: 9%;
+    padding-left: 6%;
     padding-top: 9%;
 }
 
@@ -181,9 +181,34 @@
         margin: 0;
     }
 
-.resourceFour {
-    position: relative;
-    top: -7px;
+.discussionIcon {
+    height: 16px;
+    width: 17px;
+}
+
+.videoIcon {
+    height: 16px;
+    width: 17px;
+}
+
+.lecturesIcon {
+    height: 16px;
+    width: 13px;
+}
+
+.infinityIcon {
+    height: 10px;
+    width: 16px;
+}
+
+.mobileIcon {
+    height: 16px;
+    width: 13px;
+}
+
+.certificateIcon {
+    height: 16px;
+    width: 17px;
 }
 
 .sessionIncludes {

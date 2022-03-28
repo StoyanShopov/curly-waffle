@@ -75,16 +75,35 @@ export default function Booking(props) {
                     <div className={style.resources}>
 
                         {props.isMode == "coach"
-                            ? <p>&#128490; &nbsp; &nbsp; {props.entity.eDuration} &#128223; &#128250; </p>
-                            : <p>&#9655; &nbsp; &nbsp; {props.entity.eDuration}</p>
+                            ? <p>
+                                <img className={style.discussionIcon} src="/assets/images/Group 101.png" alt="" />
+                                &nbsp; &nbsp; {props.entity.eDuration}
+                            </p>
+                            : <p>
+                                <img className={style.videoIcon} src="/assets/images/Group 98.png" alt="" />
+                                &nbsp; &nbsp; {props.entity.eDuration}
+                            </p>
                         }
 
-                        <p>&#128203; &nbsp; &nbsp; {props.entity.eResource} &#128196;</p>
-                        <p>&#4113;  &nbsp; &nbsp; Full lifetime access &nbsp;  &#9655;</p>
+                        <p>
+                            <img className={style.lecturesIcon} src="/assets/images/Group 102.png" alt="" />
+                            &nbsp; &nbsp; {props.entity.eResource}
+                        </p>
+                       
+                        <p>
+                            <img className={style.infinityIcon} src="/assets/images/iconmonstr-infinity-1.png" alt="" />
+                             &nbsp; &nbsp; Full lifetime access
+                        </p>
 
                         {props.isMode == "coach"
-                            ? <p className={style.resourceFour}>&#128241; &nbsp; &nbsp; Access on mobile &#127942;</p>
-                            : <p className={style.resourceFour}>&#127942; &nbsp; &nbsp; Sertificate of completion</p>
+                            ? <p>
+                                <img className={style.mobileIcon} src="/assets/images/Group 100.png" alt="" />
+                                &nbsp; &nbsp; Access on mobile
+                            </p>
+                            : <p>
+                                <img className={style.certificateIcon} src="/assets/images/surface1.png" alt="" />
+                                &nbsp; &nbsp; Sertificate of completion
+                            </p>
                         }
                     </div>
                     <div className={style.sessionIncludes}>

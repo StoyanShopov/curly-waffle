@@ -2,13 +2,24 @@
     background-color: #296CFB;
     height: 23%;
     text-align: center;
+    padding-left: 5%;
+}
+
+.closeButton {
+    float: right;
+    background: transparent 0% 0% no-repeat padding-box;
+    color: white;
+    border-style: none;
+    font-size: 25px;
+    padding: 18px;
+    cursor: pointer;
 }
 
 .text {
     margin-top: 0;
     color: white;
     position: relative;
-    padding-top: 6%;
+    top: 37%;
 }
 
 .inputForm {
@@ -32,7 +43,7 @@
     position: relative;
     text-align: center;
     background-color: #296CFB;
-    height: 20%;
+    height: 19.5%;
     padding-top: 3%;
 }
 

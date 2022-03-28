@@ -24,6 +24,7 @@ export default function Feedback(props) {
     return (
         <>
             <div className={style.header}>
+                <button className={style.closeButton} onClick={() => props.handleClose()}>X</button>
                 <h2 className={style.text}>Leave Feedback</h2>
             </div>
             <form className={style.inputForm} onSubmit={onSendFeedback} >
