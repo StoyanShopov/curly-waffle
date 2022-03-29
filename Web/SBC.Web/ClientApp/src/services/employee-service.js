@@ -56,11 +56,11 @@ const getAllResources = async (lectureId) => {
 }
 
 
-const getAllCoaches = async () => {
+const getAllCoaches = async (query) => {
     let _data = [];
     await axios({
         method: "GET",
-        url: baseUrl + "employees/coaches",
+        url: baseUrl + "employees/coaches?search=" + query,
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,

@@ -14,7 +14,7 @@ export default function EmployeeCoaches() {
     Modal.setAppElement('body');
 
     useEffect(() => {
-        employeeService.getAllCoaches().then(res=>{
+        employeeService.getAllCoaches("all").then(res=>{
             setCoaches(res)
         })
     }, []);

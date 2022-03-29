@@ -87,26 +87,11 @@
             return true;
         }
 
-        public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId)
+        public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId, string search)
         {
             try
             {
-                var result = await this.coachesRepository
-                    .AllAsNoTracking()
-                    .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
-                    .Select(coach => new EmployeeCoachCardViewModel
-                    {
-                        Id = coach.Id,
-                        FullName = $"{coach.FirstName} {coach.LastName}",
-                        ImageUrl = coach.ImageUrl,
-                        CompanyName=coach.Company.Name,
-                        CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
-                        CalendlyId = coach.CalendlyUrl,
-                        Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
-                        VideoUrl = coach.VideoUrl,
-                        Description = coach.Description,
-                    })
-                    .ToListAsync();
+                var result = await this.filterCoaches(companyId, search, userId);
 
                 return new ResultModel(result);
             }
@@ -319,5 +304,49 @@
         private bool ExistCategoryId(ICollection<CategoryCoachViewModel> categories)
             => categories.Any(x => !this.categoriesRepository.AllAsNoTracking()
             .Any(y => y.Id == x.CategoryId));
+
+        private async Task<IEnumerable<EmployeeCoachCardViewModel>> filterCoaches(int companyId, string search, string userId)
+        {
+            switch (search)
+            {
+                case "all":
+                    return await this.coachesRepository
+                .All()
+                .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
+                .Select(coach => new EmployeeCoachCardViewModel
+                {
+                    Id = coach.Id,
+                    FullName = $"{coach.FirstName} {coach.LastName}",
+                    ImageUrl = coach.ImageUrl,
+                    CompanyName = coach.Company.Name,
+                    CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                    CalendlyId = coach.CalendlyUrl,
+                    Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
+                    VideoUrl = coach.VideoUrl,
+                    Description = coach.Description,
+                }).ToListAsync();
+                case "booked":
+                    return await this.sessionsRepository
+                 .AllAsNoTracking()
+                 .Include(c => c.Coach)
+                 .Where(uc => uc.UserId == userId)
+                 .Distinct()
+                 .Select(session => new EmployeeCoachCardViewModel
+                 {
+                     Id = session.CoachId,
+                     FullName = $"{session.Coach.FirstName} {session.Coach.LastName}",
+                     ImageUrl = session.Coach.ImageUrl,
+                     CompanyName = session.Coach.Company.Name,
+                     CompanyLogoUrl = session.Coach.CompanyId != null ? session.Coach.Company.LogoUrl : "Null",
+                     CalendlyId = session.Coach.CalendlyUrl,
+                     Feedbacked = session.Coach.Users.Any(x => x.CoachId == session.Coach.Id && x.UserId == userId && !x.LeftFeedback),
+                     VideoUrl = session.Coach.VideoUrl,
+                     Description = session.Coach.Description,
+                 }).ToListAsync()
+                 ;
+
+                default: return await this.coachesRepository.All().To<EmployeeCoachCardViewModel>().ToListAsync();
+            }
+        }
     }
 }

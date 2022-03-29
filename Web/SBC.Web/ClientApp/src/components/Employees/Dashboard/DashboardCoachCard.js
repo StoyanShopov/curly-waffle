@@ -5,11 +5,12 @@ import styles from './DashboardCoachCard.module.css';
 
 import { getCategoriesByCoachId } from '../../../services/categoryService';
 
-// import Booking from '../../Fragments/Modals/Booking';
+ import Booking from '../../Fragments/Modals/Booking';
 
 export default function DashboardCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
     const [categories, setCategories] = useState([]);
+    const [child, setChild] = useState();
 
     const coachId = props.coach.coachId;
 
@@ -27,14 +28,32 @@ export default function DashboardCoachCard(props) {
     const handleClose = useCallback(() => {
         setShowModal(false)
     }, []);
+       
 
-    function openModal() {
+    function openModal(child) {
+        setChild(child)
         setShowModal(true);
     }
 
-    // const onBook = async (coachId) => {
-    //     openModal(<Booking url={props.coach.scheduling_url} openModal={openModal} handleClose={handleClose} coachId={coachId} />);
-    // }
+     const onBook = async (coachId) => {
+         openModal(<Booking url={props.coach.scheduling_url}
+             openModal={openModal}
+             handleClose={handleClose}
+             coachId={coachId}
+             entity={{
+                 coachId: coachId,
+                 eType: "Coach",
+                 eName: props.coach.fullName,
+                 eCompanyName: props.coach.companyName,
+                 eCoachImgUrl: props.coach.imageUrl,
+                 eCategoryName: props.coach.calendlyName,
+                 eDescription: props.coach.description,
+                 eVideoUrl: props.coach.videoUrl,
+                 eDuration: `${props.coach.duration} minutes discussion`,
+                 eResource: `${23} downloadable resources`,
+             }}
+         />);
+     }
 
     return (
         <>
@@ -52,9 +71,8 @@ export default function DashboardCoachCard(props) {
                         <span>{props.coach.coachPricePerSession}&#8364; per session</span>
                         <span className={styles.imgContainer}><img src={props.coach.coachCompanyLogoUrl} alt="" /></span>
                     </div>
-                    <div className={styles.button}>
-                        <button>Button</button>
-                        {/* <button className={styles.removeButton} onClick={() => onBook(coachId)}>Book</button> */}
+                    <div className={styles.button}>                       
+                         <button className={styles.removeButton} onClick={() => onBook(coachId)}>Book</button> 
                     </div>
                 </div>
             </div>
@@ -75,7 +93,7 @@ export default function DashboardCoachCard(props) {
                 onRequestClose={handleClose}
                 contentLabel="Example Modal"
             >
-                {/* <Booking handleClose={handleClose} item="coach" /> */}
+                {child}
             </Modal>
         </>
     )

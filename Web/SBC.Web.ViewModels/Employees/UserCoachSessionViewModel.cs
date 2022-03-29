@@ -20,5 +20,13 @@
         public string CoachCalendlyUrl { get; set; }
 
         public string Date { get; set; }
+
+        public bool CoachFeedbacked { get; set; }
+
+        public string CoachVideoUrl { get; set; }
+
+        public string CoachDescription { get; set; }
+
+        public string CoachCompanyName { get; set; }
     }
 }

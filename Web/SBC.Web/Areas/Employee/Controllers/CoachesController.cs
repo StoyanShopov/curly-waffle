@@ -20,10 +20,10 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> GetAll([FromQuery] string search)
         {
             int companyId = this.usersService.GetCompanyId(this.User.Id());
-            var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId, this.User.Id());
+            var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId, this.User.Id(), search);
             return this.GenericResponse(result);
         }
 
