@@ -5,7 +5,6 @@ import CoachCard from "../../Fragments/CoachCard";
 
 import style from "./EmployeeDashboard.module.css";
 
-import DashboardCoachCard from "./DashboardCoachCard.js";
 import DashboardCourseCard from "./DashboardCourseCard.js";
 import axios from "axios";
 
@@ -19,11 +18,8 @@ export default function EmployeeDashboard() {
 
     const getAll = async () => await axios.all([employeeService
         .getDashboard(), employeeService.getAllCoaches("booked")]).then(res => {
-            console.log(res);
             setUserCourses(res[0].userCourses)
-            console.log(res[1])
             setUserCoachSessions(res[1])
-            console.log(userCoachSessions)
         });
 
     useEffect(() => {
@@ -38,7 +34,6 @@ export default function EmployeeDashboard() {
         setChild(child)
         setShowModal(true);
     }
-
    
     return (
         <div className={style.container}>

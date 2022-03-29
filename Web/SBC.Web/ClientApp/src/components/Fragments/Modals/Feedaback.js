@@ -5,7 +5,6 @@ import style from './Feedback.module.css';
 
 export default function Feedback(props) {
 
-
     function onSendFeedback(e) {
         e.preventDefault();
 

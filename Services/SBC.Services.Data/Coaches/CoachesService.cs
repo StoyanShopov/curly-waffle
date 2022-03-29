@@ -330,7 +330,7 @@
                     return await this.sessionsRepository
                  .AllAsNoTracking()
                  .Include(c => c.Coach)
-                 .Where(uc => uc.UserId == userId)
+                 .Where(uc => uc.UserId == userId && uc.LeftFeedback == false)
                  .Distinct()
                  .Select(session => new EmployeeCoachCardViewModel
                  {
