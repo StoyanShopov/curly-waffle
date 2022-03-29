@@ -90,7 +90,6 @@ const Coaches = () => {
                     <div></div>
                     <div className={styles.innertext}>
                         <h1>Coaches</h1>
-                        <h2>Testing CI/CD ...</h2>
                         <p>
                             Upskill’s goal is to inspire you to master your technical and
                             personal skills and give you the opportunity to gain knowledge

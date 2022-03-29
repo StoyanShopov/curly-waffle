@@ -72,7 +72,7 @@ const _employeeUrl = (
         <li> <NavLink to="employee/dashboard" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Dashboard</NavLink></li>
         <li> <NavLink to="employee/courses" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Courses</NavLink></li>
         <li> <NavLink to="employee/coaches" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Coaches</NavLink></li>
-        <li> <NavLink to="employee/achievement" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Achievement</NavLink></li>
+        <li> <NavLink to="employee/achievements" className={({ isActive }) => (isActive ? styles.active : styles.notActive)}>Achievements</NavLink></li>
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );

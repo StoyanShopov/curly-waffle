@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Modal from "react-modal/lib/components/Modal";
 import { employeeService } from "../../../services/employee-service";
-import CoachCard from "../../Fragments/CoachCard.js";
+import CoachCard from "../../Fragments/CoachCard";
 
 import styles from "./EmployeeCoaches.module.css";
 let i = 1;
@@ -13,13 +13,10 @@ export default function EmployeeCoaches() {
 
     Modal.setAppElement('body');
 
-    const getCoaches = async () => {
-        return await employeeService.getAllCoaches();
-    }
-    
     useEffect(() => {
-        const res = getCoaches;
-        setCoaches(res);
+        employeeService.getAllCoaches().then(res=>{
+            setCoaches(res)
+        })
     }, []);
 
     const handleClose = useCallback(() => {
@@ -30,6 +27,9 @@ export default function EmployeeCoaches() {
         setChild(child)
         setShowModal(true);
     }
+
+    console.log(coaches);
+
 
     return (
         <div className={styles.container}>

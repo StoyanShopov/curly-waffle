@@ -12,8 +12,6 @@ import EmployeeCourses from './Courses/EmployeeCourses';
 import EmployeeCoaches from './Coaches/EmployeeCoaches';
 import Achievements from './Achievements/Achievements';
 
-import Revenue from '../super-admin/Revenue';
-
 import css from './EmployeeProfile.module.css'
 
 export default function EmployeeProfile(props) {

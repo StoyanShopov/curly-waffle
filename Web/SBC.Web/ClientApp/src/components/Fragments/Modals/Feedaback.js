@@ -17,7 +17,7 @@ export default function Feedback(props) {
 
         employeeService.leftFeedback(data)
             .then(res => {
-                if (res['status'] == 200) {
+                if (res['status'] === 200) {
                     props.onChangeButton();
                     props.handleClose();
                 }
