@@ -75,7 +75,7 @@ const NavBar = (props) => {
   return (
     <header className={styles.headerC}>
       <div className={styles.headerContainer}>
-        < div className={styles.logoContainer}>
+        <div className={styles.logoContainer}>
           <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
           < div className={styles.upskillContainer}>
             <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
@@ -91,35 +91,35 @@ const NavBar = (props) => {
         </div>
 
         <div className={styles.coursesCoaches}>
-          {props.auth.role === "Administrator"
+          {props.auth.role == "Administrator"
             ? courses
             : null}
         </div>
-        {props.auth.user != null
-          ?
-          <div>
-            {(props.notifications.length > 0 ?
+
+        <div className={styles.coursesCoaches}>
+          {email && (props.notifications.length > 0 ?
+            <Link
+              to="" onClick={() => openModal()}>
+              <div className={styles.circle}>
+                <i className="fa fa-bell fa-lg"></i>
+              </div>
+            </Link>
+            :
+            <div>
               <Link
                 to="" onClick={() => openModal()}>
-                <div className={styles.circle}>
-                  <i className="fa fa-bell fa-lg"></i>
-                </div>
+                <i className="fa fa-bell fa-lg"></i>
               </Link>
-              :
-              <div>
-                <Link
-                  to="" onClick={() => openModal()}>
-                  <i className="fa fa-bell fa-lg"></i>
-                </Link>
-              </div>)
-            }
+            </div>)
+          }
+          {props.auth.user != null
+            ?
             <div className={styles.greenCircle}>
               <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
             </div>
-          </div>
-          : null}
+            : null}
+        </div>
       </div>
-
       <Modal
         style={subtitle}
         isOpen={modalIsOpen}

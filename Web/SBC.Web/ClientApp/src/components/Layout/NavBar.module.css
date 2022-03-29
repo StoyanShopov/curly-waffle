@@ -140,10 +140,10 @@
     cursor: pointer;
     padding-right: 2%;
     position: relative;
-    left: -3%;
-    flex-grow: 0.4;
+    left: -5%;
+    /* flex-grow: 0.4;
     flex-shrink: 1;
-    flex-basis: 0;
+    flex-basis: 0; */
 }
 
     .coursesCoaches ul {
@@ -184,6 +184,7 @@
 }
 
 .greenCircle {
+    top: -10px;
     width: 44px;
     height: 44px;
     color: #FFFFFF;
@@ -195,7 +196,7 @@
     border-radius: 50%;
     margin-right: 3%;
     position: absolute;
-    left: 93%;
+    left: 80%;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
