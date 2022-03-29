@@ -2,7 +2,6 @@
 import { PopupButton } from "react-calendly";
 import { TokenManagement } from "../../../helpers";
 import { employeeService } from "../../../services/employee-service";
-import { EmployeeService } from "../../../services/employee-service";
 
 import style from './Booking.module.css';
 
@@ -27,7 +26,7 @@ export default function Booking(props) {
             'message',
             async (e) => {
                 if (CalendlyEventListener(e)) {
-                    await EmployeeService.bookCoach(props.entity.coachId)
+                    await employeeService.bookCoach(props.entity.coachId)
                     props.onChangeButton();
                     props.handleClose();
                 }

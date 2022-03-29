@@ -80,7 +80,7 @@ function App() {
         _setUser(TokenManagement.getUserData());
         _setRole(TokenManagement.getUserRole());
     }
-
+    console.log(_role);
     return (
         <Provider store={store}>
             <Layout auth={{ "user": _user, "role": _role }} connection={connection} notifications={notifications} setNotifications={setNotifications}>
@@ -109,5 +109,5 @@ function App() {
     );
 }
 const hasRole = (userRole, roles) =>
-    userRole === roles;
+    userRole == roles;
 export default App;

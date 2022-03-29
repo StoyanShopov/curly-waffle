@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-import { EmployeeService } from "../../../services/employee-service";
+import { employeeService } from "../../../services/employee-service";
 
 import Card from '../Courses/EmployeeCourseCard.js';
 
 export default function EmployeeCourses(props) {
-    console.log(EmployeeService)
+    console.log(employeeService)
 
     const [employeeCourses, setEmployeeCourses] = useState([])
     const [courseModalDetails, setCourseModalDetails] = useState({})
 
     useEffect(() => {
-        EmployeeService.getAllCourses()
+        employeeService.getAllCourses()
             .then(response => {
                 setEmployeeCourses(response.data);
             });
