@@ -114,9 +114,9 @@
             public const string MariaVideoUrl = "https://www.youtube.com/watch?v=vRiWG1iNikc";
             public const string EmilVideoUrl = "https://www.youtube.com/watch?v=XB3qoXgdA10";
 
-            public const string IvanCalendlyUrl = "https://calendly.com/1";
-            public const string MariaCalendlyUrl = "https://calendly.com/2";
-            public const string EmilCalendlyUrl = "https://calendly.com/3";
+            public const string IvanCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
+            public const string MariaCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
+            public const string EmilCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
 
             public const string IvanImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/ced7f6bb-5ada-4b69-b470-834e748326fe";
             public const string MariaImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c238e4e5-ab4e-4771-a6c8-be3f6e108a91";

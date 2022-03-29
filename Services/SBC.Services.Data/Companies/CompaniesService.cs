@@ -185,30 +185,6 @@
             return new ResultModel(coach);
         }
 
-        public async Task<Result> GetActiveCoursesAsync(int companyId)
-        {
-            var activeCourses = await this.coursesRepository
-                .AllAsNoTracking()
-                .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
-                .Include(x => x.Coach)
-                .ThenInclude(x => x.Company)
-                .Select(x => new ActiveCourseViewModel
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    PricePerPerson = x.PricePerPerson,
-                    PictureUrl = x.PictureUrl,
-                    CategoryId = x.CategoryId,
-                    LanguageId = x.LanguageId,
-                    CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
-                    CategoryName = x.Category.Name,
-                    CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
-                })
-                .ToListAsync();
-
-            return new ResultModel(activeCourses);
-        }
-
         public async Task<Result> SetCourseToActiveAsync(int courseId, int companyId)
         {
             var newActiveCourse = new CompanyCourse
@@ -336,5 +312,29 @@
                 .Where(c => c.Name.ToLower() == companyName.ToLower())
                 .Select(c => c.Employees.Select(e => e.Email))
                 .FirstOrDefaultAsync();
+                
+        public async Task<Result> GetActiveCoursesAsync(int companyId)
+        {
+            var activeCourses = await this.coursesRepository
+               .AllAsNoTracking()
+               .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
+               .Include(x => x.Coach)
+               .ThenInclude(x => x.Company)
+               .Select(x => new ActiveCourseViewModel
+               {
+                   Id = x.Id,
+                   Title = x.Title,
+                   PricePerPerson = x.PricePerPerson,
+                   PictureUrl = x.PictureUrl,
+                   CategoryId = x.CategoryId,
+                   LanguageId = x.LanguageId,
+                   CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                   CategoryName = x.Category.Name,
+                   CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
+               })
+               .ToListAsync();
+
+            return new ResultModel(activeCourses);
+        }
     }
 }

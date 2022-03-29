@@ -1,5 +1,6 @@
 ﻿namespace SBC.Services.Data.Courses
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -12,6 +13,7 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Courses;
     using SBC.Web.ViewModels.Courses;
+    using SBC.Web.ViewModels.Employees;
 
     public class CoursesService : ICoursesService
     {
@@ -19,13 +21,19 @@
 
         private readonly IDeletableEntityRepository<Course> coursesRepository;
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IDeletableEntityRepository<UserCourse> usersCoursesRepository;
 
         public CoursesService(
             IDeletableEntityRepository<Course> coursesRepository,
-            IDeletableEntityRepository<Coach> coachesRepository)
+            IDeletableEntityRepository<Coach> coachesRepository,
+            IDeletableEntityRepository<ApplicationUser> usersRepository,
+            IDeletableEntityRepository<UserCourse> usersCoursesRepository)
         {
             this.coursesRepository = coursesRepository;
             this.coachesRepository = coachesRepository;
+            this.usersRepository = usersRepository;
+            this.usersCoursesRepository = usersCoursesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateCourseInputModel courseModel)
@@ -194,6 +202,122 @@
             };
 
             return new ResultModel(courses);
+        }
+
+        public async Task<Result> GetAllByOwnerAsync(string employeeId)
+        {
+            var companyId = this.usersRepository
+                .AllAsNoTracking()
+                .Where(u => u.Id == employeeId)
+                .Select(x => x.CompanyId)
+                .FirstOrDefault();
+
+            var user = this.usersRepository
+                .AllAsNoTracking()
+                .Include(x => x.Courses)
+                .FirstOrDefault(x => x.Id == employeeId);
+
+            var userCourses = user
+                .Courses
+                .Select(x => x.CourseId)
+                .ToList();
+
+            var activeCourses = await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
+                .Include(x => x.Coach)
+                .ThenInclude(x => x.Company)
+                .Select(x => new CourseEmployeeViewModel
+                {
+                    Id = x.Id,
+                    CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    PictureUrl = x.PictureUrl,
+                    Title = x.Title,
+                    CategoryName = x.Category.Name,
+                    CompanyLogoUrl = x.Coach.Company.LogoUrl,
+                    LecturesCount = x.Lectures.Count,
+                    IsEnrolled = userCourses.Contains(x.Id),
+                })
+                .ToListAsync();
+
+            return new ResultModel(activeCourses);
+        }
+
+        public async Task<Result> GetActiveCoursesAsync<TModel>(int companyId)
+        {
+            var activeCourses = await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Companies.Any(x => x.CompanyId == companyId))
+                .Include(x => x.Coach)
+                .ThenInclude(x => x.Company)
+                .Select(x => new ActiveCourseViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    PricePerPerson = x.PricePerPerson,
+                    PictureUrl = x.PictureUrl,
+                    CategoryId = x.CategoryId,
+                    LanguageId = x.LanguageId,
+                    CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    CategoryName = x.Category.Name,
+                    CompanyLogoUrl = x.Coach.CompanyId != null ? x.Coach.Company.LogoUrl : "Null",
+                })
+                .ToListAsync();
+
+            return new ResultModel(activeCourses);
+        }
+
+        public async Task<Result> GetByIdEmployeeAsync(int id)
+        {
+            var course = await this.coursesRepository
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            var lectures = course
+                .Lectures
+                .Select(x => x.Lecture)
+                .ToList();
+
+            var resourcesDuration = lectures
+                .SelectMany(x => x.Resources
+                .Where(x => ((int)x.FileType) == 1))
+                .Sum(x => x.Size);
+
+            var result = await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .Select(x => new EmployeeCourseModalViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    VideoUrl = x.VideoUrl,
+                    VideosDuration = resourcesDuration,
+                    LecturesCount = x.Lectures.Count(),
+                    CompanyName = x.Coach.Company.Name,
+                    CompanyCategoryName = x.Category.Name,
+                    CoachName = $"{x.Coach.FirstName} {x.Coach.LastName}",
+                    CoachPictureUrl = x.Coach.ImageUrl,
+                })
+                .FirstOrDefaultAsync();
+
+            return new ResultModel(result);
+        }
+
+        public async Task<Result> EnrollCourse(string userId, int courseId)
+        {
+            var userCourse = new UserCourse
+            {
+                UserId = userId,
+                CourseId = courseId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddMonths(3),
+            };
+
+            await this.usersCoursesRepository.AddAsync(userCourse);
+            await this.usersCoursesRepository.SaveChangesAsync();
+
+            return true;
         }
     }
 }

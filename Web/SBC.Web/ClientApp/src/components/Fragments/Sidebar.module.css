@@ -9,6 +9,7 @@
 }
 
 .pencilLink {
+    background-color: transparent;
     cursor: pointer;
     border-style: none;
     float: right;
@@ -43,6 +44,14 @@
     font-weight: bold;
     line-height: 65px;
     border-radius: 50%;
+}
+
+.profilePhoto {
+    width: 70px;
+    height: 70px;    
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
 }
 
 .names {

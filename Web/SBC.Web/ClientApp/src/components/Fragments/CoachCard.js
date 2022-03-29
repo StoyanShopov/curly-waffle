@@ -4,11 +4,31 @@ import Feedback from './Modals/Feedaback';
 import styles from './ManagerCoachCard.module.css';
 import { useState } from 'react';
 
-
 export default function CoachCard(props) {
     const [button, setButton] = useState(props.coach.feedbacked);
     const onBook = async (coachId) => {
-        props.openModal(<Booking url={props.coach.scheduling_url} onChangeButton={onChangeButton} openModal={props.openModal} handleClose={props.handleClose} coachId={coachId} />);
+       // console.log(props.coach)
+        props.openModal(<Booking
+            key={coachId}
+            isMode={"coach"}
+            url={props.coach.scheduling_url}
+            onChangeButton={onChangeButton}
+            openModal={props.openModal}
+            handleClose={props.handleClose}
+            entity={{
+                coachId: coachId,
+                eType: "Coach",
+                eName: props.coach.fullName,
+                eCompanyName: props.coach.companyName,
+                eCoachImgUrl: props.coach.imageUrl,
+                eCategoryName: props.coach.calendlyName,
+                eDescription: props.coach.description,
+                eVideoUrl: props.coach.videoUrl,
+                eDuration: `${props.coach.duration} minutes discussion`,
+                eResource: `${23} downloadable resources`,
+            }}
+
+        />);
     }
 
     const onLeftFeedBack = (coachId) => {
@@ -16,7 +36,6 @@ export default function CoachCard(props) {
     }
 
     const onChangeButton = () => {
-      /*  props.coach.feedbacked = !props.coach.feedbacked*/
         setButton(!button);
     }
 

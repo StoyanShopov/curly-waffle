@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Lectures;
+    using SBC.Web.Areas.Employee.Controlles;
     using SBC.Web.ViewModels.Administration.Lectures;
 
     public class LecturesController : EmployeesBaseController

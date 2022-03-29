@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Services.Data.Employees;
     using SBC.Services.Data.Infrastructures;
+    using SBC.Web.Areas.Employee.Controlles;
 
     public class DashboardController : EmployeesBaseController
     {

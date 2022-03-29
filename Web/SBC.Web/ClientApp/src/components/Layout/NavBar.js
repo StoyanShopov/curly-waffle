@@ -116,24 +116,25 @@ const NavBar = (props) => {
             ?
             <div className={styles.greenCircle}>
               <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
-            </div>
+                </div>
             : null}
-        </div>
+            </div>
       </div>
-      <Modal
-        style={subtitle}
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        ariaHideApp={false}
-      >
-        <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
-      </Modal>
+        <Modal
+          style={subtitle}
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          ariaHideApp={false}
+        >
+          <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
+        </Modal>
     </header>
   )
 }
 
 export default NavBar;
+
 const courses = (
   <ul>
     <li>
@@ -154,11 +155,14 @@ const courses = (
     </li>
   </ul>
 );
-const unLogged = (<ul>
-  <li>
-    <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
-  </li>
-  <li>
-    <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-  </li>
-</ul>);
+
+const unLogged = (
+  <ul>
+    <li>
+      <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
+    </li>
+    <li>
+      <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
+    </li>
+  </ul>
+);

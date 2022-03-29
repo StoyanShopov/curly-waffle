@@ -30,7 +30,6 @@
         private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
         private readonly IEmailSender emailSender;
 
-
         public CoachesService(
             IDeletableEntityRepository<Coach> coachesRepository,
             IDeletableEntityRepository<Language> languagesRepository,
@@ -38,7 +37,7 @@
             IDeletableEntityRepository<Company> companiesRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
             IRepository<LanguageCoach> languagesCoachRepository,
-            IDeletableEntityRepository<UserCoachSession> sessionsRepository, 
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository,
             IEmailSender emailSender)
         {
             this.coachesRepository = coachesRepository;
@@ -51,12 +50,18 @@
             this.emailSender = emailSender;
         }
 
-        public async Task<Result> LeftFeedback(string employeeId, FeedbackInputModel feedback)
+        public async Task<Result> LeftFeedback(ApplicationUser user, FeedbackInputModel feedback)
         {
-            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == feedback.CoachId);
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == user.Id && x.CoachId == feedback.CoachId);
             session.LeftFeedback = true;
-      //      emailSender.SendEmailAsync();
             await this.sessionsRepository.SaveChangesAsync();
+
+            await this.emailSender.SendEmailAsync(
+               from: user.Email,
+               fromName: user.LastName + ' ' + user.FirstName,
+               to: user.Company.Email,
+               subject: $"Feedback from {user.FirstName} {user.LastName} about coach Session",
+               htmlContent: $"<div> < h4 > Top Secret Feedback from {user.FirstName} {user.LastName}</h4><p>Message: {feedback.Message}</p></div>");
 
             return true;
         }
@@ -94,9 +99,12 @@
                         Id = coach.Id,
                         FullName = $"{coach.FirstName} {coach.LastName}",
                         ImageUrl = coach.ImageUrl,
+                        CompanyName=coach.Company.Name,
                         CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
                         CalendlyId = coach.CalendlyUrl,
                         Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
+                        VideoUrl = coach.VideoUrl,
+                        Description = coach.Description,
                     })
                     .ToListAsync();
 

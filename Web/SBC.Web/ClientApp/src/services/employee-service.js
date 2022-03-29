@@ -2,6 +2,8 @@ import axios from 'axios';
 import { TokenManagement } from '../helpers';
 import { baseUrl, calendly_token, getTypeEvents, scheduled_events } from '../constants';
 
+const token = TokenManagement.getLocalAccessToken();
+
 const getDashboard = async () => {
     try {
         const resp = await axios.get(baseUrl + "employees/Dashboard", {
@@ -53,6 +55,7 @@ const getAllResources = async (lectureId) => {
         });
 }
 
+
 const getAllCoaches = async () => {
     let _data = [];
     await axios({
@@ -81,7 +84,7 @@ const getAllEventTypes = async (res) => {
                 'Content-Type': 'application/json'
             }
         }).then(data => {
-            console.log(data.data.collection)
+           // console.log(res)
             data.data.collection.forEach((element, index) => {
                 _data.push({
                     "id": x.id,
@@ -90,9 +93,11 @@ const getAllEventTypes = async (res) => {
                     'calendlyId': x.calendlyId,
                     "feedbacked": x.feedbacked,
                     "imageUrl": x.imageUrl,
+                    "videoUrl": x.videoUrl,
+                    "description": x.description,
+                    "companyName": x.companyName,
 
                     "isBooked": element.uri,
-
                     "scheduling_url": element.scheduling_url,
                     "duration": element.duration,
                     'active': element.active,
@@ -115,12 +120,12 @@ const getCalendlyEvents = async (data) => {
             'Content-Type': 'application/json'
         }
     }).then(res => {
-        console.log(data)
+    //    console.log(data)
         _data = res.data.collection;
-        console.log(_data)
+      //  console.log(_data)
         data.map(x => {
             if (_data.some(y => {
-                console.log(x.feedbacked)
+       //         console.log(x.feedbacked)
                 return y.event_type === x.isBooked && !x.feedbacked
             }
             )) {
@@ -134,6 +139,7 @@ const getCalendlyEvents = async (data) => {
 }
 
 const bookCoach = async (coachId) => {
+    console.log(coachId)
     return await axios({
         method: "POST",
         url: baseUrl + "employees/coaches/book-coach/" + coachId,
@@ -157,6 +163,45 @@ const leftFeedback = async (_data) => {
     })
 }
 
+const getAllCourses = async () => {
+    return await axios.get(`${baseUrl}employees/Courses`, {
+        headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+    })
+}
+
+const getById = async (courseId) => {
+    return await axios
+        .get(`${baseUrl}employees/Courses/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
+const getModalDetailsById = async (courseId) => {
+    return await axios
+        .get(`${baseUrl}employees/Courses/modalDetails/${courseId}`, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
+const enrollUser = async (courseId) => {
+    return await axios
+        .post(`${baseUrl}employees/Courses/${courseId}`, {}, {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+}
+
 export const employeeService = {
     getDashboard,
     getAllLectures,
@@ -167,4 +212,8 @@ export const employeeService = {
     bookCoach,
     leftFeedback,
     getCalendlyEvents,
+    getAllCourses,
+    getById,
+    getModalDetailsById,
+    enrollUser,
 }
