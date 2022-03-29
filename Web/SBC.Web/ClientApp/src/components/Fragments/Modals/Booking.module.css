@@ -110,7 +110,7 @@
 
     .downContainer p {
         font-weight: bold;
-        margin-top: 11%;
+        margin-top: 10%;
     }
 
 
@@ -237,7 +237,7 @@
     background-color: transparent;
 }
 
-.enrollButton{
+.enrollButton {
     width: 120px;
     height: 40px;
     background-color: floralwhite;
@@ -247,5 +247,6 @@
     font: normal normal bold 22px/27px Montserrat;
     font-weight: bold;
     font-size: 16px;
-    cursor: pointer; 
+    cursor: pointer;
+    margin-bottom: 14%;
 }

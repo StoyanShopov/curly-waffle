@@ -14,16 +14,14 @@ export default function EmployeeCourseCard(props) {
     const [isEnroled, setIsEnrolled] = useState(props.course.isEnrolled)
 
     let subtitle = {
-        content: {
-            top: '55%',
+        content: {           
+            top: '58%',
             left: '50%',
             right: 'auto',
-            width: '44%',
-            height: '500px',
+            width: '65%',
+            height: '79%',
             bottom: 'auto',
-            marginTop: '-5%',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -40%)',
+            transform: 'translate(-50%, -50%)',
             padding: '0px',
         },
         color: '#f00'
@@ -76,7 +74,7 @@ export default function EmployeeCourseCard(props) {
                     <div className={styles.button}>
                         {
                         isEnroled
-                            ?<Link to={`/courses/details/${props.course.id}`}><button className={styles.practiceButton}>Continue</button></Link>
+                                ? <Link to={`/courses/details/${props.course.id}`}><button className={styles.removeButton}>Continue</button></Link>
                             :<button className={styles.removeButton} onClick={() => onSetCoursemodalDetails() }>Enroll</button>}
 
                     </div>
@@ -105,8 +103,8 @@ export default function EmployeeCourseCard(props) {
                 eCategoryName: courseModalDetails.companyCategoryName,
                 eDescription: courseModalDetails.description,
                 eVideoUrl: courseModalDetails.videoUrl,
-                eDuration: `${courseModalDetails.videosDuration} minutes discussion`,
-                eResource: `${courseModalDetails.lecturesCount} downloadable resources`,}}/>
+                eDuration: `${courseModalDetails.videosDuration} hours on-demand video`,
+                eResource: `${courseModalDetails.lecturesCount} lectures`,}}/>
             </Modal>
         </>
     )
