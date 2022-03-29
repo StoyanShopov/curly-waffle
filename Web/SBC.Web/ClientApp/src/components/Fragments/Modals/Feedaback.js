@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EmployeeService } from '../../../services/employee-service';
+import { employeeService } from '../../../services/employee-service';
 
 export default function Feedback(props) {
 
@@ -14,7 +14,7 @@ export default function Feedback(props) {
         console.log(data)
 
 
-        EmployeeService.leftFeedback(data)
+        employeeService.leftFeedback(data)
             .then(res => {
                 console.log(res);//
                 if (res['status'] == 200) {

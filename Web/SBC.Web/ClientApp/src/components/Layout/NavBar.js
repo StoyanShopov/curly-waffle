@@ -83,55 +83,39 @@ const NavBar = (props) => {
         </div>
         <div className={styles.testedLinks}>
         </div>
+
         <div className={styles.homePageButtons}>
           {props.auth.user != null
             ? null
             : unLogged}
         </div>
+
         <div className={styles.coursesCoaches}>
-          <ul>
-            <li>
-              <NavLink
-                to="/owner/courses/courseCatalog"
-                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-              >
-                Courses
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/owner/coaches/coachCatalog"
-                className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-              >
-                Coaches
-              </NavLink>
-            </li>
-            <li>
-              {email && (props.notifications.length > 0 ?
-                <Link
-                  to="" onClick={() => openModal()}>
-                  <div className={styles.circle}>
-                    <i className="fa fa-bell fa-lg"></i>
-                  </div>
-                </Link>
-                :
-                <div>
-                  <Link
-                    to="" onClick={() => openModal()}>
-                    <i className="fa fa-bell fa-lg"></i>
-                  </Link>
-                </div>)
-              }
-            </li>
-          </ul>
-        </div>
-        <div className={styles.greenCircle}>
-          A
+          {props.auth.role === "Administrator"
+            ? courses
+            : null}
         </div>
         {props.auth.user != null
           ?
-          <div className={styles.greenCircle}>
-            <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
+          <div>
+            {(props.notifications.length > 0 ?
+              <Link
+                to="" onClick={() => openModal()}>
+                <div className={styles.circle}>
+                  <i className="fa fa-bell fa-lg"></i>
+                </div>
+              </Link>
+              :
+              <div>
+                <Link
+                  to="" onClick={() => openModal()}>
+                  <i className="fa fa-bell fa-lg"></i>
+                </Link>
+              </div>)
+            }
+            <div className={styles.greenCircle}>
+              <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
+            </div>
           </div>
           : null}
       </div>
@@ -152,7 +136,6 @@ const NavBar = (props) => {
 export default NavBar;
 const courses = (
   <ul>
-
     <li>
       <NavLink
         to="admin/courses"
