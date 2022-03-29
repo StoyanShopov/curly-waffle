@@ -24,6 +24,8 @@
 
         public string StartDate { get; set; }
 
+        public string EndDate { get; set; }
+
         public IEnumerable<CourseLectureModel> CourseLectures { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)

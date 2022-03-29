@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import styles from './Achievements.module.css';
-import { format } from "date-fns";
 
 import { employeeService } from '../../../services/employee-service';
 
@@ -33,8 +32,8 @@ export default function Achievements() {
                         {userCourses && userCourses.map(userCourses => (
                             <tr key={userCourses.courseId}>
                                 <td>{userCourses.courseTitle}</td>
-                                <td>{format(new Date(userCourses.startDate), "dd.mm.yyyy")}</td>
-                                <td>-</td>
+                                <td>{userCourses.startDate.substring(0,10)}</td>
+                                <td>{userCourses.endDate.substring(0,10)}</td>
                                 <td>-</td>
                             </tr>
                         ))}
@@ -56,7 +55,7 @@ export default function Achievements() {
                         {userCoachSessions && userCoachSessions.map(userCoachSessions => (
                             <tr key={userCoachSessions.coachId}>
                                 <td>{`${userCoachSessions.coachFirstName} ${userCoachSessions.coachLastName}`}</td>
-                                <td>{format(new Date(userCoachSessions.date), "dd.mm.yyyy")}</td>
+                                <td>{userCoachSessions.date.substring(0,10)}</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>

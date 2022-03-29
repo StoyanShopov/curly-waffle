@@ -79,6 +79,7 @@
             {
                 UserId = employeeId,
                 CoachId = coachId,
+                Date = System.DateTime.UtcNow,
             };
 
             await this.sessionsRepository.AddAsync(session);
