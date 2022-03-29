@@ -5,7 +5,7 @@ import styles from './DashboardCoachCard.module.css';
 
 import { getCategoriesByCoachId } from '../../../services/categoryService';
 
-import Booking from '../../Fragments/Modals/Booking';
+// import Booking from '../../Fragments/Modals/Booking';
 
 export default function DashboardCoachCard(props) {
     const [showModal, setShowModal] = useState(false);
