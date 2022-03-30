@@ -11,6 +11,7 @@
 
     using static SBC.Common.GlobalConstants.PasswordConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
+    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
 
     internal class UsersSeeder : ISeeder
     {
@@ -20,6 +21,7 @@
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
             const string adminEmail = "admin@test.test";
+            var company = await dbContext.Companies.FirstOrDefaultAsync(x => x.Name == SoftUniCompanyName);
 
             var adminUser = new ApplicationUser
             {
@@ -41,7 +43,7 @@
                 LastName = "Ownerov",
                 Email = ownerEmail,
                 UserName = ownerEmail,
-                CompanyId = 2,
+                CompanyId = company.Id,
                 ProfileSummary = "Owner Summary",
             };
 
@@ -60,7 +62,7 @@
                         ProfileSummary = "Vasil Vasilev Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                     new ApplicationUser
@@ -74,7 +76,7 @@
                         ProfileSummary = "Gergana Popova Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                     new ApplicationUser
@@ -88,7 +90,7 @@
                         ProfileSummary = "Nikolay Stefanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                     new ApplicationUser
@@ -102,7 +104,7 @@
                         ProfileSummary = "Emil Emilov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                     new ApplicationUser
@@ -116,7 +118,7 @@
                         ProfileSummary = "Maria Toncheva Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                     new ApplicationUser
@@ -130,7 +132,7 @@
                         ProfileSummary = "Ivan Ivanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
-                        CompanyId = 2,
+                        CompanyId = company.Id,
                         Manager = ownerUser,
                     },
                 };

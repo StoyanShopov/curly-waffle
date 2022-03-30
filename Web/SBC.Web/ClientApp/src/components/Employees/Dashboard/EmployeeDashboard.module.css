@@ -15,6 +15,10 @@
     margin-bottom: 3rem;
 }
 
+.noCoachesYet {
+    margin-bottom: 21%;
+}
+
 /*for cards:*/
 .card {
     width: 29%;

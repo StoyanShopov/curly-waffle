@@ -119,7 +119,7 @@ export default function Booking(props) {
                                     name: user.fullname,
                                 }}
                             />
-                            : <Link to={`/courses/details/${props.entity.courseId}`}><button className={style.enrollButton} onClick={() => props.onEnrollUser(props.courseId)}>Enroll</button></Link>
+                            : <Link to={`/courses/details/${props.entity.courseId}`}><button className={style.bookButton} onClick={() => props.onEnrollUser(props.courseId)}>Enroll</button></Link>
                         }
                     </div>
                 </div>

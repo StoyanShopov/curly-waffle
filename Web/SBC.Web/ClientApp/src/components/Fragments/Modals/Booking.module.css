@@ -236,17 +236,3 @@
     border: none;
     background-color: transparent;
 }
-
-.enrollButton {
-    width: 120px;
-    height: 40px;
-    background-color: floralwhite;
-    border-color: #296CFB;
-    color: #296CFB;
-    text-decoration: none;
-    font: normal normal bold 22px/27px Montserrat;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 14%;
-}

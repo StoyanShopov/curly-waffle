@@ -34,25 +34,31 @@ export default function EmployeeDashboard() {
         setChild(child)
         setShowModal(true);
     }
-   
+
     return (
         <div className={style.container}>
             <div className={style.cardscontainer}>
 
+
                 {
-                    userCoachSessions
-                ?
                     userCoachSessions.length > 0
                         ? userCoachSessions.map((x, index) => { return <CoachCard key={index} coach={x} openModal={openModal} handleClose={handleClose} /> })
-                            : <h3>No coaches yet</h3>
-                        : <h3>Not yet ........</h3>
+                        : ""
                 }
 
-                {userCourses.length > 0
-                    ? userCourses.map(x => <DashboardCourseCard key={x.courseTitle} course={x} />)
-                    : <h3>No courses yet</h3>
-
+                {
+                    userCourses.length > 0
+                        ? userCourses.map(x => <DashboardCourseCard key={x.courseTitle} course={x} />)
+                        : ""
                 }
+
+                {
+                    userCoachSessions.length == 0 && userCourses.length == 0
+                        ? <h3 className={style.noCoachesYet}>No Bookings</h3>
+                        : ""
+                }
+
+
             </div>
             <Modal
                 style={{
