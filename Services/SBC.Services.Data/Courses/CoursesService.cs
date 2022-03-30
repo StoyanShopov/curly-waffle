@@ -15,6 +15,8 @@
     using SBC.Web.ViewModels.Courses;
     using SBC.Web.ViewModels.Employees;
 
+    using static SBC.Common.ErrorConstants.CoursesMessages;
+
     public class CoursesService : ICoursesService
     {
         private const int TakeDefaultValue = 3;
@@ -44,7 +46,9 @@
 
             if (course != null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Course already exist!");
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    CourseAlreadyExist);
             }
 
             var newCourse = new Course()
@@ -89,7 +93,9 @@
 
             if (course == null)
             {
-                return new ErrorModel(HttpStatusCode.NotFound, "Course not found!");
+                return new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    CourseNotFound);
             }
 
             this.coursesRepository.Delete(course);
@@ -102,7 +108,9 @@
         {
             if (id == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Id is null!");
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    CourseIdIsNull);
             }
 
             var course = await this.coursesRepository
@@ -111,7 +119,9 @@
 
             if (course == null)
             {
-                return new ErrorModel(HttpStatusCode.NotFound, "Course doesn't exist!");
+                return new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    CourseDoesNotExist);
             }
 
             course.Title = courseModel.Title;
@@ -167,7 +177,10 @@
                 .AllAsNoTracking()
                 .CountAsync();
 
-        public async Task<Result> GetAllWithActiveAsync(int companyId, int skip = default, int take = TakeDefaultValue)
+        public async Task<Result> GetAllWithActiveAsync(
+            int companyId,
+            int skip = default,
+            int take = TakeDefaultValue)
         {
             var coursesCount = await this.coursesRepository
                 .AllAsNoTracking()

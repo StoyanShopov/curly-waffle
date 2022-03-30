@@ -15,7 +15,7 @@
     using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Feedback;
 
-    using static SBC.Common.GlobalConstants;
+    using static SBC.Common.ErrorConstants;
 
     public class CoachesService : ICoachesService
     {

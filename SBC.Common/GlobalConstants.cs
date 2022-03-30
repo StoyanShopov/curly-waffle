@@ -138,23 +138,6 @@
             public const string PhoneNumber3 = "+359 888000333";
         }
 
-        public class CoachesConstants
-        {
-            public const string CoachDoesNotExist = "Coach with id:{0} does not exists!";
-            public const string CoachAlreadyExists = "Coach with this Calendly-URL:{0} already exists!";
-            public const string CoachLangAndCategoriesFieldShouldNotBeEmpty = "Language and Category field should not be empty!";
-        }
-
-        public class LanguagesConstants
-        {
-            public const string LanguageNotExist = "Language does not exist!";
-        }
-
-        public class CategoriesConstants
-        {
-            public const string CategoryDoesNotExist = "Category does not exist!";
-        }
-
         public class ApplicationUserConstants
         {
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";

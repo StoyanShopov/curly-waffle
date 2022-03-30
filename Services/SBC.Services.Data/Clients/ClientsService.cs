@@ -14,7 +14,7 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Client;
 
-    using static SBC.Common.ErrorMessageConstants.Client;
+    using static SBC.Common.ErrorConstants.Client;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class ClientsService : IClientsService

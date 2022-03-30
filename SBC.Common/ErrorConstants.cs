@@ -2,7 +2,7 @@
 {
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
-    public static class ErrorMessageConstants
+    public static class ErrorConstants
     {
         public class Client
         {
@@ -15,11 +15,36 @@
             public const string OwnerExists = "The user's company '{0}' has already a owner.";
         }
 
-        public class Company
+        public class CompanyConstants
         {
             public const string ExistsByName = "The company's name '{0}' already exists.";
 
             public const string ExistsByEmail = "The company's email '{0}' already exists.";
+        }
+
+        public class CoachesConstants
+        {
+            public const string CoachDoesNotExist = "Coach with id:{0} does not exists!";
+            public const string CoachAlreadyExists = "Coach with this Calendly-URL:{0} already exists!";
+            public const string CoachLangAndCategoriesFieldShouldNotBeEmpty = "Language and Category field should not be empty!";
+        }
+
+        public class LanguagesConstants
+        {
+            public const string LanguageNotExist = "Language does not exist!";
+        }
+
+        public class CategoriesConstants
+        {
+            public const string CategoryDoesNotExist = "Category does not exist!";
+        }
+
+        public class CoursesMessages
+        {
+            public const string CourseAlreadyExist = "Course already exist!";
+            public const string CourseDoesNotExist = "Course doesn't exist!";
+            public const string CourseNotFound = "Course not found!";
+            public const string CourseIdIsNull = "Id is null!";
         }
 
         public class User

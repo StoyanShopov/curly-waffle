@@ -18,7 +18,7 @@
     using SBC.Web.ViewModels.Company;
     using SBC.Web.ViewModels.Courses;
 
-    using static SBC.Common.ErrorMessageConstants.Company;
+    using static SBC.Common.ErrorConstants.CompanyConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class CompaniesService : ICompaniesService
@@ -277,14 +277,6 @@
                 .AllAsNoTracking()
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
-        //public async Task<int> GetNameByUserEmailAsync(string email)
-        //{
-        //    this.companiesRepository
-        //        .AllAsNoTracking()
-        //        .Include(c => c.Employees)
-        //        .Where(c => c.Employees.Any(e => e.NormalizedEmail == email.ToUpper())
-        //}
-         
         public async Task<int> GetIdByNameAsync(string name)
             => await this.companiesRepository
                 .AllAsNoTracking()
@@ -312,7 +304,7 @@
                 .Where(c => c.Name.ToLower() == companyName.ToLower())
                 .Select(c => c.Employees.Select(e => e.Email))
                 .FirstOrDefaultAsync();
-                
+
         public async Task<Result> GetActiveCoursesAsync(int companyId)
         {
             var activeCourses = await this.coursesRepository

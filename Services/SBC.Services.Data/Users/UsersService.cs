@@ -17,7 +17,7 @@
 
     using SBC.Web.ViewModels.User;
 
-    using static SBC.Common.ErrorMessageConstants.User;
+    using static SBC.Common.ErrorConstants.User;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class UsersService : IUsersService
