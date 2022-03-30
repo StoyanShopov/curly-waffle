@@ -1,4 +1,4 @@
- export const baseUrl = 'https://upskills.azurewebsites.net/';
+export const baseUrl = 'https://upskills.azurewebsites.net/';
 
 // TODO: change to azure URL before dev merge
 //export const baseUrl = 'https://localhost:44319/';
