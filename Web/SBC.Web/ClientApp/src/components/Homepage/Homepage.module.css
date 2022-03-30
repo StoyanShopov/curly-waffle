@@ -1,30 +1,23 @@
 .container {
     width: 100%;
-    height: 100%;
     display: flex;
     position: relative;
 }
 
 .leftHalf {
-    width: 50%;
-    height: 100%;
-    float: left;
-    margin-bottom: 12%;
+    margin-bottom: 6%;
     display: flex;
-    flex-wrap: wrap;
-}
-
-.rightHalf {
-    width: 50%;
-    height: 100%;
-    margin-top: 8%;
+    flex-direction: column;
+    max-width: 50%;
+    height: auto;    
+    position: relative;
 }
 
 .hOne {
     float: left;
     padding-left: 10%;
     font-size: 48px;
-    width: 760px;
+    max-width: 760px;
     display: block;
     text-align: left;
 }
@@ -32,16 +25,17 @@
 .pOne {
     font-size: 22px;
     padding-left: 10%;
-    width: 760px;
+    max-width: 760px;
     display: block;
     line-height: 42px;
+    margin: 0;
 }
 
 .getStartedBtn {
     width: 250px;
     height: 70px;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin-left: 29%;
+    margin-top: 10%;
     text-decoration: none;
     background-color: #296CFB;
     border-color: #296CFB;
@@ -54,33 +48,60 @@
 
 .divOne {
     margin-top: 10%;
-    padding-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.path6 {
+    height: auto;
+    position: relative;
+    max-width: 820px;   
+    z-index: -10;
+}
+
+.image9 {
+    position: absolute;
+    padding-top: 15%;
+    left: 10%;
+    width: 56%;
+    height: auto;
 }
 
 .pDemo {
     font-size: 48px;
     font-weight: bold;
     padding-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 1%;
 }
 
 .pRequestDemo {
     font-size: 22px;
     padding-left: 10%;
-    width: 747px;
-    line-height: 42px;
-    display: block;
+    max-width: 747px;
+    line-height: 42px;   
+    margin-bottom: 5%;
 }
 
 .inputForm {
     width: 100%;
+    padding-left: 3%;
 }
+
+    .inputForm ::placeholder {
+        color: #296CFB;
+        font-size: 19px;
+    }
 
 .inputBase {
     width: 300px;
     height: 70px;
     margin-left: 7%;
     border-color: #296CFB;
-    margin-bottom: 7%;
+    margin-bottom: 5%;
     text-align: center;
     font-size: 20px;
     font-family: Montserrat;
@@ -91,7 +112,7 @@
     height: 70px;
     margin-left: 7%;
     border-color: #296CFB;
-    margin-bottom: 7%;
+    margin-bottom: 5%;
     text-align: center;
     font-size: 20px;
     font-family: Montserrat;
@@ -102,7 +123,7 @@
     height: 70px;
     background-color: #296CFB;
     border-color: #296CFB;
-    margin-left: 35%;
+    margin-left: 7%;
     color: white;
     font-family: Montserrat;
     font-size: 22px;
@@ -110,32 +131,69 @@
     cursor: pointer;
 }
 
-.inputForm ::placeholder {
-    color: #296CFB;
-    font-size: 19px;
+.rightHalf {
+    max-width: 50%;
+    height: auto;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.picDivOne {
+    display: flex;
+    position: relative;    
+    width: 100%;
+    justify-content: space-around;
+}
+
+.path5 {
+    height: auto;
+    position: relative;   
+    max-width: 630px;
+    padding-left: 31%;
+    z-index: -20;
+}
+
+.image7 {
+    position: absolute;   
+    padding-top: 16%;
+    padding-left: 53%;
+    width: 50%;
+    height: auto;
+}
+
+.textDiv {
+    position: relative;
+    min-height: 9%;
+    top: -1%;
+    right: -13%;
+    max-width: 93%;
 }
 
 .hTwo {
     font-size: 48px;
     font-weight: bold;
-}
-
-.image7 {
-    max-width: 100%;
+    margin: 0;
     padding-left: 15%;
 }
 
 .pTwo {
     font-size: 22px;
-    width: 617px;
+    max-width: 617px;
     line-height: 42px;
     text-align: right;
 }
 
+.buttonsDiv {
+    min-height: 4%;
+    position: relative;
+    top: -4%;
+    left: 26%;
+    max-width: 78%;
+}
+
 .exploreCoursesBtn {
-    margin-top: 5%;
-    margin-left: 7%;
-    margin-bottom: 8%;
     width: 250px;
     height: 70px;
     background-color: #296CFB;
@@ -145,12 +203,11 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 5%;
 }
 
 .findCoachesBtn {
-    margin-top: 5%;
     margin-left: 25px;
-    margin-bottom: 8%;
     width: 250px;
     height: 70px;
     border-color: #296CFB;
@@ -159,19 +216,29 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 5%;
 }
 
 .picDiv {
-    position: absolute;
-    left: 54%;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .path7 {
-    position: absolute;
+    height: auto;
+    position: relative;
+    max-width: 728px;
+    padding-left: 17%;
+    z-index: -20;
+    top: -5%;
 }
 
-.Group53 {
-    position: absolute;
-    top: 150px;
-    left: 300px;
+.group53 {
+    position: absolute;   
+    padding-left: 39%;
+    width: 45%;
+    height: auto;
+    top: 11%;
 }

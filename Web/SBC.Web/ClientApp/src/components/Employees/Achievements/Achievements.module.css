@@ -1,0 +1,42 @@
+.achievementsContent{
+    margin-top: 0px;
+    padding-top: 5%;
+    padding-left: 6%;
+    padding-right: 5%;
+    font-family: Montserrat,sans-serif;
+    font-weight: bold;
+    font-size: 110%;
+    text-align: center;
+}
+
+.tableRevenue{
+    width: 80%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 10px #00000029;
+    opacity: 1;
+    border-collapse: collapse
+}
+
+.achievementsTHeadRow *{
+    color: white;
+    text-align: left;
+}
+
+.tableRevenue th, .tableRevenue td{
+    width: 15%;
+    padding-top: 6%;
+    padding-bottom: 5%;
+    padding-left: 8%;
+}
+
+.achievementsTbody{
+    border-left-color: transparent;
+    border-right-color: transparent;
+    text-align: left;
+}
+.achievementsTbody tr{
+    border-bottom: 1px solid #181616 ;
+}
+.achievementsTfoot{
+    margin-top: 20px;
+}

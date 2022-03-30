@@ -31,6 +31,7 @@
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
+    using SBC.Services.Data.Employees;
     using SBC.Services.Data.Languages;
     using SBC.Services.Data.Lectures;
     using SBC.Services.Data.Notifications;
@@ -76,7 +77,9 @@
                 .AddSingleton<IElasticClient>(new ElasticClient())
                 .AddTransient<ISearchService, SearchService>()
                 .AddTransient<ISearchSeedersService, SearchSeedersService>()
-                .AddTransient<IUsersService, UsersService>();
+                .AddTransient<IUsersService, UsersService>()
+                .AddTransient<IEmployeesDashboardService, EmployeesDashboardService>();
+                
 
                 // To setup ElasticSearch do:
                 // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip

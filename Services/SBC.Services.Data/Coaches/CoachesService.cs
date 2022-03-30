@@ -10,8 +10,10 @@
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
     using SBC.Services.Mapping;
+    using SBC.Services.Messaging;
     using SBC.Web.ViewModels.Administration.Coaches;
     using SBC.Web.ViewModels.Coaches;
+    using SBC.Web.ViewModels.Feedback;
 
     using static SBC.Common.GlobalConstants;
 
@@ -25,6 +27,8 @@
         private readonly IDeletableEntityRepository<Company> companiesRepository;
         private readonly IRepository<CategoryCoach> categoriesCoachRepository;
         private readonly IRepository<LanguageCoach> languagesCoachRepository;
+        private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
+        private readonly IEmailSender emailSender;
 
         public CoachesService(
             IDeletableEntityRepository<Coach> coachesRepository,
@@ -32,7 +36,9 @@
             IDeletableEntityRepository<Category> categoriesRepository,
             IDeletableEntityRepository<Company> companiesRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
-            IRepository<LanguageCoach> languagesCoachRepository)
+            IRepository<LanguageCoach> languagesCoachRepository,
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository,
+            IEmailSender emailSender)
         {
             this.coachesRepository = coachesRepository;
             this.languagesCoachRepository = languagesCoachRepository;
@@ -40,6 +46,60 @@
             this.languagesRepository = languagesRepository;
             this.categoriesRepository = categoriesRepository;
             this.companiesRepository = companiesRepository;
+            this.sessionsRepository = sessionsRepository;
+            this.emailSender = emailSender;
+        }
+
+        public async Task<Result> LeftFeedback(ApplicationUser user, FeedbackInputModel feedback)
+        {
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == user.Id && x.CoachId == feedback.CoachId);
+            session.LeftFeedback = true;
+            await this.sessionsRepository.SaveChangesAsync();
+
+            await this.emailSender.SendEmailAsync(
+               from: user.Email,
+               fromName: user.LastName + ' ' + user.FirstName,
+               to: user.Company.Email,
+               subject: $"Feedback from {user.FirstName} {user.LastName} about coach Session",
+               htmlContent: $"<div> < h4 > Top Secret Feedback from {user.FirstName} {user.LastName}</h4><p>Message: {feedback.Message}</p></div>");
+
+            return true;
+        }
+
+        public async Task<Result> BookCoachAsync(string employeeId, int coachId)
+        {
+            var session = await this.sessionsRepository.All().FirstOrDefaultAsync(x => x.UserId == employeeId && x.CoachId == coachId);
+
+            if (session != null)
+            {
+                this.sessionsRepository.HardDelete(session);
+            }
+
+            session = new UserCoachSession()
+            {
+                UserId = employeeId,
+                CoachId = coachId,
+                Date = System.DateTime.UtcNow,
+            };
+
+            await this.sessionsRepository.AddAsync(session);
+            await this.sessionsRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId, string search)
+        {
+            try
+            {
+                var result = await this.filterCoaches(companyId, search, userId);
+
+                return new ResultModel(result);
+            }
+            catch (System.Exception err)
+            {
+                return new ErrorModel(HttpStatusCode.BadRequest, err);
+            }
         }
 
         public async Task<Result> CreateAsync(CreateCoachInputModel coach)
@@ -245,5 +305,49 @@
         private bool ExistCategoryId(ICollection<CategoryCoachViewModel> categories)
             => categories.Any(x => !this.categoriesRepository.AllAsNoTracking()
             .Any(y => y.Id == x.CategoryId));
+
+        private async Task<IEnumerable<EmployeeCoachCardViewModel>> filterCoaches(int companyId, string search, string userId)
+        {
+            switch (search)
+            {
+                case "all":
+                    return await this.coachesRepository
+                .All()
+                .Where(c => c.ClientCompanies.Any(x => x.CompanyId == companyId))
+                .Select(coach => new EmployeeCoachCardViewModel
+                {
+                    Id = coach.Id,
+                    FullName = $"{coach.FirstName} {coach.LastName}",
+                    ImageUrl = coach.ImageUrl,
+                    CompanyName = coach.Company.Name,
+                    CompanyLogoUrl = coach.CompanyId != null ? coach.Company.LogoUrl : "Null",
+                    CalendlyId = coach.CalendlyUrl,
+                    Feedbacked = coach.Users.Any(x => x.CoachId == coach.Id && x.UserId == userId && !x.LeftFeedback),
+                    VideoUrl = coach.VideoUrl,
+                    Description = coach.Description,
+                }).ToListAsync();
+                case "booked":
+                    return await this.sessionsRepository
+                 .AllAsNoTracking()
+                 .Include(c => c.Coach)
+                 .Where(uc => uc.UserId == userId && uc.LeftFeedback == false)
+                 .Distinct()
+                 .Select(session => new EmployeeCoachCardViewModel
+                 {
+                     Id = session.CoachId,
+                     FullName = $"{session.Coach.FirstName} {session.Coach.LastName}",
+                     ImageUrl = session.Coach.ImageUrl,
+                     CompanyName = session.Coach.Company.Name,
+                     CompanyLogoUrl = session.Coach.CompanyId != null ? session.Coach.Company.LogoUrl : "Null",
+                     CalendlyId = session.Coach.CalendlyUrl,
+                     Feedbacked = session.Coach.Users.Any(x => x.CoachId == session.Coach.Id && x.UserId == userId && !x.LeftFeedback),
+                     VideoUrl = session.Coach.VideoUrl,
+                     Description = session.Coach.Description,
+                 }).ToListAsync()
+                 ;
+
+                default: return await this.coachesRepository.All().To<EmployeeCoachCardViewModel>().ToListAsync();
+            }
+        }
     }
 }

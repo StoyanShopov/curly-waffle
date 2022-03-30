@@ -5,6 +5,7 @@ import style from "./CourseDetails.module.css";
 
 import { courseService } from "../../../../services/course.service.js";
 import { lectureService } from "../../../../services/lecture.service.js";
+import { employeeService } from "../../../../services/employee-service";
 
 import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
 import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
@@ -12,7 +13,7 @@ import ResponsivePlayer from "../../Player/VideoPlayer.js";
 
 import Modal from "react-modal/lib/components/Modal";
 
-export default function CourseDetails() {
+export default function CourseDetails(props) {
     const { id } = useParams();
     const [course, setCourse] = useState({});
     const [lectures, setLectures] = useState([]);
@@ -22,21 +23,44 @@ export default function CourseDetails() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [childModal, setChildModal] = useState(null);
 
-    useEffect(() => {
-        lectureService.getAll(id, skip)
-            .then(response => {
-                setLectures(response.data);
-            });
+    const isAdmin = !props.role;
 
-        setSkip(prevSkip => prevSkip + 6)
+    useEffect(() => {
+        if (props.role === "Employee") {
+            employeeService
+                .getAllLectures(id, skip)
+                .then(response => {
+                    setLectures(response.data);
+                });
+
+            setSkip(prevSkip => prevSkip + 6)
+        } else {
+            lectureService
+                .getAll(id, skip)
+                .then(response => {
+                    setLectures(response.data);
+                });
+
+            setSkip(prevSkip => prevSkip + 6)
+        }
     }, []);
 
     useEffect(() => {
-        courseService.getById(id)
-            .then(response => {
-                setCourse(response.data);
-                setVideo(response.data.videoUrl);
-            })
+        if (props.role === "Employee") {
+            employeeService
+                .getCourseById(id)
+                .then(response => {
+                    setCourse(response.data);
+                    setVideo(response.data.videoUrl);
+                })
+        } else {
+            courseService
+                .getById(id)
+                .then(response => {
+                    setCourse(response.data);
+                    setVideo(response.data.videoUrl);
+                })
+        }
     }, [id]);
 
 
@@ -61,12 +85,23 @@ export default function CourseDetails() {
     }
 
     function onGetNextLectures() {
-        lectureService.getAll(id, skip)
-            .then(lectureResult => {
-                setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
-            });
+        if (props.role === "Employee") {
+            employeeService
+                .getAllLectures(id, skip)
+                .then(lectureResult => {
+                    setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
+                });
 
-        setSkip(prevSkip => prevSkip + 6)
+            setSkip(prevSkip => prevSkip + 6)
+        } else {
+            lectureService
+                .getAll(id, skip)
+                .then(lectureResult => {
+                    setLectures(prevLectures => [...prevLectures, ...lectureResult.data]);
+                });
+
+            setSkip(prevSkip => prevSkip + 6)
+        }
     }
 
     function openModal(childElement) {
@@ -86,7 +121,7 @@ export default function CourseDetails() {
         <div className={style.background}>
             <section className={style.container}>
                 <div className={style.leftPart}>
-                    <h1 className={style.marketingHeading} onClick={() => {setVideo(course.videoUrl)}} >{course.title}</h1>
+                    <h1 className={style.marketingHeading} onClick={() => { setVideo(course.videoUrl) }} >{course.title}</h1>
                     <div className={style.videoPlayer}>
                         <ResponsivePlayer videoUrl={video} />
                     </div>
@@ -109,17 +144,18 @@ export default function CourseDetails() {
                 </div>
                 <div className={style.rightPart}>
                     <div className={style.lectureList} >
-                        <button className={style.btnAddLecture} onClick={() => {
+                        {isAdmin && <button className={style.btnAddLecture} onClick={() => {
                             openModal(<CreateLecture id={id}
                                 closeModal={closeModal}
                                 setLectures={setLectures}
                                 lectures={lectures}
                                 skip={skip}
                                 setSkipPlusOne={SkipPlusOne} />)
-                        }}>Add Lecture</button>
+                        }}>Add Lecture</button>}
                         <h1 className={style.lecturesHeading}>Lectures</h1>
                         <ul className={style.ulLectures}>
                             {lectures.length > 0 && lectures.map((x, i) => <LectureCard key={x.id}
+                                isAdmin={isAdmin}
                                 openModal={openModal}
                                 closeModal={closeModal}
                                 setDescription={setDescription}

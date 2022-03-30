@@ -72,81 +72,6 @@ const NavBar = (props) => {
     color: '#000'
   };
 
-  // return (
-  //   <header className={styles.headerC}>
-  //     <div className={styles.headerContainer}>
-  //       < div className={styles.logoContainer}>
-  //         <img src="/assets/images/Group 5.svg" className={styles.arrow} alt="" />
-  //         < div className={styles.upskillContainer}>
-  //           <NavLink to="/" className={styles.upskillLink}>upskill</NavLink>
-  //         </div>
-  //       </div>
-  //       <div className={styles.testedLinks}>
-  //       </div>
-  //       <div className={styles.homePageButtons}>
-  //         {props.auth.user != null
-  //           ? null
-  //           : unLogged}
-  //       </div>
-  //       <div className={styles.coursesCoaches}>
-  //         <ul>
-  //           <li>
-  //             <NavLink
-  //               to="/owner/courses/courseCatalog"
-  //               className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-  //             >
-  //               Courses
-  //             </NavLink>
-  //           </li>
-  //           <li>
-  //             <NavLink
-  //               to="/owner/coaches/coachCatalog"
-  //               className={({ isActive }) => (isActive ? styles.coursesActive : styles.coursesNotActive)}
-  //             >
-  //               Coaches
-  //             </NavLink>
-  //           </li>
-  //           <li>
-  //             {email && (props.notifications.length > 0 ?
-  //               <Link
-  //                 to="" onClick={() => openModal()}>
-  //                 <div className={styles.circle}>
-  //                   <i className="fa fa-bell fa-lg"></i>
-  //                 </div>
-  //               </Link>
-  //               :
-  //               <div>
-  //                 <Link
-  //                   to="" onClick={() => openModal()}>
-  //                   <i className="fa fa-bell fa-lg"></i>
-  //                 </Link>
-  //               </div>)
-  //             }
-  //           </li>
-  //         </ul>
-  //       </div>
-  //       <div className={styles.greenCircle}>
-  //         A
-  //       </div>
-  //       {props.auth.user != null
-  //         ?
-  //         <div className={styles.greenCircle}>
-  //           <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
-  //         </div>
-  //         : null}
-  //     </div>
-
-  //     <Modal
-  //       style={subtitle}
-  //       isOpen={modalIsOpen}
-  //       onAfterOpen={afterOpenModal}
-  //       onRequestClose={closeModal}
-  //       ariaHideApp={false}
-  //     >
-  //       <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
-  //     </Modal>
-  //   </header>
-  // )
   return (
     <header className={styles.headerC}>
       <div className={styles.headerContainer}>
@@ -191,27 +116,27 @@ const NavBar = (props) => {
             ?
             <div className={styles.greenCircle}>
               <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
-            </div>
+                </div>
             : null}
-        </div>
+            </div>
       </div>
-      <Modal
-        style={subtitle}
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        ariaHideApp={false}
-      >
-        <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
-      </Modal>
+        <Modal
+          style={subtitle}
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          ariaHideApp={false}
+        >
+          <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
+        </Modal>
     </header>
   )
 }
 
 export default NavBar;
+
 const courses = (
   <ul>
-
     <li>
       <NavLink
         to="admin/courses"
@@ -230,11 +155,14 @@ const courses = (
     </li>
   </ul>
 );
-const unLogged = (<ul>
-  <li>
-    <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
-  </li>
-  <li>
-    <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
-  </li>
-</ul>);
+
+const unLogged = (
+  <ul>
+    <li>
+      <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
+    </li>
+    <li>
+      <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
+    </li>
+  </ul>
+);

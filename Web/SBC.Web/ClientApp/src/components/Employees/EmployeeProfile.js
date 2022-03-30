@@ -10,9 +10,7 @@ import EditProfile from '../Fragments/EditProfile';
 import EmployeeDashboard from './Dashboard/EmployeeDashboard';
 import EmployeeCourses from './Courses/EmployeeCourses';
 import EmployeeCoaches from './Coaches/EmployeeCoaches';
-import Achievement from './Achievements/Achiviements';
-
-import Revenue from '../super-admin/Revenue';
+import Achievements from './Achievements/Achievements';
 
 import css from './EmployeeProfile.module.css'
 
@@ -58,13 +56,13 @@ export default function EmployeeProfile(props) {
     return (
         <div className={css.mainContent}>
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
-            <div style={{ left: '24%', width: "65%", position: "relative" }}>
+            <div style={{ left: '24%', width: "75%", position: "relative" }}>
                 <Routes>
-                    <Route index element={<Revenue />} />
+                    <Route index element={<EmployeeDashboard />} />
                     <Route path="employee/dashboard" element={<EmployeeDashboard />} />
                     <Route path="employee/courses" element={<EmployeeCourses />} />
                     <Route path="employee/coaches" element={<EmployeeCoaches />} />
-                    <Route path="employee/achievement" element={<Achievement />} />
+                    <Route path="employee/achievements" element={<Achievements />} />
                 </Routes>
             </div>
             <Modal

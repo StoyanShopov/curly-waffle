@@ -44,7 +44,7 @@
         public class EmailsConstants
         {
             public const string MotionCompanyEmail = "motionCompany@test.test";
-            public const string SoftUniEmail = "softUni@test.test";
+            public const string SoftUniEmail = "sbc.upskill@gmail.com";
             public const string SmartITEmail = "smartIT@test.test";
         }
 
@@ -114,9 +114,9 @@
             public const string MariaVideoUrl = "https://www.youtube.com/watch?v=vRiWG1iNikc";
             public const string EmilVideoUrl = "https://www.youtube.com/watch?v=XB3qoXgdA10";
 
-            public const string IvanCalendlyUrl = "https://calendly.com/1";
-            public const string MariaCalendlyUrl = "https://calendly.com/2";
-            public const string EmilCalendlyUrl = "https://calendly.com/3";
+            public const string IvanCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
+            public const string MariaCalendlyUrl = "35ae6804-9f34-4333-bb05-806fd527e1ad";
+            public const string EmilCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
 
             public const string IvanImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/ced7f6bb-5ada-4b69-b470-834e748326fe";
             public const string MariaImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c238e4e5-ab4e-4771-a6c8-be3f6e108a91";

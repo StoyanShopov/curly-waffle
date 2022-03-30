@@ -59,7 +59,7 @@
 
             foreach (Coach coach in coachesList)
             {
-                var dbCoach = await dbContext.Coaches.FirstOrDefaultAsync(x => x.CalendlyUrl == coach.CalendlyUrl);
+                var dbCoach = await dbContext.Coaches.FirstOrDefaultAsync(x => x.FirstName == coach.FirstName && x.LastName == coach.LastName);
 
                 if (dbCoach == null)
                 {
