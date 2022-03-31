@@ -3,6 +3,7 @@ This season is intended to teach its participants how to operate in real work en
 - Following SCRUM methodology;
 - Completing various full stack tasks in a team;
 - Using GIT source control system;
+- Third-party APIs.
 
 
 ## Project Info
