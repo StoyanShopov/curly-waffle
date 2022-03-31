@@ -131,7 +131,6 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
             }
 
-            // TODO: user.Email = mapModel.Email;
             string[] names = inputModelUser.Fullname
                 .Trim()
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);

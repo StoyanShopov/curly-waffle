@@ -1,22 +1,23 @@
-import Modal from 'react-modal';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import Modal from 'react-modal';
 
-import css from './AdminProfile.module.css'
+import { GetUser } from '../../hooks/setUser';
+import { TokenManagement } from '../../helpers';
+
 import Clients from './Clinets';
 import Dashboard from './Dashboard';
 import EditProfile from '../Fragments/EditProfile';
 import Revenue from './Revenue';
-import { TokenManagement } from '../../helpers';
-import { GetUser } from '../../hooks/setUser';
 import SideBar from '../Fragments/Sidebar';
+
+import css from './AdminProfile.module.css'
 
 export default function AdminProfile(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const [userData, setUserData] = useState({ fullName: '', email: '', company: '' });
+  const [userRole, setUSerRole] = useState(TokenManagement.getUserRole())
 
-  let userRole = TokenManagement.getUserRole();
   useEffect(() => {
     userRole = TokenManagement.getUserRole();
     GetUser(setUserData);
