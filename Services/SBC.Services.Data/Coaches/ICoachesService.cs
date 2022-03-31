@@ -12,9 +12,9 @@
     {
         Task<Result> BookCoachAsync(string employeeId, int coachId);
 
-        Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId, string search);
-
         Task<Result> CreateAsync(CreateCoachInputModel coach);
+
+        Task<Result> GetAlLOfEmployeeAsync(int companyId, string userId, string search);
 
         Task<Result> GetAllAsync<TModel>();
 
@@ -24,8 +24,8 @@
 
         Task<Result> GetAllWithActiveAsync(int companyId, int skip, int take = 3);
 
-        Task<int> GetCountAsync();
-
         Task<Result> LeftFeedback(ApplicationUser user, FeedbackInputModel feedback);
+
+        Task<int> GetCountAsync();
     }
 }

@@ -25,9 +25,9 @@
         private readonly IDeletableEntityRepository<Language> languagesRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
         private readonly IDeletableEntityRepository<Company> companiesRepository;
+        private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
         private readonly IRepository<CategoryCoach> categoriesCoachRepository;
         private readonly IRepository<LanguageCoach> languagesCoachRepository;
-        private readonly IDeletableEntityRepository<UserCoachSession> sessionsRepository;
         private readonly IEmailSender emailSender;
 
         public CoachesService(
@@ -35,9 +35,9 @@
             IDeletableEntityRepository<Language> languagesRepository,
             IDeletableEntityRepository<Category> categoriesRepository,
             IDeletableEntityRepository<Company> companiesRepository,
+            IDeletableEntityRepository<UserCoachSession> sessionsRepository,
             IRepository<CategoryCoach> categoriesCoachRepository,
             IRepository<LanguageCoach> languagesCoachRepository,
-            IDeletableEntityRepository<UserCoachSession> sessionsRepository,
             IEmailSender emailSender)
         {
             this.coachesRepository = coachesRepository;
@@ -92,7 +92,7 @@
         {
             try
             {
-                var result = await this.filterCoaches(companyId, search, userId);
+                var result = await this.FilterCoaches(companyId, search, userId);
 
                 return new ResultModel(result);
             }
@@ -306,7 +306,7 @@
             => categories.Any(x => !this.categoriesRepository.AllAsNoTracking()
             .Any(y => y.Id == x.CategoryId));
 
-        private async Task<IEnumerable<EmployeeCoachCardViewModel>> filterCoaches(int companyId, string search, string userId)
+        private async Task<IEnumerable<EmployeeCoachCardViewModel>> FilterCoaches(int companyId, string search, string userId)
         {
             switch (search)
             {

@@ -48,10 +48,9 @@
         {
             var userId = this.User.Id();
 
-            var isEnrolled = await this.courseService.EnrollCourse(userId, courseId);
+            var isEnrolled = await this.courseService.EnrollCourseAsync(userId, courseId);
 
             return this.GenericResponse(isEnrolled);
-
         }
     }
 }

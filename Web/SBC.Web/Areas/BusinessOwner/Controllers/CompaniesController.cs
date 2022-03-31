@@ -8,6 +8,8 @@
     using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
 
+    using static SBC.Common.RoutesConstants;
+
     public class CompaniesController : BusinessOwnerController
     {
         private readonly ICompaniesService companiesService;
@@ -40,11 +42,14 @@
             => this.GenericResponse(await this.companiesService.RemoveEmployeeAsync(employeeId));
 
         [HttpGet]
-        [Route("activeCoaches")]
+        [Route(ActiveCoaches)]
         public async Task<ActionResult> GetActiveCoaches()
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.GetActiveCoachesAsync(companyId));
+
+            var result = await this.companiesService.GetActiveCoachesAsync(companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpGet]

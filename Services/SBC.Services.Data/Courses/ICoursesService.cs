@@ -14,7 +14,7 @@
 
         Task<Result> EditAsync(int? id, EditCourseInputModel courseModel);
 
-        Task<Result> EnrollCourse(string userId, int courseId);
+        Task<Result> EnrollCourseAsync(string userId, int courseId);
 
         Task<Result> GetAllWithActiveAsync(int companyId, int skip, int take = 3);
 

@@ -20,6 +20,7 @@
         public async Task<ActionResult> CreateAsync(CreateCoachInputModel coach)
         {
             var result = await this.coachesService.CreateAsync(coach);
+
             return this.GenericResponse(result);
         }
 
@@ -27,22 +28,25 @@
         public async Task<ActionResult> GetAllAsync()
         {
             var result = await this.coachesService.GetAllAsync<CoachDetailsViewModel>();
+
             return this.GenericResponse(result);
         }
 
-        [Route("{id}")]
         [HttpPut]
+        [Route("{id}")]
         public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             var result = await this.coachesService.UpdateAsync(coach);
+
             return this.GenericResponse(result);
         }
 
-        [Route("{id}")]
         [HttpDelete]
+        [Route("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await this.coachesService.DeleteAsync(id);
+            var result = await this.coachesService.DeleteAsync(id)
+                ;
             return this.GenericResponse(result);
         }
     }

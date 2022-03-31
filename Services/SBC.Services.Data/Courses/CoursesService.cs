@@ -159,23 +159,21 @@
             return new ResultModel(listingModel);
         }
 
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-            => await this.coursesRepository
-                .AllAsNoTracking()
-                .To<TModel>()
-                .ToListAsync();
+        public async Task<Result> EnrollCourseAsync(string userId, int courseId)
+        {
+            var userCourse = new UserCourse
+            {
+                UserId = userId,
+                CourseId = courseId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddMonths(3),
+            };
 
-        public async Task<TModel> GetByIdAsync<TModel>(int id)
-            => await this.coursesRepository
-                .AllAsNoTracking()
-                .Where(c => c.Id == id)
-                .To<TModel>()
-                .FirstOrDefaultAsync();
+            await this.usersCoursesRepository.AddAsync(userCourse);
+            await this.usersCoursesRepository.SaveChangesAsync();
 
-        public async Task<int> GetCountAsync()
-            => await this.coursesRepository
-                .AllAsNoTracking()
-                .CountAsync();
+            return true;
+        }
 
         public async Task<Result> GetAllWithActiveAsync(
             int companyId,
@@ -317,20 +315,22 @@
             return new ResultModel(result);
         }
 
-        public async Task<Result> EnrollCourse(string userId, int courseId)
-        {
-            var userCourse = new UserCourse
-            {
-                UserId = userId,
-                CourseId = courseId,
-                StartDate = DateTime.UtcNow,
-                EndDate = DateTime.UtcNow.AddMonths(3),
-            };
+        public async Task<TModel> GetByIdAsync<TModel>(int id)
+            => await this.coursesRepository
+                .AllAsNoTracking()
+                .Where(c => c.Id == id)
+                .To<TModel>()
+                .FirstOrDefaultAsync();
 
-            await this.usersCoursesRepository.AddAsync(userCourse);
-            await this.usersCoursesRepository.SaveChangesAsync();
+        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
+            => await this.coursesRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync();
 
-            return true;
-        }
+        public async Task<int> GetCountAsync()
+            => await this.coursesRepository
+                .AllAsNoTracking()
+                .CountAsync();
     }
 }
