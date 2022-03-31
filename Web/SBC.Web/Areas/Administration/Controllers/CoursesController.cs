@@ -29,7 +29,7 @@
         {
             var result = await this.courseService.GetAllAsync<CourseDetailsViewModel>();
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
@@ -37,7 +37,7 @@
         {
             var result = await this.courseService.GetByIdAsync<CourseDetailsViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpPost]

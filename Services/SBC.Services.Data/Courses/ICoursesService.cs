@@ -22,9 +22,9 @@
 
         Task<Result> GetByIdEmployeeAsync(int id);
 
-        Task<TModel> GetByIdAsync<TModel>(int id);
+        Task<Result> GetAllAsync<TModel>();
 
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
+        Task<Result> GetByIdAsync<TModel>(int id);
 
         Task<int> GetCountAsync();
     }

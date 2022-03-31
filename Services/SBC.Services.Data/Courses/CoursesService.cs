@@ -1,7 +1,6 @@
 ﻿namespace SBC.Services.Data.Courses
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -315,18 +314,18 @@
             return new ResultModel(result);
         }
 
-        public async Task<TModel> GetByIdAsync<TModel>(int id)
-            => await this.coursesRepository
+        public async Task<Result> GetAllAsync<TModel>()
+            => new ResultModel(await this.coursesRepository
+                .AllAsNoTracking()
+                .To<TModel>()
+                .ToListAsync());
+
+        public async Task<Result> GetByIdAsync<TModel>(int id)
+            => new ResultModel(await this.coursesRepository
                 .AllAsNoTracking()
                 .Where(c => c.Id == id)
                 .To<TModel>()
-                .FirstOrDefaultAsync();
-
-        public async Task<IEnumerable<TModel>> GetAllAsync<TModel>()
-            => await this.coursesRepository
-                .AllAsNoTracking()
-                .To<TModel>()
-                .ToListAsync();
+                .FirstOrDefaultAsync());
 
         public async Task<int> GetCountAsync()
             => await this.coursesRepository
