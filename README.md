@@ -1,9 +1,9 @@
 # SoftUni Bootcamp Project - Season Jan 2022
-This season is intended to teach bootcamp students about real working :
--  by SCRUM method;
--  with team ;
--  as developer by real project with ASP.NET Core WebAPI, ReactJs, Azure, git source control system, 3th party API services, integrate new Tehnologies e t.c.;
--  upgrade itself skill level.
+This season is intended to teach its participants how to operate in real work environment and imporve their skills by:
+- Following SCRUM methodology;
+- Completing various full stack tasks in a team;
+- Using GIT source control system;
+
 
 ## Project Info
 [UpSkill](https://upskills.azurewebsites.net/) is a learning platform for the business. We power the personal and professional development of the employees for thousands of businesses around the world. You can find top quality courses and coaches in the platform. Sign up for free demo!
