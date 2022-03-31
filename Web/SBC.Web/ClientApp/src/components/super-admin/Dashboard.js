@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import css from './Dashboard.module.css';
 import Diagram from './fragments/Diagram';
-import { DashboardIndex } from '../../services/super-admin-service';
+import { AdminService } from '../../services/super-admin-service';
 
 export default function Dashboard() {
   const [items, setItems] = useState({});
@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function GetDashboard() {
-      await DashboardIndex(cancelTokenSource.token)
+      await AdminService.dashboardIndex(cancelTokenSource.token)
         .then(r => setItems(r))
     }
 

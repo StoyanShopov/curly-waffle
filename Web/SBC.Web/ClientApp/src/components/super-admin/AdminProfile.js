@@ -19,7 +19,7 @@ export default function AdminProfile(props) {
   const [userRole, setUSerRole] = useState(TokenManagement.getUserRole())
 
   useEffect(() => {
-    userRole = TokenManagement.getUserRole();
+    setUSerRole(TokenManagement.getUserRole());
     GetUser(setUserData);
   }, [])
 
