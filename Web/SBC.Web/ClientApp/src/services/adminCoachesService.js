@@ -9,7 +9,7 @@ export const createCoach = async (data) => {
             },
         });
         return resp;
-    } catch (error) { }
+    } catch (error) {}
 }
 
 export const updateCoach = async (data) => {

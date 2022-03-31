@@ -45,8 +45,8 @@
         [Route("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var result = await this.coachesService.DeleteAsync(id)
-                ;
+            var result = await this.coachesService.DeleteAsync(id);
+
             return this.GenericResponse(result);
         }
     }

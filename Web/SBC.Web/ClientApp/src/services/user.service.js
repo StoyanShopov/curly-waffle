@@ -17,7 +17,6 @@ const login = async (email, password) => {
             return response.data.jwt;
         });
 
-
     return data;
 };
 
