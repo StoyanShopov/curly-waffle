@@ -2,7 +2,7 @@
 This season is intended to teach bootcamp students about real working :
 -  by SCRUM method;
 -  with team ;
--  as developer by real project with ASP.NET Core WebAPI, React, Azure, git source control system, 3th party API services, integrate new Tehnologies e t.c.;
+-  as developer by real project with ASP.NET Core WebAPI, ReactJs, Azure, git source control system, 3th party API services, integrate new Tehnologies e t.c.;
 -  upgrade itself skill level.
 
 ## Project Info
@@ -32,8 +32,9 @@ This season is intended to teach bootcamp students about real working :
 - [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)
 - Azure Function
 - [Azure SignalR Service](https://docs.microsoft.com/en-us/azure/azure-signalr/)
+- [Azure SQL Database](https://azure.microsoft.com/en-us/products/azure-sql/database/)
 - [Elasticsearch](https://www.elastic.co/)
-- [Email Sender](https://github.com/StoyanShopov/curly-waffle/tree/dev/Services/SBC.Services.Messaging)
+- Email Sender
 - Entity Framework
 - Google Analytics
 - Hosted Service
@@ -50,7 +51,7 @@ This season is intended to teach bootcamp students about real working :
 - [Axios](https://www.npmjs.com/package/axios)
 - HTML CSS
 - Bootstrap
-- [Calendly](https://calendly.com/)
-- [Reactjs Media](https://www.npmjs.com/package/reactjs-media)
-- [Reactjs Modal](https://www.npmjs.com/package/react-modal)
-- [ReactPlayer](https://www.npmjs.com/package/react-player)
+- [React Calendly](https://www.npmjs.com/package/react-calendly)
+- [React Media](https://www.npmjs.com/package/reactjs-media)
+- [React Modal](https://www.npmjs.com/package/react-modal)
+- [React Player](https://www.npmjs.com/package/react-player)
