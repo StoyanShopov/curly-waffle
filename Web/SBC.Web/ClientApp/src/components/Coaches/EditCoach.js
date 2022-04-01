@@ -4,7 +4,7 @@ import Select from 'react-select'
 import styles from './EditCoach.module.css';
 
 import { updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
-import { uploadImage } from '../../services/blob-service';
+import { blobService } from '../../services/blob-service';
 
 
 const EditCoach = (props) => {
@@ -90,7 +90,7 @@ const EditCoach = (props) => {
       data.imageUrl = coach.imageUrl
     }
     else {
-      let result = await uploadImage(data.imageUrl);
+      let result = await blobService.uploadFile(data.imageUrl);
       data.imageUrl = result.photoUrl
     }
 

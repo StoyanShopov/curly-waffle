@@ -4,7 +4,7 @@ import Select from 'react-select'
 import styles from "./CreateCoach.module.css";
 
 import { createCoach, getLanguages, getCategories } from "../../services/adminCoachesService";
-import { uploadImage } from "../../services/blob-service";
+import { blobService } from "../../services/blob-service";
 
 
 const CreateCoach = (props) => {
@@ -14,15 +14,15 @@ const CreateCoach = (props) => {
   const [categoriesOptions, setCategoriesOptions] = useState()
   const [coaches, setCoaches] = useState(props.coaches)
 
-  useEffect(() => { 
-    getLanguages().then(res =>{
-      setLanugagesOptions(res.data.map(x=> ({
+  useEffect(() => {
+    getLanguages().then(res => {
+      setLanugagesOptions(res.data.map(x => ({
         value: x.id,
         label: x.name
       })))
     })
-    getCategories().then(res =>{
-      setCategoriesOptions(res.data.map(x=> ({
+    getCategories().then(res => {
+      setCategoriesOptions(res.data.map(x => ({
         value: x.id,
         label: x.name
       })))
@@ -32,7 +32,7 @@ const CreateCoach = (props) => {
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
   };
- 
+
   const onChangeCategories = (categoriesOptions) => {
     setCategories(categoriesOptions);
   };
@@ -77,12 +77,12 @@ const CreateCoach = (props) => {
       {}
     );
 
-    const imageUrl = await uploadImage(data.imageUrl);
+    const imageUrl = await blobService.uploadFile(data.imageUrl);
     data.imageUrl = imageUrl.photoUrl;
-    data.languages = languages.map(x=> ({
+    data.languages = languages.map(x => ({
       languageId: x.value,
     }))
-    data.categories = categories.map(x=> ({
+    data.categories = categories.map(x => ({
       categoryId: x.value,
     }))
 
@@ -90,7 +90,7 @@ const CreateCoach = (props) => {
       data['id'] = response.data.id;
       data['companyId'] = response.data.companyId;
       props.setCoaches([...coaches, data])
-      setCoaches([...coaches,data]);
+      setCoaches([...coaches, data]);
       props.closeModal()
     })
   };
@@ -111,7 +111,7 @@ const CreateCoach = (props) => {
               <span>Upload image</span>
             </div>
             <button className={styles.closeBtn}
-            onClick={props.closeModal}>
+              onClick={props.closeModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.92"

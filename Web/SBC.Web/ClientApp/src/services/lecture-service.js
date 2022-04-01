@@ -1,9 +1,10 @@
 import axios from "axios";
 
 import { baseUrl } from '../constants';
+import { TokenManagement } from "../helpers";
 
 const apiUrl = baseUrl + 'administration/lectures';
-const token = localStorage.getItem('token');
+const token = TokenManagement.getLocalAccessToken();
 
 const getAll = async (courseId, skip) => {
     return await axios

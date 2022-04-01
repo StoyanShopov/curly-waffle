@@ -1,6 +1,6 @@
 import style from "./DeleteResource.module.css"
 
-import { resourceService } from "../../../../services/resource.service";
+import { resourceService } from "../../../../services/resource-service";
 
 function DeleteResource(props) {
     const resourceId = props.resource.id;
@@ -13,8 +13,6 @@ function DeleteResource(props) {
             let blobName = props.resource.fileUrl.split('/').pop();
             await resourceService.deleteFile(blobName);
         }
-
-
 
         resourceService
             .deleteResource(resourceId)
@@ -43,4 +41,5 @@ function DeleteResource(props) {
         </div>
     )
 }
+
 export default DeleteResource;

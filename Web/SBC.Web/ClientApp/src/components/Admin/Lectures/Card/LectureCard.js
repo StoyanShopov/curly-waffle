@@ -2,15 +2,15 @@ import { useState, useEffect } from "react"
 
 import style from "./LectureCard.module.css"
 
-import { resourceService } from "../../../../services/resource.service";
+import { resourceService } from "../../../../services/resource-service";
 import { employeeService } from "../../../../services/employee-service";
 
-import DeleteLecture from "../DeleteLecture/DeleteLecture"
-import EditLecture from "../EditLecture/EditLecture"
-import ResourceCard from "../../Resource/ResourceCard/ResourceCard"
-import CreateResource from "../../Resource/CreateResource/CreateResource"
+import DeleteLecture from "../Delete/DeleteLecture"
+import EditLecture from "../Edit/EditLecture"
+import ResourceCard from "../../Resources/Card/ResourceCard"
+import CreateResource from "../../Resources/Create/CreateResource"
 
-export default function LectureCard(props) {
+function LectureCard(props) {
     const [lecture, setLecture] = useState(props.lecture);
     const [resources, setResources] = useState([]);
 
@@ -66,7 +66,8 @@ export default function LectureCard(props) {
                         setResources={setResources}
                         lectureId={lecture.id} />)
                 }}>Add Resource</button>}
-                {resources.length > 0 && resources.map((r, i) => <ResourceCard key={r.id}
+                {resources.length > 0 && resources.map((r, i) => <ResourceCard
+                    key={r.id}
                     isAdmin={isAdmin}
                     openModal={props.openModal}
                     closeModal={props.closeModal}
@@ -79,3 +80,5 @@ export default function LectureCard(props) {
         </div>
     )
 }
+
+export default LectureCard;
