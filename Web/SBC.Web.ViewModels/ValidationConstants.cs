@@ -7,5 +7,26 @@
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
         }
+
+        public class Coach
+        {
+            public const int MinLengthName = 2;
+
+            public const int MaxLengthName = 25;
+
+            public const string NameRegex = @"^[A-Z][a-z]+$";
+
+            public const string NameRegexMessage = "The field Description must be a text of letters.";
+
+            public const int MinLengthDescription = 2;
+
+            public const int MaxLengthDescription = 200;
+
+            public const int MinPricePerSession = 0;
+
+            public const int MinCountAdd = 1;
+
+            public const int MinCountUpdate = 0;
+        }
     }
 }
