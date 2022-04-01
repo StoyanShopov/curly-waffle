@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Modal from 'react-modal';
 
-import { GetUser } from '../../hooks/setUser';
-import { TokenManagement } from '../../helpers';
+import { GetUser } from '../../../hooks/setUser';
+import { TokenManagement } from '../../../helpers';
 
-import Clients from './Clinets';
-import Dashboard from './Dashboard';
-import EditProfile from '../Fragments/EditProfile';
-import Revenue from './Revenue';
-import SideBar from '../Fragments/Sidebar';
+import Clients from '../../Admin/Clients/Clinets';
+import Dashboard from '../../Admin/Dashboard/Dashboard';
+import EditProfile from '../../Fragments/EditProfile';
+import Revenue from '../Revenue/Revenue';
+import SideBar from '../../Fragments/Sidebar';
 
 import css from './AdminProfile.module.css'
 
