@@ -31,7 +31,7 @@ export default function EditProfile(props) {
             data.photoUrl = result.photoUrl;
         }
 
-        userService.EditUser(data)
+        userService.updateUser(data)
             .then((_data) => {
                 if (_data['status']) {
                     props.closeModal();
@@ -44,8 +44,8 @@ export default function EditProfile(props) {
             })
     }
 
-    function onChange(e) {        
-        const img = e.target.files[0]       
+    function onChange(e) {
+        const img = e.target.files[0]
         setImageURL(URL.createObjectURL(img))
     }
 
@@ -71,7 +71,7 @@ export default function EditProfile(props) {
                         </div>
                         <button type='button' className={css.fileUpload}>
                             Edit Photo
-                            <input name="photoUrl" type="file" className={css.upload} onChange={(e)=> onChange(e)} />
+                            <input name="photoUrl" type="file" className={css.upload} onChange={(e) => onChange(e)} />
                         </button>
 
                     </div>

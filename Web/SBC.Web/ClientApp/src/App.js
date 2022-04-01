@@ -7,7 +7,7 @@ import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { store, TokenManagement } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
-import AdminProfile from './components/super-admin/AdminProfile';
+
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
@@ -25,6 +25,7 @@ import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
+import AdminProfile from './components/Admin/Profile/AdminProfile';
 
 function App() {
     const [connection, setConnection] = useState([]);
