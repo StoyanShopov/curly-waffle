@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from '../constants';
 
-export const createCoach = async (data) => {
+const create = async (data) => {
     try {
         const resp = await axios.post(baseUrl + "Administration/Coaches", data, {
             headers: {
@@ -12,7 +12,7 @@ export const createCoach = async (data) => {
     } catch (error) {}
 }
 
-export const updateCoach = async (data) => {
+const update = async (data) => {
     try {
         const resp = await axios.put(baseUrl + `Administration/Coaches/${data.id}`, data, {
             headers: {
@@ -23,7 +23,7 @@ export const updateCoach = async (data) => {
     } catch (error) { }
 }
 
-export const getAllCoaches = async () =>{
+const getAll = async () =>{
         return await axios.get(baseUrl + "Administration/Coaches", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -31,7 +31,7 @@ export const getAllCoaches = async () =>{
         })
 }
 
-export const deleteCoachById = async (coachId) =>{
+const deleteCoach = async (coachId) =>{
     const resp = await axios.delete(baseUrl + `Administration/Coaches/${coachId}` , {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -40,15 +40,10 @@ export const deleteCoachById = async (coachId) =>{
     })
     return resp;
 }
-export const getLanguages = async () =>{
-    return await axios.get(baseUrl + 'api/Languages');
-}
 
-export const getCategories = async () =>{
-    return await axios.get(baseUrl + 'api/Categories');
-}
-
-export const getCompanyEmailById = async(id) => {
-    const resp = await axios.get(baseUrl + `api/Companies/${id}`)
-    return resp.data;
+export const coachService = {
+    create,
+    update,
+    deleteCoach,
+    getAll,
 }
