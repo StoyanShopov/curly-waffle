@@ -1,7 +1,7 @@
 ﻿namespace SBC.Web.Areas.Employee.Controllers
 {
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SBC.Common;
     using SBC.Services.Data.Courses;
@@ -16,13 +16,12 @@
         {
             this.courseService = courseService;
         }
-
+        [Authorize(Roles = "Administrtor, Employee")]
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
         {
             var result = await this.courseService.GetByIdAsync<CourseDetailsViewModel>(id);
-
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("modalDetails/{id}")]

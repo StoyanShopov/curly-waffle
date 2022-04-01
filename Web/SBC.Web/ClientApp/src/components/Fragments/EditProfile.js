@@ -7,13 +7,11 @@ import { userService } from '../../services';
 import { TokenManagement } from '../../helpers';
 
 export default function EditProfile(props) {
-    const [user, setUser] = useState({});
+
     const [imageURL, setImageURL] = useState("");
 
     useEffect(() => {
-        const _user = TokenManagement.getUserData()
-        setUser(_user)
-        setImageURL(_user.photoUrl)
+        setImageURL(props.user.photoUrl)
     }, []);
 
     const OnEditUser = async (e) => {
@@ -21,10 +19,8 @@ export default function EditProfile(props) {
 
         const fd = new FormData(e.target);
         const data = [...fd.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {});
-        console.log(data)
-        console.log(fd)
         if (data.photoUrl == null || data.photoUrl.size == 0) {
-            data.photoUrl = user.photoUrl
+            data.photoUrl = props.user.photoUrl
         }
         else {
             let result = await uploadImage(data.photoUrl);
@@ -36,7 +32,6 @@ export default function EditProfile(props) {
                 if (_data['status']) {
                     props.closeModal();
                     TokenManagement.setUserData(JSON.stringify(_data['data']));
-                    props.getUserData();
                     props.editUser();
                 }
             }, (err) => {
@@ -81,17 +76,17 @@ export default function EditProfile(props) {
                             name="fullname"
                             className={css.nameCntr}
                             type="text"
-                            defaultValue={user.fullname}
+                            defaultValue={props.user.fullname}
                             placeholder="Aya Krasteva" />
                         <input
                             editable='false'
                             name="email"
                             className={css.nameCntr}
                             type="text"
-                            value={user.email}
+                            value={props.user.email}
                             onChange={() => { }}
                             placeholder="Hello@Motion-Software.com" />
-                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={user.profileSummary}></textarea>
+                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={props.user.profileSummary}></textarea>
                     </div>
                 </div>
                 <div className={css.footer}>

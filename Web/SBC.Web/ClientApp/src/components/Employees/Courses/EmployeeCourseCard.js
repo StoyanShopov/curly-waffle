@@ -4,55 +4,66 @@ import { Link } from 'react-router-dom';
 import styles from './EmployeeCourseCard.module.css'
 
 import Modal from "react-modal/lib/components/Modal";
-import BookingModal from'../../Fragments/Modals/Booking.js'
+import BookingModal from '../../Fragments/Modals/Booking.js'
 import { employeeService } from "../../../services/employee-service.js";
 
 export default function EmployeeCourseCard(props) {
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    // const [modalIsOpen, setModalIsOpen] = useState(false);
     const courseModalDetails = props.courseModalDetails;
     const [isEnroled, setIsEnrolled] = useState(props.course.isEnrolled)
 
-    let subtitle = {
-        content: {           
-            top: '58%',
-            left: '50%',
-            right: 'auto',
-            width: '65%',
-            height: '79%',
-            bottom: 'auto',
-            transform: 'translate(-50%, -50%)',
-            padding: '0px',
-        },
-        color: '#f00'
-    };
 
-    function openModal() {
-        setModalIsOpen(true);
-    }
 
-    function afterOpenModal() {
-        subtitle.color = '#f00';
-    }
+    // function openModal() {
+    //     setModalIsOpen(true);
+    // }
 
-    function closeModal() {
-        setModalIsOpen(false);
-    }
+    // function afterOpenModal() {
+    //     subtitle.color = '#f00';
+    // }
 
-    function onSetCoursemodalDetails (){
+    // function closeModal() {
+    //     setModalIsOpen(false);
+    // }
+
+    function onSetCoursemodalDetails() {
         employeeService.getModalDetailsById(props.course.id)
-        .then(response => {
-            console.log(response)
-            props.setCourseModalDetails(response.data)
-            openModal()
-        })
+            .then(response => {
+                console.log(response)
+                props.setCourseModalDetails(response.data)
+                props.openModal(
+                    <BookingModal key={1}
+                        isMode={"course"}
+                        url=""
+                        onEnrollUser={onEnrollUser}
+                        openModal={props.openModal}
+                        handleClose={props.handleClose}
+                        entity={{
+                            coachId: courseModalDetails.id,
+                            courseId: props.course.id,
+                            eType: "Course",
+                            eName: response.data.coachName,
+                            eCompanyName: response.data.companyName,
+                            eCoachImgUrl: response.data.coachPictureUrl,
+                            eCategoryName: response.data.companyCategoryName,
+                            eDescription: response.data.description,
+                            eVideoUrl: response.data.videoUrl,
+                            eDuration: `${response.data.videosDuration} hours on-demand video`,
+                            eResource: `${response.data.lecturesCount} lectures`,
+                        }} />,
+                        subtitle
+                )
+            })
     }
 
-    function onEnrollUser (){
+    function onEnrollUser() {
         employeeService.enrollUser(props.course.id)
-        .then(response => {
-            setIsEnrolled(response.data)
-        })
+            .then(response => {
+                console.log(response)
+                setIsEnrolled(response.data)
+            })
+            props.handleClose();
     }
 
     return (
@@ -73,39 +84,26 @@ export default function EmployeeCourseCard(props) {
                     </div>
                     <div className={styles.button}>
                         {
-                        isEnroled
+                            isEnroled
                                 ? <Link to={`/courses/details/${props.course.id}`}><button className={styles.removeButton}>Continue</button></Link>
-                            :<button className={styles.removeButton} onClick={() => onSetCoursemodalDetails() }>Enroll</button>}
+                                : <button className={styles.removeButton} onClick={() => onSetCoursemodalDetails()}>Enroll</button>}
 
                     </div>
                 </div>
             </div>
-
-            <Modal
-                style={subtitle}
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-            >
-                <BookingModal  key={1}
-            isMode={"course"}
-            url=""
-            onEnrollUser = {onEnrollUser}
-            openModal={openModal}
-            handleClose={closeModal}
-            entity={{
-                coachId: courseModalDetails.id,
-                courseId: props.course.id,
-                eType: "Course",
-                eName: courseModalDetails.coachName,
-                eCompanyName: courseModalDetails.companyName,
-                eCoachImgUrl: courseModalDetails.coachPictureUrl,
-                eCategoryName: courseModalDetails.companyCategoryName,
-                eDescription: courseModalDetails.description,
-                eVideoUrl: courseModalDetails.videoUrl,
-                eDuration: `${courseModalDetails.videosDuration} hours on-demand video`,
-                eResource: `${courseModalDetails.lecturesCount} lectures`,}}/>
-            </Modal>
         </>
     )
 }
+let subtitle = {
+    content: {
+        top: '58%',
+        left: '50%',
+        right: 'auto',
+        width: '65%',
+        height: '79%',
+        bottom: 'auto',
+        transform: 'translate(-50%, -50%)',
+        padding: '0px',
+    },
+    color: '#f00'
+};

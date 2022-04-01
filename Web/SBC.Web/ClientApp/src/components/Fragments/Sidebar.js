@@ -2,40 +2,47 @@
 import { NavLink, } from 'react-router-dom';
 
 import { userService } from '../../services';
+import EditProfile from './EditProfile';
 
 import styles from "./Sidebar.module.css";
 
 export default function Sidebar(props) {
+    function onOpenModal(){
+        props.modal.openModal(
+          <EditProfile closeModal={props.modal.handleClose} user={props.auth.user}  editUser={() => props.editUser()} />,
+          null
+        )
+      }
     return (
 
         <div className={styles.container}>
-            <button className={styles.pencilLink} onClick={() => props.showModal()}>
+            <button className={styles.pencilLink} onClick={() => onOpenModal()}>
                 <img className={styles.pencil} src="/assets/images/iconmonstr-pencil-2.svg" alt="" />
             </button>
             <div className={styles.namesContainer}>
                 <div className={styles.greenCircle}>
-                    {props.userData['photoUrl']
-                            ? <img className={styles.profilePhoto} src={props.userData['photoUrl']} alt="" />
-                            : props.userData['fullname']
-                                ? props.userData.fullname[0]
+                    {props.auth.user['photoUrl']
+                            ? <img className={styles.profilePhoto} src={props.auth.user['photoUrl']} alt="" />
+                            : props.auth.user
+                                ? props.auth.user.fullname[0]
                                 : "N/A"}
                 </div>
                 <div className={styles.names}>
                     <div className={styles.fullName}>
-                        {props.userData ? props.userData.fullname : "N/A"}
+                        {props.auth.user ? props.auth.user.fullname : "N/A"}
                     </div>
                     <div className={styles.companyName}>
-                        {!props.userData['companyName'] ? null : props.userData.companyName}
+                        {!props.auth.user['companyName'] ? null : props.auth.user.companyName}
                     </div>
                 </div>
             </div>
             <div className={styles.navigation}>
 
-                {props.userRole == "Administrator"
+                {props.auth.role == "Administrator"
                     ? _adminUrl
-                    : props.userRole == "Owner"
+                    : props.auth.role == "Owner"
                         ? _ownerUrls
-                        : props.userRole == "Employee"
+                        : props.auth.role == "Employee"
                             ? _employeeUrl
                             : null}
 
@@ -76,3 +83,19 @@ const _employeeUrl = (
         <li><NavLink to="" className={styles.logout} onClick={onLogout} >Log Out</NavLink></li>
     </ul>
 );
+
+let subtitle = {
+    content: {
+      top: '55%',
+      left: '50%',
+      right: 'auto',
+      width: '44%',
+      height: '500px',
+      bottom: 'auto',
+      marginTop: '-5%',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -40%)',
+      padding: '0px',
+    },
+    color: '#f00'
+  };

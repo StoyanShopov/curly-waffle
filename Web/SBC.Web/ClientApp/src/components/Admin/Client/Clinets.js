@@ -1,17 +1,16 @@
 import axios from 'axios';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import css from './Clients.module.css';
-import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
-import { LoadClientData as GetPartions } from '../../services/client-service';
+import { ClientService } from '../../../services/client-service';
 
-export default function Clients() {
+
+export default function Clients(props) {
   const [clients, setClients] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [skip, setSkip] = useState(0);
-  const [showModal, setShowModal] = useState(false);
   const [viewMoreAvaliable, setViewMoreAvaliable] = useState(false);
 
   const cancelTokenSource = axios.CancelToken.source();
@@ -24,10 +23,6 @@ export default function Clients() {
       cancelTokenSource.cancel();
     }
   }, [])
-
-  const handleClose = useCallback(() => {
-    setShowModal(false)
-  }, []);
 
   const handleSkip = (skip) => {
     setSkip(prevSkip => {
@@ -44,7 +39,7 @@ export default function Clients() {
   const handleViewMore = async () => {
     setIsPending(true);
 
-    const json = await GetPartions(skip, cancelTokenSource);
+    const json = await ClientService.loadClientData(skip, cancelTokenSource);
 
     setIsPending(false);
 
@@ -57,6 +52,13 @@ export default function Clients() {
     setViewMoreAvaliable(json.viewMoreAvaliable);
   }
 
+  function onOpenModal(){
+    console.log(props.modal)
+    props.modal.openModal(
+      <ModalAddClients closeModal={props.modal.handleClose}  handleSkip={handleSkip} handleClient={handleClient} />,
+      style
+    )
+  }
   return (
     <>
       <div className={css.container}>
@@ -66,8 +68,8 @@ export default function Clients() {
               <th>Company Name</th>
               <th>Email</th>
               <td className={css.addClient}>
-                <Link to="" onClick={() => setShowModal(true)}>
-                                    <img className={css.plus} src={"/add-client.ico"} alt="add-icon"></img>
+                <Link to="" onClick={() => onOpenModal()}>
+                  <img className={css.plus} src={"/add-client.ico"} alt="add-icon"></img>
                 </Link>
               </td>
             </tr>
@@ -96,25 +98,18 @@ export default function Clients() {
           </tbody>
         </table>
       </div>
-
-      <Modal
-        style={{
-          content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            width: '45%',
-            bottom: 'auto',
-            transform: 'translate(-50%, -50%)',
-            padding: '0px',
-          }
-        }}
-        isOpen={showModal}
-        onRequestClose={handleClose}
-        contentLabel="Example Modal"
-      >
-        <ModalAddClients handleClose={handleClose} handleSkip={handleSkip} handleClient={handleClient} />
-      </Modal>
     </>
   );
+}
+
+const style = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    width: '44%',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    padding: '0px',
+  }
 }

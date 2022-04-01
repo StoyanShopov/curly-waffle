@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 
 import css from './Dashboard.module.css';
-import Diagram from './fragments/Diagram';
-import { AdminService } from '../../services/super-admin-service';
+import Diagram from '../../Fragments/Diagrams/Diagram';
+import { AdminService } from '../../../services/super-admin-service';
 
 export default function Dashboard() {
   const [items, setItems] = useState({});

@@ -12,6 +12,7 @@ import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
 import ResponsivePlayer from "../../Player/VideoPlayer.js";
 
 import Modal from "react-modal/lib/components/Modal";
+import axios from "axios";
 
 export default function CourseDetails(props) {
     const { id } = useParams();
@@ -24,43 +25,35 @@ export default function CourseDetails(props) {
     const [childModal, setChildModal] = useState(null);
 
     const isAdmin = !props.role;
-
-    useEffect(() => {
+    const loadData = async() => {
         if (props.role === "Employee") {
-            employeeService
-                .getAllLectures(id, skip)
-                .then(response => {
-                    setLectures(response.data);
-                });
-
+            await axios.all([
+                employeeService.getAllLectures(id, skip),
+                employeeService.getCourseById(id),
+            ]).then(response => {
+                console.log(response)
+                setLectures(response[0].data);
+                setCourse(response[1].data);
+                setVideo(response[1].data.videoUrl);
+            });
             setSkip(prevSkip => prevSkip + 6)
-        } else {
-            lectureService
-                .getAll(id, skip)
-                .then(response => {
-                    setLectures(response.data);
-                });
 
+        } else {
+            console.log("I am admin")
+            await axios.all([
+                lectureService.getAll(id, skip),
+                courseService.getById(id)
+            ]).then(response => {
+                console.log(response)
+                setLectures(response[0].data);
+                setCourse(response[1].data);
+                setVideo(response[1].data.videoUrl);
+            });
             setSkip(prevSkip => prevSkip + 6)
         }
-    }, []);
-
+    }
     useEffect(() => {
-        if (props.role === "Employee") {
-            employeeService
-                .getCourseById(id)
-                .then(response => {
-                    setCourse(response.data);
-                    setVideo(response.data.videoUrl);
-                })
-        } else {
-            courseService
-                .getById(id)
-                .then(response => {
-                    setCourse(response.data);
-                    setVideo(response.data.videoUrl);
-                })
-        }
+        loadData();
     }, [id]);
 
 

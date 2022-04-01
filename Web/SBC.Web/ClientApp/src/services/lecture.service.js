@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { baseUrl } from '../constants';
 
-const apiUrl = baseUrl + 'administration/lectures';
+const apiUrl = baseUrl + 'administrator/lectures';
 const token = localStorage.getItem('token');
 
 const getAll = async (courseId, skip) => {

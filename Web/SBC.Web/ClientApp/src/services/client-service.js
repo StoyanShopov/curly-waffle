@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TokenManagement } from '../helpers';
 import { baseUrl } from '../constants/GlobalConstants';
 
-export const LoadClientData = async (skip, cancelTokenSource) => {
+const loadClientData = async (skip, cancelTokenSource) => {
   const response = await axios.get(baseUrl + 'Administrator/Clients/Portion?skip=' + skip, {
     cancelToken: cancelTokenSource.token,
     headers: {
@@ -18,7 +18,7 @@ export const LoadClientData = async (skip, cancelTokenSource) => {
   return response.data;
 }
 
-export const AddClient = async (client) => {
+export const addClient = async (client) => {
   const response = await axios.post(baseUrl + 'Administrator/Clients', client,
     {
       headers: {
@@ -31,4 +31,9 @@ export const AddClient = async (client) => {
   }
 
   return response;
+}
+
+export const ClientService = {
+  loadClientData,
+  addClient
 }

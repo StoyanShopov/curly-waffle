@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
+import { ClientService } from '../../../services/client-service';
 
 import styles from './ModalAddClients.module.css'
-import { AddClient } from '../../services/client-service';
+
 
 export default function ModalAddClients(props) {
   const submitHandler = async (e) => {
@@ -16,7 +17,7 @@ export default function ModalAddClients(props) {
     }
 
     try {
-      const response = await AddClient(clientData);
+      const response = await ClientService.addClient(clientData);
 
       props.handleSkip(1);
 
@@ -41,7 +42,7 @@ export default function ModalAddClients(props) {
         <div className={styles.modal}>
           <div className={styles.modalHead}>
             <h2 className={styles.modalTitle}>Add Clients</h2>
-            <Link to="" className={styles.closeBtn} onClick={props.handleClose} >X</Link>
+            <button  type='button' className={styles.closeBtn} onClick={()=>props.closeModal()} >X</button>
           </div>
           <div className={styles.modalContented}>
             <form
