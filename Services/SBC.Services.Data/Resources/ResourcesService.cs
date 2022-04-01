@@ -1,7 +1,6 @@
 ﻿namespace SBC.Services.Data.Resources
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -13,24 +12,28 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Resources;
 
+    using static SBC.Common.ErrorConstants.ResourcesMessages;
+
     public class ResourcesService : IResourcesService
     {
-        private readonly IDeletableEntityRepository<Resource> resources;
+        private readonly IDeletableEntityRepository<Resource> resourcesRepository;
 
-        public ResourcesService(IDeletableEntityRepository<Resource> resources)
+        public ResourcesService(IDeletableEntityRepository<Resource> resourcesRepository)
         {
-            this.resources = resources;
+            this.resourcesRepository = resourcesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateResourceInputModel resourceModel)
         {
-            var resource = await this.resources
+            var resource = await this.resourcesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Name == resourceModel.Name);
 
             if (resource != null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Resource already exist!");
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    ResourceAlreadyExist);
             }
 
             var newResource = new Resource()
@@ -42,8 +45,8 @@
                 LectureId = resourceModel.LectureId,
             };
 
-            await this.resources.AddAsync(newResource);
-            await this.resources.SaveChangesAsync();
+            await this.resourcesRepository.AddAsync(newResource);
+            await this.resourcesRepository.SaveChangesAsync();
 
             var currentResource = new ResourceViewModel
             {
@@ -57,32 +60,36 @@
             return new ResultModel(currentResource);
         }
 
-        public async Task<Result> DeleteByIdAsync(string id)
+        public async Task<Result> DeleteAsync(string id)
         {
-            var resource = await this.resources
+            var resource = await this.resourcesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (resource == null)
             {
-                return new ErrorModel(HttpStatusCode.NotFound, "Resource not found!");
+                return new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    ResourceNotFound);
             }
 
-            this.resources.Delete(resource);
-            await this.resources.SaveChangesAsync();
+            this.resourcesRepository.Delete(resource);
+            await this.resourcesRepository.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<Result> EditAsync(string id, EditResourceInputModel resourceModel)
+        public async Task<Result> UpdateAsync(string id, EditResourceInputModel resourceModel)
         {
-            var resource = await this.resources
+            var resource = await this.resourcesRepository
                 .All()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (resource == null)
             {
-                return new ErrorModel(HttpStatusCode.NotFound, "Resource doesn't exist!");
+                return new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    ResourceDoesNotExist);
             }
 
             resource.Name = resourceModel.Name;
@@ -91,7 +98,7 @@
             resource.LectureId = resourceModel.LectureId;
             resource.FileType = (FileType)Enum.Parse(typeof(FileType), resourceModel.FileType);
 
-            await this.resources.SaveChangesAsync();
+            await this.resourcesRepository.SaveChangesAsync();
 
             var currentResource = new ResourceViewModel
             {
@@ -105,18 +112,18 @@
             return new ResultModel(currentResource);
         }
 
-        public async Task<IEnumerable<TModel>> GetAllByLectureIdAsync<TModel>(string id)
-                  => await this.resources
+        public async Task<Result> GetAllByLectureIdAsync<TModel>(string id)
+                  => new ResultModel(await this.resourcesRepository
                       .AllAsNoTracking()
                       .Where(c => c.LectureId == id)
                       .To<TModel>()
-                      .ToListAsync();
+                      .ToListAsync());
 
-        public async Task<TModel> GetByIdAsync<TModel>(string id)
-                => await this.resources
+        public async Task<Result> GetByIdAsync<TModel>(string id)
+                => new ResultModel(await this.resourcesRepository
                     .AllAsNoTracking()
                     .Where(c => c.Id == id)
                     .To<TModel>()
-                    .FirstOrDefaultAsync();
+                    .FirstOrDefaultAsync());
     }
 }

@@ -75,6 +75,8 @@
             public const string PlanningLectureDescription = "Planning Description Text";
             public const string BrandingLectureDescription = "Branding Description Text";
             public const string BusinessModelLectureDescription = "Business Model Description Text";
+
+            public const int LecturesToTake = 6;
         }
 
         public class CoursesConstants

@@ -2,17 +2,19 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static SBC.Web.ViewModels.ValidationConstants.Resource;
+
     public class CreateResourceInputModel
     {
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
         public string Name { get; set; }
 
         [Required]
         public string FileUrl { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue)]
+        [Range(SizeMinLength, SizeMaxLength)]
         public int Size { get; set; }
 
         [Required]
