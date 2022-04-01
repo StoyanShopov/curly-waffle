@@ -2,9 +2,12 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static SBC.Web.ViewModels.ValidationConstants.course;
+
     public class EditCourseInputModel
     {
         [Required]
+        [StringLength(TitleMaxvalue, MinimumLength = TitleMinvalue)]
         public string Title { get; set; }
 
         [Required]

@@ -57,5 +57,10 @@
 
             public const string NotExistsUser = "User does not exist.";
         }
+
+        public class Employee
+        {
+            public const string EmployeeCantBeNull = "User cannot be null";
+        }
     }
 }
