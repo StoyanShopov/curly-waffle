@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import styles from './ModalAddClients.module.css'
-import { AddClient } from '../../services/client-service';
+import { AddClient } from '../../../services/client-service';
 
 export default function ModalAddClients(props) {
   const submitHandler = async (e) => {

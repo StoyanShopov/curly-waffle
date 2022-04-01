@@ -1,5 +1,5 @@
-import CanvasJSReact from './Canvas/assets/canvasjs.react';
-import css from '../Dashboard.module.css';
+import CanvasJSReact from '../Canvas/assets/canvasjs.react';
+import css from '../../Admin/Dashboard/Dashboard.module.css';
 
 export default function Diagram(props) {
     var CanvasJSChart = CanvasJSReact.CanvasJSChart;

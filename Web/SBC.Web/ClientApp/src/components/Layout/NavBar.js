@@ -16,7 +16,7 @@ const NavBar = (props) => {
     async function fun() {
       await addNotifications();
     }
-
+    console.log(props)
     fun();
   }, [])
 
@@ -97,7 +97,7 @@ const NavBar = (props) => {
         </div>
 
         <div className={styles.coursesCoaches}>
-          {email && (props.notifications.length > 0 ?
+          {props.auth.user != null && email && (props.notifications.length > 0 ?
             <Link
               to="" onClick={() => openModal()}>
               <div className={styles.circle}>
@@ -115,20 +115,20 @@ const NavBar = (props) => {
           {props.auth.user != null
             ?
             <div className={styles.greenCircle}>
-              <NavLink tag={Link} to="profile">{props.auth.user.fullname[0]}</NavLink>
-                </div>
-            : null}
+              <NavLink tag={Link} to="profile">{props.auth.user.fullname != null ? props.auth.user.fullname[0] : "P"}</NavLink>
             </div>
+            : null}
+        </div>
       </div>
-        <Modal
-          style={subtitle}
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          ariaHideApp={false}
-        >
-          <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
-        </Modal>
+      <Modal
+        style={subtitle}
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        ariaHideApp={false}
+      >
+        <NotificationModal removeNotifications={removeNotifications} removeNotification={removeNotification} notifications={props.notifications} email={email} closeModal={closeModal} />
+      </Modal>
     </header>
   )
 }

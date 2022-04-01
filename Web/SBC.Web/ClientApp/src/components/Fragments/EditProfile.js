@@ -31,7 +31,7 @@ export default function EditProfile(props) {
             data.photoUrl = result.photoUrl;
         }
 
-        userService.EditUser(data)
+        userService.updateUser(data)
             .then((_data) => {
                 if (_data['status']) {
                     props.closeModal();
