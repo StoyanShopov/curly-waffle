@@ -115,7 +115,7 @@ const EditCoach = (props) => {
         coachId: coach.id
       }))
 
-    coachService.updateCoach(data)
+    coachService.update(data)
       .then(() => {
         const languagesAsObj = data.languages.map(x => ({ languageId: x.languageId }))
         const categoriesAsObj = data.categories.map(x => ({ categoryId: x.categoryId }))
