@@ -1,6 +1,6 @@
 ﻿namespace SBC.Common
 {
-    public static class DataModelConstants
+    public static class ValidationConstant
     {
         public class UserConstants
         {

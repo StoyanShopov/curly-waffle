@@ -12,13 +12,13 @@
     public class SearchSeedersService : ISearchSeedersService
     {
 
-        private readonly IDeletableEntityRepository<Course> coursesRepository;
         private readonly ISearchService searchService;
+        private readonly IDeletableEntityRepository<Course> coursesRepository;
 
-        public SearchSeedersService(IDeletableEntityRepository<Course> coursesRepository,ISearchService searchService)
+        public SearchSeedersService(ISearchService searchService, IDeletableEntityRepository<Course> coursesRepository)
         {
-            this.coursesRepository = coursesRepository;
             this.searchService = searchService;
+            this.coursesRepository = coursesRepository;
         }
 
         public async Task SeedCoursesAsync()

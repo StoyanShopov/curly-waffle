@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Common.DataModelConstants;
+    using static SBC.Common.ValidationConstant;
 
     public class EditProfileInputModel
     {
