@@ -16,11 +16,10 @@
     using SBC.Web.ViewModels.Feedback;
 
     using static SBC.Common.ErrorConstants;
+    using static SBC.Common.GlobalConstants.ClientConstants;
 
     public class CoachesService : ICoachesService
     {
-        private const int TakeDefaultValue = 3;
-
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
         private readonly IDeletableEntityRepository<Language> languagesRepository;
         private readonly IDeletableEntityRepository<Category> categoriesRepository;

@@ -116,7 +116,8 @@
 
             public const string IvanCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
             public const string MariaCalendlyUrl = "35ae6804-9f34-4333-bb05-806fd527e1ad";
-            public const string EmilCalendlyUrl = "dcd2e179-a4f5-4f67-9547-b1ce4000baec";
+            public const string EmilCalendlyUrl = "fec79d7c-40e0-4678-9014-bc0b07bb4b02";
+            public const string ForAddingNewCalendlyUrl = "6ed1b972-f853-480a-8c05-d13cfeb8d25c";
 
             public const string IvanImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/ced7f6bb-5ada-4b69-b470-834e748326fe";
             public const string MariaImageUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c238e4e5-ab4e-4771-a6c8-be3f6e108a91";
@@ -142,6 +143,16 @@
         {
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
+        }
+
+        public class ClientConstants
+        {
+            public const int TakeDefaultValue = 3;
+        }
+
+        public class CourseConstants
+        {
+            public const int CourseDurationInMonths = 3;
         }
     }
 }

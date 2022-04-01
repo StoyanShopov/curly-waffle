@@ -9,9 +9,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using SBC.Data.Models;
 
+    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
     using static SBC.Common.GlobalConstants.PasswordConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
-    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
 
     internal class UsersSeeder : ISeeder
     {

@@ -27,10 +27,6 @@
                         .To<CourseSearchModel>()
                         .ToListAsync();
             await this.searchService.CreateMany("course", courses, CancellationToken.None);
-            //foreach (var course in courses)
-            //{
-            //    await this.searchService.Create("course", course, CancellationToken.None);
-            //}
         }
     }
 }

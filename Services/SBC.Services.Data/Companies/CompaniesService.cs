@@ -19,12 +19,11 @@
     using SBC.Web.ViewModels.Courses;
 
     using static SBC.Common.ErrorConstants.CompanyConstants;
+    using static SBC.Common.GlobalConstants.ClientConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class CompaniesService : ICompaniesService
     {
-        private const int TakeDefaultValue = 3;
-
         private readonly IDeletableEntityRepository<Company> companiesRepository;
         private readonly IDeletableEntityRepository<Coach> coachesRepository;
         private readonly IDeletableEntityRepository<Course> coursesRepository;

@@ -43,7 +43,6 @@
                 },
                 new Coach
                 {
-
                    CompanyId = 3,
                    FirstName = CoachFirstNameEmil,
                    LastName = CoachLastNameEmilov,
@@ -59,7 +58,7 @@
 
             foreach (Coach coach in coachesList)
             {
-                var dbCoach = await dbContext.Coaches.FirstOrDefaultAsync(x => x.FirstName == coach.FirstName && x.LastName == coach.LastName);
+                var dbCoach = await dbContext.Coaches.FirstOrDefaultAsync(x => x.CalendlyUrl == coach.CalendlyUrl);
 
                 if (dbCoach == null)
                 {
