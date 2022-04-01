@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import styles from "../Coaches/Coaches.module.css";
 
-import { getAllCoaches, getCategories, getLanguages } from "../../services/adminCoachesService"
+import { coachService } from "../../../services/coach-service"
+import { languageService } from "../../../services/language-service";
+import { categoryService } from "../../../services/category-service";
 
-import CoachCard from "./CoachCard";
-import CreateCoach from "./CreateCoach";
+import CoachCard from "../CoachCard/CoachCard";
+import CreateCoach from "../CreateCoach/CreateCoach"
 import Modal from 'react-modal';
 
 const Coaches = () => {
@@ -64,18 +66,18 @@ const Coaches = () => {
     }
 
     useEffect(() => {
-        getAllCoaches().then(res => {
+        coachService.getAll().then(res => {
             setCoaches(res.data)
         })
 
-        getCategories().then(res => {
+        categoryService.getAll().then(res => {
             setCategories(res.data.map(x => ({
                 value: x.id,
                 label: x.name
             })))
         })
 
-        getLanguages().then(res => {
+        languageService.getAll().then(res => {
             setLanguages(res.data.map(x => ({
                 value: x.id,
                 label: x.name

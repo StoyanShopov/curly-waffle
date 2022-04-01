@@ -1,117 +1,150 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import Select from 'react-select'
 
-import styles from "./CreateCoach.module.css";
+import styles from './EditCoach.module.css';
 
-import { createCoach, getLanguages, getCategories } from "../../services/adminCoachesService";
-import { uploadImage } from "../../services/blob-service";
+import { companyService } from '../../../services/company-service';
+import { coachService } from '../../../services/coach-service';
+import { uploadImage } from '../../../services/blob-service';
 
 
-const CreateCoach = (props) => {
+const EditCoach = (props) => {
   const [languages, setLanguages] = useState([]);
-  const [languagesOptions, setLanugagesOptions] = useState()
+  const [languagesOptions] = useState(props.languages)
   const [categories, setCategories] = useState([])
-  const [categoriesOptions, setCategoriesOptions] = useState()
-  const [coaches, setCoaches] = useState(props.coaches)
+  const [categoriesOptions] = useState(props.categories)
+  const [coach, setCoach] = useState(props.coach)
+  const [companyEmail, setCompanyEmail] = useState();
 
-  useEffect(() => { 
-    getLanguages().then(res =>{
-      setLanugagesOptions(res.data.map(x=> ({
-        value: x.id,
-        label: x.name
-      })))
-    })
-    getCategories().then(res =>{
-      setCategoriesOptions(res.data.map(x=> ({
-        value: x.id,
-        label: x.name
-      })))
-    })
-  }, [props.coaches])
+  useEffect(() => {
+    if(coach.companyId!==null){
+      companyService.getEmailById(coach.companyId).then(res =>{
+        setCompanyEmail(res.email)
+      })
+    }
+    setCoach(props.coach)
+
+  },[props.coach])
+
+  const coachLanguagesAsArrayOfIds = coach.languages.map(x => x.languageId);
+  const coachLanguages = languagesOptions.filter(x => coachLanguagesAsArrayOfIds.includes(x.value))
+
+  const coachCategoriesAsArrayOfIds = coach.categories.map(x => x.categoryId)
+  const coachCategories = categoriesOptions.filter(x => coachCategoriesAsArrayOfIds.includes(x.value))
 
   const onChangeLanguages = (languagesOptions) => {
     setLanguages(languagesOptions);
   };
- 
+
   const onChangeCategories = (categoriesOptions) => {
     setCategories(categoriesOptions);
   };
 
-  const selectStyles = {
-    multiValue: styles => {
-      return {
-        ...styles,
-        backgroundColor: "#296CFB",
-        borderRadius: 10,
-        color: '#ffffff',
-      };
-    },
-    multiValueLabel: (styles) => ({
-      ...styles,
-      color: '#ffffff',
-    }),
-    multiValueRemove: (styles) => ({
-      ...styles,
-      color: "white",
-      ':hover': {
-        color: 'red',
-      },
-    }),
-    placeholder: (styles) => {
-      return {
-        ...styles,
-        color: "#296CFB",
-        fontWeight: 420,
-        position: 'absolute',
-        paddingLeft: 20
-      }
+  function createLanguagesSelect() {
+    if (coachLanguages.length > 0) {
+      return (
+        <Select
+          defaultValue={coachLanguages}
+          options={languagesOptions}
+          isMulti
+          name="languages"
+          styles={selectStyles}
+          placeholder="Select Languages"
+          onChange={onChangeLanguages}
+          required
+        >
+        </Select>
+      )
     }
-  };
+  }
 
-  const onSubmitAddCoach = async (e) => {
-    e.preventDefault();
+  function createCategoriesSelect() {
+    if (coachCategories.length > 0) {
+      return (
+        <Select
+          defaultValue={coachCategories}
+          options={categoriesOptions}
+          isMulti
+          name="categories"
+          styles={selectStyles}
+          placeholder="Select Categories"
+          onChange={onChangeCategories}
+          required
+        >
+        </Select>
+      )
+    }
+  }
+
+  const onSubmitEditCoach = async (e) => {
+    e.preventDefault()
 
     const fd = new FormData(e.target);
+    fd.append('id', props.id);
+
     const data = [...fd.entries()].reduce(
       (p, [k, v]) => Object.assign(p, { [k]: v }),
       {}
     );
 
-    const imageUrl = await uploadImage(data.imageUrl);
-    data.imageUrl = imageUrl.photoUrl;
-    data.languages = languages.map(x=> ({
-      languageId: x.value,
-    }))
-    data.categories = categories.map(x=> ({
-      categoryId: x.value,
-    }))
+    if (data.imageUrl === null || data.imageUrl.size === 0) {
+      data.imageUrl = coach.imageUrl
+    }
+    else {
+      let result = await uploadImage(data.imageUrl);
+      data.imageUrl = result.photoUrl
+    }
 
-    createCoach(data).then((response) => {
-      data['id'] = response.data.id;
-      data['companyId'] = response.data.companyId;
-      props.setCoaches([...coaches, data])
-      setCoaches([...coaches,data]);
-      props.closeModal()
-    })
-  };
+    languages.length === 0 ?
+      data.languages = coachLanguages.map(x => ({
+        languageId: x.value,
+        coachId: coach.id
+      })) :
+      data.languages = languages.map(x => ({
+        languageId: x.value,
+        coachId: coach.id
+      }))
+
+    categories.length === 0 ?
+      data.categories = coachCategories.map(x => ({
+        categoryId: x.value,
+        coachId: coach.id
+      })) :
+      data.categories = categories.map(x => ({
+        categoryId: x.value,
+        coachId: coach.id
+      }))
+
+    coachService.updateCoach(data)
+      .then(() => {
+        const languagesAsObj = data.languages.map(x => ({ languageId: x.languageId }))
+        const categoriesAsObj = data.categories.map(x => ({ categoryId: x.categoryId }))
+        data.languages = languagesAsObj
+        data.categories = categoriesAsObj
+
+      data['companyId'] = coach.companyId
+
+      props.setCoach(data)
+      props.closeModal();
+      })
+  }
+
 
   return (
     <div className={styles.bodyContainer}>
       <div className={styles.addContainer}>
-        <form onSubmit={onSubmitAddCoach}>
+        <form onSubmit={onSubmitEditCoach}>
           <div className={styles.headerContainer}>
-            <div className={styles.titleContainer}>Add Coach</div>
+            <div className={styles.titleContainer}>Edit Coach</div>
             <div className={styles.fileUpload}>
               <input
                 type="file"
                 name="imageUrl"
                 className={styles.upload}
-                required
               />
               <span>Upload image</span>
             </div>
-            <button className={styles.closeBtn}
-            onClick={props.closeModal}>
+            <button className={styles.closeBtn} onClick={() => props.closeModal()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="21.92"
@@ -151,6 +184,7 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={coach.firstName}
                 name="firstName"
                 placeholder="First Name"
                 type="text"
@@ -162,6 +196,7 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={coach.lastName}
                 name="lastName"
                 placeholder="Last Name"
                 type="text"
@@ -173,6 +208,7 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={coach.videoUrl}
                 name="videoUrl"
                 placeholder="Video URL"
                 type="text"
@@ -184,6 +220,7 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={coach.pricePerSession}
                 name="pricePerSession"
                 placeholder="Price"
                 type="text"
@@ -195,6 +232,7 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={coach.calendlyUrl}
                 name="calendlyUrl"
                 placeholder="Calendly URL"
                 type="text"
@@ -206,42 +244,25 @@ const CreateCoach = (props) => {
             <div>
               <input
                 className={styles.inputField}
+                defaultValue={companyEmail}
                 name="companyEmail"
-                placeholder="Company Email(optional)"
+                placeholder="Company(optional)"
                 type="text"
               />
             </div>
 
             <div className={styles.languageOptions}>
-              <Select
-                options={languagesOptions}
-                isMulti
-                name="languages"
-                onChange={(onChangeLanguages)}
-                styles={selectStyles}
-                placeholder="Select Languages (at least 1)"
-                isSearchable
-                required
-              >
-              </Select>
+              {createLanguagesSelect()}
             </div>
 
             <div className={styles.languageOptions}>
-              <Select
-                options={categoriesOptions}
-                isMulti
-                name="categories"
-                onChange={(onChangeCategories)}
-                styles={selectStyles}
-                placeholder="Select Categories (at least 1)"
-                required
-              >
-              </Select>
+              {createCategoriesSelect()}
             </div>
 
             <div>
               <textarea
                 className={styles.inputField}
+                defaultValue={coach.description}
                 name="description"
                 placeholder="Description"
                 type="textarea"
@@ -251,7 +272,7 @@ const CreateCoach = (props) => {
             </div>
 
             <div className={styles.footerContainer}>
-              <button className={styles.btnCancel} onClick={props.closeModal} type="button">
+              <button className={styles.btnCancel} onClick={() => props.closeModal()} type="button">
                 Cancel
               </button>
               <button className={styles.btnSave} type="submit">
@@ -263,6 +284,36 @@ const CreateCoach = (props) => {
       </div>
     </div>
   );
+}
+const selectStyles = {
+  multiValue: styles => {
+    return {
+      ...styles,
+      backgroundColor: "#296CFB",
+      borderRadius: 10,
+      color: '#ffffff'
+    };
+  },
+  multiValueLabel: (styles) => ({
+    ...styles,
+    color: '#ffffff',
+  }),
+  multiValueRemove: (styles) => ({
+    ...styles,
+    color: "white",
+    ':hover': {
+      color: 'red',
+    },
+  }),
+  placeholder: (styles) => {
+    return {
+      ...styles,
+      color: "#296CFB",
+      fontWeight: 420,
+      position: 'absolute',
+      paddingLeft: 20
+    }
+  }
 };
 
-export default CreateCoach;
+export default EditCoach;
