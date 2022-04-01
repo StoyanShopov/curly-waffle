@@ -4,6 +4,13 @@
 
     public static class ErrorConstants
     {
+        public class BlobMessages
+        {
+            public const string FileIsNull = "File is null.";
+
+            public const string BlobNotFound = "Blob not found.";
+        }
+
         public class Client
         {
             public const string AdminDowngrade = "The user is " + AdministratorRoleName + ". Cannot downgrade to " + CompanyOwnerRoleName + " role.";
