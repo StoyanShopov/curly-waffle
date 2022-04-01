@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Web.ViewModels.ValidationConstants.course;
+    using static SBC.Web.ViewModels.ValidationConstants.Course;
 
     public class EditCourseInputModel
     {
