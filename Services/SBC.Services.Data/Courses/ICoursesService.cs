@@ -19,7 +19,10 @@
 
         Task<Result> GetAllByOwnerAsync(string employeeId);
 
-        Task<Result> GetAllWithActiveAsync(int companyId, int skip, int take = TakeDefaultValue);
+        Task<Result> GetAllWithActiveAsync(
+            int companyId,
+            int skip,
+            int take = TakeDefaultValue);
 
         Task<Result> GetByIdAsync<TModel>(int id);
 

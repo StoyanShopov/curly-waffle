@@ -10,8 +10,10 @@
     using SBC.Data.Models;
 
     using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
+    using static SBC.Common.GlobalConstants.EmailsConstants;
     using static SBC.Common.GlobalConstants.PasswordConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
+    using static SBC.Common.GlobalConstants.EmployeesPhotoUrlConstants;
 
     internal class UsersSeeder : ISeeder
     {
@@ -20,7 +22,7 @@
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
-            const string adminEmail = "admin@test.test";
+            const string adminEmail = AdminEmail;
             var company = await dbContext.Companies.FirstOrDefaultAsync(x => x.Name == SoftUniCompanyName);
 
             var adminUser = new ApplicationUser
@@ -29,13 +31,14 @@
                 LastName = "Adminov",
                 Email = adminEmail,
                 UserName = adminEmail,
+                PhotoUrl = AdminAdminovPhotoUrl,
                 CompanyId = 1,
                 ProfileSummary = "Admin Summary",
             };
 
             await SeedUsersRoles(dbContext, userManager, adminUser, AdminPassword, AdministratorRoleName);
 
-            const string ownerEmail = "owner@test.test";
+            const string ownerEmail = OwnerEmail;
 
             var ownerUser = new ApplicationUser
             {
@@ -43,6 +46,7 @@
                 LastName = "Ownerov",
                 Email = ownerEmail,
                 UserName = ownerEmail,
+                PhotoUrl = OwnerOwnerovPhotoUrl,
                 CompanyId = company.Id,
                 ProfileSummary = "Owner Summary",
             };
@@ -58,7 +62,7 @@
                         Email = "vasil@test.test",
                         UserName = "vasil@test.test",
                         PhoneNumber = "+359 888000333",
-                        PhotoUrl = "https://berrysphere.co.ke/wp-content/uploads/2021/08/85120553-696x466.jpg",
+                        PhotoUrl = VasilVasilevPhotoUrl,
                         ProfileSummary = "Vasil Vasilev Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
@@ -72,7 +76,7 @@
                         Email = "gergana@test.test",
                         UserName = "gergana@test.test",
                         PhoneNumber = "+359 888000444",
-                        PhotoUrl = "https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg",
+                        PhotoUrl = GerganaPopovaPhotoUrl,
                         ProfileSummary = "Gergana Popova Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
@@ -86,7 +90,7 @@
                         Email = "nikolay@test.test",
                         UserName = "nikolay@test.test",
                         PhoneNumber = "+359 888000555",
-                        PhotoUrl = "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg",
+                        PhotoUrl = NikolayStefanovPhotoUrl,
                         ProfileSummary = "Nikolay Stefanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
@@ -100,7 +104,7 @@
                         Email = "emil@test.test",
                         UserName = "emil@test.test",
                         PhoneNumber = "+359 888000666",
-                        PhotoUrl = "https://ichef.bbci.co.uk/images/ic/624x351/p049tgdb.jpg",
+                        PhotoUrl = EmilEmilovPhotoUrl,
                         ProfileSummary = "Emil Emilov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
@@ -114,7 +118,7 @@
                         Email = "maria@test.test",
                         UserName = "maria@test.test",
                         PhoneNumber = "+359 888000888",
-                        PhotoUrl = "https://themysteryboy.files.wordpress.com/2012/05/cute_cat_1_by_ashish11.jpg",
+                        PhotoUrl = MariaTonchevaPhotoUrl,
                         ProfileSummary = "Maria Toncheva Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,
@@ -128,7 +132,7 @@
                         Email = "ivan@test.test",
                         UserName = "ivan@test.test",
                         PhoneNumber = "+359 888000333",
-                        PhotoUrl = "https://i.natgeofe.com/n/f4d64d53-07ce-4933-a76e-1d405eec3473/giraffe_thumb_3x4.JPG",
+                        PhotoUrl = IvanIvanovPhotoUrl,
                         ProfileSummary = "Ivan Ivanov Description Summary",
                         DeletedOn = null,
                         IsDeleted = false,

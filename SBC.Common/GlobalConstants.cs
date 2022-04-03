@@ -43,6 +43,8 @@
 
         public class EmailsConstants
         {
+            public const string AdminEmail = "admin@test.test";
+            public const string OwnerEmail = "owner@test.test";
             public const string MotionCompanyEmail = "motionCompany@test.test";
             public const string SoftUniEmail = "sbc.upskill@gmail.com";
             public const string SmartITEmail = "smartIT@test.test";
@@ -53,6 +55,18 @@
             public const string MotionCompanyUrl = "https://assets.jobs.bg/assets/logo/2021-01-12/b_7728810788af22f934bc7f88690c2ef1.png";
             public const string SoftUniUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Logo_Software_University_%28SoftUni%29_-_blue.png/535px-Logo_Software_University_%28SoftUni%29_-_blue.png";
             public const string SmartITUrl = "https://smartit.bg/images/smartit-logo.svg";
+        }
+
+        public class EmployeesPhotoUrlConstants
+        {
+            public const string AdminAdminovPhotoUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/5b95fd8e-f969-474e-851d-367f1b9746c8";
+            public const string OwnerOwnerovPhotoUrl = "https://upskillstoragetest.blob.core.windows.net/upskillcontainertest/c9e88979-bb1b-4254-be1d-5c534577e519";
+            public const string VasilVasilevPhotoUrl = "https://berrysphere.co.ke/wp-content/uploads/2021/08/85120553-696x466.jpg";
+            public const string GerganaPopovaPhotoUrl = "https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg";
+            public const string NikolayStefanovPhotoUrl = "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg";
+            public const string EmilEmilovPhotoUrl = "https://ichef.bbci.co.uk/images/ic/624x351/p049tgdb.jpg";
+            public const string MariaTonchevaPhotoUrl = "https://themysteryboy.files.wordpress.com/2012/05/cute_cat_1_by_ashish11.jpg";
+            public const string IvanIvanovPhotoUrl = "https://i.natgeofe.com/n/f4d64d53-07ce-4933-a76e-1d405eec3473/giraffe_thumb_3x4.JPG";
         }
 
         public class ResourcesConstants
