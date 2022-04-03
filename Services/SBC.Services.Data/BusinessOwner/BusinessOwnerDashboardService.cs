@@ -50,12 +50,14 @@
                 .Any(c => c.CompanyId == companyId))
                 .ToListAsync();
 
-            return new ResultModel(new DashboardViewModel
+            var result = new DashboardViewModel
             {
                 EmployeesCount = employeesCount.Count,
                 CoursesCount = coursesCount.Count,
                 CoachesCount = coachesCount.Count,
-            });
+            };
+
+            return new ResultModel(result);
         }
     }
 }

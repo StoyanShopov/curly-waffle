@@ -11,9 +11,9 @@
 
     using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
     using static SBC.Common.GlobalConstants.EmailsConstants;
+    using static SBC.Common.GlobalConstants.EmployeesPhotoUrlConstants;
     using static SBC.Common.GlobalConstants.PasswordConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
-    using static SBC.Common.GlobalConstants.EmployeesPhotoUrlConstants;
 
     internal class UsersSeeder : ISeeder
     {

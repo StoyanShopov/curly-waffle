@@ -20,6 +20,12 @@
             public const string ExistsByName = "The company's name '{0}' already exists.";
 
             public const string ExistsByEmail = "The company's email '{0}' already exists.";
+
+            public const string NotExistsByFullName = "User with this '{0}' doesn't exist.";
+
+            public const string AlreadyAddedToACompany = "This user is already added to a company.";
+
+            public const string NotExistsByEmail = "User with this '{0}' doesn't exist.";
         }
 
         public class CoachesConstants
