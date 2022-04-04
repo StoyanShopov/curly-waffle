@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
 
 import { CategoriesList } from "./CategoriesList";
@@ -37,7 +37,7 @@ export default function CourseCatalog(props) {
     const handleViewMore = async () => {
         setIsPending(true);
 
-        const json = await OwnerService.GetCoursesCatalog(skip, cancelTokenSource);
+        const json = await ownerService.getCoursesCatalog(skip, cancelTokenSource);
 
         console.log('js', json)//  
 

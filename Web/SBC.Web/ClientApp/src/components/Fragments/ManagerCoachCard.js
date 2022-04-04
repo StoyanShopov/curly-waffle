@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {v4 as uuid} from 'uuid';
 
 import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
-import { OwnerService } from '../../services';
+import { ownerService } from '../../services';
 import { notificationService } from '../../services/notification-service';
 
 import styles from './ManagerCoachCard.module.css';
@@ -19,14 +19,14 @@ export default function ManagerCoachCard(props) {
     Modal.setAppElement('body');
 
     const onDelete = () => {
-        OwnerService.CompanyRemoveCoachFromActive(props.coach.id)
+        ownerService.companyRemoveCoachFromActive(props.coach.id)
             .then(res => {
                 console.log('Successful delete');//
                 setShowModal(false);
             })
             .finally(() => {
                 if (props.isProfile) {
-                    OwnerService.CompanyGetActiveCoaches()
+                    ownerService.companyGetActiveCoaches()
                         .then(res => {
                             props.setCoaches(res.data)
                         });
@@ -38,7 +38,7 @@ export default function ManagerCoachCard(props) {
     }
 
     const onSet = () => {
-        OwnerService.CompanySetCoachToActive(props.coach.id)
+        ownerService.companySetCoachToActive(props.coach.id)
             .then(res => {
                 if (res.status) {
                     const uniqueGroupKey = uuid();

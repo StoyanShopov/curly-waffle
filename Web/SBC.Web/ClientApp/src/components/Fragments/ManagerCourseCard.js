@@ -6,7 +6,7 @@ import {v4 as uuid} from 'uuid';
 import styles from './ManagerCourseCard.module.css';
 
 import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
-import { OwnerService } from '../../services';
+import { ownerService } from '../../services';
 import { notificationService } from '../../services/notification-service';
 
 export default function ManagerCourseCard(props) {
@@ -19,14 +19,14 @@ export default function ManagerCourseCard(props) {
     Modal.setAppElement('body');
 
     const onDelete = () => {
-        OwnerService.CompanyRemoveCourseFromActive(courseId)
+        ownerService.companyRemoveCourseFromActive(courseId)
             .then(res => {
                 console.log('Successful delete');//
                 setShowModal(false);
             })
             .finally(() => {
                 if (props.isProfile) {
-                    OwnerService.CompanyGetActiveCourses()
+                    ownerService.companyGetActiveCourses()
                         .then(res => {
                             props.setCourses(res.data);
                         });
@@ -38,7 +38,7 @@ export default function ManagerCourseCard(props) {
     }
     
     const onSet = () => {
-        OwnerService.CompanySetCourseToActive(props.course.id)
+        ownerService.companySetCourseToActive(props.course.id)
             .then(res => {
                 if (res.status) {
                     const uniqueGroupKey = uuid();

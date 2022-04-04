@@ -2,14 +2,14 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
 import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 import styles from "./ActiveCoaches.module.css";
 
 export default function ActiveCoaches() {
     const [coaches, setCoaches] = useState([]);
 
     useEffect(() => {
-        OwnerService.CompanyGetActiveCoaches()
+        ownerService.companyGetActiveCoaches()
             .then(res => {
                 setCoaches(res.data);
             })

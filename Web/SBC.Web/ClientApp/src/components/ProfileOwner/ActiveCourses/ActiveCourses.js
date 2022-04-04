@@ -2,14 +2,14 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
 import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 import styles from "./ActiveCourses.module.css";
 
 export default function ActiveCourses() {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        OwnerService.CompanyGetActiveCourses()
+        ownerService.companyGetActiveCourses()
             .then(res => {
                 setCourses(res.data);
             })

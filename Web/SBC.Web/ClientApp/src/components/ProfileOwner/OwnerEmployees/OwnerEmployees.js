@@ -6,7 +6,7 @@ import css from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
 import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 
 export default function OwnerEmployees() {
     const [employees, setEmployees] = useState([]);
@@ -32,7 +32,7 @@ export default function OwnerEmployees() {
     }, [])
 
     const RemoveEmployee = async (id) => {
-        await OwnerService.CompanyRemoveEmployee(id)
+        await ownerService.companyRemoveEmployee(id)
             .then(res => {
                 navigate('/profile/owner/dashboard')//
             })
@@ -59,7 +59,7 @@ export default function OwnerEmployees() {
     const handleViewMore = async () => {
         setIsPending(true);
 
-        const json = await OwnerService.CompanyGetEmployees(skip, cancelTokenSource);
+        const json = await ownerService.companyGetEmployees(skip, cancelTokenSource);
 
         console.log('js', json)//
 
