@@ -15,23 +15,23 @@
 
     public class NotificationsService : INotificationsService
     {
-        private readonly IDeletableEntityRepository<Notification> notificationRepository;
+        private readonly IDeletableEntityRepository<Notification> notificationsRepository;
         private readonly IUsersService usersService;
         private readonly ICompaniesService companiesService;
 
         public NotificationsService(
-            IDeletableEntityRepository<Notification> notificationRepository,
+            IDeletableEntityRepository<Notification> notificationsRepository,
             IUsersService usersService,
             ICompaniesService companiesService)
         {
-            this.notificationRepository = notificationRepository;
+            this.notificationsRepository = notificationsRepository;
             this.usersService = usersService;
             this.companiesService = companiesService;
         }
 
-        public async Task<Result> GetAllByEmailAsyc(string email)
+        public async Task<Result> GetAllByEmailAsync(string email)
         {
-            var result = await this.notificationRepository
+            var result = await this.notificationsRepository
                 .AllAsNoTracking()
                 .Where(n => n.UserEmail.ToLower() == email.ToLower())
                 .To<NotificationDetailsViewModel>()
@@ -40,7 +40,10 @@
             return new ResultModel(result);
         }
 
-        public async Task<Result> AddAsync(string uniqueGroupKey, string userEmail, string message)
+        public async Task<Result> CreateAsync(
+            string uniqueGroupKey, 
+            string userEmail, 
+            string message)
         {
             var user = await this.usersService.GetByEmailAsync<UserConnection>(userEmail);
 
@@ -55,24 +58,24 @@
                     Message = message,
                 };
 
-                await this.notificationRepository.AddAsync(notification);
+                await this.notificationsRepository.AddAsync(notification);
             }
 
-            await this.notificationRepository.SaveChangesAsync();
+            await this.notificationsRepository.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<Result> DeleteAsync(int id)
         {
-            var notification = await this.notificationRepository
+            var notification = await this.notificationsRepository
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(n => n.Id == id);
 
             if (notification is not null)
             {
-                this.notificationRepository.Delete(notification);
-                await this.notificationRepository.SaveChangesAsync();
+                this.notificationsRepository.Delete(notification);
+                await this.notificationsRepository.SaveChangesAsync();
             }
 
             return true;
@@ -80,7 +83,7 @@
 
         public async Task<Result> DeleteAsync(string uniqueGroupKey, string email)
         {
-            var notification = await this.notificationRepository
+            var notification = await this.notificationsRepository
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(n =>
                     n.UniqueGroupKey == uniqueGroupKey
@@ -88,8 +91,8 @@
 
             if (notification is not null)
             {
-                this.notificationRepository.Delete(notification);
-                await this.notificationRepository.SaveChangesAsync();
+                this.notificationsRepository.Delete(notification);
+                await this.notificationsRepository.SaveChangesAsync();
             }
 
             return true;

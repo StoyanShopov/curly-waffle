@@ -16,7 +16,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAsync()
+        public async Task<ActionResult> GetAll()
         {
             var result = await this.categoriesService.GetAllAsync<CategoryDetailsViewModel>();
 
@@ -24,7 +24,7 @@
         }
 
         [HttpGet("{coachId}")]
-        public async Task<ActionResult> GetByCoachIdAsync(int coachId)
+        public async Task<ActionResult> GetByCoachId(int coachId)
         {
             var result = await this.categoriesService.GetByCoachIdAsync(coachId);
 

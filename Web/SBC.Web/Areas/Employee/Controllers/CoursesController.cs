@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.Areas.Employee.Controllers
+﻿    namespace SBC.Web.Areas.Employee.Controllers
 {
     using System.Threading.Tasks;
 
@@ -28,9 +28,9 @@
         [HttpGet("modalDetails/{id}")]
         public async Task<ActionResult> GetAsync(int id)
         {
-            var course = await this.courseService.GetByIdEmployeeAsync(id);
+            var result = await this.courseService.GetByIdEmployeeAsync(id);
 
-            return this.GenericResponse(course);
+            return this.GenericResponse(result);
         }
 
         [HttpGet]
@@ -38,9 +38,9 @@
         {
             var userId = this.User.Id();
 
-            var courses = await this.courseService.GetAllByOwnerAsync(userId);
+            var result = await this.courseService.GetAllByOwnerAsync(userId);
 
-            return this.GenericResponse(courses);
+            return this.GenericResponse(result);
         }
 
         [HttpPost("{courseId}")]
@@ -48,9 +48,9 @@
         {
             var userId = this.User.Id();
 
-            var isEnrolled = await this.courseService.EnrollCourse(userId, courseId);
+            var result = await this.courseService.EnrollCourse(userId, courseId);
 
-            return this.GenericResponse(isEnrolled);
+            return this.GenericResponse(result);
 
         }
     }

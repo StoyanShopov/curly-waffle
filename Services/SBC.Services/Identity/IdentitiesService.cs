@@ -12,7 +12,11 @@
     {
         private const int DaysToExpire = 3;
 
-        public string GenerateJwt(string secret, string userId, string userName, string role)
+        public string GenerateJwt(
+            string secret, 
+            string userId, 
+            string userName, 
+            string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
