@@ -168,5 +168,10 @@
         {
             public const int CourseDurationInMonths = 3;
         }
+
+        public class BusinessOwnerConstants
+        {
+            public const string OwnerAreaName = "BusinessOwner";
+        }
     }
 }

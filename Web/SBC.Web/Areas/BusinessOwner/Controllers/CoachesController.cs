@@ -24,10 +24,10 @@
             var companyId = this.usersService
                 .GetCompanyId(this.User.Id());
 
-            var coachesresult = await this.coachesService
+            var result = await this.coachesService
                 .GetAllWithActiveAsync(companyId, skip);
 
-            return this.GenericResponse(coachesresult);
+            return this.GenericResponse(result);
         }
     }
 }

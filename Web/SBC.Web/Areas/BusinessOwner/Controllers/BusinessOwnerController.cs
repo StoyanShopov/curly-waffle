@@ -4,10 +4,11 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Web.Controllers;
 
+    using static SBC.Common.GlobalConstants.BusinessOwnerConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     [Authorize(Roles = CompanyOwnerRoleName)]
-    [Area("BusinessOwner")]
+    [Area(OwnerAreaName)]
     [Route("manager/[controller]")]
     public class BusinessOwnerController : ApiController
     {
