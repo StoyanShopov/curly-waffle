@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CoursesConstants;
+    using static SBC.Common.SeederConstants.CoursesConstants;
 
     internal class CoursesSeeder : ISeeder
     {

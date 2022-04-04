@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CoachConstants;
+    using static SBC.Common.SeederConstants.CoachConstants;
 
     internal class CoachesSeeder : ISeeder
     {

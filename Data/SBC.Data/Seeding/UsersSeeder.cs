@@ -9,11 +9,11 @@
     using Microsoft.Extensions.DependencyInjection;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CompaniesNamesConstants;
-    using static SBC.Common.GlobalConstants.EmailsConstants;
-    using static SBC.Common.GlobalConstants.EmployeesPhotoUrlConstants;
-    using static SBC.Common.GlobalConstants.PasswordConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
+    using static SBC.Common.SeederConstants.CompaniesNamesConstants;
+    using static SBC.Common.SeederConstants.EmailsConstants;
+    using static SBC.Common.SeederConstants.EmployeesPhotoUrlConstants;
+    using static SBC.Common.SeederConstants.PasswordConstants;
 
     internal class UsersSeeder : ISeeder
     {

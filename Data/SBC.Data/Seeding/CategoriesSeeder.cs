@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.CategoriesNamesConstants;
+    using static SBC.Common.SeederConstants.CategoriesNamesConstants;
 
     internal class CategoriesSeeder : ISeeder
     {
