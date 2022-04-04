@@ -20,7 +20,8 @@
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)
         {
-            var result = await this.courseService.GetByIdAsync<CourseDetailsViewModel>(id);
+            var result = await this.courseService
+                .GetByIdAsync<CourseDetailsViewModel>(id);
 
             return this.GenericResponse(new ResultModel(result));
         }
@@ -28,7 +29,8 @@
         [HttpGet("modalDetails/{id}")]
         public async Task<ActionResult> GetAsync(int id)
         {
-            var result = await this.courseService.GetByIdEmployeeAsync(id);
+            var result = await this.courseService
+                .GetByIdEmployeeAsync(id);
 
             return this.GenericResponse(result);
         }
@@ -38,7 +40,8 @@
         {
             var userId = this.User.Id();
 
-            var result = await this.courseService.GetAllByOwnerAsync(userId);
+            var result = await this.courseService
+                .GetAllByOwnerAsync(userId);
 
             return this.GenericResponse(result);
         }
@@ -48,7 +51,8 @@
         {
             var userId = this.User.Id();
 
-            var result = await this.courseService.EnrollCourse(userId, courseId);
+            var result = await this.courseService
+                .EnrollCourse(userId, courseId);
 
             return this.GenericResponse(result);
 

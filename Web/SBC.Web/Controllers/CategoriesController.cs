@@ -18,7 +18,8 @@
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            var result = await this.categoriesService.GetAllAsync<CategoryDetailsViewModel>();
+            var result = await this.categoriesService
+                .GetAllAsync<CategoryDetailsViewModel>();
 
             return this.GenericResponse(result);
         }
@@ -26,7 +27,8 @@
         [HttpGet("{coachId}")]
         public async Task<ActionResult> GetByCoachId(int coachId)
         {
-            var result = await this.categoriesService.GetByCoachIdAsync(coachId);
+            var result = await this.categoriesService
+                .GetByCoachIdAsync(coachId);
 
             return this.GenericResponse(result);
         }

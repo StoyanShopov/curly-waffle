@@ -45,9 +45,11 @@
             string userEmail, 
             string message)
         {
-            var user = await this.usersService.GetByEmailAsync<UserConnection>(userEmail);
+            var user = await this.usersService
+                .GetByEmailAsync<UserConnection>(userEmail);
 
-            var emails = await this.companiesService.GetAllEmployeesAsync(user.CompanyName);
+            var emails = await this.companiesService
+                .GetAllEmployeesAsync(user.CompanyName);
 
             foreach (var email in emails)
             {

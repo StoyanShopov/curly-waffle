@@ -52,7 +52,8 @@
 
         public async Task<Result> RegisterAsync(RegisterInputModel model)
         {
-            var emailExists = await this.ExistsByEmailAsync(model.Email);
+            var emailExists = await this
+                .ExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
@@ -63,7 +64,8 @@
 
             var (firstName, lastName) = model.FullName.GetNames();
 
-            var companyExists = await this.companiesService.ExistsByNameAsync(model.CompanyName);
+            var companyExists = await this.companiesService
+                .ExistsByNameAsync(model.CompanyName);
 
             if (!companyExists)
             {
@@ -83,7 +85,8 @@
                 CompanyId = companyId,
             };
 
-            var result = await this.userManager.CreateAsync(user, model.Password);
+            var result = await this.userManager
+                .CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
@@ -107,15 +110,18 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
             }
 
-            var isPasswordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
+            var isPasswordValid = await this.userManager
+                .CheckPasswordAsync(user, model.Password);
 
             if (!isPasswordValid)
             {
                 return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
             }
 
-            var roleId = user.Roles.FirstOrDefault().RoleId;
-            var applicationRole = await this.roleManager.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            var roleId = user.Roles
+                .FirstOrDefault().RoleId;
+            var applicationRole = await this.roleManager.Roles
+                .FirstOrDefaultAsync(r => r.Id == roleId);
 
             var jwt = this.identitiesService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
 
@@ -124,7 +130,8 @@
 
         public async Task<Result> EditAsync(EditProfileInputModel inputModelUser, string userId)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
+            var user = await this.userManager
+                .FindByIdAsync(userId);
 
             if (user == null)
             {
