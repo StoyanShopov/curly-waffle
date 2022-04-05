@@ -1,6 +1,6 @@
 import styles from './DeleteCoach.module.css';
 
-import { deleteCoachById } from '../../services/adminCoachesService';
+import { coachService } from '../../../services/coach-service';
 
 const DeleteCoach = (props) => {    
 
@@ -10,7 +10,7 @@ const DeleteCoach = (props) => {
     {
         e.preventDefault(); 	
 
-        deleteCoachById(props.id)
+        coachService.deleteCoach(props.id)
         .then(() =>{
             props.setCoaches(coaches)
             props.closeModal();

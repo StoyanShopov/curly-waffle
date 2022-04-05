@@ -1,11 +1,9 @@
 ﻿namespace SBC.Web.Controllers
 {
-    using System.Net;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Blob;
 
     public class BlobsController : ApiController
@@ -18,53 +16,33 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<ActionResult> GetAll()
         {
-            var blobs = await this.blobService.GetAllAsync();
+            var result = await this.blobService.GetAllAsync();
 
-            return this.Ok(blobs);
+            return this.GenericResponse(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadBlobAsync(IFormFile file)
+        public async Task<ActionResult> Upload(IFormFile file)
         {
-            if (file == null)
-            {
-                return this.GenericResponse(new ErrorModel(HttpStatusCode.NotFound, "file is empty"));
-            }
+            var result = await this.blobService.UploadBlobAsync(file);
 
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            return this.GenericResponse(await this.blobService.UploadBlobAsync(file));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{blobName}")]
-        public async Task<IActionResult> DownloadBlobByNameAsync(string blobName)
+        public async Task<ActionResult> DownloadBlobByName(string blobName)
         {
-            var blob = this.blobService.DownloadByName(blobName);
+            var result = await this.blobService.DownloadByNameAsync(blobName);
 
-            if (!await blob.ExistsAsync())
-            {
-                return this.BadRequest("Blob does not exist!");
-            }
-
-            var result = await blob.DownloadAsync();
-
-            return this.File(result.Value.Content, result.Value.ContentType);
+            return this.File(result.Content, result.ContentType);
         }
 
         [HttpDelete("{blobName}")]
-        public async Task<IActionResult> DeleteByNameAsync(string blobName)
+        public async Task<ActionResult> DeleteByName(string blobName)
         {
             var result = await this.blobService.DeleteByNameAsync(blobName);
-
-            if (!result)
-            {
-                return this.BadRequest("Couldn't find job with this name!");
-            }
 
             return this.GenericResponse(result);
         }
