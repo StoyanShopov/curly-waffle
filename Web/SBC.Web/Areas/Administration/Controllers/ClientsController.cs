@@ -18,7 +18,7 @@
         [HttpPost]
         public async Task<ActionResult> Create(CreateClientInputModel model)
         {
-            var result = await this.clientsService.AddAsync(model);
+            var result = await this.clientsService.CreateAsync(model);
 
             return this.GenericResponse(result);
         }

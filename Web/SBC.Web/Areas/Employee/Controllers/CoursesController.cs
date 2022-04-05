@@ -52,7 +52,7 @@
             var userId = this.User.Id();
 
             var result = await this.courseService
-                 .EnrollCourse(userId, courseId);
+                 .EnrollCourseAsync(userId, courseId);
 
             return this.GenericResponse(result);
         }
