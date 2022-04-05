@@ -7,7 +7,7 @@
 
     public class EmployeesViewModel : IMapFrom<Company>
     {
-        //public string Name { get; set; }
+       
 
         public IEnumerable<string> EmployeesEmail { get; set; }
     }

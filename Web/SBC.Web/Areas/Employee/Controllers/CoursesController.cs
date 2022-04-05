@@ -27,7 +27,7 @@
         }
 
         [HttpGet("modalDetails/{id}")]
-        public async Task<ActionResult> GetAsync(int id)
+        public async Task<ActionResult> GetDetails(int id)
         {
             var result = await this.courseService
                 .GetByIdEmployeeAsync(id);
@@ -36,7 +36,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAsync()
+        public async Task<ActionResult> GetByOwner()
         {
             var userId = this.User.Id();
 
@@ -47,7 +47,7 @@
         }
 
         [HttpPost("{courseId}")]
-        public async Task<ActionResult> PostAsync(int courseId)
+        public async Task<ActionResult> Enroll(int courseId)
         {
             var userId = this.User.Id();
 

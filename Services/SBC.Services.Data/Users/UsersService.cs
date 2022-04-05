@@ -59,7 +59,9 @@
             {
                 var error = string.Format(EmailExists, model.Email);
 
-                return new ErrorModel(HttpStatusCode.BadRequest, error);
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    error);
             }
 
             var (firstName, lastName) = model.FullName.GetNames();
@@ -71,7 +73,9 @@
             {
                 var error = string.Format(CompanyExists, model.CompanyName);
 
-                return new ErrorModel(HttpStatusCode.BadRequest, error);
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    error);
             }
 
             var companyId = await this.companiesService
@@ -91,7 +95,9 @@
 
             if (!result.Succeeded)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    result.Errors);
             }
 
             await this.userManager
@@ -109,7 +115,9 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
+                return new ErrorModel(
+                    HttpStatusCode.Unauthorized,
+                    InvalidPassOrEmail);
             }
 
             var isPasswordValid = await this.userManager
@@ -117,7 +125,9 @@
 
             if (!isPasswordValid)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
+                return new ErrorModel(
+                    HttpStatusCode.Unauthorized,
+                    InvalidPassOrEmail);
             }
 
             var roleId = user.Roles
@@ -125,7 +135,12 @@
             var applicationRole = await this.roleManager.Roles
                 .FirstOrDefaultAsync(r => r.Id == roleId);
 
-            var jwt = this.identitiesService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
+            var jwt = this.identitiesService.
+                GenerateJwt(
+                secret,
+                user.Id,
+                user.UserName,
+                applicationRole.Name);
 
             return new ResultModel(new { JWT = jwt });
         }
@@ -137,10 +152,11 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
+                return new ErrorModel(
+                    HttpStatusCode.Unauthorized,
+                    errors: NotExistsUser);
             }
 
-            // TODO: user.Email = mapModel.Email;
             string[] names = inputModelUser.Fullname
                 .Trim()
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);
@@ -157,7 +173,9 @@
                 return new ResultModel(AutoMapperConfig.MapperInstance.Map<ProfileViewModel>(user));
             }
 
-            return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+            return new ErrorModel(
+                HttpStatusCode.BadRequest,
+                result.Errors);
         }
 
         public async Task<Result> GetUserDataAsync<TModel>(string userId)

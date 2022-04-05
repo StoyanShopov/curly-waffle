@@ -41,7 +41,7 @@
         [Route("Profile")]
         public async Task<ActionResult> EditProfile(EditProfileInputModel model)
         {
-            var result = await this.usersService.EditAsync(model, this.User.Id());
+            var result = await this.usersService.UpdateAsync(model, this.User.Id());
 
             return this.GenericResponse(result);
         }
