@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 
 import style from "./EditLecture.module.css";
 
-import { lectureService } from "../../../../services/lecture.service";
+import { lectureService } from "../../../../services/lecture-service";
 
-export default function EditLecture(props) {
-    const lectureId = props.lectureId;
+function EditLecture(props) {
     const [lecture, setLecture] = useState({});
+    const lectureId = props.lectureId;
 
     useEffect(() => {
         lectureService.getById(lectureId)
@@ -48,3 +48,5 @@ export default function EditLecture(props) {
         </section >
     )
 }
+
+export default EditLecture;

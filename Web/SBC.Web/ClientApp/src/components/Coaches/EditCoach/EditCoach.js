@@ -91,7 +91,7 @@ const EditCoach = (props) => {
       data.imageUrl = coach.imageUrl
     }
     else {
-      let result = await uploadImage(data.imageUrl);
+      let result = await blobService.uploadFile(data.imageUrl);
       data.imageUrl = result.photoUrl
     }
 

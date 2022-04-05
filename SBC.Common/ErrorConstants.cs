@@ -54,6 +54,20 @@
             public const string CourseIdIsNull = "Id is null!";
         }
 
+        public class LecturesMessages
+        {
+            public const string LectureAlreadyExist = "Lecture already exist!.";
+            public const string LectureDoesNotExist = "Lecture doesn't exist!";
+            public const string LectureNotFound = "Lecture not found!";
+        }
+
+        public class ResourcesMessages
+        {
+            public const string ResourceAlreadyExist = "Resource already exist!";
+            public const string ResourceDoesNotExist = "Resource doesn't exist!";
+            public const string ResourceNotFound = "Resource not found!";
+        }
+
         public class User
         {
             public const string CompanyExists = "Company '{0}' is not registered.";

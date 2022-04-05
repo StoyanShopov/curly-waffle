@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Data.Lectures;
     using SBC.Web.ViewModels.Administration.Lectures;
 
@@ -22,7 +21,7 @@
         {
             var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(skip, id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
@@ -30,7 +29,7 @@
         {
             var result = await this.lectureService.GetByIdAsync<LectureViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
     }
 }

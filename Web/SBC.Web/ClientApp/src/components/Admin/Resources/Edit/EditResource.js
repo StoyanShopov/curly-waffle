@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import style from "./EditResource.module.css";
 
-import { resourceService } from "../../../../services/resource.service";
+import { resourceService } from "../../../../services/resource-service";
 
 const fileTypeEnums = {
     Video: 1,
@@ -73,4 +73,5 @@ function EditResource(props) {
         </section>
     )
 }
+
 export default EditResource;

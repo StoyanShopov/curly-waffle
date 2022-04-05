@@ -1,6 +1,5 @@
 ﻿namespace SBC.Services.Data.Lectures
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -12,29 +11,33 @@
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Lectures;
 
+    using static SBC.Common.ErrorConstants.LecturesMessages;
+    using static SBC.Common.GlobalConstants.LecturesConstants;
+
     public class LecturesService : ILecturesService
     {
-        private const int LecturesToTake = 6;
-        private readonly IDeletableEntityRepository<Lecture> lectures;
-        private readonly IDeletableEntityRepository<CourseLecture> courseLectures;
+        private readonly IDeletableEntityRepository<Lecture> lecturesRepository;
+        private readonly IDeletableEntityRepository<CourseLecture> courseLecturesRepository;
 
         public LecturesService(
-            IDeletableEntityRepository<Lecture> lectures,
-            IDeletableEntityRepository<CourseLecture> courseLectures)
+            IDeletableEntityRepository<Lecture> lecturesRepository,
+            IDeletableEntityRepository<CourseLecture> courseLecturesRepository)
         {
-            this.lectures = lectures;
-            this.courseLectures = courseLectures;
+            this.lecturesRepository = lecturesRepository;
+            this.courseLecturesRepository = courseLecturesRepository;
         }
 
         public async Task<Result> CreateAsync(CreateLectureInputModel lectureModel)
         {
-            var lecture = await this.lectures
+            var lecture = await this.lecturesRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.Name == lectureModel.Name);
 
             if (lecture != null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture already exist!.");
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    LectureAlreadyExist);
             }
 
             var newLecture = new Lecture()
@@ -43,77 +46,85 @@
                 Description = lectureModel.Description,
             };
 
-            await this.lectures.AddAsync(newLecture);
+            await this.lecturesRepository.AddAsync(newLecture);
 
             var newLectureId = newLecture.Id;
 
             newLecture.Courses.Add(new CourseLecture { LectureId = newLectureId, CourseId = lectureModel.CourseId });
 
-            await this.lectures.SaveChangesAsync();
+            await this.lecturesRepository.SaveChangesAsync();
 
             lectureModel.Id = newLecture.Id;
 
             return new ResultModel(lectureModel);
         }
 
-        public async Task<Result> DeleteByIdAsync(string id)
+        public async Task<Result> DeleteAsync(string id)
         {
-            var lecture = await this.lectures
+            var lecture = await this.lecturesRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            var courseLecture = await this.courseLectures
+            var courseLecture = await this.courseLecturesRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.LectureId == id);
 
             if (lecture == null)
             {
-                return new ErrorModel(HttpStatusCode.NoContent, "Lecture not found!");
+                return new ErrorModel(
+                    HttpStatusCode.NoContent,
+                    LectureNotFound);
             }
 
-            this.lectures.Delete(lecture);
-            this.courseLectures.Delete(courseLecture);
+            this.lecturesRepository.Delete(lecture);
+            this.courseLecturesRepository.Delete(courseLecture);
 
-            await this.courseLectures.SaveChangesAsync();
-            await this.lectures.SaveChangesAsync();
+            await this.courseLecturesRepository.SaveChangesAsync();
+            await this.lecturesRepository.SaveChangesAsync();
 
             return true;
         }
 
-        public async Task<Result> EditAsync(string id, EditLectureInputModel lectureModel)
+        public async Task<Result> UpdateAsync(string id, EditLectureInputModel lectureModel)
         {
-            var lecture = await this.lectures
+            var lecture = await this.lecturesRepository
                 .All()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (lecture == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "Lecture doesn't exist!");
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    LectureDoesNotExist);
             }
 
             lecture.Name = lectureModel.Name;
             lecture.Description = lectureModel.Description;
 
-            await this.lectures.SaveChangesAsync();
+            await this.lecturesRepository.SaveChangesAsync();
             lectureModel.Id = lecture.Id;
+
             return new ResultModel(lectureModel);
         }
 
-        public async Task<IEnumerable<TModel>> GetAllByCourseIdAsync<TModel>(int skip, int id, int take = LecturesToTake)
-        => await this.lectures
+        public async Task<Result> GetAllByCourseIdAsync<TModel>(
+            int skip,
+            int id,
+            int take = LecturesToTake)
+        => new ResultModel(await this.lecturesRepository
             .AllAsNoTracking()
             .Where(x => x.Courses.Any(x => x.CourseId == id))
             .OrderByDescending(x => x.CreatedOn)
             .To<TModel>()
             .Skip(skip)
             .Take(take)
-            .ToListAsync();
+            .ToListAsync());
 
-        public async Task<TModel> GetByIdAsync<TModel>(string id)
-        => await this.lectures
+        public async Task<Result> GetByIdAsync<TModel>(string id)
+        => new ResultModel(await this.lecturesRepository
             .AllAsNoTracking()
             .Where(x => x.Id == id)
             .To<TModel>()
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync());
     }
 }

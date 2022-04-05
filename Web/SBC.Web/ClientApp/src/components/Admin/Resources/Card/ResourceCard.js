@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import style from "../ResourceCard/ResourceCard.module.css"
+import style from "./ResourceCard.module.css"
 
-import DeleteResource from "../DeleteResource/DeleteResource.js";
-import EditResource from "../EditResource/EditResource.js";
+import DeleteResource from "../Delete/DeleteResource.js";
+import EditResource from "../Edit/EditResource.js";
 
-export default function ResourceCard(props) {
-    const index = props.index;
+function ResourceCard(props) {
     const [resource, setResource] = useState(props.resource);
+    const index = props.index;
     const fileUrl = resource.fileUrl;
     const isAdmin = props.isAdmin;
 
@@ -38,3 +38,5 @@ export default function ResourceCard(props) {
         </div>
     )
 }
+
+export default ResourceCard;

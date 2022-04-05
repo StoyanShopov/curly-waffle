@@ -1,8 +1,8 @@
 import style from "./CreateLecture.module.css";
 
-import { lectureService } from "../../../../services/lecture.service.js";
+import { lectureService } from "../../../../services/lecture-service.js";
 
-export default function CreateLecture(props) {
+function CreateLecture(props) {
 
     const onLectureCreate = (e) => {
         e.preventDefault();
@@ -40,3 +40,5 @@ export default function CreateLecture(props) {
         </section>
     )
 }
+
+export default CreateLecture;

@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Data.Resources;
     using SBC.Web.ViewModels.Administration.Resources;
 
@@ -22,7 +21,7 @@
         {
             var result = await this.resourceService.GetAllByLectureIdAsync<ResourceViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
     }
 }

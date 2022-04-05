@@ -1,9 +1,10 @@
 ﻿import axios from "axios";
 
 import { baseUrl } from '../constants';
+import { TokenManagement } from "../helpers";
 
 const apiUrl = baseUrl + 'administration/resources';
-const token = localStorage.getItem('token');
+const token = TokenManagement.getLocalAccessToken();
 
 const getAll = async (lectureId) => {
     return await axios
@@ -54,41 +55,10 @@ const deleteResource = async (resourceId) => {
         });
 }
 
-const uploadFile = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    let response = await axios({
-        method: 'POST',
-        url: baseUrl + "api/Blobs",
-        data: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${token}`,
-        }
-    });
-
-    return response.data;
-}
-
-const deleteFile = async (blobName) => {
-    let response = await axios({
-        method: 'DELETE',
-        url: baseUrl + `api/Blobs/${blobName}`,
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    });
-
-    return response;
-}
-
 export const resourceService = {
     getAll,
     getById,
     create,
     update,
     deleteResource,
-    uploadFile,
-    deleteFile,
 }

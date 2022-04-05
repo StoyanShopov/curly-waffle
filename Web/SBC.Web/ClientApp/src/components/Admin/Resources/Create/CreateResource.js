@@ -1,6 +1,6 @@
 import style from "./CreateResource.module.css"
 
-import { resourceService } from "../../../../services/resource.service";
+import { resourceService } from "../../../../services/resource-service";
 
 const fileTypeEnums = {
     Video: 1,
@@ -52,4 +52,5 @@ function CreateResource(props) {
         </section>
     )
 }
+
 export default CreateResource;
