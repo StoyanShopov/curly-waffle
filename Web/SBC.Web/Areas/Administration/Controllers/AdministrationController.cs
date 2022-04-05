@@ -4,11 +4,12 @@
     using Microsoft.AspNetCore.Mvc;
     using SBC.Web.Controllers;
 
+    using static SBC.Common.GlobalConstants.AdministrationConstants;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     [Authorize(Roles = AdministratorRoleName)]
-    [Area(AdministratorRoleName)]
-    [Route($"{AdministratorRoleName}/[controller]")]
+    [Area(AreaName)]
+    [Route("Administration/[controller]")]
     public abstract class AdministrationController : ApiController
     {
     }

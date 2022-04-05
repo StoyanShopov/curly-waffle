@@ -3,7 +3,7 @@ import Modal from "react-modal/lib/components/Modal";
 
 import style from './AllCourses.module.css';
 
-import { courseService } from "../../../../services/course.service.js";
+import { courseService } from "../../../../services/course-service.js";
 
 import CardCourse from '../CardCourse/CardCourse.js';
 import CreateCourse from '../Create/CreateCourse.js';

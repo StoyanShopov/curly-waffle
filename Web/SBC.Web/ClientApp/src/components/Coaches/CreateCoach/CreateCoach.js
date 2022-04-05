@@ -3,8 +3,10 @@ import Select from 'react-select'
 
 import styles from "./CreateCoach.module.css";
 
-import { createCoach, getLanguages, getCategories } from "../../services/adminCoachesService";
-import { blobService } from "../../services/blob-service";
+import { languageService } from "../../../services/language-service";
+import { categoryService } from "../../../services/category-service";
+import { uploadImage } from "../../../services/blob-service";
+import { coachService } from "../../../services/coach-service";
 
 
 const CreateCoach = (props) => {
@@ -14,15 +16,16 @@ const CreateCoach = (props) => {
   const [categoriesOptions, setCategoriesOptions] = useState()
   const [coaches, setCoaches] = useState(props.coaches)
 
-  useEffect(() => {
-    getLanguages().then(res => {
-      setLanugagesOptions(res.data.map(x => ({
+  useEffect(() => { 
+    languageService.getAll().then(res =>{
+      setLanugagesOptions(res.data.map(x=> ({
         value: x.id,
         label: x.name
       })))
     })
-    getCategories().then(res => {
-      setCategoriesOptions(res.data.map(x => ({
+    
+    categoryService.getAll().then(res =>{
+      setCategoriesOptions(res.data.map(x=> ({
         value: x.id,
         label: x.name
       })))
@@ -86,7 +89,7 @@ const CreateCoach = (props) => {
       categoryId: x.value,
     }))
 
-    createCoach(data).then((response) => {
+    coachService.create(data).then((response) => {
       data['id'] = response.data.id;
       data['companyId'] = response.data.companyId;
       props.setCoaches([...coaches, data])

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from 'react-modal';
 
 import styles from "./CoachCard.module.css";
 
-import { getCompanyEmailById } from "../../services/adminCoachesService";
+import { companyService } from "../../../services/company-service";
 
-import DeleteCoach from "./DeleteCoach";
-import EditCoach from "./EditCoach";
-import Modal from 'react-modal';
+import DeleteCoach from "../DeleteCoach/DeleteCoach";
+import EditCoach from "../EditCoach/EditCoach";
 
 const CoachCard = (props) => {
     const [coach, setCoach] = useState(props.coach)
@@ -16,7 +16,7 @@ const CoachCard = (props) => {
 
     useEffect(() => {
         if (coach.companyId !== null) {
-            getCompanyEmailById(coach.companyId).then(res => {
+            companyService.getEmailById(coach.companyId).then(res => {
                 setCompanyUrl(res['logoUrl']);
             })
         }

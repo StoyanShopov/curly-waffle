@@ -13,10 +13,10 @@ import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
 import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
-import CreateCoach from "./components/Coaches/CreateCoach";
-import EditCoach from "./components/Coaches/EditCoach";
-import Coaches from "./components/Coaches/Coaches";
-import DeleteCoach from "./components/Coaches/DeleteCoach";
+import CreateCoach from './components/Coaches/CreateCoach/CreateCoach';
+import EditCoach from './components/Coaches/EditCoach/EditCoach';
+import Coaches from './components/Coaches/Coaches/Coaches';
+import DeleteCoach from './components/Coaches/DeleteCoach/DeleteCoach';
 
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";

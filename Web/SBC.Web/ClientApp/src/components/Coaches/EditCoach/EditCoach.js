@@ -3,8 +3,9 @@ import Select from 'react-select'
 
 import styles from './EditCoach.module.css';
 
-import { updateCoach, getCompanyEmailById } from "../../services/adminCoachesService";
-import { blobService } from '../../services/blob-service';
+import { companyService } from '../../../services/company-service';
+import { coachService } from '../../../services/coach-service';
+import { uploadImage } from '../../../services/blob-service';
 
 
 const EditCoach = (props) => {
@@ -17,7 +18,7 @@ const EditCoach = (props) => {
 
   useEffect(() => {
     if(coach.companyId!==null){
-      getCompanyEmailById(coach.companyId).then(res =>{
+      companyService.getEmailById(coach.companyId).then(res =>{
         setCompanyEmail(res.email)
       })
     }
@@ -114,12 +115,12 @@ const EditCoach = (props) => {
         coachId: coach.id
       }))
 
-    updateCoach(data)
-      .then(() => { 
-      const languagesAsObj = data.languages.map(x=> ({languageId : x.languageId}))
-      const categoriesAsObj = data.categories.map(x=> ({categoryId : x.categoryId}))
-      data.languages = languagesAsObj
-      data.categories = categoriesAsObj
+    coachService.update(data)
+      .then(() => {
+        const languagesAsObj = data.languages.map(x => ({ languageId: x.languageId }))
+        const categoriesAsObj = data.categories.map(x => ({ categoryId: x.categoryId }))
+        data.languages = languagesAsObj
+        data.categories = categoriesAsObj
 
       data['companyId'] = coach.companyId
 
