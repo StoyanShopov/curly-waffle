@@ -8,7 +8,7 @@
 
     public interface IUsersService
     {
-        Task<ApplicationUser> GetUserByIdAsync(string userId);
+        Task<ApplicationUser> GetUser(string userId);
 
         Task<Result> RegisterAsync(RegisterInputModel model);
 

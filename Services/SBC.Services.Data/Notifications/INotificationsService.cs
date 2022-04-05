@@ -7,9 +7,9 @@
 
     public interface INotificationsService
     {
-        Task<Result> GetAllByEmailAsyc(string email);
+        Task<Result> GetAllByEmailAsync(string email);
 
-        Task<Result> AddAsync(string uniqueGroupKey, string email, string message);
+        Task<Result> CreateAsync(string uniqueGroupKey, string email, string message);
 
         Task<Result> DeleteAsync(int id);
 
