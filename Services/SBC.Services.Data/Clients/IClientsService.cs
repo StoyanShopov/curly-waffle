@@ -5,10 +5,12 @@
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Client;
 
+    using static SBC.Common.GlobalConstants.ClientConstants;
+
     public interface IClientsService
     {
-        Task<Result> AddAsync(CreateClientInputModel model);
+        Task<Result> CreateAsync(CreateClientInputModel model);
 
-        Task<Result> GetPortionAsync(int skip, int take = 3);
+        Task<Result> GetPortionAsync(int skip, int take = TakeDefaultValue);
     }
 }
