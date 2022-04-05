@@ -26,7 +26,7 @@
                  .GetCompanyId(this.User.Id());
 
             var result = await this.coachesService
-                .GetAlLOfEmployeeAsync(companyId, this.User.Id(), search);
+                .GetAllOfEmployeeAsync(companyId, this.User.Id(), search);
 
             return this.GenericResponse(result);
         }
