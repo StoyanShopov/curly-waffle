@@ -23,7 +23,7 @@
             var result = await this.courseService
                  .GetByIdAsync<CourseDetailsViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("modalDetails/{id}")]
