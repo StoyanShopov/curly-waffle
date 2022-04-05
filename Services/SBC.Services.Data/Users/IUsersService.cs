@@ -14,7 +14,7 @@
 
         Task<Result> LoginAsync(LoginInputModel model, string secret);
 
-        Task<Result> EditAsync(EditProfileInputModel model, string userId);
+        Task<Result> UpdateAsync(EditProfileInputModel model, string userId);
 
         Task<Result> GetUserDataAsync<TModel>(string userId);
 

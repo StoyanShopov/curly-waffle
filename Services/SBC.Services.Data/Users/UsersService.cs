@@ -128,7 +128,7 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<Result> EditAsync(EditProfileInputModel inputModelUser, string userId)
+        public async Task<Result> UpdateAsync(EditProfileInputModel inputModelUser, string userId)
         {
             var user = await this.userManager
                 .FindByIdAsync(userId);
