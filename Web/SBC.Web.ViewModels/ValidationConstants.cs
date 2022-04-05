@@ -28,5 +28,14 @@
 
             public const int MinCountUpdate = 0;
         }
+
+        public class Course
+        {
+            public const int RangeMinValue = 1;
+            public const int DescriptionMinLength = 1;
+            public const int DescriptionMaxLength = 2000;
+            public const int TitleMinvalue = 1;
+            public const int TitleMaxvalue = 100;
+        }
     }
 }

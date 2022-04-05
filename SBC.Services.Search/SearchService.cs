@@ -11,36 +11,44 @@
 
     public class SearchService : ISearchService
     {
-        private readonly IElasticClient client;
+        private readonly IElasticClient elasticClient;
 
         public SearchService(IElasticClient elasticClient)
         {
-            this.client = elasticClient;
+            this.elasticClient = elasticClient;
         }
 
-        public async Task<Common.Result> Create(string index, CourseSearchModel value, CancellationToken cancellationToken)
+        public async Task<Common.Result> CreateAsync(
+            string index,
+            CourseSearchModel value,
+            CancellationToken cancellationToken)
         {
-            var response = await this.client.IndexAsync<CourseSearchModel>(value, x => x.Index(index), cancellationToken);
+            var response = await this.elasticClient.IndexAsync<CourseSearchModel>(value, x => x.Index(index), cancellationToken);
 
             if (response.IsValid)
             {
                 return new ResultModel(new { response.Id, response.Index });
             }
+
             return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
         }
 
-        public async Task<Common.Result> CreateMany(string index, List<CourseSearchModel> values, CancellationToken cancellationToken)
+        public async Task<Common.Result> CreateManyAsync(
+            string index,
+            List<CourseSearchModel> values,
+            CancellationToken cancellationToken)
         {
-            var response = await this.client.IndexManyAsync<CourseSearchModel>(values, index, cancellationToken);
+            var response = await this.elasticClient.IndexManyAsync<CourseSearchModel>(values, index, cancellationToken);
 
             if (response.IsValid)
             {
                 return new ResultModel(new { response.ServerError, response.Errors });
             }
+
             return new ErrorModel(HttpStatusCode.BadRequest, response.OriginalException.Message);
         }
 
-        public async Task<Common.Result> Search(string index, string field, string value, int size, string sort, CancellationToken cancellationToken)
+        public async Task<Common.Result> SearchAsync(string index, string field, string value, int size, string sort, CancellationToken cancellationToken)
         {
             var request = new SearchRequest<CourseSearchModel>(index)
             {
@@ -55,10 +63,11 @@
                                                 Field = field,
                                                 Order = sort.Equals("desc") ?SortOrder.Descending: SortOrder.Ascending
                                             },
-                                      }
+                                   }
                 : null
             };
-            var searchResponse = await client.SearchAsync<CourseSearchModel>(request, cancellationToken);
+
+            var searchResponse = await elasticClient.SearchAsync<CourseSearchModel>(request, cancellationToken);
 
             return new ResultModel(searchResponse.Documents);
         }

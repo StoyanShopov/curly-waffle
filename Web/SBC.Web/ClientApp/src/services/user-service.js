@@ -31,10 +31,10 @@ const register = async (fullName, companyName, email, password, confirmPassword)
         })
         .then((response) => {
             console.log(response)
-            if (response.status == 200) {            
-            window.location.href = "/loginAsEmployee";
-            }      
-        });    
+            if (response.status == 200) {
+                window.location.href = "/loginAsEmployee";
+            }
+        });
 
     return data;
 };
@@ -51,10 +51,10 @@ const logout = async () => {
             (err) => console.error(err));
 };
 
-const GetUserData = async () => {
+const getUserData = async () => {
     let response = await axios({
         method: 'get',
-        url: apiUrl + "Profile",
+        url: apiUrl,
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
@@ -64,10 +64,10 @@ const GetUserData = async () => {
     return response.data;
 }
 
-const EditUser = async (_data) => {
+const updateUser = async (_data) => {
     return await axios({
         method: 'PUT',
-        url: apiUrl + 'Profile',
+        url: apiUrl,
         data: _data,
         headers: {
             'Content-Type': 'application/json',
@@ -80,6 +80,6 @@ export const userService = {
     login,
     register,
     logout,
-    GetUserData,
-    EditUser,
+    getUserData,
+    updateUser,
 };

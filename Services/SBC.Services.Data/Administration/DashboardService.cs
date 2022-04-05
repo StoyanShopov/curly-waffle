@@ -1,16 +1,11 @@
 ﻿namespace SBC.Services.Data.Admin
 {
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
-    using Microsoft.EntityFrameworkCore;
     using SBC.Common;
-    using SBC.Data.Common.Repositories;
-    using SBC.Data.Models;
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Companies;
     using SBC.Services.Data.Courses;
@@ -30,11 +25,11 @@
             this.companyService = companyService;
         }
 
-        public async Task<Result> GetDashboard()
+        public async Task<Result> GetDashboardAsync()
         {
+            var coaches = await this.coachService.GetCountAsync();
             var clients = await this.companyService.GetCountAsync();
             var courses = await this.courseService.GetCountAsync();
-            var coaches = await this.coachService.GetCountAsync();
 
             var numberOfClients = this.ParseDiagramByCountAndMonths(new int[] { 45, 15, 25, 60, 30, 45 });
             var totalRevenue = this.ParseDiagramByCountAndMonths(new int[] { 1000, 800, 1000, 900, 1300, 1000 });

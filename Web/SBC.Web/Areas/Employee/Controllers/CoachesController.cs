@@ -23,7 +23,9 @@
         public async Task<ActionResult> GetAll([FromQuery] string search)
         {
             int companyId = this.usersService.GetCompanyId(this.User.Id());
+
             var result = await this.coachesService.GetAlLOfEmployeeAsync(companyId, this.User.Id(), search);
+
             return this.GenericResponse(result);
         }
 
@@ -31,14 +33,17 @@
         public async Task<ActionResult> Book(int coachId)
         {
             var result = await this.coachesService.BookCoachAsync(this.User.Id(), coachId);
+
             return this.GenericResponse(result);
         }
 
         [HttpPost("left-feadback")]
         public async Task<ActionResult> LeftFeedback(FeedbackInputModel feedback)
         {
-            var user = await this.usersService.GetUser(this.User.Id());
+            var user = await this.usersService.GetUserByIdAsync(this.User.Id());
+
             var result = await this.coachesService.LeftFeedback(user, feedback);
+
             return this.GenericResponse(result);
         }
     }

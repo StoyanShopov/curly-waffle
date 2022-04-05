@@ -1,6 +1,6 @@
 import style from './CreateCourse.module.css';
 
-import { courseService } from "../../../../services/course.service.js";
+import { courseService } from "../../../../services/course-service.js";
 
 const languages = [
     { id: 1, name: 'Spanish' },
