@@ -107,6 +107,34 @@
         gap: 4px 18px;
     }
 
+.coursesCoaches {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding-right: 2%;
+    position: relative;
+    left: -5%;
+}
+
+    .coursesCoaches ul {
+        align-items: center;
+        gap: 8px 18px;
+        justify-content: space-evenly;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+        .coursesCoaches ul li {
+            margin-left: 5px;
+        }
+
+    .coursesCoaches a:hover,
+    .coursesCoaches a:visited,
+    .coursesCoaches a:link,
+    .coursesCoaches a:active {
+        text-decoration: none;
+    }
+
 .loginButton {
     width: 130px;
     height: 40px;
@@ -133,37 +161,6 @@
     font-size: 16px;
     cursor: pointer;
 }
-
-.coursesCoaches {
-    display: flex;
-    flex-wrap: wrap;
-    cursor: pointer;
-    padding-right: 2%;
-    position: relative;
-    left: -5%;
-    /* flex-grow: 0.4;
-    flex-shrink: 1;
-    flex-basis: 0; */
-}
-
-    .coursesCoaches ul {
-        align-items: center;
-        gap: 8px 18px;
-        justify-content: space-evenly;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-        .coursesCoaches ul li {
-            margin-left: 5px;
-        }
-
-    .coursesCoaches a:hover,
-    .coursesCoaches a:visited,
-    .coursesCoaches a:link,
-    .coursesCoaches a:active {
-        text-decoration: none;
-    }
 
 .coursesActive {
     font: normal normal bold 22px/27px Montserrat;
@@ -229,5 +226,4 @@
         -webkit-transform: rotate(45deg); 
         transform:rotate(35deg); 
     } 
-}  
-
+}
