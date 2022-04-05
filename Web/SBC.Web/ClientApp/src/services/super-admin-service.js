@@ -5,7 +5,7 @@ import { baseUrl } from '../constants/GlobalConstants';
 
 const dashboardIndex = async (cancelToken) => {
 
-    let response = await axios(baseUrl + "Administrator/Dashboard", {
+    let response = await axios(baseUrl + "Administration/Dashboard", {
         cancelToken: cancelToken,
         headers: {
             'Content-Type': 'application/json',
