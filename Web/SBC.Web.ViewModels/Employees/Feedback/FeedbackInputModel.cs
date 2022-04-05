@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Feedback
+﻿namespace SBC.Web.ViewModels.Employees.Feedback
 {
     public class FeedbackInputModel
     {

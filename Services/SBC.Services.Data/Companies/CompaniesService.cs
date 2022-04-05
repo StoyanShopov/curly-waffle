@@ -13,10 +13,10 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Companies;
+    using SBC.Web.ViewModels.BusinessOwner.Coaches;
+    using SBC.Web.ViewModels.BusinessOwner.Courses;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
-    using SBC.Web.ViewModels.Coaches;
     using SBC.Web.ViewModels.Company;
-    using SBC.Web.ViewModels.Courses;
 
     using static SBC.Common.ErrorConstants.CompanyConstants;
     using static SBC.Common.GlobalConstants.ClientConstants;

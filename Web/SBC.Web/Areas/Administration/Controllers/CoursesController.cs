@@ -9,14 +9,11 @@
     public class CoursesController : AdministrationController
     {
         private readonly ICoursesService courseService;
-       // private readonly NotificationHub notificationHubContext;
 
         public CoursesController(
             ICoursesService courseService)
-           // NotificationHub notificationHubContext)
         {
             this.courseService = courseService;
-            // this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]

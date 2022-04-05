@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Coaches
+﻿namespace SBC.Web.ViewModels.Employees.Coaches
 {
     public class EmployeeCoachCardViewModel
     {

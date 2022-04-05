@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Employees
+﻿namespace SBC.Web.ViewModels.Employees.Courses
 {
     using SBC.Data.Models;
     using SBC.Services.Mapping;

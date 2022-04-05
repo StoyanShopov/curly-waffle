@@ -5,7 +5,7 @@
     using SBC.Common;
     using SBC.Data.Models;
     using SBC.Web.ViewModels.Administration.Coaches;
-    using SBC.Web.ViewModels.Feedback;
+    using SBC.Web.ViewModels.Employees.Feedback;
 
     using static SBC.Common.GlobalConstants.ClientConstants;
 

@@ -6,7 +6,7 @@
     using SBC.Services.Data.Coaches;
     using SBC.Services.Data.Infrastructures;
     using SBC.Services.Data.Users;
-    using SBC.Web.ViewModels.Feedback;
+    using SBC.Web.ViewModels.Employees.Feedback;
 
     public class CoachesController : EmployeesBaseController
     {

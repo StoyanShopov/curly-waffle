@@ -88,8 +88,7 @@ export default function EditProfile(props) {
                             name="email"
                             className={css.nameCntr}
                             type="text"
-                            value={user.email}
-                            onChange={() => { }}
+                            defaultValue={user.email}                           
                             placeholder="Hello@Motion-Software.com" />
                         <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={user.profileSummary}></textarea>
                     </div>

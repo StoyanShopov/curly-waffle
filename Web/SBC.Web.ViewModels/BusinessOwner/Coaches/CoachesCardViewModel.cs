@@ -1,11 +1,11 @@
-﻿namespace SBC.Web.ViewModels.Coaches
+﻿namespace SBC.Web.ViewModels.BusinessOwner.Coaches
 {
     using System.Collections.Generic;
 
     public class CoachesCardViewModel
     {
-        public IEnumerable<CoachCardViewModel> Portions { get; set; }
-
         public bool ViewMoreAvailable { get; set; }
+
+        public IEnumerable<CoachCardViewModel> Portions { get; set; }
     }
 }

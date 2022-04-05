@@ -12,8 +12,9 @@
     using SBC.Services.Mapping;
     using SBC.Services.Messaging;
     using SBC.Web.ViewModels.Administration.Coaches;
-    using SBC.Web.ViewModels.Coaches;
-    using SBC.Web.ViewModels.Feedback;
+    using SBC.Web.ViewModels.BusinessOwner.Coaches;
+    using SBC.Web.ViewModels.Employees.Coaches;
+    using SBC.Web.ViewModels.Employees.Feedback;
 
     using static SBC.Common.ErrorConstants;
     using static SBC.Common.GlobalConstants.ClientConstants;

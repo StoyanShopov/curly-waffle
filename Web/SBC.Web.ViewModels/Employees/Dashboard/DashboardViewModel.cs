@@ -1,6 +1,9 @@
-﻿namespace SBC.Web.ViewModels.Employees
+﻿namespace SBC.Web.ViewModels.Employees.Dashboard
 {
     using System.Collections.Generic;
+
+    using SBC.Web.ViewModels.Employees.Coaches;
+    using SBC.Web.ViewModels.Employees.Courses;
 
     public class DashboardViewModel
     {

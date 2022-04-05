@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Courses
+﻿namespace SBC.Web.ViewModels.BusinessOwner.Courses
 {
     using AutoMapper;
     using SBC.Data.Models;

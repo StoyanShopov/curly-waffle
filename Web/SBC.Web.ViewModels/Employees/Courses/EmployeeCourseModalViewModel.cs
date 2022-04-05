@@ -1,4 +1,4 @@
-﻿namespace SBC.Web.ViewModels.Employees
+﻿namespace SBC.Web.ViewModels.Employees.Courses
 {
     public class EmployeeCourseModalViewModel
     {

@@ -8,9 +8,10 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Employees;
+    using SBC.Web.ViewModels.Employees.Coaches;
+    using SBC.Web.ViewModels.Employees.Courses;
+    using SBC.Web.ViewModels.Employees.Dashboard;
 
     public class EmployeesDashboardService : IEmployeesDashboardService
     {

@@ -11,8 +11,8 @@
     using SBC.Data.Models;
     using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Administration.Courses;
-    using SBC.Web.ViewModels.Courses;
-    using SBC.Web.ViewModels.Employees;
+    using SBC.Web.ViewModels.BusinessOwner.Courses;
+    using SBC.Web.ViewModels.Employees.Courses;
 
     using static SBC.Common.ErrorConstants.CoursesMessages;
     using static SBC.Common.GlobalConstants.ClientConstants;
