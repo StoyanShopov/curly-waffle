@@ -127,6 +127,7 @@
     font-family: "Montserrat", sans-serif;
     letter-spacing: 1.1px;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .cardpic {
