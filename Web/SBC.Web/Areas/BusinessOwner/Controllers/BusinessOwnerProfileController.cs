@@ -29,7 +29,7 @@
         public async Task<ActionResult> Update(EditProfileInputModel model)
         {
             var result = await this.usersService
-                .EditAsync(model, this.User.Id());
+                .UpdateAsync(model, this.User.Id());
 
             return this.GenericResponse(result);
         }

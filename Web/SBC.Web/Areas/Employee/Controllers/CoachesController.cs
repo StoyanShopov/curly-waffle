@@ -41,7 +41,7 @@
         {
             var user = await this.usersService.GetUserByIdAsync(this.User.Id());
 
-            var result = await this.coachesService.LeftFeedbackAsync(user, feedback);              
+            var result = await this.coachesService.LeftFeedbackAsync(user, feedback);
 
             return this.GenericResponse(result);
         }

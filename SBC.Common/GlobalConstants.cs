@@ -19,13 +19,6 @@
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
         }
 
-        public class CategoriesNamesConstants
-        {
-            public const string Marketing = "Marketing";
-            public const string Design = "Design";
-            public const string Art = "Art";
-        }
-
         public class CourseConstants
         {
             public const int CourseDurationInMonths = 3;
@@ -51,4 +44,5 @@
         {
             public const int LecturesToTake = 6;
         }
+    }
 }
