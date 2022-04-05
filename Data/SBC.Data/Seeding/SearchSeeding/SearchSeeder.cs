@@ -10,23 +10,23 @@
 
     public class SearchSeeder
     {
-        private readonly ISearchService searchService;
         private readonly ApplicationDbContext applicationDbContext;
+        private readonly ISearchService searchService;
 
-        public SearchSeeder(ISearchService searchService, ApplicationDbContext applicationDbContext)
+        public SearchSeeder(ApplicationDbContext applicationDbContext, ISearchService searchService)
         {
-            this.searchService = searchService;
             this.applicationDbContext = applicationDbContext;
+            this.searchService = searchService;
         }
 
         public async Task SeedCourses()
         {
-            var courses =
-              await this.applicationDbContext.Courses
-                        .AsQueryable()
-                        .To<CourseSearchModel>()
-                        .ToListAsync();
-            await this.searchService.CreateMany("course", courses, CancellationToken.None);
+            var courses = await this.applicationDbContext.Courses
+                                        .AsQueryable()
+                                        .To<CourseSearchModel>()
+                                        .ToListAsync();
+
+            await this.searchService.CreateManyAsync("course", courses, CancellationToken.None);
         }
     }
 }

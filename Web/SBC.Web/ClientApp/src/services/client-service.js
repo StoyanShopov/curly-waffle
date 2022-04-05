@@ -4,7 +4,7 @@ import { TokenManagement } from '../helpers';
 import { baseUrl } from '../constants/GlobalConstants';
 
 export const LoadClientData = async (skip, cancelTokenSource) => {
-  const response = await axios.get(baseUrl + 'Administration/Clients/Portion?skip=' + skip, {
+    const response = await axios.get(baseUrl + 'Administration/Clients/Portion?skip=' + skip, {
     cancelToken: cancelTokenSource.token,
     headers: {
       Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
@@ -19,16 +19,16 @@ export const LoadClientData = async (skip, cancelTokenSource) => {
 }
 
 export const AddClient = async (client) => {
-  const response = await axios.post(baseUrl + 'Administration/Clients', client,
+    const response = await axios.post(baseUrl + 'Administration/Clients', client,
     {
       headers: {
         Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
       },
     });
 
-    if (response.status !== 200) {
-      throw new Error(response.Error);
-    }
+  if (response.status !== 200) {
+    throw new Error(response.Error);
+  }
 
   return response;
 }

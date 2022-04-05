@@ -1,8 +1,11 @@
-import { baseUrl } from '../constants/GlobalConstants';
 import axios from 'axios';
 
-export const uploadImage = async (file) => {
-    //console.log(file);
+import { baseUrl } from '../constants/GlobalConstants';
+import { TokenManagement } from '../helpers';
+
+const token = TokenManagement.getLocalAccessToken();
+
+const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
 
@@ -12,8 +15,24 @@ export const uploadImage = async (file) => {
         data: formData,
         headers: {
             'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
         }
     });
 
     return response.data;
+}
+
+const deleteFile = async (blobName) => {
+    return await axios({
+        method: 'DELETE',
+        url: baseUrl + `api/Blobs/${blobName}`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+}
+
+export const blobService = {
+    uploadFile,
+    deleteFile,
 }

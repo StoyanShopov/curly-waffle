@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Threading.Tasks;
 
     using Azure.Storage.Blobs;
@@ -11,6 +12,7 @@
     using SBC.Common;
     using SBC.Web.ViewModels.Blob;
 
+    using static SBC.Common.ErrorConstants.BlobMessages;
     using static SBC.Common.GlobalConstants;
 
     public class BlobService : IBlobService
@@ -22,9 +24,30 @@
             this.blobService = blobServiceClient;
         }
 
-        public async Task<ICollection<BlobResponseModel>> GetAllAsync()
+        public async Task<Result> DeleteByNameAsync(string blobName)
         {
-            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+            var containerClient = this.blobService
+                .GetBlobContainerClient(BlobContainer);
+
+            var blobClient = containerClient.GetBlobClient(blobName);
+
+            var result = await blobClient.DeleteIfExistsAsync();
+
+            if (!result)
+            {
+                return new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    BlobNotFound);
+            }
+
+            return new ResultModel(result);
+        }
+
+        public async Task<Result> GetAllAsync()
+        {
+            var containerClient = this.blobService
+                .GetBlobContainerClient(BlobContainer);
+
             var blobs = new List<BlobResponseModel>();
 
             await foreach (var blob in containerClient.GetBlobsAsync())
@@ -43,14 +66,24 @@
                 });
             }
 
-            return blobs;
+            return new ResultModel(blobs);
         }
 
         public async Task<Result> UploadBlobAsync(IFormFile file)
         {
-            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+            if (file == null)
+            {
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    FileIsNull);
+            }
 
-            var blobClient = containerClient.GetBlobClient(Guid.NewGuid().ToString());
+            var containerClient = this.blobService
+                .GetBlobContainerClient(BlobContainer);
+
+            var blobClient = containerClient
+                .GetBlobClient(Guid.NewGuid()
+                .ToString());
 
             var httpHeaders = new BlobHttpHeaders()
             {
@@ -62,20 +95,31 @@
             return new ResultModel(new { photoUrl = blobClient.Uri.ToString() });
         }
 
-        public BlobClient DownloadByName(string blobName)
+        public async Task<BlobDownloadResponseModel> DownloadByNameAsync(string blobName)
         {
-            var container = this.blobService.GetBlobContainerClient(BlobContainer);
+            var container = this.blobService
+                .GetBlobContainerClient(BlobContainer);
 
-            return container.GetBlobClient(blobName);
-        }
+            var blob = container.GetBlobClient(blobName);
 
-        public async Task<bool> DeleteByNameAsync(string blobName)
-        {
-            var containerClient = this.blobService.GetBlobContainerClient(BlobContainer);
+            var blobExists = await blob.ExistsAsync();
 
-            var blobClient = containerClient.GetBlobClient(blobName);
+            if (!blobExists)
+            {
+                new ErrorModel(
+                    HttpStatusCode.NotFound,
+                    BlobNotFound);
+            }
 
-            return await blobClient.DeleteIfExistsAsync();
+            var result = await blob.DownloadAsync();
+
+            var responseModel = new BlobDownloadResponseModel
+            {
+                Content = result.Value.Content,
+                ContentType = result.Value.ContentType,
+            };
+
+            return responseModel;
         }
     }
 }

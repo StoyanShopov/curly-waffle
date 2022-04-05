@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Data.Lectures;
     using SBC.Web.ViewModels.Administration.Lectures;
 
@@ -18,11 +17,11 @@
 
         [HttpGet]
         [Route("All/{id}")]
-        public async Task<ActionResult> Get(int skip, int id, int take)
+        public async Task<ActionResult> Get(int skip, int id)
         {
             var result = await this.lectureService.GetAllByCourseIdAsync<LectureViewModel>(skip, id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
@@ -30,7 +29,7 @@
         {
             var result = await this.lectureService.GetByIdAsync<LectureViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpPost]
@@ -44,7 +43,7 @@
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, EditLectureInputModel lectureModel)
         {
-            var result = await this.lectureService.EditAsync(id, lectureModel);
+            var result = await this.lectureService.UpdateAsync(id, lectureModel);
 
             return this.GenericResponse(result);
         }
@@ -52,7 +51,7 @@
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
-            var result = await this.lectureService.DeleteByIdAsync(id);
+            var result = await this.lectureService.DeleteAsync(id);
 
             return this.GenericResponse(result);
         }

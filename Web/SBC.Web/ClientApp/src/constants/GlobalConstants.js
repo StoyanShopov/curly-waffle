@@ -16,5 +16,5 @@ export const getTypeEvents = "https://api.calendly.com/event_types?active=true&u
 //get event by id
 export const getTypeEventById = "https://api.calendly.com/event_types/93be18fb-f981-4a4c-80e3-88cbd861a606";
 
-//schedule events (booked) by user 
-export const scheduled_events = (userEmail)=>"https://api.calendly.com/scheduled_events?user=" + linkUsrById + "&invitee_email="+ userEmail+"&status=active";
+//schedule events (booked) by user
+export const scheduled_events = (userEmail) => "https://api.calendly.com/scheduled_events?user=" + linkUsrById + "&invitee_email=" + userEmail + "&status=active";

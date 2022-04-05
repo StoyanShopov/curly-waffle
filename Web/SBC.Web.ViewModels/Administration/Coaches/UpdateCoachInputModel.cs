@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Web.ViewModels.Constants.DataModelsConstants.CoachDtoConstants;
+    using static SBC.Web.ViewModels.ValidationConstants.Coach;
 
     public class UpdateCoachInputModel
     {
@@ -25,7 +25,7 @@
         [Url]
         public string VideoUrl { get; set; }
 
-        [Range(0, double.MaxValue)]
+        [Range(MinPricePerSession, double.MaxValue)]
         public decimal PricePerSession { get; set; }
 
         [Required]

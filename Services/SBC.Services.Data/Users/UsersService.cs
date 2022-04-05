@@ -42,7 +42,7 @@
             this.userManager = userManager;
         }
 
-        public async Task<ApplicationUser> GetUser(string userId)
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
         {
             return await this.applicationUsers
                 .AllAsNoTracking()
@@ -122,7 +122,7 @@
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<Result> EditAsync(EditProfileInputModel inputModelUser, string userId)
+        public async Task<Result> UpdateAsync(EditProfileInputModel inputModelUser, string userId)
         {
             var user = await this.userManager.FindByIdAsync(userId);
 
@@ -131,7 +131,6 @@
                 return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
             }
 
-            // TODO: user.Email = mapModel.Email;
             string[] names = inputModelUser.Fullname
                 .Trim()
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);

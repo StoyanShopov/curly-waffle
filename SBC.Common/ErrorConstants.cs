@@ -4,6 +4,13 @@
 
     public static class ErrorConstants
     {
+        public class BlobMessages
+        {
+            public const string FileIsNull = "File is null.";
+
+            public const string BlobNotFound = "Blob not found.";
+        }
+
         public class Client
         {
             public const string AdminDowngrade = "The user is " + AdministratorRoleName + ". Cannot downgrade to " + CompanyOwnerRoleName + " role.";
@@ -53,6 +60,20 @@
             public const string CourseIdIsNull = "Id is null!";
         }
 
+        public class LecturesMessages
+        {
+            public const string LectureAlreadyExist = "Lecture already exist!.";
+            public const string LectureDoesNotExist = "Lecture doesn't exist!";
+            public const string LectureNotFound = "Lecture not found!";
+        }
+
+        public class ResourcesMessages
+        {
+            public const string ResourceAlreadyExist = "Resource already exist!";
+            public const string ResourceDoesNotExist = "Resource doesn't exist!";
+            public const string ResourceNotFound = "Resource not found!";
+        }
+
         public class User
         {
             public const string CompanyExists = "Company '{0}' is not registered.";
@@ -62,6 +83,11 @@
             public const string InvalidPassOrEmail = "Password/Email is invalid!";
 
             public const string NotExistsUser = "User does not exist.";
+        }
+
+        public class Employee
+        {
+            public const string EmployeeCantBeNull = "User cannot be null";
         }
     }
 }

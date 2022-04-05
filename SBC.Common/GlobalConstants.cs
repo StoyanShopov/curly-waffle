@@ -19,9 +19,11 @@
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
         }
 
-        public class ClientConstants
+        public class CategoriesNamesConstants
         {
-            public const int TakeDefaultValue = 3;
+            public const string Marketing = "Marketing";
+            public const string Design = "Design";
+            public const string Art = "Art";
         }
 
         public class CourseConstants
@@ -33,5 +35,20 @@
         {
             public const string OwnerAreaName = "BusinessOwner";
         }
-    }
+
+        public class ClientConstants
+        {
+            public const int TakeDefaultValue = 3;
+            public const int ClientsCountMinValue = 0;
+        }
+
+        public class AdministrationConstants
+        {
+            public const string AreaName = "Administration";
+        }
+
+        public class LecturesConstants
+        {
+            public const int LecturesToTake = 6;
+        }
 }

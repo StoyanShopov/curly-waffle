@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import css from './EditProfile.module.css';
 
-import { uploadImage } from '../../services/blob-service';
+import { blobService } from '../../services/blob-service';
 import { userService } from '../../services';
 import { TokenManagement } from '../../helpers';
 
@@ -27,11 +27,11 @@ export default function EditProfile(props) {
             data.photoUrl = user.photoUrl
         }
         else {
-            let result = await uploadImage(data.photoUrl);
+            let result = await blobService.uploadFile(data.photoUrl);
             data.photoUrl = result.photoUrl;
         }
 
-        userService.EditUser(data)
+        userService.updateUser(data)
             .then((_data) => {
                 if (_data['status']) {
                     props.closeModal();

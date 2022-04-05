@@ -33,7 +33,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(CreateCourseInputModel courseModel)
+        public async Task<ActionResult> Create(CreateCourseInputModel courseModel)
         {
             var result = await this.courseService.CreateAsync(courseModel);
 
@@ -41,7 +41,7 @@
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int? id, EditCourseInputModel courseModel)
+        public async Task<ActionResult> Update(int? id, EditCourseInputModel courseModel)
         {
             var result = await this.courseService.UpdateAsync(id, courseModel);
 

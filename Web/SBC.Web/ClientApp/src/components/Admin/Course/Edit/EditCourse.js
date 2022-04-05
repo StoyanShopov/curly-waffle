@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import style from './EditCourse.module.css';
 
-import { courseService } from "../../../../services/course.service.js";
+import { courseService } from "../../../../services/course-service.js";
 
 const languages = [
     { id: 1, name: 'Spanish' },

@@ -7,16 +7,16 @@ import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { store, TokenManagement } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
-import AdminProfile from './components/super-admin/AdminProfile';
+
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
 import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
-import CreateCoach from "./components/Coaches/CreateCoach";
-import EditCoach from "./components/Coaches/EditCoach";
-import Coaches from "./components/Coaches/Coaches";
-import DeleteCoach from "./components/Coaches/DeleteCoach";
+import CreateCoach from './components/Coaches/CreateCoach/CreateCoach';
+import EditCoach from './components/Coaches/EditCoach/EditCoach';
+import Coaches from './components/Coaches/Coaches/Coaches';
+import DeleteCoach from './components/Coaches/DeleteCoach/DeleteCoach';
 
 import Signup from "./components/SignUpAsBusinessOwner/Signup";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
@@ -25,6 +25,7 @@ import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
 import EmployeeProfile from './components/Employees/EmployeeProfile';
+import AdminProfile from './components/Admin/Profile/AdminProfile';
 
 function App() {
     const [connection, setConnection] = useState([]);

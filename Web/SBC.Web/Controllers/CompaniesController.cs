@@ -16,16 +16,18 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllCompaniesAsync()
+        public async Task<ActionResult> GetAllCompanies()
         {
             var result = await this.companiesService.GetAllAsync<CompanyViewModel>();
+
             return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetEmailByIdAsync(int id)
+        public async Task<ActionResult> GetEmailById(int id)
         {
             var result = await this.companiesService.GetEmailByIdAsync(id);
+
             return this.GenericResponse(result);
         }
     }
