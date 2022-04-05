@@ -42,7 +42,7 @@
             this.userManager = userManager;
         }
 
-        public async Task<ApplicationUser> GetUser(string userId)
+        public async Task<ApplicationUser> GetUserAsync(string userId)
         {
             return await this.applicationUsers
                 .AllAsNoTracking()

@@ -44,7 +44,7 @@
         public async Task<ActionResult> LeftFeedback(FeedbackInputModel feedback)
         {
             var user = await this.usersService
-                 .GetUser(this.User.Id());
+                 .GetUserAsync(this.User.Id());
 
             var result = await this.coachesService
                 .LeftFeedback(user, feedback);
