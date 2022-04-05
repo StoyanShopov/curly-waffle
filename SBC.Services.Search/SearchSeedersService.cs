@@ -1,24 +1,24 @@
 ﻿namespace SBC.Services.Search
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
+    using SBC.Services.Mapping;
     using SBC.Web.ViewModels.Search;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class SearchSeedersService : ISearchSeedersService
     {
 
-        private readonly IDeletableEntityRepository<Course> coursesRepository;
         private readonly ISearchService searchService;
+        private readonly IDeletableEntityRepository<Course> coursesRepository;
 
-        public SearchSeedersService(IDeletableEntityRepository<Course> coursesRepository,
-            ISearchService searchService)
+        public SearchSeedersService(ISearchService searchService, IDeletableEntityRepository<Course> coursesRepository)
         {
-            this.coursesRepository = coursesRepository;
             this.searchService = searchService;
+            this.coursesRepository = coursesRepository;
         }
 
         public async Task SeedCoursesAsync()
@@ -28,20 +28,10 @@
               .Include(c => c.Coach)
               .Include(c => c.Category)
               .Include(c => c.Companies)
-              .Select(x => new CourseSearchModel
-              {
-                  Id = x.Id,
-                  Title = x.Title,
-                  PricePerPerson = x.PricePerPerson,
-                  PictureUrl = x.PictureUrl,
-                  CategoryId = x.CategoryId,
-                  LanguageId = x.LanguageId,
-                  CoachFullName = $"{x.Coach.FirstName} {x.Coach.LastName}",
-                  CategoryName = x.Category.Name,
-              })
+              .To<CourseSearchModel>()
               .ToListAsync();
 
-            await this.searchService.CreateMany("course", courses, CancellationToken.None);
+            await this.searchService.CreateManyAsync("course", courses, CancellationToken.None);
         }
     }
 }

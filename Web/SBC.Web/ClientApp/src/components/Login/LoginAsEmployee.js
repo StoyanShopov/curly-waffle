@@ -8,11 +8,11 @@ import styles from "./LoginAsEmployee.module.css";
 import { userService } from '../../services';
 
 const LoginAsEmployee = (props) => {
-  const form = useRef();
-  const navigate = useNavigate();
+    const form = useRef();
+    const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const dispatch = useDispatch();
 
@@ -31,11 +31,9 @@ const LoginAsEmployee = (props) => {
 
         await dispatch(userActions.login(email, password));
 
-        await userService.GetUserData().then(data => {
-            //            console.log(data)
-        });
+        await userService.getUserData().then(data => {
+        }).catch(err => console.log(err));
         window.location.href = "/";
-        // navigate('/');
     };
 
     const link = "Забравена парола?";

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import css from './Clients.module.css';
 import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
-import { LoadClientData as GetPartions } from '../../services/client-service';
+import { LoadClientData as GetPartions } from '../../../services/client-service';
 
 export default function Clients() {
   const [clients, setClients] = useState([]);

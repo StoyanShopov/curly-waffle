@@ -22,6 +22,6 @@
 
         [HttpPut]
         public async Task<ActionResult> EditAsync(EditProfileInputModel model)
-            => this.GenericResponse(await this.usersService.EditAsync(model, this.User.Id()));
+            => this.GenericResponse(await this.usersService.UpdateAsync(model, this.User.Id()));
     }
 }
