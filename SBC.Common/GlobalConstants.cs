@@ -143,5 +143,16 @@
             public const string FullNameRegex = @" *([A-za-z]{2,}) +([A-za-z]{2,}) *";
             public const string FullNameError = "FullName is invalid. Must contain at least two separate names with letters only.";
         }
+
+        public class ClientConstants
+        {
+            public const int TakeDefaultValue = 3;
+            public const int ClientsCountMinValue = 0;
+        }
+
+        public class AdministrationConstants
+        {
+            public const string AreaName = "Administration";
+        }
     }
 }

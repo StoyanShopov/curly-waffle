@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import style from "./CourseDetails.module.css";
 
-import { courseService } from "../../../../services/course.service.js";
+import { courseService } from "../../../../services/course-service.js";
 import { lectureService } from "../../../../services/lecture.service.js";
 import { employeeService } from "../../../../services/employee-service";
 
