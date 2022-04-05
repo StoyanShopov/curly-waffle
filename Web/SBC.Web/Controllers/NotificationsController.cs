@@ -22,7 +22,7 @@
         public async Task<ActionResult> All([NotNull] [EmailAddress] string email)
         {
             var result = await this.notificationsService
-                .GetAllByEmailAsyc(email);
+                .GetAllByEmailAsync(email);
 
             return this.GenericResponse(result);
         }
@@ -30,7 +30,7 @@
         [HttpPost]
         public async Task<ActionResult> Create([FromQuery] CreateNotificationInputModel model)
         {
-            var result = await this.notificationsService.AddAsync(
+            var result = await this.notificationsService.CreateAsync(
                 model.UniqueGroupKey,
                 model.UserEmail,
                 model.Message);

@@ -2,16 +2,16 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static SBC.Common.ValidationConstant;
+    using static SBC.Web.ViewModels.ValidationConstants;
 
     public class EditProfileInputModel
     {
         [Required(AllowEmptyStrings = true)]
-        [StringLength(UserConstants.FullnameMaxLength, MinimumLength = UserConstants.FullnameMinLength)]
+        [StringLength(ApplicationUser.FullnameMaxLength, MinimumLength = ApplicationUser.FullnameMinLength)]
         public string Fullname { get; set; }
 
         [Required]
-        [StringLength(UserConstants.ProfileSummaryMaxLength)]
+        [StringLength(ApplicationUser.ProfileSummaryMaxLength)]
         public string ProfileSummary { get; set; }
 
         public string PhotoUrl { get; set; }

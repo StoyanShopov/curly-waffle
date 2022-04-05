@@ -17,7 +17,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(CreateCoachInputModel coach)
+        public async Task<ActionResult> Create(CreateCoachInputModel coach)
         {
             var result = await this.coachesService.CreateAsync(coach);
 
@@ -25,7 +25,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAsync()
+        public async Task<ActionResult> GetAll()
         {
             var result = await this.coachesService.GetAllAsync<CoachDetailsViewModel>();
 
