@@ -5,7 +5,7 @@ import styles from "./CreateCoach.module.css";
 
 import { languageService } from "../../../services/language-service";
 import { categoryService } from "../../../services/category-service";
-import { uploadImage } from "../../../services/blob-service";
+import { blobService } from "../../../services/blob-service";
 import { coachService } from "../../../services/coach-service";
 
 

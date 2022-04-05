@@ -5,7 +5,7 @@ import styles from './EditCoach.module.css';
 
 import { companyService } from '../../../services/company-service';
 import { coachService } from '../../../services/coach-service';
-import { uploadImage } from '../../../services/blob-service';
+import { blobService } from '../../../services/blob-service';
 
 
 const EditCoach = (props) => {
