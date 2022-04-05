@@ -74,7 +74,8 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, error);
             }
 
-            var companyId = await this.companiesService.GetIdByNameAsync(model.CompanyName);
+            var companyId = await this.companiesService
+                .GetIdByNameAsync(model.CompanyName);
 
             var user = new ApplicationUser
             {
@@ -93,7 +94,8 @@
                 return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
             }
 
-            await this.userManager.AddToRoleAsync(user, CompanyEmployeeRoleName);
+            await this.userManager
+                .AddToRoleAsync(user, CompanyEmployeeRoleName);
 
             return true;
         }
