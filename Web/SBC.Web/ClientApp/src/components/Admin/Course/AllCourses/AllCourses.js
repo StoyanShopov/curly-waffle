@@ -4,6 +4,9 @@ import Modal from "react-modal/lib/components/Modal";
 import style from './AllCourses.module.css';
 
 import { courseService } from "../../../../services/course-service.js";
+import { coachService } from "../../../../services/coach-service"
+import { languageService } from "../../../../services/language-service";
+import { categoryService } from "../../../../services/category-service";
 
 import CardCourse from '../CardCourse/CardCourse.js';
 import CreateCourse from '../Create/CreateCourse.js';
@@ -13,11 +16,27 @@ const AllCourses = () => {
     const [childModal, setChildModal] = useState(null);
     const [courses, setCourses] = useState([]);
 
+    const [coaches, setCoaches] = useState([])
+    const [languages, setLanguages] = useState([])
+    const [categories, setCategories] = useState([])
+
     useEffect(() => {
         courseService.getAll()
             .then(response => {
                 setCourses(response.data);
             });
+
+        coachService.getAll().then(res => {
+            setCoaches(res.data)
+        })
+
+        categoryService.getAll().then(res => {
+            setCategories(res.data)
+        })
+
+        languageService.getAll().then(res => {
+            setLanguages(res.data)
+        })
     }, []);
 
     let subtitle = {
@@ -64,6 +83,9 @@ const AllCourses = () => {
             <section className={style.cardsSection}>
                 {courses.length > 0 && courses.map(x => <CardCourse key={x.id}
                     course={x}
+                    coaches={coaches}
+                    categories={categories}
+                    languages={languages}
                     openModal={openModal}
                     closeModal={closeModal}
                     setCourses={setCourses}
@@ -71,6 +93,9 @@ const AllCourses = () => {
                 <div className={style.buttonDiv}>
                     <button className={style.addBtn} onClick={() => {
                         openModal(<CreateCourse
+                            coaches={coaches}
+                            categories={categories}
+                            languages={languages}
                             closeModal={closeModal}
                             courses={courses}
                             setCourses={setCourses} />)

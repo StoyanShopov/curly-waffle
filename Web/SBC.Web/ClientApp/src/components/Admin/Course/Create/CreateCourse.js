@@ -1,24 +1,7 @@
+import React, { useEffect, useState } from "react";
 import style from './CreateCourse.module.css';
 
 import { courseService } from "../../../../services/course-service.js";
-
-const languages = [
-    { id: 1, name: 'Spanish' },
-    { id: 2, name: 'German' },
-    { id: 3, name: 'English' },
-]
-
-const categories = [
-    { id: 1, name: 'Marketing' },
-    { id: 2, name: 'Design' },
-    { id: 3, name: 'Art' },
-]
-
-const coaches = [
-    { id: 1, name: 'Emil' },
-    { id: 2, name: 'Maria' },
-    { id: 3, name: 'Ivan Ivanov' },
-]
 
 const CreateCourse = (props) => {
 
@@ -50,16 +33,16 @@ const CreateCourse = (props) => {
                     <input type="text" className={style.inputContainer} required="required" name="pictureUrl" placeholder="PictureUrl*" />
                     <input type="text" className={style.inputContainer} required="required" name="videoUrl" placeholder="VideoUrl*" />
 
-                    <select className={style.selectContainer} name="coachId" id="coachId" defaultValue={coaches[0].id}>
-                        {coaches.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                    <select className={style.selectContainer} name="coachId" id="coachId" defaultValue={props.coaches[0].id}>
+                        {props.coaches.map(x => <option key={x.id} value={x.id}>{x.firstName + ' ' + x.lastName}</option>)}
                     </select>
 
-                    <select className={style.selectContainer} name="categoryId" defaultValue={categories[0].id}>
-                        {categories.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                    <select className={style.selectContainer} name="categoryId" defaultValue={props.categories[0].id}>
+                        {props.categories.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
-                    <select className={style.selectContainer} name="languageId" defaultValue={languages[0].id}>
-                        {languages.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                    <select className={style.selectContainer} name="languageId" defaultValue={props.languages[0].id}>
+                        {props.languages.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
                     <div className={style.buttonContainer}>

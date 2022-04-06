@@ -44,7 +44,7 @@
     position: absolute;
     top: 15%;
     width: 50%;
-    height: auto;
+    max-height: 64%;
     left: 40%;
     row-gap: 37px;
 }

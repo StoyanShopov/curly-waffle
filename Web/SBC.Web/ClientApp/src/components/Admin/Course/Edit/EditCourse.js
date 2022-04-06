@@ -4,24 +4,6 @@ import style from './EditCourse.module.css';
 
 import { courseService } from "../../../../services/course-service.js";
 
-const languages = [
-    { id: 1, name: 'Spanish' },
-    { id: 2, name: 'German' },
-    { id: 3, name: 'English' },
-]
-
-const categories = [
-    { id: 1, name: 'Marketing' },
-    { id: 2, name: 'Design' },
-    { id: 3, name: 'Art' },
-]
-
-const coaches = [
-    { id: 1, name: 'Emil' },
-    { id: 2, name: 'Maria' },
-    { id: 3, name: 'Ivan Ivanov' },
-]
-
 const EditCourse = (props) => {
     const courseId = props.courseId;
     const [course, setCourse] = useState({});
@@ -29,10 +11,9 @@ const EditCourse = (props) => {
     useEffect(() => {
         courseService.getById(courseId)
             .then(course => {
-                setCourse(course.data); 
+                setCourse(course.data);
                 console.log(this.course)
             })
-            
     }, []);
 
     const onCourseEdit = (e) => {
@@ -46,7 +27,7 @@ const EditCourse = (props) => {
                 if (response.status === 200) {
                     props.closeModal();
                     props.setCourse(response.data);
-                }           
+                }
             });
     }
 
@@ -65,17 +46,17 @@ const EditCourse = (props) => {
 
                     <select className={style.selectContainer} name="coachId" id="coachId" value={course.coachId}
                         onChange={(e) => setCourse(s => ({ ...s, coachId: e.target.value }))}>
-                        {coaches.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                        {props.coaches.map(x => <option key={x.id} value={x.id}>{x.firstName + ' ' + x.lastName}</option>)}
                     </select>
 
                     <select className={style.selectContainer} name="categoryId" value={course.categoryId}
                         onChange={(e) => setCourse(s => ({ ...s, categoryId: e.target.value }))}>
-                        {categories.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                        {props.categories.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
                     <select className={style.selectContainer} name="languageId" value={course.languageId}
                         onChange={(e) => setCourse(s => ({ ...s, languageId: e.target.value }))}>
-                        {languages.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                        {props.languages.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
                     </select>
 
                     <div className={style.buttonContainer}>
