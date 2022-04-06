@@ -1,5 +1,5 @@
-import Booking from './Modals/Booking';
-import Feedback from './Modals/Feedaback';
+import Booking from '../Modals/Booking';
+import Feedback from '../Modals/Feedaback';
 
 import styles from './ManagerCoachCard.module.css';
 import { useState } from 'react';

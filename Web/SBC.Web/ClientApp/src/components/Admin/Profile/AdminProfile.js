@@ -7,9 +7,9 @@ import { TokenManagement } from '../../../helpers';
 
 import Clients from '../../Admin/Clients/Clinets';
 import Dashboard from '../../Admin/Dashboard/Dashboard';
-import EditProfile from '../../Fragments/EditProfile';
+import EditProfile from '../../Fragments/EditProfile/EditProfile';
 import Revenue from '../Revenue/Revenue';
-import SideBar from '../../Fragments/Sidebar';
+import SideBar from '../../Fragments/Sidebar/Sidebar';
 
 import css from './AdminProfile.module.css'
 

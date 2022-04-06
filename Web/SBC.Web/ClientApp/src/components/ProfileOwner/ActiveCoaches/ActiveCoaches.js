@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
-import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
+import ManagerCoachCard from '../../Fragments/CoachCards/ManagerCoachCard';
 import { ownerService } from '../../../services';
 import styles from "./ActiveCoaches.module.css";
 

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 import css from './EditProfile.module.css';
 
-import { blobService } from '../../services/blob-service';
-import { userService } from '../../services';
-import { TokenManagement } from '../../helpers';
+import { blobService } from '../../../services/blob-service';
+import { userService } from '../../../services';
+import { TokenManagement } from '../../../helpers';
 
 export default function EditProfile(props) {
     const [user, setUser] = useState({});

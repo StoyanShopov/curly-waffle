@@ -1,16 +1,16 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { TokenManagement } from '../../helpers';
-import { GetUser } from '../../hooks/setUser';
+import { TokenManagement } from '../../../helpers';
+import { GetUser } from '../../../hooks/setUser';
 
-import Sidebar from '../Fragments/Sidebar';
-import EditProfile from '../Fragments/EditProfile';
+import Sidebar from '../../Fragments/Sidebar/Sidebar';
+import EditProfile from '../../Fragments/EditProfile/EditProfile';
 
-import EmployeeDashboard from './Dashboard/EmployeeDashboard';
-import EmployeeCourses from './Courses/EmployeeCourses';
-import EmployeeCoaches from './Coaches/EmployeeCoaches';
-import Achievements from './Achievements/Achievements';
+import EmployeeDashboard from '../Dashboard/EmployeeDashboard';
+import EmployeeCourses from '../Courses/EmployeeCourses';
+import EmployeeCoaches from '../Coaches/EmployeeCoaches';
+import Achievements from '../Achievements/Achievements';
 
 import css from './EmployeeProfile.module.css'
 

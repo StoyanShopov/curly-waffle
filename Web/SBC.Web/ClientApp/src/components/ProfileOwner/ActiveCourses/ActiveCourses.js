@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
-import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
+import ManagerCourseCard from '../../Fragments/CourseCards/ManagerCourseCard';
 import { ownerService } from '../../../services';
 import styles from "./ActiveCourses.module.css";
 

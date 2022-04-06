@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import styles from "../Coaches/Coaches.module.css";
+import styles from "./Coaches.module.css";
 
 import { coachService } from "../../../services/coach-service"
 import { languageService } from "../../../services/language-service";

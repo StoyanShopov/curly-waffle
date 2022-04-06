@@ -5,8 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import { GetUser } from '../../../hooks/setUser';
 import { TokenManagement } from '../../../helpers';
 
-import EditProfile from '../../Fragments/EditProfile';
-import SideBar from '../../Fragments/Sidebar';
+import EditProfile from '../../Fragments/EditProfile/EditProfile';
+import SideBar from '../../Fragments/Sidebar/Sidebar';
 
 import OwnerDashboard from '../Dashboard/OwnerDashboard';
 import ActiveCoaches from '../ActiveCoaches/ActiveCoaches';

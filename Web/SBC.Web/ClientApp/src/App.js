@@ -18,13 +18,13 @@ import EditCoach from './components/Coaches/EditCoach/EditCoach';
 import Coaches from './components/Coaches/Coaches/Coaches';
 import DeleteCoach from './components/Coaches/DeleteCoach/DeleteCoach';
 
-import Signup from "./components/SignUpAsBusinessOwner/Signup";
+import Signup from "./components/SignUpAsOwner/Signup";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
 
 import "./App.css";
-import EmployeeProfile from './components/Employees/EmployeeProfile';
+import EmployeeProfile from './components/Employees/Profile/EmployeeProfile';
 import AdminProfile from './components/Admin/Profile/AdminProfile';
 
 function App() {

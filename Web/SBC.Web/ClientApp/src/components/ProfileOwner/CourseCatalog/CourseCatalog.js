@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
 import { ownerService } from '../../../services';
-import ManagerCourseCard from '../../Fragments/ManagerCourseCard';
+import ManagerCourseCard from '../../Fragments/CourseCards/ManagerCourseCard';
 
 import { CategoriesList } from "./CategoriesList";
 import { LanguagesList } from "./LanguagesList";

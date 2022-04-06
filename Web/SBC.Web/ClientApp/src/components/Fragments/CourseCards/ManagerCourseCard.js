@@ -5,9 +5,9 @@ import {v4 as uuid} from 'uuid';
 
 import styles from './ManagerCourseCard.module.css';
 
-import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
-import { ownerService } from '../../services';
-import { notificationService } from '../../services/notification-service';
+import ModalRemoveCourse from '../../ProfileOwner/Modals/ModalRemoveCourse';
+import { ownerService } from '../../../services';
+import { notificationService } from '../../../services/notification-service';
 
 export default function ManagerCourseCard(props) {
     const [showModal, setShowModal] = useState(false);

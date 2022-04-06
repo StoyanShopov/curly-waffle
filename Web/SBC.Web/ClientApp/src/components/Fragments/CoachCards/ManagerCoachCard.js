@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import {v4 as uuid} from 'uuid';
 
-import ModalRemoveCourse from '../ProfileOwner/Modals/ModalRemoveCourse';
-import { ownerService } from '../../services';
-import { notificationService } from '../../services/notification-service';
+import ModalRemoveCourse from '../../ProfileOwner/Modals/ModalRemoveCourse';
+import { ownerService } from '../../../services';
+import { notificationService } from '../../../services/notification-service';
 
 import styles from './ManagerCoachCard.module.css';
 

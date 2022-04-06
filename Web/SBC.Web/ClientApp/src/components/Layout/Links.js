@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-import styles from "./NavBar.module.css";
+import styles from "./NavBar/NavBar.module.css";
 
 export const Links = (props) => {
 

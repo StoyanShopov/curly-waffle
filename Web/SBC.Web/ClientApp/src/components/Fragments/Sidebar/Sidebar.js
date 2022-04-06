@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { NavLink, } from 'react-router-dom';
 
-import { userService } from '../../services';
+import { userService } from '../../../services';
 
 import styles from "./Sidebar.module.css";
 
