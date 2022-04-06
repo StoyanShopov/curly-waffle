@@ -22,6 +22,8 @@ import Signup from "./components/SignUpAsOwner/Signup";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
+import ReplacementPage from "./components/Replacement/ReplacementPage";
+
 
 import "./App.css";
 import EmployeeProfile from './components/Employees/Profile/EmployeeProfile';
@@ -90,6 +92,7 @@ function App() {
                     <Route path="/login" element={<LoginAsEmployee />} />
                     <Route path="/register" element={<RegisterAsOwner />} />
                     <Route path="/signUp" element={<Signup />} />
+                    <Route path="/replacement-page" element={<ReplacementPage />} />
                     {hasRole(_role, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Employee']) && <Route path='/profile/*' element={<EmployeeProfile editUser={() => setUser()} />} />}

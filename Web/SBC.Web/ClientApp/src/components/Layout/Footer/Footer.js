@@ -19,16 +19,16 @@ const Footer = () => {
                                 <li><Link to="/signUp"><button className={styles.buttonGetStarted}>Get Started</button></Link></li>
                             </ul>
                             <ul className={styles.secondColumn}>
-                                <li><Link to="/company"><p className={styles.company}>Company</p></Link></li>
-                                <li><Link to="/about-us"><p className={styles.aboutUs}>About us</p></Link></li>
-                                <li><Link to="/contact-us"><p className={styles.contactUs}>Contact Us</p></Link></li>
-                                <li><Link to="/privacy-policy"><p className={styles.privacyPolicy}>Privacy Policy</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.company}>Company</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.aboutUs}>About us</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.contactUs}>Contact Us</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.privacyPolicy}>Privacy Policy</p></Link></li>
                             </ul>
                             <ul className={styles.thirdColumn}>
-                                <li><Link to="/services"><p className={styles.services}>Services</p></Link></li>
-                                <li><Link to="/courses"><p className={styles.courses}>Courses</p></Link></li>
-                                <li><Link to="/coaches"><p className={styles.coaches}>Coaches</p></Link></li>
-                                <li><Link to="/requests"><p className={styles.requests}>Requests</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.services}>Services</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.courses}>Courses</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.coaches}>Coaches</p></Link></li>
+                                <li><Link to="/replacement-page"><p className={styles.requests}>Requests</p></Link></li>
                             </ul>
                             <ul className={styles.fourthColumn}>
                                 <li><Link to="/"><img src="/assets/images/Group 12.svg" className={styles.facebookLogo} /></Link></li>

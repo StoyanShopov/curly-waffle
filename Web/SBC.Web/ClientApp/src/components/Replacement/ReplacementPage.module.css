@@ -1,0 +1,63 @@
+﻿.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    max-width: 90%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.picDiv {
+    flex-grow: 1;
+    flex-basis: 50%;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.signupFigure {
+    width: 43%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.man {
+    width: 28%;
+    height: auto;
+    position: absolute;
+    padding-top: 6%;
+    padding-left: 3%;
+}
+
+.buttonAndText {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    width: 50%;
+    height: auto;
+    left: 40%;
+    row-gap: 37px;
+}
+
+.arrow {
+    width: 11.125rem;
+    opacity: 100%;
+}
+
+.feature {
+    font-size: 36px;
+}
+
+.functionality {
+    font-size: 24px;
+}

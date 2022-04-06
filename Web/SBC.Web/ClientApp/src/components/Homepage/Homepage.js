@@ -34,12 +34,12 @@ export default function Main() {
                     <img src="/assets/images/Group 7.png" alt="image" className={css.image7} />
                 </div>
                 <div className={css.textDiv}>
-                    <h2 className={css.hTwo}>What UpSkill does?</h2>
+                    <h2 className={css.hTwo}>What <span className={css.upskillblue}>UpSkill</span> does?</h2>
                     <p className={css.pTwo}>We help businesses as well as individuals learn new skills and gain knowledge on various topics while exploring different sources and getting certified. If you need personal time with a specialist, don’t hesitate to book your slot with one of our top coaches.</p>
                 </div>
                 <div className={css.buttonsDiv}>
-                    <Link to="/explore-courses" ><button className={css.exploreCoursesBtn}>Explore Courses</button></Link>
-                    <Link to="/find-coaches" ><button className={css.findCoachesBtn}>Find Coaches</button></Link>
+                    <Link to="/replacement-page" ><button className={css.exploreCoursesBtn}>Explore Courses</button></Link>
+                    <Link to="/replacement-page" ><button className={css.findCoachesBtn}>Find Coaches</button></Link>
                 </div>
                 <div className={css.picDiv}>
                     <img src="/assets/images/Path 7.png" className={css.path7} />

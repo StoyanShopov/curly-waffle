@@ -162,7 +162,7 @@ const unLogged = (
             <Link to="/login" ><button className={styles.loginButton}>Login</button></Link>
         </li>
         <li>
-            <Link to="/request-a-demo" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
+            <Link to="/replacement-page" ><button className={styles.requestDemoBtn}>Request a Demo</button></Link>
         </li>
     </ul>
 );
