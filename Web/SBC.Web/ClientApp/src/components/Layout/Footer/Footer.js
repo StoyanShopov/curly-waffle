@@ -16,7 +16,7 @@ const Footer = () => {
                                     <h1 className={styles.logoHeader}>upskill</h1>
                                 </li>
                                 <li><p className={styles.logoText}>Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field.</p></li>
-                                <li><Link to="/get-started"><button className={styles.buttonGetStarted}>Get Started</button></Link></li>
+                                <li><Link to="/signUp"><button className={styles.buttonGetStarted}>Get Started</button></Link></li>
                             </ul>
                             <ul className={styles.secondColumn}>
                                 <li><Link to="/company"><p className={styles.company}>Company</p></Link></li>

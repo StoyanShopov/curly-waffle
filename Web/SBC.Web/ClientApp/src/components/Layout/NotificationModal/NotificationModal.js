@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import css from './NotificationModal.module.css';
 
-export default function EditProfile(props) {
+export default function NotificationModal(props) {
   return (
     <div className={css.NotificationContainer}>
       {props.notifications.map(notification => (

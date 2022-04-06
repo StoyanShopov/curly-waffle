@@ -8,7 +8,7 @@ export default function Main() {
             <div className={css.leftHalf}>
                 <h2 className={css.hOne}>Do you want to level up the knowledge of your team?</h2>
                 <p className={css.pOne}>Upskill gives everyone the opportunity to grow professionally and develop into a specialist in every field. We inspire your people to master their skills and become the best version of themselves. Through our unique, personalised, user-friendly experience, your business is ready to reach new heights.</p>
-                <Link to="/get-started" ><button className={css.getStartedBtn}>Get Started</button></Link>
+                <Link to="/signUp" ><button className={css.getStartedBtn}>Get Started</button></Link>
                 <div className={css.divOne}>
                     <img src="/assets/images/Path 6.png" alt="image" className={css.path6} />
                     <img src="/assets/images/Group 9.png" alt="image" className={css.image9} />

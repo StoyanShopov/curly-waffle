@@ -88,7 +88,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Homepage />} />
                     <Route path="/login" element={<LoginAsEmployee />} />
-                    <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
+                    <Route path="/register" element={<RegisterAsOwner />} />
                     <Route path="/signUp" element={<Signup />} />
                     {hasRole(_role, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}

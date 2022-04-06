@@ -13,7 +13,7 @@ function Signup() {
             </div>
             <div className={css.buttonAndText}>
                 <img src="/assets/images/Group5.png" className={css.arrow} />
-                <Link to="/registerAsOwner" className={css.buttonForSignUp}>
+                <Link to="/register" className={css.buttonForSignUp}>
                     SignUp as Business Owner
                 </Link>
                 <div className={css.flex}>
