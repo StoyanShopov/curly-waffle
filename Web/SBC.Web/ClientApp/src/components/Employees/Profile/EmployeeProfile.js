@@ -12,7 +12,7 @@ import EmployeeCourses from '../Courses/EmployeeCourses';
 import EmployeeCoaches from '../Coaches/EmployeeCoaches';
 import Achievements from '../Achievements/Achievements';
 
-import css from './EmployeeProfile.module.css'
+import styles from './EmployeeProfile.module.css'
 
 export default function EmployeeProfile(props) {
 
@@ -54,7 +54,7 @@ export default function EmployeeProfile(props) {
         setModalIsOpen(false);
     }
     return (
-        <div className={css.mainContent}>
+        <div className={styles.mainContent}>
             <Sidebar showModal={openModal} userData={userData} userRole={userRole} />
             <div style={{ left: '24%', width: "75%", position: "relative" }}>
                 <Routes>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
-import css from './Clients.module.css';
+import styles from './Clients.module.css';
 import Modal from 'react-modal';
 import ModalAddClients from './ModalAddClients';
 import { LoadClientData as GetPartions } from '../../../services/client-service';
@@ -59,15 +59,15 @@ export default function Clients() {
 
   return (
     <>
-      <div className={css.container}>
-        <table className={css.table}>
+      <div className={styles.container}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Company Name</th>
               <th>Email</th>
-              <td className={css.addClient}>
+              <td className={styles.addClient}>
                 <Link to="" onClick={() => setShowModal(true)}>
-                                  <img className={css.plus} src={"/assets/images/add-client.ico"} alt="add-icon"></img>
+                                  <img className={styles.plus} src={"/assets/images/add-client.ico"} alt="add-icon"></img>
                 </Link>
               </td>
             </tr>
@@ -79,17 +79,17 @@ export default function Clients() {
                 <td>{client?.email?.toLowerCase()}</td>
               </tr>
             ))}
-            <tr key={"unique_loading"} id={css.pending}>
+            <tr key={"unique_loading"} id={styles.pending}>
               {isPending &&
                 <td>
                   <h2>Loading...</h2>
                 </td>
               }
             </tr>
-            <tr key={"unique_view_more"} id={css.flex}>
+            <tr key={"unique_view_more"} id={styles.flex}>
               <td>
                 {viewMoreAvaliable &&
-                  <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
+                  <Link to="" className={styles.link} onClick={() => { handleViewMore() }}>View More</Link>
                 }
               </td>
             </tr>

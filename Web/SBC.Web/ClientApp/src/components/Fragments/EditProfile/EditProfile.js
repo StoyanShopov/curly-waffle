@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import css from './EditProfile.module.css';
+import styles from './EditProfile.module.css';
 
 import { blobService } from '../../../services/blob-service';
 import { userService } from '../../../services';
@@ -50,18 +50,18 @@ export default function EditProfile(props) {
     }
 
     return (
-        <div className={css.editContainer}>
-            <div className={css.headerContainer}>
-                <span className={css.text}>Personal Information</span>
-                <button onClick={() => props.closeModal()} className={css.close}>X</button>
+        <div className={styles.editContainer}>
+            <div className={styles.headerContainer}>
+                <span className={styles.text}>Personal Information</span>
+                <button onClick={() => props.closeModal()} className={styles.close}>X</button>
             </div>
             <form onSubmit={e => OnEditUser(e)}>
-                <div className={css.bodyContainer}>
+                <div className={styles.bodyContainer}>
 
-                    <div className={css.bodyContainer2}>
-                        <div className={css.profileImage}>
+                    <div className={styles.bodyContainer2}>
+                        <div className={styles.profileImage}>
                             {
-                                imageURL ? <img src={imageURL} className={css.imagePhoto} />
+                                imageURL ? <img src={imageURL} className={styles.imagePhoto} />
                                     : <svg xmlns="http://www.w3.org/2000/svg" width="130px" height="150px" viewBox="0 0 157 157">
                                         <path id="iconmonstr-user-5"
                                             d="M124.292,45.8A45.792,45.792,0,1,1,78.5,0,45.8,45.8,0,0,1,124.292,45.8ZM113.838,92.767a58.42,58.42,0,0,1-70.709-.013C16.492,104.483,0,141.006,0,157H157C157,141.15,139.992,104.627,113.838,92.767Z"
@@ -69,33 +69,33 @@ export default function EditProfile(props) {
                                     </svg>
                             }
                         </div>
-                        <button type='button' className={css.fileUpload}>
+                        <button type='button' className={styles.fileUpload}>
                             Edit Photo
-                            <input name="photoUrl" type="file" className={css.upload} onChange={(e) => onChange(e)} />
+                            <input name="photoUrl" type="file" className={styles.upload} onChange={(e) => onChange(e)} />
                         </button>
 
                     </div>
 
-                    <div className={css.bodyContainer3}>
+                    <div className={styles.bodyContainer3}>
                         <input
                             name="fullname"
-                            className={css.nameCntr}
+                            className={styles.nameCntr}
                             type="text"
                             defaultValue={user.fullname}
                             placeholder="Aya Krasteva" />
                         <input
                             editable='false'
                             name="email"
-                            className={css.nameCntr}
+                            className={styles.nameCntr}
                             type="text"
                             defaultValue={user.email}                           
                             placeholder="Hello@Motion-Software.com" />
-                        <textarea name="profileSummary" className={css.resizableContent} type="text" placeholder="Profile Summary" defaultValue={user.profileSummary}></textarea>
+                        <textarea name="profileSummary" className={styles.resizableContent} type="text" placeholder="Profile Summary" defaultValue={user.profileSummary}></textarea>
                     </div>
                 </div>
-                <div className={css.footer}>
-                    <button onClick={() => props.closeModal()} className={css.buttonPrs}>Cancel</button>
-                    <button className={css.button} type="Submit">Save</button>
+                <div className={styles.footer}>
+                    <button onClick={() => props.closeModal()} className={styles.buttonPrs}>Cancel</button>
+                    <button className={styles.button} type="Submit">Save</button>
                 </div>
             </form>
         </div>

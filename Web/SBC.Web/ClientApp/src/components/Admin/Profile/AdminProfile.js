@@ -11,7 +11,7 @@ import EditProfile from '../../Fragments/EditProfile/EditProfile';
 import Revenue from '../Revenue/Revenue';
 import SideBar from '../../Fragments/Sidebar/Sidebar';
 
-import css from './AdminProfile.module.css'
+import styles from './AdminProfile.module.css'
 
 export default function AdminProfile(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function AdminProfile(props) {
   }
 
   return (
-    <div className={css.mainContent}>
+    <div className={styles.mainContent}>
       <SideBar showModal={openModal} userData={userData} userRole={userRole} />
       <Routes>
         <Route index element={<Dashboard />} />

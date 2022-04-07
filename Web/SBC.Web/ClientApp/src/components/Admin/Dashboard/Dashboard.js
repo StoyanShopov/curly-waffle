@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-import css from './Dashboard.module.css';
+import styles from './Dashboard.module.css';
 import Diagram from '../../Fragments/Diagrams/Diagram';
 import { AdminService } from '../../../services/super-admin-service';
 
@@ -24,8 +24,8 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className={css.dashboard}>
-      <section className={css.header} >
+    <div className={styles.dashboard}>
+      <section className={styles.header} >
         <article><span>Clients</span><span>{items.clients}</span></article>
         <svg width="1" height="126" viewBox="0 0 1 126">
           <line id="Line_63" data-name="Line 63" y2="125" transform="translate(0.5 0.5)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="1" />

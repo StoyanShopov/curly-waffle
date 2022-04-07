@@ -1,5 +1,5 @@
 import CanvasJSReact from '../Canvas/assets/canvasjs.react';
-import css from '../../Admin/Dashboard/Dashboard.module.css';
+import styles from '../../Admin/Dashboard/Dashboard.module.css';
 
 export default function Diagram(props) {
     var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -25,7 +25,7 @@ export default function Diagram(props) {
     }
     
     return (
-        <section className={css.curve} >
+        <section className={styles.curve} >
             <h3 style={{ background: props.color }}>{props.title}</h3>
             <CanvasJSChart options = {options} 
 				/* onRef={ref => this.chart = ref} */
