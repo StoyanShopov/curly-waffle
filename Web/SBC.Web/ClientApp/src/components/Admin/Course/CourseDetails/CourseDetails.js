@@ -164,7 +164,7 @@ export default function CourseDetails(props) {
                                 lectures={lectures}
                                 lecture={x}
                                 index={i} />)}
-                            <img src="Line 396.png" className={style.google} alt="" />
+                            <img src="/assets/images/Line 396.png" className={style.google} alt="" />
                         </ul>
                         <button className={style.btnViewMore} onClick={onGetNextLectures}>View More</button>
                     </div>

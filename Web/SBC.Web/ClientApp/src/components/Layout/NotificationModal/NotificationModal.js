@@ -4,10 +4,10 @@ import css from './NotificationModal.module.css';
 
 export default function NotificationModal(props) {
   return (
-    <div className={css.NotificationContainer}>
+    <div className={css.notificationContainer}>
       {props.notifications.map(notification => (
-        <div key={notification.id} className={css.HeaderDiv}>
-          <h3>Notification:<span> {notification.message}</span> </h3>
+        <div key={notification.id} className={css.headerDiv}>
+              <h3 className={css.hThree}>Notification:<span className={css.hSpan}> {notification.message}</span> </h3>
           <Link to="" onClick={() => props.removeNotification(notification.id)}>X</Link>
         </div>
       ))}

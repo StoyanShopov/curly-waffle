@@ -122,7 +122,7 @@ const Coaches = () => {
                     categories={categories} />)}
                 <div className={styles.pluscontainer}>
                     <img
-                        src="/assets/images/Group 79.svg"
+                        src="/assets/images/Group 78.svg"
                         alt=""
                         className={styles.plus}
                         onClick={() => {

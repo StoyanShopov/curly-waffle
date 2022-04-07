@@ -1,11 +1,11 @@
-h3{
+.hThree {
     padding-left: 20px;
     padding-right: 10px;
 }
-span{
-    font-weight:normal;
+.hSpan {
+    font-weight: normal;
 }
-.HeaderDiv
+.headerDiv
 {
     display:flex;
     border-bottom: 1px solid black;
@@ -28,7 +28,7 @@ span{
     background-color:transparent;
     border-radius:20px
 }
-.NotificationContainer
+.notificationContainer
 {
     padding-left:5px;
     padding-right:5px;

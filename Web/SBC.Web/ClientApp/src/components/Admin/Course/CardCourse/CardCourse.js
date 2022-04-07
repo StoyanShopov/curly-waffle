@@ -25,7 +25,7 @@ const CardCourse = (props) => {
                         languages={props.languages}
                     />)
                 }}>
-                    <img src="/Group 81.svg" alt="" />
+                    <img src="/assets/images/Group 87.svg" alt="" />
                 </button>
             </div>
             <div className={style.infoCourse}>
