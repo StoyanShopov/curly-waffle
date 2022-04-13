@@ -2,7 +2,7 @@ import React from 'react';
 
 import style from "./DeleteCourse.module.css";
 
-import { courseService } from '../../../../services/course.service';
+import { courseService } from '../../../../services/course-service';
 
 const DeleteModal = (props) => {
     const courseId = props.courseId;

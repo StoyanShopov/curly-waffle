@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using SBC.Services.Data.Infrastructures;
@@ -10,8 +11,8 @@
 
     public class IdentityController : ApiController
     {
-        private readonly IUsersService usersService;
         private readonly AppSettings appSettings;
+        private readonly IUsersService usersService;
 
         public IdentityController(IOptions<AppSettings> appSettings, IUsersService userService)
         {
@@ -19,11 +20,20 @@
             this.usersService = userService;
         }
 
-        [HttpPost]
-        [Route(nameof(Register))]
-        public async Task<ActionResult> Register(RegisterInputModel model)
+        [Authorize]
+        [HttpPut]
+        public async Task<ActionResult> Update(EditProfileInputModel model)
         {
-            var result = await this.usersService.RegisterAsync(model);
+            var result = await this.usersService.UpdateAsync(model, this.User.Id());
+
+            return this.GenericResponse(result);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var result = await this.usersService.GetUserDataAsync<ProfileViewModel>(this.User.Id());
 
             return this.GenericResponse(result);
         }
@@ -37,20 +47,11 @@
             return this.GenericResponse(result);
         }
 
-        [HttpPut]
-        [Route("Profile")]
-        public async Task<ActionResult> EditProfile(EditProfileInputModel model)
+        [HttpPost]
+        [Route(nameof(Register))]
+        public async Task<ActionResult> Register(RegisterInputModel model)
         {
-            var result = await this.usersService.EditAsync(model, this.User.Id());
-
-            return this.GenericResponse(result);
-        }
-
-        [HttpGet]
-        [Route("Profile")]
-        public async Task<ActionResult> GetProfile()
-        {
-            var result = await this.usersService.GetUserDataAsync<ProfileViewModel>(this.User.Id());
+            var result = await this.usersService.RegisterAsync(model);
 
             return this.GenericResponse(result);
         }

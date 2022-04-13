@@ -8,8 +8,8 @@
     using Microsoft.EntityFrameworkCore;
     using SBC.Data.Models;
 
-    using static SBC.Common.GlobalConstants.LecturesConstants;
-    using static SBC.Common.GlobalConstants.ResourcesConstants;
+    using static SBC.Common.SeederConstants.LecturesConstants;
+    using static SBC.Common.SeederConstants.ResourcesConstants;
 
     internal class ResourcesSeeder : ISeeder
     {

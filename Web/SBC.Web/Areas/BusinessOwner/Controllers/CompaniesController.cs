@@ -8,83 +8,120 @@
     using SBC.Services.Data.Users;
     using SBC.Web.ViewModels.BusinessOwner.Employees;
 
+    using static SBC.Common.RoutesConstants;
+
     public class CompaniesController : BusinessOwnerController
     {
         private readonly ICompaniesService companiesService;
         private readonly IUsersService usersService;
 
-        public CompaniesController(ICompaniesService companiesService, IUsersService usersService)
+        public CompaniesController(
+            ICompaniesService companiesService,
+            IUsersService usersService)
         {
             this.companiesService = companiesService;
             this.usersService = usersService;
         }
 
-        // Employee Controller
         [HttpGet]
-        [Route("employees")]
+        [Route(Employees)]
         public async Task<ActionResult> GetEmployees(int skip)
-            => this.GenericResponse(await this.companiesService.GetEmployeesAsync(this.User.Id(), skip));
+        {
+            var result = await this.companiesService
+                .GetEmployeesAsync(this.User.Id(), skip);
 
-        // Employee Controller
+            return this.GenericResponse(result);
+        }
+
         [HttpPost]
-        [Route("addEmployee")]
-        public async Task<ActionResult> AddEmployee(CreateEmployeeInputModel model)
+        [Route(AddEmployee)]
+        public async Task<ActionResult> AddEmployeeForOwner(CreateEmployeeInputModel model)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.AddEmployeeAsync(model, companyId, this.User.Id()));
+
+            var result = await this.companiesService
+                .AddEmployeeAsync(model, companyId, this.User.Id());
+
+            return this.GenericResponse(result);
         }
 
         [HttpDelete]
-        [Route("removeEmployee")]
-        public async Task<ActionResult> RemoveEmployee(string employeeId)
-            => this.GenericResponse(await this.companiesService.RemoveEmployeeAsync(employeeId));
+        [Route(RemoveEmployee)]
+        public async Task<ActionResult> RemoveEmployeeForOwner(string employeeId)
+        {
+            var result = await this.companiesService.RemoveEmployeeAsync(employeeId);
+
+            return this.GenericResponse(result);
+        }
 
         [HttpGet]
-        [Route("activeCoaches")]
+        [Route(ActiveCoaches)]
         public async Task<ActionResult> GetActiveCoaches()
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.GetActiveCoachesAsync(companyId));
+
+            var result = await this.companiesService.GetActiveCoachesAsync(companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpGet]
-        [Route("addCoach")]
+        [Route(AddCoach)]
         public async Task<ActionResult> SetCoachToActive(int coachId)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.SetCoachToActiveAsync(coachId, companyId));
+
+            var result = await this.companiesService
+                .SetCoachToActiveAsync(coachId, companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpDelete]
-        [Route("removeCoach")]
+        [Route(RemoveCoach)]
         public async Task<ActionResult> RemoveCoachFromActive(int coachId)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.RemoveCoachAsync(coachId, companyId));
+
+            var result = await this.companiesService
+                .RemoveCoachAsync(coachId, companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpGet]
-        [Route("activeCourses")]
+        [Route(ActiveCourses)]
         public async Task<ActionResult> GetActiveCourses()
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.GetActiveCoursesAsync(companyId));
+
+            var result = await this.companiesService.GetActiveCoursesAsync(companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpGet]
-        [Route("addCourse")]
+        [Route(AddCourse)]
         public async Task<ActionResult> SetCourseToActive(int courseId)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.SetCourseToActiveAsync(courseId, companyId));
+
+            var result = await this.companiesService
+                .SetCourseToActiveAsync(courseId, companyId);
+
+            return this.GenericResponse(result);
         }
 
         [HttpDelete]
-        [Route("removeCourse")]
+        [Route(RemoveCourse)]
         public async Task<ActionResult> RemoveCourseFromActive(int courseId)
         {
             var companyId = this.usersService.GetCompanyId(this.User.Id());
-            return this.GenericResponse(await this.companiesService.RemoveCourseAsync(courseId, companyId));
+
+            var result = await this.companiesService
+                .RemoveCourseAsync(courseId, companyId);
+
+            return this.GenericResponse(result);
         }
     }
 }

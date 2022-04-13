@@ -2,11 +2,11 @@ import axios from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
-import css from "./OwnerEmployees.module.css";
+import styles from "./OwnerEmployees.module.css";
 import Modal from 'react-modal';
 import ModalAddEmployee from "../Modals/ModalAddEmployee";
 
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 
 export default function OwnerEmployees() {
     const [employees, setEmployees] = useState([]);
@@ -32,7 +32,7 @@ export default function OwnerEmployees() {
     }, [])
 
     const RemoveEmployee = async (id) => {
-        await OwnerService.CompanyRemoveEmployee(id)
+        await ownerService.companyRemoveEmployee(id)
             .then(res => {
                 navigate('/profile/owner/dashboard')//
             })
@@ -59,7 +59,7 @@ export default function OwnerEmployees() {
     const handleViewMore = async () => {
         setIsPending(true);
 
-        const json = await OwnerService.CompanyGetEmployees(skip, cancelTokenSource);
+        const json = await ownerService.companyGetEmployees(skip, cancelTokenSource);
 
         console.log('js', json)//
 
@@ -78,14 +78,14 @@ export default function OwnerEmployees() {
 
     return (
         <>
-            <div className={css.container}>
-                <table className={css.tableContainer}>
+            <div className={styles.container}>
+                <table className={styles.tableContainer}>
                     <thead>
                         <tr>
-                            <th className={css.firstTh}>Employees ({count})</th>
-                            <th className={css.secondTh}>Email</th>
+                            <th className={styles.firstTh}>Employees ({count})</th>
+                            <th className={styles.secondTh}>Email</th>
                             <th >
-                                <div className={css.plusSignContainer} >
+                                <div className={styles.plusSignContainer} >
                                     <Link to="" onClick={() => setShowModal(true)}>
                                         <img src="/assets/images/Plus.svg" alt="add-icon"></img>
                                     </Link>
@@ -96,22 +96,22 @@ export default function OwnerEmployees() {
                     <tbody>
                         {employees && employees.map(employee => (
                             <tr key={employee.id}>
-                                <td className={css.name}>{employee.fullName}</td>
-                                <td className={css.email}>{employee.email.toLowerCase()}</td>
-                                <td ><button onClick={() => { RemoveEmployee(employee.id) }} className={css.remove}>X</button></td>
+                                <td className={styles.name}>{employee.fullName}</td>
+                                <td className={styles.email}>{employee.email.toLowerCase()}</td>
+                                <td ><button onClick={() => { RemoveEmployee(employee.id) }} className={styles.remove}>X</button></td>
                             </tr>
                         ))}
-                        <tr key={"unique_loading"} id={css.pending}>
+                        <tr key={"unique_loading"} id={styles.pending}>
                             {isPending &&
                                 <td>
                                     <h2>Loading...</h2>
                                 </td>
                             }
                         </tr>
-                        <tr key={"unique_view_more"} id={css.flex}>
+                        <tr key={"unique_view_more"} id={styles.flex}>
                             <td>
                                 {viewMoreAvailable &&
-                                    <Link to="" className={css.link} onClick={() => { handleViewMore() }}>View More</Link>
+                                    <Link to="" className={styles.link} onClick={() => { handleViewMore() }}>View More</Link>
                                 }
                             </td>
                         </tr>

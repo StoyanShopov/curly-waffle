@@ -17,7 +17,7 @@
 
     using SBC.Web.ViewModels.User;
 
-    using static SBC.Common.ErrorMessageConstants.User;
+    using static SBC.Common.ErrorConstants.User;
     using static SBC.Common.GlobalConstants.RolesNamesConstants;
 
     public class UsersService : IUsersService
@@ -42,7 +42,7 @@
             this.userManager = userManager;
         }
 
-        public async Task<ApplicationUser> GetUser(string userId)
+        public async Task<ApplicationUser> GetUserAsync(string userId)
         {
             return await this.applicationUsers
                 .AllAsNoTracking()
@@ -52,27 +52,34 @@
 
         public async Task<Result> RegisterAsync(RegisterInputModel model)
         {
-            var emailExists = await this.ExistsByEmailAsync(model.Email);
+            var emailExists = await this
+                 .ExistsByEmailAsync(model.Email);
 
             if (emailExists)
             {
                 var error = string.Format(EmailExists, model.Email);
 
-                return new ErrorModel(HttpStatusCode.BadRequest, error);
+                return new ErrorModel(
+                   HttpStatusCode.BadRequest,
+                   error);
             }
 
             var (firstName, lastName) = model.FullName.GetNames();
 
-            var companyExists = await this.companiesService.ExistsByNameAsync(model.CompanyName);
+            var companyExists = await this.companiesService
+                 .ExistsByNameAsync(model.CompanyName);
 
             if (!companyExists)
             {
                 var error = string.Format(CompanyExists, model.CompanyName);
 
-                return new ErrorModel(HttpStatusCode.BadRequest, error);
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    error);
             }
 
-            var companyId = await this.companiesService.GetIdByNameAsync(model.CompanyName);
+            var companyId = await this.companiesService
+                .GetIdByNameAsync(model.CompanyName);
 
             var user = new ApplicationUser
             {
@@ -83,14 +90,18 @@
                 CompanyId = companyId,
             };
 
-            var result = await this.userManager.CreateAsync(user, model.Password);
+            var result = await this.userManager
+             .CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+                return new ErrorModel(
+                    HttpStatusCode.BadRequest,
+                    result.Errors);
             }
 
-            await this.userManager.AddToRoleAsync(user, CompanyEmployeeRoleName);
+            await this.userManager
+             .AddToRoleAsync(user, CompanyEmployeeRoleName);
 
             return true;
         }
@@ -104,34 +115,48 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
+                return new ErrorModel(
+                    HttpStatusCode.Unauthorized,
+                    InvalidPassOrEmail);
             }
 
-            var isPasswordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
+            var isPasswordValid = await this.userManager
+              .CheckPasswordAsync(user, model.Password);
 
             if (!isPasswordValid)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, InvalidPassOrEmail);
+                return new ErrorModel(
+                   HttpStatusCode.Unauthorized,
+                   InvalidPassOrEmail);
             }
 
-            var roleId = user.Roles.FirstOrDefault().RoleId;
-            var applicationRole = await this.roleManager.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            var roleId = user.Roles
+                .FirstOrDefault().RoleId;
+            var applicationRole = await this.roleManager.Roles
+                .FirstOrDefaultAsync(r => r.Id == roleId);
 
-            var jwt = this.identitiesService.GenerateJwt(secret, user.Id, user.UserName, applicationRole.Name);
+            var jwt = this.identitiesService.
+                      GenerateJwt(
+                      secret,
+                      user.Id,
+                      user.UserName,
+                      applicationRole.Name);
 
             return new ResultModel(new { JWT = jwt });
         }
 
-        public async Task<Result> EditAsync(EditProfileInputModel inputModelUser, string userId)
+        public async Task<Result> UpdateAsync(EditProfileInputModel inputModelUser, string userId)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
+            var user = await this.userManager
+               .FindByIdAsync(userId);
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.Unauthorized, errors: NotExistsUser);
+                return new ErrorModel(
+                    HttpStatusCode.Unauthorized,
+                    errors: NotExistsUser);
             }
 
-            // TODO: user.Email = mapModel.Email;
             string[] names = inputModelUser.Fullname
                 .Trim()
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries);
@@ -148,7 +173,9 @@
                 return new ResultModel(AutoMapperConfig.MapperInstance.Map<ProfileViewModel>(user));
             }
 
-            return new ErrorModel(HttpStatusCode.BadRequest, result.Errors);
+            return new ErrorModel(
+              HttpStatusCode.BadRequest,
+              result.Errors);
         }
 
         public async Task<Result> GetUserDataAsync<TModel>(string userId)

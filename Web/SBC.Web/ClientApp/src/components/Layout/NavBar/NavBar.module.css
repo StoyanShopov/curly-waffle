@@ -1,0 +1,229 @@
+.headerC {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+.headerContainer {
+    height: 6rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+}
+
+    .headerContainer ul {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+.logoContainer {
+    position: absolute;
+    flex-grow: 0.4;
+    flex-shrink: 1;
+    left: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    flex-basis: 0;
+}
+
+.arrow {
+    width: 76px;
+    opacity: 100%;
+}
+
+.upskillContainer {
+    text-align: left;
+}
+
+.upskillContainer input {
+  cursor: pointer;
+}
+
+.upskillLink {
+  color: inherit;
+  text-decoration: inherit;
+  font: normal normal bold 30px/37px Montserrat;
+  letter-spacing: 1.5px;
+  color: #000000;
+}
+
+.testedLinks {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 18%;
+    flex-grow: 0.59;
+    flex-shrink: 2;
+    flex-basis: 0;
+}
+
+    .testedLinks li {
+        display: inline-flex;
+    }
+
+    .testedLinks ul {
+        flex-grow: 0.97;
+        align-items: center;
+        align-content: space-around;
+        flex-basis: 8%;
+    }
+
+        .testedLinks ul li {
+            margin-left: 8px;
+            font-size: 13px;
+        }
+
+.homePageButtons {
+    flex-wrap: wrap;
+    display: flex;
+    left: 17%;
+    align-items: center;
+    position: relative;
+    flex-grow: 1.1;
+    flex-shrink: 3;
+    flex-basis: 0;
+}
+
+    .homePageButtons li {
+        text-decoration: none;
+    }
+
+    .homePageButtons ul {
+        text-decoration: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 3px;
+        margin: 3px;
+        align-items: center;
+        justify-content: space-around;
+        gap: 4px 18px;
+    }
+
+.coursesCoaches {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding-right: 2%;
+    position: relative;
+    left: -5%;
+}
+
+    .coursesCoaches ul {
+        align-items: center;
+        gap: 8px 18px;
+        justify-content: space-evenly;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+        .coursesCoaches ul li {
+            margin-left: 5px;
+        }
+
+    .coursesCoaches a:hover,
+    .coursesCoaches a:visited,
+    .coursesCoaches a:link,
+    .coursesCoaches a:active {
+        text-decoration: none;
+    }
+
+.loginButton {
+    width: 130px;
+    height: 40px;
+    text-decoration: none;
+    border-color: #296CFB;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    color: #296CFB;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.requestDemoBtn {
+    width: 200px;
+    height: 40px;
+    background-color: #296CFB;
+    border-color: #296CFB;
+    color: floralwhite;
+    text-decoration: none;
+    font: normal normal bold 22px/27px Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.coursesActive {
+    font: normal normal bold 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #296CFB;
+    font-weight: bold;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.coursesNotActive {
+    font: normal normal normal 22px/27px Montserrat;
+    letter-spacing: 1.1px;
+    color: #000000;
+    font-weight: normal;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.greenCircle {
+    top: -10px;
+    width: 44px;
+    height: 44px;
+    color: #FFFFFF;
+    background-color: #16D696;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 43px;
+    border-radius: 50%;
+    margin-right: 3%;
+    position: absolute;
+    left: 80%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+.greenCircle a:hover,
+.greenCircle a:visited,
+.greenCircle a:link,
+.greenCircle a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    transform: rotate(-30deg);
+    -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+@-moz-keyframes spin { 
+    30% { -moz-transform: rotate(80deg); } 
+}
+@-webkit-keyframes spin { 
+    80% { -webkit-transform: rotate(100deg); } 
+}
+@keyframes spin { 
+    50% { 
+        -webkit-transform: rotate(45deg); 
+        transform:rotate(35deg); 
+    } 
+}

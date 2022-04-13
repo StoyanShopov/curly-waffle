@@ -79,7 +79,6 @@
                 .AddTransient<ISearchSeedersService, SearchSeedersService>()
                 .AddTransient<IUsersService, UsersService>()
                 .AddTransient<IEmployeesDashboardService, EmployeesDashboardService>();
-                
 
                 // To setup ElasticSearch do:
                 // First download https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-windows-x86_64.zip

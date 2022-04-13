@@ -3,210 +3,136 @@
 import { TokenManagement } from '../helpers';
 import { baseUrl } from '../constants/GlobalConstants';
 
-// from CoachesController:
+const token = TokenManagement.getLocalAccessToken();
 
-const GetCoachesCatalog = async (skip, cancelTokenSource) => {
-    const response = await axios.get(baseUrl + 'manager/Coaches?skip=' + skip,
-        {
+const getOwnerDashboard = async () => {
+    return await axios
+        .get(baseUrl + "manager/Dashboard", {
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`
+            }
+        });
+}
+
+const getCoachesCatalog = async (skip, cancelTokenSource) => {
+    return await axios
+        .get(baseUrl + 'manager/Coaches?skip=' + skip, {
             cancelToken: cancelTokenSource.token,
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-// from CoursesController:
-
-const GetCoursesCatalog = async (skip, cancelTokenSource) => {
-    const response = await axios.get(baseUrl + 'manager/Courses?skip=' + skip,
-        {
+const getCoursesCatalog = async (skip, cancelTokenSource) => {
+    return await axios
+        .get(baseUrl + 'manager/Courses?skip=' + skip, {
             cancelToken: cancelTokenSource.token,
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-// from CompaniesController:
-
-const CompanyGetEmployees = async (skip, cancelTokenSource) => {
-    const response = await axios.get(baseUrl + 'manager/Companies/employees?skip=' + skip,
-        {
+const companyGetEmployees = async (skip, cancelTokenSource) => {
+    return await (await axios
+        .get(baseUrl + 'manager/Companies/employees?skip=' + skip, {
             cancelToken: cancelTokenSource.token,
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             },
-        });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error)
-    }
-
-    return response.data;
+        })).data;
 }
 
-const CompanyAddEmployee = async (model) => {
-    const response = await axios.post(baseUrl + 'manager/Companies/addEmployee', model,
-        {
+const companyAddEmployee = async (model) => {
+    return await axios
+        .post(baseUrl + 'manager/Companies/addEmployee', model, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanyRemoveEmployee = async (employeeId) => {
-    const response = await axios.delete(baseUrl + `manager/Companies/removeEmployee?employeeId=${employeeId}`,
-        {
+const companyRemoveEmployee = async (employeeId) => {
+    return await axios
+        .delete(baseUrl + `manager/Companies/removeEmployee?employeeId=${employeeId}`, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanyGetActiveCoaches = async () => {
-    const response = await axios.get(baseUrl + 'manager/Companies/activeCoaches',
-        {
+const companyGetActiveCoaches = async () => {
+    return await axios
+        .get(baseUrl + 'manager/Companies/activeCoaches', {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanySetCoachToActive = async (coachId) => { //TODO
-    const response = await axios.get(baseUrl + `manager/Companies/addCoach?coachId=${coachId}`,
-        {
+const companySetCoachToActive = async (coachId) => {
+    return await axios
+        .get(baseUrl + `manager/Companies/addCoach?coachId=${coachId}`, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanyRemoveCoachFromActive = async (coachId) => { //TODO
-    const response = await axios.delete(baseUrl + `manager/Companies/removeCoach?coachId=${coachId}`,
-        {
+const companyRemoveCoachFromActive = async (coachId) => {
+    return await axios
+        .delete(baseUrl + `manager/Companies/removeCoach?coachId=${coachId}`, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanyGetActiveCourses = async () => {
-    const response = await axios.get(baseUrl + 'manager/Companies/activeCourses',
-        {
+const companyGetActiveCourses = async () => {
+    return await axios
+        .get(baseUrl + 'manager/Companies/activeCourses', {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                "Content-Type": "application/json;charset=UTF-8",
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanySetCourseToActive = async (courseId) => { //TODO
-    const response = await axios.get(baseUrl + `manager/Companies/addCourse?courseId=${courseId}`,
-        {
+const companySetCourseToActive = async (courseId) => {
+    return await axios
+        .get(baseUrl + `manager/Companies/addCourse?courseId=${courseId}`, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-const CompanyRemoveCourseFromActive = async (courseId) => { //TODO
-    const response = await axios.delete(baseUrl + `manager/Companies/removeCourse?courseId=${courseId}`,
-        {
+const companyRemoveCourseFromActive = async (courseId) => {
+    return await axios
+        .delete(baseUrl + `manager/Companies/removeCourse?courseId=${courseId}`, {
             headers: {
-                Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`,
+                Authorization: `Bearer ${token}`,
             },
         });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-
-    return response;
 }
 
-// from DashboardController:
-
-const GetOwnerDashboard = async () => {
-    let response = await axios({
-        method: 'get',
-        url: baseUrl + "manager/Dashboard",
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${TokenManagement.getLocalAccessToken()}`
-        }
-    });
-
-    if (response.status !== 200) {
-        throw new Error(response.Error);
-    }
-    return response;
-}
-
-
-export const OwnerService = {
-    GetOwnerDashboard,
-    GetCoachesCatalog,
-    GetCoursesCatalog,
-    CompanyAddEmployee,
-    CompanyGetEmployees,
-    CompanyRemoveEmployee,
-    CompanyGetActiveCoaches,
-    CompanySetCoachToActive,
-    CompanyRemoveCoachFromActive,
-    CompanyGetActiveCourses,
-    CompanySetCourseToActive,
-    CompanyRemoveCourseFromActive,
+export const ownerService = {
+    getOwnerDashboard,
+    getCoachesCatalog,
+    getCoursesCatalog,
+    companyGetEmployees,
+    companyAddEmployee,
+    companyRemoveEmployee,
+    companyGetActiveCoaches,
+    companySetCoachToActive,
+    companyRemoveCoachFromActive,
+    companyGetActiveCourses,
+    companySetCourseToActive,
+    companyRemoveCourseFromActive,
 }

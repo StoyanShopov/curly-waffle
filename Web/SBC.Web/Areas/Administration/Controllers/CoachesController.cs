@@ -17,32 +17,36 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(CreateCoachInputModel coach)
+        public async Task<ActionResult> Create(CreateCoachInputModel coach)
         {
             var result = await this.coachesService.CreateAsync(coach);
+
             return this.GenericResponse(result);
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAsync()
+        public async Task<ActionResult> GetAll()
         {
             var result = await this.coachesService.GetAllAsync<CoachDetailsViewModel>();
+
             return this.GenericResponse(result);
         }
 
-        [Route("{id}")]
         [HttpPut]
+        [Route("{id}")]
         public async Task<ActionResult> Update(UpdateCoachInputModel coach)
         {
             var result = await this.coachesService.UpdateAsync(coach);
+
             return this.GenericResponse(result);
         }
 
-        [Route("{id}")]
         [HttpDelete]
+        [Route("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var result = await this.coachesService.DeleteAsync(id);
+
             return this.GenericResponse(result);
         }
     }

@@ -2,17 +2,16 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using static SBC.Web.ViewModels.ValidationConstants;
+
     public class EditProfileInputModel
     {
         [Required(AllowEmptyStrings = true)]
-        [StringLength(30, MinimumLength = 2)]
+        [StringLength(ApplicationUser.FullnameMaxLength, MinimumLength = ApplicationUser.FullnameMinLength)]
         public string Fullname { get; set; }
 
-        // TODO: Remove email
-        public string Email { get; set; }
-
         [Required]
-        [StringLength(300)]
+        [StringLength(ApplicationUser.ProfileSummaryMaxLength)]
         public string ProfileSummary { get; set; }
 
         public string PhotoUrl { get; set; }

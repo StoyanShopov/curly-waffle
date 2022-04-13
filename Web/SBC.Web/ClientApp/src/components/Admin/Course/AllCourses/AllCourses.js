@@ -3,7 +3,10 @@ import Modal from "react-modal/lib/components/Modal";
 
 import style from './AllCourses.module.css';
 
-import { courseService } from "../../../../services/course.service.js";
+import { courseService } from "../../../../services/course-service.js";
+import { coachService } from "../../../../services/coach-service"
+import { languageService } from "../../../../services/language-service";
+import { categoryService } from "../../../../services/category-service";
 
 import CardCourse from '../CardCourse/CardCourse.js';
 import CreateCourse from '../Create/CreateCourse.js';
@@ -13,11 +16,27 @@ const AllCourses = () => {
     const [childModal, setChildModal] = useState(null);
     const [courses, setCourses] = useState([]);
 
+    const [coaches, setCoaches] = useState([])
+    const [languages, setLanguages] = useState([])
+    const [categories, setCategories] = useState([])
+
     useEffect(() => {
         courseService.getAll()
             .then(response => {
                 setCourses(response.data);
             });
+
+        coachService.getAll().then(res => {
+            setCoaches(res.data)
+        })
+
+        categoryService.getAll().then(res => {
+            setCategories(res.data)
+        })
+
+        languageService.getAll().then(res => {
+            setLanguages(res.data)
+        })
     }, []);
 
     let subtitle = {
@@ -57,13 +76,16 @@ const AllCourses = () => {
                     <p className={style.textPage}>Upskill’s goal is to inspire you to master your technical and personal skills and give you the opportunity to gain knowledge from top specialists in various fields.</p>
                 </div>
                 <div className={style.rightSide}>
-                    <img src="/Group 23.png" alt="" className={style.book} />
-                    <img src="/Path 3449.png" alt="" className={style.backgroundClr} />
+                    <img src="/assets/images/Group 23.svg" alt="" className={style.book} />
+                    <img src="/assets/images/Path 3449.png" alt="" className={style.backgroundClr} />
                 </div>
             </section>
             <section className={style.cardsSection}>
                 {courses.length > 0 && courses.map(x => <CardCourse key={x.id}
                     course={x}
+                    coaches={coaches}
+                    categories={categories}
+                    languages={languages}
                     openModal={openModal}
                     closeModal={closeModal}
                     setCourses={setCourses}
@@ -71,11 +93,14 @@ const AllCourses = () => {
                 <div className={style.buttonDiv}>
                     <button className={style.addBtn} onClick={() => {
                         openModal(<CreateCourse
+                            coaches={coaches}
+                            categories={categories}
+                            languages={languages}
                             closeModal={closeModal}
                             courses={courses}
                             setCourses={setCourses} />)
                     }}>
-                        <img src="/Group 78.svg" alt="" />
+                        <img src="/assets/images/Group 78.svg" alt="" />
                     </button>
                     <Modal
                         style={subtitle}

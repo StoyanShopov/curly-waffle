@@ -29,7 +29,7 @@
             this.companiesService = companiesService;
         }
 
-        public async Task<Result> GetAllByEmailAsyc(string email)
+        public async Task<Result> GetAllByEmailAsync(string email)
         {
             var result = await this.notificationRepository
                 .AllAsNoTracking()
@@ -40,7 +40,10 @@
             return new ResultModel(result);
         }
 
-        public async Task<Result> AddAsync(string uniqueGroupKey, string userEmail, string message)
+        public async Task<Result> CreateAsync(
+            string uniqueGroupKey,
+            string userEmail,
+            string message)
         {
             var user = await this.usersService.GetByEmailAsync<UserConnection>(userEmail);
 

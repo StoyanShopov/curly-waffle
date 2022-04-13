@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
-import { OwnerService } from '../../../services';
-import ManagerCoachCard from '../../Fragments/ManagerCoachCard';
+import { ownerService } from '../../../services';
+import ManagerCoachCard from '../../Fragments/CoachCards/ManagerCoachCard';
 
 import { CategoriesList } from "../CourseCatalog/CategoriesList";
 import { LanguagesList } from "../CourseCatalog/LanguagesList";
@@ -37,9 +37,9 @@ export default function CoachCatalog(props) {
     const handleViewMore = async () => {
         setIsPending(true);
 
-        const json = await OwnerService.GetCoachesCatalog(skip, cancelTokenSource);
+        const json = await ownerService.getCoachesCatalog(skip, cancelTokenSource);
 
-        console.log('js', json)//       
+        console.log('js', json)       
 
         setIsPending(false);
 

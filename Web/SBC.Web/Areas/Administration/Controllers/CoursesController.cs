@@ -1,27 +1,19 @@
 ﻿namespace SBC.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Identity;
+
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.SignalR;
-    using SBC.Common;
-    using SBC.Data.Models;
     using SBC.Services.Data.Courses;
-    using SBC.Services.Data.Infrastructures;
-    using SBC.Web.Infrastructures.Hub;
     using SBC.Web.ViewModels.Administration.Courses;
 
     public class CoursesController : AdministrationController
     {
         private readonly ICoursesService courseService;
-       // private readonly NotificationHub notificationHubContext;
 
         public CoursesController(
             ICoursesService courseService)
-           // NotificationHub notificationHubContext)
         {
             this.courseService = courseService;
-            //this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]
@@ -29,7 +21,7 @@
         {
             var result = await this.courseService.GetAllAsync<CourseDetailsViewModel>();
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
@@ -37,11 +29,11 @@
         {
             var result = await this.courseService.GetByIdAsync<CourseDetailsViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(CreateCourseInputModel courseModel)
+        public async Task<ActionResult> Create(CreateCourseInputModel courseModel)
         {
             var result = await this.courseService.CreateAsync(courseModel);
 
@@ -49,9 +41,9 @@
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int? id, EditCourseInputModel courseModel)
+        public async Task<ActionResult> Update(int? id, EditCourseInputModel courseModel)
         {
-            var result = await this.courseService.EditAsync(id, courseModel);
+            var result = await this.courseService.UpdateAsync(id, courseModel);
 
             return this.GenericResponse(result);
         }

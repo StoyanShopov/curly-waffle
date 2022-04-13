@@ -7,24 +7,27 @@ import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { store, TokenManagement } from "./helpers";
 import { Layout } from "./components/Layout/Layout";
 
-import AdminProfile from './components/super-admin/AdminProfile';
+
 import LoginAsEmployee from "./components/Login/LoginAsEmployee";
 import Homepage from "./components/Homepage/Homepage"
 import RegisterAsOwner from "./components/Register/RegisterAsOwner";
 import AllCourses from "./components/Admin/Course/AllCourses/AllCourses"
 import CourseDetails from "./components/Admin/Course/CourseDetails/CourseDetails";
-import CreateCoach from "./components/Coaches/CreateCoach";
-import EditCoach from "./components/Coaches/EditCoach";
-import Coaches from "./components/Coaches/Coaches";
-import DeleteCoach from "./components/Coaches/DeleteCoach";
+import CreateCoach from './components/Coaches/CreateCoach/CreateCoach';
+import EditCoach from './components/Coaches/EditCoach/EditCoach';
+import Coaches from './components/Coaches/Coaches/Coaches';
+import DeleteCoach from './components/Coaches/DeleteCoach/DeleteCoach';
 
-import Signup from "./components/SignUpAsBusinessOwner/Signup";
+import Signup from "./components/SignUpAsOwner/Signup";
 import CourseCatalog from "./components/ProfileOwner/CourseCatalog/CourseCatalog";
 import CoachCatalog from "./components/ProfileOwner/CoachCatalog/CoachCatalog";
 import ManagerProfile from "./components/ProfileOwner/BOProfile/ManagerProfile";
+import ReplacementPage from "./components/Replacement/ReplacementPage";
+
 
 import "./App.css";
-import EmployeeProfile from './components/Employees/EmployeeProfile';
+import EmployeeProfile from './components/Employees/Profile/EmployeeProfile';
+import AdminProfile from './components/Admin/Profile/AdminProfile';
 
 function App() {
     const [connection, setConnection] = useState([]);
@@ -87,8 +90,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Homepage />} />
                     <Route path="/login" element={<LoginAsEmployee />} />
-                    <Route path="/registerAsOwner" element={<RegisterAsOwner />} />
+                    <Route path="/register" element={<RegisterAsOwner />} />
                     <Route path="/signUp" element={<Signup />} />
+                    <Route path="/replacement-page" element={<ReplacementPage />} />
                     {hasRole(_role, ['Administrator']) && <Route path='/profile/*' element={<AdminProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Owner']) && <Route path='/profile/*' element={<ManagerProfile editUser={() => setUser()} />} />}
                     {hasRole(_role, ['Employee']) && <Route path='/profile/*' element={<EmployeeProfile editUser={() => setUser()} />} />}

@@ -8,24 +8,27 @@
     using SBC.Common;
     using SBC.Data.Common.Repositories;
     using SBC.Data.Models;
-    using SBC.Services.Data.Users;
     using SBC.Services.Mapping;
-    using SBC.Web.ViewModels.Employees;
+    using SBC.Web.ViewModels.Employees.Coaches;
+    using SBC.Web.ViewModels.Employees.Courses;
+    using SBC.Web.ViewModels.Employees.Dashboard;
+
+    using static SBC.Common.ErrorConstants.Employee;
 
     public class EmployeesDashboardService : IEmployeesDashboardService
     {
+        private readonly IDeletableEntityRepository<ApplicationUser> applicationUserRepository;
         private readonly IDeletableEntityRepository<UserCoachSession> userCoachSessionsRepository;
         private readonly IDeletableEntityRepository<UserCourse> userCoursesRepository;
-        private readonly IDeletableEntityRepository<ApplicationUser> applicationUserRepository;
 
         public EmployeesDashboardService(
+            IDeletableEntityRepository<ApplicationUser> applicationUserRepository,
             IDeletableEntityRepository<UserCoachSession> userCoachSessionsRepository,
-            IDeletableEntityRepository<UserCourse> userCoursesRepository,
-            IDeletableEntityRepository<ApplicationUser> applicationUserRepository)
+            IDeletableEntityRepository<UserCourse> userCoursesRepository)
         {
+            this.applicationUserRepository = applicationUserRepository;
             this.userCoachSessionsRepository = userCoachSessionsRepository;
             this.userCoursesRepository = userCoursesRepository;
-            this.applicationUserRepository = applicationUserRepository;
         }
 
         public async Task<Result> GetAsync(string userId)
@@ -36,7 +39,7 @@
 
             if (user == null)
             {
-                return new ErrorModel(HttpStatusCode.BadRequest, "User cannot be null");
+                return new ErrorModel(HttpStatusCode.BadRequest, EmployeeCantBeNull);
             }
 
             var userCoachesSessions = await this.userCoachSessionsRepository

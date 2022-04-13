@@ -20,7 +20,8 @@
         {
             var userId = this.User.Id();
 
-            var result = await this.employeesDashboardService.GetAsync(userId);
+            var result = await this.employeesDashboardService
+                  .GetAsync(userId);
 
             return this.GenericResponse(result);
         }

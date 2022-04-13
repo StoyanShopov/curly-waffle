@@ -1,32 +1,35 @@
 ﻿namespace SBC.Services.Data.Courses
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using SBC.Common;
     using SBC.Web.ViewModels.Administration.Courses;
 
+    using static SBC.Common.GlobalConstants.ClientConstants;
+
     public interface ICoursesService
     {
-        Task<Result> GetAllWithActiveAsync(int companyId, int skip, int take = 3);
-
-        Task<IEnumerable<TModel>> GetAllAsync<TModel>();
-
-        Task<TModel> GetByIdAsync<TModel>(int id);
-
         Task<Result> CreateAsync(CreateCourseInputModel courseModel);
-
-        Task<Result> EditAsync(int? id, EditCourseInputModel courseModel);
 
         Task<Result> DeleteByIdAsync(int id);
 
+        Task<Result> EnrollCourseAsync(string userId, int courseId);
+
+        Task<Result> GetAllAsync<TModel>();
+
         Task<Result> GetAllByOwnerAsync(string employeeId);
 
-        // Task<Result> GetActiveCoursesAsync<TModel>(int companyId);
-        Task<int> GetCountAsync();
+        Task<Result> GetAllWithActiveAsync(
+            int companyId,
+            int skip,
+            int take = TakeDefaultValue);
+
+        Task<Result> GetByIdAsync<TModel>(int id);
 
         Task<Result> GetByIdEmployeeAsync(int id);
 
-        Task<Result> EnrollCourse(string userId, int courseId);
+        Task<Result> UpdateAsync(int? id, EditCourseInputModel courseModel);
+
+        Task<int> GetCountAsync();
     }
 }

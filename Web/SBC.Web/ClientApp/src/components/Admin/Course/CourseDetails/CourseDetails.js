@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 
 import style from "./CourseDetails.module.css";
 
-import { courseService } from "../../../../services/course.service.js";
-import { lectureService } from "../../../../services/lecture.service.js";
+import { courseService } from "../../../../services/course-service.js";
+import { lectureService } from "../../../../services/lecture-service.js";
 import { employeeService } from "../../../../services/employee-service";
 
-import CreateLecture from "../../Lecture/CreateLecture/CreateLecture"
-import LectureCard from "../../Lecture/LectureCard/LectureCard.js";
+import CreateLecture from "../../Lectures/Create/CreateLecture"
+import LectureCard from "../../Lectures/Card/LectureCard.js";
 import ResponsivePlayer from "../../Player/VideoPlayer.js";
 
 import Modal from "react-modal/lib/components/Modal";
@@ -164,7 +164,7 @@ export default function CourseDetails(props) {
                                 lectures={lectures}
                                 lecture={x}
                                 index={i} />)}
-                            <img src="Line 396.png" className={style.google} alt="" />
+                            <img src="/assets/images/Line 396.png" className={style.google} alt="" />
                         </ul>
                         <button className={style.btnViewMore} onClick={onGetNextLectures}>View More</button>
                     </div>

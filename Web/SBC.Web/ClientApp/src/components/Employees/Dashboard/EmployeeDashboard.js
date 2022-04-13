@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import Modal from "react-modal/lib/components/Modal";
 import { employeeService } from "../../../services/employee-service";
-import CoachCard from "../../Fragments/CoachCard";
+import CoachCard from "../../Fragments/CoachCards/CoachCard";
 
 import style from "./EmployeeDashboard.module.css";
 

@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom';
 
-import { OwnerService } from '../../../services';
+import { ownerService } from '../../../services';
 
 import styles from './ModalAddEmployee.module.css'
 
@@ -17,7 +17,7 @@ export default function ModalAddEmployee(props) {
         }
 
         try {
-            const response = await OwnerService.CompanyAddEmployee(employeeData);
+            const response = await ownerService.companyAddEmployee(employeeData);
 
             props.handleSkip(1);
 

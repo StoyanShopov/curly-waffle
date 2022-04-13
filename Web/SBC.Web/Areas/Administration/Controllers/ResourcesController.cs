@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    using SBC.Common;
     using SBC.Services.Data.Resources;
     using SBC.Web.ViewModels.Administration.Resources;
 
@@ -22,7 +21,7 @@
         {
             var result = await this.resourceService.GetAllByLectureIdAsync<ResourceViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpGet("{id}")]
@@ -30,7 +29,7 @@
         {
             var result = await this.resourceService.GetByIdAsync<ResourceViewModel>(id);
 
-            return this.GenericResponse(new ResultModel(result));
+            return this.GenericResponse(result);
         }
 
         [HttpPost]
@@ -44,7 +43,7 @@
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, EditResourceInputModel resourceModel)
         {
-            var result = await this.resourceService.EditAsync(id, resourceModel);
+            var result = await this.resourceService.UpdateAsync(id, resourceModel);
 
             return this.GenericResponse(result);
         }
@@ -52,7 +51,7 @@
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
-            var result = await this.resourceService.DeleteByIdAsync(id);
+            var result = await this.resourceService.DeleteAsync(id);
 
             return this.GenericResponse(result);
         }

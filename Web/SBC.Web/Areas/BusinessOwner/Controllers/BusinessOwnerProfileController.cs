@@ -17,11 +17,21 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAsync()
-            => this.GenericResponse(await this.usersService.GetUserDataAsync<ProfileViewModel>(this.User.Id()));
+        public async Task<ActionResult> Get()
+        {
+            var result = await this.usersService
+                .GetUserDataAsync<ProfileViewModel>(this.User.Id());
+
+            return this.GenericResponse(result);
+        }
 
         [HttpPut]
-        public async Task<ActionResult> EditAsync(EditProfileInputModel model)
-            => this.GenericResponse(await this.usersService.EditAsync(model, this.User.Id()));
+        public async Task<ActionResult> Update(EditProfileInputModel model)
+        {
+            var result = await this.usersService
+                .UpdateAsync(model, this.User.Id());
+
+            return this.GenericResponse(result);
+        }
     }
 }

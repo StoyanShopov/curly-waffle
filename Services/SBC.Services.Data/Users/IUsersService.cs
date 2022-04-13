@@ -8,13 +8,13 @@
 
     public interface IUsersService
     {
-        Task<ApplicationUser> GetUser(string userId);
+        Task<ApplicationUser> GetUserAsync(string userId);
 
         Task<Result> RegisterAsync(RegisterInputModel model);
 
         Task<Result> LoginAsync(LoginInputModel model, string secret);
 
-        Task<Result> EditAsync(EditProfileInputModel model, string userId);
+        Task<Result> UpdateAsync(EditProfileInputModel model, string userId);
 
         Task<Result> GetUserDataAsync<TModel>(string userId);
 

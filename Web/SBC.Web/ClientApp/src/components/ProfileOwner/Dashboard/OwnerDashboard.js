@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { OwnerService } from '../../../services/owner-service'
+import { ownerService } from '../../../services/owner-service'
 
 import styles from "./OwnerDashboard.module.css";
 
@@ -9,7 +9,7 @@ export default function OwnerDashboard() {
     const [items, setItems] = useState({});
 
     useEffect(() => {
-        OwnerService.GetOwnerDashboard()
+        ownerService.getOwnerDashboard()
             .then(res => {
                 setItems(res.data);
                 console.log(res.data)//
