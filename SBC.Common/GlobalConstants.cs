@@ -4,7 +4,7 @@
     {
         public const string SystemName = "SBC";
 
-        public const string BlobContainer = "upskillcontainertest";
+        public const string BlobContainer = "upskillblobstorage";
 
         public class RolesNamesConstants
         {

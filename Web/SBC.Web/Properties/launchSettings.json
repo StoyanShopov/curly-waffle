@@ -12,7 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "AZURE_USERNAME": "iovko1993@gmail.com",
+        "AZURE_USERNAME": "danihristov22@gmail.com",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -20,7 +20,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "AZURE_USERNAME": "iovko1993@gmail.com",
+        "AZURE_USERNAME": "danihristov22@gmail.com",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
