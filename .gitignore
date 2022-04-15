@@ -349,4 +349,11 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-Properties/
+appInsights1.arm.json
+mssql1.arm.json
+profile.arm.json
+storage1.arm.json
+launchSettings.json
+serviceDependencies.json
+serviceDependencies.local.json
+serviceDependencies.upskills - Web Deploy.json
