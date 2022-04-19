@@ -9,9 +9,6 @@ This season is intended to teach its participants how to operate in real work en
 ## Project Info
 [UpSkill](https://upskills.azurewebsites.net/) is a learning platform for the business. We power the personal and professional development of the employees for thousands of businesses around the world. You can find top quality courses and coaches in the platform. Sign up for free demo!
 
-## Team Leader
-* [Stoyan Shopov](https://github.com/StoyanShopov)
-
 ## Contributors
 * [Aleksandar Hristov](https://github.com/AleksandarHristovGithub)
 * [Alexander Stefanov](https://github.com/jtreesbg)
@@ -31,7 +28,6 @@ This season is intended to teach its participants how to operate in real work en
 - [AutoMapper](https://github.com/StoyanShopov/curly-waffle/tree/dev/Services/SBC.Services.Mapping)
 - Azure App Service
 - [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)
-- Azure Function
 - [Azure SignalR Service](https://docs.microsoft.com/en-us/azure/azure-signalr/)
 - [Azure SQL Database](https://azure.microsoft.com/en-us/products/azure-sql/database/)
 - [Elasticsearch](https://www.elastic.co/)
@@ -51,7 +47,6 @@ This season is intended to teach its participants how to operate in real work en
 - [Redux](https://react-redux.js.org/)
 - [Axios](https://www.npmjs.com/package/axios)
 - HTML CSS
-- Bootstrap
 - [React Calendly](https://www.npmjs.com/package/react-calendly)
 - [React Media](https://www.npmjs.com/package/reactjs-media)
 - [React Modal](https://www.npmjs.com/package/react-modal)
